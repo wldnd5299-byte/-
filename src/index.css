@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans KR", "Inter", sans-serif;
+  --font-display: "Noto Sans KR", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-nike-black: #123941; /* Deep Teal/Blue-Grey (Main Color 60%) */
+  --color-soft-cloud: #FAF8F5; /* Light Warm Beige Background (30%) */
+  --color-hairline: #EAE5DE;   /* Soft warm beige border to match theme */
+  --color-hairline-soft: #F3ECE3; /* Extra soft warm beige divider line */
+  --color-nike-sale: #cb9f74;  /* Premium Gold/Bronze (Point Color 10%) - slightly brighter */
+  --color-nike-sale-deep: #b2865c; /* Deep Premium Gold/Bronze */
+  --color-nike-success: #10B981; /* Keep success as emerald */
+  --color-nike-info: #3B82F6;    /* Standard info blue */
+  
+  /* Restoring standard Amber tailwind colors to Rich Premium Gold scale */
+  --color-amber-50: #FAF6F2;
+  --color-amber-100: #F5ECE3;
+  --color-amber-200: #ECDCCB;
+  --color-amber-300: #E6CBB1;
+  --color-amber-400: #DFB288;
+  --color-amber-500: #cb9f74;
+  --color-amber-600: #b2865c;
+  --color-amber-700: #946d49;
+  --color-amber-800: #745437;
+  --color-amber-900: #543b25;
+
+  /* Overriding slate-50 to have the light warm beige background */
+  --color-slate-50: #FAF8F5;
+}
+
+/* Global typography override to enforce clean modern sans-serif */
+html, body {
+  font-family: var(--font-sans);
+  font-feature-settings: "zero" 0;
+  font-variant-numeric: normal;
+}
+
+* {
+  font-feature-settings: "zero" 0;
+}
+
+button, input, textarea, select {
+  font-family: var(--font-sans);
+}
+
+/* Page Background */
+body, .bg-slate-50 {
+  background-color: var(--color-soft-cloud) !important;
+}
+
+.bg-\[\#f5f5f5\], .bg-\[\#F5F5F7\], .bg-gray-50 {
+  background-color: var(--color-soft-cloud) !important;
+}
+
+.hover\:bg-\[\#e5e5e5\]:hover, .hover\:bg-gray-100:hover {
+  background-color: var(--color-hairline-soft) !important;
+}
+
+.hover\:bg-\[\#f5f5f5\]:hover {
+  background-color: var(--color-soft-cloud) !important;
+}
+
+.text-\[\#707072\], .text-gray-500 {
+  color: #475569 !important; /* Elegant Slate text instead of sterile gray */
+}
+
+.border-hairline {
+  border-color: var(--color-hairline) !important;
+}
+
+.border-hairline-soft {
+  border-color: var(--color-hairline-soft) !important;
+}
+
+/* Modern Rounded Corners for premium trustworthy look instead of blocky athletic sharp corners */
+.rounded-none {
+  border-radius: 12px !important;
+}
+
+/* Ensure circular badges and buttons keep their fully rounded shape */
+.rounded-full {
+  border-radius: 9999px !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-soft-cloud);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hairline);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-nike-sale);
+}
+
+/* Print Styles for PDF export */
+@media print {
+  header, nav, footer, .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  #printable-terms-area {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  table, tr {
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "보험브릿지",
+  "description": "보험 설계사와 고객을 위한 6대 핵심 유틸리티(보험금 청구, 약관 조회, 수술명 검색 및 분류표)를 제공하는 미니멀하고 신뢰감 있는 보험 정보 및 보상 브릿지 웹사이트입니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
