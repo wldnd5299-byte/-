@@ -553,7 +553,7 @@ const KB_CANCER_SECTIONS = [
     ]
   },
   {
-    title: '특정소액암',
+    title: '특정 소액암II',
     items: [
       { num: '1', disease: '유방의 악성 신생물', code: 'C50' },
       { num: '2', disease: '자궁경부의 악성 신생물', code: 'C53' },
@@ -594,7 +594,27 @@ const KB_CANCER_SECTIONS = [
   {
     title: '혈액암',
     items: [
-      { num: '1', disease: '림프, 조혈 및 관련조직의 악성 신생물', code: 'C81~C96' },
+      {
+        num: '1',
+        disease: '림프, 조혈 및 관련조직의 악성 신생물',
+        code: 'C81, C82, C83, C84, C85, C86, C88, C90, C91, C92, C93, C94, C95, C96',
+        subItems: [
+          { disease: '호지킨 림프종', code: 'C81' },
+          { disease: '소포성 림프종', code: 'C82' },
+          { disease: '비소포성 림프종', code: 'C83' },
+          { disease: '성숙 T/NK-세포 림프종', code: 'C84' },
+          { disease: '기타 및 상세불명 유형의 비호지킨 림프종', code: 'C85' },
+          { disease: 'T/NK-세포 림프종의 기타 명시된 형태', code: 'C86' },
+          { disease: '악성 면역증식성 질환', code: 'C88' },
+          { disease: '다발골수종 및 악성 형질세포신생물', code: 'C90' },
+          { disease: '림프성 백혈병', code: 'C91' },
+          { disease: '골수성 백혈병', code: 'C92' },
+          { disease: '단핵구성 백혈병', code: 'C93' },
+          { disease: '명시된 세포형의 기타 백혈병', code: 'C94' },
+          { disease: '상세불명 세포형의 백혈병', code: 'C95' },
+          { disease: '림프, 조혈 및 관련 조직의 기타 및 상세불명의 악성 신생물', code: 'C96' }
+        ]
+      },
       { num: '2', disease: '진성 적혈구 증가증', code: 'D45' },
       { num: '3', disease: '골수 형성이상 증후군', code: 'D46' },
       { num: '4', disease: '만성 골수증식 질환', code: 'D47.1' },
@@ -674,7 +694,7 @@ const KB_CANCER_METASTASIS_SECTIONS = [
     ]
   },
   {
-    title: '특정소액암(전이암포함)',
+    title: '특정 소액암II(전이암포함)',
     items: [
       { num: '1', disease: '유방의 악성 신생물', code: 'C50' },
       { num: '2', disease: '자궁경부의 악성 신생물', code: 'C53' },
@@ -725,7 +745,27 @@ const KB_CANCER_METASTASIS_SECTIONS = [
   {
     title: '혈액암',
     items: [
-      { num: '1', disease: '림프, 조혈 및 관련조직의 악성 신생물', code: 'C81~C96' },
+      {
+        num: '1',
+        disease: '림프, 조혈 및 관련조직의 악성 신생물',
+        code: 'C81, C82, C83, C84, C85, C86, C88, C90, C91, C92, C93, C94, C95, C96',
+        subItems: [
+          { disease: '호지킨 림프종', code: 'C81' },
+          { disease: '소포성 림프종', code: 'C82' },
+          { disease: '비소포성 림프종', code: 'C83' },
+          { disease: '성숙 T/NK-세포 림프종', code: 'C84' },
+          { disease: '기타 및 상세불명 유형의 비호지킨 림프종', code: 'C85' },
+          { disease: 'T/NK-세포 림프종의 기타 명시된 형태', code: 'C86' },
+          { disease: '악성 면역증식성 질환', code: 'C88' },
+          { disease: '다발골수종 및 악성 형질세포신생물', code: 'C90' },
+          { disease: '림프성 백혈병', code: 'C91' },
+          { disease: '골수성 백혈병', code: 'C92' },
+          { disease: '단핵구성 백혈병', code: 'C93' },
+          { disease: '명시된 세포형의 기타 백혈병', code: 'C94' },
+          { disease: '상세불명 세포형의 백혈병', code: 'C95' },
+          { disease: '림프, 조혈 및 관련 조직의 기타 및 상세불명의 악성 신생물', code: 'C96' }
+        ]
+      },
       { num: '2', disease: '진성 적혈구 증가증', code: 'D45' },
       { num: '3', disease: '골수 형성이상 증후군', code: 'D46' },
       { num: '4', disease: '만성 골수증식 질환', code: 'D47.1' },
@@ -759,7 +799,7 @@ const KB_CANCER_METASTASIS_SECTIONS = [
   }
 ];
 
-// KB손해보험 별표117 통합전이암 분류표
+// KB손해보험 별표118 통합전이암 분류표
 const KB_METASTASIS_SECTIONS = [
   {
     title: '소화기관전이암',
@@ -787,7 +827,7 @@ const KB_METASTASIS_SECTIONS = [
     ]
   },
   {
-    title: '특정소액전이암',
+    title: '특정소액전이암II',
     items: [
       { num: '1', disease: '방광과 기타 및 상세불명의 비뇨기관의 이차성 악성 신생물', code: 'C79.1' },
       { num: '2', disease: '유방의 이차성 악성 신생물', code: 'C79.80' }
@@ -840,11 +880,11 @@ const MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS = [
       { num: '8', disease: '요관의 악성 신생물', code: 'C66' },
       { num: '9', disease: '방광의 악성 신생물', code: 'C67' },
       { num: '10', disease: '진성 적혈구증가증', code: 'D45' },
-      { num: '11', disease: '[전이암] 림프절의 이차성 및 상세불명의 악성 신생물', code: 'C77', isMetastasis: true },
-      { num: '12', disease: '[전이암] 피부의 이차성 악성 신생물', code: 'C79.2', isMetastasis: true },
-      { num: '13', disease: '[전이암] 유방의 이차성 악성 신생물', code: 'C79.80', isMetastasis: true },
-      { num: '14', disease: '[전이암] 기타 명시된 부위의 이차성 악성 신생물', code: 'C79.88', isMetastasis: true },
-      { num: '15', disease: '[전이암] 상세불명 부위의 이차성 악성 신생물', code: 'C79.9', isMetastasis: true }
+      { num: '11', disease: '림프절의 이차성 및 상세불명의 악성 신생물', code: 'C77', isMetastasis: true },
+      { num: '12', disease: '피부의 이차성 악성 신생물', code: 'C79.2', isMetastasis: true },
+      { num: '13', disease: '유방의 이차성 악성 신생물', code: 'C79.80', isMetastasis: true },
+      { num: '14', disease: '기타 명시된 부위의 이차성 악성 신생물', code: 'C79.88', isMetastasis: true },
+      { num: '15', disease: '상세불명 부위의 이차성 악성 신생물', code: 'C79.9', isMetastasis: true }
     ]
   },
   {
@@ -857,19 +897,19 @@ const MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS = [
       { num: '5', disease: '항문 및 항문관의 악성 신생물', code: 'C21' },
       { num: '6', disease: '간 및 간내 담관의 악성 신생물', code: 'C22' },
       { num: '7', disease: '기타 및 부위불명 소화기관의 악성 신생물', code: 'C26' },
-      { num: '8', disease: '[전이암] 소장의 이차성 악성 신생물', code: 'C78.4', isMetastasis: true },
-      { num: '9', disease: '[전이암] 대장 및 직장의 이차성 악성 신생물', code: 'C78.5', isMetastasis: true },
-      { num: '10', disease: '[전이암] 후복막 및 복막의 이차성 악성 신생물', code: 'C78.6', isMetastasis: true },
-      { num: '11', disease: '[전이암] 간 및 간내 담관의 이차성 악성 신생물', code: 'C78.7', isMetastasis: true },
-      { num: '12', disease: '[전이암] 위의 이차성 악성 신생물', code: 'C78.80', isMetastasis: true },
-      { num: '13', disease: '[전이암] 비장의 이차성 악성 신생물', code: 'C78.82', isMetastasis: true },
-      { num: '14', disease: '[전이암] 기타 소화기관의 이차성 악성 신생물', code: 'C78.88', isMetastasis: true },
-      { num: '15', disease: '[전이암] 상세불명의 소화기관의 이차성 악성 신생물', code: 'C78.89', isMetastasis: true },
-      { num: '16', disease: '[전이암] 생식기관의 이차성 악성 신생물', code: 'C79.81', isMetastasis: true }
+      { num: '8', disease: '소장의 이차성 악성 신생물', code: 'C78.4', isMetastasis: true },
+      { num: '9', disease: '대장 및 직장의 이차성 악성 신생물', code: 'C78.5', isMetastasis: true },
+      { num: '10', disease: '후복막 및 복막의 이차성 악성 신생물', code: 'C78.6', isMetastasis: true },
+      { num: '11', disease: '간 및 간내 담관의 이차성 악성 신생물', code: 'C78.7', isMetastasis: true },
+      { num: '12', disease: '위의 이차성 악성 신생물', code: 'C78.80', isMetastasis: true },
+      { num: '13', disease: '비장의 이차성 악성 신생물', code: 'C78.82', isMetastasis: true },
+      { num: '14', disease: '기타 소화기관의 이차성 악성 신생물', code: 'C78.88', isMetastasis: true },
+      { num: '15', disease: '상세불명의 소화기관의 이차성 악성 신생물', code: 'C78.89', isMetastasis: true },
+      { num: '16', disease: '생식기관의 이차성 악성 신생물', code: 'C79.81', isMetastasis: true }
     ]
   },
   {
-    title: '15대특정암(전이포함)',
+    title: '14대특정암(전이포함)',
     items: [
       { num: '1', disease: '입술, 구강 및 인두의 악성 신생물', code: 'C00~C14' },
       { num: '2', disease: '호흡기 및 흉곽내기관의 악성 신생물', code: '-' },
@@ -901,10 +941,10 @@ const MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS = [
       { num: '11', disease: '골수형성이상증후군', code: 'D46' },
       { num: '12', disease: '만성 골수증식질환', code: 'D47.1' },
       { num: '13', disease: '본태성(출혈성) 혈소판혈증', code: 'D47.3' },
-      { num: '14', disease: '골수섬유증', code: 'D47.4' },
-      { num: '15', disease: '[전이암] 신장 및 신우의 이차성 악성 신생물', code: 'C79.0', isMetastasis: true },
-      { num: '16', disease: '[전이암] 방광과 기타 및 상세불명의 비뇨기관의 이차성 악성 신생물', code: 'C79.1', isMetastasis: true },
-      { num: '17', disease: '[전이암] 난소의 이차성 악성 신생물', code: 'C79.6', isMetastasis: true },
+      { num: '14', disease: '골수성유증', code: 'D47.4' },
+      { num: '15', disease: '신장 및 신우의 이차성 악성 신생물', code: 'C79.0', isMetastasis: true },
+      { num: '16', disease: '방광과 기타 및 상세불명의 비뇨기관의 이차성 악성 신생물', code: 'C79.1', isMetastasis: true },
+      { num: '17', disease: '난소의 이차성 악성 신생물', code: 'C79.6', isMetastasis: true },
       { num: '18', disease: '부위의 명시가 없는 악성 신생물', code: 'C80' }
     ]
   },
@@ -915,7 +955,7 @@ const MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS = [
       { num: '2', disease: '소장의 악성 신생물', code: 'C17' },
       { num: '3', disease: '기관의 악성 신생물', code: 'C33' },
       { num: '4', disease: '흉선의 악성 신생물', code: 'C37' },
-      { num: '5', disease: '기타 및 부위불명의 호흡기 및 흉곽내 기관의 악성 신생물', code: 'C39' },
+      { num: '5', disease: '기타 및 부위불명의 호흡기 및 흉곽내기관의 악성 신생물', code: 'C39' },
       { num: '6', disease: '중피종', code: 'C45' },
       { num: '7', disease: '카포시육종', code: 'C46' },
       { num: '8', disease: '후복막 및 복막의 악성 신생물', code: 'C48' },
@@ -939,14 +979,14 @@ const MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS = [
       { num: ' ', disease: '- 상세불명 세포형의 백혈병', code: 'C95' },
       { num: ' ', disease: '- 림프, 조혈 및 관련 조직의 기타 및 상세불명의 악성 신생물', code: 'C96' },
       { num: ' ', disease: '- 만성 호산구성 백혈병[과호산구증후군]', code: 'D47.5' },
-      { num: '11', disease: '[전이암] 폐의 이차성 악성 신생물', code: 'C78.0', isMetastasis: true },
-      { num: '12', disease: '[전이암] 종격의 이차성 악성 신생물', code: 'C78.1', isMetastasis: true },
-      { num: '13', disease: '[전이암] 흉막의 이차성 악성 신생물', code: 'C78.2', isMetastasis: true },
-      { num: '14', disease: '[전이암] 기타 및 상세불명의 호흡기관의 이차성 악성 신생물', code: 'C78.3', isMetastasis: true },
-      { num: '15', disease: '[전이암] 뇌 및 뇌막의 이차성 악성 신생물', code: 'C79.3', isMetastasis: true },
-      { num: '16', disease: '[전이암] 신경계통의 기타 및 상세불명 부분의 이차성 악성 신생물', code: 'C79.4', isMetastasis: true },
-      { num: '17', disease: '[전이암] 골 및 골수의 이차성 악성 신생물', code: 'C79.5', isMetastasis: true },
-      { num: '18', disease: '[전이암] 부신의 이차성 악성 신생물', code: 'C79.7', isMetastasis: true }
+      { num: '11', disease: '폐의 이차성 악성 신생물', code: 'C78.0', isMetastasis: true },
+      { num: '12', disease: '종격의 이차성 악성 신생물', code: 'C78.1', isMetastasis: true },
+      { num: '13', disease: '흉막의 이차성 악성 신생물', code: 'C78.2', isMetastasis: true },
+      { num: '14', disease: '기타 및 상세불명의 호흡기관의 이차성 악성 신생물', code: 'C78.3', isMetastasis: true },
+      { num: '15', disease: '뇌 및 뇌막의 이차성 악성 신생물', code: 'C79.3', isMetastasis: true },
+      { num: '16', disease: '신경계통의 기타 및 상세불명 부분의 이차성 악성 신생물', code: 'C79.4', isMetastasis: true },
+      { num: '17', disease: '골 및 골수의 이차성 악성 신생물', code: 'C79.5', isMetastasis: true },
+      { num: '18', disease: '부신의 이차성 악성 신생물', code: 'C79.7', isMetastasis: true }
     ]
   },
   {
@@ -958,7 +998,7 @@ const MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS = [
       { num: '4', disease: '골 및 관절연골의 악성 신생물', code: '-' },
       { num: ' ', disease: '- 사지의 골 및 관절연골의 악성 신생물', code: 'C40' },
       { num: ' ', disease: '- 기타 및 상세불명 부위의 골 및 관절연골의 악성 신생물', code: 'C41' },
-      { num: '5', disease: '[전이암] 췌장의 이차성 악성 신생물', code: 'C78.81', isMetastasis: true }
+      { num: '5', disease: '췌장의 이차성 악성 신생물', code: 'C78.81', isMetastasis: true }
     ]
   }
 ];
@@ -1025,7 +1065,7 @@ const MERITZ_INTEGRATED_CANCER_SECTIONS = [
       { num: '11', disease: '골수형성이상증후군', code: 'D46' },
       { num: '12', disease: '만성 골수증식질환', code: 'D47.1' },
       { num: '13', disease: '본태성(출혈성) 혈소판혈증', code: 'D47.3' },
-      { num: '14', disease: '골수섬유증', code: 'D47.4' },
+      { num: '14', disease: '골수성유증', code: 'D47.4' },
       { num: '15', disease: '불명확한, 이차성 및 상세불명 부위의 악성신생물', code: 'C77~C80' }
     ]
   },
@@ -1036,7 +1076,7 @@ const MERITZ_INTEGRATED_CANCER_SECTIONS = [
       { num: '2', disease: '소장의 악성 신생물', code: 'C17' },
       { num: '3', disease: '기관의 악성 신생물', code: 'C33' },
       { num: '4', disease: '흉선의 악성 신생물', code: 'C37' },
-      { num: '5', disease: '기타 및 부위불명의 호흡기 및 흉곽내 기관의 악성 신생물', code: 'C39' },
+      { num: '5', disease: '기타 및 부위불명의 호흡기 및 흉곽내기관의 악성 신생물', code: 'C39' },
       { num: '6', disease: '중피종', code: 'C45' },
       { num: '7', disease: '카포시육종', code: 'C46' },
       { num: '8', disease: '후복막 및 복막의 악성 신생물', code: 'C48' },
@@ -2688,6 +2728,205 @@ export const MERITZ_5_DISEASES_SECTIONS = [
     ]
   }
 ];
+
+export const MERITZ_5_DISEASES_SUMMARY = MERITZ_5_DISEASES_SECTIONS.map(s => ({
+  category: s.category,
+  diseases: s.items.map(i => `${i.disease}${i.code ? ` (${i.code})` : ''}`)
+}));
+
+export interface MeritzIntegratedTreatmentItem {
+  category: string;
+  name: string;
+  count: string;
+  '40m': string;
+  '80m': string;
+  '100m': string;
+}
+
+export const MERITZ_INTEGRATED_TREATMENT_ITEMS: MeritzIntegratedTreatmentItem[] = [
+  // 검사 (8개)
+  { category: '검사', name: '암 내시경검사(급여)', count: '연간 1회한', '40m': '5만원', '80m': '5만원', '100m': '5만원' },
+  { category: '검사', name: '암 MRI촬영검사(급여)', count: '연간 1회한', '40m': '5만원', '80m': '5만원', '100m': '5만원' },
+  { category: '검사', name: '암 양전자단층촬영(PET)검사(급여)', count: '연간 1회한', '40m': '5만원', '80m': '5만원', '100m': '5만원' },
+  { category: '검사', name: '암 특정단일유전자검사(급여)', count: '연간 1회한', '40m': '5만원', '80m': '5만원', '100m': '5만원' },
+  { category: '검사', name: '암 초음파검사(급여)', count: '연간 1회한', '40m': '5만원', '80m': '10만원', '100m': '10만원' },
+  { category: '검사', name: '암 CT촬영검사(급여)', count: '연간 1회한', '40m': '5만원', '80m': '10만원', '100m': '10만원' },
+  { category: '검사', name: '암 특정생검조직병리검사(급여)', count: '연간 1회한', '40m': '10만원', '80m': '20만원', '100m': '20만원' },
+  { category: '검사', name: '암 특정NGS유전자패널검사(급여)', count: '연간 1회한', '40m': '100만원', '80m': '100만원', '100m': '100만원' },
+
+  // 주요 치료 (7개)
+  { category: '주요 치료', name: '암(유사암제외) 수술', count: '수술 1회당', '40m': '500만원', '80m': '750만원', '100m': '1,000만원' },
+  { category: '주요 치료', name: '유사암 수술', count: '수술 1회당', '40m': '100만원', '80m': '150만원', '100m': '200만원' },
+  { category: '주요 치료', name: '암(유사암제외) 항암방사선치료', count: '연간 1회한', '40m': '500만원', '80m': '750만원', '100m': '1,000만원' },
+  { category: '주요 치료', name: '기타피부암 및 갑상선암 항암방사선치료', count: '연간 1회한', '40m': '100만원', '80m': '150만원', '100m': '200만원' },
+  { category: '주요 치료', name: '암(유사암제외) 항암약물치료', count: '연간 1회한', '40m': '500만원', '80m': '750만원', '100m': '1,000만원' },
+  { category: '주요 치료', name: '기타피부암 및 갑상선암 항암약물치료', count: '연간 1회한', '40m': '100만원', '80m': '150만원', '100m': '200만원' },
+  { category: '주요 치료', name: '항암세기조절방사선치료', count: '연간 1회한', '40m': '500만원', '80m': '750만원', '100m': '1,000만원' },
+
+  // 비급여(전액본인부담 포함)치료 (5개)
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 암(특정암제외) 다빈치로봇수술', count: '연간 1회한', '40m': '500만원', '80m': '750만원', '100m': '1,000만원' },
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 특정암 다빈치로봇수술', count: '연간 1회한', '40m': '100만원', '80m': '150만원', '100m': '200만원' },
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 표적항암약물허가치료', count: '연간 1회한', '40m': '1,000만원', '80m': '2,000만원', '100m': '3,000만원' },
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 특정면역항암약물허가치료', count: '연간 1회한', '40m': '1,000만원', '80m': '2,000만원', '100m': '3,000만원' },
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 항암양성자방사선치료', count: '연간 1회한', '40m': '1,000만원', '80m': '2,000만원', '100m': '3,000만원' },
+
+  // 통증완화치료 (1개)
+  { category: '통증완화치료', name: '암(유사암제외) 특정통증완화치료(급여)', count: '연간 1회한', '40m': '30만원', '80m': '40만원', '100m': '50만원' },
+
+  // 재활치료 (2개)
+  { category: '재활치료', name: '입원 암 재활치료(급여)', count: '연간 20회한 (각각 1일 1회한)', '40m': '2만원', '80m': '2만원', '100m': '2만원' },
+  { category: '재활치료', name: '외래 암 재활치료(급여)', count: '연간 20회한 (각각 1일 1회한)', '40m': '2만원', '80m': '2만원', '100m': '2만원' },
+];
+
+export const MERITZ_INTEGRATED_TREATMENT_SECTIONS = [
+  {
+    category: '검사',
+    items: MERITZ_INTEGRATED_TREATMENT_ITEMS.filter(i => i.category === '검사').map(i => ({ disease: i.name, code: i['40m'] }))
+  },
+  {
+    category: '주요 치료',
+    items: MERITZ_INTEGRATED_TREATMENT_ITEMS.filter(i => i.category === '주요 치료').map(i => ({ disease: i.name, code: i['40m'] }))
+  },
+  {
+    category: '비급여(전액본인부담 포함)치료',
+    items: MERITZ_INTEGRATED_TREATMENT_ITEMS.filter(i => i.category === '비급여(전액본인부담 포함)치료').map(i => ({ disease: i.name, code: i['40m'] }))
+  },
+  {
+    category: '통증완화치료',
+    items: MERITZ_INTEGRATED_TREATMENT_ITEMS.filter(i => i.category === '통증완화치료').map(i => ({ disease: i.name, code: i['40m'] }))
+  },
+  {
+    category: '재활치료',
+    items: MERITZ_INTEGRATED_TREATMENT_ITEMS.filter(i => i.category === '재활치료').map(i => ({ disease: i.name, code: i['40m'] }))
+  }
+];
+
+export const MERITZ_INTEGRATED_TREATMENT_SUMMARY = MERITZ_INTEGRATED_TREATMENT_SECTIONS.map(s => ({
+  category: s.category,
+  diseases: s.items.map(i => `${i.disease} (${i.code})`)
+}));
+
+// 메리츠화재 암통합치료비(실속형) 데이터
+export interface MeritzPracticalTreatmentItem {
+  category: string;
+  name: string;
+  count: string;
+  '10m': string;
+  '30m': string;
+  '50m': string;
+  '70m': string;
+}
+
+export const MERITZ_PRACTICAL_TREATMENT_ITEMS: MeritzPracticalTreatmentItem[] = [
+  // 주요 치료 (6개)
+  { category: '주요 치료', name: '암(유사암제외) 수술', count: '수술 1회당', '10m': '250만원', '30m': '500만원', '50m': '750만원', '70m': '1,000만원' },
+  { category: '주요 치료', name: '유사암 수술', count: '수술 1회당', '10m': '50만원', '30m': '100만원', '50m': '150만원', '70m': '200만원' },
+  { category: '주요 치료', name: '암(유사암제외) 항암방사선치료', count: '연간 1회한', '10m': '250만원', '30m': '500만원', '50m': '750만원', '70m': '1,000만원' },
+  { category: '주요 치료', name: '기타피부암 및 갑상선암 항암방사선치료', count: '연간 1회한', '10m': '50만원', '30m': '100만원', '50m': '150만원', '70m': '200만원' },
+  { category: '주요 치료', name: '암(유사암제외) 항암약물치료', count: '연간 1회한', '10m': '250만원', '30m': '500만원', '50m': '750만원', '70m': '1,000만원' },
+  { category: '주요 치료', name: '기타피부암 및 갑상선암 항암약물치료', count: '연간 1회한', '10m': '50만원', '30m': '100만원', '50m': '150만원', '70m': '200만원' },
+
+  // 비급여(전액본인부담 포함)치료 (3개)
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 표적항암약물허가치료', count: '연간 1회한', '10m': '250만원', '30m': '500만원', '50m': '750만원', '70m': '1,000만원' },
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 특정면역항암약물허가치료', count: '연간 1회한', '10m': '250만원', '30m': '500만원', '50m': '750만원', '70m': '1,000만원' },
+  { category: '비급여(전액본인부담 포함)치료', name: '비급여(전액본인부담 포함) 항암양성자방사선치료', count: '연간 1회한', '10m': '250만원', '30m': '500만원', '50m': '750만원', '70m': '1,000만원' },
+];
+
+export const MERITZ_PRACTICAL_TREATMENT_SECTIONS = [
+  {
+    category: '주요 치료',
+    items: MERITZ_PRACTICAL_TREATMENT_ITEMS.filter(i => i.category === '주요 치료').map(i => ({ disease: i.name, code: i['10m'] }))
+  },
+  {
+    category: '비급여(전액본인부담 포함)치료',
+    items: MERITZ_PRACTICAL_TREATMENT_ITEMS.filter(i => i.category === '비급여(전액본인부담 포함)치료').map(i => ({ disease: i.name, code: i['10m'] }))
+  }
+];
+
+export const MERITZ_PRACTICAL_TREATMENT_SUMMARY = MERITZ_PRACTICAL_TREATMENT_SECTIONS.map(s => ({
+  category: s.category,
+  diseases: s.items.map(i => `${i.disease} (${i.code})`)
+}));
+
+// 메리츠화재 암통합치료비(비급여) 데이터
+export interface MeritzNoncoveredTreatmentItem {
+  category: string;
+  name: string;
+  count: string;
+  '40m_under': string;
+  '40m_over': string;
+  '70m_under': string;
+  '70m_over': string;
+  '100m_under': string;
+  '100m_over': string;
+}
+
+export const MERITZ_NONCOVERED_TREATMENT_ITEMS: MeritzNoncoveredTreatmentItem[] = [
+  // 주요 치료 (6개)
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 암(유사암제외) 수술', count: '수술 1회당', '40m_under': '250만원', '40m_over': '500만원', '70m_under': '375만원', '70m_over': '750만원', '100m_under': '500만원', '100m_over': '1,000만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 유사암 수술', count: '수술 1회당', '40m_under': '50만원', '40m_over': '100만원', '70m_under': '75만원', '70m_over': '150만원', '100m_under': '100만원', '100m_over': '200만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 암(유사암제외) 항암방사선치료', count: '연간 1회한', '40m_under': '250만원', '40m_over': '500만원', '70m_under': '375만원', '70m_over': '750만원', '100m_under': '500만원', '100m_over': '1,000만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 기타피부암 및 갑상선암 항암방사선치료', count: '연간 1회한', '40m_under': '50만원', '40m_over': '100만원', '70m_under': '75만원', '70m_over': '150만원', '100m_under': '100만원', '100m_over': '200만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 암(유사암제외) 항암약물치료', count: '연간 1회한', '40m_under': '250만원', '40m_over': '500만원', '70m_under': '375만원', '70m_over': '750만원', '100m_under': '500만원', '100m_over': '1,000만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 기타피부암 및 갑상선암 항암약물치료', count: '연간 1회한', '40m_under': '50만원', '40m_over': '100만원', '70m_under': '75만원', '70m_over': '150만원', '100m_under': '100만원', '100m_over': '200만원' },
+
+  // 특정 치료 (5개)
+  { category: '특정 치료', name: '비급여(전액본인부담 포함) 암(특정암제외) 다빈치로봇수술', count: '연간 1회한', '40m_under': '250만원', '40m_over': '500만원', '70m_under': '375만원', '70m_over': '750만원', '100m_under': '500만원', '100m_over': '1,000만원' },
+  { category: '특정 치료', name: '비급여(전액본인부담 포함) 특정암 다빈치로봇수술', count: '연간 1회한', '40m_under': '50만원', '40m_over': '100만원', '70m_under': '75만원', '70m_over': '150만원', '100m_under': '100만원', '100m_over': '200만원' },
+  { category: '특정 치료', name: '비급여(전액본인부담 포함) 표적항암약물허가치료', count: '연간 1회한', '40m_under': '500만원', '40m_over': '1,000만원', '70m_under': '1,000만원', '70m_over': '2,000만원', '100m_under': '1,500만원', '100m_over': '3,000만원' },
+  { category: '특정 치료', name: '비급여(전액본인부담 포함) 특정면역항암약물허가치료', count: '연간 1회한', '40m_under': '500만원', '40m_over': '1,000만원', '70m_under': '1,000만원', '70m_over': '2,000만원', '100m_under': '1,500만원', '100m_over': '3,000만원' },
+  { category: '특정 치료', name: '비급여(전액본인부담 포함) 항암양성자방사선치료', count: '연간 1회한', '40m_under': '500만원', '40m_over': '1,000만원', '70m_under': '1,000만원', '70m_over': '2,000만원', '100m_under': '1,500만원', '100m_over': '3,000만원' },
+];
+
+export const MERITZ_NONCOVERED_TREATMENT_SECTIONS = [
+  {
+    category: '주요 치료',
+    items: MERITZ_NONCOVERED_TREATMENT_ITEMS.filter(i => i.category === '주요 치료').map(i => ({ disease: i.name, code: i['40m_over'] }))
+  },
+  {
+    category: '특정 치료',
+    items: MERITZ_NONCOVERED_TREATMENT_ITEMS.filter(i => i.category === '특정 치료').map(i => ({ disease: i.name, code: i['40m_over'] }))
+  }
+];
+
+export const MERITZ_NONCOVERED_TREATMENT_SUMMARY = MERITZ_NONCOVERED_TREATMENT_SECTIONS.map(s => ({
+  category: s.category,
+  diseases: s.items.map(i => `${i.disease} (${i.code})`)
+}));
+
+// 메리츠화재 암통합치료비(비급여/주요치료) 데이터
+export interface MeritzNoncoveredPrimaryTreatmentItem {
+  category: string;
+  name: string;
+  count: string;
+  '30m_under': string;
+  '30m_over': string;
+  '50m_under': string;
+  '50m_over': string;
+  '70m_under': string;
+  '70m_over': string;
+}
+
+export const MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS: MeritzNoncoveredPrimaryTreatmentItem[] = [
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 암(유사암제외) 수술', count: '수술 1회당', '30m_under': '250만원', '30m_over': '500만원', '50m_under': '375만원', '50m_over': '750만원', '70m_under': '500만원', '70m_over': '1,000만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 유사암 수술', count: '수술 1회당', '30m_under': '50만원', '30m_over': '100만원', '50m_under': '75만원', '50m_over': '150만원', '70m_under': '100만원', '70m_over': '200만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 암(유사암제외) 항암방사선치료', count: '연간 1회한', '30m_under': '250만원', '30m_over': '500만원', '50m_under': '375만원', '50m_over': '750만원', '70m_under': '500만원', '70m_over': '1,000만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 기타피부암 및 갑상선암 항암방사선치료', count: '연간 1회한', '30m_under': '50만원', '30m_over': '100만원', '50m_under': '75만원', '50m_over': '150만원', '70m_under': '100만원', '70m_over': '200만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 암(유사암제외) 항암약물치료', count: '연간 1회한', '30m_under': '250만원', '30m_over': '500만원', '50m_under': '375만원', '50m_over': '750만원', '70m_under': '500만원', '70m_over': '1,000만원' },
+  { category: '주요 치료', name: '비급여(전액본인부담 포함) 기타피부암 및 갑상선암 항암약물치료', count: '연간 1회한', '30m_under': '50만원', '30m_over': '100만원', '50m_under': '75만원', '50m_over': '150만원', '70m_under': '100만원', '70m_over': '200만원' },
+];
+
+export const MERITZ_NONCOVERED_PRIMARY_TREATMENT_SECTIONS = [
+  {
+    category: '주요 치료',
+    items: MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.map(i => ({ disease: i.name, code: i['30m_over'] }))
+  }
+];
+
+export const MERITZ_NONCOVERED_PRIMARY_TREATMENT_SUMMARY = MERITZ_NONCOVERED_PRIMARY_TREATMENT_SECTIONS.map(s => ({
+  category: s.category,
+  diseases: s.items.map(i => `${i.disease} (${i.code})`)
+}));
 
 // 메리츠화재 131대수술비 분류표 데이터
 export const MERITZ_131_DISEASES_SECTIONS = [
@@ -4953,7 +5192,7 @@ const KB_BRAIN_ITEMS: KbBrainTableItem[] = [
     ]
   },
   {
-    category: '뇌혈관질환(뇌출혈뇌경색)',
+    category: '뇌혈관질환(뇌출혈 · 뇌경색)',
     items: [
       { name: '거미막하출혈', code: 'I60' },
       { name: '뇌내출혈', code: 'I61' },
@@ -5052,7 +5291,7 @@ const KB_10HIGH_CANCER_ITEMS: KbCancerTableItem[] = [
   {
     num: '5',
     name: '림프, 조혈 및 관련조직의 악성신생물(암)',
-    code: 'C81~C96, D47.1, D47.5',
+    code: 'C81, C82, C83, C84, C85, C86, C88, C90, C91, C92, C93, C94, C95, C96, D47.1, D47.5',
     subItems: [
       { name: '호지킨림프종', code: 'C81' },
       { name: '소포성 림프종', code: 'C82' },
@@ -5114,7 +5353,7 @@ const DB_HIGH_COST_CANCER_SECTIONS = [
 
 const KB_HEART_SPECIFIC1_SECTIONS = [
   {
-    title: 'KB 특정심장질환(1) 분류표',
+    title: '[별표35] 심장질환(특정 I) 분류표',
     items: KB_HEART_SPECIFIC1_ITEMS.map(item => ({
       num: item.num,
       disease: item.name,
@@ -5125,7 +5364,7 @@ const KB_HEART_SPECIFIC1_SECTIONS = [
 
 const KB_HEART_SPECIFIC2_SECTIONS = [
   {
-    title: 'KB 특정심장질환(2) 분류표',
+    title: '[별표36] 심장질환(특정 II) 분류표',
     items: KB_HEART_SPECIFIC2_ITEMS.map(item => ({
       num: item.num,
       disease: item.name,
@@ -18358,7 +18597,7 @@ const KB_INTEGRATED_TREATMENT_ITEMS = [
     name: '저체온요법치료(급여)',
     method: '연간 1회한',
     practical: { under1yr: '25만원', over1yr: '50만원', renew: '50만원' },
-    basic: { under1yr: '37.5만원', over1yr: '75만원', renew: '75만원' },
+    basic: { under1yr: '37만 5천원', over1yr: '75만원', renew: '75만원' },
     luxury: { under1yr: '50만원', over1yr: '100만원', renew: '100만원' },
   },
   {
@@ -18387,170 +18626,196 @@ const KB_INTEGRATED_TREATMENT_SECTIONS = (() => {
   }));
 })();
 
-// KB손해보험 1-5종 수술 분류표 [별표46-1] 데이터
+// KB손해보험 1-5종 수술 분류표 [별표55-1] 데이터
 const KB_SURGERY_1_5_SECTIONS = [
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - I. 피부, 유방의 수술',
+    category: '1. 피부, 유방의 수술',
+    title: '피부, 유방의 수술',
+    group: '일반수술',
     items: [
-      { num: '1', disease: '피부이식수술(25이상인 경우), 피판수술(피판분리수술, Z flap, W flap 제외)', code: '3종' },
-      { num: '2', disease: '피부이식수술(25미만인 경우)', code: '1종' },
-      { num: '3', disease: '유방절단수술(, Mastectomy)', code: '3종' },
+      { num: '1', disease: '피부이식수술(25㎠이상인 경우), 피판수술(피판분리수술, Z flap, W flap 제외)', code: '3종' },
+      { num: '2', disease: '피부이식수술(25㎠미만인 경우)', code: '1종' },
+      { num: '3', disease: '유방절단수술(切斷術, Mastectomy)', code: '3종' },
       { num: '4', disease: '기타 유방수술(농양의 절개 및 배액은 제외) [단, 치료목적의 Mammotomy는 수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '1종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - II. 근골()의 수술 [발정술() 등 내고정물 제거술은 제외함] [치치은치근치조골의 처치, 임플란트 등 치과 처치 및 수술에 수반하는 것은 제외함]',
+    category: '2. 근골(筋骨)의 수술',
+    title: '근골(筋骨)의 수술 [발정술(拔釘術) 등 내고정물 제거술은 제외함] [치(齒)·치은·치근(齒根)·치조골(齒槽骨)의 처치, 임플란트(Implant) 등 치과 처치 및 수술에 수반하는 것은 제외함]',
+    group: '일반수술',
     items: [
-      { num: '5', disease: '골() 이식수술', code: '2종' },
-      { num: '6', disease: '두개골(, cranium) 관혈수술 [비골비중격상악골하악골악관절은 제외함]', code: '3종' },
-      { num: '7', disease: '비골() 수술 [비중격 만곡증()수술, 수면중 무호흡 수술은 제외]', code: '1종' },
-      { num: '8', disease: '상악골(), 하악골(), 악관절() 관혈수술', code: '2종' },
-      { num: '9', disease: '척추골(), 골반골(), 추간판 관혈수술', code: '3종' },
-      { num: '10', disease: '쇄골(), 견갑골(), 늑골(), 흉골() 관혈수술', code: '2종' },
-      { num: '11-1', disease: '손가락, 발가락 절단수술 [골, 관절의 이단()에 수반하는것, 다지증 제외]', code: '1종' },
-      { num: '11-2', disease: '기타 사지()절단수술 [다지증에 대한 절단수술은 제외함]', code: '3종' },
-      { num: '12', disease: '절단()된 사지()재접합수술 [골, 관절의 이단()에 수반하는것]', code: '3종' },
+      { num: '5', disease: '골(骨) 이식수술', code: '2종' },
+      { num: '6', disease: '두개골(頭蓋骨, cranium) 관혈수술 [비골(鼻骨) · 비중격(鼻中隔) · 상악골(上顎骨) · 하악골(下顎骨) · 악관절(顎關節)은 제외함]', code: '3종' },
+      { num: '7', disease: '비골(鼻骨) 수술 [비중격 만곡증(彎曲症)수술, 수면중 무호흡 수술은 제외]', code: '1종' },
+      { num: '8', disease: '상악골(上顎骨), 하악골(下顎骨), 악관절(顎關節) 관혈수술', code: '2종' },
+      { num: '9', disease: '척추골(脊椎骨), 골반골(骨盤骨), 추간판 관혈수술', code: '3종' },
+      { num: '10', disease: '쇄골(鎖骨), 견갑골(肩甲骨), 늑골(肋骨), 흉골(胸骨) 관혈수술', code: '2종' },
+      { num: '11-1', disease: '손가락, 발가락 절단수술 [골, 관절의 이단(離斷)에 수반하는것, 다지증 제외]', code: '1종' },
+      { num: '11-2', disease: '기타 사지(四肢)절단수술 [다지증에 대한 절단수술은 제외함]', code: '3종' },
+      { num: '12', disease: '절단(切斷)된 사지(四肢)재접합수술(再結合手術) [골, 관절의 이단(離斷)에 수반하는것]', code: '3종' },
       { num: '13-1', disease: '손가락, 발가락의 골 및 관절 관혈수술', code: '1종' },
-      { num: '13-2', disease: '기타 사지골(), 사지관절() 관혈수술', code: '2종' },
-      { num: '14', disease: '근(), 건(), 인대(), 연골() 관혈수술', code: '1종' }
+      { num: '13-2', disease: '기타 사지골(四肢骨), 사지관절(四肢關節) 관혈수술', code: '2종' },
+      { num: '14', disease: '근(筋), 건(腱), 인대(韌帶), 연골(軟骨) 관혈수술', code: '1종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - III. 호흡기계, 흉부()의 수술',
+    category: '3. 호흡기계, 흉부(胸部)의 수술',
+    title: '호흡기계, 흉부(胸部)의 수술',
+    group: '일반수술',
     items: [
-      { num: '15', disease: '만성부비강염() 근본수술()', code: '1종' },
-      { num: '16', disease: '후두() 관혈적 절제수술', code: '3종' },
+      { num: '15', disease: '만성부비동염(慢性副鼻腔炎) 근본수술(根本手術)', code: '1종' },
+      { num: '16', disease: '후두(喉頭) 관혈적 절제수술', code: '3종' },
       { num: '17', disease: '편도, 아데노이드 절제수술', code: '1종' },
-      { num: '18', disease: '기관(), 기관지(), 폐(), 흉막() 관혈수술 [개흉술(, Thoracotomy)을 수반하는 것]', code: '4종' },
-      { num: '19', disease: '폐장() 이식수술 [수용자()에 한함]', code: '5종' },
-      { num: '20', disease: '흉곽() 형성수술()', code: '3종' },
-      { num: '21', disease: '종격종양(), 흉선 절제수술 [개흉술을 수반하는 것]', code: '4종' }
+      { num: '18', disease: '기관(氣管), 기관지(氣管支), 폐(肺), 흉막(胸膜) 관혈수술 [개흉술(開胸術, Thoracotomy)을 수반하는 것]', code: '4종' },
+      { num: '19', disease: '폐장(肺臟) 이식수술 [수용자(受容者)에 한함]', code: '5종' },
+      { num: '20', disease: '흉각(胸郭) 형성수술(形成手術)', code: '3종' },
+      { num: '21', disease: '종격종양(縱隔腫瘍), 흉선 절제수술 [개흉술을 수반하는 것]', code: '4종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - IV. 순환기계, 비장()의 수술',
+    category: '4. 순환기계, 비장(脾臟)의 수술',
+    title: '순환기계, 비장(脾臟)의 수술',
+    group: '일반수술',
     items: [
-      { num: '22', disease: '혈관관혈수술(하지정맥류 및 손가락발가락은 제외)', code: '3종' },
-      { num: '23', disease: '하지 정맥류() 근본수술 및 손가락발가락 혈관관혈수술', code: '1종' },
-      { num: '24', disease: '대동맥(), 대정맥(), 폐동맥(), 관동맥() 관혈수술 [개흉술, 개복술을 수반하는 것]', code: '5종' },
-      { num: '25', disease: '심막() 관혈수술 [개흉술을 수반하는 것]', code: '4종' },
-      { num: '26', disease: '심장내() 관혈수술 [개흉술을 수반하는 것]', code: '5종' },
+      { num: '22', disease: '혈관관혈수술(하지정맥류 및 손가락 · 발가락은 제외)', code: '3종' },
+      { num: '23', disease: '하지 정맥류(靜脈瘤) 근본수술 및 손가락 · 발가락 혈관관혈수술', code: '1종' },
+      { num: '24', disease: '대동맥(大動脈), 대정맥(大靜脈), 폐동맥(肺動脈), 관동맥(冠動脈) 관혈수술 [개흉술, 개복술을 수반하는 것]', code: '5종' },
+      { num: '25', disease: '심막(心膜) 관혈수술 [개흉술을 수반하는 것]', code: '4종' },
+      { num: '26', disease: '심장내(心臟內) 관혈수술 [개흉술을 수반하는 것]', code: '5종' },
       { num: '27', disease: '심장 이식수술 [수용자에 한함]', code: '5종' },
-      { num: '28', disease: '체내용() 인공심박조율기(Artificial pacemaker) 매입술()', code: '3종' },
-      { num: '29', disease: '비장() 절제수술', code: '3종' }
+      { num: '28', disease: '체내용(體內用) 인공심박조율기(人工心搏調律機, Artificial pacemaker) 매입술(埋入術)', code: '3종' },
+      { num: '29', disease: '비장(脾臟) 절제수술', code: '3종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - V. 소화기계의 수술',
+    category: '5. 소화기계의 수술',
+    title: '소화기계의 수술',
+    group: '일반수술',
     items: [
       { num: '30', disease: '이하선 절제수술', code: '3종' },
       { num: '31-1', disease: '악하선, 설하선 절제수술', code: '2종' },
       { num: '31-2', disease: '기타 타액선 절제수술(타석제거는 제외)', code: '1종' },
-      { num: '32', disease: '식도() 이단술() [개흉술, 개복술(, Laparotomy)을 수반하는 것]', code: '4종' },
-      { num: '33', disease: '위 절제수술( , Gastrectomy) [개복술을 수반하는 것]', code: '4종' },
-      { num: '34', disease: '기타의 위식도 관혈수술 [개흉술, 개복술을 수반하는 것]', code: '3종' },
-      { num: '35', disease: '간장(), 췌장() 관혈수술 [개복술을 수반하는 것]', code: '4종' },
-      { num: '36', disease: '담낭(), 담도() 관혈수술 [개복술을 수반하는 것]', code: '3종' },
+      { num: '32', disease: '식도(食道) 이단술(離斷術) [개흉술, 개복술(開腹術, Laparotomy)을 수반하는 것]', code: '4종' },
+      { num: '33', disease: '위 절제수술(胃 切除手術, Gastrectomy) [개복술을 수반하는 것]', code: '4종' },
+      { num: '34', disease: '기타의 위 · 식도 관혈수술 [개흉술, 개복술을 수반하는 것]', code: '3종' },
+      { num: '35', disease: '간장(肝臟), 췌장(膵臟) 관혈수술 [개복술을 수반하는 것]', code: '4종' },
+      { num: '36', disease: '담낭(膽囊), 담도(膽道) 관혈수술 [개복술을 수반하는 것]', code: '3종' },
       { num: '37', disease: '간장 이식수술 [수용자에 한함, 개복술을 수반하는 것]', code: '5종' },
-      { num: '38', disease: '췌장 이식수술 [개복술을 수반해야 하며 수용자에 한함 (단, 랑게르한스 소도(Islet of Langerhans)세포 이식수술은 제외)]', code: '5종' },
-      { num: '39', disease: '탈장() 근본수술', code: '1종' },
-      { num: '40', disease: '전신성 복막염( , Generalized peritonitis) 수술', code: '2종' },
-      { num: '41', disease: '충수()절제술(충수염관련 충수주위 농양수술, 국한성 복막염 수술 포함), 맹장봉축술()', code: '2종' },
-      { num: '42', disease: '직장탈() 근본수술', code: '1종' },
-      { num: '43', disease: '소장(), 결장(), 직장(), 장간막() 관혈수술 [개복술을 수반하는 것] (단, 직장탈근본수술은 제외)', code: '4종' },
-      { num: '44', disease: '치루(), 탈항(), 치핵() 근본수술 [근치를 목적으로 하지 않은 수술은 제외함]', code: '1종' }
+      { num: '38', disease: '췌장 이식수술 [개복술을 수반해야 하며 수용자에 한함] (단, 랑게르한스 소도(Islet of Langerhans)세포 이식수술은 제외)', code: '5종' },
+      { num: '39', disease: '탈장(脫腸) 근본수술', code: '1종' },
+      { num: '40', disease: '전신성 복막염(全身性 腹膜炎, Generalized peritonitis) 수술', code: '2종' },
+      { num: '41', disease: '충수(蟲垂)절제술(충수염관련 충수주위 농양수술, 국한성 복막염 수술 포함), 맹장봉축술(盲腸縫縮術)', code: '2종' },
+      { num: '42', disease: '직장탈(直腸脫) 근본수술', code: '1종' },
+      { num: '43', disease: '소장(小腸), 결장(結腸), 직장(直腸), 장간막(腸間膜) 관혈수술 [개복술을 수반하는 것] (단, 직장탈근본수술은 제외)', code: '4종' },
+      { num: '44', disease: '치루(痔瘻), 탈항(脫肛), 치핵(痔核) 근본수술 [근치를 목적으로 하지 않은 수술은 제외함]', code: '1종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - VI. 비뇨기계  생식기계의 수술 (인공임신중절수술은 제외함)',
+    category: '6. 비뇨기계 · 생식기계의 수술',
+    title: '비뇨기계 · 생식기계의 수술 (인공임신중절수술은 제외함)',
+    group: '일반수술',
     items: [
-      { num: '45', disease: '신장(), 방광(), 신우(), 요관()관혈수술 [개복술을 수반하는 것, 경요도적 조작 및 방광류요실금 교정수술은 제외]', code: '4종' },
+      { num: '45', disease: '신장(腎臟), 방광(膀胱), 신우(腎盂), 요관(尿管)관혈수술 [개복술을 수반하는 것, 경요도적 조작 및 방광류 · 요실금 교정수술은 제외]', code: '4종' },
       { num: '46', disease: '요도 관혈수술 [경요도적 조작은 제외함]', code: '2종' },
-      { num: '47', disease: '방광류요실금 교정수술', code: '1종' },
-      { num: '48', disease: '신장() 이식수술() [수용자에 한함]', code: '5종' },
-      { num: '49', disease: '음경() 절단수술 (포경수술 및 음경이물제거수술은 제외)', code: '3종' },
-      { num: '50', disease: '고환(), 부고환(), 정관(), 정색(), 정낭()관혈수술, 전립선()관혈수술', code: '2종' },
+      { num: '47', disease: '방광류 · 요실금 교정수술', code: '1종' },
+      { num: '48', disease: '신장(腎臟) 이식수술(移植手術) [수용자에 한함]', code: '5종' },
+      { num: '49', disease: '음경(陰頸) 절단수술 (포경수술 및 음경이물제거수술은 제외)', code: '3종' },
+      { num: '50', disease: '고환(睾丸), 부고환(副睾丸), 정관(精管), 정색(精索), 정낭(精囊)관혈수술, 전립선(前立腺)관혈수술', code: '2종' },
       { num: '51', disease: '음낭관혈수술', code: '1종' },
       { num: '52', disease: '자궁, 난소, 난관 관혈수술 (단, 제왕절개만출술 및 경질적인 조작은 제외)', code: '2종' },
       { num: '53', disease: '경질적 자궁, 난소, 난관 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '1종' },
-      { num: '54', disease: '제왕절개만출술()', code: '1종' },
-      { num: '55', disease: '질탈()근본수술', code: '1종' }
+      { num: '54', disease: '제왕절개만출술(帝王切開滿出術)', code: '1종' },
+      { num: '55', disease: '질탈(膣脫)근본수술', code: '1종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - VII. 내분비기계의 수술',
+    category: '7. 내분비계의 수술',
+    title: '내분비계의 수술',
+    group: '일반수술',
     items: [
-      { num: '56', disease: '뇌하수체종양() 절제수술', code: '5종' },
-      { num: '57', disease: '갑상선()부갑상선() 관혈수술', code: '3종' },
-      { num: '58', disease: '부신() 절제수술', code: '4종' }
+      { num: '56', disease: '뇌하수체종양(腦下垂體腫瘍) 절제수술', code: '5종' },
+      { num: '57', disease: '갑상선(甲狀腺) · 부갑상선(副甲狀腺) 관혈수술', code: '3종' },
+      { num: '58', disease: '부신(副腎) 절제수술', code: '4종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - VIII. 신경계의 수술',
+    category: '8. 신경계의 수술',
+    title: '신경계의 수술',
+    group: '일반수술',
     items: [
-      { num: '59', disease: '두개내() 관혈수술 [개두술(, Craniotomy)을 수반하는 것]', code: '5종' },
-      { num: '60', disease: '신경() 관혈수술', code: '2종' },
-      { num: '61', disease: '관혈적 척수종양() 절제수술', code: '4종' },
-      { num: '62', disease: '척수경막내외() 관혈수술', code: '3종' }
+      { num: '59', disease: '두개내(頭蓋內) 관혈수술 [개두술(開頭術, Craniotomy)을 수반하는 것]', code: '5종' },
+      { num: '60', disease: '신경(神經) 관혈수술', code: '2종' },
+      { num: '61', disease: '관혈적 척수종양(脊髓腫瘍) 절제수술', code: '4종' },
+      { num: '62', disease: '척수경막내외(脊髓硬膜內外) 관혈수술', code: '3종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - IX. 시각기의 수술 [약물주입술은 제외]',
+    category: '9. 시각기의 수술',
+    title: '시각기의 수술 [약물주입술은 제외]',
+    group: '일반수술',
     items: [
-      { num: '63', disease: '안검하수증()수술(안검내반증 제외)', code: '1종' },
-      { num: '64', disease: '누소관()형성수술(누관튜브삽입술 포함)', code: '1종' },
-      { num: '65', disease: '누낭비강() 관혈수술', code: '2종' },
-      { num: '66', disease: '결막낭() 형성수술', code: '2종' },
+      { num: '63', disease: '안검하수증(眼檢下垂症)수술(안검내반증 제외)', code: '1종' },
+      { num: '64', disease: '누소관(淚小管)형성수술(누관튜브삽입술 포함)', code: '1종' },
+      { num: '65', disease: '누낭비강(淚囊鼻腔) 관혈수술', code: '2종' },
+      { num: '66', disease: '결막낭(結膜囊) 형성수술', code: '2종' },
       { num: '67', disease: '각막, 결막, 공막 봉합수술', code: '1종' },
       { num: '68', disease: '각막, 공막 이식수술', code: '2종' },
-      { num: '69', disease: '전방(), 홍채(), 유리체() 관혈수술', code: '2종' },
-      { num: '70', disease: '녹내장() 관혈수술', code: '3종' },
-      { num: '71', disease: '백내장(), 수정체() 관혈수술', code: '1종' },
-      { num: '72', disease: '망막박리() 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '2종' },
-      { num: '73', disease: '레이저(Laser)에 의한 안구() 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.] [시력회복 및 시력개선목적의 수술은 제외]', code: '1종' },
-      { num: '74', disease: '냉동응고()에 의한 안구() 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '2종' },
-      { num: '75', disease: '안구적출술, 조직충전술()', code: '3종' },
+      { num: '69', disease: '전방(前房), 홍채(虹彩), 유리체(玻璃體) 관혈수술', code: '2종' },
+      { num: '70', disease: '녹내장(綠內障) 관혈수술', code: '3종' },
+      { num: '71', disease: '백내장(白內障), 수정체(水晶體) 관혈수술', code: '1종' },
+      { num: '72', disease: '망막박리(網膜剝離) 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '2종' },
+      { num: '73', disease: '레이저(Laser)에 의한 안구(眼球) 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.] [시력회복 및 시력개선목적의 수술은 제외]', code: '1종' },
+      { num: '74', disease: '냉동응고(冷凍凝固)에 의한 안구(眼球) 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '2종' },
+      { num: '75', disease: '안구적출술, 조직충전술(組織充塡術)', code: '3종' },
       { num: '76', disease: '안와내종양절제수술', code: '3종' },
-      { num: '77', disease: '관혈적 안와내() 이물제거수술()', code: '1종' },
-      { num: '78', disease: '안근()관혈수술', code: '1종' }
+      { num: '77', disease: '관혈적 안와내(眼窩內) 이물제거수술(異物除去手術)', code: '1종' },
+      { num: '78', disease: '안근(眼筋)관혈수술', code: '1종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - X. 청각기()의 수술',
+    category: '10. 청각기(聽覺器)의 수술',
+    title: '청각기(聽覺器)의 수술',
+    group: '일반수술',
     items: [
-      { num: '79', disease: '관혈적 고막() 성형술 [고막 패치술은 제외]', code: '2종' },
-      { num: '80', disease: '유양동 절제술(, mastoidectomy)', code: '2종' },
-      { num: '81', disease: '중이() 관혈수술 [중이내 튜브유치술 제외]', code: '2종' },
-      { num: '82', disease: '중이내() 튜브유치술 [고막 패치술은 제외, 수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '1종' },
-      { num: '83', disease: '내이() 관혈수술', code: '3종' }
+      { num: '79', disease: '관혈적 고막(鼓膜) 성형술 [고막 패치술은 제외]', code: '2종' },
+      { num: '80', disease: '유양동 절제술(乳樣洞切除術, mastoidectomy)', code: '2종' },
+      { num: '81', disease: '중이(中耳) 관혈수술 [중이내 튜브유치술 제외]', code: '2종' },
+      { num: '82', disease: '중이내(中耳內) 튜브유치술 [고막 패치술은 제외, 수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '1종' },
+      { num: '83', disease: '내이(內耳) 관혈수술', code: '3종' }
     ]
   },
   {
-    title: '1. 일반 질병 및 상해 치료목적의 수술 - XI. 상기 이외의 수술 [검사, 처치, 약물주입요법은 포함하지 않음]',
+    category: '11. 상기 이외의 수술',
+    title: '상기 이외의 수술 [검사, 처치, 약물주입요법은 포함하지 않음]',
+    group: '일반수술',
     items: [
-      { num: '84', disease: '상기 이외의 개두술()', code: '3종' },
-      { num: '85', disease: '상기 이외의 개흉술()', code: '3종' },
-      { num: '86', disease: '상기 이외의 개복술()', code: '2종' },
-      { num: '87', disease: '체외충격파쇄석술(, E.S.W.L) [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.] * 체외충격파치료술(E.S.W.T)은 제외', code: '2종' },
-      { num: '88-1', disease: '내시경/카테터/경피적 수술 - 뇌, 심장 [수술개시일부터 60일 이내 2회 이상 시 1회 간주]', code: '3종' },
-      { num: '88-2', disease: '내시경/카테터/경피적 수술 - 후두, 흉부장기(심장 제외), 복부장기(비뇨, 생식기 제외), 척추, 사지관절(손가락, 발가락 제외) (* 대장 용종/양성신생물 내시경적 절제술은 1종)', code: '2종' },
-      { num: '88-3', disease: '내시경/카테터/경피적 수술 - 비뇨, 생식기 및 손가락, 발가락', code: '1종' }
+      { num: '84', disease: '상기 이외의 개두술(開頭術)', code: '3종' },
+      { num: '85', disease: '상기 이외의 개흉술(開胸術)', code: '3종' },
+      { num: '86', disease: '상기 이외의 개복술(開腹術)', code: '2종' },
+      { num: '87', disease: '체외충격파쇄석술(體外衝擊波碎石術, E.S.W.L) [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.] * 체외충격파치료술(E.S.W.T)은 제외', code: '2종' },
+      { num: '88-1', disease: '내시경(Fiberscope)에 의한 내시경 수술 또는 카테터(Catheter) · 고주파 전극 등에 의한 경피적 수술 - 뇌, 심장 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '3종' },
+      { num: '88-2', disease: '내시경(Fiberscope)에 의한 내시경 수술 또는 카테터(Catheter) · 고주파 전극 등에 의한 경피적 수술 - 후두, 흉부장기(심장 제외), 복부장기(비뇨, 생식기 제외), 척추, 사지관절(손가락, 발가락은 제외) * 단, 대장의 용종 또는 대장의 양성신생물의 내시경적 절제술은 1종으로 분류합니다.', code: '2종' },
+      { num: '88-3', disease: '내시경(Fiberscope)에 의한 내시경 수술 또는 카테터(Catheter) · 고주파 전극 등에 의한 경피적 수술 - 비뇨, 생식기 및 손가락, 발가락', code: '1종' }
     ]
   },
   {
+    category: '2. 악성신생물 치료 목적의 수술',
     title: '2. 악성신생물 치료 목적의 수술',
+    group: '악성신생물',
     items: [
-      { num: '1', disease: '관혈적 악성신생물() 근치수술(, Radical curative surgery) 단, 기타피부암(C44) 제외 [내시경 수술, 카테터고주파 전극 등의 경피적 수술 등은 제외함]', code: '5종' },
-      { num: '1-1', disease: '관혈적 악성신생물 근치수술 - 기타피부암(C44)', code: '3종' },
-      { num: '2', disease: '내시경 수술, 카테터고주파 전극 등에 의한 악성신생물 수술 [수술개시일부터 60일 이내 2회 이상 시 1회 간주]', code: '3종' },
-      { num: '3', disease: '상기 이외의 기타 악성신생물수술 [수술개시일부터 60일 이내 2회 이상 시 1회 간주]', code: '3종' }
+      { num: '1', disease: '관혈적 악성신생물(惡性新生物) 근치수술(根治手術, Radical curative surgery) 단, 기타피부암(C44) 제외 [내시경 수술, 카테터 · 고주파 전극 등의 경피적 수술 등은 제외함]', code: '5종' },
+      { num: '1-1', disease: '기타피부암(C44)', code: '3종' },
+      { num: '2', disease: '내시경 수술, 카테터 · 고주파 전극 등에 의한 악성신생물 수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '3종' },
+      { num: '3', disease: '상기 이외의 기타 악성신생물수술 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '3종' }
     ]
   },
   {
-    title: '3. 악성신생물 근치  두개내신생물 근치 방사선 조사 분류표',
+    category: '3. 악성신생물 근치 · 두개내신생물 근치 방사선 조사 분류표',
+    title: '3. 악성신생물 근치 · 두개내신생물 근치 방사선 조사 분류표',
+    group: '방사선조사',
     items: [
-      { num: '1', disease: '악성신생물 근치 방사선 조사 [5,000Rad 이상의 조사를 하는 경우로 한정하며, 악성신생물 근치 사이버 나이프(Cyberknife) 정위적 방사선 치료 포함]', code: '3종' },
-      { num: '2', disease: '두개내 신생물 근치 감마 나이프(Gammaknife) 정위적 방사선 치료', code: '3종' }
+      { num: '1', disease: '악성신생물 근치 방사선 조사 [5,000Rad 이상의 조사(照射)를 하는 경우로 한정하며, 악성신생물 근치 사이버 나이프(Cyberknife) 정위적 방사선 치료(定位的 放射線 治療, Stereotactic radiotherapy)를 포함함]', code: '3종' },
+      { num: '2', disease: '두개내 신생물 근치 감마 나이프(Gammaknife) 정위적 방사선 치료 [수술개시일부터 60일 이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.]', code: '3종' }
     ]
   }
 ];
@@ -18560,8 +18825,8 @@ const KB_SURGERY_21_SECTIONS = [
   {
     title: '당뇨병질환',
     items: [
-      { num: '1', disease: '1형 당뇨병', code: 'E10' },
-      { num: '2', disease: '2형 당뇨병', code: 'E11' },
+      { num: '1', disease: '인슐린-의존당뇨병', code: 'E10' },
+      { num: '2', disease: '인슐린-비의존당뇨병', code: 'E11' },
       { num: '3', disease: '영양실조 관련 당뇨병', code: 'E12' },
       { num: '4', disease: '기타명시된 당뇨병', code: 'E13' },
       { num: '5', disease: '상세불명의 당뇨병', code: 'E14' },
@@ -18578,20 +18843,20 @@ const KB_SURGERY_21_SECTIONS = [
     items: [
       { num: '1', disease: '급성 류마티스열', code: 'I00 ~ I02' },
       { num: '2', disease: '만성 류마티스 심장질환', code: 'I05 ~ I09' },
-      { num: '3', disease: '허혈심장질환', code: 'I20 ~ I25' },
+      { num: '3', disease: '허혈성 심장질환', code: 'I20 ~ I25' },
       { num: '4', disease: '폐성 심장병 및 폐순환의 질환', code: 'I26 ~ I28' },
       { num: '5', disease: '기타 형태의 심장병', code: 'I30 ~ I52' },
-      { num: '6', disease: '[A39.5+: 수막구균성 심장질환 (I32.0*, I39.8*, I41.0*, I52.0*)]', code: 'A39.5+' },
-      { num: '7', disease: '[B37.6+: 칸디다심내막염 (I39.8*)]', code: 'B37.6+' }
+      { num: '6', disease: '수막구균성 심장질환', code: 'A39.5' },
+      { num: '7', disease: '칸디다심내막염', code: 'B37.6' }
     ]
   },
   {
     title: '고혈압질환',
     items: [
-      { num: '1', disease: '본태성(원발성) 고혈압', code: 'I10' },
+      { num: '1', disease: '본태성(일차성)고혈압', code: 'I10' },
       { num: '2', disease: '고혈압성 심장병', code: 'I11' },
-      { num: '3', disease: '고혈압성 신장병', code: 'I12' },
-      { num: '4', disease: '고혈압성 심장 및 신장병', code: 'I13' },
+      { num: '3', disease: '고혈압성 신장질환', code: 'I12' },
+      { num: '4', disease: '고혈압성 심장 및 신장질환', code: 'I13' },
       { num: '5', disease: '이차성 고혈압', code: 'I15' },
       { num: '6', disease: '고혈압성 뇌병증', code: 'I67.4' },
       { num: '7', disease: '고혈압성 망막병증', code: 'H35.02' }
@@ -18608,12 +18873,12 @@ const KB_SURGERY_21_SECTIONS = [
     items: [
       { num: '1', disease: '바이러스 간염', code: 'B15 ~ B19' },
       { num: '2', disease: '간의 질환', code: 'K70 ~ K77' },
-      { num: '3', disease: '[B25.1+: 거대세포바이러스간염 (K77.0*)]', code: 'B25.1+' },
-      { num: '4', disease: '[B58.1+: 톡소포자충 간염 (K77.0*)]', code: 'B58.1+' }
+      { num: '3', disease: '거대세포바이러스간염', code: 'B25.1' },
+      { num: '4', disease: '톡소포자충 간염', code: 'B58.1' }
     ]
   },
   {
-    title: '위십이지장궤양',
+    title: '위·십이지장궤양',
     items: [
       { num: '1', disease: '위궤양', code: 'K25 ~ K27' },
       { num: '2', disease: '십이지장궤양', code: 'K25 ~ K27' },
@@ -18623,10 +18888,11 @@ const KB_SURGERY_21_SECTIONS = [
   {
     title: '갑상선질환',
     items: [
-      { num: '1', disease: '갑상선의 장애 [H06.2*: 갑상선이상성 안구돌출(E05-+)]', code: 'E00 ~ E07, H06.2*' },
-      { num: '2', disease: '처치후 갑상선기능저하증', code: 'E89.0' },
-      { num: '3', disease: '방사선조사후 갑상선기능저하증', code: 'E89.0' },
-      { num: '4', disease: '수술후 갑상선기능저하증', code: 'E89.0' }
+      { num: '1', disease: '갑상선의 장애', code: 'E00 ~ E07, E89.0' },
+      { num: '2', disease: '처치후 갑상선기능저하증', code: 'E00 ~ E07, E89.0' },
+      { num: '3', disease: '방사선조사후 갑상선기능저하증', code: 'E00 ~ E07, E89.0' },
+      { num: '4', disease: '수술후 갑상선기능저하증', code: 'E00 ~ E07, E89.0' },
+      { num: '5', disease: '갑상선이상성 안구돌출증', code: 'H06.2' }
     ]
   },
   {
@@ -18636,7 +18902,7 @@ const KB_SURGERY_21_SECTIONS = [
     ]
   },
   {
-    title: '만성하부호흡기질환',
+    title: '만성하기도 질환',
     items: [
       { num: '1', disease: '급성인지 만성인지 명시되지 않은 기관지염', code: 'J40 ~ J42' },
       { num: '2', disease: '단순성 및 점액농성 만성기관지염', code: 'J40 ~ J42' },
@@ -18651,15 +18917,33 @@ const KB_SURGERY_21_SECTIONS = [
       { num: '1', disease: '달리 분류되지 않은 바이러스 폐렴', code: 'J12' },
       { num: '2', disease: '폐렴연쇄구균에 의한 폐렴', code: 'J13' },
       { num: '3', disease: '인플루엔자균에 의한 폐렴', code: 'J14' },
-      { num: '4', disease: '달리 분류되지 않은 세균성 폐렴', code: 'J15' },
+      { num: '4', disease: '달리 분류되지 않은 세균 폐렴', code: 'J15' },
       { num: '5', disease: '달리 분류되지 않은 기타 감염성 병원체에 의한 폐렴', code: 'J16' },
       { num: '6', disease: '달리 분류된 질환에서의 폐렴', code: 'J17' },
-      { num: '7', disease: '[B01.2+: 수두폐렴 (J17.1*)]', code: 'B01.2+' },
-      { num: '8', disease: '[B05.2+: 폐렴이 합병된 홍역 (J17.1*)]', code: 'B05.2+' },
-      { num: '9', disease: '[B25.0+: 거대세포바이러스폐렴 (J17.1*)]', code: 'B25.0+' },
-      { num: '10', disease: '[B58.3+: 폐 톡소포자충증 (J17.3*)]', code: 'B58.3+' },
-      { num: '11', disease: '상세불명 병원체의 폐렴', code: 'J18' },
-      { num: '12', disease: '재향군인병', code: 'A48.1' }
+      { num: '7', disease: '상세불명 병원체의 폐렴', code: 'J18' },
+      { num: '8', disease: '재향군인병', code: 'A48.1' },
+      { num: '9', disease: '폐렴이 합병된 홍역', code: 'B05.2' },
+      { num: '10', disease: '거대세포바이러스폐렴', code: 'B25.0' },
+      { num: '11', disease: '수두폐렴', code: 'B01.2' },
+      { num: '12', disease: '폐 톡소포자충증', code: 'B58.3' }
+    ]
+  },
+  {
+    title: '관 절 염',
+    items: [
+      { num: '1', disease: '감염성 관절병증', code: 'M00 ~ M03' },
+      { num: '2', disease: '염증성 다발관절병증', code: 'M05 ~ M14' },
+      { num: '3', disease: '관절증', code: 'M15 ~ M19' },
+      { num: '4', disease: '기타 관절장애', code: 'M20 ~ M25' },
+      { num: '5', disease: '류마티스 폐질환', code: 'J99.0' }
+    ]
+  },
+  {
+    title: '백 내 장',
+    items: [
+      { num: '1', disease: '노년성 백내장', code: 'H25' },
+      { num: '2', disease: '기타 백내장', code: 'H26' },
+      { num: '3', disease: '수정체의 기타장애', code: 'H27' }
     ]
   },
   {
@@ -18673,21 +18957,33 @@ const KB_SURGERY_21_SECTIONS = [
     title: '결 핵',
     items: [
       { num: '1', disease: '결핵', code: 'A15 ~ A19' },
-      { num: '2', disease: '[M01.1*: 결핵관절염 (A18.01+)]', code: 'M01.1*' },
-      { num: '3', disease: '[M49.0*: 척추의결핵 (A18.00+)]', code: 'M49.0*' },
-      { num: '4', disease: '[M90.0*: 뼈의결핵 (A18.02+)]', code: 'M90.0*' },
-      { num: '5', disease: '[N33.0*: 결핵성방광염 (A18.11+)]', code: 'N33.0*' },
-      { num: '6', disease: '[N74.0*: 자궁경부의결핵감염 (A18.15+)]', code: 'N74.0*' },
-      { num: '7', disease: '[N74.1*: 여성결핵성골반염증질환 (A18.16+)]', code: 'N74.1*' },
-      { num: '8', disease: '[K67.3*: 결핵성복막염 (A18.30+)]', code: 'K67.3*' },
-      { num: '9', disease: '[K93.0*: 장,복막및장간막림프절의결핵성장애 (A18.3-+)]', code: 'K93.0*' },
-      { num: '10', disease: '결핵의 후유증', code: 'B90' }
+      { num: '2', disease: '결핵의 후유증', code: 'B90' },
+      { num: '3', disease: '척추의 결핵', code: 'M49.0' },
+      { num: '4', disease: '뼈의 결핵', code: 'M90.0' },
+      { num: '5', disease: '결핵성 방광염', code: 'N33.0' },
+      { num: '6', disease: '결핵복막염', code: 'K67.3' },
+      { num: '7', disease: '장, 복막 및 장간막림프절의 결핵성 장애', code: 'K93.0' }
     ]
   },
   {
     title: '신 부 전',
     items: [
       { num: '1', disease: '신부전', code: 'N17 ~ N19' }
+    ]
+  },
+  {
+    title: '생식기질환',
+    items: [
+      { num: '1', disease: '남생식기관의 질환 (남성 불임 제외)', code: 'N40 ~ N45, N47 ~ N51' },
+      { num: '2', disease: '여성골반내 기관의 염증성 질환', code: 'N70 ~ N77' },
+      { num: '3', disease: '여성 생식기관의 비염증성 장애 (습관유산자 제외), (여성 불임 제외) (인공 수정과 관련된 합병증 제외)', code: 'N80 ~ N95' },
+      { num: '4', disease: '달리 분류되지 않은 비뇨생식계통의 처치후 장애', code: 'N99' },
+      { num: '5', disease: '편모충성 전립선염', code: 'A59.01' },
+      { num: '6', disease: '전립선의 결핵', code: 'A18.13' },
+      { num: '7', disease: '기타 남성 생식기관의 결핵', code: 'A18.14' },
+      { num: '8', disease: '볼거리고환염', code: 'B26.0' },
+      { num: '9', disease: '자궁경부의 결핵', code: 'A18.15' },
+      { num: '10', disease: '결핵성 여성 골반 염증성 질환', code: 'A18.16' }
     ]
   },
   {
@@ -18715,35 +19011,9 @@ const KB_SURGERY_21_SECTIONS = [
     ]
   },
   {
-    title: '관 절 염',
+    title: '치 핵',
     items: [
-      { num: '1', disease: '감염성 관절병증 (결핵 관절염 제외)', code: 'M00 ~ M03 (M01.1제외)' },
-      { num: '2', disease: '염증성 다발관절병증 (당뇨병성 관절병증 제외) [J99.0*: 류마티스 폐질환(M05.1+)]', code: 'M05 ~ M14 (M14.2제외), J99.0*' },
-      { num: '3', disease: '관절증', code: 'M15 ~ M19' },
-      { num: '4', disease: '기타 관절장애', code: 'M20 ~ M25' }
-    ]
-  },
-  {
-    title: '백 내 장',
-    items: [
-      { num: '1', disease: '노년 백내장', code: 'H25' },
-      { num: '2', disease: '기타 백내장', code: 'H26' },
-      { num: '3', disease: '수정체의 기타장애', code: 'H27' }
-    ]
-  },
-  {
-    title: '생식기질환',
-    items: [
-      { num: '1', disease: '남성생식기관의 질환 (남성 불임 제외) [A59.01+: 편모충성 전립선염(N51.0*)], [B26.0+: 볼거리고환염(N51.1*)]', code: 'N40~N45, N47~N51, A59.01+, B26.0+' },
-      { num: '2', disease: '여성골반내 기관의 염증성 질환 (자궁경부의 결핵감염 제외, 여성 결핵성 골반염증질환 제외)', code: 'N70~N77 (N74.0제외, N74.1제외)' },
-      { num: '3', disease: '여성 생식기관의 비염증성 장애 (습관적 유산자, 여성 불임, 인공 수정 관련 합병증 제외)', code: 'N80~N95' },
-      { num: '4', disease: '달리 분류되지 않은 비뇨생식계통의 처치후 장애', code: 'N99' }
-    ]
-  },
-  {
-    title: '치핵 및 항문주위정맥혈전증',
-    items: [
-      { num: '1', disease: '치핵 및 항문주위정맥혈전증 (포함: 치질 / 제외: 합병증, 출산 및 산후기 O87.2, 임신 O22.4)', code: 'K64' }
+      { num: '1', disease: '치핵 (포함: 치질, 항문 및 직장의 정맥류 / 제외: 출산 및 산후기 합병증(O87.2), 임신 합병증(O22.4))', code: 'I84' }
     ]
   }
 ];
@@ -18770,11 +19040,11 @@ const KB_SURGERY_101_SECTIONS = [
   {
     title: '[10대질병] 심장질환',
     items: [
-      { num: '1', disease: '급성 류마티스열', code: 'I00 ~ I02' },
-      { num: '2', disease: '만성 류마티스 심장질환', code: 'I05 ~ I09' },
-      { num: '3', disease: '허혈심장질환', code: 'I20 ~ I25' },
-      { num: '4', disease: '폐성 심장병 및 폐순환의 질환', code: 'I26 ~ I28' },
-      { num: '5', disease: '기타 형태의 심장병', code: 'I30 ~ I52' },
+      { num: '1', disease: '급성 류마티스열', code: 'I00~I02' },
+      { num: '2', disease: '만성 류마티스 심장질환', code: 'I05~I09' },
+      { num: '3', disease: '허혈심장질환', code: 'I20~I25' },
+      { num: '4', disease: '폐성 심장병 및 폐순환의 질환', code: 'I26~I28' },
+      { num: '5', disease: '기타 형태의 심장병', code: 'I30~I52' },
       { num: '6', disease: '[A39.5+:수막구균성심장질환 (I32.0*,I39.8*,I41.0*,I52.0*)]', code: 'A39.5+' },
       { num: '7', disease: '[B37.6+:칸디다심내막염(I39.8*)]', code: 'B37.6+' }
     ]
@@ -18794,14 +19064,14 @@ const KB_SURGERY_101_SECTIONS = [
   {
     title: '[10대질병] 뇌혈관질환',
     items: [
-      { num: '1', disease: '뇌혈관 질환', code: 'I60 ~ I69' }
+      { num: '1', disease: '뇌혈관 질환', code: 'I60~I69' }
     ]
   },
   {
     title: '[10대질병] 간 질 환',
     items: [
-      { num: '1', disease: '바이러스 간염', code: 'B15 ~ B19' },
-      { num: '2', disease: '간의 질환', code: 'K70 ~ K77' },
+      { num: '1', disease: '바이러스 간염', code: 'B15~B19' },
+      { num: '2', disease: '간의 질환', code: 'K70~K77' },
       { num: '3', disease: '[B25.1+:대세포바이러스간염(K77.0*)]', code: 'B25.1+' },
       { num: '4', disease: '[B58.1+:톡소포자충간염(K77.0*)]', code: 'B58.1+' }
     ]
@@ -18813,7 +19083,7 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[10대질병] 기관지폐의 특정질환',
+    title: '[10대질병] 기관지·폐의 특정질환',
     items: [
       { num: '1', disease: '폐기종', code: 'J43' },
       { num: '2', disease: '기타 만성 폐색성 폐질환', code: 'J44' },
@@ -18823,9 +19093,9 @@ const KB_SURGERY_101_SECTIONS = [
   {
     title: '[10대질병] 만성하부호흡기질환',
     items: [
-      { num: '1', disease: '급성인지 만성인지 명시되지 않은 기관지염', code: 'J40 ~ J42' },
-      { num: '2', disease: '단순성 및 점액농성 만성기관지염', code: 'J40 ~ J42' },
-      { num: '3', disease: '상세불명의 만성기관지염', code: 'J40 ~ J42' },
+      { num: '1', disease: '급성인지 만성인지 명시되지 않은 기관지염', code: 'J40~J42' },
+      { num: '2', disease: '단순성 및 점액농성 만성기관지염', code: 'J40~J42' },
+      { num: '3', disease: '상세불명의 만성기관지염', code: 'J40~J42' },
       { num: '4', disease: '천식', code: 'J45' },
       { num: '5', disease: '천식지속상태', code: 'J46' }
     ]
@@ -18833,7 +19103,7 @@ const KB_SURGERY_101_SECTIONS = [
   {
     title: '[10대질병] 신 부 전',
     items: [
-      { num: '1', disease: '신부전', code: 'N17 ~ N19' }
+      { num: '1', disease: '신부전', code: 'N17~N19' }
     ]
   },
   {
@@ -18847,7 +19117,7 @@ const KB_SURGERY_101_SECTIONS = [
   {
     title: '[27대질병] 결핵',
     items: [
-      { num: '1', disease: '결핵', code: 'A15 ~ A19' },
+      { num: '1', disease: '결핵', code: 'A15~A19' },
       { num: '2', disease: '[M01.1*:결핵관절염(A18.01+)]', code: 'M01.1*' },
       { num: '3', disease: '[M49.0*:척추의결핵(A18.00+)]', code: 'M49.0*' },
       { num: '4', disease: '[M90.0*:뼈의결핵(A18.02+)]', code: 'M90.0*' },
@@ -18855,17 +19125,18 @@ const KB_SURGERY_101_SECTIONS = [
       { num: '6', disease: '[N74.0*:자궁경부의결핵감염(A18.15+)]', code: 'N74.0*' },
       { num: '7', disease: '[N74.1*:여성결핵성골반염증질환(A18.16+)]', code: 'N74.1*' },
       { num: '8', disease: '[K67.3*:결핵성복막염(A18.30+)]', code: 'K67.3*' },
-      { num: '9', disease: '[K93.0*:장,복막및장간막림프절의 결핵성장애(A18.3-+)]', code: 'K93.0*' },
+      { num: '9', disease: '[K93.0*:장, 복막및장간막림프절의 결핵성장애(A18.3-+)]', code: 'K93.0*' },
       { num: '10', disease: '결핵의 후유증', code: 'B90' }
     ]
   },
   {
     title: '[27대질병] 갑상선질환',
     items: [
-      { num: '1', disease: '갑상선의 장애 [H06.2*:갑상선이상성안구돌출(E05-+)]', code: 'E00 ~ E07, H06.2*' },
-      { num: '2', disease: '처치후 갑상선기능저하증', code: 'E89.0' },
-      { num: '3', disease: '방사선조사후 갑상선기능저하증', code: 'E89.0' },
-      { num: '4', disease: '수술후 갑상선기능저하증', code: 'E89.0' }
+      { num: '1', disease: '갑상선의 장애', code: 'E00~E07' },
+      { num: '2', disease: '[H06.2*:갑상선이상성안구돌출(E05-+)]', code: 'H06.2*' },
+      { num: '3', disease: '처치후 갑상선기능저하증', code: 'E89.0' },
+      { num: '4', disease: '방사선조사후 갑상선기능저하증', code: 'E89.0' },
+      { num: '5', disease: '수술후 갑상선기능저하증', code: 'E89.0' }
     ]
   },
   {
@@ -18925,7 +19196,7 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[27대질병] 위십이지장궤양',
+    title: '[27대질병] 위·십이지장 궤양',
     items: [
       { num: '1', disease: '위궤양', code: 'K25' },
       { num: '2', disease: '십이지장궤양', code: 'K26' },
@@ -18990,11 +19261,204 @@ const KB_SURGERY_101_SECTIONS = [
       { num: '6', disease: '[B05.0+:뇌염이 합병된 홍역(G05.1*)]', code: 'B05.0+' },
       { num: '7', disease: '[B26.2+:볼거리뇌염(G05.1*)]', code: 'B26.2+' },
       { num: '8', disease: '[B01.1+:수두뇌염(G05.1*)]', code: 'B01.1+' },
-      { num: '9', disease: '[B02.0+:대상포진뇌염(G05.1*)]', code: 'B02.0+' }
+      { num: '9', disease: '[B02.0+:대상포진뇌염(G05.1*)]', code: 'B02.0+' },
+      { num: '10', disease: '두개내 및 척수내 농양 및 육아종', code: 'G06' },
+      { num: '11', disease: '달리 분류된 질환에서의 두개내 및 척수내 농양 및 육아종', code: 'G07' },
+      { num: '12', disease: '[A06.6+:아메바성 뇌농양(G07*)]', code: 'A06.6+' },
+      { num: '13', disease: '두개내 및 척수내 정맥염 및 혈전정맥염', code: 'G08' },
+      { num: '14', disease: '중추신경계통의 염증성 질환의 후유증', code: 'G09' }
     ]
   },
   {
-    title: '[22대질병] 척추병증',
+    title: '[27대질병] 뇌성마비',
+    items: [
+      { num: '1', disease: '뇌성마비', code: 'G80' }
+    ]
+  },
+  {
+    title: '[27대질병] 뇌전증',
+    items: [
+      { num: '1', disease: '뇌전증', code: 'G40' },
+      { num: '2', disease: '뇌전증 지속상태', code: 'G41' }
+    ]
+  },
+  {
+    title: '[27대질병] 수두증',
+    items: [
+      { num: '1', disease: '수두증', code: 'G91' }
+    ]
+  },
+  {
+    title: '[27대질병] 수막염',
+    items: [
+      { num: '1', disease: '달리 분류되지 않은 세균성 수막염', code: 'G00' },
+      { num: '2', disease: '달리 분류된 세균성 질환에서의 수막염', code: 'G01' },
+      { num: '3', disease: '[A39.0+:수막구균수막염(G01*)]', code: 'A39.0+' },
+      { num: '4', disease: '달리 분류된 기타 감염성 및 기생충 질환에서의 수막염', code: 'G02' },
+      { num: '5', disease: '[A87.1+:아데노바이러스수막염(G02.0*)]', code: 'A87.1+' },
+      { num: '6', disease: '[A87.0+:엔테로바이러스수막염(G02.0*)]', code: 'A87.0+' },
+      { num: '7', disease: '[B00.3+:헤르페스바이러스수막염(G02.0*)]', code: 'B00.3+' },
+      { num: '8', disease: '[B05.1+:수막염이 합병된 홍역(G02.0*)]', code: 'B05.1+' },
+      { num: '9', disease: '[B26.1+:볼거리수막염(G02.0*)]', code: 'B26.1+' },
+      { num: '10', disease: '[B01.0+:수두수막염(G02.0*)]', code: 'B01.0+' },
+      { num: '11', disease: '[B02.1+:대상포진수막염(G02.0*)]', code: 'B02.1+' },
+      { num: '12', disease: '[B37.5+:칸디다수막염(G02.1*)]', code: 'B37.5+' },
+      { num: '13', disease: '[B38.4+:콕시디오이데스진균수막염(G02.1*)]', code: 'B38.4+' },
+      { num: '14', disease: '기타 및 상세불명의 원인에 의한 수막염', code: 'G03' }
+    ]
+  },
+  {
+    title: '[27대질병] 사구체질환',
+    items: [
+      { num: '1', disease: '급성 신염 증후군', code: 'N00' },
+      { num: '2', disease: '급성 진행성 신염 증후군', code: 'N01' },
+      { num: '3', disease: '재발성 및 지속성 혈뇨', code: 'N02' },
+      { num: '4', disease: '만성 신염 증후군', code: 'N03' },
+      { num: '5', disease: '신증후군', code: 'N04' },
+      { num: '6', disease: '상세불명의 신염 증후군', code: 'N05' },
+      { num: '7', disease: '명시된 형태학적 병변을 동반한 고립된 단백뇨', code: 'N06' },
+      { num: '8', disease: '달리 분류되지 않은 유전성 신장병증', code: 'N07' },
+      { num: '9', disease: '달리 분류된 질환에서의 사구체 장애', code: 'N08' },
+      { num: '10', disease: '[당뇨병에서의사구체장애(N08.3)제외]', code: '(N08.3제외)' }
+    ]
+  },
+  {
+    title: '[27대질병] 신세뇨관-간질질환',
+    items: [
+      { num: '1', disease: '급성 세뇨관-간질 신장염', code: 'N10' },
+      { num: '2', disease: '만성 세뇨관-간질 신장염', code: 'N11' },
+      { num: '3', disease: '급성 또는 만성으로 명시되지 않은 세뇨관-간질 신장염', code: 'N12' },
+      { num: '4', disease: '폐색성 및 역류성 요로병증', code: 'N13' },
+      { num: '5', disease: '약물 및 중금속유발 세뇨관-간질 및 세뇨관병태', code: 'N14' },
+      { num: '6', disease: '기타 신세뇨관-간질 질환', code: 'N15' },
+      { num: '7', disease: '달리 분류된 질환에서의 신세뇨관-간질 장애', code: 'N16' }
+    ]
+  },
+  {
+    title: '[27대질병] 신장 및 요관의 기타장애',
+    items: [
+      { num: '1', disease: '세뇨관 기능 손상으로 인한 장애', code: 'N25' },
+      { num: '2', disease: '상세불명의 신장 위축', code: 'N26' },
+      { num: '3', disease: '원인미상의 작은 신장', code: 'N27' },
+      { num: '4', disease: '달리 분류되지 않은 신장 및 요관의 기타 장애', code: 'N28' },
+      { num: '5', disease: '달리 분류된 질환에서의 신장 및 요관의 기타 장애', code: 'N29' }
+    ]
+  },
+  {
+    title: '[27대질병] 하부호흡계통 및 흉각의 양성종양',
+    items: [
+      { num: '1', disease: '기관의 양성 신생물', code: 'D14.2' },
+      { num: '2', disease: '기관지 및 폐의 양성 신생물', code: 'D14.3' },
+      { num: '3', disease: '상세불명의 호흡계통의 양성 신생물', code: 'D14.4' },
+      { num: '4', disease: '기타 및 상세불명의 흉곽내기관의 양성 신생물', code: 'D15' }
+    ]
+  },
+  {
+    title: '[27대질병] 뇌 및 중추신경계통의 양성종양',
+    items: [
+      { num: '1', disease: '뇌 및 중추신경계통의 기타 부분의 양성 신생물', code: 'D33' }
+    ]
+  },
+  {
+    title: '[27대질병] 갑상선 및 내분비선의 양성종양',
+    items: [
+      { num: '1', disease: '갑상선의 양성 신생물', code: 'D34' },
+      { num: '2', disease: '기타 및 상세불명의 내분비선의 양성 신생물', code: 'D35' }
+    ]
+  },
+
+  // 별표 52-3 21대질병 분류표
+  {
+    title: '[21대질병] 특정 장질환',
+    items: [
+      { num: '1', disease: '장의 혈관장애', code: 'K55' },
+      { num: '2', disease: '탈장이 없는 마비성 장폐색증 및 장폐색', code: 'K56' },
+      { num: '3', disease: '장의 게실병', code: 'K57' }
+    ]
+  },
+  {
+    title: '[21대질병] 급성췌장염',
+    items: [
+      { num: '1', disease: '급성췌장염', code: 'K85' }
+    ]
+  },
+  {
+    title: '[21대질병] 췌장질환',
+    items: [
+      { num: '1', disease: '췌장의 기타 질환', code: 'K86' },
+      { num: '2', disease: '달리분류된질환에서의당낭, 당도및췌장의장애', code: 'K87' },
+      { num: '3', disease: '[B25.2+:거대세포바이러스췌장염(K87.1*)]', code: 'B25.2+' },
+      { num: '4', disease: '[B26.3+:볼거리췌장염(K87.1*)]', code: 'B26.3+' }
+    ]
+  },
+  {
+    title: '[21대질병] 위공장궤양',
+    items: [
+      { num: '1', disease: '위공장궤양', code: 'K28' }
+    ]
+  },
+  {
+    title: '[21대질병] 비감염성장염 및 결장염',
+    items: [
+      { num: '1', disease: '크론병[국소성 장염]', code: 'K50' },
+      { num: '2', disease: '궤양성 대장염', code: 'K51' },
+      { num: '3', disease: '기타 비감염성 위장염 및 결장염', code: 'K52' }
+    ]
+  },
+  {
+    title: '[21대질병] 비장질환',
+    items: [
+      { num: '1', disease: '비장의질환', code: 'D73' }
+    ]
+  },
+  {
+    title: '[21대질병] 동맥 및 세동맥의 질환',
+    items: [
+      { num: '1', disease: '동맥색전증 및 혈전증', code: 'I74' },
+      { num: '2', disease: '동맥 및 세동맥의 기타 장애', code: 'I77' }
+    ]
+  },
+  {
+    title: '[21대질병] 중증근무력증',
+    items: [
+      { num: '1', disease: '중증근무력증 및 기타 근신경장애', code: 'G70' }
+    ]
+  },
+  {
+    title: '[21대질병] 손목터널증후군',
+    items: [
+      { num: '1', disease: '손목터널증후군', code: 'G56.0' }
+    ]
+  },
+  {
+    title: '[21대질병] 단일신경병증',
+    items: [
+      { num: '1', disease: '팔의 단일신경병증', code: 'G56' },
+      { num: '2', disease: '[손목터널증후군(G56.0) 제외]', code: '(G56.0제외)' },
+      { num: '3', disease: '다리의 단일신경병증', code: 'G57' },
+      { num: '4', disease: '기타 단일신경병증', code: 'G58' },
+      { num: '5', disease: '달리 분류된 질환에서의 기타 단일신경병증', code: 'G59.8' }
+    ]
+  },
+  {
+    title: '[21대질병] 마비',
+    items: [
+      { num: '1', disease: '편마비', code: 'G81' },
+      { num: '2', disease: '하반신마비 및 사지마비', code: 'G82' },
+      { num: '3', disease: '기타 마비증후군', code: 'G83' }
+    ]
+  },
+  {
+    title: '[21대질병] 척추변형',
+    items: [
+      { num: '1', disease: '척추후만증 및 척추전만증', code: 'M40' },
+      { num: '2', disease: '척추측만증', code: 'M41' },
+      { num: '3', disease: '척추골연골증', code: 'M42' },
+      { num: '4', disease: '기타 변형성 등병증', code: 'M43' }
+    ]
+  },
+  {
+    title: '[21대질병] 척추병증',
     items: [
       { num: '1', disease: '강직척추염', code: 'M45' },
       { num: '2', disease: '기타 염증성 척추병증', code: 'M46' },
@@ -19010,13 +19474,14 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[21대질병] 전신결합조직장애',
+    title: '[21대질병] 전신결합조직 장애',
     items: [
       { num: '1', disease: '결절성 다발동맥염 및 관련 병태', code: 'M30' },
       { num: '2', disease: '기타 괴사성 혈관병증', code: 'M31' },
-      { num: '3', disease: '전신홍반루푸스 (기관또는계통침범을동반한전신홍반루푸스 M32.1 제외)', code: 'M32 (M32.1제외)' },
-      { num: '4', disease: '피부다발근염', code: 'M33' },
-      { num: '5', disease: '전신경화증', code: 'M34' }
+      { num: '3', disease: '전신홍반루푸스', code: 'M32' },
+      { num: '4', disease: '[기관또는계통침범을동반한전신홍반루푸스(M32.1)제외]', code: '(M32.1제외)' },
+      { num: '5', disease: '피부다발근염', code: 'M33' },
+      { num: '6', disease: '전신경화증', code: 'M34' }
     ]
   },
   {
@@ -19036,16 +19501,45 @@ const KB_SURGERY_101_SECTIONS = [
       { num: '2', disease: '난소, 난관 및 넓은인대의 비염증성 장애', code: 'N83' }
     ]
   },
+  {
+    title: '[21대질병] 간·담관·췌장의 양성종양',
+    items: [
+      { num: '1', disease: '간의양성신생물', code: 'D13.4' },
+      { num: '2', disease: '간외담관의 양성 신생물', code: 'D13.5' },
+      { num: '3', disease: '췌장의 양성 신생물', code: 'D13.6' },
+      { num: '4', disease: '내분비췌장의 양성 신생물', code: 'D13.7' }
+    ]
+  },
+  {
+    title: '[21대질병] 골 및 관절연골의 양성종양',
+    items: [
+      { num: '1', disease: '골 및 관절연골의 양성 신생물', code: 'D16' }
+    ]
+  },
+  {
+    title: '[21대질병] 유방의 양성종양',
+    items: [
+      { num: '1', disease: '유방의 양성 신생물', code: 'D24' }
+    ]
+  },
+  {
+    title: '[21대질병] 난소의 양성종양',
+    items: [
+      { num: '1', disease: '난소의 양성 신생물', code: 'D27' }
+    ]
+  },
 
   // 별표 52-4 41대질병 분류표
   {
     title: '[41대질병] 관절염 및 다발관절병증',
     items: [
-      { num: '1', disease: '감염성 관절병증 [결핵관절염(M01.1)제외]', code: 'M00~M03 (M01.1제외)' },
-      { num: '2', disease: '염증성 다발관절병증 [당뇨병성관절병증(M14.2)제외]', code: 'M05~M14 (M14.2제외)' },
-      { num: '3', disease: '[J99.0*:류마티스폐질환(M05.1+)]', code: 'J99.0*' },
-      { num: '4', disease: '[M07.0*:원위지골간 건선관절병증(L40.5+)]', code: 'L40.5+' },
-      { num: '5', disease: '[M09.0*:건선에서의 연소성 관절염(L40.5+)]', code: 'L40.5+' }
+      { num: '1', disease: '감염성 관절병증', code: 'M00~M03' },
+      { num: '2', disease: '[결핵관절염(M01.1)제외]', code: '(M01.1제외)' },
+      { num: '3', disease: '염증성 다발관절병증', code: 'M05~M14' },
+      { num: '4', disease: '[당뇨병성관절병증(M14.2)제외]', code: '(M14.2제외)' },
+      { num: '5', disease: '[J99.0*:류마티스폐질환(M05.1+)]', code: 'J99.0*' },
+      { num: '6', disease: '[M07.0*:원위지골간 건선관절병증(L40.5+)]', code: 'L40.5+' },
+      { num: '7', disease: '[M09.0*:건선에서의 연소성 관절염(L40.5+)]', code: 'L40.5+' }
     ]
   },
   {
@@ -19068,13 +19562,13 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[41대질병] 누적외상성 질환',
+    title: '[41대질병] 누적 외상성 질환',
     items: [
       { num: '1', disease: '결합조직의 기타 전신침범', code: 'M35' },
       { num: '2', disease: '경추상완증후군', code: 'M53.1' },
-      { num: '3', disease: '근육 장애', code: 'M60 ~ M63' },
-      { num: '4', disease: '윤활막 및 힘줄장애', code: 'M65 ~ M68' },
-      { num: '5', disease: '기타 연조직장애 (M74, M78 제외)', code: 'M70 ~ M79 (M74, M78제외)' }
+      { num: '3', disease: '근육 장애', code: 'M60~M63' },
+      { num: '4', disease: '윤활막 및 힘줄장애', code: 'M65~M68' },
+      { num: '5', disease: '기타 연조직장애', code: 'M70~M79 (M74,M78제외)' }
     ]
   },
   {
@@ -19084,43 +19578,19 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[41대질병] 간담관췌장의 양성종양',
-    items: [
-      { num: '1', disease: '간의양성신생물', code: 'D13.4' },
-      { num: '2', disease: '간외담관의 양성 신생물', code: 'D13.5' },
-      { num: '3', disease: '췌장의 양성 신생물', code: 'D13.6' },
-      { num: '4', disease: '내분비췌장의 양성 신생물', code: 'D13.7' }
-    ]
-  },
-  {
-    title: '[41대질병] 골 및 관절연골의 양성종양',
-    items: [
-      { num: '1', disease: '골 및 관절연골의 양성 신생물', code: 'D16' }
-    ]
-  },
-  {
-    title: '[41대질병] 유방의 양성종양',
-    items: [
-      { num: '1', disease: '유방의 양성 신생물', code: 'D24' }
-    ]
-  },
-  {
-    title: '[41대질병] 난소의 양성종양',
-    items: [
-      { num: '1', disease: '난소의 양성 신생물', code: 'D27' }
-    ]
-  },
-  {
     title: '[41대질병] 눈 및 눈부속기관의 특정질환',
     items: [
-      { num: '1', disease: '공막,각막,홍채 및 섬모체의 장애', code: 'H15 ~ H22' },
-      { num: '2', disease: '맥락막 및 망막의 장애 (고혈압성망막병증 H35.02, 황반변성 H35.3, 당뇨병성망막병증 H36.0 제외)', code: 'H30 ~ H36 (H35.02, H35.3, H36.0제외)' }
+      { num: '1', disease: '공막,각막,홍채 및 섬모체의 장애', code: 'H15~H22' },
+      { num: '2', disease: '맥락막 및 망막의 장애', code: 'H30~H36' },
+      { num: '3', disease: '[고혈압성망막병증(H35.02)제외]', code: '(H35.02 제외)' },
+      { num: '4', disease: '[황반 및 후극부의 변성(H35.3) 제외]', code: '(H35.3제외)' },
+      { num: '5', disease: '[당뇨병성망막병증(H36.0)제외]', code: '(H36.0제외)' }
     ]
   },
   {
     title: '[41대질병] 시신경 및 시각로의 장애',
     items: [
-      { num: '1', disease: '시신경 및 시각경로의 장애', code: 'H46 ~ H48' }
+      { num: '1', disease: '시신경 및 시각경로의 장애', code: 'H46~H48' }
     ]
   },
   {
@@ -19153,7 +19623,7 @@ const KB_SURGERY_101_SECTIONS = [
   {
     title: '[41대질병] 내이의 질환',
     items: [
-      { num: '1', disease: '내이의 질환', code: 'H80 ~ H83' }
+      { num: '1', disease: '내이의 질환', code: 'H80~H83' }
     ]
   },
   {
@@ -19170,7 +19640,7 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[41대질병] 사지후천변형',
+    title: '[41대질병] 사지 후천변형',
     items: [
       { num: '1', disease: '손가락 및 발가락의 후천변형', code: 'M20' },
       { num: '2', disease: '사지의 기타 후천변형', code: 'M21' }
@@ -19212,7 +19682,7 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[41대질병] 위십이지장질환',
+    title: '[41대질병] 위십이지장 질환',
     items: [
       { num: '1', disease: '위염 및 십이지장염', code: 'K29' },
       { num: '2', disease: '기능성 소화불량', code: 'K30' }
@@ -19237,7 +19707,8 @@ const KB_SURGERY_101_SECTIONS = [
     items: [
       { num: '1', disease: '복막염', code: 'K65' },
       { num: '2', disease: '복막의 기타 장애', code: 'K66' },
-      { num: '3', disease: '달리 분류된 감염성 질환에서의 복막의 장애 (결핵성복막염 K67.3 제외)', code: 'K67 (K67.3제외)' }
+      { num: '3', disease: '달리 분류된 감염성 질환에서의 복막의 장애', code: 'K67' },
+      { num: '4', disease: '[결핵성복막염(K67.3)제외]', code: '(K67.3 제외)' }
     ]
   },
   {
@@ -19260,7 +19731,7 @@ const KB_SURGERY_101_SECTIONS = [
   {
     title: '[41대질병] 급성상기도감염',
     items: [
-      { num: '1', disease: '급성 상기도감염', code: 'J00 ~ J06' }
+      { num: '1', disease: '급성 상기도감염', code: 'J00~J06' }
     ]
   },
   {
@@ -19285,7 +19756,7 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[41대질병] 인후부위특정질환',
+    title: '[41대질병] 인후부위특정 질환',
     items: [
       { num: '1', disease: '편도주위농양', code: 'J36' },
       { num: '2', disease: '만성 후두염 및 후두기관염', code: 'J37' },
@@ -19305,9 +19776,12 @@ const KB_SURGERY_101_SECTIONS = [
       { num: '1', disease: '방광염', code: 'N30' },
       { num: '2', disease: '달리 분류되지 않은 방광의 신경근육기능장애', code: 'N31' },
       { num: '3', disease: '방광의 기타 장애', code: 'N32' },
-      { num: '4', disease: '달리 분류된 질환에서의 방광장애 (결핵성방광염 N33.0 제외)', code: 'N33 (N33.0제외)' },
-      { num: '5', disease: '달리 분류된 질환에서의 요도장애', code: 'N37' },
-      { num: '6', disease: '비뇨계통의 기타 장애 (스트레스요실금 N39.3, 기타명시된요실금 N39.4 제외)', code: 'N39 (N39.3, N39.4제외)' }
+      { num: '4', disease: '달리 분류된 질환에서의 방광장애', code: 'N33' },
+      { num: '5', disease: '[결핵성방광염(N33.0)제외]', code: '(N33.0제외)' },
+      { num: '6', disease: '달리 분류된 질환에서의 요도장애', code: 'N37' },
+      { num: '7', disease: '비뇨계통의 기타 장애', code: 'N39' },
+      { num: '8', disease: '[스트레스요실금(N39.3)제외]', code: '(N39.3제외)' },
+      { num: '9', disease: '[기타명시된요실금(N39.4)제외]', code: '(N39.4제외)' }
     ]
   },
   {
@@ -19319,7 +19793,7 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[41대질병] 남성생식기관의 질환',
+    title: '[41대질병] 남성 생식기관의 질환',
     items: [
       { num: '1', disease: '음낭수종 및 정액류', code: 'N43' },
       { num: '2', disease: '고환의 염전', code: 'N44' },
@@ -19327,15 +19801,17 @@ const KB_SURGERY_101_SECTIONS = [
     ]
   },
   {
-    title: '[41대질병] 여성골반내기관의 염증성 질환',
+    title: '[41대질병] 여성 골반내기관의 염증성 질환',
     items: [
       { num: '1', disease: '자궁경부를 제외한 자궁의 염증성 질환', code: 'N71' },
       { num: '2', disease: '자궁경부의 염증성 질환', code: 'N72' },
       { num: '3', disease: '기타 여성골반염증질환', code: 'N73' },
-      { num: '4', disease: '달리 분류된 질환에서의 여성골반염증장애 (자궁경부의결핵감염 N74.0, 여성결핵성골반염증질환 N74.1 제외)', code: 'N74 (N74.0, N74.1제외)' },
-      { num: '5', disease: '바르톨린선의 질환', code: 'N75' },
-      { num: '6', disease: '질 및 외음부의 기타 염증', code: 'N76' },
-      { num: '7', disease: '달리 분류된 질환에서의 외음질의 궤양 및 염증', code: 'N77' }
+      { num: '4', disease: '달리 분류된 질환에서의 여성골반염증장애', code: 'N74' },
+      { num: '5', disease: '[자궁경부의결핵감염(N74.0)제외]', code: '(N74.0제외)' },
+      { num: '6', disease: '[여성결핵성골반염증질환(N74.1)제외]', code: '(N74.1제외)' },
+      { num: '7', disease: '바르톨린선의 질환', code: 'N75' },
+      { num: '8', disease: '질 및 외음부의 기타 염증', code: 'N76' },
+      { num: '9', disease: '달리 분류된 질환에서의 외음질의 궤양 및 염증', code: 'N77' }
     ]
   },
   {
@@ -19351,8 +19827,8 @@ const KB_SURGERY_101_SECTIONS = [
       { num: '8', disease: '자궁경부의 기타 비염증성 장애', code: 'N88' },
       { num: '9', disease: '질의 기타 비염증성 장애', code: 'N89' },
       { num: '10', disease: '외음부 및 회음부의 기타 비염증성 장애', code: 'N90' },
-      { num: '11', disease: '무월경, 소량 및 희발월경', code: 'N91' },
-      { num: '12', disease: '과다, 빈발 및 불규칙월경', code: 'N92' },
+      { num: '11', disease: '무월경,소량및희발월경', code: 'N91' },
+      { num: '12', disease: '과다,빈발및불규칙월경', code: 'N92' },
       { num: '13', disease: '기타 이상 자궁 및 질 출혈', code: 'N93' },
       { num: '14', disease: '여성생식기관 및 월경주기와 관련된 통증 및 기타병태', code: 'N94' },
       { num: '15', disease: '폐경 및 기타 폐경전후 장애', code: 'N95' }
@@ -19404,7 +19880,7 @@ const KB_SURGERY_101_SECTIONS = [
       { num: '1', disease: '각막의 양성 신생물', code: 'D31.1' },
       { num: '2', disease: '망막의 양성 신생물', code: 'D31.2' },
       { num: '3', disease: '맥락막의 양성 신생물', code: 'D31.3' },
-      { num: '4', disease: '섬모체의 양성 신생물', code: 'D31.4' }
+      { num: '4', disease: '성모체의 양성 신생물', code: 'D31.4' }
     ]
   },
 
@@ -19420,7 +19896,7 @@ const KB_SURGERY_101_SECTIONS = [
 
   // 별표 52-6 치핵 분류표
   {
-    title: '[치핵] 치핵 및 항문주위 정맥혈전증',
+    title: '[치핵] 치핵',
     items: [
       { num: '1', disease: '포함: 치질 / 제외: 합병증 (출산 및 산후기 O87.2, 임신 O22.4)', code: 'K64' }
     ]
@@ -19454,10 +19930,11 @@ const KB_SURGERY_101_SUMMARY_SECTIONS = (() => {
 
 // KB손해보험 112대 질병 분류표 [별표42] 데이터
 const KB_SURGERY_112_SECTIONS = [
-  // 별표 42-1 15대질병 분류표
+  // 별표 17-1 15대질병 분류표
   {
     title: '[15대질병] 폐렴',
-    items: [      { num: '1', disease: '재향군인병', code: 'A48.1' },
+    items: [
+      { num: '1', disease: '재향군인병', code: 'A48.1' },
       { num: '2', disease: '달리 분류되지 않은 바이러스폐렴', code: 'J12' },
       { num: '3', disease: '폐렴연쇄알균에 의한 폐렴', code: 'J13' },
       { num: '4', disease: '인플루엔자균에 의한 폐렴', code: 'J14' },
@@ -19504,7 +19981,7 @@ const KB_SURGERY_112_SECTIONS = [
   {
     title: '[15대질병] 간 질 환',
     items: [
-      { num: '1', disease: '바이러스간염', code: 'B15~B19' },
+      { num: '1', disease: '바이러스 간염', code: 'B15~B19' },
       { num: '2', disease: '간의 질환', code: 'K70~K77' },
       { num: '3', disease: '[B25.1+:거대세포바이러스간염(K77.0*)]', code: 'B25.1+' },
       { num: '4', disease: '[B58.1+:톡소포자충간염(K77.0*)]', code: 'B58.1+' }
@@ -19545,7 +20022,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[15대질병] 간담관췌장의 양성종양',
+    title: '[15대질병] 간·담관·췌장의 양성종양',
     items: [
       { num: '1', disease: '간의양성신생물', code: 'D13.4' },
       { num: '2', disease: '간외담관의 양성 신생물', code: 'D13.5' },
@@ -19560,7 +20037,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[15대질병] 기관지폐의 특정질환',
+    title: '[15대질병] 기관지·폐의 특정질환',
     items: [
       { num: '1', disease: '폐기종', code: 'J43' },
       { num: '2', disease: '기타 만성 폐쇄성 폐질환', code: 'J44' },
@@ -19580,7 +20057,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
 
-  // 별표 42-2 24대질병 분류표
+  // 별표 17-2 24대질병 분류표
   {
     title: '[24대질병] 결핵',
     items: [
@@ -19616,7 +20093,7 @@ const KB_SURGERY_112_SECTIONS = [
       { num: '1', disease: '1형당뇨병', code: 'E10' },
       { num: '2', disease: '2형당뇨병', code: 'E11' },
       { num: '3', disease: '영양실조-관련 당뇨병', code: 'E12' },
-      { num: '4', disease: '기타 명시된 당뇨병', code: 'E13' },
+      { num: '4', disease: '기타명시된 당뇨병', code: 'E13' },
       { num: '5', disease: '상세불명의 당뇨병', code: 'E14' },
       { num: '6', disease: '당뇨병성 단일신경병증', code: 'G59.0' },
       { num: '7', disease: '당뇨병성 다발신경병증', code: 'G63.2' },
@@ -19636,17 +20113,17 @@ const KB_SURGERY_112_SECTIONS = [
   {
     title: '[24대질병] 폐질환',
     items: [
-      { num: '1', disease: '폐 및 종격의 농양', code: 'J85' },
+      { num: '1', disease: '폐 및 중격의 농양', code: 'J85' },
       { num: '2', disease: '농흉', code: 'J86' },
-      { num: '3', disease: '달리 분류되지 않은 흉막삼출액', code: 'J90' },
-      { num: '4', disease: '달리 분류된 병태에서의 흉막삼출액', code: 'J91' },
+      { num: '3', disease: '달리 분류되지 않은 흉막상출액', code: 'J90' },
+      { num: '4', disease: '달리 분류된 병태에서의 흉막상출액', code: 'J91' },
       { num: '5', disease: '흉막판', code: 'J92' },
       { num: '6', disease: '기흉', code: 'J93' },
       { num: '7', disease: '기타 흉막의 병태', code: 'J94' }
     ]
   },
   {
-    title: '[24대질병] 위십이지장궤양',
+    title: '[24대질병] 위·십이지장 궤양',
     items: [
       { num: '1', disease: '위궤양', code: 'K25' },
       { num: '2', disease: '십이지장궤양', code: 'K26' },
@@ -19711,10 +20188,10 @@ const KB_SURGERY_112_SECTIONS = [
       { num: '7', disease: '[B26.2+:볼거리뇌염(G05.1*)]', code: 'B26.2+' },
       { num: '8', disease: '[B01.1+:수두뇌염(G05.1*)]', code: 'B01.1+' },
       { num: '9', disease: '[B02.0+:대상포진뇌염(G05.1*)]', code: 'B02.0+' },
-      { num: '10', disease: '두개내 및 척추내 농양 및 육아종', code: 'G06' },
-      { num: '11', disease: '달리 분류된 질환에서의 두개내 및 척추내 농양 및 육아종', code: 'G07' },
+      { num: '10', disease: '두개내 및 척수내 농양 및 육아종', code: 'G06' },
+      { num: '11', disease: '달리 분류된 질환에서의 두개내 및 척수내 농양 및 육아종', code: 'G07' },
       { num: '12', disease: '[A06.6+:아메바성 뇌농양(G07*)]', code: 'A06.6+' },
-      { num: '13', disease: '두개내 및 척추내 정맥염 및 혈전정맥염', code: 'G08' },
+      { num: '13', disease: '두개내 및 척수내 정맥염 및 혈전정맥염', code: 'G08' },
       { num: '14', disease: '중추신경계통의 염증성 질환의 후유증', code: 'G09' }
     ]
   },
@@ -19759,26 +20236,27 @@ const KB_SURGERY_112_SECTIONS = [
   {
     title: '[24대질병] 사구체질환',
     items: [
-      { num: '1', disease: '급성 신염증후군', code: 'N00' },
-      { num: '2', disease: '급속 진행성 신염증후군', code: 'N01' },
+      { num: '1', disease: '급성 신염 증후군', code: 'N00' },
+      { num: '2', disease: '급속 진행성 신염 증후군', code: 'N01' },
       { num: '3', disease: '재발성 및 지속성 혈뇨', code: 'N02' },
-      { num: '4', disease: '만성 신염증후군', code: 'N03' },
+      { num: '4', disease: '만성 신염 증후군', code: 'N03' },
       { num: '5', disease: '신증후군', code: 'N04' },
-      { num: '6', disease: '상세불명의 신염증후군', code: 'N05' },
+      { num: '6', disease: '상세불명의 신염 증후군', code: 'N05' },
       { num: '7', disease: '명시된 형태학적 병변을 동반한 고립된 단백뇨', code: 'N06' },
       { num: '8', disease: '달리 분류되지 않은 유전성 신장병증', code: 'N07' },
-      { num: '9', disease: '달리 분류된 질환에서의 사구체장애 [당뇨병에서의 사구체장애(N08.3)제외]', code: 'N08 (N08.3제외)' }
+      { num: '9', disease: '달리 분류된 질환에서의 사구체 장애', code: 'N08' },
+      { num: '10', disease: '[당뇨병에서의사구체장애(N08.3)제외]', code: '(N08.3제외)' }
     ]
   },
   {
     title: '[24대질병] 신세뇨관-간질질환',
     items: [
-      { num: '1', disease: '급성 세뇨관-간질신장염', code: 'N10' },
-      { num: '2', disease: '만성 세뇨관-간질신장염', code: 'N11' },
+      { num: '1', disease: '급성세뇨관-간질신장염', code: 'N10' },
+      { num: '2', disease: '만성세뇨관-간질신장염', code: 'N11' },
       { num: '3', disease: '급성또는만성으로명시되지않은세뇨관-간질신장염', code: 'N12' },
       { num: '4', disease: '폐색성 및 역류성 요로병증', code: 'N13' },
       { num: '5', disease: '약물 및 중금속유발 세뇨관-간질 및 세뇨관병태', code: 'N14' },
-      { num: '6', disease: '기타 신세뇨관-간질질환', code: 'N15' },
+      { num: '6', disease: '기타신세뇨관-간질질환', code: 'N15' },
       { num: '7', disease: '달리분류된질환에서의신세뇨관-간질장애', code: 'N16' }
     ]
   },
@@ -19793,11 +20271,11 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[24대질병] 하부호흡계통 및 흉곽의 양성종양',
+    title: '[24대질병] 하부호흡계통 및 흉각의 양성종양',
     items: [
       { num: '1', disease: '기관의 양성 신생물', code: 'D14.2' },
-      { num: '2', disease: '기관지 및 폐의 양성 신생물', code: 'D14.3' },
-      { num: '3', disease: '상세불명의 호흡계통의 양성 신생물', code: 'D14.4' },
+      { num: '2', disease: '기관지및폐의양성신생물', code: 'D14.3' },
+      { num: '3', disease: '상세불명의호흡계통의양성신생물', code: 'D14.4' },
       { num: '4', disease: '기타 및 상세불명의 흉곽내기관의 양성 신생물', code: 'D15' }
     ]
   },
@@ -19808,14 +20286,15 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
 
-  // 별표 42-3 22대질병 분류표
+  // 별표 17-3 22대질병 분류표
   {
     title: '[22대질병] 갑상선질환',
     items: [
-      { num: '1', disease: '갑상선의 장애 [H06.2*:갑상선이상성안구돌출(E05.0+)]', code: 'E00~E07, H06.2*' },
-      { num: '2', disease: '처치후 갑상선기능저하증', code: 'E89.0' },
-      { num: '3', disease: '방사선조사후 갑상선기능저하증', code: 'E89.0' },
-      { num: '4', disease: '수술후 갑상선기능저하증', code: 'E89.0' }
+      { num: '1', disease: '갑상선의 장애', code: 'E00~E07' },
+      { num: '2', disease: '[H06.2*:갑상선이상성안구돌출(E05.0+)]', code: 'H06.2*' },
+      { num: '3', disease: '처치후 갑상선기능저하증', code: 'E89.0' },
+      { num: '4', disease: '방사선조사후 갑상선기능저하증', code: 'E89.0' },
+      { num: '5', disease: '수술후 갑상선기능저하증', code: 'E89.0' }
     ]
   },
   {
@@ -19844,7 +20323,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[22대질병] 특정장질환',
+    title: '[22대질병] 특정 장질환',
     items: [
       { num: '1', disease: '장의 혈관장애', code: 'K55' },
       { num: '2', disease: '탈장이 없는 마비성 장폐색증 및 장폐색', code: 'K56' },
@@ -19855,7 +20334,7 @@ const KB_SURGERY_112_SECTIONS = [
     title: '[22대질병] 췌장질환',
     items: [
       { num: '1', disease: '췌장의 기타 질환', code: 'K86' },
-      { num: '2', disease: '달리분류된질환에서의담낭,담도및췌장의장애', code: 'K87' },
+      { num: '2', disease: '달리분류된질환에서의담당, 담도및췌장의장애', code: 'K87' },
       { num: '3', disease: '[B25.2+:거대세포바이러스췌장염(K87.1*)]', code: 'B25.2+' },
       { num: '4', disease: '[B26.3+:볼거리췌장염(K87.1*)]', code: 'B26.3+' }
     ]
@@ -19896,10 +20375,11 @@ const KB_SURGERY_112_SECTIONS = [
   {
     title: '[22대질병] 단일신경병증',
     items: [
-      { num: '1', disease: '팔의 단일신경병증 (손목터널증후군 G56.0 제외)', code: 'G56 (G56.0제외)' },
-      { num: '2', disease: '다리의 단일신경병증', code: 'G57' },
-      { num: '3', disease: '기타 단일신경병증', code: 'G58' },
-      { num: '4', disease: '달리 분류된 질환에서의 기타 단일신경병증', code: 'G59.8' }
+      { num: '1', disease: '팔의 단일신경병증', code: 'G56' },
+      { num: '2', disease: '[손목터널증후군(G56.0) 제외]', code: '(G56.0제외)' },
+      { num: '3', disease: '다리의 단일신경병증', code: 'G57' },
+      { num: '4', disease: '기타 단일신경병증', code: 'G58' },
+      { num: '5', disease: '달리 분류된 질환에서의 기타 단일신경병증', code: 'G59.8' }
     ]
   },
   {
@@ -19915,7 +20395,7 @@ const KB_SURGERY_112_SECTIONS = [
     items: [
       { num: '1', disease: '척주후만증 및 척주전만증', code: 'M40' },
       { num: '2', disease: '척주측만증', code: 'M41' },
-      { num: '3', disease: '척추골연골증', code: 'M42' },
+      { num: '3', disease: '척주골연골증', code: 'M42' },
       { num: '4', disease: '기타 변형성 등병증', code: 'M43' }
     ]
   },
@@ -19941,13 +20421,14 @@ const KB_SURGERY_112_SECTIONS = [
       { num: '1', disease: '결절성 다발동맥염 및 관련 병태', code: 'M30' },
       { num: '2', disease: '기타 괴사성 혈관병증', code: 'M31' },
       { num: '3', disease: '림프절외 NK/T-세포림프종, 비강형태', code: 'C86.0' },
-      { num: '4', disease: '전신홍반루푸스 [기관또는계통침범을동반한전신홍반루푸스(M32.1)제외]', code: 'M32 (M32.1제외)' },
-      { num: '5', disease: '피부다발근염', code: 'M33' },
-      { num: '6', disease: '전신경화증', code: 'M34' }
+      { num: '4', disease: '전신홍반루푸스', code: 'M32' },
+      { num: '5', disease: '[기관또는계통침범을동반한전신홍반루푸스(M32.1) 제외]', code: '(M32.1제외)' },
+      { num: '6', disease: '피부다발근염', code: 'M33' },
+      { num: '7', disease: '전신경화증', code: 'M34' }
     ]
   },
   {
-    title: '[22대질병] 난소난관의 질환',
+    title: '[22대질병] 난소·난관의 질환',
     items: [
       { num: '1', disease: '난관염 및 난소염', code: 'N70' },
       { num: '2', disease: '난소, 난관 및 넓은인대의 비염증성 장애', code: 'N83' }
@@ -19966,16 +20447,24 @@ const KB_SURGERY_112_SECTIONS = [
       { num: '1', disease: '골 및 관절연골의 양성 신생물', code: 'D16' }
     ]
   },
+  {
+    title: '[22대질병] 난소의 양성종양',
+    items: [
+      { num: '1', disease: '난소의 양성 신생물', code: 'D27' }
+    ]
+  },
 
-  // 별표 42-4 49대질병 분류표
+  // 별표 17-4 49대질병 분류표
   {
     title: '[49대질병] 관절염 및 다발관절병증',
     items: [
-      { num: '1', disease: '감염성 관절병증 [결핵관절염(M01.1)제외]', code: 'M00~M03 (M01.1제외)' },
-      { num: '2', disease: '염증성 다발관절병증 [당뇨병성관절병증(M14.2)제외]', code: 'M05~M14 (M14.2제외)' },
-      { num: '3', disease: '[J99.0*:류마티스폐질환(M05.1+)]', code: 'J99.0*' },
-      { num: '4', disease: '[M07.0*:원위지골간 건선관절병증(L40.5+)]', code: 'L40.5+' },
-      { num: '5', disease: '[M09.0*:건선에서의 연소성 관절염(L40.5+)]', code: 'L40.5+' }
+      { num: '1', disease: '감염성 관절병증', code: 'M00~M03' },
+      { num: '2', disease: '[결핵관절염(M01.1)제외]', code: '(M01.1제외)' },
+      { num: '3', disease: '염증성 다발관절병증', code: 'M05~M14' },
+      { num: '4', disease: '[당뇨병성관절병증(M14.2)제외]', code: '(M14.2제외)' },
+      { num: '5', disease: '[J99.0*:류마티스폐질환(M05.1+)]', code: 'J99.0*' },
+      { num: '6', disease: '[M07.0*:원위지골간 건선관절병증(L40.5+)]', code: 'L40.5+' },
+      { num: '7', disease: '[M09.0*:건선에서의 연소성 관절염(L40.5+)]', code: 'L40.5+' }
     ]
   },
   {
@@ -19984,7 +20473,7 @@ const KB_SURGERY_112_SECTIONS = [
       { num: '1', disease: '다발관절증', code: 'M15' },
       { num: '2', disease: '고관절증', code: 'M16' },
       { num: '3', disease: '무릎관절증', code: 'M17' },
-      { num: '4', disease: '제1수근중수관절의 관절증', code: 'M18' },
+      { num: '4', disease: '제1수근수중수관절의 관절증', code: 'M18' },
       { num: '5', disease: '기타 관절증', code: 'M19' }
     ]
   },
@@ -19998,7 +20487,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[49대질병] 누적외상성 질환',
+    title: '[49대질병] 누적 외상성 질환',
     items: [
       { num: '1', disease: '결합조직의 기타 전신침범', code: 'M35' },
       { num: '2', disease: '경추상완증후군', code: 'M53.1' },
@@ -20017,10 +20506,11 @@ const KB_SURGERY_112_SECTIONS = [
     title: '[49대질병] 눈 및 눈부속기의 특정질환',
     items: [
       { num: '1', disease: '공막, 각막, 홍채 및 섬모체의 장애', code: 'H15~H22' },
-      { num: '2', disease: '눈 및 눈부속기의 기타 처치후 장애(H59.8) 중 미만성 충판성 각막염 (주: H59.8 중 미만성 충판성 각막염에 한함)', code: 'H59.8주)' },
-      { num: '3', disease: '맥락막 및 망막의 장애 [배경망막병증 망막혈관변화(H35.0) 중 고혈압성 망막병증 제외] (주: H35.0 중 고혈압성 망막병증만 보상에서 제외)', code: 'H30~H36 (H35.0주)제외)' },
-      { num: '4', disease: '[황반 및 후극부의 변성(H35.3) 제외]', code: 'H35.3제외' },
-      { num: '5', disease: '[당뇨병성 망막병증(H36.0)제외]', code: 'H36.0제외' }
+      { num: '2', disease: '눈 및 눈부속기의 기타 처치후 장애(H59.8) 중 미만성 총판성 각막염 (주: H59.8 중 미만성 총판성 각막염에 한함)', code: 'H59.8*)' },
+      { num: '3', disease: '맥락막 및 망막의 장애', code: 'H30~H36' },
+      { num: '4', disease: '[배경망막병증 망막혈관변화(H35.0) 중 고혈압성 망막병증 제외] (주: H35.0 중 고혈압성 망막병증만 보상에서 제외)', code: '(H35.0*) 제외)' },
+      { num: '5', disease: '[황반 및 후극부의 변성(H35.3) 제외]', code: '(H35.3제외)' },
+      { num: '6', disease: '[당뇨병성 망막병증(H36.0)제외]', code: '(H36.0제외)' }
     ]
   },
   {
@@ -20118,7 +20608,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[49대질병] 위십이지장질환',
+    title: '[49대질병] 위십이지장 질환',
     items: [
       { num: '1', disease: '위염 및 십이지장염', code: 'K29' },
       { num: '2', disease: '기능성 소화불량', code: 'K30' }
@@ -20143,7 +20633,8 @@ const KB_SURGERY_112_SECTIONS = [
     items: [
       { num: '1', disease: '복막염', code: 'K65' },
       { num: '2', disease: '복막의 기타 장애', code: 'K66' },
-      { num: '3', disease: '달리 분류된 감염성 질환에서의 복막의 장애 [결핵성복막염(K67.3)제외]', code: 'K67 (K67.3제외)' }
+      { num: '3', disease: '달리 분류된 감염성 질환에서의 복막의 장애', code: 'K67' },
+      { num: '4', disease: '[결핵성복막염(K67.3) 제외]', code: '(K67.3 제외)' }
     ]
   },
   {
@@ -20191,7 +20682,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[49대질병] 인후부위특정질환',
+    title: '[49대질병] 인후부위특정 질환',
     items: [
       { num: '1', disease: '편도주위농양', code: 'J36' },
       { num: '2', disease: '만성 후두염 및 후두기관염', code: 'J37' },
@@ -20211,9 +20702,12 @@ const KB_SURGERY_112_SECTIONS = [
       { num: '1', disease: '방광염', code: 'N30' },
       { num: '2', disease: '달리 분류되지 않은 방광의 신경근육기능장애', code: 'N31' },
       { num: '3', disease: '방광의 기타 장애', code: 'N32' },
-      { num: '4', disease: '달리 분류된 질환에서의 방광장애 [결핵성방광염(N33.0)제외]', code: 'N33 (N33.0제외)' },
-      { num: '5', disease: '달리 분류된 질환에서의 요도장애', code: 'N37' },
-      { num: '6', disease: '비뇨계통의 기타 장애 [스트레스요실금(N39.3)제외, 기타명시된요실금(N39.4)제외]', code: 'N39 (N39.3, N39.4제외)' }
+      { num: '4', disease: '달리 분류된 질환에서의 방광장애', code: 'N33' },
+      { num: '5', disease: '[결핵성방광염(N33.0)제외]', code: '(N33.0제외)' },
+      { num: '6', disease: '달리 분류된 질환에서의 요도장애', code: 'N37' },
+      { num: '7', disease: '비뇨계통의 기타 장애', code: 'N39' },
+      { num: '8', disease: '[스트레스요실금(N39.3)제외]', code: '(N39.3제외)' },
+      { num: '9', disease: '[기타명시된요실금(N39.4)제외]', code: '(N39.4제외)' }
     ]
   },
   {
@@ -20225,7 +20719,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[49대질병] 남성생식기관의 질환',
+    title: '[49대질병] 남성 생식기관의 질환',
     items: [
       { num: '1', disease: '음낭수종 및 정액류', code: 'N43' },
       { num: '2', disease: '고환의 염전', code: 'N44' },
@@ -20233,15 +20727,17 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
   {
-    title: '[49대질병] 여성골반내기관의 염증성 질환',
+    title: '[49대질병] 여성 골반내기관의 염증성 질환',
     items: [
       { num: '1', disease: '자궁경부를 제외한 자궁의 염증성 질환', code: 'N71' },
       { num: '2', disease: '자궁경부의 염증성 질환', code: 'N72' },
       { num: '3', disease: '기타 여성골반염증질환', code: 'N73' },
-      { num: '4', disease: '달리 분류된 질환에서의 여성골반염증장애 [자궁경부의결핵감염(N74.0)제외, 여성결핵성골반염증질환(N74.1)제외]', code: 'N74 (N74.0, N74.1제외)' },
-      { num: '5', disease: '바르톨린선의 질환', code: 'N75' },
-      { num: '6', disease: '질 및 외음부의 기타 염증', code: 'N76' },
-      { num: '7', disease: '달리 분류된 질환에서의 외음질의 궤양 및 염증', code: 'N77' }
+      { num: '4', disease: '달리 분류된 질환에서의 여성골반염증장애', code: 'N74' },
+      { num: '5', disease: '[자궁경부의결핵감염(N74.0)제외]', code: '(N74.0제외)' },
+      { num: '6', disease: '[여성결핵성골반염증질환(N74.1)제외]', code: '(N74.1제외)' },
+      { num: '7', disease: '바르톨린선의 질환', code: 'N75' },
+      { num: '8', disease: '질 및 외음부의 기타 염증', code: 'N76' },
+      { num: '9', disease: '달리 분류된 질환에서의 외음질의 궤양 및 염증', code: 'N77' }
     ]
   },
   {
@@ -20310,7 +20806,7 @@ const KB_SURGERY_112_SECTIONS = [
       { num: '1', disease: '각막의 양성 신생물', code: 'D31.1' },
       { num: '2', disease: '망막의 양성 신생물', code: 'D31.2' },
       { num: '3', disease: '맥락막의 양성 신생물', code: 'D31.3' },
-      { num: '4', disease: '섬모체의 양성 신생물', code: 'D31.4' }
+      { num: '4', disease: '성모체의 양성 신생물', code: 'D31.4' }
     ]
   },
   {
@@ -20366,7 +20862,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
 
-  // 별표 42-5 백내장 분류표
+  // 별표 17-5 백내장 분류표
   {
     title: '[백내장] 백내장',
     items: [
@@ -20376,7 +20872,7 @@ const KB_SURGERY_112_SECTIONS = [
     ]
   },
 
-  // 별표 42-6 치핵 분류표
+  // 별표 17-6 치핵 분류표
   {
     title: '[치핵] 치핵 및 항문주위 정맥혈전증',
     items: [
@@ -21713,6 +22209,178 @@ const KB_SURGERY_16_SECTIONS = [
   }
 ];
 
+// KB손해보험 20대 질병 분류표 [별표] 데이터
+const KB_SURGERY_20_SECTIONS = [
+  {
+    title: '당뇨병질환',
+    items: [
+      { num: '1', disease: '인슐린-의존당뇨병', code: 'E10' },
+      { num: '2', disease: '인슐린-비의존당뇨병', code: 'E11' },
+      { num: '3', disease: '영양실조 관련 당뇨병', code: 'E12' },
+      { num: '4', disease: '기타명시된 당뇨병', code: 'E13' },
+      { num: '5', disease: '상세불명의 당뇨병', code: 'E14' },
+      { num: '6', disease: '당뇨병성 단일신경병증', code: 'G59.0' },
+      { num: '7', disease: '당뇨병성 다발신경병증', code: 'G63.2' },
+      { num: '8', disease: '당뇨병성 백내장', code: 'H28.0' },
+      { num: '9', disease: '당뇨병성 망막병증', code: 'H36.0' },
+      { num: '10', disease: '당뇨병성 관절병증', code: 'M14.2' },
+      { num: '11', disease: '당뇨병에서의 사구체장애', code: 'N08.3' }
+    ]
+  },
+  {
+    title: '심장질환',
+    items: [
+      { num: '1', disease: '급성 류마티스열', code: 'I00 ~ I02' },
+      { num: '2', disease: '만성 류마티스 심장질환', code: 'I05 ~ I09' },
+      { num: '3', disease: '허혈성 심장질환', code: 'I20 ~ I25' },
+      { num: '4', disease: '폐성 심장병 및 폐순환의 질환', code: 'I26 ~ I28' },
+      { num: '5', disease: '기타 형태의 심장병', code: 'I30 ~ I52' }
+    ]
+  },
+  {
+    title: '고혈압질환',
+    items: [
+      { num: '1', disease: '본태성(일차성) 고혈압', code: 'I10' },
+      { num: '2', disease: '고혈압성 심장병', code: 'I11' },
+      { num: '3', disease: '고혈압성 신장질환', code: 'I12' },
+      { num: '4', disease: '고혈압성 심장 및 신장질환', code: 'I13' },
+      { num: '5', disease: '이차성 고혈압', code: 'I15' },
+      { num: '6', disease: '고혈압성 뇌병증', code: 'I67.4' },
+      { num: '7', disease: '고혈압성 망막병증', code: 'H35.02' }
+    ]
+  },
+  {
+    title: '뇌혈관질환',
+    items: [
+      { num: '1', disease: '뇌혈관 질환', code: 'I60 ~ I69' }
+    ]
+  },
+  {
+    title: '간 질 환',
+    items: [
+      { num: '1', disease: '바이러스 간염', code: 'B15 ~ B19' },
+      { num: '2', disease: '간의 질환', code: 'K70 ~ K77' }
+    ]
+  },
+  {
+    title: '위·십이지장궤양',
+    items: [
+      { num: '1', disease: '위궤양', code: 'K25 ~ K27' },
+      { num: '2', disease: '십이지장궤양', code: 'K25 ~ K27' },
+      { num: '3', disease: '상세불명부위의 소화성궤양', code: 'K25 ~ K27' }
+    ]
+  },
+  {
+    title: '갑상선질환',
+    items: [
+      { num: '1', disease: '갑상선의 장애', code: 'E00 ~ E07, E89.0' },
+      { num: '2', disease: '처치후 갑상선기능저하증', code: 'E00 ~ E07, E89.0' },
+      { num: '3', disease: '방사선조사후 갑상선기능저하증', code: 'E00 ~ E07, E89.0' },
+      { num: '4', disease: '수술후 갑상선기능저하증', code: 'E00 ~ E07, E89.0' }
+    ]
+  },
+  {
+    title: '동맥경화증',
+    items: [
+      { num: '1', disease: '죽상경화증', code: 'I70' }
+    ]
+  },
+  {
+    title: '만성하기도 질환',
+    items: [
+      { num: '1', disease: '급성인지 만성인지 명시되지 않은 기관지염', code: 'J40 ~ J42' },
+      { num: '2', disease: '단순성 및 점액농성 만성기관지염', code: 'J40 ~ J42' },
+      { num: '3', disease: '상세불명의 만성기관지염', code: 'J40 ~ J42' },
+      { num: '4', disease: '천식', code: 'J45' },
+      { num: '5', disease: '천식지속상태', code: 'J46' }
+    ]
+  },
+  {
+    title: '폐 렴',
+    items: [
+      { num: '1', disease: '달리 분류되지 않은 바이러스 폐렴', code: 'J12' },
+      { num: '2', disease: '폐렴연쇄구균에 의한 폐렴', code: 'J13' },
+      { num: '3', disease: '인플루엔자균에 의한 폐렴', code: 'J14' },
+      { num: '4', disease: '달리 분류되지 않은 세균 폐렴', code: 'J15' },
+      { num: '5', disease: '달리 분류되지 않은 기타 감염성 병원체에 의한 폐렴', code: 'J16' },
+      { num: '6', disease: '달리 분류된 질환에서의 폐렴', code: 'J17' },
+      { num: '7', disease: '상세불명 병원체의 폐렴', code: 'J18' },
+      { num: '8', disease: '재향군인병', code: 'A48.1' },
+      { num: '9', disease: '폐렴이 합병된 홍역', code: 'B05.2' }
+    ]
+  },
+  {
+    title: '관 절 염',
+    items: [
+      { num: '1', disease: '감염성 관절병증', code: 'M00 ~ M03' },
+      { num: '2', disease: '염증성 다발관절병증', code: 'M05 ~ M14' },
+      { num: '3', disease: '관절증', code: 'M15 ~ M19' },
+      { num: '4', disease: '기타 관절장애', code: 'M20 ~ M25' }
+    ]
+  },
+  {
+    title: '백 내 장',
+    items: [
+      { num: '1', disease: '노년성 백내장', code: 'H25' },
+      { num: '2', disease: '기타 백내장', code: 'H26' },
+      { num: '3', disease: '수정체의 기타장애', code: 'H27' }
+    ]
+  },
+  {
+    title: '녹 내 장',
+    items: [
+      { num: '1', disease: '녹내장', code: 'H40' },
+      { num: '2', disease: '달리 분류된 질환에서의 녹내장', code: 'H42' }
+    ]
+  },
+  {
+    title: '결 핵',
+    items: [
+      { num: '1', disease: '결핵', code: 'A15 ~ A19' },
+      { num: '2', disease: '결핵의 후유증', code: 'B90' }
+    ]
+  },
+  {
+    title: '신 부 전',
+    items: [
+      { num: '1', disease: '신부전', code: 'N17 ~ N19' }
+    ]
+  },
+  {
+    title: '생식기질환',
+    items: [
+      { num: '1', disease: '남생식기관의 질환 (남성 불임 제외)', code: 'N40~N45, N47~N51' },
+      { num: '2', disease: '여성골반내 기관의 염증성 질환', code: 'N70~N77' },
+      { num: '3', disease: '여성 생식기관의 비염증성 장애 (습관유산자, 여성불임, 인공수정 관련 합병증 제외)', code: 'N80~N95' },
+      { num: '4', disease: '달리 분류되지 않은 비뇨생식계통의 처치후 장애', code: 'N99' }
+    ]
+  },
+  {
+    title: '담 석 증',
+    items: [
+      { num: '1', disease: '담석증', code: 'K80' }
+    ]
+  },
+  {
+    title: '사타구니탈장',
+    items: [
+      { num: '1', disease: '사타구니탈장', code: 'K40' }
+    ]
+  },
+  {
+    title: '편 도 염',
+    items: [
+      { num: '1', disease: '편도 및 아데노이드의 만성 질환', code: 'J35' }
+    ]
+  },
+  {
+    title: '축 농 증',
+    items: [
+      { num: '1', disease: '만성 부비동염', code: 'J32' }
+    ]
+  }
+];
+
 // DB손해보험 120대 질병수술 상단 요약 분류표 데이터
 const DB_SURGERY_120_SUMMARY_SECTIONS = [
   {
@@ -22801,9 +23469,9 @@ const DB_SURGERY_120_SECTIONS = [
   }
 ];
 
-const normalizeString = (str: string) => {
-  if (!str) return '';
-  return str.replace(/[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]/g, '').toLowerCase();
+const normalizeString = (str: any) => {
+  if (str === null || str === undefined) return '';
+  return String(str).replace(/[^a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]/g, '').toLowerCase();
 };
 
 const escapeRegExp = (string: string) => {
@@ -22882,26 +23550,30 @@ export const INSURER_SUBTABS: Record<string, { id: string; label: string; groupC
     { id: 'samsung_111', label: '111대 질병수술' },
   ],
   'kb-ins': [
-    { id: 'kb_cancer', label: 'KB 통합암' },
-    { id: 'kb_cancer_metastasis', label: 'KB 원발암+전이암' },
-    { id: 'kb_metastasis', label: 'KB 통합전이암' },
-    { id: 'kb_specific_cancer2', label: 'KB 특정암(2)' },
-    { id: 'kb_10high_cancer', label: 'KB 10대고액암' },
-    { id: 'kb_brain', label: 'KB 뇌혈관질환' },
-    { id: 'kb_heart_1', label: '특정심장질환(1)' },
-    { id: 'kb_heart_2', label: '특정심장질환(2)' },
-    { id: 'kb_surgery1_5', label: 'KB 1-5종 수술' },
+    { id: 'kb_cancer', label: '통합암(유사암제외)', groupCount: '9개 그룹' },
+    { id: 'kb_cancer_metastasis', label: '통합암(전이포함)', groupCount: '9개 그룹' },
+    { id: 'kb_metastasis', label: '통합전이암', groupCount: '7개 그룹' },
+    { id: 'kb_specific_cancer2', label: '특정암분류표' },
+    { id: 'kb_10high_cancer', label: '10대고액암' },
+    { id: 'kb_brain', label: '통합뇌질병' },
+    { id: 'kb_heart_1', label: '심장질환특정(I/II)' },
+    { id: 'kb_surgery1_5', label: '1-5종수술비' },
     { id: 'kb_integrated_treatment', label: '질병통합치료비' },
     { id: 'kb_surgery14', label: '14대 질병수술' },
     { id: 'kb_surgery16', label: '16대 질병수술' },
+    { id: 'kb_surgery20', label: '20대 질병수술' },
     { id: 'kb_surgery21', label: '21대 질병수술' },
     { id: 'kb_surgery101', label: '101대 질병수술' },
     { id: 'kb_surgery112', label: '112대 질병수술' },
     { id: 'kb_surgery116', label: '116대 질병수술' },
   ],
   'meritz-fire': [
-    { id: 'meritz_integrated_cancer', label: '통합암' },
-    { id: 'meritz_integrated_cancer_metastasis', label: '통합전이암' },
+    { id: 'meritz_integrated_cancer', label: '통합암(유사암제외)' },
+    { id: 'meritz_integrated_cancer_metastasis', label: '통합암(전이포함)' },
+    { id: 'meritz_integrated_treatment', label: '암통합치료비(기본형)' },
+    { id: 'meritz_practical_treatment', label: '암통합치료비(실속형)' },
+    { id: 'meritz_noncovered_treatment', label: '암통합치료비(비급여)' },
+    { id: 'meritz_noncovered_primary_treatment', label: '암통합치료비(비급여/주요치료)' },
     { id: 'meritz_surgery1_5', label: '1-5종 수술' },
     { id: 'meritz_surgery1_5_old', label: '구 1-5종 수술' },
     { id: 'meritz_7diseases', label: '7대 질병' },
@@ -22912,7 +23584,7 @@ export const INSURER_SUBTABS: Record<string, { id: string; label: string; groupC
     { id: 'meritz_82diseases', label: '82대 질병' },
     { id: 'meritz_131diseases', label: '131대 질병' },
     { id: 'meritz_6heart', label: '6대 심장질환' },
-    { id: 'meritz_5diseases', label: '5대 질병' },
+    { id: 'meritz_5diseases_surgery', label: '5대질환수술비' },
   ],
   'hanwha-general': [
     { id: 'hanwha_integrated_cancer', label: '여성통합암' },
@@ -23001,6 +23673,13 @@ const getSummaryForSubTab = (insurerId: string, subTabId: string, brainSubTab: s
     if (subTabId === 'hanwha_integrated_cancer_primary') return HANWHA_WOMEN_PRIMARY_CANCER_SUMMARY;
     if (subTabId === 'hanwha_integrated_metastatic_cancer') return HANWHA_WOMEN_METASTATIC_CANCER_SUMMARY;
   }
+  if (insurerId === 'meritz-fire') {
+    if (subTabId === 'meritz_5diseases' || subTabId === 'meritz_5diseases_surgery') return MERITZ_5_DISEASES_SUMMARY;
+    if (subTabId === 'meritz_integrated_treatment') return MERITZ_INTEGRATED_TREATMENT_SUMMARY;
+    if (subTabId === 'meritz_practical_treatment') return MERITZ_PRACTICAL_TREATMENT_SUMMARY;
+    if (subTabId === 'meritz_noncovered_treatment') return MERITZ_NONCOVERED_TREATMENT_SUMMARY;
+    if (subTabId === 'meritz_noncovered_primary_treatment') return MERITZ_NONCOVERED_PRIMARY_TREATMENT_SUMMARY;
+  }
   if (insurerId === 'hyundai-marine') {
     if (subTabId === 'hyundai_male_cancer') return HYUNDAI_MALE_CANCER_SUMMARY;
     if (subTabId === 'hyundai_female_cancer') return HYUNDAI_FEMALE_CANCER_SUMMARY;
@@ -23030,6 +23709,11 @@ export default function TermsMaster() {
   // Classification sub tabs
   const [activeSubTab, setActiveSubTab] = useState<string | null>(null);
   const [hyundaiBrainSubTab, setHyundaiBrainSubTab] = useState<'1' | '2'>('1');
+  const [kbIntegratedTab, setKbIntegratedTab] = useState<'practical' | 'basic' | 'luxury'>('practical');
+  const [meritzIntegratedTreatmentTab, setMeritzIntegratedTreatmentTab] = useState<'40m' | '80m' | '100m'>('40m');
+  const [meritzPracticalTreatmentTab, setMeritzPracticalTreatmentTab] = useState<'10m' | '30m' | '50m' | '70m'>('10m');
+  const [meritzNoncoveredTreatmentTab, setMeritzNoncoveredTreatmentTab] = useState<'40m' | '70m' | '100m'>('40m');
+  const [meritzNoncoveredPrimaryTreatmentTab, setMeritzNoncoveredPrimaryTreatmentTab] = useState<'30m' | '50m' | '70m'>('30m');
 
   // 롯데손해보험 통합암 상태값
   const [expandedLotteCancerSections, setExpandedLotteCancerSections] = useState<Record<number, boolean>>({});
@@ -23833,7 +24517,8 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             (item.disease && item.disease.toLowerCase().includes(q)) ||
             (item.name && item.name.toLowerCase().includes(q)) ||
             (item.code && item.code.toLowerCase().includes(q)) ||
-            (item.grade && item.grade.toLowerCase().includes(q))
+            (item.grade && item.grade.toLowerCase().includes(q)) ||
+            (item.num && item.num.toLowerCase().includes(q))
           )
       );
       return titleMatch || itemMatch;
@@ -23861,6 +24546,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
   const filteredKbSurgery1_5Sections = safeFilter(KB_SURGERY_1_5_SECTIONS);
   const filteredKbSurgery14Sections = safeFilter(KB_SURGERY_14_SECTIONS);
   const filteredKbSurgery16Sections = safeFilter(KB_SURGERY_16_SECTIONS);
+  const filteredKbSurgery20Sections = filterSurgerySections(KB_SURGERY_20_SECTIONS);
   const filteredKbSurgery21Sections = filterSurgerySections(KB_SURGERY_21_SECTIONS);
   const filteredKbSurgery101Sections = filterSurgerySections(KB_SURGERY_101_SECTIONS);
   const filteredKbSurgery112Sections = filterSurgerySections(KB_SURGERY_112_SECTIONS);
@@ -23906,6 +24592,976 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 
     const query = normalizeString(detailFilter);
     const summaries = normalizeSummarySections(summarySections || allSections);
+
+    if (tabKey === 'meritz_integrated_treatment') {
+      const typeLabel = meritzIntegratedTreatmentTab === '40m' ? '암통합치료비(4천)'
+                      : meritzIntegratedTreatmentTab === '80m' ? '암통합치료비(8천)'
+                      : '암통합치료비(1억)';
+      const guaranteeAmountLabel = meritzIntegratedTreatmentTab === '40m' ? '4,000만원'
+                                  : meritzIntegratedTreatmentTab === '80m' ? '8,000만원'
+                                  : '1억원';
+      const curTitle = `메리츠화재 - 암통합치료비(기본형) (${typeLabel})`;
+      const clauseNum = '2-86. 암 통합치료비(기본형)(건강가입)보장 특별약관';
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredItems = MERITZ_INTEGRATED_TREATMENT_ITEMS.filter((item) => {
+        if (!queryStr) return true;
+        const amount = item[meritzIntegratedTreatmentTab];
+        return (
+          normalizeString(item.category).includes(queryStr) ||
+          normalizeString(item.name).includes(queryStr) ||
+          normalizeString(item.count).includes(queryStr) ||
+          normalizeString(amount).includes(queryStr)
+        );
+      });
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection (암통합치료비 4천 / 8천 / 1억) - PDF 다운로드란 위 */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-3xs">
+            <button
+              onClick={() => {
+                setMeritzIntegratedTreatmentTab('40m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzIntegratedTreatmentTab === '40m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(4천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzIntegratedTreatmentTab('80m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzIntegratedTreatmentTab === '80m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(8천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzIntegratedTreatmentTab('100m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzIntegratedTreatmentTab === '100m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(1억)
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, MERITZ_INTEGRATED_TREATMENT_SUMMARY, MERITZ_INTEGRATED_TREATMENT_ITEMS)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`${typeLabel} 내 검색 (통합치료항목, 지급횟수, 금액 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. 상단 요약 분류표 (약관 및 보장 개요) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">📋 상단 요약 분류표 - {clauseNum}</span>
+              <span className="text-[11px] font-bold text-amber-300">보험가입금액 {guaranteeAmountLabel}</span>
+            </div>
+            
+
+
+            <div className="p-3 bg-slate-100/80 border-b border-slate-200 text-xs font-black text-slate-900 flex items-center justify-between">
+              <span>📌 주요 보장 영역 요약 ({typeLabel})</span>
+              <span className="text-[11px] font-bold text-slate-500">총 5개 주요 구분</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 text-xs bg-slate-50/50">
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">1. 검사 (8종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">급여 암검사 (MRI, CT, PET, NGS 등)</div>
+              </div>
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">2. 주요 치료 (7종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">수술, 항암방사선, 항암약물 등</div>
+              </div>
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">3. 비급여 치료 (5종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">로봇수술, 표적/면역항암, 양성자</div>
+              </div>
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">4. 통증완화 (1종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">특정통증완화치료(급여)</div>
+              </div>
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">5. 재활치료 (2종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">입원/외래 암 재활치료(급여)</div>
+              </div>
+            </div>
+          </div>
+
+          {/* 5. 하단 세부 분류표 (상세 항목 및 금액 표) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">&lt;보장항목 및 지급금액 표&gt; (보험가입금액 {guaranteeAmountLabel})</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {filteredItems.length}개 보장 항목
+              </span>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[18%]">구분</th>
+                    <th className="py-2.5 px-4 border-r border-slate-200 text-left w-[44%]">통합치료항목</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[20%]">지급횟수</th>
+                    <th className="py-2.5 px-3 text-center w-[18%] bg-teal-50/70 text-[#123941]">지급금액 ({guaranteeAmountLabel})</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredItems.map((item, idx) => {
+                    const amount = item[meritzIntegratedTreatmentTab];
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                        <td className="py-2.5 px-3 font-bold text-slate-700 text-center border-r border-slate-200/80 bg-slate-50/60 align-middle">
+                          <span className="inline-block px-2 py-0.5 rounded-md bg-slate-200/80 text-slate-800 text-[11px] font-extrabold">
+                            {highlightText(item.category)}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-4 font-black text-slate-900 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.name)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-bold text-slate-700 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.count)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-black text-[#123941] bg-teal-50/40 align-middle text-sm">
+                          {highlightText(amount)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (tabKey === 'meritz_practical_treatment') {
+      const typeLabel = meritzPracticalTreatmentTab === '10m' ? '암통합치료비(1천)'
+                      : meritzPracticalTreatmentTab === '30m' ? '암통합치료비(3천)'
+                      : meritzPracticalTreatmentTab === '50m' ? '암통합치료비(5천)'
+                      : '암통합치료비(7천)';
+      const guaranteeAmountLabel = meritzPracticalTreatmentTab === '10m' ? '1,000만원'
+                                  : meritzPracticalTreatmentTab === '30m' ? '3,000만원'
+                                  : meritzPracticalTreatmentTab === '50m' ? '5,000만원'
+                                  : '7,000만원';
+      const curTitle = `메리츠화재 - 암통합치료비(실속형) (${typeLabel})`;
+      const clauseNum = '2-87. 암 통합치료비(실속형)(건강가입)보장 특별약관';
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredItems = MERITZ_PRACTICAL_TREATMENT_ITEMS.filter((item) => {
+        if (!queryStr) return true;
+        const amount = item[meritzPracticalTreatmentTab];
+        return (
+          normalizeString(item.category).includes(queryStr) ||
+          normalizeString(item.name).includes(queryStr) ||
+          normalizeString(item.count).includes(queryStr) ||
+          normalizeString(amount).includes(queryStr)
+        );
+      });
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection (암통합치료비 1천 / 3천 / 5천 / 7천) - PDF 다운로드란 위 */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-3xs">
+            <button
+              onClick={() => {
+                setMeritzPracticalTreatmentTab('10m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzPracticalTreatmentTab === '10m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(1천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzPracticalTreatmentTab('30m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzPracticalTreatmentTab === '30m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(3천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzPracticalTreatmentTab('50m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzPracticalTreatmentTab === '50m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(5천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzPracticalTreatmentTab('70m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzPracticalTreatmentTab === '70m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(7천)
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, MERITZ_PRACTICAL_TREATMENT_SUMMARY, MERITZ_PRACTICAL_TREATMENT_ITEMS)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`${typeLabel} 내 검색 (통합치료항목, 지급횟수, 금액 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. 상단 요약 분류표 (약관 및 보장 개요) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">📋 상단 요약 분류표 - {clauseNum}</span>
+              <span className="text-[11px] font-bold text-amber-300">보험가입금액 {guaranteeAmountLabel}</span>
+            </div>
+
+            <div className="p-3 bg-slate-100/80 border-b border-slate-200 text-xs font-black text-slate-900 flex items-center justify-between">
+              <span>📌 주요 보장 영역 요약 ({typeLabel})</span>
+              <span className="text-[11px] font-bold text-slate-500">총 2개 주요 구분</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 text-xs bg-slate-50/50">
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">1. 주요 치료 (6종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">수술, 항암방사선, 항암약물 등</div>
+              </div>
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">2. 비급여 치료 (3종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">표적/면역항암, 양성자방사선</div>
+              </div>
+            </div>
+          </div>
+
+          {/* 5. 하단 세부 분류표 (상세 항목 및 금액 표) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">&lt;보장항목 및 지급금액 표&gt; (보험가입금액 {guaranteeAmountLabel})</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {filteredItems.length}개 보장 항목
+              </span>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[18%]">구분</th>
+                    <th className="py-2.5 px-4 border-r border-slate-200 text-left w-[44%]">통합치료항목</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[20%]">지급횟수</th>
+                    <th className="py-2.5 px-3 text-center w-[18%] bg-teal-50/70 text-[#123941]">지급금액 ({guaranteeAmountLabel})</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredItems.map((item, idx) => {
+                    const amount = item[meritzPracticalTreatmentTab];
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                        <td className="py-2.5 px-3 font-bold text-slate-700 text-center border-r border-slate-200/80 bg-slate-50/60 align-middle">
+                          <span className="inline-block px-2 py-0.5 rounded-md bg-slate-200/80 text-slate-800 text-[11px] font-extrabold">
+                            {highlightText(item.category)}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-4 font-black text-slate-900 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.name)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-bold text-slate-700 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.count)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-black text-[#123941] bg-teal-50/40 align-middle text-sm">
+                          {highlightText(amount)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (tabKey === 'meritz_noncovered_treatment') {
+      const typeLabel = meritzNoncoveredTreatmentTab === '40m' ? '암통합치료비(4천)'
+                      : meritzNoncoveredTreatmentTab === '70m' ? '암통합치료비(7천)'
+                      : '암통합치료비(1억)';
+      const guaranteeAmountLabel = meritzNoncoveredTreatmentTab === '40m' ? '4,000만원'
+                                  : meritzNoncoveredTreatmentTab === '70m' ? '7,000만원'
+                                  : '1억원';
+      const curTitle = `메리츠화재 - 암통합치료비(비급여) (${typeLabel})`;
+      const clauseNum = '2-94. 암 통합치료비II(비급여(전액본인부담 포함))(건강가입)보장 특별약관';
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredItems = MERITZ_NONCOVERED_TREATMENT_ITEMS.filter((item) => {
+        if (!queryStr) return true;
+        const amountUnder = meritzNoncoveredTreatmentTab === '40m' ? item['40m_under']
+                          : meritzNoncoveredTreatmentTab === '70m' ? item['70m_under']
+                          : item['100m_under'];
+        const amountOver = meritzNoncoveredTreatmentTab === '40m' ? item['40m_over']
+                         : meritzNoncoveredTreatmentTab === '70m' ? item['70m_over']
+                         : item['100m_over'];
+        return (
+          normalizeString(item.category).includes(queryStr) ||
+          normalizeString(item.name).includes(queryStr) ||
+          normalizeString(item.count).includes(queryStr) ||
+          normalizeString(amountUnder).includes(queryStr) ||
+          normalizeString(amountOver).includes(queryStr)
+        );
+      });
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection (암통합치료비(4천) / 암통합치료비(7천) / 암통합치료비(1억)) - PDF 다운로드란 위 */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-3xs">
+            <button
+              onClick={() => {
+                setMeritzNoncoveredTreatmentTab('40m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzNoncoveredTreatmentTab === '40m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(4천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzNoncoveredTreatmentTab('70m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzNoncoveredTreatmentTab === '70m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(7천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzNoncoveredTreatmentTab('100m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzNoncoveredTreatmentTab === '100m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(1억)
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, MERITZ_NONCOVERED_TREATMENT_SUMMARY, MERITZ_NONCOVERED_TREATMENT_ITEMS)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`${typeLabel} 내 검색 (통합치료항목, 지급횟수, 금액 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. 상단 요약 분류표 (약관 및 보장 개요) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">📋 상단 요약 분류표 - {clauseNum}</span>
+              <span className="text-[11px] font-bold text-amber-300">보험가입금액 {guaranteeAmountLabel}</span>
+            </div>
+
+            <div className="p-3 bg-slate-100/80 border-b border-slate-200 text-xs font-black text-slate-900 flex items-center justify-between">
+              <span>📌 주요 보장 영역 요약 ({typeLabel})</span>
+              <span className="text-[11px] font-bold text-slate-500">총 2개 주요 구분</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 text-xs bg-slate-50/50">
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">1. 주요 치료 (6종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">비급여 수술, 항암방사선, 항암약물 등</div>
+              </div>
+              <div className="p-3 space-y-1">
+                <div className="font-extrabold text-[#123941] text-[11px]">2. 특정 치료 (5종)</div>
+                <div className="text-[11px] text-slate-600 font-bold">다빈치로봇수술, 표적/면역항암, 양성자방사선</div>
+              </div>
+            </div>
+          </div>
+
+          {/* 5. 하단 세부 분류표 (상세 항목 및 금액 표) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">&lt;보장항목 및 지급금액 표&gt; (보험가입금액 {guaranteeAmountLabel})</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {filteredItems.length}개 보장 항목
+              </span>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[14%]">구분</th>
+                    <th className="py-2.5 px-4 border-r border-slate-200 text-left w-[42%]">통합치료항목</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[14%]">지급횟수</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[15%] bg-amber-50/80 text-amber-900">1년 경과전일 이전 (50%)</th>
+                    <th className="py-2.5 px-3 text-center w-[15%] bg-teal-50/80 text-[#123941]">1년 경과시점 이후 (100%)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredItems.map((item, idx) => {
+                    const amountUnder = meritzNoncoveredTreatmentTab === '40m' ? item['40m_under']
+                                      : meritzNoncoveredTreatmentTab === '70m' ? item['70m_under']
+                                      : item['100m_under'];
+                    const amountOver = meritzNoncoveredTreatmentTab === '40m' ? item['40m_over']
+                                     : meritzNoncoveredTreatmentTab === '70m' ? item['70m_over']
+                                     : item['100m_over'];
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                        <td className="py-2.5 px-3 font-bold text-slate-700 text-center border-r border-slate-200/80 bg-slate-50/60 align-middle">
+                          <span className={`inline-block px-2 py-0.5 rounded-md text-[11px] font-extrabold ${
+                            item.category === '주요 치료' ? 'bg-blue-100/80 text-blue-900' : 'bg-purple-100/80 text-purple-900'
+                          }`}>
+                            {highlightText(item.category)}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-4 font-black text-slate-900 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.name)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-bold text-slate-700 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.count)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-extrabold text-amber-800 bg-amber-50/30 border-r border-slate-200/80 align-middle text-xs">
+                          {highlightText(amountUnder)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-black text-[#123941] bg-teal-50/40 align-middle text-sm">
+                          {highlightText(amountOver)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* 약관 유의사항 / 보장 관련 참고사항 */}
+            <div className="p-3.5 bg-slate-50 border-t border-slate-200 text-[11px] text-slate-600 space-y-1.5 font-medium leading-relaxed">
+              <p className="font-extrabold text-slate-800">[유의사항 및 보장 기준]</p>
+              <p>• <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.</p>
+              <p>• <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.</p>
+              <p>• <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (tabKey === 'meritz_noncovered_primary_treatment') {
+      const typeLabel = meritzNoncoveredPrimaryTreatmentTab === '30m' ? '암통합치료비(3천)'
+                      : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '암통합치료비(5천)'
+                      : '암통합치료비(7천)';
+      const guaranteeAmountLabel = meritzNoncoveredPrimaryTreatmentTab === '30m' ? '3,000만원'
+                                  : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '5,000만원'
+                                  : '7,000만원';
+      const curTitle = `메리츠화재 - 암통합치료비(비급여/주요치료) (${typeLabel})`;
+      const clauseNum = '2-96. 암 통합치료비(주요치료)(비급여(전액본인부담 포함))(건강가입)보장 특별약관';
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredItems = MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.filter((item) => {
+        if (!queryStr) return true;
+        const amountUnder = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_under']
+                          : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_under']
+                          : item['70m_under'];
+        const amountOver = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_over']
+                         : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_over']
+                         : item['70m_over'];
+        return (
+          normalizeString(item.category).includes(queryStr) ||
+          normalizeString(item.name).includes(queryStr) ||
+          normalizeString(item.count).includes(queryStr) ||
+          normalizeString(amountUnder).includes(queryStr) ||
+          normalizeString(amountOver).includes(queryStr)
+        );
+      });
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection (암통합치료비(3천) / 암통합치료비(5천) / 암통합치료비(7천)) - PDF 다운로드란 위 */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-3xs">
+            <button
+              onClick={() => {
+                setMeritzNoncoveredPrimaryTreatmentTab('30m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzNoncoveredPrimaryTreatmentTab === '30m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(3천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzNoncoveredPrimaryTreatmentTab('50m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzNoncoveredPrimaryTreatmentTab === '50m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(5천)
+            </button>
+            <button
+              onClick={() => {
+                setMeritzNoncoveredPrimaryTreatmentTab('70m');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                meritzNoncoveredPrimaryTreatmentTab === '70m'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              암통합치료비(7천)
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, MERITZ_NONCOVERED_PRIMARY_TREATMENT_SUMMARY, MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`${typeLabel} 내 검색 (통합치료항목, 지급횟수, 금액 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. 상단 요약 분류표 (약관 및 보장 개요) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">📋 상단 요약 분류표 - {clauseNum}</span>
+              <span className="text-[11px] font-bold text-amber-300">보험가입금액 {guaranteeAmountLabel}</span>
+            </div>
+
+            <div className="p-3 bg-slate-100/80 border-b border-slate-200 text-xs font-black text-slate-900 flex items-center justify-between">
+              <span>📌 주요 보장 영역 요약 ({typeLabel})</span>
+              <span className="text-[11px] font-bold text-slate-500">주요 치료 6종 항목</span>
+            </div>
+
+            <div className="p-3 text-xs bg-slate-50/50 space-y-1">
+              <div className="font-extrabold text-[#123941] text-[11px]">주요 치료 (6종)</div>
+              <div className="text-[11px] text-slate-600 font-bold">비급여 수술(암/유사암), 비급여 항암방사선치료(암/기타피부·갑상선암), 비급여 항암약물치료(암/기타피부·갑상선암)</div>
+            </div>
+          </div>
+
+          {/* 5. 하단 세부 분류표 (상세 항목 및 금액 표) */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">&lt;보장항목 및 지급금액 표&gt; (보험가입금액 {guaranteeAmountLabel})</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {filteredItems.length}개 보장 항목
+              </span>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[14%]">구분</th>
+                    <th className="py-2.5 px-4 border-r border-slate-200 text-left w-[42%]">통합치료항목</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[14%]">지급횟수</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[15%] bg-amber-50/80 text-amber-900">1년 경과전일 이전 (50%)</th>
+                    <th className="py-2.5 px-3 text-center w-[15%] bg-teal-50/80 text-[#123941]">1년 경과시점 이후 (100%)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredItems.map((item, idx) => {
+                    const amountUnder = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_under']
+                                      : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_under']
+                                      : item['70m_under'];
+                    const amountOver = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_over']
+                                     : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_over']
+                                     : item['70m_over'];
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                        <td className="py-2.5 px-3 font-bold text-slate-700 text-center border-r border-slate-200/80 bg-slate-50/60 align-middle">
+                          <span className="inline-block px-2 py-0.5 rounded-md text-[11px] font-extrabold bg-blue-100/80 text-blue-900">
+                            {highlightText(item.category)}
+                          </span>
+                        </td>
+                        <td className="py-2.5 px-4 font-black text-slate-900 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.name)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-bold text-slate-700 border-r border-slate-200/80 align-middle">
+                          {highlightText(item.count)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-extrabold text-amber-800 bg-amber-50/30 border-r border-slate-200/80 align-middle text-xs">
+                          {highlightText(amountUnder)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-black text-[#123941] bg-teal-50/40 align-middle text-sm">
+                          {highlightText(amountOver)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* 약관 유의사항 / 보장 관련 참고사항 */}
+            <div className="p-3.5 bg-slate-50 border-t border-slate-200 text-[11px] text-slate-600 space-y-1.5 font-medium leading-relaxed">
+              <p className="font-extrabold text-slate-800">[유의사항 및 보장 기준]</p>
+              <p>• <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.</p>
+              <p>• <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.</p>
+              <p>• <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (tabKey === 'kb_integrated_treatment') {
+      const typeLabel = kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형';
+      const curTitle = `KB손해보험 - 질병통합치료비(${typeLabel})`;
+      const clauseNum = kbIntegratedTab === 'practical' ? '237. 질병통합치료비(실속형)(맞춤고지) / 237-1. 질병통합치료비(실속형)(맞춤고지) 【갱신계약】'
+                      : kbIntegratedTab === 'basic' ? '238. 질병통합치료비(기본형)(맞춤고지) / 238-1. 질병통합치료비(기본형)(맞춤고지) 【갱신계약】'
+                      : '239. 질병통합치료비(고급형)(맞춤고지) / 239-1. 질병통합치료비(고급형)(맞춤고지) 【갱신계약】';
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredItems = KB_INTEGRATED_TREATMENT_ITEMS.filter((item) => {
+        if (!queryStr) return true;
+        const amounts = item[kbIntegratedTab];
+        return (
+          normalizeString(item.category).includes(queryStr) ||
+          normalizeString(item.name).includes(queryStr) ||
+          normalizeString(item.method).includes(queryStr) ||
+          normalizeString(amounts.under1yr).includes(queryStr) ||
+          normalizeString(amounts.over1yr).includes(queryStr) ||
+          normalizeString(amounts.renew).includes(queryStr)
+        );
+      });
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection for KB 질병통합치료비 (실속형 / 기본형 / 고급형) */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <button
+              onClick={() => {
+                setKbIntegratedTab('practical');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                kbIntegratedTab === 'practical'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              실속형
+            </button>
+            <button
+              onClick={() => {
+                setKbIntegratedTab('basic');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                kbIntegratedTab === 'basic'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              기본형
+            </button>
+            <button
+              onClick={() => {
+                setKbIntegratedTab('luxury');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                kbIntegratedTab === 'luxury'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              고급형
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, [], KB_INTEGRATED_TREATMENT_ITEMS)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`질병통합치료비(${typeLabel}) 내 검색 (보장항목, 지급방식 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. Header Clause Title & Notice */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
+            <div className="font-black text-[#123941] text-sm mb-1 flex items-center gap-1.5">
+              <span>{clauseNum}</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              (【갱신계약】은 자동갱신으로 운영합니다) <br/>
+              제1조(보험금의 지급사유): 회사는 피보험자가 특별약관의 보험기간 중 질병의 진단 및 치료를 위한 필요소견을 토대로 해당되는 의료행위를 받은 경우 보장항목별로 각각 정해진 지급금액을 지급합니다.
+            </p>
+          </div>
+
+          {/* 5. Main Table for KB 질병통합치료비 */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">&lt;{typeLabel}&gt; 보장항목 및 지급금액 표</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {filteredItems.length}개 보장 항목
+              </span>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th rowSpan={2} className="py-2.5 px-3 border-r border-slate-200 text-center w-[22%]">구분</th>
+                    <th rowSpan={2} className="py-2.5 px-3 border-r border-slate-200 text-left w-[28%]">보장항목</th>
+                    <th rowSpan={2} className="py-2.5 px-3 border-r border-slate-200 text-center w-[14%]">지급방식</th>
+                    <th colSpan={3} className="py-1.5 px-3 text-center bg-slate-200/80 font-black">지급금액</th>
+                  </tr>
+                  <tr className="bg-slate-50 text-slate-900 font-black text-[11px] border-b border-slate-200">
+                    <th className="py-1.5 px-2 text-center border-r border-slate-200/80 w-[12%]">최초의 계약<br/>1년미만</th>
+                    <th className="py-1.5 px-2 text-center border-r border-slate-200/80 w-[12%]">최초의 계약<br/>1년이상</th>
+                    <th className="py-1.5 px-2 text-center w-[12%]">갱신된<br/>계약</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredItems.map((item, idx) => {
+                    const amounts = item[kbIntegratedTab];
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                        <td className="py-2.5 px-3 font-bold text-slate-700 text-center border-r border-slate-200/80 bg-slate-50/50">
+                          {highlightText(item.category)}
+                        </td>
+                        <td className="py-2.5 px-3 font-black text-slate-900 border-r border-slate-200/80">
+                          {highlightText(item.name)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-bold text-slate-600 border-r border-slate-200/80">
+                          {highlightText(item.method)}
+                        </td>
+                        <td className="py-2.5 px-2 text-center font-bold text-slate-800 border-r border-slate-200/80">
+                          {highlightText(amounts.under1yr)}
+                        </td>
+                        <td className="py-2.5 px-2 text-center font-extrabold text-[#123941] border-r border-slate-200/80 bg-teal-50/30">
+                          {highlightText(amounts.over1yr)}
+                        </td>
+                        <td className="py-2.5 px-2 text-center font-extrabold text-[#123941] bg-teal-50/30">
+                          {highlightText(amounts.renew)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 6. Special Provisions Notice Box */}
+          <div className="p-4 bg-slate-900 text-slate-200 rounded-2xl space-y-3 shadow-lg border border-slate-800">
+            <h4 className="font-extrabold text-white text-xs sm:text-sm border-b border-slate-700 pb-2 flex items-center gap-2">
+              <span className="w-2 h-4 bg-amber-400 rounded-xs"></span>
+              【제2조(보험금 지급에 관한 세부규정)】
+            </h4>
+            <div className="text-[11px] leading-relaxed space-y-1.5 text-slate-300 font-medium">
+              <p>1. "질병통합치료(수술)"의 경우 회사는 피보험자가 동시에 두 종류 이상의 질병수술을 받은 경우에는 그 수술 중 가장 높은 지급금액에 해당하는 한 종류의 수술에 대하여만 보장합니다.</p>
+              <p>2. 동일한 신체부위라 함은 각각 눈, 귀, 코, 씹어먹거나 말하는 기능과 관련된 신체부위, 머리, 목, 척추(등뼈), 체간골, 흉부장기·복부장기·비뇨생식기, 팔, 다리, 손가락, 발가락을 말하며, 눈, 귀, 팔, 다리는 좌·우를 각각 다른 신체부위로 봅니다.</p>
+              <p>3. 피보험자가 연간 1년 이내에 각각 다른 "질병특정시술치료(도수정복술)" / "질병특정시술치료(기타시술)" / "질병특정시술치료(단순창상봉합술)" 등을 받은 경우에도 부위 및 횟수와 관계없이 보장항목별로 연간 1회만 지급합니다.</p>
+              <p>4. 지속적신대체요법(CRRT), 인공호흡기(12시간초과)치료, 저체온요법치료, 종합병원 전신마취치료(6시간이상) 등을 받은 경우에도 각 보장항목별 부위 및 횟수와 관계없이 규정에 따라 지급합니다.</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
 
     if (tabKey === 'db_integrated_heart' || tabKey === 'db_heart_1' || tabKey === 'db_heart_2') {
       const isHeart1 = dbHeartTab === 'I';
@@ -24133,6 +25789,180 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </p>
             <p className="pl-2">
               4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서를 따릅니다.
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    if (tabKey === 'kb_heart_1' || tabKey === 'kb_heart_2' || tabKey === 'kb_heart') {
+      const isHeart1 = kbHeartTab === 'specific1';
+      const curTitle = isHeart1
+        ? 'KB손해보험 - 【별표35】 심장질환(특정 I) 분류표'
+        : 'KB손해보험 - 【별표36】 심장질환(특정 II) 분류표';
+      const curSections = isHeart1 ? KB_HEART_SPECIFIC1_SECTIONS : KB_HEART_SPECIFIC2_SECTIONS;
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredHeartSections = curSections.map((sec) => {
+        const matchingItems = (sec.items || []).filter((item: any) => {
+          if (!queryStr) return true;
+          return (
+            normalizeString(item.num || '').includes(queryStr) ||
+            normalizeString(item.disease || item.name || '').includes(queryStr) ||
+            normalizeString(item.code || '').includes(queryStr) ||
+            normalizeString(sec.title || '').includes(queryStr)
+          );
+        });
+
+        const isTitleMatch = !queryStr || normalizeString(sec.title || '').includes(queryStr);
+
+        return {
+          ...sec,
+          matchingItems: isTitleMatch ? sec.items : matchingItems,
+          isMatch: isTitleMatch || matchingItems.length > 0
+        };
+      }).filter((sec) => sec.isMatch);
+
+      const totalDetailItemsCount = filteredHeartSections.reduce((acc, sec) => acc + sec.matchingItems.length, 0);
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection for 심장질환특정I and 심장질환특정II (PDF 다운로드란 위에 위치) */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <button
+              onClick={() => {
+                setKbHeartTab('specific1');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                kbHeartTab === 'specific1'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              심장질환특정I
+            </button>
+            <button
+              onClick={() => {
+                setKbHeartTab('specific2');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                kbHeartTab === 'specific2'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              심장질환특정II
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`${isHeart1 ? '심장질환특정I' : '심장질환특정II'} 내 검색 (질병명, KCD 분류번호 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 text-xs font-medium bg-white rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#123941]/20 focus:border-[#123941] transition-all shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-0.5 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+
+          {/* Search results count if filtered */}
+          {detailFilter && (
+            <div className="no-print px-1 flex items-center justify-between text-xs text-slate-500 font-medium">
+              <span>검색 결과 {totalDetailItemsCount}개</span>
+            </div>
+          )}
+
+          {/* Detail Table */}
+          {filteredHeartSections.length > 0 ? (
+            filteredHeartSections.map((sec, secIdx) => (
+              <div key={secIdx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs">
+                <div className="px-4 py-3 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+                  <h3 className="text-xs font-black text-[#123941] flex items-center gap-2">
+                    <span className="w-1.5 h-3.5 bg-[#123941] rounded-full"></span>
+                    {sec.title}
+                  </h3>
+                  <span className="text-[11px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded-lg border border-slate-200">
+                    {sec.matchingItems.length}개 항목
+                  </span>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs text-left border-collapse">
+                    <thead>
+                      <tr className="bg-slate-100/70 border-b border-slate-200 text-slate-600 font-bold text-[11px]">
+                        <th className="py-2.5 px-4 w-16 text-center border-r border-slate-200">번호</th>
+                        <th className="py-2.5 px-4 border-r border-slate-200">대상이 되는 항목</th>
+                        <th className="py-2.5 px-4 w-32 text-center">분류번호</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {sec.matchingItems.map((item: any, itemIdx: number) => (
+                        <tr key={itemIdx} className="hover:bg-slate-50/80 transition-colors">
+                          <td className="py-2.5 px-4 text-center font-medium text-slate-400 border-r border-slate-100">
+                            {item.num}
+                          </td>
+                          <td className="py-2.5 px-4 font-bold text-slate-800 border-r border-slate-100">
+                            {item.disease || item.name}
+                          </td>
+                          <td className="py-2.5 px-4 text-center font-mono font-bold text-[#123941] bg-slate-50/30">
+                            {item.code}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-xs text-slate-500 font-bold">
+              검색 결과가 없습니다.
+            </div>
+          )}
+
+          {/* Footnotes Box */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+            <div className="font-extrabold text-[#123941]">주) 약관 적용기준</div>
+            <p className="pl-2">
+              1. 대상질병 분류표의 분류번호와 다르나 한국표준질병·사인분류의 기준에 따라 분류번호를 동시에 부여가 가능한 경우 대상질병 분류에 포함합니다.
+            </p>
+            <p className="pl-2">
+              2. 제10차 개정 이후 이 약관에서 보장하는 {isHeart1 ? '심장질환(특정 I)' : '심장질환(특정 II)'} 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
+            </p>
+            <p className="pl-2">
+              3. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서에 따라 기재된 것을 인정합니다.
+            </p>
+            <p className="pl-2">
+              4. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
             </p>
           </div>
         </div>
@@ -26560,228 +28390,249 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </p>
           </div>
         )}
-
-        {tabKey === 'surgery1_5_old' && (
-          <div className="space-y-4">
-            {/* 1. 보장내용 요약표 */}
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
-              <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
-                <span className="text-xs font-black text-white">📋 보장내용 요약표 - 11 | (건강고지)질병통합치료비(실속형)(세부보장별) 특별약관</span>
-                <span className="text-[11px] font-bold text-amber-300">DB손해보험 세부보장(5개 항목)</span>
-              </div>
-              <div className="p-3 bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-700">
-                이 특별약관은 다음의 5개의 세부보장으로 구성되어 있습니다.
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr className="bg-slate-100 text-slate-900 font-black border-b border-slate-200">
-                      <th className="py-2.5 px-3 text-center w-[15%] border-r border-slate-200">번호</th>
-                      <th className="py-2.5 px-4 w-[85%]">보장 조건 및 지급 한도</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200 text-xs font-medium text-slate-800">
-                    <tr className="hover:bg-slate-50 transition-colors">
-                      <td className="py-2.5 px-3 text-center font-bold text-slate-500 bg-slate-50/70 border-r border-slate-200">11-1</td>
-                      <td className="py-2.5 px-4 font-bold text-emerald-800">
-                        ▶ MRI 검사 (급여) (연간 1회 한)
-                      </td>
-                    </tr>
-                    <tr className="hover:bg-slate-50 transition-colors">
-                      <td className="py-2.5 px-3 text-center font-bold text-slate-500 bg-slate-50/70 border-r border-slate-200">11-2</td>
-                      <td className="py-2.5 px-4 font-bold text-emerald-800">
-                        ▶ PET 검사 (급여) (연간 1회 한)
-                      </td>
-                    </tr>
-                    <tr className="hover:bg-slate-50 transition-colors">
-                      <td className="py-2.5 px-3 text-center font-bold text-slate-500 bg-slate-50/70 border-r border-slate-200">11-3</td>
-                      <td className="py-2.5 px-4 font-bold text-emerald-800">
-                        ▶ CT 검사 (급여) (연간 1회 한)
-                      </td>
-                    </tr>
-                    <tr className="hover:bg-slate-50 transition-colors">
-                      <td className="py-2.5 px-3 text-center font-bold text-slate-500 bg-slate-50/70 border-r border-slate-200">11-4</td>
-                      <td className="py-2.5 px-4 font-bold text-emerald-800">
-                        ▶ 1-5종 수술비 (급여) (동일질병당 1회 지급)
-                      </td>
-                    </tr>
-                    <tr className="hover:bg-slate-50 transition-colors">
-                      <td className="py-2.5 px-3 text-center font-bold text-slate-500 bg-slate-50/70 border-r border-slate-200">11-5</td>
-                      <td className="py-2.5 px-4 font-bold text-emerald-800">
-                        ▶ 전신마취수술 (6시간 이상) (급여) (종합병원) (연간 1회 한)
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+        {(tabKey === 'meritz_5diseases' || tabKey === 'meritz_5diseases_surgery') && (
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] text-xs flex items-center gap-1.5">
+              <span>📌 5대질환 분류표 적용 안내</span>
             </div>
-
-            {/* 2. 기존1-5종(25.1월) VS 질병통합치료비(26.7) 개정내용 비교 */}
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
-              <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
-                <span className="text-xs font-black text-white">🔄 기존1-5종(25.1월) VS 질병통합치료비(26.7) 개정내용 비교</span>
-                <span className="text-[11px] font-bold text-amber-300">약관 세부 개정 핵심</span>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr className="bg-slate-100 text-slate-900 font-black border-b border-slate-200">
-                      <th className="py-2.5 px-4 w-[18%] border-r border-slate-200">구분 / 변경 항목</th>
-                      <th className="py-2.5 px-4 w-[31%] border-r border-slate-200 text-slate-700">기존 (별표78 - 25.1월)</th>
-                      <th className="py-2.5 px-4 w-[31%] border-r border-slate-200 text-[#123941]">변경 (별표160 - 26.7월)</th>
-                      <th className="py-2.5 px-4 w-[20%] text-rose-700">변경 핵심</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200 text-xs">
-                    {/* 1. 유방절단수술 세분화 */}
-                    <tr className="hover:bg-slate-50 transition-colors">
-                      <td className="py-3 px-4 font-black text-slate-900 bg-slate-50/70 border-r border-slate-200 align-top">
-                        <div className="flex items-center gap-1.5 text-xs text-slate-900 font-black">
-                          <span className="bg-blue-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[10px]">2</span>
-                          유방절단수술 세분화
-                        </div>
-                        <span className="text-[11px] text-rose-600 font-bold block mt-1">(가장 큰 변경)</span>
-                      </td>
-                      <td className="py-3 px-4 font-bold text-slate-700 border-r border-slate-200 align-top leading-relaxed">
-                        <div className="text-slate-500 text-[11px] mb-1">유방절단수술 (Mastectomy)</div>
-                        <div className="inline-block bg-rose-100 text-rose-700 px-2 py-0.5 rounded-md font-black text-xs">
-                          3종
-                        </div>
-                      </td>
-                      <td className="py-3 px-4 font-bold text-slate-800 border-r border-slate-200 align-top leading-relaxed space-y-1.5">
-                        <div className="flex items-center justify-between bg-slate-50 p-1.5 rounded-lg border border-slate-200">
-                          <span>3-1. 유방의 비대(N62)</span>
-                          <span className="bg-rose-600 text-white px-2 py-0.5 rounded-md font-black text-xs">2종</span>
-                        </div>
-                        <div className="flex items-center justify-between bg-slate-50 p-1.5 rounded-lg border border-slate-200">
-                          <span>3-2. 그 외 유방절단수술</span>
-                          <span className="bg-rose-100 text-rose-700 px-2 py-0.5 rounded-md font-black text-xs">3종</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-4 font-bold text-slate-800 align-top leading-relaxed bg-rose-50/30">
-                        <ul className="space-y-1 text-[11px]">
-                          <li className="font-black text-rose-700">• 기존: 모두 3종</li>
-                          <li className="font-bold text-slate-800">
-                            • 변경 후:<br/>
-                            - 유방의 비대(N62)는 <span className="text-rose-600 font-black">2종으로 하향</span><br/>
-                            - 그 외 유방절단수술은 <span className="font-black">3종 (기존과 동일)</span>
-                          </li>
-                        </ul>
-                      </td>
-                    </tr>
-
-                    {/* 2. 주석(예외사항) 변경 */}
-                    <tr className="hover:bg-slate-50 transition-colors">
-                      <td className="py-3 px-4 font-black text-slate-900 bg-slate-50/70 border-r border-slate-200 align-top">
-                        <div className="flex items-center gap-1.5 text-xs text-slate-900 font-black">
-                          <span className="bg-blue-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[10px]">4</span>
-                          주석(예외사항) 변경
-                        </div>
-                        <span className="text-[11px] text-slate-500 font-bold block mt-1">(44번·48번 관련)</span>
-                      </td>
-                      <td className="py-3 px-4 font-medium text-slate-700 border-r border-slate-200 align-top leading-relaxed text-[11px] space-y-1">
-                        <div className="font-bold text-slate-900">44번(치루·치열·치핵), 48번(요실금수술) 관련 주석</div>
-                        <div className="text-slate-600">• 질병1~5종수술비 Ⅱ 담보에만 적용</div>
-                        <div className="text-slate-600">• 상해1~5종수술비 Ⅱ 담보에서는 보상하지 않음</div>
-                        <div className="text-slate-600">• 남성의 요실금수술은 보상하지 않음</div>
-                      </td>
-                      <td className="py-3 px-4 font-medium text-slate-800 border-r border-slate-200 align-top leading-relaxed text-[11px] space-y-1">
-                        <div className="font-bold text-slate-900">44번(치루·치열·치핵), 48번(요실금수술) 관련 주석</div>
-                        <div className="text-rose-600 font-bold line-through">• (삭제) 질병수술비 담보에만 적용</div>
-                        <div className="text-rose-600 font-bold line-through">• (삭제) 상해수술비 담보에서는 보상하지 않음</div>
-                        <div className="text-emerald-700 font-bold">• 남성의 요실금수술은 보상하지 않음 <span className="bg-emerald-100 text-emerald-800 px-1 py-0.5 rounded text-[10px] font-black">유지</span></div>
-                      </td>
-                      <td className="py-3 px-4 font-bold text-slate-800 align-top leading-relaxed bg-amber-50/30">
-                        <ul className="space-y-1 text-[11px]">
-                          <li className="font-black text-amber-800">• 기존 담보 제한 문구 일부 삭제</li>
-                          <li className="font-bold text-slate-800">• 남성의 요실금수술 면책 조항은 <span className="text-emerald-700 font-black">유지</span></li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              {/* 하단 요약 바 */}
-              <div className="p-3 bg-amber-50/80 border-t border-slate-200 text-xs font-bold text-amber-900 space-y-1">
-                <div>▶ <strong>유방절단수술:</strong> 기존에는 모두 3종이었으나, 변경 후 N62(유방의 비대)는 2종으로 하향, 그 외는 3종 유지</div>
-                <div>▶ <strong>주석 변경:</strong> 기존의 '담보 제한 문구'는 삭제되고, '남성의 요실금수술은 보상하지 않음' 조항만 유지</div>
-              </div>
-            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              1. 약관에 규정하는 5대질환으로 분류되는 질병은 제9차 한국표준질병사인분류(통계청 고시 제2025-299호, 2026. 1. 1. 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병사인분류가 개정되는 경우에는 개정된 기준에 따라 이 약관에서 보상하는 대상질병 해당여부를 판단합니다. 다만, 다음의 질병 이외의 출생전후기 질병(P00-P96)은 포함되지 않습니다.
+            </p>
           </div>
         )}
 
-        {/* 2. Top Summary Classification Table */}
-        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs space-y-0">
-          <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
-            <span className="text-xs font-black text-white">상단요약분류표</span>
-            <span className="text-[11px] font-medium text-slate-200">
-              총 {summaries.length}개 주요 항목
-            </span>
-          </div>
+        {tabKey === 'surgery1_5_old' && (() => {
+          const coverageRows = [
+            { num: '11-1', text: '▶ MRI 검사 (급여) (연간 1회 한)' },
+            { num: '11-2', text: '▶ PET 검사 (급여) (연간 1회 한)' },
+            { num: '11-3', text: '▶ CT 검사 (급여) (연간 1회 한)' },
+            { num: '11-4', text: '▶ 1-5종 수술비 (급여) (동일질병당 1회 지급)' },
+            { num: '11-5', text: '▶ 전신마취수술 (6시간 이상) (급여) (종합병원) (연간 1회 한)' },
+          ];
 
-          <div className="p-3 bg-slate-50 border-b border-slate-200 text-xs text-slate-700 leading-relaxed font-medium">
-            ⑦ 「{(tabTitle.replace(/현대해상\s*-?\s*|약관|분류표|수술비/g, '').trim()) || '대상질병'}」의 진단확정은 의료법 제3조(의료기관)에 규정한 국내의 병원, 의원 또는 국외의 의료관련법에서 정한 의료기관의 의사자격을 가진 자에 의한 진단서에 의합니다.
-          </div>
+          const matchedCoverageRows = coverageRows.filter(r =>
+            !query || normalizeString(r.num).includes(query) || normalizeString(r.text).includes(query)
+          );
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
-                  <th className="py-2.5 px-4 w-[25%] sm:w-[200px] border-r border-slate-200 text-left font-black">구분</th>
-                  <th className="py-2.5 px-4 text-left font-black">해당 질병</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200 text-xs">
-                {filteredSummaries.map((sec: any, idx: number) => {
-                  let categoryLabel = sec.category;
-                  if (!categoryLabel) {
-                    if (sec.group && sec.title && sec.group !== sec.title) {
-                      categoryLabel = `${sec.group} (${sec.title})`;
-                    } else {
-                      categoryLabel = sec.group || sec.title || `그룹 ${idx + 1}`;
-                    }
-                  }
-                  let diseasesList: string[] = [];
+          const row1SearchText = normalizeString("1 유방절단수술 세분화 유방절단수술 Mastectomy 3종 3-1. 유방의 비대(N62) 2종 3-2. 그 외 유방절단수술 3종 기존: 모두 3종 변경 후: 유방의 비대(N62)는 2종으로 하향 그 외 유방절단수술은 3종 (기존과 동일)");
+          const row2SearchText = normalizeString("2 주석(예외사항) 변경 44번(치루·치열·치핵), 48번(요실금수술) 관련 주석 질병1~5종수술비 Ⅱ 담보에만 적용 상해1~5종수술비 Ⅱ 담보에서는 보상하지 않음 남성의 요실금수술은 보상하지 않음 (삭제) 질병수술비 담보에만 적용 (삭제) 상해수술비 담보에서는 보상하지 않음 남성의 요실금수술은 보상하지 않음 유지 기존 담보 제한 문구 일부 삭제 남성의 요실금수술 면책 조항은 유지");
 
-                  if (Array.isArray(sec.diseases)) {
-                    diseasesList = sec.diseases;
-                  } else if (typeof sec.diseases === 'string') {
-                    diseasesList = sec.diseases.split(',').map((s: string) => s.trim()).filter(Boolean);
-                  } else if (Array.isArray(sec.items)) {
-                    diseasesList = sec.items.map((i: any) => i.disease || i.name || '').filter(Boolean);
-                  } else if (sec.title && sec.group && sec.title !== sec.group) {
-                    diseasesList = [sec.title];
-                  } else if (sec.title) {
-                    diseasesList = [sec.title];
-                  } else {
-                    diseasesList = [categoryLabel];
-                  }
+          const showRow1 = !query || row1SearchText.includes(query);
+          const showRow2 = !query || row2SearchText.includes(query);
+          const showComparisonTable = showRow1 || showRow2;
 
-                  return (
-                    <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
-                      <td className="py-3 px-4 font-black text-slate-900 bg-slate-50/70 border-r border-slate-200/90 align-top text-xs shrink-0 whitespace-nowrap">
-                        {highlightText(categoryLabel)}
-                      </td>
-                      <td className="py-3 px-4 text-xs font-bold text-slate-800 leading-relaxed whitespace-pre-wrap">
-                        {diseasesList.length > 0 ? (
-                          diseasesList.map((d: string, dIdx: number) => (
-                            <span key={dIdx}>
-                              {highlightText(d)}
-                              {dIdx < diseasesList.length - 1 ? ', ' : ''}
-                            </span>
-                          ))
-                        ) : (
-                          <span className="text-slate-400">-</span>
+          return (
+            <div className="space-y-4">
+              {/* 1. 보장내용 요약표 */}
+              {matchedCoverageRows.length > 0 && (
+                <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+                  <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+                    <span className="text-xs font-black text-white">📋 보장내용 요약표 - 11 | (건강고지)질병통합치료비(실속형)(세부보장별) 특별약관</span>
+                    <span className="text-[11px] font-bold text-amber-300">DB손해보험 세부보장({matchedCoverageRows.length}개 항목)</span>
+                  </div>
+                  <div className="p-3 bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-700">
+                    이 특별약관은 다음의 세부보장으로 구성되어 있습니다.
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead>
+                        <tr className="bg-slate-100 text-slate-900 font-black border-b border-slate-200">
+                          <th className="py-2.5 px-3 text-center w-[15%] border-r border-slate-200">번호</th>
+                          <th className="py-2.5 px-4 w-[85%]">보장 조건 및 지급 한도</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-xs font-medium text-slate-800">
+                        {matchedCoverageRows.map((row, rIdx) => (
+                          <tr key={rIdx} className="hover:bg-slate-50 transition-colors">
+                            <td className="py-2.5 px-3 text-center font-bold text-slate-500 bg-slate-50/70 border-r border-slate-200">
+                              {highlightText(row.num)}
+                            </td>
+                            <td className="py-2.5 px-4 font-bold text-emerald-800">
+                              {highlightText(row.text)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {/* 2. 기존1-5종(25.1월) VS 질병통합치료비(26.7) 개정내용 비교 */}
+              {showComparisonTable && (
+                <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+                  <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+                    <span className="text-xs font-black text-white">🔄 기존1-5종(25.1월) VS 질병통합치료비(26.7) 개정내용 비교</span>
+                    <span className="text-[11px] font-bold text-amber-300">약관 세부 개정 핵심</span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead>
+                        <tr className="bg-slate-100 text-slate-900 font-black border-b border-slate-200">
+                          <th className="py-2.5 px-4 w-[18%] border-r border-slate-200">구분 / 변경 항목</th>
+                          <th className="py-2.5 px-4 w-[31%] border-r border-slate-200 text-slate-700">기존 (별표78 - 25.1월)</th>
+                          <th className="py-2.5 px-4 w-[31%] border-r border-slate-200 text-[#123941]">변경 (별표160 - 26.7월)</th>
+                          <th className="py-2.5 px-4 w-[20%] text-rose-700">변경 핵심</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-xs">
+                        {/* 1. 유방절단수술 세분화 */}
+                        {showRow1 && (
+                          <tr className="hover:bg-slate-50 transition-colors">
+                            <td className="py-3 px-4 font-black text-slate-900 bg-slate-50/70 border-r border-slate-200 align-top">
+                              <div className="flex items-center gap-1.5 text-xs text-slate-900 font-black">
+                                <span className="bg-blue-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[10px]">1</span>
+                                {highlightText('유방절단수술 세분화')}
+                              </div>
+                              <span className="text-[11px] text-rose-600 font-bold block mt-1">(가장 큰 변경)</span>
+                            </td>
+                            <td className="py-3 px-4 font-bold text-slate-700 border-r border-slate-200 align-top leading-relaxed">
+                              <div className="text-slate-500 text-[11px] mb-1">{highlightText('유방절단수술 (Mastectomy)')}</div>
+                              <div className="inline-block bg-rose-100 text-rose-700 px-2 py-0.5 rounded-md font-black text-xs">
+                                {highlightText('3종')}
+                              </div>
+                            </td>
+                            <td className="py-3 px-4 font-bold text-slate-800 border-r border-slate-200 align-top leading-relaxed space-y-1.5">
+                              <div className="flex items-center justify-between bg-slate-50 p-1.5 rounded-lg border border-slate-200">
+                                <span>{highlightText('3-1. 유방의 비대(N62)')}</span>
+                                <span className="bg-rose-600 text-white px-2 py-0.5 rounded-md font-black text-xs">{highlightText('2종')}</span>
+                              </div>
+                              <div className="flex items-center justify-between bg-slate-50 p-1.5 rounded-lg border border-slate-200">
+                                <span>{highlightText('3-2. 그 외 유방절단수술')}</span>
+                                <span className="bg-rose-100 text-rose-700 px-2 py-0.5 rounded-md font-black text-xs">{highlightText('3종')}</span>
+                              </div>
+                            </td>
+                            <td className="py-3 px-4 font-bold text-slate-800 align-top leading-relaxed bg-rose-50/30">
+                              <ul className="space-y-1 text-[11px]">
+                                <li className="font-black text-rose-700">• {highlightText('기존: 모두 3종')}</li>
+                                <li className="font-bold text-slate-800">
+                                  • {highlightText('변경 후:')}<br/>
+                                  - {highlightText('유방의 비대(N62)는')} <span className="text-rose-600 font-black">{highlightText('2종으로 하향')}</span><br/>
+                                  - {highlightText('그 외 유방절단수술은')} <span className="font-black">{highlightText('3종 (기존과 동일)')}</span>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
                         )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+
+                        {/* 2. 주석(예외사항) 변경 */}
+                        {showRow2 && (
+                          <tr className="hover:bg-slate-50 transition-colors">
+                            <td className="py-3 px-4 font-black text-slate-900 bg-slate-50/70 border-r border-slate-200 align-top">
+                              <div className="flex items-center gap-1.5 text-xs text-slate-900 font-black">
+                                <span className="bg-blue-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[10px]">2</span>
+                                {highlightText('주석(예외사항) 변경')}
+                              </div>
+                              <span className="text-[11px] text-slate-500 font-bold block mt-1">(44번·48번 관련)</span>
+                            </td>
+                            <td className="py-3 px-4 font-medium text-slate-700 border-r border-slate-200 align-top leading-relaxed text-[11px] space-y-1">
+                              <div className="font-bold text-slate-900">{highlightText('44번(치루·치열·치핵), 48번(요실금수술) 관련 주석')}</div>
+                              <div className="text-slate-600">• {highlightText('질병1~5종수술비 Ⅱ 담보에만 적용')}</div>
+                              <div className="text-slate-600">• {highlightText('상해1~5종수술비 Ⅱ 담보에서는 보상하지 않음')}</div>
+                              <div className="text-slate-600">• {highlightText('남성의 요실금수술은 보상하지 않음')}</div>
+                            </td>
+                            <td className="py-3 px-4 font-medium text-slate-800 border-r border-slate-200 align-top leading-relaxed text-[11px] space-y-1">
+                              <div className="font-bold text-slate-900">{highlightText('44번(치루·치열·치핵), 48번(요실금수술) 관련 주석')}</div>
+                              <div className="text-rose-600 font-bold line-through">• {highlightText('(삭제) 질병수술비 담보에만 적용')}</div>
+                              <div className="text-rose-600 font-bold line-through">• {highlightText('(삭제) 상해수술비 담보에서는 보상하지 않음')}</div>
+                              <div className="text-emerald-700 font-bold">• {highlightText('남성의 요실금수술은 보상하지 않음')} <span className="bg-emerald-100 text-emerald-800 px-1 py-0.5 rounded text-[10px] font-black">{highlightText('유지')}</span></div>
+                            </td>
+                            <td className="py-3 px-4 font-bold text-slate-800 align-top leading-relaxed bg-amber-50/30">
+                              <ul className="space-y-1 text-[11px]">
+                                <li className="font-black text-amber-800">• {highlightText('기존 담보 제한 문구 일부 삭제')}</li>
+                                <li className="font-bold text-slate-800">• {highlightText('남성의 요실금수술 면책 조항은')} <span className="text-emerald-700 font-black">{highlightText('유지')}</span></li>
+                              </ul>
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* 하단 요약 바 */}
+                  <div className="p-3 bg-amber-50/80 border-t border-slate-200 text-xs font-bold text-amber-900 space-y-1">
+                    <div>▶ <strong>유방절단수술:</strong> {highlightText("기존에는 모두 3종이었으나, 변경 후 N62(유방의 비대)는 2종으로 하향, 그 외는 3종 유지")}</div>
+                    <div>▶ <strong>주석 변경:</strong> {highlightText("기존의 '담보 제한 문구'는 삭제되고, '남성의 요실금수술은 보상하지 않음' 조항만 유지")}</div>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })()}
+
+        {/* 2. Top Summary Classification Table */}
+        {tabKey !== 'surgery1_5' && tabKey !== 'surgery1_5_old' && tabKey !== 'kb_surgery1_5' && (
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs space-y-0">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">상단요약분류표</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {summaries.length}개 주요 항목
+              </span>
+            </div>
+
+            <div className="p-3 bg-slate-50 border-b border-slate-200 text-xs text-slate-700 leading-relaxed font-medium">
+              ⑦ 「{(tabTitle.replace(/현대해상\s*-?\s*|약관|분류표|수술비/g, '').trim()) || '대상질병'}」의 진단확정은 의료법 제3조(의료기관)에 규정한 국내의 병원, 의원 또는 국외의 의료관련법에서 정한 의료기관의 의사자격을 가진 자에 의한 진단서에 의합니다.
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th className="py-2.5 px-4 w-[25%] sm:w-[200px] border-r border-slate-200 text-left font-black">구분</th>
+                    <th className="py-2.5 px-4 text-left font-black">해당 질병</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredSummaries.map((sec: any, idx: number) => {
+                    let categoryLabel = sec.category;
+                    if (!categoryLabel) {
+                      if (sec.group && sec.title && sec.group !== sec.title) {
+                        categoryLabel = `${sec.group} (${sec.title})`;
+                      } else {
+                        categoryLabel = sec.group || sec.title || `그룹 ${idx + 1}`;
+                      }
+                    }
+                    let diseasesList: string[] = [];
+
+                    if (Array.isArray(sec.diseases)) {
+                      diseasesList = sec.diseases;
+                    } else if (typeof sec.diseases === 'string') {
+                      diseasesList = sec.diseases.split(',').map((s: string) => s.trim()).filter(Boolean);
+                    } else if (Array.isArray(sec.items)) {
+                      diseasesList = sec.items.map((i: any) => i.disease || i.name || '').filter(Boolean);
+                    } else if (sec.title && sec.group && sec.title !== sec.group) {
+                      diseasesList = [sec.title];
+                    } else if (sec.title) {
+                      diseasesList = [sec.title];
+                    } else {
+                      diseasesList = [categoryLabel];
+                    }
+
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
+                        <td className="py-3 px-4 font-black text-slate-900 bg-slate-50/70 border-r border-slate-200/90 align-top text-xs shrink-0 whitespace-nowrap">
+                          {highlightText(categoryLabel)}
+                        </td>
+                        <td className="py-3 px-4 text-xs font-bold text-slate-800 leading-relaxed whitespace-pre-wrap">
+                          {diseasesList.length > 0 ? (
+                            diseasesList.map((d: string, dIdx: number) => (
+                              <span key={dIdx}>
+                                {highlightText(d)}
+                                {dIdx < diseasesList.length - 1 ? ', ' : ''}
+                              </span>
+                            ))
+                          ) : (
+                            <span className="text-slate-400">-</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* 3. Bottom Detailed Classification Table */}
         <div className="space-y-3 pt-2">
@@ -26801,8 +28652,35 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             {filteredSections.map((sec, idx) => {
+              const isTitleMatch = !query || normalizeString(sec.title || sec.category || '').includes(query);
+              const rawItemList = sec.items || sec.diseases || [];
+              const itemList = query
+                ? rawItemList.filter((i: any) => {
+                    if (isTitleMatch) return true;
+                    if (typeof i === 'string') return normalizeString(i).includes(query);
+                    const isDirectMatch = (
+                      normalizeString(i.disease || i.name || '').includes(query) ||
+                      normalizeString(i.code || '').includes(query) ||
+                      normalizeString(i.num || '').includes(query)
+                    );
+                    if (isDirectMatch) return true;
+                    if (i.subItems && Array.isArray(i.subItems)) {
+                      return i.subItems.some((s: any) =>
+                        typeof s === 'string'
+                          ? normalizeString(s).includes(query)
+                          : (
+                            normalizeString(s.disease || s.name || '').includes(query) ||
+                            normalizeString(s.code || '').includes(query)
+                          )
+                      );
+                    }
+                    return false;
+                  })
+                : rawItemList;
+
+              if (query && itemList.length === 0) return null;
+
               const isExpanded = !!query || (expandedState[idx] ?? false);
-              const itemList = sec.items || sec.diseases || [];
 
               let groupBadge = sec.group || '';
               let displayTitle = sec.title || sec.category || '구분';
@@ -26863,8 +28741,12 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                       <table className="w-full text-xs border-collapse">
                         <thead>
                           <tr className="border-b border-slate-200 bg-[#123941]/5 text-[#123941] font-black text-[11px]">
-                            <th className="py-2 px-3 text-left w-[70%]">질병명 / 보장대상 분류</th>
-                            <th className="py-2 px-3 text-center w-[30%]">KCD 질병코드</th>
+                            <th className="py-2 px-3 text-left w-[70%]">
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5') ? '수술명 / 보장대상 수술' : '질병명 / 보장대상 분류'}
+                            </th>
+                            <th className="py-2 px-3 text-center w-[30%]">
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5') ? '수술종류' : 'KCD 질병코드'}
+                            </th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100">
@@ -26872,9 +28754,15 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                             const isObj = typeof item === 'object' && item !== null;
                             const diseaseName = isObj ? (item.disease || item.name) : item;
                             const diseaseCode = isObj ? (item.code || '-') : '-';
+                            const itemNum = isObj ? item.num : null;
                             return (
                               <tr key={itemIdx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
                                 <td className="py-2 px-3 font-bold text-slate-800 leading-snug whitespace-pre-wrap">
+                                  {itemNum && (
+                                    <span className="inline-block px-1.5 py-0.5 mr-1.5 bg-slate-200/80 text-[#123941] font-mono font-extrabold rounded text-[10px]">
+                                      {highlightText(itemNum)}
+                                    </span>
+                                  )}
                                   {highlightText(diseaseName)}
                                 </td>
                                 <td className="py-2 px-3 text-center font-mono font-bold">
@@ -26898,74 +28786,130 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             })}
           </div>
 
-          {/* 3-1. DB 1-5종 수술비(동일질병당/질병통합치료비) 사용 지침 및 요실금 수술 수가코드 안내 */}
-          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old') && (
+          {(tabKey === 'meritz_5diseases' || tabKey === 'meritz_5diseases_surgery') && (
+            <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-700 leading-relaxed space-y-2 shadow-3xs">
+              <div className="font-extrabold text-[#123941] text-xs">주) 5대질환 약관 적용 유의사항</div>
+              <p className="pl-2">
+                • 대상질병 분류표의 분류번호와 다르나 제9차 한국표준질병사인분류의 기준에 따라 분류번호를 동시에 부여가 가능한 경우 대상질병 분류에 포함합니다.
+              </p>
+              <p className="pl-2">
+                • 제10차 개정 이후 약관에서 보상하는 대상질병 해당여부는 진단 당시 시행되고 있는 한국표준질병사인분류에 따라 판단합니다.
+              </p>
+              <p className="pl-2">
+                • 진단서 상의 분류번호는 진단 당시 시행되고 있는 한국표준질병사인분류 질병코딩지침서에 따라 기재된 것을 인정합니다.
+              </p>
+              <p className="pl-2">
+                • 2. 진단 당시의 한국표준질병사인분류에 따라 약관에서 보상하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보상하는 질병 해당여부를 다시 판단하지 않습니다.
+              </p>
+            </div>
+          )}
+
+          {/* 3-1. 1-5종 수술비(동일질병당/질병통합치료비) 사용 지침 및 요실금/KB 수술 지침 안내 */}
+          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5') && (
             <div className="space-y-4 pt-4 border-t border-slate-200">
-              {/* Part 1 Notes Box */}
-              <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-700 leading-relaxed space-y-2 shadow-2xs">
-                <h5 className="font-extrabold text-[#123941] text-xs flex items-center gap-1.5">
-                  <span className="w-1.5 h-3.5 bg-[#123941] rounded-xs"></span>
-                  【1. 일반적인 상해 및 질병 치료목적의 수술 주기 사항】
-                </h5>
-                <p className="pl-2.5">
-                  <strong>주1) 관혈수술(觀血手術):</strong> 병변 부위를 인체에 절개(切開)하여 직접 보면서 시행하는 수술을 말합니다.
-                </p>
-                <p className="pl-2.5">
-                  <strong>주2) 비관혈수술:</strong> 복강경, 흉강경, 내시경, 카테터 등을 이용한 수술로서 병변 부위를 직접 절개하지 않고 시행하는 수술을 포함합니다.
-                </p>
-                <p className="pl-2.5">
-                  <strong>주3) 동시 수술의 처리:</strong> 동일한 신체 부위에 대하여 동일한 기회에 2가지 이상의 수술을 받은 경우에는 그 수술 중 가장 높은 종류의 수술비 1회분만 지급합니다.
-                </p>
-              </div>
-
-              {/* Guidelines & Incontinence Surgery Code Table */}
-              <div className="p-5 bg-slate-900 text-slate-200 rounded-2xl space-y-4 shadow-lg border border-slate-800">
-                <h4 className="font-extrabold text-white text-sm sm:text-base border-b border-slate-700 pb-2.5 flex items-center gap-2">
-                  <span className="w-2 h-4 bg-amber-400 rounded-xs"></span>
-                  【1~5종 수술분류표 사용 지침】
-                </h4>
-                <div className="text-xs leading-relaxed space-y-2 text-slate-300">
-                  <p>1. 수술분류표에 기재되지 않은 수술은 최신 의학적 기준에 따라 가장 유사한 수술의 종류에 준하여 적용합니다.</p>
-                  <p>2. 검사, 처치, 약물주입요법, 마취 등은 보장대상 수술에서 제외됩니다.</p>
-                  <p>3. 요실금수술(급여)은 보건복지부 고시 급여 항목 및 요실금 수술 수가코드에 해당하는 경우에 한하여 1종 수술로 인정됩니다.</p>
-                </div>
-
-                {/* Incontinence Code Table */}
-                <div className="mt-4 pt-3 border-t border-slate-800">
-                  <h5 className="font-bold text-amber-300 text-xs mb-2">● 요실금수술(급여) 대상 수가코드</h5>
-                  <div className="overflow-x-auto rounded-xl border border-slate-700 bg-slate-950">
-                    <table className="w-full text-left text-xs border-collapse">
-                      <thead>
-                        <tr className="bg-slate-800/80 text-amber-300 border-b border-slate-700 font-bold">
-                          <th className="py-2 px-3 text-center w-24">수가코드</th>
-                          <th className="py-2 px-3">한글 수술명</th>
-                          <th className="py-2 px-3">영문 수술명</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-800/80 text-slate-300">
-                        <tr className="hover:bg-slate-900">
-                          <td className="py-2 px-3 text-center font-bold text-amber-400">R3562</td>
-                          <td className="py-2 px-3">요실금수술 - 테이프를 이용한 수술</td>
-                          <td className="py-2 px-3 text-slate-400">Operation for Urinary Incontinence - Using Tape</td>
-                        </tr>
-                        <tr className="hover:bg-slate-900">
-                          <td className="py-2 px-3 text-center font-bold text-amber-400">R3564</td>
-                          <td className="py-2 px-3">요실금수술 - 근봉합술 또는 질전벽봉합술 등</td>
-                          <td className="py-2 px-3 text-slate-400">Operation for Urinary Incontinence - Muscle Suture etc.</td>
-                        </tr>
-                        <tr className="hover:bg-slate-900">
-                          <td className="py-2 px-3 text-center font-bold text-amber-400">R3565</td>
-                          <td className="py-2 px-3">요실금수술 - 복강경을 이용한 수술</td>
-                          <td className="py-2 px-3 text-slate-400">Operation for Urinary Incontinence - Laparoscopic</td>
-                        </tr>
-                      </tbody>
-                    </table>
+              {tabKey === 'kb_surgery1_5' ? (
+                <>
+                  {/* KB Notes Box */}
+                  <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-700 leading-relaxed space-y-2 shadow-2xs">
+                    <h5 className="font-extrabold text-[#123941] text-xs flex items-center gap-1.5">
+                      <span className="w-1.5 h-3.5 bg-[#123941] rounded-xs"></span>
+                      【내시경·경피적 수술 적용 기준 및 악성신생물 수술 주) 사항】
+                    </h5>
+                    <p className="pl-2.5">
+                      <strong>주1) 내시경·경피적 수술:</strong> 상기 1~87항의 수술 중 내시경(Fiberscope)을 이용한 내시경 수술 또는 카테터(Catheter) 등에 의한 경피적(經皮的) 수술은 88항을 적용합니다. 다만, 복강경·흉강경에 의한 수술은 해당부위(1~87항)의 수술로 적용합니다.
+                    </p>
+                    <p className="pl-2.5">
+                      <strong>주2) 악성신생물 수술:</strong> 제자리암·경계성종양 수술은 "1. 일반 질병 및 상해 치료 목적의 수술" 항목을 적용합니다. 비관혈암에 대한 비관혈적 근치술은 5종 수술로 인정하며, 조혈모세포 이식술은 일련의 과정을 모두 포함하여 1회의 수술로 인정합니다.
+                    </p>
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-2">
-                    * 건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 고시 개정에 따라 수가코드가 변경되는 경우 해당 개정 고시를 따릅니다.
-                  </p>
-                </div>
-              </div>
+
+                  {/* KB Guidelines Box */}
+                  <div className="p-5 bg-slate-900 text-slate-200 rounded-2xl space-y-4 shadow-lg border border-slate-800">
+                    <h4 className="font-extrabold text-white text-sm sm:text-base border-b border-slate-700 pb-2.5 flex items-center gap-2">
+                      <span className="w-2 h-4 bg-amber-400 rounded-xs"></span>
+                      【1~5종수술III 분류표 사용 지침】
+                    </h4>
+                    <div className="text-xs leading-relaxed space-y-2 text-slate-300">
+                      <p>1. "수술"이라 함은 의사, 치과의사 면허를 가진 자가 피보험자의 질병 또는 상해 치료를 직접목적으로 의료기관에서 의사의 관리하에 "1~5종수술III 분류표"에 정한 행위를 받는 것을 말합니다 (절단, 절제 등 생체 조작). 단, 흡인, 천자, 신경차단은 제외합니다.</p>
+                      <p>2. "관혈(觀血)" 수술이라 함은 병변 부위를 육안으로 직접 보면서 수술적 조작을 하기 위해 피부에 절개를 가하고 노출시켜서 수술하는 것을 말합니다.</p>
+                      <p>3. "근본(根本)" 혹은 "근치(根治)" 수술이라 함은 일회의 수술로 해당 질병을 완전히 치유할 수 있는 수술을 말합니다.</p>
+                      <p>4. "관혈적 악성신생물 근치수술"이라 함은 관혈적 방법을 통해 악성신생물의 원발병소를 완전히 절제, 적제, 적출하고 혹은 곽청술을 함께 실시한 경우입니다.</p>
+                      <p>5. 선진의료적 첨단 수술: 보건복지부 산하 신의료기술평가위원회로부터 안전성과 치료효과를 인정받은 최신 수술기법은 동일부위 수술로 봅니다 (60일 이내 2회 이상 시 1회 간주). 내시경/경피적 수술인 경우 88항(악성신생물 2항) 우선 적용.</p>
+                      <p>6. 악성 신생물 근치 사이버 나이프(Cyberknife) 정위적 방사선 치료: 선형가속기 방사선 집중 조사 및 실시간 병변 추적 치료.</p>
+                      <p>7. 두개내 신생물 근치 감마 나이프(Gammaknife) 정위적 방사선 치료: 코발트 60 감마선 두개강 내 집중 조사 치료.</p>
+                      <p>8. 보장 제외 수술: 미용 성형상의 수술, 피임 목적 수술, 피임 및 불임술 후 가임목적 수술, 검사 및 진단을 위한 수술(생검, 복강경 검사 등).</p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Part 1 Notes Box */}
+                  <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-700 leading-relaxed space-y-2 shadow-2xs">
+                    <h5 className="font-extrabold text-[#123941] text-xs flex items-center gap-1.5">
+                      <span className="w-1.5 h-3.5 bg-[#123941] rounded-xs"></span>
+                      【1. 일반적인 상해 및 질병 치료목적의 수술 주기 사항】
+                    </h5>
+                    <p className="pl-2.5">
+                      <strong>주1) 관혈수술(觀血手術):</strong> 병변 부위를 인체에 절개(切開)하여 직접 보면서 시행하는 수술을 말합니다.
+                    </p>
+                    <p className="pl-2.5">
+                      <strong>주2) 비관혈수술:</strong> 복강경, 흉강경, 내시경, 카테터 등을 이용한 수술로서 병변 부위를 직접 절개하지 않고 시행하는 수술을 포함합니다.
+                    </p>
+                    <p className="pl-2.5">
+                      <strong>주3) 동시 수술의 처리:</strong> 동일한 신체 부위에 대하여 동일한 기회에 2가지 이상의 수술을 받은 경우에는 그 수술 중 가장 높은 종류의 수술비 1회분만 지급합니다.
+                    </p>
+                  </div>
+
+                  {/* Guidelines & Incontinence Surgery Code Table */}
+                  <div className="p-5 bg-slate-900 text-slate-200 rounded-2xl space-y-4 shadow-lg border border-slate-800">
+                    <h4 className="font-extrabold text-white text-sm sm:text-base border-b border-slate-700 pb-2.5 flex items-center gap-2">
+                      <span className="w-2 h-4 bg-amber-400 rounded-xs"></span>
+                      【1~5종 수술분류표 사용 지침】
+                    </h4>
+                    <div className="text-xs leading-relaxed space-y-2 text-slate-300">
+                      <p>1. 수술분류표에 기재되지 않은 수술은 최신 의학적 기준에 따라 가장 유사한 수술의 종류에 준하여 적용합니다.</p>
+                      <p>2. 검사, 처치, 약물주입요법, 마취 등은 보장대상 수술에서 제외됩니다.</p>
+                      <p>3. 요실금수술(급여)은 보건복지부 고시 급여 항목 및 요실금 수술 수가코드에 해당하는 경우에 한하여 1종 수술로 인정됩니다.</p>
+                    </div>
+
+                    {/* Incontinence Code Table */}
+                    <div className="mt-4 pt-3 border-t border-slate-800">
+                      <h5 className="font-bold text-amber-300 text-xs mb-2">● 요실금수술(급여) 대상 수가코드</h5>
+                      <div className="overflow-x-auto rounded-xl border border-slate-700 bg-slate-950">
+                        <table className="w-full text-left text-xs border-collapse">
+                          <thead>
+                            <tr className="bg-slate-800/80 text-amber-300 border-b border-slate-700 font-bold">
+                              <th className="py-2 px-3 text-center w-24">수가코드</th>
+                              <th className="py-2 px-3">한글 수술명</th>
+                              <th className="py-2 px-3">영문 수술명</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-800/80 text-slate-300">
+                            <tr className="hover:bg-slate-900">
+                              <td className="py-2 px-3 text-center font-bold text-amber-400">R3562</td>
+                              <td className="py-2 px-3">요실금수술 - 테이프를 이용한 수술</td>
+                              <td className="py-2 px-3 text-slate-400">Operation for Urinary Incontinence - Using Tape</td>
+                            </tr>
+                            <tr className="hover:bg-slate-900">
+                              <td className="py-2 px-3 text-center font-bold text-amber-400">R3564</td>
+                              <td className="py-2 px-3">요실금수술 - 근봉합술 또는 질전벽봉합술 등</td>
+                              <td className="py-2 px-3 text-slate-400">Operation for Urinary Incontinence - Muscle Suture etc.</td>
+                            </tr>
+                            <tr className="hover:bg-slate-900">
+                              <td className="py-2 px-3 text-center font-bold text-amber-400">R3565</td>
+                              <td className="py-2 px-3">요실금수술 - 복강경을 이용한 수술</td>
+                              <td className="py-2 px-3 text-slate-400">Operation for Urinary Incontinence - Laparoscopic</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="text-[11px] text-slate-400 mt-2">
+                        * 건강보험 행위 급여·비급여 목록표 및 급여 상대가치점수 고시 개정에 따라 수가코드가 변경되는 경우 해당 개정 고시를 따릅니다.
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           )}
 
@@ -27739,7 +29683,491 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 
     const filename = `${selectedInsurer.name}_${title.replace(/[\s\/]/g, '_')}_세부분류표.html`;
 
-    const htmlContent = (activeSubTab === 'hyundai_surgery1_5') ? `<!DOCTYPE html>
+    const htmlContent = (activeSubTab === 'meritz_integrated_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 암통합치료비(기본형)</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 암통합치료비(기본형) (${meritzIntegratedTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzIntegratedTreatmentTab === '80m' ? '암통합치료비(8천)' : '암통합치료비(1억)'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 암통합치료비(기본형) (${meritzIntegratedTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzIntegratedTreatmentTab === '80m' ? '암통합치료비(8천)' : '암통합치료비(1억)'})</h1>
+      <div class="subtitle">2-92. 암 통합치료비(기본형)(건강가입)보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 본 담보는 암 진단 후 검사, 주요 치료, 비급여 치료, 특정통증완화치료 및 재활치료까지 암 치료 종합 과정을 보장합니다.<br/>
+    • 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 지급합니다. (단, 일부 검사/재활항목 제외)
+  </div>
+
+  <div class="sec-title">📋 &lt;${meritzIntegratedTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzIntegratedTreatmentTab === '80m' ? '암통합치료비(8천)' : '암통합치료비(1억)'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 22%; text-align: center;">지급횟수</th>
+        <th style="width: 18%; text-align: center; background: #f0fdfa; color: #123941;">보장금액</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_INTEGRATED_TREATMENT_ITEMS.map((item) => {
+        const valStr = item[meritzIntegratedTreatmentTab];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center highlight">${valStr}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(기본형 4천 / 8천 / 1억) 가입금액 비교표&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 8%; text-align: center; ${meritzIntegratedTreatmentTab==='40m'?'background:#f0fdfa;color:#123941;':''}">4천</th>
+        <th style="width: 8%; text-align: center; ${meritzIntegratedTreatmentTab==='80m'?'background:#f0fdfa;color:#123941;':''}">8천</th>
+        <th style="width: 8%; text-align: center; ${meritzIntegratedTreatmentTab==='100m'?'background:#f0fdfa;color:#123941;':''}">1억</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_INTEGRATED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzIntegratedTreatmentTab==='40m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['40m']}</td>
+          <td class="text-center" style="${meritzIntegratedTreatmentTab==='80m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['80m']}</td>
+          <td class="text-center" style="${meritzIntegratedTreatmentTab==='100m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['100m']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>[약관 유의사항 및 보장 기준]</strong><br/>
+    • <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.<br/>
+    • <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.<br/>
+    • <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'meritz_practical_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 암통합치료비(실속형)</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 암통합치료비(실속형) (${meritzPracticalTreatmentTab === '10m' ? '실속형(1천)' : meritzPracticalTreatmentTab === '30m' ? '실속형(3천)' : meritzPracticalTreatmentTab === '50m' ? '실속형(5천)' : '실속형(7천)'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 암통합치료비(실속형) (${meritzPracticalTreatmentTab === '10m' ? '실속형(1천)' : meritzPracticalTreatmentTab === '30m' ? '실속형(3천)' : meritzPracticalTreatmentTab === '50m' ? '실속형(5천)' : '실속형(7천)'})</h1>
+      <div class="subtitle">2-93. 암 통합치료비I(실속형)(건강가입)보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 본 담보는 암 진단 후 수술, 항암방사선, 항암약물 및 표적/면역/양성자 등 핵심 암 치료에 대해 정액 보장합니다.<br/>
+    • 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 지급합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;${meritzPracticalTreatmentTab === '10m' ? '실속형(1천)' : meritzPracticalTreatmentTab === '30m' ? '실속형(3천)' : meritzPracticalTreatmentTab === '50m' ? '실속형(5천)' : '실속형(7천)'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1년 미만 (50%)</th>
+        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1년 이상 (100%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_PRACTICAL_TREATMENT_ITEMS.map((item) => {
+        const valStr = item[meritzPracticalTreatmentTab];
+        const numVal = parseInt(valStr.replace(/[^0-9]/g, ''), 10);
+        const halfVal = isNaN(numVal) ? '-' : (numVal === 50 ? '25만원' : numVal === 250 ? '125만원' : (numVal / 2) + '만원');
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${halfVal}</td>
+            <td class="text-center highlight">${valStr}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(실속형 1천 / 3천 / 5천 / 7천) 가입금액 비교표 (1년이상 100% 기준)&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='10m'?'background:#f0fdfa;color:#123941;':''}">1천</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='30m'?'background:#f0fdfa;color:#123941;':''}">3천</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='50m'?'background:#f0fdfa;color:#123941;':''}">5천</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7천</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_PRACTICAL_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='10m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['10m']}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='30m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['30m']}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='50m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['50m']}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>[약관 유의사항 및 보장 기준]</strong><br/>
+    • <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.<br/>
+    • <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.<br/>
+    • <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'meritz_noncovered_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 암통합치료비(비급여)</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 암통합치료비(비급여) (${meritzNoncoveredTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzNoncoveredTreatmentTab === '70m' ? '암통합치료비(7천)' : '암통합치료비(1억)'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 암통합치료비(비급여) (${meritzNoncoveredTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzNoncoveredTreatmentTab === '70m' ? '암통합치료비(7천)' : '암통합치료비(1억)'})</h1>
+      <div class="subtitle">2-94. 암 통합치료비II(비급여(전액본인부담 포함))(건강가입)보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 본 담보는 비급여(전액본인부담 포함) 암 수술, 항암방사선, 항암약물, 다빈치로봇수술, 표적/면역항암약물, 항암양성자방사선치료에 대해 집중 보장합니다.<br/>
+    • 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 지급합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;${meritzNoncoveredTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzNoncoveredTreatmentTab === '70m' ? '암통합치료비(7천)' : '암통합치료비(1억)'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1년 미만 (50%)</th>
+        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1년 이상 (100%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_TREATMENT_ITEMS.map((item) => {
+        const amountUnder = meritzNoncoveredTreatmentTab === '40m' ? item['40m_under']
+                          : meritzNoncoveredTreatmentTab === '70m' ? item['70m_under']
+                          : item['100m_under'];
+        const amountOver = meritzNoncoveredTreatmentTab === '40m' ? item['40m_over']
+                         : meritzNoncoveredTreatmentTab === '70m' ? item['70m_over']
+                         : item['100m_over'];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${amountUnder}</td>
+            <td class="text-center highlight">${amountOver}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(비급여 4천 / 7천 / 1억) 가입금액 비교표 (1년이상 100% 기준)&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='40m'?'background:#f0fdfa;color:#123941;':''}">4천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='100m'?'background:#f0fdfa;color:#123941;':''}">1억</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='40m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['40m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='100m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['100m_over']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>[약관 유의사항 및 보장 기준]</strong><br/>
+    • <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.<br/>
+    • <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.<br/>
+    • <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'meritz_noncovered_primary_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 암통합치료비(비급여/주요치료)</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 암통합치료비(비급여/주요치료) (${meritzNoncoveredPrimaryTreatmentTab === '30m' ? '암통합치료비(3천)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '암통합치료비(5천)' : '암통합치료비(7천)'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 암통합치료비(비급여/주요치료) (${meritzNoncoveredPrimaryTreatmentTab === '30m' ? '암통합치료비(3천)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '암통합치료비(5천)' : '암통합치료비(7천)'})</h1>
+      <div class="subtitle">2-96. 암 통합치료비(주요치료)(비급여(전액본인부담 포함))(건강가입)보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 본 담보는 비급여(전액본인부담 포함) 암 수술, 유사암 수술, 항암방사선치료, 기타피부암 및 갑상선암 항암방사선치료, 항암약물치료, 기타피부암 및 갑상선암 항암약물치료에 대해 보장합니다.<br/>
+    • 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 지급합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;${meritzNoncoveredPrimaryTreatmentTab === '30m' ? '암통합치료비(3천)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '암통합치료비(5천)' : '암통합치료비(7천)'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1년 미만 (50%)</th>
+        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1년 이상 (100%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.map((item) => {
+        const amountUnder = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_under']
+                          : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_under']
+                          : item['70m_under'];
+        const amountOver = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_over']
+                         : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_over']
+                         : item['70m_over'];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${amountUnder}</td>
+            <td class="text-center highlight">${amountOver}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(3천 / 5천 / 7천) 가입금액 비교표 (1년이상 100% 기준)&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='30m'?'background:#f0fdfa;color:#123941;':''}">3천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='50m'?'background:#f0fdfa;color:#123941;':''}">5천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7천</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='30m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['30m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='50m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['50m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m_over']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>[약관 유의사항 및 보장 기준]</strong><br/>
+    • <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.<br/>
+    • <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.<br/>
+    • <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'hyundai_surgery1_5') ? `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -28512,6 +30940,139 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     };
   </script>
 </body>
+</html>` : activeSubTab === 'kb_integrated_treatment' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 질병통합치료비(${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'})</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 10.5px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 16px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #1e293b; color: #f1f5f9; border: 1px solid #0f172a; padding: 12px; border-radius: 8px; font-size: 9.5px; line-height: 1.6; margin-top: 16px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 KB손해보험 - 질병통합치료비(${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">KB손해보험 - 질병통합치료비(${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'})</h1>
+      <div class="subtitle">${
+        kbIntegratedTab === 'practical' ? '237. 질병통합치료비(실속형)(맞춤고지) / 237-1. 질병통합치료비(실속형)(맞춤고지) 【갱신계약】'
+        : kbIntegratedTab === 'basic' ? '238. 질병통합치료비(기본형)(맞춤고지) / 238-1. 질병통합치료비(기본형)(맞춤고지) 【갱신계약】'
+        : '239. 질병통합치료비(고급형)(맞춤고지) / 239-1. 질병통합치료비(고급형)(맞춤고지) 【갱신계약】'
+      }</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>(【갱신계약】은 자동갱신으로 운영합니다)</strong><br/>
+    제1조(보험금의 지급사유): 회사는 피보험자가 특별약관의 보험기간 중 질병의 진단 및 치료를 위한 필요소견을 토대로 해당되는 의료행위를 받은 경우 보장항목별로 각각 정해진 지급금액을 지급합니다.
+  </div>
+
+  <div class="sec-title">&lt;${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th rowSpan="2" style="width: 22%; text-align: center;">구분</th>
+        <th rowSpan="2" style="width: 28%;">보장항목</th>
+        <th rowSpan="2" style="width: 14%; text-align: center;">지급방식</th>
+        <th colSpan="3" style="text-align: center; background: #e2e8f0;">지급금액</th>
+      </tr>
+      <tr>
+        <th style="width: 12%; text-align: center;">최초의 계약<br/>1년미만</th>
+        <th style="width: 12%; text-align: center;">최초의 계약<br/>1년이상</th>
+        <th style="width: 12%; text-align: center;">갱신된 계약</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${KB_INTEGRATED_TREATMENT_ITEMS.map((item) => {
+        const amounts = item[kbIntegratedTab] || item.practical;
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.method}</td>
+            <td class="text-center font-bold">${amounts.under1yr}</td>
+            <td class="text-center highlight">${amounts.over1yr}</td>
+            <td class="text-center highlight">${amounts.renew}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <!-- 전 유형 (실속형 / 기본형 / 고급형) 종합 비교표 -->
+  <div class="sec-title" style="background: #334155;">&lt;전 유형(실속형 / 기본형 / 고급형) 보장금액 종합 비교표&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th rowSpan="2" style="width: 20%; text-align: center;">구분</th>
+        <th rowSpan="2" style="width: 26%;">보장항목</th>
+        <th rowSpan="2" style="width: 12%; text-align: center;">지급방식</th>
+        <th style="text-align: center; background: #f1f5f9;" colSpan="1">실속형</th>
+        <th style="text-align: center; background: #f1f5f9;" colSpan="1">기본형</th>
+        <th style="text-align: center; background: #f1f5f9;" colSpan="1">고급형</th>
+      </tr>
+      <tr>
+        <th style="text-align: center;">1년이상 (1년미만/갱신)</th>
+        <th style="text-align: center;">1년이상 (1년미만/갱신)</th>
+        <th style="text-align: center;">1년이상 (1년미만/갱신)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${KB_INTEGRATED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.method}</td>
+          <td class="text-center" style="${kbIntegratedTab === 'practical' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.practical.over1yr} (${item.practical.under1yr} / ${item.practical.renew})</td>
+          <td class="text-center" style="${kbIntegratedTab === 'basic' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.basic.over1yr} (${item.basic.under1yr} / ${item.basic.renew})</td>
+          <td class="text-center" style="${kbIntegratedTab === 'luxury' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.luxury.over1yr} (${item.luxury.under1yr} / ${item.luxury.renew})</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong style="color: #fbbf24; font-size: 10.5px;">【제2조(보험금 지급에 관한 세부규정)】</strong><br/>
+    1. "질병통합치료(수술)"의 경우 회사는 피보험자가 동시에 두 종류 이상의 질병수술을 받은 경우에는 그 수술 중 가장 높은 지급금액에 해당하는 한 종류의 수술에 대하여만 보장합니다.<br/>
+    2. 동일한 신체부위라 함은 각각 눈, 귀, 코, 씹어먹거나 말하는 기능과 관련된 신체부위, 머리, 목, 척추(등뼈), 체간골, 흉부장기·복부장기·비뇨생식기, 팔, 다리, 손가락, 발가락을 말하며, 눈, 귀, 팔, 다리는 좌·우를 각각 다른 신체부위로 봅니다.<br/>
+    3. 피보험자가 연간 1년 이내에 각각 다른 "질병특정시술치료(도수정복술)" / "질병특정시술치료(기타시술)" / "질병특정시술치료(단순창상봉합술)" 등을 받은 경우에도 부위 및 횟수와 관계없이 보장항목별로 연간 1회만 지급합니다.<br/>
+    4. 지속적신대체요법(CRRT), 인공호흡기(12시간초과)치료, 저체온요법치료, 종합병원 전신마취치료(6시간이상) 등을 받은 경우에도 각 보장항목별 부위 및 횟수와 관계없이 규정에 따라 지급합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
 </html>` : activeSubTab === 'samsung_major_cancer' ? `<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -28772,6 +31333,10 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
       case 'meritz-fire':
         if (activeSubTab === 'meritz_integrated_cancer') return MERITZ_INTEGRATED_CANCER_SECTIONS;
         if (activeSubTab === 'meritz_integrated_cancer_metastasis') return MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS;
+        if (activeSubTab === 'meritz_integrated_treatment') return MERITZ_INTEGRATED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_practical_treatment') return MERITZ_PRACTICAL_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_noncovered_treatment') return MERITZ_NONCOVERED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_noncovered_primary_treatment') return MERITZ_NONCOVERED_PRIMARY_TREATMENT_SECTIONS;
         if (activeSubTab === 'meritz_surgery1_5') return MERITZ_SURGERY1_5_SECTIONS;
         if (activeSubTab === 'meritz_surgery1_5_old') return MERITZ_SURGERY1_5_OLD_SECTIONS;
         if (activeSubTab === 'meritz_7diseases') return MERITZ_7_DISEASES_SECTIONS;
@@ -28782,7 +31347,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'meritz_82diseases') return MERITZ_82_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_131diseases') return MERITZ_131_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_6heart') return MERITZ_6HEART_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_5diseases') return MERITZ_5_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_5diseases' || activeSubTab === 'meritz_5diseases_surgery') return MERITZ_5_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_integrated_cancer_standard') return MERITZ_INTEGRATED_CANCER_SECTIONS;
         return MERITZ_INTEGRATED_CANCER_SECTIONS;
       case 'samsung-fire':
@@ -28806,6 +31371,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'kb_integrated_treatment') return KB_INTEGRATED_TREATMENT_SECTIONS;
         if (activeSubTab === 'kb_surgery14') return KB_SURGERY_14_SECTIONS;
         if (activeSubTab === 'kb_surgery16') return KB_SURGERY_16_SECTIONS;
+        if (activeSubTab === 'kb_surgery20') return KB_SURGERY_20_SECTIONS;
         if (activeSubTab === 'kb_surgery21') return KB_SURGERY_21_SECTIONS;
         if (activeSubTab === 'kb_surgery101') return KB_SURGERY_101_SECTIONS;
         if (activeSubTab === 'kb_surgery112') return KB_SURGERY_112_SECTIONS;
@@ -28883,14 +31449,38 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
   const query = normalizeString(detailFilter);
   const filteredCurrentSections = (currentSections || []).filter((sec: any) => {
     if (!query) return true;
-    const titleMatch = normalizeString(sec.title || sec.category || '').includes(query);
+    const titleMatch = normalizeString(sec.title || sec.category || sec.group || '').includes(query);
     const itemList = sec.items || sec.diseases || [];
-    const itemMatch = itemList.some((i: any) =>
-      typeof i === 'string'
-        ? normalizeString(i).includes(query)
-        : (normalizeString(i.disease || i.name || '').includes(query) || normalizeString(i.code || '').includes(query))
-    );
-    return titleMatch || itemMatch;
+    const itemMatch = itemList.some((i: any) => {
+      if (typeof i === 'string') return normalizeString(i).includes(query);
+      const directMatch = (
+        normalizeString(i.disease || i.name || '').includes(query) ||
+        normalizeString(i.code || '').includes(query) ||
+        normalizeString(i.num || '').includes(query) ||
+        normalizeString(i.grade || '').includes(query)
+      );
+      if (directMatch) return true;
+      if (i.subItems && Array.isArray(i.subItems)) {
+        return i.subItems.some((s: any) =>
+          typeof s === 'string'
+            ? normalizeString(s).includes(query)
+            : (
+              normalizeString(s.disease || s.name || '').includes(query) ||
+              normalizeString(s.code || '').includes(query)
+            )
+        );
+      }
+      return false;
+    });
+    // For surgery1_5_old, also check if query matches top coverage text or comparison table text
+    let topMatch = false;
+    if (activeSubTab === 'surgery1_5_old' || activeSubTab === 'surgery1_5') {
+      const topSearchText = normalizeString(
+        "MRI 검사 PET 검사 CT 검사 1-5종수술비 전신마취수술 6시간이상 유방절단수술 세분화 Mastectomy 유방의 비대 N62 주석 예외사항 요실금 치핵 치루"
+      );
+      if (topSearchText.includes(query)) topMatch = true;
+    }
+    return titleMatch || itemMatch || topMatch;
   });
 
   const availableSubtabs = INSURER_SUBTABS[selectedInsurer.id] || [];
