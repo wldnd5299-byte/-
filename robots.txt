@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://insurancebridge.co.kr/sitemap.xml
