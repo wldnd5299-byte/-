@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   FileText,
@@ -42,7 +42,27 @@ import AdZone from './components/AdZone';
 import { INSURERS_DATA } from './data';
 
 type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute';
+const VIEW_TO_PATH: Record<ViewState, string> = {
+  home: '/',
+  claim: '/claim',
+  terms: '/terms',
+  surgery: '/surgery',
+  indemnity: '/indemnity',
+  age: '/age',
+  'planner-goods': '/planner-goods',
+  dispute: '/dispute',
+};
 
+const PATH_TO_VIEW: Record<string, ViewState> = {
+  '/': 'home',
+  '/claim': 'claim',
+  '/terms': 'terms',
+  '/surgery': 'surgery',
+  '/indemnity': 'indemnity',
+  '/age': 'age',
+  '/planner-goods': 'planner-goods',
+  '/dispute': 'dispute',
+};
 interface SearchItem {
   title: string;
   desc: string;
@@ -105,6 +125,23 @@ export default function App() {
     const saved = localStorage.getItem('ib_current_view');
     return (saved as ViewState) || 'home';
   });
+  useEffect(() => {
+  const syncViewFromPath = () => {
+    const path = window.location.pathname;
+    const viewFromPath = PATH_TO_VIEW[path] || 'home';
+
+    setCurrentView(viewFromPath);
+    localStorage.setItem('ib_current_view', viewFromPath);
+  };
+
+  syncViewFromPath();
+
+  window.addEventListener('popstate', syncViewFromPath);
+
+  return () => {
+    window.removeEventListener('popstate', syncViewFromPath);
+  };
+}, []);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -255,11 +292,22 @@ export default function App() {
   ];
 
   const handleNavigate = (view: ViewState) => {
-    setCurrentView(view);
-    localStorage.setItem('ib_current_view', view);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  setCurrentView(view);
+  localStorage.setItem('ib_current_view', view);
+
+  const nextPath = VIEW_TO_PATH[view];
+
+  if (window.location.pathname !== nextPath) {
+    window.history.pushState(
+      { view },
+      '',
+      nextPath
+    );
+  }
+
+  setMobileMenuOpen(false);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
   // Main navigation link renderer
   const renderNavLinks = () => {
