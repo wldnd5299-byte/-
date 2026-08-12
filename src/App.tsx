@@ -63,6 +63,51 @@ const PATH_TO_VIEW: Record<string, ViewState> = {
   '/planner-goods': 'planner-goods',
   '/dispute': 'dispute',
 };
+const SEO_BY_VIEW: Record<
+  ViewState,
+  { title: string; description: string }
+> = {
+  home: {
+    title: '보험브릿지 | 보험 정보·수술분류표·실손 계산기',
+    description:
+      '보험사 정보, 담보별 분류표, 수술명 검색, 실손의료비 계산기, 보험나이 계산기 등 보험 실무 정보를 제공합니다.',
+  },
+  claim: {
+    title: '보험사 고객센터·보험금 청구서류 | 보험브릿지',
+    description:
+      '주요 보험사의 고객센터 전화번호, 홈페이지, 보험금 청구서류 등 보험사 정보를 확인할 수 있습니다.',
+  },
+  terms: {
+    title: '보험 담보별 분류표·질병코드 | 보험브릿지',
+    description:
+      '암, 뇌혈관질환, 심장질환, 질병수술비 등 보험 담보별 분류표와 질병코드를 확인할 수 있습니다.',
+  },
+  surgery: {
+    title: '수술명 검색·1~5종 수술비 조회 | 보험브릿지',
+    description:
+      '수술명을 검색해 표준 수술분류와 1~5종 수술비 약관 정보를 확인할 수 있습니다.',
+  },
+  indemnity: {
+    title: '실손의료비 계산기 1~5세대 | 보험브릿지',
+    description:
+      '1세대부터 5세대까지 실손의료비 자기부담금과 예상 보험금을 간편하게 계산할 수 있습니다.',
+  },
+  age: {
+    title: '보험나이 계산기·상령일 계산 | 보험브릿지',
+    description:
+      '생년월일을 입력해 보험나이와 상령일을 간편하게 계산할 수 있는 보험나이 계산기입니다.',
+  },
+  'planner-goods': {
+    title: '보험설계사 영업자료 | 보험브릿지',
+    description:
+      '보험설계사를 위한 영업자료와 실무 활용 자료를 확인할 수 있습니다.',
+  },
+  dispute: {
+    title: '보험 판례·분쟁조정 사례 | 보험브릿지',
+    description:
+      '금융감독원 분쟁조정 사례와 주요 보험 판례, 실무 분쟁 정보를 확인할 수 있습니다.',
+  },
+};
 interface SearchItem {
   title: string;
   desc: string;
@@ -142,6 +187,23 @@ export default function App() {
     window.removeEventListener('popstate', syncViewFromPath);
   };
 }, []);
+  useEffect(() => {
+  const seo = SEO_BY_VIEW[currentView];
+
+  document.title = seo.title;
+
+  let metaDescription = document.querySelector(
+    'meta[name="description"]'
+  ) as HTMLMetaElement | null;
+
+  if (!metaDescription) {
+    metaDescription = document.createElement('meta');
+    metaDescription.name = 'description';
+    document.head.appendChild(metaDescription);
+  }
+
+  metaDescription.content = seo.description;
+}, [currentView]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
   const [showSearchResults, setShowSearchResults] = useState(false);
