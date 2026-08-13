@@ -31500,7 +31500,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           <div className="relative z-10">
             <h1 className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight break-keep leading-tight">
               <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 inline-block mr-2 align-text-bottom shrink-0" />
-              보험사별 <span className="text-amber-400">담보 분류표</span>를 제공합니다.
+              보험 <span className="text-amber-400">담보별 분류표 · 질병코드</span> 조회
             </h1>
             <p className="text-xs md:text-sm text-slate-200 mt-2 leading-relaxed font-semibold break-keep">
               보험사별 암/뇌/심장/수술비 등 <span className="text-amber-400 font-bold">담보별 분류표</span>, <span className="text-amber-400 font-bold">세부질병코드</span>를 열람 및 다운로드 하실 수 있습니다.
