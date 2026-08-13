@@ -184,7 +184,7 @@ export default function ClaimForms() {
         <div className="relative z-10">
           <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight break-keep leading-tight">
             <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 inline-block mr-2 align-text-bottom shrink-0" />
-            <span className="text-amber-400">보험사</span> 정보 및 구비서류 가이드
+            <span className="text-amber-400">보험사 고객센터</span> · 보험금 청구서류
           </h2>
           <p className="text-xs md:text-sm text-slate-200 mt-2 leading-relaxed font-semibold break-keep">
             국내외 주요 <span className="text-amber-400 font-bold">손해보험 ＆ 생명보험사</span>의 고객센터 번호와 보험금청구 팩스번호, 필요서류, 약관공시실 등을 간편하게 이용하실 수 있습니다.
