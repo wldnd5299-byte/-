@@ -166,10 +166,16 @@ const GLOBAL_SEARCH_ITEMS: SearchItem[] = [
 ];
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<ViewState>(() => {
-    const saved = localStorage.getItem('ib_current_view');
-    return (saved as ViewState) || 'home';
-  });
+const [currentView, setCurrentView] = useState<ViewState>(() => {
+  const rawPath = window.location.pathname;
+
+  const path =
+    rawPath !== '/'
+      ? rawPath.replace(/\/+$/, '')
+      : '/';
+
+  return PATH_TO_VIEW[path] || 'home';
+});
   useEffect(() => {
   const syncViewFromPath = () => {
   const rawPath = window.location.pathname;
