@@ -172,12 +172,18 @@ export default function App() {
   });
   useEffect(() => {
   const syncViewFromPath = () => {
-    const path = window.location.pathname;
-    const viewFromPath = PATH_TO_VIEW[path] || 'home';
+  const rawPath = window.location.pathname;
 
-    setCurrentView(viewFromPath);
-    localStorage.setItem('ib_current_view', viewFromPath);
-  };
+  const path =
+    rawPath !== '/'
+      ? rawPath.replace(/\/+$/, '')
+      : '/';
+
+  const viewFromPath = PATH_TO_VIEW[path] || 'home';
+
+  setCurrentView(viewFromPath);
+  localStorage.setItem('ib_current_view', viewFromPath);
+};
 
   syncViewFromPath();
 
