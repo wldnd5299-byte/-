@@ -18,6 +18,10 @@ export default defineConfig(() => {
         input: {
           main: path.resolve(__dirname, 'index.html'),
           age: path.resolve(__dirname, 'age/index.html'),
+          surgery: path.resolve(__dirname, 'surgery/index.html'),
+          indemnity: path.resolve(__dirname, 'indemnity/index.html'),
+          terms: path.resolve(__dirname, 'terms/index.html'),
+          claim: path.resolve(__dirname, 'claim/index.html'),
         },
       },
     },
