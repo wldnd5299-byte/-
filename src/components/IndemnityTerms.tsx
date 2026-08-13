@@ -352,7 +352,7 @@ export default function IndemnityTerms() {
               실시간 보장 시뮬레이션
             </div>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-tight">
-              실손의료비계산기 <span className="text-amber-400">(단순참고용)</span>
+              실손의료비 계산기 <span className="text-amber-400">1~5세대 비교</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-semibold max-w-3xl">
               진료비 영수증 상의 급여 본인부담금과 비급여 항목을 입력하시면, 1세대부터 5세대까지 세대별 예상 수령 보험금과 공제액을 실시간으로 계산해드립니다.
