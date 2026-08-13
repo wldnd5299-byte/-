@@ -215,6 +215,29 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
   }
 
   metaDescription.content = seo.description;
+      let ogTitle = document.querySelector(
+    'meta[property="og:title"]'
+  ) as HTMLMetaElement | null;
+
+  if (!ogTitle) {
+    ogTitle = document.createElement('meta');
+    ogTitle.setAttribute('property', 'og:title');
+    document.head.appendChild(ogTitle);
+  }
+
+  ogTitle.content = seo.title;
+
+  let ogDescription = document.querySelector(
+    'meta[property="og:description"]'
+  ) as HTMLMetaElement | null;
+
+  if (!ogDescription) {
+    ogDescription = document.createElement('meta');
+    ogDescription.setAttribute('property', 'og:description');
+    document.head.appendChild(ogDescription);
+  }
+
+  ogDescription.content = seo.description;
 }, [currentView]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
