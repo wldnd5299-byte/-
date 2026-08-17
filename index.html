@@ -3,20 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-<meta name="naver-site-verification" content="29e08a26b48fedc496835f8449859ea98a16ddd7" />
- <script>
-  const redirect = sessionStorage.getItem('redirect');
 
-  if (redirect) {
-    sessionStorage.removeItem('redirect');
-    history.replaceState(null, '', redirect);
-  }
-</script>
+    <title>My Google AI Studio App</title>
+
+    <meta
+      name="naver-site-verification"
+      content="29e08a26b48fedc496835f8449859ea98a16ddd7"
+    />
+
+    <!-- Google AdSense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const redirect = sessionStorage.getItem('redirect');
+
+      if (redirect) {
+        sessionStorage.removeItem('redirect');
+        history.replaceState(null, '', redirect);
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
