@@ -59,11 +59,24 @@ export const INFO_CATEGORIES: InfoCategoryMeta[] = [
   }
 ];
 
-export interface RelatedTermLink {
-  insurerId: string;
-  subTabId: string;
-  label: string;
-  insurerName?: string;
+export interface PrimaryRelatedLink {
+  title: string;
+  desc?: string;
+  url: string;
+  badge?: string;
+  iconType?: 'terms' | 'age' | 'surgery' | 'indemnity' | 'claim' | 'dispute' | 'goods';
+}
+
+export interface SecondaryToolLink {
+  title: string;
+  url: string;
+  desc?: string;
+  iconType: 'claim' | 'terms' | 'surgery' | 'dispute' | 'planner-goods' | 'age' | 'indemnity';
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
 }
 
 export interface InfoArticle {
@@ -73,17 +86,20 @@ export interface InfoArticle {
   description: string;
   category: InfoCategory;
   publishedAt: string;
-  updatedAt: string;
-  author: {
-    name: string;
-    role: string;
-  };
-  summary: string;
+  updatedAt?: string;
+  
+  // 핵심 본문 내용 (간결하고 사실적인 내용)
   contentHtml: string;
-  tags: string[];
-  relatedTerms?: RelatedTermLink[];
-  relatedDisputes?: string[];
-  relatedTools?: ('surgery' | 'indemnity' | 'age' | 'claim')[];
+  
+  // 가장 중요한 첫 번째 연결 링크 (검색 의도와 가장 밀접한 링크)
+  primaryRelatedLink: PrimaryRelatedLink;
+  
+  // 선택적 추가 연계 항목들 (필요한 경우에만 설정)
+  additionalLinks?: PrimaryRelatedLink[];
+  secondaryTools?: ('claim' | 'terms' | 'surgery' | 'dispute' | 'planner-goods' | 'age' | 'indemnity')[];
+  faqs?: FAQItem[];
   sourceDocs?: string[];
+  tags?: string[];
+  
   isPublished: boolean;
 }

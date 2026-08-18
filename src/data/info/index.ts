@@ -22,8 +22,9 @@ export const getArticlesByCategory = (category: InfoCategory): InfoArticle[] => 
 
 // Helper: Get related articles for a given insurer/subtab for terms pages
 export const getRelatedArticlesForTerm = (insurerId: string, subTabId: string): InfoArticle[] => {
+  const targetPath = `/terms/${insurerId}/${subTabId}/`;
   return INFO_ARTICLES.filter(a =>
     a.isPublished &&
-    a.relatedTerms?.some(rt => rt.insurerId === insurerId && rt.subTabId === subTabId)
+    (a.primaryRelatedLink?.url === targetPath || a.additionalLinks?.some(link => link.url === targetPath))
   );
 };

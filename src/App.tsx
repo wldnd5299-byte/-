@@ -101,8 +101,8 @@ export const SEO_CONFIG: Record<ViewState, SEOData> = {
     path: '/dispute/',
   },
   info: {
-    title: '보험정보·실무가이드 | 보험브릿지',
-    description: '보험설계사와 금융소비자를 위한 알기 쉬운 질병수술비 해설, 암·뇌·심장 담보 분석, 질병코드 분류표 활용법, 실손의료비 계산 및 보상 실무 가이드를 제공합니다.',
+    title: '정보글 | 보험브릿지',
+    description: '보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드를 제공합니다.',
     canonical: 'https://insurancebridge.co.kr/info/',
     path: '/info/',
   },
@@ -255,8 +255,8 @@ interface SearchItem {
 
 const GLOBAL_SEARCH_ITEMS: SearchItem[] = [
   // Pages / Tools
-  { title: '보험정보·실무가이드', desc: '약관 분석, N대 질병수술비 해설, 질병코드 분류표 및 보상 실무 가이드', category: '보험정보', view: 'info' },
-  { title: '삼성화재 15대질병수술비 해설 가이드', desc: '15대 질병 종류, 질병코드(KCD), 수술 인정기준 및 청구 가이드', category: '보험정보', view: 'info' },
+  { title: '정보글·약관해설', desc: '약관 분석, N대 질병수술비 해설, 질병코드 분류표 및 보상 실무 가이드', category: '정보글', view: 'info' },
+  { title: '삼성화재 15대질병수술비 약관 질병코드 보장항목', desc: '15대 질병 종류, 질병코드(KCD), 수술 인정기준 및 세부 분류표 연계', category: '정보글', view: 'info' },
   { title: '보험나이 계산기', desc: '고객 생년월일 기준 보험나이와 상령일 자동 연산', category: '도구', view: 'age' },
   { title: '상령일 계산', desc: '보험나이가 한 살 올라가는 날 계산', category: '도구', view: 'age' },
   { title: '실손의료비 계산기', desc: '1세대부터 5세대까지 세대별 맞춤형 예상 실손의료비 계산', category: '도구', view: 'indemnity' },
@@ -428,7 +428,7 @@ export default function App() {
   // Quick navigation menu data
   const menus = [
     { id: 'home' as ViewState, label: 'HOME' },
-    { id: 'info' as ViewState, label: '보험정보' },
+    { id: 'info' as ViewState, label: '정보글' },
     { id: 'claim' as ViewState, label: '보험사정보' },
     { id: 'terms' as ViewState, label: '담보별 분류표' },
     { id: 'surgery' as ViewState, label: '수술명검색' },
@@ -720,7 +720,7 @@ export default function App() {
                   <div className="bg-[#123941] p-5 sm:p-6 border-t border-white/10">
                     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 lg:gap-3">
                       {[
-                        { id: 'info' as ViewState, title: '보험정보', desc: '담보 해설 ＆ 실무 가이드' },
+                        { id: 'info' as ViewState, title: '정보글', desc: '담보 해설 ＆ 실무 가이드' },
                         { id: 'claim' as ViewState, title: '보험사정보', desc: '고객센터 번호 ＆ 홈페이지 ＆ 보험금청구서류' },
                         { id: 'terms' as ViewState, title: '담보별 분류표', desc: '담보분류 기준 및 정의' },
                         { id: 'surgery' as ViewState, title: '수술명검색', desc: '약관 기반 수술비 및 종수술비 검색' },
@@ -820,7 +820,7 @@ export default function App() {
             <div className="flex flex-wrap gap-4 text-[11px] text-[#707072]">
               <a href="/" onClick={(e) => { e.preventDefault(); handleNavigate('home'); }} className="hover:text-nike-black font-semibold cursor-pointer">홈으로</a>
               <span>|</span>
-              <a href="/info/" onClick={(e) => { e.preventDefault(); handleNavigate('info'); }} className="hover:text-nike-black font-semibold cursor-pointer">보험정보</a>
+              <a href="/info/" onClick={(e) => { e.preventDefault(); handleNavigate('info'); }} className="hover:text-nike-black font-semibold cursor-pointer">정보글</a>
               <span>|</span>
               <a href="/planner-goods/" onClick={(e) => { e.preventDefault(); handleNavigate('planner-goods'); }} className="hover:text-nike-black font-semibold cursor-pointer">영업자료</a>
               <span>|</span>

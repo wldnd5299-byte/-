@@ -35,7 +35,6 @@ export function generateRss() {
       <guid isPermaLink="true">${articleUrl}</guid>
       <description>${escapeXml(art.description)}</description>
       <pubDate>${pubDate}</pubDate>
-      <author>help@insurancebridge.co.kr (${escapeXml(art.author.name)})</author>
       <category>${escapeXml(art.category)}</category>
     </item>`;
     })
@@ -44,9 +43,9 @@ export function generateRss() {
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>보험브릿지 보험정보·실무가이드</title>
+    <title>보험브릿지 정보글</title>
     <link>${baseUrl}/info/</link>
-    <description>보험설계사와 금융소비자를 위한 약관 분석, N대 질병수술비 해설, 질병코드 분류표 및 보상 실무 가이드</description>
+    <description>보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드</description>
     <language>ko</language>
     <lastBuildDate>${now}</lastBuildDate>
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
@@ -62,7 +61,7 @@ ${itemsXml}
   fs.writeFileSync(path.join(publicDir, 'rss.xml'), rssXml, 'utf-8');
   console.log('Generated: public/rss.xml');
 
-  // 2. Also write to root/rss.xml or dist/rss.xml if dist directory exists
+  // 2. Also write to dist/rss.xml if dist directory exists
   const distDir = path.join(rootDir, 'dist');
   if (fs.existsSync(distDir)) {
     fs.writeFileSync(path.join(distDir, 'rss.xml'), rssXml, 'utf-8');
