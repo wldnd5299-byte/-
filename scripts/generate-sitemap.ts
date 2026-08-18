@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { PRECEDENTS_DATA } from '../src/data/disputeData';
 import { INSURER_TERMS_LIST, INSURER_SUBTABS } from '../src/data/terms/index.ts';
+import { INFO_ARTICLES } from '../src/data/info/index.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,7 +21,14 @@ export function generateSitemap() {
     { loc: 'https://insurancebridge.co.kr/age/', changefreq: 'weekly', priority: '0.8' },
     { loc: 'https://insurancebridge.co.kr/planner-goods/', changefreq: 'weekly', priority: '0.8' },
     { loc: 'https://insurancebridge.co.kr/dispute/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/info/', changefreq: 'weekly', priority: '0.9' },
   ];
+
+  const infoUrls = INFO_ARTICLES.filter((a) => a.isPublished).map((item) => ({
+    loc: `https://insurancebridge.co.kr/info/${item.slug}/`,
+    changefreq: 'weekly',
+    priority: '0.8',
+  }));
 
   const disputeUrls = PRECEDENTS_DATA.map((item) => ({
     loc: `https://insurancebridge.co.kr/dispute/${item.id}/`,
@@ -50,7 +58,7 @@ export function generateSitemap() {
     }
   }
 
-  const allUrls = [...coreUrls, ...disputeUrls, ...termsUrls];
+  const allUrls = [...coreUrls, ...infoUrls, ...disputeUrls, ...termsUrls];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -72,7 +80,8 @@ ${allUrls
   }
 
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml, 'utf-8');
-  console.log(`Successfully generated sitemap.xml with ${allUrls.length} URLs (Core: ${coreUrls.length}, Dispute: ${disputeUrls.length}, Terms: ${termsUrls.length})`);
+  console.log(`Successfully generated sitemap.xml with ${allUrls.length} URLs (Core: ${coreUrls.length}, Info: ${infoUrls.length}, Dispute: ${disputeUrls.length}, Terms: ${termsUrls.length})`);
 }
 
 generateSitemap();
+

@@ -5,6 +5,7 @@ import fs from 'fs';
 import {defineConfig} from 'vite';
 import { PRECEDENTS_DATA } from './src/data/disputeData';
 import { INSURER_TERMS_LIST, INSURER_SUBTABS } from './src/data/terms/index.ts';
+import { INFO_ARTICLES } from './src/data/info/index.ts';
 
 export default defineConfig(() => {
   const disputeInputs: Record<string, string> = {};
@@ -30,6 +31,18 @@ export default defineConfig(() => {
     });
   });
 
+  const infoInputs: Record<string, string> = {};
+  const infoHubPath = path.resolve(__dirname, 'info/index.html');
+  if (fs.existsSync(infoHubPath)) {
+    infoInputs['info'] = infoHubPath;
+  }
+  INFO_ARTICLES.filter(a => a.isPublished).forEach(article => {
+    const articlePath = path.resolve(__dirname, `info/${article.slug}/index.html`);
+    if (fs.existsSync(articlePath)) {
+      infoInputs[`info_${article.slug.replace(/[^a-zA-Z0-9]/g, '_')}`] = articlePath;
+    }
+  });
+
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
@@ -50,6 +63,7 @@ export default defineConfig(() => {
           dispute: path.resolve(__dirname, 'dispute/index.html'),
           ...disputeInputs,
           ...termsInputs,
+          ...infoInputs,
         },
       },
     },
