@@ -746,7 +746,7 @@ export default function SurgerySearch() {
         <div className="relative z-10">
           <h2 className="text-base md:text-lg font-black text-white flex items-center flex-wrap gap-2 uppercase tracking-tight">
             <HeartPulse className="w-5 h-5 text-amber-400 shrink-0" />
-            <span><span className="text-amber-400">수술명 검색</span> · 1~5종 수술분류표 조회</span>
+            <span>종수술분류표 기반 <span className="text-amber-400">수술명검색</span></span>
             <span className="text-xs font-semibold text-slate-300 bg-white/10 px-2 py-0.5 rounded ml-1">(단순참고용/가입약관확인)</span>
           </h2>
           <p className="text-xs text-slate-200 mt-2 leading-relaxed font-bold">

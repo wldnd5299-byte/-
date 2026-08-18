@@ -1,36 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://insurancebridge.co.kr/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://insurancebridge.co.kr/claim/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://insurancebridge.co.kr/terms/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://insurancebridge.co.kr/surgery/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://insurancebridge.co.kr/indemnity/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://insurancebridge.co.kr/age/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://insurancebridge.co.kr/planner-goods</loc>
+    <loc>https://insurancebridge.co.kr/planner-goods/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://insurancebridge.co.kr/dispute</loc>
+    <loc>https://insurancebridge.co.kr/dispute/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-eswt/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-changwon-2025na10400/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-busan-2025na44016/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-seoul-2025na6811/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-fss-2026-driver/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-fss-2026-travel/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-suwon-2023gadan513825/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-daegu-2024gadan68726/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-gwangju-2025na30690/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-seoulcentral-2024gadan5506517/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-seoulcentral-2024gahap100843/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-gwangju-2021gahap53493/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-seoulcentral-2024na26390/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-seoulcentral-2022gadan5314899/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/dispute/case-seoulcentral-2024na68363/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

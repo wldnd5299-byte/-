@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   FileText,
@@ -41,73 +41,185 @@ import AdZone from './components/AdZone';
 
 import { INSURERS_DATA } from './data';
 
-type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute';
-const VIEW_TO_PATH: Record<ViewState, string> = {
-  home: '/',
-  claim: '/claim',
-  terms: '/terms',
-  surgery: '/surgery',
-  indemnity: '/indemnity',
-  age: '/age',
-  'planner-goods': '/planner-goods',
-  dispute: '/dispute',
-};
+export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute';
 
-const PATH_TO_VIEW: Record<string, ViewState> = {
-  '/': 'home',
-  '/claim': 'claim',
-  '/terms': 'terms',
-  '/surgery': 'surgery',
-  '/indemnity': 'indemnity',
-  '/age': 'age',
-  '/planner-goods': 'planner-goods',
-  '/dispute': 'dispute',
-};
-const SEO_BY_VIEW: Record<
-  ViewState,
-  { title: string; description: string }
-> = {
+export interface SEOData {
+  title: string;
+  description: string;
+  canonical: string;
+  path: string;
+}
+
+export const SEO_CONFIG: Record<ViewState, SEOData> = {
   home: {
-    title: '보험브릿지 | 보험 정보·수술분류표·실손 계산기',
-    description:
-      '보험사 정보, 담보별 분류표, 수술명 검색, 실손의료비 계산기, 보험나이 계산기 등 보험 실무 정보를 제공합니다.',
+    title: '보험브릿지 | 보험설계사 실무 정보 플랫폼',
+    description: '보험약관·담보분류·수술명 검색·실손의료비 계산·판례 및 분쟁조정사례 등 보험설계사를 위한 실무 정보를 제공합니다.',
+    canonical: 'https://insurancebridge.co.kr/',
+    path: '/',
   },
   claim: {
-    title: '보험사 고객센터·보험금 청구서류 | 보험브릿지',
-    description:
-      '주요 보험사의 고객센터 전화번호, 홈페이지, 보험금 청구서류 등 보험사 정보를 확인할 수 있습니다.',
+    title: '보험사 고객센터·보험금청구 정보 | 보험브릿지',
+    description: '국내 주요 생명보험사와 손해보험사의 고객센터, 보험금 청구, 팩스번호, 공시실 등 보험설계사 실무정보를 확인할 수 있습니다.',
+    canonical: 'https://insurancebridge.co.kr/claim/',
+    path: '/claim/',
   },
   terms: {
-    title: '보험 담보별 분류표·질병코드 | 보험브릿지',
-    description:
-      '암, 뇌혈관질환, 심장질환, 질병수술비 등 보험 담보별 분류표와 질병코드를 확인할 수 있습니다.',
+    title: '보험사별 담보·질병코드 분류표 | 보험브릿지',
+    description: '주요 보험사의 암, 뇌혈관, 심장, 수술 관련 담보별 질병코드와 분류 기준을 보험설계사 실무용으로 확인할 수 있습니다.',
+    canonical: 'https://insurancebridge.co.kr/terms/',
+    path: '/terms/',
   },
   surgery: {
-    title: '수술명 검색·1~5종 수술비 조회 | 보험브릿지',
-    description:
-      '수술명을 검색해 표준 수술분류와 1~5종 수술비 약관 정보를 확인할 수 있습니다.',
+    title: '보험 수술명 검색·수술분류표 | 보험브릿지',
+    description: '질병수술비 1~5종, 1~7종, 1~8종 등 보험사별 수술분류와 수술명을 검색할 수 있는 보험설계사 실무 도구입니다.',
+    canonical: 'https://insurancebridge.co.kr/surgery/',
+    path: '/surgery/',
   },
   indemnity: {
-    title: '실손의료비 계산기 1~5세대 | 보험브릿지',
-    description:
-      '1세대부터 5세대까지 실손의료비 자기부담금과 예상 보험금을 간편하게 계산할 수 있습니다.',
+    title: '실손의료비 계산기·세대별 실손보험 비교 | 보험브릿지',
+    description: '1세대부터 최신 세대까지 실손의료비 보장 기준과 자기부담금을 확인하고 예상 보험금을 계산할 수 있습니다.',
+    canonical: 'https://insurancebridge.co.kr/indemnity/',
+    path: '/indemnity/',
   },
   age: {
     title: '보험나이 계산기·상령일 계산 | 보험브릿지',
-    description:
-      '생년월일을 입력해 보험나이와 상령일을 간편하게 계산할 수 있는 보험나이 계산기입니다.',
+    description: '생년월일을 입력하여 보험나이와 보험 상령일을 빠르게 계산할 수 있는 보험설계사 실무 계산기입니다.',
+    canonical: 'https://insurancebridge.co.kr/age/',
+    path: '/age/',
   },
   'planner-goods': {
-    title: '보험설계사 영업자료 | 보험브릿지',
-    description:
-      '보험설계사를 위한 영업자료와 실무 활용 자료를 확인할 수 있습니다.',
+    title: '보험설계사 영업자료·상담자료 | 보험브릿지',
+    description: '보험설계사가 고객 상담과 영업 현장에서 활용할 수 있는 보험 안내자료, 질환별 자료, 인포그래픽 및 실무자료를 확인할 수 있습니다.',
+    canonical: 'https://insurancebridge.co.kr/planner-goods/',
+    path: '/planner-goods/',
   },
   dispute: {
-    title: '보험 판례·분쟁조정 사례 | 보험브릿지',
-    description:
-      '금융감독원 분쟁조정 사례와 주요 보험 판례, 실무 분쟁 정보를 확인할 수 있습니다.',
+    title: '보험 판례·분쟁조정사례 | 보험브릿지',
+    description: '보험금 지급, 고지의무, 암, 수술, 후유장해 등 보험 관련 법원 판례와 금융감독원 분쟁조정사례를 보험설계사 실무 관점에서 확인할 수 있습니다.',
+    canonical: 'https://insurancebridge.co.kr/dispute/',
+    path: '/dispute/',
   },
 };
+
+export const updateSEOMeta = (view: ViewState) => {
+  if (typeof document === 'undefined') return;
+  const config = SEO_CONFIG[view] || SEO_CONFIG.home;
+
+  // 1. Title
+  document.title = config.title;
+
+  // 2. Meta description
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.setAttribute('name', 'description');
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.setAttribute('content', config.description);
+
+  // 3. Canonical link
+  let linkCanonical = document.querySelector('link[rel="canonical"]');
+  if (!linkCanonical) {
+    linkCanonical = document.createElement('link');
+    linkCanonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(linkCanonical);
+  }
+  linkCanonical.setAttribute('href', config.canonical);
+
+  // 4. Open Graph Meta Tags
+  const updateOrCreateMeta = (property: string, content: string) => {
+    let meta = document.querySelector(`meta[property="${property}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('property', property);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+  };
+
+  updateOrCreateMeta('og:title', config.title);
+  updateOrCreateMeta('og:description', config.description);
+  updateOrCreateMeta('og:url', config.canonical);
+  updateOrCreateMeta('og:type', 'website');
+  updateOrCreateMeta('og:site_name', '보험브릿지');
+  updateOrCreateMeta('og:image', 'https://insurancebridge.co.kr/og-image.png');
+  updateOrCreateMeta('og:image:width', '1200');
+  updateOrCreateMeta('og:image:height', '630');
+  updateOrCreateMeta('og:image:alt', '보험브릿지 - 보험설계사 실무 정보 플랫폼');
+
+  // 5. Twitter Meta Tags
+  const updateOrCreateTwitterMeta = (name: string, content: string) => {
+    let meta = document.querySelector(`meta[name="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', name);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+  };
+
+  updateOrCreateTwitterMeta('twitter:card', 'summary_large_image');
+  updateOrCreateTwitterMeta('twitter:title', config.title);
+  updateOrCreateTwitterMeta('twitter:description', config.description);
+  updateOrCreateTwitterMeta('twitter:image', 'https://insurancebridge.co.kr/og-image.png');
+};
+
+export const VIEW_PATH_MAP: Record<ViewState, string> = {
+  home: '/',
+  claim: '/claim/',
+  terms: '/terms/',
+  surgery: '/surgery/',
+  indemnity: '/indemnity/',
+  age: '/age/',
+  'planner-goods': '/planner-goods/',
+  dispute: '/dispute/',
+};
+
+export const PATH_VIEW_MAP: Record<string, ViewState> = {
+  '/': 'home',
+  '/claim': 'claim',
+  '/claim/': 'claim',
+  '/terms': 'terms',
+  '/terms/': 'terms',
+  '/surgery': 'surgery',
+  '/surgery/': 'surgery',
+  '/indemnity': 'indemnity',
+  '/indemnity/': 'indemnity',
+  '/age': 'age',
+  '/age/': 'age',
+  '/planner-goods': 'planner-goods',
+  '/planner-goods/': 'planner-goods',
+  '/dispute': 'dispute',
+  '/dispute/': 'dispute',
+};
+
+export const getViewFromLocation = (): ViewState => {
+  if (typeof window === 'undefined') return 'home';
+  const rawPath = window.location.pathname;
+  if (rawPath.startsWith('/dispute/')) {
+    return 'dispute';
+  }
+  if (PATH_VIEW_MAP[rawPath]) {
+    return PATH_VIEW_MAP[rawPath];
+  }
+  const cleanPath = rawPath.replace(/\/+$/, '') || '/';
+  if (cleanPath.startsWith('/dispute/')) {
+    return 'dispute';
+  }
+  if (PATH_VIEW_MAP[cleanPath]) {
+    return PATH_VIEW_MAP[cleanPath];
+  }
+  const search = window.location.search;
+  if (search) {
+    const params = new URLSearchParams(search);
+    const p = params.get('p');
+    if (p && PATH_VIEW_MAP[p]) {
+      return PATH_VIEW_MAP[p];
+    }
+  }
+  return 'home';
+};
+
 interface SearchItem {
   title: string;
   desc: string;
@@ -166,82 +278,59 @@ const GLOBAL_SEARCH_ITEMS: SearchItem[] = [
 ];
 
 export default function App() {
-const [currentView, setCurrentView] = useState<ViewState>(() => {
-  const rawPath = window.location.pathname;
+  const [currentView, setCurrentView] = useState<ViewState>(() => {
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+      if (pathname.startsWith('/dispute/')) {
+        return 'dispute';
+      }
+      if (PATH_VIEW_MAP[pathname]) {
+        return PATH_VIEW_MAP[pathname];
+      }
+    }
+    const saved = localStorage.getItem('ib_current_view');
+    return (saved as ViewState) || 'home';
+  });
 
-  const path =
-    rawPath !== '/'
-      ? rawPath.replace(/\/+$/, '')
-      : '/';
-
-  return PATH_TO_VIEW[path] || 'home';
-});
-  useEffect(() => {
-  const syncViewFromPath = () => {
-  const rawPath = window.location.pathname;
-
-  const path =
-    rawPath !== '/'
-      ? rawPath.replace(/\/+$/, '')
-      : '/';
-
-  const viewFromPath = PATH_TO_VIEW[path] || 'home';
-
-  setCurrentView(viewFromPath);
-  localStorage.setItem('ib_current_view', viewFromPath);
-};
-
-  syncViewFromPath();
-
-  window.addEventListener('popstate', syncViewFromPath);
-
-  return () => {
-    window.removeEventListener('popstate', syncViewFromPath);
-  };
-}, []);
-  useEffect(() => {
-  const seo = SEO_BY_VIEW[currentView];
-
-  document.title = seo.title;
-
-  let metaDescription = document.querySelector(
-    'meta[name="description"]'
-  ) as HTMLMetaElement | null;
-
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta');
-    metaDescription.name = 'description';
-    document.head.appendChild(metaDescription);
-  }
-
-  metaDescription.content = seo.description;
-      let ogTitle = document.querySelector(
-    'meta[property="og:title"]'
-  ) as HTMLMetaElement | null;
-
-  if (!ogTitle) {
-    ogTitle = document.createElement('meta');
-    ogTitle.setAttribute('property', 'og:title');
-    document.head.appendChild(ogTitle);
-  }
-
-  ogTitle.content = seo.title;
-
-  let ogDescription = document.querySelector(
-    'meta[property="og:description"]'
-  ) as HTMLMetaElement | null;
-
-  if (!ogDescription) {
-    ogDescription = document.createElement('meta');
-    ogDescription.setAttribute('property', 'og:description');
-    document.head.appendChild(ogDescription);
-  }
-
-  ogDescription.content = seo.description;
-}, [currentView]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
   const [showSearchResults, setShowSearchResults] = useState(false);
+
+  useEffect(() => {
+    const initialView = getViewFromLocation();
+    setCurrentView(initialView);
+    localStorage.setItem('ib_current_view', initialView);
+    
+    // If not a dispute sub-item page, update SEO meta with default view meta
+    if (typeof window !== 'undefined' && !window.location.pathname.match(/^\/dispute\/[a-zA-Z0-9_-]+\/?$/)) {
+      updateSEOMeta(initialView);
+    }
+
+    const handlePopState = () => {
+      const poppedView = getViewFromLocation();
+      setCurrentView(poppedView);
+      localStorage.setItem('ib_current_view', poppedView);
+      if (typeof window !== 'undefined' && !window.location.pathname.match(/^\/dispute\/[a-zA-Z0-9_-]+\/?$/)) {
+        updateSEOMeta(poppedView);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleNavigate = (view: ViewState, pushHistory = true) => {
+    setCurrentView(view);
+    localStorage.setItem('ib_current_view', view);
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updateSEOMeta(view);
+
+    const targetPath = VIEW_PATH_MAP[view] || '/';
+    if (pushHistory && typeof window !== 'undefined' && window.location.pathname !== targetPath) {
+      window.history.pushState({ view }, '', targetPath);
+    }
+  };
 
   const getSearchResults = () => {
     if (!globalSearchQuery.trim()) return [];
@@ -314,98 +403,6 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
     { id: 'dispute' as ViewState, label: '판례＆분쟁' }
   ];
 
-  // Grid cards configuration
-  const utilityCards = [
-    {
-      id: 'claim' as ViewState,
-      title: '보험사정보',
-      desc: '국내외 주요 손해·생명보험사 고객센터 연락처 ＆ 홈페이지 ＆ 보험금청구서류 등 제공',
-      icon: FileText,
-      tag: '구비서류 팩',
-      iconBg: 'bg-blue-50 border-blue-200',
-      iconColor: 'text-blue-600',
-      tagBg: 'bg-blue-50/50 text-blue-700 border-blue-200/60'
-    },
-    {
-      id: 'terms' as ViewState,
-      title: '담보별 분류표',
-      desc: '보험 상품의 담보별 분류 기준, 한도 및 상세 보상 정의를 한눈에 쉽게 확인할 수 있는 실무 통합 가이드',
-      icon: FileCheck2,
-      tag: '담보 분류표',
-      iconBg: 'bg-emerald-50 border-emerald-200',
-      iconColor: 'text-emerald-600',
-      tagBg: 'bg-emerald-50/50 text-emerald-700 border-emerald-200/60'
-    },
-    {
-      id: 'surgery' as ViewState,
-      title: '수술명검색',
-      desc: '약관 기반 1~5종 표준 수술 및 종수술비 약관 정보를 수술명으로 손쉽게 조회하고, 보험사별 수술비 특약 약관을 비교합니다.',
-      icon: Scissors,
-      tag: '수술명검색',
-      iconBg: 'bg-teal-50 border-teal-200',
-      iconColor: 'text-teal-700',
-      tagBg: 'bg-teal-50/50 text-teal-800 border-teal-200/60'
-    },
-    {
-      id: 'indemnity' as ViewState,
-      title: '실손의료비계산기',
-      desc: '1세대부터 5세대까지 세대별 맞춤형 급여/비급여 자기부담금 및 예상 실손의료비 간편 계산기',
-      icon: Layers,
-      tag: '실손의료비 계산기',
-      iconBg: 'bg-indigo-50 border-indigo-200',
-      iconColor: 'text-indigo-600',
-      tagBg: 'bg-indigo-50/50 text-indigo-700 border-indigo-200/60'
-    },
-    {
-      id: 'age' as ViewState,
-      title: '보험나이계산기',
-      desc: '고객 생년월일 기준 보험나이와 상령일 자동 연산 및 설계사용 연장 절판 소통 메시지 지원',
-      icon: Calculator,
-      tag: '상령일 임박 알림',
-      iconBg: 'bg-amber-50 border-amber-200',
-      iconColor: 'text-amber-600',
-      tagBg: 'bg-amber-50/50 text-amber-700 border-amber-200/60'
-    },
-    {
-      id: 'planner-goods' as ViewState,
-      title: '영업자료',
-      desc: '설계 성사율을 극대화해주는 고품격 맞춤 명함, 천연 가죽 서류 바인더 및 필수 보상 요약 출력물',
-      icon: ShoppingBag,
-      tag: '영업 자료샵',
-      iconBg: 'bg-purple-50 border-purple-200',
-      iconColor: 'text-purple-600',
-      tagBg: 'bg-purple-50/50 text-purple-700 border-purple-200/60'
-    },
-    {
-      id: 'dispute' as ViewState,
-      title: '판례＆분쟁',
-      desc: '금융감독원 분쟁조정사례, 대법원 중요 판례 및 실무 보상 분쟁 가이드 한눈에 조회',
-      icon: ShieldAlert,
-      tag: '분쟁·판례 DB',
-      iconBg: 'bg-amber-50 border-amber-200',
-      iconColor: 'text-amber-600',
-      tagBg: 'bg-amber-50/50 text-amber-700 border-amber-200/60'
-    }
-  ];
-
-  const handleNavigate = (view: ViewState) => {
-  setCurrentView(view);
-  localStorage.setItem('ib_current_view', view);
-
-  const nextPath = VIEW_TO_PATH[view];
-
-  if (window.location.pathname !== nextPath) {
-    window.history.pushState(
-      { view },
-      '',
-      nextPath
-    );
-  }
-
-  setMobileMenuOpen(false);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-};
-
   // Main navigation link renderer
   const renderNavLinks = () => {
     return (
@@ -414,16 +411,20 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
           const isActive = currentView === menu.id;
           return (
             <React.Fragment key={menu.id}>
-              <button
-                onClick={() => handleNavigate(menu.id)}
-                className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none ${
+              <a
+                href={VIEW_PATH_MAP[menu.id]}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate(menu.id);
+                }}
+                className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-block ${
                   isActive
                     ? 'bg-[#cb9f74] text-white border-[#cb9f74] shadow-md'
                     : 'bg-transparent text-slate-100 border-transparent hover:text-white hover:bg-white/10'
                 }`}
               >
                 {menu.label}
-              </button>
+              </a>
               {idx < menus.length - 1 && (
                 <span className="text-white/10 font-normal mx-0.5 select-none">|</span>
               )}
@@ -443,8 +444,12 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
           
           {/* Left Side: Logo Brand + Desktop Global Search Bar */}
           <div className="flex items-center gap-3 lg:gap-4 xl:gap-6">
-            <button
-              onClick={() => handleNavigate('home')}
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigate('home');
+              }}
               className="flex items-center group cursor-pointer text-left shrink-0"
             >
               <div className="flex flex-col items-start leading-none">
@@ -455,7 +460,7 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
                   INSURANCE BRIDGE
                 </span>
               </div>
-            </button>
+            </a>
 
             {/* Global Search Bar (Only Desktop, placed next to logo) */}
             <div className="hidden lg:block relative w-36 lg:w-44 xl:w-56 2xl:w-64">
@@ -532,7 +537,7 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-none text-white hover:bg-white/10 focus:outline-hidden transition-colors"
+            className="lg:hidden p-2 rounded-none text-white hover:bg-white/10 focus:outline-hidden transition-colors cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -611,17 +616,21 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
             <div className="h-px bg-white/10 my-1" />
 
             {menus.map((menu) => (
-              <button
+              <a
                 key={menu.id}
-                onClick={() => handleNavigate(menu.id)}
-                className={`w-full text-left px-5 py-3 text-base font-medium uppercase transition-colors rounded-none ${
+                href={VIEW_PATH_MAP[menu.id]}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate(menu.id);
+                }}
+                className={`w-full block text-left px-5 py-3 text-base font-medium uppercase transition-colors rounded-none ${
                   currentView === menu.id
                     ? 'bg-[#cb9f74] text-white font-semibold shadow-sm'
                     : 'text-white hover:bg-white/10'
                 }`}
               >
                 {menu.label}
-              </button>
+              </a>
             ))}
           </motion.div>
         )}
@@ -654,8 +663,6 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
                   <div 
                     className="relative text-white p-8 md:p-14 lg:p-16 overflow-hidden flex flex-col items-center text-center justify-center min-h-[300px] bg-[#123941]"
                   >
-                    {/* Completely uniform solid color with no gradients, glowing spots, or background images to keep it perfectly clean */}
-                    
                     {/* Full width content */}
                     <div className="max-w-4xl space-y-5 relative z-10">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#cb9f74]/10 text-[#cb9f74] rounded-full text-[10px] font-bold border border-[#cb9f74]/30 tracking-wider uppercase mx-auto">
@@ -686,10 +693,14 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
                         { id: 'planner-goods' as ViewState, title: '영업자료', desc: '실무역량을 극대화 해주는 용품' },
                         { id: 'dispute' as ViewState, title: '판례＆분쟁', desc: '분쟁조정 및 주요 판례 DB' },
                       ].map((item) => (
-                        <div 
+                        <a 
                           key={item.id}
-                          onClick={() => handleNavigate(item.id)}
-                          className="bg-white border border-slate-200/90 rounded-xl p-3.5 flex flex-col justify-between items-center text-center min-h-[142px] group shadow-2xs hover:shadow-xl hover:-translate-y-1 hover:bg-[#cb9f74] hover:border-[#cb9f74] transition-all duration-200 cursor-pointer"
+                          href={VIEW_PATH_MAP[item.id]}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleNavigate(item.id);
+                          }}
+                          className="bg-white border border-slate-200/90 rounded-xl p-3.5 flex flex-col justify-between items-center text-center min-h-[142px] group shadow-2xs hover:shadow-xl hover:-translate-y-1 hover:bg-[#cb9f74] hover:border-[#cb9f74] transition-all duration-200 cursor-pointer block"
                         >
                           <div className="space-y-1 flex flex-col items-center w-full">
                             <h4 className="text-lg md:text-xl font-black text-[#123941] group-hover:text-[#123941] leading-tight transition-colors duration-200 whitespace-nowrap overflow-hidden text-ellipsis">
@@ -703,7 +714,7 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
                             <span>바로가기</span>
                             <span>&gt;</span>
                           </div>
-                        </div>
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -762,11 +773,11 @@ const [currentView, setCurrentView] = useState<ViewState>(() => {
             </div>
             
             <div className="flex flex-wrap gap-4 text-[11px] text-[#707072]">
-              <button onClick={() => handleNavigate('home')} className="hover:text-nike-black font-semibold">홈으로</button>
+              <a href="/" onClick={(e) => { e.preventDefault(); handleNavigate('home'); }} className="hover:text-nike-black font-semibold cursor-pointer">홈으로</a>
               <span>|</span>
-              <button onClick={() => handleNavigate('planner-goods')} className="hover:text-nike-black font-semibold">영업자료</button>
+              <a href="/planner-goods/" onClick={(e) => { e.preventDefault(); handleNavigate('planner-goods'); }} className="hover:text-nike-black font-semibold cursor-pointer">영업자료</a>
               <span>|</span>
-              <button onClick={() => handleNavigate('dispute')} className="hover:text-nike-black font-semibold">판례＆분쟁</button>
+              <a href="/dispute/" onClick={(e) => { e.preventDefault(); handleNavigate('dispute'); }} className="hover:text-nike-black font-semibold cursor-pointer">판례＆분쟁</a>
               <span>|</span>
               <a href="https://www.fss.or.kr" target="_blank" rel="noreferrer" className="hover:text-nike-black font-semibold flex items-center gap-1">
                 금융감독원 바로가기

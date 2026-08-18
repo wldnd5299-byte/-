@@ -10,7 +10,7 @@ import AdZone from './AdZone';
 interface GoodItem {
   id: number;
   title: string;
-  category: 'materials' | 'stationery' | 'gifts' | 'digital' | 'disability' | 'breastcancer' | 'breastcancerrecurrence' | 'stomachcancerrecurrence' | 'cancerstats' | 'agecancer' | 'insitucancer' | 'coloncancertreat';
+  category: 'materials' | 'stationery' | 'gifts' | 'digital' | 'disability' | 'breastcancer' | 'breastcancerrecurrence' | 'stomachcancerrecurrence' | 'heavyiontherapy' | 'cancerstats' | 'agecancer' | 'insitucancer' | 'coloncancertreat';
   categoryLabel: string;
   badgeLeft?: string;
   badgeRight?: string;
@@ -191,8 +191,8 @@ function Age80Char() {
 
 export default function PlannerGoods() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeTab, setActiveTab] = useState<'all' | 'stomachcancerrecurrence' | 'agecancer' | 'cancerstats' | 'breastcancer' | 'breastcancerrecurrence' | 'disability' | 'insitucancer' | 'coloncancertreat' | 'materials' | 'stationery' | 'gifts' | 'digital'>('all');
-  const [downloadCount, setDownloadCount] = useState<Record<number, number>>({ 1: 1248, 2: 954, 3: 1120, 4: 1380, 5: 1450, 9: 1620 });
+  const [activeTab, setActiveTab] = useState<'all' | 'heavyiontherapy' | 'stomachcancerrecurrence' | 'agecancer' | 'cancerstats' | 'breastcancer' | 'breastcancerrecurrence' | 'disability' | 'insitucancer' | 'coloncancertreat' | 'materials' | 'stationery' | 'gifts' | 'digital'>('all');
+  const [downloadCount, setDownloadCount] = useState<Record<number, number>>({ 1: 1248, 2: 954, 3: 1120, 4: 1380, 5: 1450, 9: 1620, 10: 2150 });
   const [selectedInquiryProduct, setSelectedInquiryProduct] = useState<GoodItem | null>(null);
   const [showReportModal, setShowReportModal] = useState<boolean>(false);
   const [selectedReportId, setSelectedReportId] = useState<number>(1);
@@ -202,6 +202,19 @@ export default function PlannerGoods() {
   const [inquirySuccess, setInquirySuccess] = useState(false);
 
   const goods: GoodItem[] = [
+    {
+      id: 10,
+      title: '중입자치료 (연세암병원 중입자치료센터 공식 가이드)',
+      category: 'heavyiontherapy',
+      categoryLabel: '중입자치료',
+      badgeLeft: '연세암병원 / 중입자치료센터',
+      price: '무료 PDF / 웹뷰',
+      desc: '현존하는 최고의 암 치료법 꿈의 암치료 중입자치료 완벽 정리! 수소입자 대비 12배 무거운 탄소입자 가속, Bragg Peak(브래그 피크) 종양 표적 타격, X-선 대비 2~3배 높고 강력한 세포 생물학적 생포 효과, DNA 클러스터 절단, 췌장암·폐암·간암·전립선암 적용, 12회 짧은 치료 및 고액 비급여 치료비 영업 브리핑 자료.',
+      isDownloadable: true,
+      downloadUrl: '중입자치료_연세암병원_공식가이드.pdf',
+      image: 'bg-[#0f2b5c] text-white',
+      tags: ['중입자치료', '연세암병원', '브래그피크', 'BraggPeak', '탄소이온가속', '꿈의암치료기', '췌장암폐암간암전립선암', 'DNA쌍가닥절단', '12회short치료', '영업브리핑자료']
+    },
     {
       id: 9,
       title: '위암 재발 및 전이 (국가암지식정보센터 & 대한위암학회 가이드)',
@@ -2707,9 +2720,269 @@ export default function PlannerGoods() {
     printWindow.document.close();
   };
 
+  const handleOpenHeavyIonPdfPrint = () => {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    const htmlContent = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>중입자치료 - 연세암병원 중입자치료센터 공식 가이드</title>
+  <style>
+    @page { size: A4 portrait; margin: 8mm 10mm; }
+    body { font-family: 'Pretendard', -apple-system, sans-serif; font-size: 8px; color: #1e293b; line-height: 1.35; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .header { border-bottom: 2px solid #0f2b5c; padding-bottom: 4px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .header-title { font-size: 13px; font-weight: 900; color: #0f2b5c; letter-spacing: -0.5px; }
+    .header-sub { font-size: 7.5px; color: #64748b; font-weight: 700; }
+    .badge { display: inline-block; background-color: #0f2b5c; color: #ffffff; font-size: 7.5px; font-weight: 800; padding: 2px 5px; border-radius: 4px; text-transform: uppercase; margin-bottom: 2px; }
+    .def-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 5px; padding: 5px 7px; font-size: 7.5px; margin-bottom: 6px; color: #1e40af; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 6px; }
+    .stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 4px; text-align: center; }
+    .stat-val { font-size: 10.5px; font-weight: 900; color: #0f2b5c; margin-top: 1px; }
+    .stat-lbl { font-size: 7px; color: #475569; font-weight: 700; }
+    .sec-title { font-size: 9px; font-weight: 900; color: #0f172a; margin: 6px 0 3px 0; border-left: 3px solid #0f2b5c; padding-left: 5px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 6px; font-size: 7.5px; }
+    th { background: #f1f5f9; color: #334155; font-weight: 800; border: 1px solid #cbd5e1; padding: 3px 3px; text-align: center; }
+    td { border: 1px solid #e2e8f0; padding: 2.5px 3px; text-align: center; color: #334155; }
+    tr:nth-child(even) { background: #f8fafc; }
+    .highlight-row { background: #eff6ff !important; font-weight: 800; }
+    .sales-box { background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 6px; color: #14532d; margin-top: 5px; font-size: 7.5px; }
+    .notes { font-size: 6.5px; color: #64748b; text-align: right; margin-top: 4px; border-top: 1px solid #e2e8f0; padding-top: 2px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <span class="badge">연세암병원 중입자치료센터 공식 검수 가이드</span>
+      <div class="header-title">⚛️ 중입자치료 (꿈의 암 치료기 · 탄소이온 Bragg Peak 기술 리포트)</div>
+    </div>
+    <div class="header-sub">검수: 연세암병원 중입자치료센터 · 대한방사선종양학회</div>
+  </div>
+
+  <div class="def-box">
+    <strong>📌 중입자치료(Heavy Ion Therapy)란?</strong>: 탄소입자(Carbon Ion)를 이용한 방사선치료의 하나로서, 수소입자보다 <strong>12배 무거운 탄소입자</strong>를 빛의 속도의 70%까지 가속시켜 암세포만을 표적 조준하여 파괴합니다. 기존 X-선 방사선치료 대비 <strong>2~3배 높은 생물학적 세포 살상 효과</strong>로 난치암을 극복하는 현존 최고 '꿈의 암 치료기'입니다.
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-lbl">탄소입자 질량비</div>
+      <div class="stat-val" style="color:#0f2b5c;">24,000 배</div>
+      <div style="font-size:6.5px; color:#64748b; margin-top:1px;">전해 질량비 (수소 2,000)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">탄소입자 전하비</div>
+      <div class="stat-val" style="color:#1d4ed8;">+6 (6가 전하)</div>
+      <div style="font-size:6.5px; color:#64748b; margin-top:1px;">양성자(+1) 대비 파괴력 강함</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">상대적 생물학적 효과(RBE)</div>
+      <div class="stat-val" style="color:#b91c1c;">2 ~ 3 배</div>
+      <div style="font-size:6.5px; color:#64748b; margin-top:1px;">X-선(1) 대비 세포 살상능력</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">평균 치료 횟수</div>
+      <div class="stat-val" style="color:#15803d;">평균 12 회</div>
+      <div style="font-size:6.5px; color:#64748b; margin-top:1px;">기존 25회 대비 절반 단축</div>
+    </div>
+  </div>
+
+  <!-- [시각 자료 1] 입자 질량 및 전하 다이어그램 -->
+  <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:5px; padding:6px; margin-bottom:6px; text-align:center;">
+    <span style="font-size:7.5px; font-weight:800; color:#334155; display:block; margin-bottom:4px;">🎨 [시각자료 1] 방사선치료 입자선 질량비 및 전하 비교 다이어그램</span>
+    <div style="display:flex; justify-content:space-around; align-items:center; background:#fff; padding:6px; border-radius:5px; border:1px solid #e2e8f0;">
+      <div style="text-align:center;">
+        <div style="width:24px; height:24px; border-radius:50%; border:1px dashed #94a3b8; display:flex; align-items:center; justify-content:center; margin:0 auto; font-size:6.5px; color:#64748b; font-weight:bold;">~</div>
+        <div style="font-size:7px; font-weight:bold; color:#334155; margin-top:2px;">X-선 (광자)</div>
+        <div style="font-size:6px; color:#64748b;">질량 0 / 전하 0</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:14px; height:14px; border-radius:50%; background:#94a3b8; color:#fff; display:flex; align-items:center; justify-content:center; margin:5px auto; font-size:5.5px; font-weight:bold;">e⁻</div>
+        <div style="font-size:7px; font-weight:bold; color:#334155; margin-top:2px;">Electron (전자)</div>
+        <div style="font-size:6px; color:#64748b;">질량 1 / 전하 -1</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:32px; height:32px; border-radius:50%; background:#3b82f6; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto; font-size:7.5px; font-weight:bold;">H⁺</div>
+        <div style="font-size:7px; font-weight:bold; color:#1e40af; margin-top:2px;">Proton (양성자)</div>
+        <div style="font-size:6px; color:#1d4ed8; font-weight:bold;">질량 2,000 / 전하 +1</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, #3730a3, #1e1b4b); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto; font-size:7.5px; font-weight:900;">
+          <span>Carbon</span>
+          <span style="font-size:6.5px; color:#fde047;">¹²C⁶⁺</span>
+        </div>
+        <div style="font-size:7px; font-weight:900; color:#1e1b4b; margin-top:2px;">Carbon Ion (중입자)</div>
+        <div style="font-size:6px; color:#be123c; font-weight:900;">질량 24,000 (12배) / 전하 +6</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">1. 방사선치료에 사용되는 광자, 전자, 입자선의 물리적 특성 비교</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">구분</th>
+        <th style="width:20%;">X-선 치료 (X-ray)</th>
+        <th style="width:20%;">전자선 치료 (Electron)</th>
+        <th style="width:20%;">양성자치료 (Proton)</th>
+        <th style="width:20%; background:#dbeafe; color:#1e40af;">중입자치료 (Carbon)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:800;">질량비 (Mass)</td>
+        <td>x (질량 없음)</td>
+        <td>1</td>
+        <td>2,000</td>
+        <td class="highlight-row" style="color:#1e40af;">24,000 (12배 무거움)</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;">전하비 (Charge)</td>
+        <td>x (전하 없음)</td>
+        <td>-1</td>
+        <td>+1</td>
+        <td class="highlight-row" style="color:#1e40af;">+6 (6가 이온)</td>
+      </tr>
+      <tr class="highlight-row">
+        <td style="font-weight:900; color:#1e40af;">상대적 생물학적 효과 (RBE)</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1.1</td>
+        <td style="font-weight:900; color:#b91c1c;">2 ~ 3 배 (최고 파괴력)</td>
+      </tr>
+      <tr>
+        <td style="font-weight:800;">에너지 방출 방식</td>
+        <td>투과 중 지속 방출 (정상조직 손상)</td>
+        <td>표면근처 방출 (침투 얕음)</td>
+        <td>브래그 피크 (Bragg Peak)</td>
+        <td style="font-weight:900; color:#0f2b5c;">초정밀 브래그 피크 (Bragg Peak)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- [시각 자료 2] SVG Bragg Peak 에너지 곡선 -->
+  <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:5px; padding:6px; margin-bottom:6px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+      <strong style="font-size:8px; color:#0f172a;">📈 [시각자료 2] 중입자의 브래그 피크(Bragg Peak) 에너지 전달 곡선</strong>
+      <span style="background:#dbeafe; color:#1e40af; font-size:6.5px; font-weight:800; padding:1px 4px; border-radius:3px;">정상세포 보호 & 암세포 집중 타격</span>
+    </div>
+    <div style="background:#fff; border:1px solid #e2e8f0; border-radius:5px; padding:6px; position:relative;">
+      <div style="position:relative; height:100px; width:100%; border-bottom:1px solid #cbd5e1; border-left:1px solid #cbd5e1;">
+        <span style="position:absolute; left:2px; top:2px; font-size:6px; color:#64748b; font-weight:bold;">선량 (%)</span>
+        <span style="position:absolute; left:2px; top:15px; font-size:5.5px; color:#94a3b8;">100%</span>
+        <span style="position:absolute; left:2px; top:48px; font-size:5.5px; color:#94a3b8;">50%</span>
+        <span style="position:absolute; left:2px; bottom:2px; font-size:5.5px; color:#94a3b8;">0%</span>
+        
+        <span style="position:absolute; right:4px; bottom:-11px; font-size:6px; color:#64748b; font-weight:bold;">체내 침투 깊이 (cm)</span>
+        <span style="position:absolute; left:25px; bottom:-11px; font-size:5.5px; color:#94a3b8;">0</span>
+        <span style="position:absolute; left:110px; bottom:-11px; font-size:5.5px; color:#94a3b8;">5</span>
+        <span style="position:absolute; left:200px; bottom:-11px; font-size:5.5px; color:#94a3b8;">10</span>
+        <span style="position:absolute; right:25px; bottom:-11px; font-size:5.5px; color:#be123c; font-weight:bold;">15 (종양 표적)</span>
+
+        <div style="position:absolute; right:15px; top:8px; bottom:0; width:40px; background:rgba(254, 205, 211, 0.6); border-left:1px solid #fda4af; border-right:1px solid #fda4af; display:flex; align-items:center; justify-content:center;">
+          <span style="font-size:6.5px; font-weight:900; color:#9f1239; text-align:center;">🎯 종양<br/>(암세포)</span>
+        </div>
+
+        <svg viewBox="0 0 400 100" style="position:absolute; inset:0; width:100%; height:100%; overflow:visible;">
+          <path d="M 25 12 Q 70 20, 140 45 T 260 68 T 350 82" fill="none" stroke="#16a34a" stroke-width="2" />
+          <path d="M 25 82 C 90 82, 200 78, 260 74 Q 295 70, 312 10 L 320 95 L 350 98" fill="none" stroke="#2563eb" stroke-width="2.5" />
+          <circle cx="312" cy="10" r="3.5" fill="#dc2626" />
+        </svg>
+      </div>
+      <div style="display:flex; justify-content:center; gap:16px; margin-top:13px; font-size:6.5px; font-weight:bold;">
+        <div style="display:flex; align-items:center; gap:3px;">
+          <div style="width:12px; height:2.5px; background:#16a34a; border-radius:2px;"></div>
+          <span style="color:#166534;">X-선 (표면 침투 시 고선량, 종양 깊이에서 선량 감소)</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:3px;">
+          <div style="width:12px; height:3px; background:#2563eb; border-radius:2px;"></div>
+          <span style="color:#1e40af; font-weight:900;">중입자 (체표면 저선량 ➔ 종양 표적에서 브래그 피크 폭발 ➔ 직후 소멸)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- [시각 자료 3] DNA 절단 비교 카고 -->
+  <div style="background:#e0e7ff; border:1px solid #c7d2fe; border-radius:5px; padding:6px; margin-bottom:6px;">
+    <strong style="font-size:8px; color:#312e81; display:block; margin-bottom:3px;">🧬 [시각자료 3] 방사선 종류에 따른 DNA 절단 메커니즘 차이 (Nature 508)</strong>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px;">
+      <div style="background:#fff; border:1px solid #cbd5e1; border-radius:4px; padding:5px;">
+        <span style="font-size:7.5px; font-weight:900; color:#334155; display:block; margin-bottom:2px;">X-선 / 양성자치료</span>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:3px; text-align:center; font-size:7px; font-weight:bold; color:#c2410c; margin-bottom:3px; border-radius:3px;">
+          DNA 단일 가닥 절단 (Single-Strand Break)
+        </div>
+        <p style="font-size:6.5px; color:#475569; margin:0; line-height:1.25;">
+          에너지가 드문드문 전달되어 DNA 한쪽 가닥만 절단됨. 암세포가 스스로 DNA를 복구하여 살아남거나 재발할 가능성 잔존.
+        </p>
+      </div>
+      <div style="background:linear-gradient(135deg, #1e1b4b, #312e81); color:#fff; border-radius:4px; padding:5px;">
+        <span style="font-size:7.5px; font-weight:900; color:#fde047; display:block; margin-bottom:2px;">중입자치료 (Carbon-Ion)</span>
+        <div style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); padding:3px; text-align:center; font-size:7px; font-weight:900; color:#fde047; margin-bottom:3px; border-radius:3px;">
+          DNA 이중 가닥 절단 (Clustered Double-Strand Break)
+        </div>
+        <p style="font-size:6.5px; color:#e0e7ff; margin:0; line-height:1.25;">
+          고밀도 탄소 입자가 암세포 DNA 이중 가닥을 완전히 파괴함. 암세포 자가복구 절대 불가능, 확실한 암세포 사멸!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">2. 중입자치료 3대 핵심 장점 및 대상 암종</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%;">핵심 장점</th>
+        <th style="width:48%;">상세 메커니즘 및 치료 원리</th>
+        <th style="width:30%;">주요 적용 암종</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:900; color:#0f2b5c;">① 난치성 암 적용 가능</td>
+        <td style="text-align:left;">기존 수술이나 X-선 치료로 치료가 어려웠던 깊은 부위 및 항암제 저항성 암 파괴 가능. 세포 생물학적 살상 능력 2~3배 우수.</td>
+        <td style="text-align:left; font-weight:800; color:#1e40af;">· 췌장암, 간암, 폐암<br/>· 전립선암, 두경부암<br/>· 척삭종, 육종(골육종)</td>
+      </tr>
+      <tr>
+        <td style="font-weight:900; color:#15803d;">② 부작용 현저히 감소<br/>(브래그 피크)</td>
+        <td style="text-align:left;">몸 표면에서는 방사량이 적고, 암 조직 도착 지점(Bragg Peak)에서 최대 에너지를 쏟아낸 뒤 즉시 소멸. 주변 정상 세포 손상 방지.</td>
+        <td style="text-align:left;">· 정상장기 인접 암<br/>· 재발암 및 고령 환자</td>
+      </tr>
+      <tr>
+        <td style="font-weight:900; color:#b91c1c;">③ 치료기간 대폭 단축<br/>(환자 편의성)</td>
+        <td style="text-align:left;">기존 방사선치료 평균 25회(1~2개월) ➔ 중입자치료 평균 12회(3주 내외) 단축. 고령 및 경제활동 환자 삶의 질 향상.</td>
+        <td style="text-align:left;">· 통원 치료 대상자<br/>· 빠른 사회복귀 필요자</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sales-box">
+    <strong style="font-size: 8.5px; display: block; margin-bottom: 3px;">💡 [설계사 셀링 포인트] 중입자치료 영업 브리핑 가이드</strong>
+    1. <strong>"꿈의 암치료 중입자치료, 비급여 치료비 약 5,000만~1억 원 발생!"</strong>: 중입자치료는 건강보험 미적용 비급여 치료로 회당/코스당 고액 비용이 발생하므로, 표적항암 및 특수방사선치료비/중입자치료 특약의 사전 대비 필수 제안.<br/>
+    2. <strong>"췌장암·폐암·간암 5년 생존율 획기적 향상!"</strong>: 기존 수술 불가능했던 3대 난치암(췌장암, 간암, 폐암) 및 전립선암 환자에게 완치 기회를 제공하는 최고의 치료 기술 소구.<br/>
+    3. <strong>"단 12회 치료로 부작용 없이 일상 복귀"</strong>: 입원 치료 없이 통원으로 3주 내 치료 완료. 부작용이 적어 고령층 고객 및 경제활동 직장인에게 설득력 높음.
+  </div>
+
+  <div class="notes">
+    * 출처: 연세암병원 중입자치료센터 공식 가이드, 보건복지부, 대한방사선종양학회, Nature 508 (133-138)
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() { window.print(); }, 300);
+    };
+  </script>
+</body>
+</html>`;
+
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+  };
+
   const handleOpenReportPdf = (reportId: number | string) => {
     const id = Number(reportId);
-    if (id === 9) {
+    if (id === 10) {
+      handleOpenHeavyIonPdfPrint();
+    } else if (id === 9) {
       handleOpenStomachCancerRecurrencePdfPrint();
     } else if (id === 8) {
       handleOpenBreastCancerRecurrencePdfPrint();
@@ -2732,6 +3005,7 @@ export default function PlannerGoods() {
 
   const getReportFilename = (reportId: number | string) => {
     const id = Number(reportId);
+    if (id === 10) return '중입자치료_연세암병원_공식가이드.pdf';
     if (id === 9) return '위암_재발및전이_국가암지식정보센터.pdf';
     if (id === 8) return '유방암_재발및전이_국가암지식정보센터.pdf';
     if (id === 7) return '대장암_치료방법_국가암지식정보센터.pdf';
@@ -2822,6 +3096,7 @@ export default function PlannerGoods() {
         <div className="flex flex-wrap gap-1.5">
           {[
             { id: 'all', label: '전체' },
+            { id: 'heavyiontherapy', label: '중입자치료' },
             { id: 'stomachcancerrecurrence', label: '위암 재발 및 전이' },
             { id: 'breastcancerrecurrence', label: '유방암 재발 및 전이' },
             { id: 'coloncancertreat', label: '대장암치료방법' },
@@ -5242,7 +5517,9 @@ export default function PlannerGoods() {
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-0.5 bg-[#cb9f74] text-slate-950 text-[10px] font-black rounded uppercase">
-                      {selectedReportId === 9
+                      {selectedReportId === 10
+                        ? '연세암병원 중입자치료센터'
+                        : selectedReportId === 9
                         ? '국가암지식정보센터 & 대한위암학회'
                         : selectedReportId === 8
                         ? '국가암지식정보센터 & 란셋(Lancet) 임상'
@@ -5261,7 +5538,9 @@ export default function PlannerGoods() {
                         : '통계청 OFFICIAL'}
                     </span>
                     <span className="text-xs text-slate-300 font-bold">
-                      {selectedReportId === 9
+                      {selectedReportId === 10
+                        ? '공식 가이드 (연세암병원·대한방사선종양학회 검수)'
+                        : selectedReportId === 9
                         ? '공식 가이드 (대한위암학회·대한중앙내과학회 검수)'
                         : selectedReportId === 8
                         ? '공식 가이드 (국립암센터 검수)'
@@ -5281,7 +5560,9 @@ export default function PlannerGoods() {
                     </span>
                   </div>
                   <h2 className="text-lg sm:text-xl font-black text-white mt-1">
-                    {selectedReportId === 9
+                    {selectedReportId === 10
+                      ? '중입자치료 (연세암병원 중입자치료센터 공식 가이드 · 브래그 피크 · 입자비교 · DNA절단 리포트)'
+                      : selectedReportId === 9
                       ? '위암 재발 및 전이 (수술 후 5년 내 90% 재발·3대 재발 패턴·추적검사 주기·항암치료 가이드)'
                       : selectedReportId === 8
                       ? '유방암 재발 및 전이 (5년 생존율 vs 10~20년 후기 재발·원격전이·산정특례 5년 만료 가이드)'
@@ -5348,9 +5629,9 @@ export default function PlannerGoods() {
                 }`}
               >
                 <TrendingUp className="w-4 h-4" />
-                {selectedReportId === 9 ? '재발률/누적비율' : selectedReportId === 8 ? '재발률/통계개요' : selectedReportId === 7 ? '내시경/수술 절제' : selectedReportId === 6 ? '25년간 추이' : selectedReportId === 5 ? '연령군별 발생률' : selectedReportId === 4 ? '남녀 전체 Top10' : selectedReportId === 3 ? '치료제/자가검진' : selectedReportId === 2 ? '대표질환별 지급률' : '10대 사망원인 그래프'}
+                {selectedReportId === 10 ? '입자물리 특성비교' : selectedReportId === 9 ? '재발률/누적비율' : selectedReportId === 8 ? '재발률/통계개요' : selectedReportId === 7 ? '내시경/수술 절제' : selectedReportId === 6 ? '25년간 추이' : selectedReportId === 5 ? '연령군별 발생률' : selectedReportId === 4 ? '남녀 전체 Top10' : selectedReportId === 3 ? '치료제/자가검진' : selectedReportId === 2 ? '대표질환별 지급률' : '10대 사망원인 그래프'}
               </button>
-              {(selectedReportId === 1 || selectedReportId === 4 || selectedReportId === 5 || selectedReportId === 6 || selectedReportId === 7 || selectedReportId === 8 || selectedReportId === 9) && (
+              {(selectedReportId === 1 || selectedReportId === 4 || selectedReportId === 5 || selectedReportId === 6 || selectedReportId === 7 || selectedReportId === 8 || selectedReportId === 9 || selectedReportId === 10) && (
                 <button
                   onClick={() => setActiveReportSubTab('gender')}
                   className={`py-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
@@ -5360,7 +5641,7 @@ export default function PlannerGoods() {
                   }`}
                 >
                   <Users className="w-4 h-4" />
-                  {selectedReportId === 9 ? '3대 재발유형' : selectedReportId === 8 ? '원격 전이 치료법' : selectedReportId === 7 ? '항암/표적/면역치료' : selectedReportId === 6 ? '성별 주요 발생암' : selectedReportId === 5 ? '50대 남녀역전 분석' : selectedReportId === 4 ? '성별 발생 비교' : '성별 비교 분석'}
+                  {selectedReportId === 10 ? '브래그피크 & DNA' : selectedReportId === 9 ? '3대 재발유형' : selectedReportId === 8 ? '원격 전이 치료법' : selectedReportId === 7 ? '항암/표적/면역치료' : selectedReportId === 6 ? '성별 주요 발생암' : selectedReportId === 5 ? '50대 남녀역전 분석' : selectedReportId === 4 ? '성별 발생 비교' : '성별 비교 분석'}
                 </button>
               )}
               <button
@@ -5372,7 +5653,7 @@ export default function PlannerGoods() {
                 }`}
               >
                 <Layers className="w-4 h-4" />
-                {selectedReportId === 9 ? '추적검사 일정' : selectedReportId === 8 ? '국소재발 vs 원격전이' : selectedReportId === 7 ? '방사선치료/TNT' : selectedReportId === 6 ? '연도별 통계표' : selectedReportId === 5 ? '연령대별 주요 암종' : selectedReportId === 4 ? '조발생률/표준화' : selectedReportId === 3 ? '검진권고안' : selectedReportId === 2 ? '연령별 장애인 통계' : '연령별 5대 사망원인'}
+                {selectedReportId === 10 ? '치료혜택 & 대상암종' : selectedReportId === 9 ? '추적검사 일정' : selectedReportId === 8 ? '국소재발 vs 원격전이' : selectedReportId === 7 ? '방사선치료/TNT' : selectedReportId === 6 ? '연도별 통계표' : selectedReportId === 5 ? '연령대별 주요 암종' : selectedReportId === 4 ? '조발생률/표준화' : selectedReportId === 3 ? '검진권고안' : selectedReportId === 2 ? '연령별 장애인 통계' : '연령별 5대 사망원인'}
               </button>
               <button
                 onClick={() => setActiveReportSubTab('sales')}
@@ -5390,8 +5671,312 @@ export default function PlannerGoods() {
             {/* Modal Body Content (Scrollable) */}
             <div className="p-4 sm:p-6 overflow-y-auto space-y-6 flex-1 text-slate-800">
               
-              {/* STOMACH CANCER RECURRENCE REPORT CONTENT (selectedReportId === 9) */}
-              {selectedReportId === 9 ? (
+              {/* HEAVY ION THERAPY REPORT CONTENT (selectedReportId === 10) */}
+              {selectedReportId === 10 ? (
+                <div className="space-y-6 text-left">
+                  {/* Overview Banner */}
+                  <div className="p-4 bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white rounded-2xl space-y-2 border border-blue-800/50 shadow-md">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="px-2.5 py-1 bg-amber-400 text-slate-950 text-[11px] font-black rounded-md uppercase tracking-wide">
+                        꿈의 암치료기 · 연세암병원 중입자치료센터
+                      </span>
+                      <span className="text-xs text-blue-200 font-bold">
+                        상담 대상: 췌장암 · 폐암 · 간암 · 전립선암 그 외 난치암
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-black text-white flex items-center gap-2">
+                      <span>⚛️ 중입자치료(Heavy Ion Therapy) 핵심 개요</span>
+                    </h3>
+                    <p className="text-xs text-slate-200 leading-relaxed">
+                      중입자치료는 탄소이온(Carbon Ion)을 가속시켜 암세포(종양)만을 미세 조준하여 파괴하는 방사선치료 기법입니다. 수소입자보다 <strong className="text-amber-300 underline font-black">12배 무거운 탄소입자</strong>를 빛의 속도의 70%까지 가속하여, 기존 방사선치료 대비 <strong className="text-amber-300 underline font-black">2~3배 높은 높은 세포 생물학적 살상 능력</strong>을 보입니다.
+                    </p>
+                  </div>
+
+                  {/* Summary Subtab Content */}
+                  {(activeReportSubTab === 'summary' || activeReportSubTab === 'top10') && (
+                    <div className="space-y-5">
+                      {/* Particle Types Comparison Table */}
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-black text-slate-900 flex items-center gap-2">
+                          <span>📊 방사선치료에 사용되는 광자, 전자, 입자선 비교</span>
+                        </h4>
+                        <div className="overflow-x-auto rounded-xl border border-slate-200">
+                          <table className="w-full text-xs text-center border-collapse">
+                            <thead>
+                              <tr className="bg-slate-100 text-slate-700 font-bold">
+                                <th className="p-2.5 border-b border-r border-slate-200 text-left pl-3">구분</th>
+                                <th className="p-2.5 border-b border-r border-slate-200">X-선치료 (X-ray)</th>
+                                <th className="p-2.5 border-b border-r border-slate-200">전자선치료 (Electron)</th>
+                                <th className="p-2.5 border-b border-r border-slate-200">양성자치료 (Proton)</th>
+                                <th className="p-2.5 border-b border-slate-200 bg-blue-900 text-white font-black">중입자치료 (Carbon)</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-200">
+                              <tr>
+                                <td className="p-2.5 font-bold text-slate-900 border-r border-slate-200 text-left pl-3">질량비 (Mass Ratio)</td>
+                                <td className="p-2.5 border-r border-slate-200 text-slate-600">x (질량 없음)</td>
+                                <td className="p-2.5 border-r border-slate-200 text-slate-600">1</td>
+                                <td className="p-2.5 border-r border-slate-200 text-blue-700 font-bold">2,000</td>
+                                <td className="p-2.5 bg-blue-50/80 font-black text-blue-950">24,000 (양성자 12배)</td>
+                              </tr>
+                              <tr>
+                                <td className="p-2.5 font-bold text-slate-900 border-r border-slate-200 text-left pl-3">전하비 (Charge Ratio)</td>
+                                <td className="p-2.5 border-r border-slate-200 text-slate-600">x (전하 없음)</td>
+                                <td className="p-2.5 border-r border-slate-200 text-slate-600">-1</td>
+                                <td className="p-2.5 border-r border-slate-200 text-blue-700 font-bold">+1</td>
+                                <td className="p-2.5 bg-blue-50/80 font-black text-blue-950">+6 (6가 전하)</td>
+                              </tr>
+                              <tr className="bg-amber-50/50">
+                                <td className="p-2.5 font-black text-slate-900 border-r border-slate-200 text-left pl-3">상대적 생물학적 효과 (RBE)</td>
+                                <td className="p-2.5 border-r border-slate-200 text-slate-600">1</td>
+                                <td className="p-2.5 border-r border-slate-200 text-slate-600">1</td>
+                                <td className="p-2.5 border-r border-slate-200 text-blue-700 font-bold">1.1</td>
+                                <td className="p-2.5 bg-amber-100/80 font-black text-rose-700 text-sm">2 ~ 3 배 (압도적 살상력)</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      {/* Visual Particle Mass Bubble Diagram */}
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3 text-center">
+                        <span className="text-xs font-black text-slate-800 block">
+                          [시각 자료 1] 방사선치료에 사용되는 입자의 질량비 및 전하 크기 비교
+                        </span>
+                        <div className="flex items-center justify-around flex-wrap gap-4 py-4 bg-white rounded-xl border border-slate-200/80 p-4">
+                          {/* X-ray */}
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-10 h-10 rounded-full border-2 border-dashed border-slate-400 flex items-center justify-center text-[10px] text-slate-500 font-bold">
+                              ~
+                            </div>
+                            <span className="text-xs font-bold text-slate-700">X-rays (광자)</span>
+                            <span className="text-[10px] text-slate-500">질량 0 / 전하 0</span>
+                          </div>
+                          {/* Electron */}
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center text-[8px] text-white font-bold">
+                              e⁻
+                            </div>
+                            <span className="text-xs font-bold text-slate-700">Electron (전자)</span>
+                            <span className="text-[10px] text-slate-500">질량 1 / 전하 -1</span>
+                          </div>
+                          {/* Proton */}
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-full bg-blue-500 text-white font-black text-xs flex items-center justify-center shadow-xs">
+                              H⁺
+                            </div>
+                            <span className="text-xs font-bold text-blue-900">Proton (양성자)</span>
+                            <span className="text-[10px] text-blue-700 font-semibold">질량 2,000 / 전하 +1</span>
+                          </div>
+                          {/* Carbon Heavy Ion */}
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-600 to-blue-900 text-white font-black text-sm flex flex-col items-center justify-center shadow-md ring-4 ring-blue-200">
+                              <span>Carbon</span>
+                              <span className="text-[11px] font-bold text-amber-300">¹²C⁶⁺</span>
+                            </div>
+                            <span className="text-xs font-black text-indigo-950">Carbon Ion (중입자)</span>
+                            <span className="text-[11px] font-black text-rose-600">질량 24,000 (양성자 12배) / 전하 +6</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Bragg Peak & DNA Damage Subtab Content */}
+                  {(activeReportSubTab === 'summary' || activeReportSubTab === 'gender') && (
+                    <div className="space-y-5">
+                      {/* Visual Bragg Peak Graph */}
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
+                        <div className="flex items-center justify-between flex-wrap gap-2">
+                          <h4 className="text-sm font-black text-slate-900 flex items-center gap-2">
+                            <span>📈 [시각 자료 2] 중입자의 브래그 피크(Bragg Peak) 에너지 전달 곡선</span>
+                          </h4>
+                          <span className="px-2 py-0.5 bg-blue-100 text-blue-900 text-[10px] font-bold rounded">
+                            정상세포 보호 &amp; 암세포 집중 타격
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          목표 지점(암 부위)에서 에너지가 최대(100%)로 방출되는 <strong>브래그 피크(Bragg Peak)</strong> 특성으로, 빛의 속도 70%로 가속된 탄소 이온이 암세포 표적 깊이에서 폭발적 에너지를 방출하고 그 직후 즉시 소멸하여 주변 정상 장기 손상을 방지합니다.
+                        </p>
+
+                        {/* Bragg Peak Graph Container */}
+                        <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                          <div className="relative h-56 w-full flex items-end pt-6 pb-8 px-8 border-b border-l border-slate-300">
+                            {/* Y-axis Label */}
+                            <span className="absolute -left-2 top-2 text-[10px] font-bold text-slate-500">용량 (%)</span>
+                            <span className="absolute left-1 top-8 text-[9px] text-slate-400">100%</span>
+                            <span className="absolute left-1 top-24 text-[9px] text-slate-400">50%</span>
+                            <span className="absolute left-1 bottom-8 text-[9px] text-slate-400">0%</span>
+
+                            {/* X-axis Label */}
+                            <span className="absolute right-4 -bottom-6 text-[10px] font-bold text-slate-500">조직 침투 깊이 depth in tissue (cm)</span>
+                            <span className="absolute left-12 -bottom-5 text-[9px] text-slate-400">0</span>
+                            <span className="absolute left-1/3 -bottom-5 text-[9px] text-slate-400">5</span>
+                            <span className="absolute left-2/3 -bottom-5 text-[9px] text-slate-400">10</span>
+                            <span className="absolute right-12 -bottom-5 text-[9px] text-slate-400">15 (암 조직)</span>
+
+                            {/* Tumor Zone Highlight */}
+                            <div className="absolute right-8 top-4 bottom-8 w-16 bg-rose-100/80 border-x border-rose-300 flex items-center justify-center">
+                              <span className="text-[11px] font-black text-rose-800 rotate-0 sm:rotate-0 text-center">
+                                🎯 종양<br/>(암세포)
+                              </span>
+                            </div>
+
+                            {/* SVG Curves */}
+                            <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 400 200">
+                              {/* Grid lines */}
+                              <line x1="40" y1="20" x2="380" y2="20" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="3 3"/>
+                              <line x1="40" y1="100" x2="380" y2="100" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="3 3"/>
+                              <line x1="40" y1="170" x2="380" y2="170" stroke="#e2e8f0" strokeWidth="1"/>
+
+                              {/* X-ray Curve (Green) */}
+                              <path
+                                d="M 40 170 Q 70 30, 100 40 T 200 90 T 320 130 T 380 150"
+                                fill="none"
+                                stroke="#16a34a"
+                                strokeWidth="3"
+                              />
+
+                              {/* Heavy Ion Bragg Peak Curve (Blue / Red Peak) */}
+                              <path
+                                d="M 40 140 C 120 140, 240 135, 300 130 Q 325 125, 335 20 Q 340 15, 345 160 L 380 170"
+                                fill="none"
+                                stroke="#2563eb"
+                                strokeWidth="4"
+                              />
+
+                              {/* Bragg Peak Point Indicator */}
+                              <circle cx="335" cy="20" r="6" fill="#dc2626" className="animate-pulse" />
+                            </svg>
+                          </div>
+
+                          {/* Legend */}
+                          <div className="flex items-center justify-center gap-6 pt-6 text-xs font-bold">
+                            <div className="flex items-center gap-2">
+                              <div className="w-5 h-1 bg-emerald-600 rounded"></div>
+                              <span className="text-emerald-900">X-선 (표면 조사량 높고 투과 중 감소)</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-5 h-1.5 bg-blue-600 rounded"></div>
+                              <span className="text-blue-900 font-black">중입자 (표면 저선량 ➔ 종양 깊이에서 브래그 피크 폭발 ➔ 직후 0)</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* DNA Structural Damage Breakdown */}
+                      <div className="p-4 bg-indigo-50/70 border border-indigo-200 rounded-2xl space-y-3">
+                        <div className="flex items-center justify-between flex-wrap gap-2">
+                          <h4 className="text-sm font-black text-indigo-950 flex items-center gap-2">
+                            <span>🧬 [시각 자료 3] 방사선 종류에 따른 DNA 절단 메커니즘 차이</span>
+                          </h4>
+                          <span className="text-[10px] text-indigo-700 font-bold">출처: Nature 508, 133-138</span>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {/* Conventional X-ray / Proton */}
+                          <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2">
+                            <span className="text-xs font-black text-slate-800 block">
+                              X-선 / 양성자치료 (X-ray &amp; Proton)
+                            </span>
+                            <div className="p-3 bg-slate-50 rounded-lg text-center font-mono text-xs font-bold text-amber-700">
+                              DNA 단일 가닥 절단 (Single-Strand Break)
+                            </div>
+                            <p className="text-xs text-slate-600 leading-relaxed">
+                              에너지가 드문드문 작용하여 DNA 한쪽 가닥만 절단됩니다. 암세포가 스스로 DNA를 복구하여 살아남거나 재발할 위험이 존재합니다.
+                            </p>
+                          </div>
+
+                          {/* Heavy Ion Carbon */}
+                          <div className="p-4 bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-xl space-y-2 border border-blue-700">
+                            <span className="text-xs font-black text-amber-300 block">
+                              중입자치료 (Carbon-Ion Beam)
+                            </span>
+                            <div className="p-3 bg-blue-900/90 rounded-lg text-center font-mono text-xs font-black text-amber-300 border border-amber-400/50">
+                              DNA 이중 가닥 절단 (Clustered Double-Strand Break)
+                            </div>
+                            <p className="text-xs text-blue-100 leading-relaxed">
+                              고밀도 탄소 입자가 암세포 DNA 이중 가닥을 완전히 부숴버립니다. 암세포의 자체 복구가 절대 불가능하여 확실한 암세포 사멸을 유도합니다.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Treatment Benefits & Target Cancers Subtab Content */}
+                  {(activeReportSubTab === 'summary' || activeReportSubTab === 'age') && (
+                    <div className="space-y-4">
+                      <h4 className="text-sm font-black text-slate-900 flex items-center gap-2">
+                        <span>🏆 중입자치료 현존 최고 암치료기 3대 핵심 장점</span>
+                      </h4>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl space-y-2">
+                          <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white font-black text-sm flex items-center justify-center">
+                            1
+                          </div>
+                          <strong className="text-xs font-black text-emerald-950 block">대부분의 난치암 적용 가능</strong>
+                          <p className="text-xs text-slate-700 leading-relaxed">
+                            기존 수술이나 방사선으로 치료가 어려웠던 난치성 암(췌장암, 간암, 폐암, 전립선암, 두경부암, 육종 등) 치료 가능.
+                          </p>
+                        </div>
+
+                        <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-2">
+                          <div className="w-8 h-8 rounded-lg bg-blue-600 text-white font-black text-sm flex items-center justify-center">
+                            2
+                          </div>
+                          <strong className="text-xs font-black text-blue-950 block">부작용이 현저히 적은 치료</strong>
+                          <p className="text-xs text-slate-700 leading-relaxed">
+                            브래그 피크 특성으로 정상 장기 방사선 노출이 극소화되어 고령자 및 고위험군 환자도 안전하게 치료 가능.
+                          </p>
+                        </div>
+
+                        <div className="p-4 bg-purple-50 border border-purple-200 rounded-xl space-y-2">
+                          <div className="w-8 h-8 rounded-lg bg-purple-600 text-white font-black text-sm flex items-center justify-center">
+                            3
+                          </div>
+                          <strong className="text-xs font-black text-purple-950 block">짧은 치료기간 (환자 편의성)</strong>
+                          <p className="text-xs text-slate-700 leading-relaxed">
+                            기존 방사선 평균 25회(1~2달) ➔ 중입자 평균 12회(3주 내외) 단축! 통원 치료로 빠른 사회복귀 가능.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Sales Briefing Subtab Content */}
+                  {(activeReportSubTab === 'summary' || activeReportSubTab === 'sales') && (
+                    <div className="p-4 bg-amber-50 border border-amber-200 rounded-2xl space-y-3">
+                      <strong className="text-xs text-amber-950 font-black block text-sm">
+                        💡 [설계사 셀링 포인트] 중입자치료 영업 브리핑 가이드
+                      </strong>
+                      <div className="space-y-2 text-xs text-slate-800 leading-relaxed">
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-rose-700 block">1. "꿈의 암치료 중입자치료, 비급여 치료비 약 5,000만~1억 원 발생!"</span>
+                          <p className="text-slate-600">
+                            중입자치료는 건강보험 미적용 비급여 치료로 회당/코스당 고액 비용이 발생합니다. 이에 따라 고액 암진단비 및 표적/특수방사선치료비 특약(중입자치료 보장)의 선제적 가입 필수성을 설득하세요.
+                          </p>
+                        </div>
+
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-blue-900 block">2. "췌장암·폐암·간암 등 3대 난치암 완치율 획기적 향상!"</span>
+                          <p className="text-slate-600">
+                            생존율이 낮은 췌장암, 간암, 폐암 환자에게 수술 없이 암세포를 완전 사멸시키는 혁신적 대안을 제시하여 암보험 보장 자산의 가치를 높이세요.
+                          </p>
+                        </div>
+
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-emerald-900 block">3. "단 12회 통원 치료로 일상생활 유지!"</span>
+                          <p className="text-slate-600">
+                            입원 없이 3주 내 12회 치료로 끝나므로 경제활동을 중단하지 않고 치료를 받을 수 있는 점을 적극 안내하세요.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : selectedReportId === 9 ? (
                 <div className="space-y-6 text-left">
                   {/* Summary Subtab Content */}
                   {(activeReportSubTab === 'summary' || activeReportSubTab === 'top10') && (
@@ -7693,6 +8278,7 @@ export default function PlannerGoods() {
             <div className="p-4 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
               <span className="text-xs text-slate-500 font-bold hidden sm:inline">
                 자료출처: {
+                  Number(selectedReportId) === 10 ? '연세암병원 중입자치료센터 · 대한방사선종양학회 · Nature 508' :
                   Number(selectedReportId) === 9 ? '국가암지식정보센터 · 대한위암학회 · 대한중앙내과학회' :
                   Number(selectedReportId) === 8 ? '국가암지식정보센터 · 보건복지부 · 란셋(Lancet) 임상' :
                   Number(selectedReportId) === 7 ? '국가암지식정보센터 · 보건복지부 (치료지침)' :

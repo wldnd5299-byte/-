@@ -145,7 +145,7 @@ export default function AgeCalculator() {
         <div className="relative z-10">
           <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight break-keep leading-tight">
             <Calculator className="w-5 h-5 sm:w-6 sm:h-6 text-[#cb9f74] inline-block mr-2 align-text-bottom shrink-0" />
-            <span className="text-[#cb9f74]">보험나이 계산기</span> 및 상령일 계산
+            <span className="text-[#cb9f74]">보험나이</span> 및 상령일 정밀 계산기
           </h2>
           <p className="text-xs md:text-sm text-slate-200 mt-2 leading-relaxed font-semibold break-keep">
             생년월일을 기준으로 법적인 만 나이와 다른 <span className="text-[#cb9f74] font-bold">보험나이</span>를 계산하고, 보험료가 오르는 기준일인 <span className="text-[#cb9f74] font-bold">상령일</span>까지 남은 기간을 추적합니다.

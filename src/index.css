@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Roboto:wght@400;500;700;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Noto Sans KR", "Inter", sans-serif;
-  --font-display: "Noto Sans KR", "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Noto Sans KR", "Inter", "Roboto", system-ui, -apple-system, sans-serif;
+  --font-display: "Noto Sans KR", "Inter", "Roboto", system-ui, -apple-system, sans-serif;
+  --font-mono: "Noto Sans KR", "Inter", "Roboto", system-ui, -apple-system, sans-serif;
   
   --color-nike-black: #123941; /* Deep Teal/Blue-Grey (Main Color 60%) */
   --color-soft-cloud: #FAF8F5; /* Light Warm Beige Background (30%) */
@@ -31,19 +31,41 @@
   --color-slate-50: #FAF8F5;
 }
 
-/* Global typography override to enforce clean modern sans-serif */
+/* Global typography override to enforce clean modern sans-serif & clear standard zero (0) */
 html, body {
   font-family: var(--font-sans);
-  font-feature-settings: "zero" 0;
-  font-variant-numeric: normal;
+  font-feature-settings: "zero" 0, "tnum" 1, "lnum" 1, "cv11" 0, "ss01" 0;
+  font-variant-numeric: normal tabular-nums lining-nums;
+  -webkit-font-feature-settings: "zero" 0, "tnum" 1, "lnum" 1;
 }
 
-* {
-  font-feature-settings: "zero" 0;
+*, ::before, ::after {
+  font-feature-settings: "zero" 0, "tnum" 1, "lnum" 1;
+  -webkit-font-feature-settings: "zero" 0, "tnum" 1, "lnum" 1;
 }
 
 button, input, textarea, select {
   font-family: var(--font-sans);
+  font-feature-settings: "zero" 0, "tnum" 1, "lnum" 1;
+  font-variant-numeric: normal tabular-nums lining-nums;
+}
+
+/* Ensure font-mono uses clean, standard numeric styling with unslashed zero */
+.font-mono, code, kbd, samp, pre {
+  font-family: var(--font-mono) !important;
+  font-feature-settings: "zero" 0, "tnum" 1, "lnum" 1 !important;
+  font-variant-numeric: normal tabular-nums lining-nums !important;
+}
+
+/* Target all numeric values, inputs, calculators, results, tables, phone numbers, dates, amounts */
+input[type="number"],
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+td, th,
+.font-mono {
+  font-feature-settings: "zero" 0, "tnum" 1, "lnum" 1;
+  font-variant-numeric: normal tabular-nums lining-nums;
 }
 
 /* Page Background */
