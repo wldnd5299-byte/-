@@ -94,42 +94,7 @@ function generateDisputePages() {
     console.log(`Generated: dispute/${item.id}/index.html`);
   });
 
-  // Update sitemap.xml
-  const coreUrls = [
-    { loc: 'https://insurancebridge.co.kr/', changefreq: 'daily', priority: '1.0' },
-    { loc: 'https://insurancebridge.co.kr/claim/', changefreq: 'weekly', priority: '0.8' },
-    { loc: 'https://insurancebridge.co.kr/terms/', changefreq: 'weekly', priority: '0.9' },
-    { loc: 'https://insurancebridge.co.kr/surgery/', changefreq: 'weekly', priority: '0.9' },
-    { loc: 'https://insurancebridge.co.kr/indemnity/', changefreq: 'weekly', priority: '0.8' },
-    { loc: 'https://insurancebridge.co.kr/age/', changefreq: 'weekly', priority: '0.8' },
-    { loc: 'https://insurancebridge.co.kr/planner-goods/', changefreq: 'weekly', priority: '0.8' },
-    { loc: 'https://insurancebridge.co.kr/dispute/', changefreq: 'weekly', priority: '0.8' },
-  ];
-
-  const disputeUrls = PRECEDENTS_DATA.map((item) => ({
-    loc: `https://insurancebridge.co.kr/dispute/${item.id}/`,
-    changefreq: 'weekly',
-    priority: '0.7',
-  }));
-
-  const allUrls = [...coreUrls, ...disputeUrls];
-
-  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allUrls
-  .map(
-    (u) => `  <url>
-    <loc>${u.loc}</loc>
-    <changefreq>${u.changefreq}</changefreq>
-    <priority>${u.priority}</priority>
-  </url>`
-  )
-  .join('\n')}
-</urlset>
-`;
-
-  fs.writeFileSync(path.join(rootDir, 'public', 'sitemap.xml'), sitemapXml, 'utf-8');
-  console.log(`Updated sitemap.xml with ${allUrls.length} URLs (8 core + ${disputeUrls.length} dispute items).`);
+  console.log(`Finished generating ${PRECEDENTS_DATA.length} dispute pages.`);
 }
 
 generateDisputePages();

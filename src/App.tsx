@@ -199,12 +199,18 @@ export const getViewFromLocation = (): ViewState => {
   if (rawPath.startsWith('/dispute/')) {
     return 'dispute';
   }
+  if (rawPath.startsWith('/terms/')) {
+    return 'terms';
+  }
   if (PATH_VIEW_MAP[rawPath]) {
     return PATH_VIEW_MAP[rawPath];
   }
   const cleanPath = rawPath.replace(/\/+$/, '') || '/';
   if (cleanPath.startsWith('/dispute/')) {
     return 'dispute';
+  }
+  if (cleanPath.startsWith('/terms/')) {
+    return 'terms';
   }
   if (PATH_VIEW_MAP[cleanPath]) {
     return PATH_VIEW_MAP[cleanPath];
@@ -301,8 +307,12 @@ export default function App() {
     setCurrentView(initialView);
     localStorage.setItem('ib_current_view', initialView);
     
-    // If not a dispute sub-item page, update SEO meta with default view meta
-    if (typeof window !== 'undefined' && !window.location.pathname.match(/^\/dispute\/[a-zA-Z0-9_-]+\/?$/)) {
+    // If not a dispute or terms sub-item page, update SEO meta with default view meta
+    const isSubPath = typeof window !== 'undefined' && (
+      Boolean(window.location.pathname.match(/^\/dispute\/[a-zA-Z0-9_-]+\/?$/)) ||
+      Boolean(window.location.pathname.match(/^\/terms\/[a-zA-Z0-9_-]+/))
+    );
+    if (!isSubPath) {
       updateSEOMeta(initialView);
     }
 
@@ -310,7 +320,11 @@ export default function App() {
       const poppedView = getViewFromLocation();
       setCurrentView(poppedView);
       localStorage.setItem('ib_current_view', poppedView);
-      if (typeof window !== 'undefined' && !window.location.pathname.match(/^\/dispute\/[a-zA-Z0-9_-]+\/?$/)) {
+      const isPoppedSubPath = typeof window !== 'undefined' && (
+        Boolean(window.location.pathname.match(/^\/dispute\/[a-zA-Z0-9_-]+\/?$/)) ||
+        Boolean(window.location.pathname.match(/^\/terms\/[a-zA-Z0-9_-]+/))
+      );
+      if (!isPoppedSubPath) {
         updateSEOMeta(poppedView);
       }
     };

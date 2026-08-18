@@ -355,7 +355,7 @@ async function generateOgImage() {
     font: {
       fontBuffers,
       defaultFontFamily: 'Pretendard'
-    }
+    } as any
   });
 
   const pngData = resvg.render();

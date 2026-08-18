@@ -1,13 +1,33 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import fs from 'fs';
 import {defineConfig} from 'vite';
 import { PRECEDENTS_DATA } from './src/data/disputeData';
+import { INSURER_TERMS_LIST, INSURER_SUBTABS } from './src/data/terms';
 
 export default defineConfig(() => {
   const disputeInputs: Record<string, string> = {};
   PRECEDENTS_DATA.forEach(item => {
-    disputeInputs[`dispute_${item.id.replace(/[^a-zA-Z0-9]/g, '_')}`] = path.resolve(__dirname, `dispute/${item.id}/index.html`);
+    const filePath = path.resolve(__dirname, `dispute/${item.id}/index.html`);
+    if (fs.existsSync(filePath)) {
+      disputeInputs[`dispute_${item.id.replace(/[^a-zA-Z0-9]/g, '_')}`] = filePath;
+    }
+  });
+
+  const termsInputs: Record<string, string> = {};
+  INSURER_TERMS_LIST.forEach(insurer => {
+    const subtabs = INSURER_SUBTABS[insurer.id] || [];
+    const insurerLandingPath = path.resolve(__dirname, `terms/${insurer.id}/index.html`);
+    if (fs.existsSync(insurerLandingPath)) {
+      termsInputs[`terms_${insurer.id.replace(/[^a-zA-Z0-9]/g, '_')}`] = insurerLandingPath;
+    }
+    subtabs.forEach(st => {
+      const subtabPath = path.resolve(__dirname, `terms/${insurer.id}/${st.id}/index.html`);
+      if (fs.existsSync(subtabPath)) {
+        termsInputs[`terms_${insurer.id.replace(/[^a-zA-Z0-9]/g, '_')}_${st.id.replace(/[^a-zA-Z0-9]/g, '_')}`] = subtabPath;
+      }
+    });
   });
 
   return {
@@ -29,6 +49,7 @@ export default defineConfig(() => {
           plannerGoods: path.resolve(__dirname, 'planner-goods/index.html'),
           dispute: path.resolve(__dirname, 'dispute/index.html'),
           ...disputeInputs,
+          ...termsInputs,
         },
       },
     },
