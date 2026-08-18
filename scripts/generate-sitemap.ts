@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { PRECEDENTS_DATA } from '../src/data/disputeData';
-import { INSURER_TERMS_LIST, INSURER_SUBTABS } from '../src/data/terms';
+import { INSURER_TERMS_LIST, INSURER_SUBTABS } from '../src/data/terms/index.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

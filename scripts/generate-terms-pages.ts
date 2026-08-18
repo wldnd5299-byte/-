@@ -8,7 +8,7 @@ import {
   getSummaryForSubTab,
   INSURER_PHONE_MAP,
   getInsurerTheme
-} from '../src/data/terms';
+} from '../src/data/terms/index.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

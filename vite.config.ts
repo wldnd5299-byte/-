@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import {defineConfig} from 'vite';
 import { PRECEDENTS_DATA } from './src/data/disputeData';
-import { INSURER_TERMS_LIST, INSURER_SUBTABS } from './src/data/terms';
+import { INSURER_TERMS_LIST, INSURER_SUBTABS } from './src/data/terms/index.ts';
 
 export default defineConfig(() => {
   const disputeInputs: Record<string, string> = {};
