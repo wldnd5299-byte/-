@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>보험브릿지 정보글</title>
+    <link>https://insurancebridge.co.kr/info/</link>
+    <description>보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드</description>
+    <language>ko</language>
+    <lastBuildDate>Wed, 19 Aug 2026 03:23:29 GMT</lastBuildDate>
+    <atom:link href="https://insurancebridge.co.kr/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>보험나이는 어떻게 계산해요?</title>
+      <link>https://insurancebridge.co.kr/info/how-is-insurance-age-calculated/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/how-is-insurance-age-calculated/</guid>
+      <description>만 나이와 보험나이가 왜 다른지, 생년월일 기준으로 보험나이를 확인해야 하는 이유를 알기 쉽게 설명해 드립니다.</description>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+      <category>planner</category>
+    </item>
+    <item>
+      <title>보험나이 계산하는 법</title>
+      <link>https://insurancebridge.co.kr/info/how-to-calculate-insurance-age/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/how-to-calculate-insurance-age/</guid>
+      <description>보험나이는 실제 만 나이를 기준으로 6개월 미만은 버리고 6개월 이상은 1년으로 반올림하여 계산합니다. 실제 계산 공식과 예시를 안내합니다.</description>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+      <category>planner</category>
+    </item>
+    <item>
+      <title>보험나이계산기</title>
+      <link>https://insurancebridge.co.kr/info/insurance-age-calculator/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/insurance-age-calculator/</guid>
+      <description>생년월일 8자리를 입력하여 만 나이와 다른 보험나이 및 보험료가 오르는 기준일인 상령일을 바로 계산할 수 있습니다.</description>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+      <category>planner</category>
+    </item>
+    <item>
+      <title>보험나이 상령일 계산법</title>
+      <link>https://insurancebridge.co.kr/info/insurance-age-change-date/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/insurance-age-change-date/</guid>
+      <description>상령일은 보험나이가 1세 올라가는 기준일로, 실제 생일에서 6개월을 더한 날짜입니다. 상령일 계산 기준과 확인 방법을 안내합니다.</description>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+      <category>planner</category>
+    </item>
+    <item>
+      <title>삼성화재 15대질병수술비 약관 질병코드 보장항목</title>
+      <link>https://insurancebridge.co.kr/info/samsung-15-disease-surgery/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/samsung-15-disease-surgery/</guid>
+      <description>삼성화재 15대질병수술비 약관 기준 15개 보장 질환 종류, 주요 질병분류코드(KCD), 수술 인정 기준 및 세부 약관 분류표 연결 정보를 안내합니다.</description>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+      <category>surgery</category>
+    </item>
+  </channel>
+</rss>

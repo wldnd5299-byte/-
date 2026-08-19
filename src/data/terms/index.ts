@@ -112,18 +112,18 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "hanwha_14diseases", label: "14대 질병수술", groupCount: "14개 분류" }
   ],
   "lotte-ins": [
-    { id: "lotte_integrated_cancer", label: "통합암", groupCount: "8개 그룹" },
-    { id: "lotte_integrated_cancer_with_metastasis", label: "통합암(전이포함)", groupCount: "전이포함" },
-    { id: "lotte_integrated_metastatic_cancer", label: "전이암", groupCount: "전이암" },
-    { id: "lotte_brain_disease", label: "뇌혈관질환", groupCount: "뇌혈관" },
-    { id: "lotte_cardiovascular", label: "허혈성심장질환", groupCount: "허혈성" },
-    { id: "lotte_surgery1_5", label: "1-5종 수술", groupCount: "1~5종 분류" },
-    { id: "lotte_surgery7", label: "7대 수술", groupCount: "7개 분류" },
-    { id: "lotte_surgery16", label: "16대 수술", groupCount: "16개 분류" },
-    { id: "lotte_surgery18", label: "18대 수술", groupCount: "18개 분류" },
-    { id: "lotte_surgery20", label: "20대 수술", groupCount: "20개 분류" },
-    { id: "lotte_surgery34", label: "34대 수술", groupCount: "34개 분류" },
-    { id: "lotte_surgery64", label: "64대 질병수술", groupCount: "64개 분류" }
+    { id: "lotte_integrated_cancer", label: "통합암(유사암제외)", groupCount: "8개 그룹" },
+    { id: "lotte_integrated_cancer_with_metastasis", label: "통합암(전이포함)", groupCount: "8개 그룹" },
+    { id: "lotte_integrated_metastatic_cancer", label: "통합전이암", groupCount: "8개 그룹" },
+    { id: "lotte_brain_disease", label: "뇌혈관질환", groupCount: "6개 그룹" },
+    { id: "lotte_cardiovascular", label: "허혈성심장질환", groupCount: "5개 그룹" },
+    { id: "lotte_surgery1_5", label: "1-5종 수술" },
+    { id: "lotte_surgery7", label: "7대 수술" },
+    { id: "lotte_surgery16", label: "16대 수술" },
+    { id: "lotte_surgery18", label: "18대 수술" },
+    { id: "lotte_surgery20", label: "20대 수술" },
+    { id: "lotte_surgery34", label: "34대 수술" },
+    { id: "lotte_surgery64", label: "64대 수술" }
   ],
   "hyundai-marine": [
     { id: "hyundai_male_cancer", label: "남성 통합암", groupCount: "11개 그룹" },

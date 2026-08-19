@@ -363,15 +363,6 @@ export default function TermsMaster() {
     }));
   };
 
-  const [expandedLotteCardiovascularSections, setExpandedLotteCardiovascularSections] = useState<Record<number, boolean>>({});
-
-  const toggleLotteCardiovascularSection = (idx: number) => {
-    setExpandedLotteCardiovascularSections(prev => ({
-      ...prev,
-      [idx]: !prev[idx]
-    }));
-  };
-
   const [expandedLotteSurgery1_5Sections, setExpandedLotteSurgery1_5Sections] = useState<Record<number, boolean>>({});
 
   const toggleLotteSurgery1_5Section = (idx: number) => {
