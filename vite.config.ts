@@ -5,7 +5,6 @@ import fs from 'fs';
 import {defineConfig} from 'vite';
 import { PRECEDENTS_DATA } from './src/data/disputeData';
 import { INSURER_TERMS_LIST, INSURER_SUBTABS } from './src/data/terms/index.ts';
-import { INFO_ARTICLES } from './src/data/info/index.ts';
 
 export default defineConfig(() => {
   const disputeInputs: Record<string, string> = {};
@@ -32,16 +31,20 @@ export default defineConfig(() => {
   });
 
   const infoInputs: Record<string, string> = {};
-  const infoHubPath = path.resolve(__dirname, 'info/index.html');
-  if (fs.existsSync(infoHubPath)) {
-    infoInputs['info'] = infoHubPath;
-  }
-  INFO_ARTICLES.filter(a => a.isPublished).forEach(article => {
-    const articlePath = path.resolve(__dirname, `info/${article.slug}/index.html`);
-    if (fs.existsSync(articlePath)) {
-      infoInputs[`info_${article.slug.replace(/[^a-zA-Z0-9]/g, '_')}`] = articlePath;
+  const infoRootDir = path.resolve(__dirname, 'info');
+  if (fs.existsSync(infoRootDir)) {
+    const infoEntries = fs.readdirSync(infoRootDir, { withFileTypes: true });
+    for (const entry of infoEntries) {
+      if (entry.isDirectory()) {
+        const articleHtmlPath = path.join(infoRootDir, entry.name, 'index.html');
+        if (fs.existsSync(articleHtmlPath)) {
+          infoInputs[`info_${entry.name.replace(/[^a-zA-Z0-9]/g, '_')}`] = articleHtmlPath;
+        }
+      } else if (entry.isFile() && entry.name === 'index.html') {
+        infoInputs['info'] = path.join(infoRootDir, 'index.html');
+      }
     }
-  });
+  }
 
   return {
     plugins: [react(), tailwindcss()],

@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { INFO_ARTICLES, INFO_CATEGORIES, InfoArticle } from '../src/data/info/index.ts';
+import { INFO_CATEGORIES, InfoArticle } from '../src/data/info/types.ts';
+import { loadInfoArticlesAsync } from '../src/data/info/loader.node.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -55,14 +56,40 @@ const TOOL_DEFINITIONS: Record<string, { title: string; url: string; desc: strin
   }
 };
 
-export function generateInfoPages() {
-  const publishedArticles = INFO_ARTICLES.filter((a) => a.isPublished);
-  console.log(`Generating static pages for ${publishedArticles.length} published info articles...`);
+export async function generateInfoPages() {
+  const allArticles = await loadInfoArticlesAsync();
+  const publishedArticles = allArticles.filter((a) => a.isPublished);
+  console.log(`Auto-discovered ${allArticles.length} articles (${publishedArticles.length} published).`);
 
-  // 1. Ensure /info directory exists
   const infoRootDir = path.join(rootDir, 'info');
   if (!fs.existsSync(infoRootDir)) {
     fs.mkdirSync(infoRootDir, { recursive: true });
+  }
+
+  // 1. Safe Clean: Clean old generated slug directories inside /info/ that are not in current published articles
+  const currentPublishedSlugs = new Set(publishedArticles.map(a => a.slug));
+  const existingEntries = fs.readdirSync(infoRootDir, { withFileTypes: true });
+  for (const entry of existingEntries) {
+    if (entry.isDirectory()) {
+      if (!currentPublishedSlugs.has(entry.name)) {
+        const staleDir = path.join(infoRootDir, entry.name);
+        console.log(`[Safe Clean] Removing stale generated directory: /info/${entry.name}`);
+        fs.rmSync(staleDir, { recursive: true, force: true });
+      }
+    }
+  }
+
+  // Also clean dist/info/ stale directories if dist exists
+  const distInfoDir = path.join(rootDir, 'dist', 'info');
+  if (fs.existsSync(distInfoDir)) {
+    const existingDistEntries = fs.readdirSync(distInfoDir, { withFileTypes: true });
+    for (const entry of existingDistEntries) {
+      if (entry.isDirectory() && !currentPublishedSlugs.has(entry.name)) {
+        const staleDistDir = path.join(distInfoDir, entry.name);
+        console.log(`[Safe Clean] Removing stale dist directory: /dist/info/${entry.name}`);
+        fs.rmSync(staleDistDir, { recursive: true, force: true });
+      }
+    }
   }
 
   // 2. Generate /info/index.html (Hub Page)
@@ -161,7 +188,7 @@ export function generateInfoPages() {
   fs.writeFileSync(path.join(infoRootDir, 'index.html'), hubHtml, 'utf-8');
   console.log('Generated: /info/index.html');
 
-  // 3. Generate each /info/{slug}/index.html (Simplified Common Structure)
+  // 3. Generate each /info/{slug}/index.html
   publishedArticles.forEach((art) => {
     const articleDir = path.join(infoRootDir, art.slug);
     if (!fs.existsSync(articleDir)) {
@@ -172,7 +199,6 @@ export function generateInfoPages() {
     const canonicalUrl = `https://insurancebridge.co.kr/info/${art.slug}/`;
     const catMeta = INFO_CATEGORIES.find((c) => c.id === art.category);
 
-    // Primary Related Link HTML (Most Prominent Link)
     const primaryLinkHtml = art.primaryRelatedLink
       ? `
         <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #f1f5f9;">
@@ -188,7 +214,6 @@ export function generateInfoPages() {
       `
       : '';
 
-    // Secondary Tool Links HTML
     const secondaryToolsHtml = art.secondaryTools && art.secondaryTools.length > 0
       ? `
         <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #f1f5f9;">
@@ -209,7 +234,6 @@ export function generateInfoPages() {
       `
       : '';
 
-    // Optional FAQs HTML
     const faqsHtml = art.faqs && art.faqs.length > 0
       ? `
         <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #f1f5f9;">
@@ -224,7 +248,6 @@ export function generateInfoPages() {
       `
       : '';
 
-    // Article JSON-LD Schema
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -253,7 +276,6 @@ export function generateInfoPages() {
       }
     };
 
-    // Breadcrumb JSON-LD Schema
     const breadcrumbSchema = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

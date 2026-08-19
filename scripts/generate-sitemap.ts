@@ -3,14 +3,16 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { PRECEDENTS_DATA } from '../src/data/disputeData';
 import { INSURER_TERMS_LIST, INSURER_SUBTABS } from '../src/data/terms/index.ts';
-import { INFO_ARTICLES } from '../src/data/info/index.ts';
+import { loadInfoArticlesAsync } from '../src/data/info/loader.node.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-export function generateSitemap() {
+export async function generateSitemap() {
   console.log('Generating comprehensive sitemap.xml for InsuranceBridge...');
+
+  const infoArticles = await loadInfoArticlesAsync();
 
   const coreUrls = [
     { loc: 'https://insurancebridge.co.kr/', changefreq: 'daily', priority: '1.0' },
@@ -24,7 +26,7 @@ export function generateSitemap() {
     { loc: 'https://insurancebridge.co.kr/info/', changefreq: 'weekly', priority: '0.9' },
   ];
 
-  const infoUrls = INFO_ARTICLES.filter((a) => a.isPublished).map((item) => ({
+  const infoUrls = infoArticles.filter((a) => a.isPublished).map((item) => ({
     loc: `https://insurancebridge.co.kr/info/${item.slug}/`,
     changefreq: 'weekly',
     priority: '0.8',
@@ -60,6 +62,12 @@ export function generateSitemap() {
 
   const allUrls = [...coreUrls, ...infoUrls, ...disputeUrls, ...termsUrls];
 
+  console.log(`Total URLs to include in sitemap: ${allUrls.length}`);
+  console.log(`- Core URLs: ${coreUrls.length}`);
+  console.log(`- Info Articles: ${infoUrls.length}`);
+  console.log(`- Precedents / Disputes: ${disputeUrls.length}`);
+  console.log(`- Terms & Insurers: ${termsUrls.length}`);
+
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allUrls
@@ -71,17 +79,25 @@ ${allUrls
   </url>`
   )
   .join('\n')}
-</urlset>
-`;
+</urlset>`;
 
+  // 1. Write to public/sitemap.xml
   const publicDir = path.join(rootDir, 'public');
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true });
   }
-
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml, 'utf-8');
-  console.log(`Successfully generated sitemap.xml with ${allUrls.length} URLs (Core: ${coreUrls.length}, Info: ${infoUrls.length}, Dispute: ${disputeUrls.length}, Terms: ${termsUrls.length})`);
+  console.log('Generated: public/sitemap.xml');
+
+  // 2. Also write to root/sitemap.xml and dist/sitemap.xml if dist directory exists
+  fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemapXml, 'utf-8');
+  const distDir = path.join(rootDir, 'dist');
+  if (fs.existsSync(distDir)) {
+    fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf-8');
+    console.log('Generated: dist/sitemap.xml');
+  }
+
+  console.log('Sitemap generation completed successfully.');
 }
 
 generateSitemap();
-

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { INFO_ARTICLES, InfoArticle } from '../src/data/info/index.ts';
+import { loadInfoArticlesAsync } from '../src/data/info/loader.node.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,8 +17,9 @@ function escapeXml(str: string): string {
     .replace(/'/g, '&apos;');
 }
 
-export function generateRss() {
-  const publishedArticles = INFO_ARTICLES.filter((a) => a.isPublished);
+export async function generateRss() {
+  const allArticles = await loadInfoArticlesAsync();
+  const publishedArticles = allArticles.filter((a) => a.isPublished);
   console.log(`Generating RSS feed for ${publishedArticles.length} published articles...`);
 
   const baseUrl = 'https://insurancebridge.co.kr';
