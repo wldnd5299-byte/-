@@ -1,0 +1,51 @@
+name: Check Insurance Data Integrity
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      allowed_insurance_data:
+        description: '허용할 보험사 키 (예: lotte, nh, db, kb, meritz 등)'
+        required: false
+        default: ''
+      allowed_common_data:
+        description: '허용할 공통데이터 키 (예: surgery, dispute, info)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  check-insurance-data:
+    name: 보험 데이터 무결성 검사
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Insurance Data Self-Tests (Test A ~ E)
+        run: node scripts/check-insurance-data-changes.mjs --test
+
+      - name: Check Insurance Data Changes against Git Diff
+        env:
+          ALLOWED_INSURANCE_DATA: ${{ github.event.inputs.allowed_insurance_data || env.ALLOWED_INSURANCE_DATA }}
+          ALLOWED_COMMON_DATA: ${{ github.event.inputs.allowed_common_data || env.ALLOWED_COMMON_DATA }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            node scripts/check-insurance-data-changes.mjs --base-ref="origin/${{ github.base_ref }}"
+          else
+            node scripts/check-insurance-data-changes.mjs
+          fi
