@@ -191,6 +191,9 @@ import {
   LOTTE_BRAIN_DISEASE_SECTIONS,
   LOTTE_BRAIN_DISEASE_SUMMARY,
   LOTTE_CARDIOVASCULAR_SECTIONS,
+  LOTTE_CARDIOVASCULAR_SIMPLE_I_SECTIONS,
+  LOTTE_CARDIOVASCULAR_SIMPLE_II_SECTIONS,
+  LOTTE_CARDIOVASCULAR_SIMPLE_15_SECTIONS,
   LOTTE_CARDIOVASCULAR_SUMMARY,
   LOTTE_INTEGRATED_CANCER_SECTIONS,
   LOTTE_INTEGRATED_CANCER_SUMMARY,
@@ -198,12 +201,19 @@ import {
   LOTTE_INTEGRATED_CANCER_WITH_METASTASIS_SUMMARY,
   LOTTE_INTEGRATED_METASTATIC_CANCER_SECTIONS,
   LOTTE_INTEGRATED_METASTATIC_CANCER_SUMMARY,
+  LOTTE_HIGH_CANCER_SECTIONS,
   LOTTE_SURGERY1_5_SECTIONS,
   LOTTE_SURGERY_16_SECTIONS,
+  LOTTE_16_DISEASES_SUMMARY,
+  LOTTE_18_DISEASES_SUMMARY,
+  LOTTE_20_DISEASES_SUMMARY,
+  LOTTE_34_DISEASES_SUMMARY,
   LOTTE_SURGERY_18_SECTIONS,
   LOTTE_SURGERY_20_SECTIONS,
   LOTTE_SURGERY_34_SECTIONS,
   LOTTE_SURGERY_64_SECTIONS,
+  LOTTE_SURGERY_142_SECTIONS,
+  LOTTE_SURGERY_142_SUMMARY_SECTIONS,
   LOTTE_SURGERY_7_SECTIONS,
   MERITZ_131_DISEASES_SECTIONS,
   MERITZ_18_DISEASES_SECTIONS,
@@ -251,6 +261,24 @@ import {
   SAMSUNG_CANCER_SUMMARY,
   SAMSUNG_MAJOR_CANCER_SECTIONS,
   SAMSUNG_SURGERY_1_5_SECTIONS,
+  NH_CANCER_SECTIONS,
+  NH_CANCER_METASTASIS_SECTIONS,
+  NH_5SPECIFIC_CANCER_SECTIONS,
+  NH_CARDIOVASCULAR_4_ALL_SECTIONS,
+  NH_CARDIOVASCULAR_4_SECTIONS_TAB1,
+  NH_CARDIOVASCULAR_4_SECTIONS_TAB2,
+  NH_CARDIOVASCULAR_4_SECTIONS_TAB3,
+  NH_CARDIOVASCULAR_4_SECTIONS_TAB4,
+  NH_CIRCULATORY_1_5_SECTIONS,
+  NH_SURGERY_1_5_SECTIONS,
+  NH_SURGERY_16_SECTIONS,
+  NH_SURGERY_16_SUMMARY_SECTIONS,
+  NH_SURGERY_34_SECTIONS,
+  NH_SURGERY_34_SUMMARY_SECTIONS,
+  NH_SURGERY_71_SECTIONS,
+  NH_SURGERY_71_SUMMARY_SECTIONS,
+  NH_SURGERY_144_SECTIONS,
+  NH_SURGERY_144_SUMMARY_SECTIONS,
   SubTabInfo,
   escapeRegExp,
   getCancerGroups,
@@ -447,6 +475,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
   const [hanwhaHeartTab, setHanwhaHeartTab] = useState<'heart1' | 'heart2'>('heart1');
   const [hanwhaCardioTab, setHanwhaCardioTab] = useState<'cardio1' | 'cardio1_no_arrhythmia' | 'cardio2'>('cardio1');
   const [hanwhaCardio5Tab, setHanwhaCardio5Tab] = useState<'tab1' | 'tab2' | 'tab3' | 'tab4' | 'tab5'>('tab1');
+  const [nhCardio4Tab, setNhCardio4Tab] = useState<'tab1' | 'tab2' | 'tab3' | 'tab4'>('tab1');
   const [hanwhaIntegratedTreatmentTab, setHanwhaIntegratedTreatmentTab] = useState<'10m' | '30m' | '40m'>('10m');
   const [hanwhaInjuryTreatmentTab, setHanwhaInjuryTreatmentTab] = useState<'luxury' | 'general' | 'saving'>('luxury');
   const [expandedHanwhaHeartSections, setExpandedHanwhaHeartSections] = useState<Record<number, boolean>>({});
@@ -899,6 +928,9 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 
   // DB Heart Simple Tab (I vs II vs III)
   const [dbHeartSimpleTab, setDbHeartSimpleTab] = useState<'I' | 'II' | 'III'>('I');
+
+  // Lotte Cardiovascular Simple Tab (I vs II vs 15대)
+  const [lotteCardiovascularSimpleTab, setLotteCardiovascularSimpleTab] = useState<'I' | 'II' | '15'>('I');
 
   // DB Brain Tab (I vs II)
   const [dbBrainTab, setDbBrainTab] = useState<'I' | 'II'>('I');
@@ -3016,6 +3048,228 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
       );
     }
 
+    if (tabKey === 'lotte_cardiovascular_simple') {
+      const curTitle =
+        lotteCardiovascularSimpleTab === 'I'
+          ? '롯데손해보험 - 【별표88】 심혈관질환(특정심장질환 I) 분류표'
+          : lotteCardiovascularSimpleTab === 'II'
+          ? '롯데손해보험 - 【별표89】 심혈관질환(특정심장질환 II) 분류표'
+          : '롯데손해보험 - 【별표90】 심혈관질환(특정15대심장질환) 분류표';
+
+      const curSections =
+        lotteCardiovascularSimpleTab === 'I'
+          ? LOTTE_CARDIOVASCULAR_SIMPLE_I_SECTIONS
+          : lotteCardiovascularSimpleTab === 'II'
+          ? LOTTE_CARDIOVASCULAR_SIMPLE_II_SECTIONS
+          : LOTTE_CARDIOVASCULAR_SIMPLE_15_SECTIONS;
+
+      const subTabLabel =
+        lotteCardiovascularSimpleTab === 'I'
+          ? '심혈관질환(특정심장질환 I)'
+          : lotteCardiovascularSimpleTab === 'II'
+          ? '심혈관질환(특정심장질환 II)'
+          : '심혈관질환(특정15대심장질환)';
+
+      const noticeTitle =
+        lotteCardiovascularSimpleTab === 'I'
+          ? '【별표88】 심혈관질환(특정심장질환 I) 분류표'
+          : lotteCardiovascularSimpleTab === 'II'
+          ? '【별표89】 심혈관질환(특정심장질환 II) 분류표'
+          : '【별표90】 심혈관질환(특정15대심장질환) 분류표';
+
+      const noticeText = `약관에 규정하는 ${subTabLabel}로 분류되는 질병은 제9차 개정 한국표준질병사인분류(통계청 고시 제2025-299호, 2026.1.1. 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병사인분류가 개정되는 경우에는 개정된 기준에 따라 이 약관에서 보장하는 ${subTabLabel} 해당 여부를 판단합니다.`;
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredSections = curSections.map((sec) => {
+        const matchingItems = (sec.items || []).filter((item) => {
+          if (!queryStr) return true;
+          return (
+            normalizeString(item.num || '').includes(queryStr) ||
+            normalizeString(item.disease || (item as any).name || '').includes(queryStr) ||
+            normalizeString(item.code || '').includes(queryStr) ||
+            normalizeString(sec.title || '').includes(queryStr)
+          );
+        });
+
+        const isTitleMatch = !queryStr || normalizeString(sec.title || '').includes(queryStr);
+
+        return {
+          ...sec,
+          matchingItems: isTitleMatch ? sec.items : matchingItems,
+          isMatch: isTitleMatch || matchingItems.length > 0
+        };
+      }).filter((sec) => sec.isMatch);
+
+      const totalDetailItemsCount = filteredSections.reduce((acc, sec) => acc + sec.matchingItems.length, 0);
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection for 심혈관질환(I/II/15대) (PDF 다운로드란 위에 위치) */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <button
+              onClick={() => {
+                setLotteCardiovascularSimpleTab('I');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                lotteCardiovascularSimpleTab === 'I'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              심혈관질환 I
+            </button>
+            <button
+              onClick={() => {
+                setLotteCardiovascularSimpleTab('II');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                lotteCardiovascularSimpleTab === 'II'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              심혈관질환 II
+            </button>
+            <button
+              onClick={() => {
+                setLotteCardiovascularSimpleTab('15');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                lotteCardiovascularSimpleTab === '15'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              15대심장질환
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`${subTabLabel} 내 검색 (질병명, KCD 분류번호 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. Header Notice Box */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
+            <div className="font-black text-[#123941] text-sm mb-1.5 flex items-center gap-1.5">
+              <span>{noticeTitle}</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              {noticeText}
+            </p>
+          </div>
+
+          {/* 5. 하단세부분류표 */}
+          <div className="space-y-4">
+            <div className="px-4 py-2.5 bg-[#123941] text-white font-black text-xs rounded-xl flex items-center justify-between shadow-xs">
+              <span>하단세부분류표</span>
+              <span className="text-[11px] text-amber-300 font-bold">
+                {curSections.length}개 카테고리 / 총 {totalDetailItemsCount}개 세부 질병
+              </span>
+            </div>
+
+            {filteredSections.length > 0 ? (
+              filteredSections.map((sec, secIdx) => (
+                <div key={secIdx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+                  <div className="px-4 py-2.5 bg-slate-100 text-[#123941] font-black text-xs border-b border-slate-200 flex items-center justify-between">
+                    <span>{sec.title}</span>
+                    <span className="text-[11px] text-slate-600 font-bold">
+                      {sec.matchingItems.length}개 항목
+                    </span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead>
+                        <tr className="bg-slate-50 text-[#123941] font-black text-xs border-b border-slate-200">
+                          <th className="py-2 px-3 w-[12%] text-center border-r border-slate-200">No.</th>
+                          <th className="py-2 px-3 w-[63%] border-r border-slate-200">대상이 되는 질병</th>
+                          <th className="py-2 px-3 w-[25%] text-center">분류번호</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-xs">
+                        {sec.matchingItems.map((item: any, itemIdx: number) => (
+                          <tr key={itemIdx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                            <td className="py-2 px-3 text-center font-bold text-slate-500 border-r border-slate-200/80 text-[11px]">
+                              {item.num}
+                            </td>
+                            <td className="py-2 px-3 font-bold text-slate-800 leading-snug border-r border-slate-200/80">
+                              {highlightText(item.disease || item.name)}
+                            </td>
+                            <td className="py-2 px-3 text-center font-mono font-bold">
+                              <span className="inline-block px-2.5 py-0.5 bg-[#123941] text-white font-extrabold rounded-md text-[11px]">
+                                {highlightText(item.code)}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-xs text-slate-500 font-bold">
+                검색 결과가 없습니다.
+              </div>
+            )}
+          </div>
+
+          {/* 6. Footnotes Box */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+            <div className="font-extrabold text-[#123941]">주) 약관 적용기준</div>
+            <p className="pl-2">
+              1. 제10차 개정 이후 이 약관의 대상질병 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
+            </p>
+            <p className="pl-2">
+              2. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+            </p>
+            <p className="pl-2">
+              3. 대상질병 분류표의 분류번호와 다르나 한국표준질병·사인분류의 기준에 따라 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 대상질병 분류에 포함합니다.
+            </p>
+            <p className="pl-2">
+              4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서를 따릅니다.
+            </p>
+          </div>
+        </div>
+      );
+    }
+
     if (tabKey === 'hanwha_cardiovascular_5') {
       const curTitle =
         hanwhaCardio5Tab === 'tab1'
@@ -3276,6 +3530,251 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </p>
             <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
               한화 시그니처 여성 건강보험4.0 무배당2604 (1345~1347p)
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (tabKey === 'nh_cardiovascular_4') {
+      const curTitle =
+        nhCardio4Tab === 'tab1'
+          ? '농협손해보험 - 【별표51】 심혈관특정질환 I 분류표'
+          : nhCardio4Tab === 'tab2'
+          ? '농협손해보험 - 【별표52】 심혈관특정질환 I (기타심장부정맥제외) 분류표'
+          : nhCardio4Tab === 'tab3'
+          ? '농협손해보험 - 【별표53】 심근병증 분류표'
+          : '농협손해보험 - 【별표54】 주요심장염증질환 분류표';
+
+      const curSections =
+        nhCardio4Tab === 'tab1'
+          ? NH_CARDIOVASCULAR_4_SECTIONS_TAB1
+          : nhCardio4Tab === 'tab2'
+          ? NH_CARDIOVASCULAR_4_SECTIONS_TAB2
+          : nhCardio4Tab === 'tab3'
+          ? NH_CARDIOVASCULAR_4_SECTIONS_TAB3
+          : NH_CARDIOVASCULAR_4_SECTIONS_TAB4;
+
+      const subTabLabel =
+        nhCardio4Tab === 'tab1'
+          ? '심혈관특정질환 I'
+          : nhCardio4Tab === 'tab2'
+          ? '심혈관특정질환 I (기타심장부정맥제외)'
+          : nhCardio4Tab === 'tab3'
+          ? '심근병증'
+          : '주요심장염증질환';
+
+      const noticeTitle =
+        nhCardio4Tab === 'tab1'
+          ? '【별표51】 심혈관특정질환 I 분류표'
+          : nhCardio4Tab === 'tab2'
+          ? '【별표52】 심혈관특정질환 I (기타심장부정맥제외) 분류표'
+          : nhCardio4Tab === 'tab3'
+          ? '【별표53】 심근병증 분류표'
+          : '【별표54】 주요심장염증질환 분류표';
+
+      const noticeText =
+        curSections[0]?.definition ||
+        `약관에 규정하는 ${subTabLabel}으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1. 시행)중 다음에 적은 질병을 말합니다.`;
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredSections = curSections.map((sec) => {
+        const matchingItems = (sec.items || []).filter((item) => {
+          if (!queryStr) return true;
+          return (
+            normalizeString(item.num || '').includes(queryStr) ||
+            normalizeString(item.disease || (item as any).name || '').includes(queryStr) ||
+            normalizeString(item.code || '').includes(queryStr) ||
+            normalizeString(sec.title || '').includes(queryStr)
+          );
+        });
+
+        const isTitleMatch = !queryStr || normalizeString(sec.title || '').includes(queryStr);
+
+        return {
+          ...sec,
+          matchingItems: isTitleMatch ? sec.items : matchingItems,
+          isMatch: isTitleMatch || matchingItems.length > 0
+        };
+      }).filter((sec) => sec.isMatch);
+
+      const totalDetailItemsCount = filteredSections.reduce((acc, sec) => acc + sec.matchingItems.length, 0);
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection for 농협 심장관련분류표(4개담보) (PDF 다운로드란 위에 위치) */}
+          <div className="no-print flex flex-wrap sm:flex-nowrap items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <button
+              onClick={() => {
+                setNhCardio4Tab('tab1');
+                setDetailFilter('');
+              }}
+              className={`flex-1 min-w-[120px] py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                nhCardio4Tab === 'tab1'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              심혈관특정Ⅰ
+            </button>
+            <button
+              onClick={() => {
+                setNhCardio4Tab('tab2');
+                setDetailFilter('');
+              }}
+              className={`flex-1 min-w-[120px] py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                nhCardio4Tab === 'tab2'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              특정Ⅰ(부정맥제외)
+            </button>
+            <button
+              onClick={() => {
+                setNhCardio4Tab('tab3');
+                setDetailFilter('');
+              }}
+              className={`flex-1 min-w-[120px] py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                nhCardio4Tab === 'tab3'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              심근병증
+            </button>
+            <button
+              onClick={() => {
+                setNhCardio4Tab('tab4');
+                setDetailFilter('');
+              }}
+              className={`flex-1 min-w-[120px] py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                nhCardio4Tab === 'tab4'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              주요심장염증질환
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </button>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`${subTabLabel} 내 검색 (질병명, KCD 분류번호 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. Header Notice Box */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
+            <div className="font-black text-[#123941] text-sm mb-1.5 flex items-center gap-1.5">
+              <span>{noticeTitle}</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              {noticeText}
+            </p>
+          </div>
+
+          {/* 5. 하단세부분류표 */}
+          <div className="space-y-4">
+            <div className="px-4 py-2.5 bg-[#123941] text-white font-black text-xs rounded-xl flex items-center justify-between shadow-xs">
+              <span>대상질병 분류표</span>
+              <span className="text-[11px] text-amber-300 font-bold">
+                총 {totalDetailItemsCount}개 대상질병
+              </span>
+            </div>
+
+            {filteredSections.length > 0 ? (
+              filteredSections.map((sec, secIdx) => (
+                <div key={secIdx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+                  <div className="px-4 py-2.5 bg-slate-100 text-[#123941] font-black text-xs border-b border-slate-200 flex items-center justify-between">
+                    <span>{sec.title}</span>
+                    <span className="text-[11px] text-slate-600 font-bold">
+                      {sec.matchingItems.length}개 항목
+                    </span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs border-collapse">
+                      <thead>
+                        <tr className="bg-slate-50 text-[#123941] font-black text-xs border-b border-slate-200">
+                          <th className="py-2.5 px-3 w-[12%] text-center border-r border-slate-200">No.</th>
+                          <th className="py-2.5 px-3 w-[63%] border-r border-slate-200">분류항목</th>
+                          <th className="py-2.5 px-3 w-[25%] text-center">분류코드</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-xs">
+                        {sec.matchingItems.map((item: any, itemIdx: number) => (
+                          <tr key={itemIdx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                            <td className="py-2 px-3 text-center font-bold text-slate-500 border-r border-slate-200/80 text-[11px]">
+                              {item.num}
+                            </td>
+                            <td className="py-2 px-3 font-bold text-slate-800 leading-snug border-r border-slate-200/80">
+                              {highlightText(item.disease || item.name)}
+                            </td>
+                            <td className="py-2 px-3 text-center font-mono font-bold">
+                              <span className="inline-block px-2.5 py-0.5 bg-[#123941] text-white font-extrabold rounded-md text-[11px]">
+                                {highlightText(item.code)}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-xs text-slate-500 font-bold">
+                검색 결과가 없습니다.
+              </div>
+            )}
+          </div>
+
+          {/* 6. Footnotes Box */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+            <div className="font-extrabold text-[#123941]">주) 약관 적용기준</div>
+            <p className="pl-2">
+              2. 제10차 개정 이후 대상 질병 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다. 또한, 대상 질병 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 그 질병도 포함합니다.
+            </p>
+            <p className="pl-2">
+              3. 진단 당시의 한국표준질병·사인분류에 따라 대상 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 대상 질병 해당 여부를 다시 판단하지 않습니다.
+            </p>
+            <p className="pl-2">
+              4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서(향후 지침서가 변경되는 경우 변경된 지침서에 따릅니다.)에 기재된 것을 인정합니다.
+            </p>
+            <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
+              무배당 NH5.10.5굿플러스건강보험2604(1~2종)약관 별표
             </div>
           </div>
         </div>
@@ -5917,14 +6416,90 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           )}
         </div>
 
-        {tabKey === 'lotte_surgery20' && (
-          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs">
+        {tabKey === 'nh_cancer' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
             <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
-              <span>📌 &lt;별표30&gt; 20대질병 분류표 적용 안내</span>
+              <span>📌 통합암 Ⅱ(유사암제외) 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              1. 약관에 규정하는 통합암 Ⅱ(유사암제외)으로 분류되는 질병은 제9차 개정 한국표준질병사인분류(통계청 고시 제2025-299호, 2026.1.1. 시행) 중 다음에 적은 질병을 말합니다.
+            </p>
+            <div className="text-[10px] text-slate-500 font-medium space-y-0.5 pt-1 border-t border-slate-200/60">
+              <p>2. 제10차 개정 이후 대상 질병 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다. 또한, 대상 질병 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 그 질병도 포함합니다.</p>
+              <p>3. 진단 당시의 한국표준질병·사인분류에 따라 대상 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 대상 질병 해당 여부를 다시 판단하지 않습니다.</p>
+              <p>4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서(향후 지침서가 변경되는 경우 변경된 지침서에 따릅니다.)에 기재된 것을 인정합니다.</p>
+            </div>
+          </div>
+        )}
+
+        {tabKey === 'nh_cancer_metastasis' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 통합암(전이포함) Ⅱ(유사암제외) 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              1. 약관에 규정하는 통합암(전이포함)Ⅱ(유사암제외)으로 분류되는 질병은 제9차 개정 한국표준질병사인분류(통계청 고시 제2025-299호, 2026.1.1. 시행) 중 다음에 적은 질병을 말합니다.
+            </p>
+            <div className="text-[10px] text-slate-500 font-medium space-y-0.5 pt-1 border-t border-slate-200/60">
+              <p>2. 제10차 개정 이후 대상 질병 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다. 또한, 대상 질병 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 그 질병도 포함합니다.</p>
+              <p>3. 진단 당시의 한국표준질병·사인분류에 따라 대상 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 대상 질병 해당 여부를 다시 판단하지 않습니다.</p>
+              <p>4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서(향후 지침서가 변경되는 경우 변경된 지침서에 따릅니다.)에 기재된 것을 인정합니다.</p>
+            </div>
+          </div>
+        )}
+
+        {tabKey === 'nh_5specific_cancer' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 특정5대암 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              1. 약관에 규정하는 특정5대암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1. 시행)중 다음에 적은 질병을 말합니다.
+            </p>
+            <div className="text-[10px] text-slate-500 font-medium space-y-0.5 pt-1 border-t border-slate-200/60">
+              <p>2. 제10차 개정 이후 대상 질병 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다. 또한, 대상 질병 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 그 질병도 포함합니다.</p>
+              <p>3. 진단 당시의 한국표준질병·사인분류에 따라 대상 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 대상 질병 해당 여부를 다시 판단하지 않습니다.</p>
+              <p>4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서(향후 지침서가 변경되는 경우 변경된 지침서에 따릅니다.)에 기재된 것을 인정합니다.</p>
+            </div>
+          </div>
+        )}
+
+        {tabKey === 'nh_circulatory_1_5' && (
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] text-xs flex items-center gap-1.5">
+              <span>📌 【별표49】 특정순환계질환(1~5종)분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              1. 약관에 규정하는 특정순환계질환(1~5종)으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1. 시행)중 다음에 적은 질병을 말합니다.
+            </p>
+          </div>
+        )}
+
+        {tabKey === 'lotte_surgery16' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 【별표25】 16대질병 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              약관에 규정하는 16대질병으로 분류되는 질병은 제5차 개정 한국표준질병·사인분류(통계청 고시 제2007-4호, 2008.1.1 시행) 중 다음에 적은 질병을 말합니다.
+            </p>
+            <p className="text-[10px] text-slate-500 font-medium">
+              ※ 주) 제6차 개정이후 한국표준질병·사인분류에 있어서 상기 질병이외에 추가로 상기분류표에 해당하는 질병이 있는 경우에는 그 질병도 포함하는 것으로 합니다.
+            </p>
+          </div>
+        )}
+        {tabKey === 'lotte_surgery20' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 〈별표30〉 20대질병 분류표 적용 안내</span>
             </div>
             <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
               약관에 규정하는 20대질병으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청고시 제2015-309호, 2016.1.1. 시행) 중 다음에 적은 질병을 말합니다. 단, 아래 질병 이외에 출생전후기에 발생한 주요병태로 분류되는 질병(P코드)은 포함하지 않습니다.
             </p>
+            <div className="text-[10px] text-slate-500 font-medium space-y-0.5">
+              <p>※ 주) 1. 당뇨병 질환(E10~E14)에는 눈, 신장 등의 합병증을 동반한 당뇨병이 포함되어 있습니다 (자세한 내용은 '한국표준질병·사인분류'를 참고).</p>
+              <p>2. 제8차 개정 이후 한국표준질병·사인분류에 있어서 상기 질병 이외에 추가로 상기 분류번호에 해당하는 질병이 있는 경우에는 그 질병도 포함하는 것으로 합니다.</p>
+            </div>
           </div>
         )}
         {tabKey === 'lotte_surgery64' && (
@@ -5934,6 +6509,16 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
             <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
               약관에 규정하는 64대질병으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청고시 제2015-309호, 2016.1.1. 시행) 중 20대특정질병, 갑상선질환, 4대특정질병, 39대특정질병 수술비보장에 해당되는 질병을 말합니다. 단, 출생전후기에 발생한 주요병태로 분류되는 질병(P코드)은 포함하지 않습니다.
+            </p>
+          </div>
+        )}
+        {tabKey === 'lotte_surgery142' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 142대질병 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              약관에 규정하는 142대질병으로 분류되는 질병은 제8차 개정 한국표준질병·사인분류(통계청고시 제2020-175호, 2021.1.1. 시행) 중 3대질병, 8대질병, 34대질병, 68대질병, 29대특정질병 수술비보장에 해당되는 질병을 말합니다. 단, 출생전후기에 발생한 주요병태로 분류되는 질병(P코드)은 포함하지 않습니다.
             </p>
           </div>
         )}
@@ -6146,7 +6731,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         })()}
 
         {/* 2. Top Summary Classification Table */}
-        {tabKey !== 'surgery1_5' && tabKey !== 'surgery1_5_old' && tabKey !== 'kb_surgery1_5' && tabKey !== 'meritz_surgery1_5' && tabKey !== 'hanwha_surgery1_5' && tabKey !== 'hanwha_women_life_1_5' && tabKey !== 'hanwha_women_major_life_1_5' && (
+        {tabKey !== 'surgery1_5' && tabKey !== 'surgery1_5_old' && tabKey !== 'kb_surgery1_5' && tabKey !== 'lotte_surgery1_5' && tabKey !== 'meritz_surgery1_5' && tabKey !== 'hanwha_surgery1_5' && tabKey !== 'hanwha_women_life_1_5' && tabKey !== 'hanwha_women_major_life_1_5' && tabKey !== 'nh_surgery1_5' && (
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs space-y-0">
             <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
               <span className="text-xs font-black text-white">상단요약분류표</span>
@@ -6267,7 +6852,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 
               const isExpanded = !!query || (expandedState[idx] ?? false);
 
-              let groupBadge = sec.group || '';
+              let groupBadge = sec.group || sec.grade || '';
               let displayTitle = sec.title || sec.category || '구분';
 
               if (!groupBadge && displayTitle.startsWith('[')) {
@@ -6322,15 +6907,20 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                   </button>
 
                   {isExpanded && (
-                    <div className="p-3 bg-white">
+                    <div className="p-3 bg-white space-y-2.5">
+                      {sec.definition && (
+                        <div className="p-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-[11px] text-slate-600 font-medium leading-relaxed">
+                          {sec.definition}
+                        </div>
+                      )}
                       <table className="w-full text-xs border-collapse">
                         <thead>
                           <tr className="border-b border-slate-200 bg-[#123941]/5 text-[#123941] font-black text-[11px]">
                             <th className="py-2 px-3 text-left w-[70%]">
-                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5') ? '수술명 / 보장대상 수술' : '질병명 / 보장대상 분류'}
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5') ? '수술명 / 보장대상 수술' : '질병명 / 보장대상 분류'}
                             </th>
                             <th className="py-2 px-3 text-center w-[30%]">
-                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5') ? '수술종류' : 'KCD 질병코드'}
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5') ? '수술종류' : 'KCD 질병코드'}
                             </th>
                           </tr>
                         </thead>
@@ -6341,39 +6931,73 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                             const diseaseCode = isObj ? (item.code || '-') : '-';
                             const itemNum = isObj ? item.num : null;
                             const hasAgeSplit = isObj && item.codeUnder49 && item.codeOver50 && item.codeUnder49 !== item.codeOver50;
+                            const subList = isObj && Array.isArray(item.subItems) ? item.subItems : [];
                             return (
-                              <tr key={itemIdx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
-                                <td className="py-2 px-3 font-bold text-slate-800 leading-snug whitespace-pre-wrap">
-                                  {itemNum && (
-                                    <span className="inline-block px-1.5 py-0.5 mr-1.5 bg-slate-200/80 text-[#123941] font-mono font-extrabold rounded text-[10px]">
-                                      {highlightText(itemNum)}
-                                    </span>
-                                  )}
-                                  {highlightText(diseaseName)}
-                                </td>
-                                <td className="py-2 px-3 text-center font-mono font-bold">
-                                  {hasAgeSplit ? (
-                                    <div className="flex items-center justify-center gap-1.5 flex-wrap">
-                                      <span className="inline-flex items-center px-2 py-0.5 bg-rose-50 text-rose-700 font-extrabold rounded border border-rose-200 text-[11px]">
-                                        49세이전: {highlightText(item.codeUnder49)}
+                              <React.Fragment key={itemIdx}>
+                                <tr className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                                  <td className="py-2 px-3 font-bold text-slate-800 leading-snug whitespace-pre-wrap">
+                                    {itemNum && (
+                                      <span className="inline-block px-1.5 py-0.5 mr-1.5 bg-slate-200/80 text-[#123941] font-mono font-extrabold rounded text-[10px]">
+                                        {highlightText(itemNum)}
                                       </span>
-                                      <span className="inline-flex items-center px-2 py-0.5 bg-indigo-50 text-indigo-700 font-extrabold rounded border border-indigo-200 text-[11px]">
-                                        50세이후: {highlightText(item.codeOver50)}
+                                    )}
+                                    {highlightText(diseaseName)}
+                                  </td>
+                                  <td className="py-2 px-3 text-center font-mono font-bold">
+                                    {hasAgeSplit ? (
+                                      <div className="flex items-center justify-center gap-1.5 flex-wrap">
+                                        <span className="inline-flex items-center px-2 py-0.5 bg-rose-50 text-rose-700 font-extrabold rounded border border-rose-200 text-[11px]">
+                                          49세이전: {highlightText(item.codeUnder49)}
+                                        </span>
+                                        <span className="inline-flex items-center px-2 py-0.5 bg-indigo-50 text-indigo-700 font-extrabold rounded border border-indigo-200 text-[11px]">
+                                          50세이후: {highlightText(item.codeOver50)}
+                                        </span>
+                                      </div>
+                                    ) : diseaseCode !== '-' ? (
+                                      <span className="inline-block px-2 py-0.5 bg-slate-100 text-[#123941] font-extrabold rounded border border-slate-200 text-[11px]">
+                                        {highlightText(diseaseCode)}
                                       </span>
-                                    </div>
-                                  ) : diseaseCode !== '-' ? (
-                                    <span className="inline-block px-2 py-0.5 bg-slate-100 text-[#123941] font-extrabold rounded border border-slate-200 text-[11px]">
-                                      {highlightText(diseaseCode)}
-                                    </span>
-                                  ) : (
-                                    <span className="text-slate-400">-</span>
-                                  )}
-                                </td>
-                              </tr>
+                                    ) : (
+                                      <span className="text-slate-400">-</span>
+                                    )}
+                                  </td>
+                                </tr>
+                                {subList.map((sub: any, sIdx: number) => {
+                                  const subName = typeof sub === 'object' && sub !== null ? (sub.disease || sub.name) : sub;
+                                  const subCode = typeof sub === 'object' && sub !== null ? (sub.code || '-') : '-';
+                                  return (
+                                    <tr key={`${itemIdx}-sub-${sIdx}`} className="hover:bg-slate-50/70 transition-colors bg-slate-50/30">
+                                      <td className="py-1.5 px-3 pl-8 text-[11px] font-semibold text-slate-700 leading-snug">
+                                        <span className="text-slate-400 mr-1.5">-</span>
+                                        {highlightText(subName)}
+                                      </td>
+                                      <td className="py-1.5 px-3 text-center font-mono font-bold">
+                                        {subCode !== '-' ? (
+                                          <span className="inline-block px-2 py-0.5 bg-slate-100 text-[#123941] font-extrabold rounded border border-slate-200 text-[10px]">
+                                            {highlightText(subCode)}
+                                          </span>
+                                        ) : (
+                                          <span className="text-slate-400">-</span>
+                                        )}
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                              </React.Fragment>
                             );
                           })}
                         </tbody>
                       </table>
+                      {sec.notes && Array.isArray(sec.notes) && sec.notes.length > 0 && (
+                        <div className="p-2.5 bg-slate-50/80 border border-slate-200/80 rounded-xl text-[11px] text-slate-600 font-medium leading-relaxed space-y-1">
+                          {sec.notes.map((note: string, nIdx: number) => (
+                            <div key={nIdx} className="flex items-start gap-1.5">
+                              <span className="font-bold text-[#123941]">주)</span>
+                              <span>{note}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -6399,8 +7023,80 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
           )}
 
-          {/* 3-1. 1-5종 수술비(동일질병당/질병통합치료비) 사용 지침 및 요실금/KB/메리츠/한화 수술 지침 안내 */}
-          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5') && (
+          {tabKey === 'nh_circulatory_1_5' && (
+            <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+              <div className="font-extrabold text-[#123941] text-xs">주) 약관 적용기준</div>
+              <p className="pl-2">
+                2. 제10차 개정 이후 대상 질병 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다. 또한, 대상 질병 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 그 질병도 포함합니다.
+              </p>
+              <p className="pl-2">
+                3. 진단 당시의 한국표준질병·사인분류에 따라 대상 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 대상 질병 해당 여부를 다시 판단하지 않습니다.
+              </p>
+              <p className="pl-2">
+                4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서(향후 지침서가 변경되는 경우 변경된 지침서에 따릅니다.)에 기재된 것을 인정합니다.
+              </p>
+              <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
+                무배당 NH5.10.5굿플러스건강보험2604(1~2종)약관 별표
+              </div>
+            </div>
+          )}
+
+          {tabKey === 'nh_surgery16' && (
+            <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+              <div className="font-extrabold text-[#123941] text-xs">📌 【별표11】 16대질병 분류표 적용 안내</div>
+              <p className="pl-2">
+                약관에서 규정하는 16대질병으로 분류되는 질병은 제6차 개정 한국표준질병·사인분류(KCD : 통계청 고시 제2010-246호, 2011.1.1 시행)중 다음에 적은 질병을 말합니다.
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주) 제7차 개정 이후 한국표준질병·사인분류에 있어서 상기분류표에 변경사항이 발생하는 경우에는 변경된 분류표에 따라 보상합니다.
+              </p>
+              <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
+                무배당 헤아림어린이보험1501 특별약관
+              </div>
+            </div>
+          )}
+
+          {tabKey === 'nh_surgery34' && (
+            <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+              <div className="font-extrabold text-[#123941] text-xs">📌 【별표】 34대질병 분류표 적용 안내</div>
+              <p className="pl-2">
+                약관에서 규정하는 34대질병으로 분류되는 질병은 제7차 개정 한국표준질병사인분류(통계청 고시 제2015-309호, 2016.1.1 시행)중 다음에 적은 질병을 말합니다.
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주1) 당뇨병(E10~E14)에는 눈, 신장 등의 합병증을 동반한 당뇨병이 포함되어 있음(자세한 내용은 「한국표준질병사인분류」를 참고)
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주2) 제8차 개정 이후 한국표준질병·사인분류에 있어서 상기 질병 이외에 추가로 상기 분류번호에 해당하는 질병이 있는 경우에는 그 질병도 포함하는 것으로 합니다. 또한, 상기 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 그 질병도 포함합니다.
+              </p>
+              <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
+                무배당 NH가성비굿건강보험1904 특별약관
+              </div>
+            </div>
+          )}
+
+          {tabKey === 'nh_surgery71' && (
+            <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+              <div className="font-extrabold text-[#123941] text-xs">📌 【별표】 71대질병 분류표 적용 안내</div>
+              <p className="pl-2">
+                약관에서 규정하는 71대질병으로 분류되는 질병은 제7차 개정 한국표준질병사인분류(통계청 고시 제2015-309호, 2016.1.1 시행) 중 다음에 적은 질병을 말합니다.
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주1) 당뇨병(E10~E14)에는 눈, 신장 등의 합병증을 동반한 당뇨병이 포함되어 있음(자세한 내용은 「한국표준질병사인분류」를 참고)
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주2) 백내장(H25, H26, H28) 및 녹내장(H40, H42)에는 합병증을 동반한 백내장 및 녹내장이 포함되어 있음(자세한 내용은 「한국표준질병사인분류」를 참고)
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주3) 제8차 개정 이후 한국표준질병·사인분류에 있어서 상기 질병 이외에 추가로 상기 분류번호에 해당하는 질병이 있는 경우에는 그 질병도 포함하는 것으로 합니다. 또한, 상기 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 그 질병도 포함합니다.
+              </p>
+              <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
+                무배당 NH가성비굿건강보험1904 특별약관
+              </div>
+            </div>
+          )}
+
+          {/* 3-1. 1-5종 수술비(동일질병당/질병통합치료비) 사용 지침 및 요실금/KB/메리츠/한화/농협 수술 지침 안내 */}
+          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5') && (
             <div className="space-y-4 pt-4 border-t border-slate-200">
               {tabKey === 'hanwha_women_major_life_1_5' ? (
                 <>
@@ -6732,7 +7428,74 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                     </div>
                   </div>
                 </>
-              ) : tabKey === 'kb_surgery1_5' ? (
+              ) : tabKey === 'nh_surgery1_5' ? (
+                <>
+                  {/* NH Notes Box */}
+                  <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-700 leading-relaxed space-y-2 shadow-2xs">
+                    <h5 className="font-extrabold text-[#123941] text-xs flex items-center gap-1.5">
+                      <span className="w-1.5 h-3.5 bg-[#123941] rounded-xs"></span>
+                      【내시경·경피적 수술 적용 기준 및 악성신생물 수술 주) 사항】
+                    </h5>
+                    <p className="pl-2.5">
+                      <strong>(주) 1. 내시경·경피적 수술 적용 기준:</strong> 상기 1 ~ 85항의 수술 중 내시경(Fiberscope)을 이용한 내시경 수술 또는 카테터(Catheter) 등에 의한 경피적(經皮的, Percutaneous) 수술은 86항을 적용합니다. 다만, 복강경·흉강경에 의한 수술은 해당부위 (1 ~ 85항)의 수술로 적용합니다.
+                    </p>
+                    <p className="pl-2.5">
+                      <strong>(주) 2. 유방절단술 예외 적용:</strong> 상기 3항의 수술 중 남성의 '유방의 장애(N60~N64)' 진단으로 시행한 '유방절단술(Mastectomy)-피하절제[남성의 여성형 유방절제 포함](Subcutaneous)' 수술의 경우 4항을 적용합니다.
+                    </p>
+                    <p className="pl-2.5">
+                      <strong>(주) 악성신생물 치료 목적의 수술 주) 사항:</strong>
+                      <br /><span className="pl-2 inline-block">1. 제자리암·경계성종양에 대한 수술은 'Ⅰ. 일반 질병 및 상해치료 목적의 수술' 항목의 적용을 받습니다.</span>
+                      <br /><span className="pl-2 inline-block">2. 카테터(Catheter)를 이용한 흡인·천자·약물주입요법은 포함하지 않습니다.</span>
+                      <br /><span className="pl-2 inline-block">3. 비고형암에 대한 비관혈적 근치수술은 관혈적 악성신생물 근치수술에 준하여 5종 수술로 인정합니다.</span>
+                    </p>
+                  </div>
+
+                  {/* NH Guidelines Box */}
+                  <div className="p-5 bg-slate-900 text-slate-200 rounded-2xl space-y-4 shadow-lg border border-slate-800">
+                    <h4 className="font-extrabold text-white text-sm sm:text-base border-b border-slate-700 pb-2.5 flex items-center justify-between">
+                      <span className="flex items-center gap-2">
+                        <span className="w-2 h-4 bg-amber-400 rounded-xs"></span>
+                        【수술분류표(1~5종) 사용 지침】
+                      </span>
+                      <span className="text-[11px] text-slate-400 font-normal">
+                        무배당 NH5.10.5굿플러스건강보험2604(1~2종)약관 별표
+                      </span>
+                    </h4>
+                    <div className="text-xs leading-relaxed space-y-2.5 text-slate-300">
+                      <p>
+                        <strong className="text-amber-300">1. '수술'이라 함은</strong> 의사, 치과의사의 면허를 가진 자(이하 "의사"라 합니다)가 피보험자의 질병 또는 상해로 인한 치료를 직접목적으로 필요하다고 인정한 경우로서 의료법 제3조(의료기관)에 규정한 국내의 병원이나 의원 또는 국외의 의료관련 법에서 정한 의료기관에서 의사의 관리 하에 수술하는 것을 말합니다. 이 때 수술이란 &lt;수술분류표(1~5종)&gt;에서 정한 행위[기구를 사용하여 생체(生體)에 절단(切斷, 특정부위를 잘라 내는 것), 절제(切除, 특정부위를 잘라 없애는 것) 등의 조작을 가하는 것[보건복지부 산하 신의료기술평가위원회(향후 제도변경시에는 동 위원회와 동일한 기능을 수행하는 기관)로부터 안전성과 치료효과를 인정받은 최신 수술기법도 포함됩니다]을 말합니다. 단, 흡인(吸引, 주사기 등으로 빨아 들이는 것), 천자(穿刺, 바늘 또는 관을 꽂아 체액·조직을 뽑아내거나 약물을 주입하는 것) 등의 조치 및 신경(神經) BLOCK(신경의 차단) 등은 제외]를 하는 것을 말합니다.
+                      </p>
+                      <p>
+                        <strong className="text-amber-300">2. '관혈(觀血)'수술이라 함은</strong> 병변 부위를 육안으로 직접 보면서 수술적 조작을 하기 위해 피부에 절개를 가하고 병변 부위를 노출시켜서 수술하는 것을 말합니다.
+                      </p>
+                      <p>
+                        <strong className="text-amber-300">3. '근본(根本)' 혹은 '근치(根治)'수술이라 함은</strong> 일회의 수술로 해당 질병을 완전히 치유할 수 있는 수술을 말합니다.
+                      </p>
+                      <p>
+                        <strong className="text-amber-300">4. '관혈적 악성신생물 근치수술'이라 함은</strong> 관혈적 방법을 통해 악성생물의 원발 병소를 완전히 절제 또는 적출하고 혹은 곽청술을 함께 실시한 경우입니다.
+                      </p>
+                      <p>
+                        <strong className="text-amber-300">5. &lt;수술분류표(1~5종)&gt; 상에 열거되지 않은 선진의료적 첨단 수술에 대한 인정 및 적용 기준:</strong> &lt;수술분류표(1~5종)&gt;에서의 선진의료적 첨단 수술은 상기 '수술'의 정의에 해당하여야 하고 약물투여치료, 방사선 조사치료 또는 기타의 보존적 치료로 분류될 수 없는 경우이어야 합니다.
+                        <br /><span className="pl-3 inline-block">(1) &lt;수술분류표(1~5종)&gt; 상의 수술 이외에 보건복지부 산하 신의료기술평가위원회(향후 제도 변경시에는 동 위원회와 동일한 기능을 수행하는 기관)로부터 안전성과 치료효과를 인정받은 최신 수술기법으로 치료한 경우 &lt;수술분류표(1~5종)&gt; 상의 동일부위 수술로 봅니다. 이 때에 해당 최신수술기법은 수술개시일로부터 60일이내 2회 이상의 수술은 1회의 수술로 간주하여 1회의 수술보험금을 지급하며 이후 동일한 기준으로 반복 지급이 가능합니다.</span>
+                        <br /><span className="pl-3 inline-block">(2) 단, 이 선진의료적 첨단 수술이 본질적으로 내시경(Fiberscope)에 의한 내시경 수술 또는 카테터(Catheter) 등에 의한 경피적 수술인 경우에는 &lt;수술분류표(1~5종)&gt; 중 'Ⅰ.일반 질병 및 상해치료 목적의 수술' 86항 (악성신생물의 경우는 'Ⅱ. 악성신생물 치료목적의 수술' 2항)을 우선 적용합니다.</span>
+                      </p>
+                      <p>
+                        <strong className="text-amber-300">6. '악성신생물 근치 사이버 나이프(Cyberknife) 정위적 방사선 치료'라 함은</strong> 선형가속기(LINAC)에서 발생되는 가는 방사선(Pencil beam)들을 다양한 각도에서 악성신생물을 향해 집중적으로 조사하면서 동시에 악성신생물의 움직임을 병변 추적 장치를 이용하여 실시간으로 추적하면서 치료하는 방법입니다.
+                      </p>
+                      <p>
+                        <strong className="text-amber-300">7. '두개내 신생물 근치 감마나이프 (Gammaknife) 정위적 방사선 치료'라 함은</strong> 정위 좌표계를 이용하여 코발트 60 방사성 동위원소 (Co-60) 에서 나오는 감마선을 두개강 내의 신생물을 향해 집중 조사함으로 두개(頭蓋)를 열지 않고도 수술적 제거와 같은 효과를 내는 치료를 말합니다.
+                      </p>
+                      <p>
+                        <strong className="text-amber-300">8. 다음과 같은 수술은 수술보험금 지급대상에서 보장을 제외합니다.</strong>
+                        <br /><span className="pl-3 inline-block">(1) 미용 성형상의 수술</span>
+                        <br /><span className="pl-3 inline-block">(2) 피임(避妊) 목적의 수술</span>
+                        <br /><span className="pl-3 inline-block">(3) 피임 및 불임술 후 가임목적의 수술</span>
+                        <br /><span className="pl-3 inline-block">(4) 검사 및 진단을 위한 수술 [생검 (生檢), 복강경 검사(腹腔鏡檢査) 등]</span>
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5') ? (
                 <>
                   {/* KB Notes Box */}
                   <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-700 leading-relaxed space-y-2 shadow-2xs">
@@ -9556,13 +10319,27 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           const isObj = typeof item === 'object' && item !== null;
           const diseaseName = isObj ? (item.disease || item.name) : item;
           const diseaseCode = isObj ? (item.code || '-') : '-';
-          return `<tr>
+          let rows = `<tr>
             <td style="font-weight: 600; white-space: pre-wrap;">${diseaseName}</td>
             <td class="text-center">${diseaseCode !== '-' ? `<span class="code">${diseaseCode}</span>` : '-'}</td>
           </tr>`;
+          if (isObj && item.subItems && Array.isArray(item.subItems)) {
+            rows += item.subItems.map((sub: any) => `
+              <tr style="background: #f8fafc;">
+                <td style="font-weight: 500; padding-left: 24px; font-size: 10.5px; color: #334155;">- ${sub.disease || sub.name}</td>
+                <td class="text-center">${sub.code ? `<span class="code" style="font-size: 10px;">${sub.code}</span>` : '-'}</td>
+              </tr>
+            `).join('');
+          }
+          return rows;
         }).join('')}
       </tbody>
     </table>
+    ${sec.notes && Array.isArray(sec.notes) && sec.notes.length > 0 ? `
+      <div style="margin-top: -10px; margin-bottom: 16px; padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 10.5px; color: #475569;">
+        ${sec.notes.map((n: string) => `<div><strong>주)</strong> ${n}</div>`).join('')}
+      </div>
+    ` : ''}
     `;
   }).join('')}
 
@@ -9686,7 +10463,15 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'lotte_integrated_cancer') return LOTTE_INTEGRATED_CANCER_SECTIONS;
         if (activeSubTab === 'lotte_integrated_cancer_with_metastasis') return LOTTE_INTEGRATED_CANCER_WITH_METASTASIS_SECTIONS;
         if (activeSubTab === 'lotte_integrated_metastatic_cancer') return LOTTE_INTEGRATED_METASTATIC_CANCER_SECTIONS;
+        if (activeSubTab === 'lotte_high_cancer') return LOTTE_HIGH_CANCER_SECTIONS;
         if (activeSubTab === 'lotte_brain_disease') return LOTTE_BRAIN_DISEASE_SECTIONS;
+        if (activeSubTab === 'lotte_cardiovascular_simple') {
+          return lotteCardiovascularSimpleTab === 'I'
+            ? LOTTE_CARDIOVASCULAR_SIMPLE_I_SECTIONS
+            : lotteCardiovascularSimpleTab === 'II'
+            ? LOTTE_CARDIOVASCULAR_SIMPLE_II_SECTIONS
+            : LOTTE_CARDIOVASCULAR_SIMPLE_15_SECTIONS;
+        }
         if (activeSubTab === 'lotte_cardiovascular') return LOTTE_CARDIOVASCULAR_SECTIONS;
         if (activeSubTab === 'lotte_surgery1_5') return LOTTE_SURGERY1_5_SECTIONS;
         if (activeSubTab === 'lotte_surgery7') return LOTTE_SURGERY_7_SECTIONS;
@@ -9695,6 +10480,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'lotte_surgery20') return LOTTE_SURGERY_20_SECTIONS;
         if (activeSubTab === 'lotte_surgery34') return LOTTE_SURGERY_34_SECTIONS;
         if (activeSubTab === 'lotte_surgery64') return LOTTE_SURGERY_64_SECTIONS;
+        if (activeSubTab === 'lotte_surgery142') return LOTTE_SURGERY_142_SECTIONS;
         return LOTTE_INTEGRATED_CANCER_SECTIONS;
       case 'hyundai-marine':
         if (activeSubTab === 'hyundai_male_cancer') return HYUNDAI_MALE_CANCER_SECTIONS;
@@ -9709,14 +10495,34 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'hyundai_71diseases') return HYUNDAI_71_DISEASES_SECTIONS;
         if (activeSubTab === 'hyundai_120diseases') return HYUNDAI_120_DISEASES_SECTIONS;
         return HYUNDAI_MALE_CANCER_SECTIONS;
+      case 'nh-fire':
+        if (activeSubTab === 'nh_cancer') return NH_CANCER_SECTIONS;
+        if (activeSubTab === 'nh_cancer_metastasis') return NH_CANCER_METASTASIS_SECTIONS;
+        if (activeSubTab === 'nh_5specific_cancer') return NH_5SPECIFIC_CANCER_SECTIONS;
+        if (activeSubTab === 'nh_cardiovascular_4') {
+          if (nhCardio4Tab === 'tab1') return NH_CARDIOVASCULAR_4_SECTIONS_TAB1;
+          if (nhCardio4Tab === 'tab2') return NH_CARDIOVASCULAR_4_SECTIONS_TAB2;
+          if (nhCardio4Tab === 'tab3') return NH_CARDIOVASCULAR_4_SECTIONS_TAB3;
+          if (nhCardio4Tab === 'tab4') return NH_CARDIOVASCULAR_4_SECTIONS_TAB4;
+          return NH_CARDIOVASCULAR_4_SECTIONS_TAB1;
+        }
+        if (activeSubTab === 'nh_circulatory_1_5') return NH_CIRCULATORY_1_5_SECTIONS;
+        if (activeSubTab === 'nh_surgery1_5') return NH_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'nh_surgery16') return NH_SURGERY_16_SECTIONS;
+        if (activeSubTab === 'nh_surgery34') return NH_SURGERY_34_SECTIONS;
+        if (activeSubTab === 'nh_surgery71') return NH_SURGERY_71_SECTIONS;
+        if (activeSubTab === 'nh_surgery144') return NH_SURGERY_144_SECTIONS;
+        return NH_CANCER_SECTIONS;
       default:
         if (activeSubTab === 'cancer') return DB_CANCER_SECTIONS;
         if (activeSubTab === 'db_cancer_metastasis') return DB_CANCER_METASTASIS_SECTIONS;
         if (activeSubTab === 'db_11_specific_cancer') return DB_11_SPECIFIC_CANCER_SECTIONS;
         if (activeSubTab === 'db_high_cost_cancer') return DB_HIGH_COST_CANCER_SECTIONS;
+        if (activeSubTab === 'db_integrated_heart') return dbHeartTab === 'I' ? DB_HEART_I_SECTIONS : DB_HEART_II_SECTIONS;
         if (activeSubTab === 'db_heart_1') return DB_HEART_I_SECTIONS;
         if (activeSubTab === 'db_heart_2') return DB_HEART_II_SECTIONS;
         if (activeSubTab === 'db_heart_simple') return DB_HEART_SIMPLE_SECTIONS;
+        if (activeSubTab === 'db_integrated_brain') return dbBrainTab === 'I' ? DB_BRAIN_I_SECTIONS : DB_BRAIN_II_SECTIONS;
         if (activeSubTab === 'db_brain_1') return DB_BRAIN_I_SECTIONS;
         if (activeSubTab === 'db_brain_2') return DB_BRAIN_II_SECTIONS;
         if (activeSubTab === 'db_major_5vascular_brain') return DB_MAJOR_5VASCULAR_BRAIN_SECTIONS;
