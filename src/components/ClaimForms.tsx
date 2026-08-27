@@ -134,7 +134,17 @@ export default function ClaimForms() {
   const [activeTab, setActiveTab] = useState<'all' | InsurerType>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedInsurer, setSelectedInsurer] = useState<Insurer>(() => {
-    const saved = localStorage.getItem('ib_selected_insurer_id');
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      if (pathname.startsWith('/claim/')) {
+        const slug = pathname.replace(/^\/claim\//, '').replace(/\/+$/, '');
+        if (slug) {
+          const foundBySlug = INSURERS_DATA.find(ins => ins.id === slug);
+          if (foundBySlug) return foundBySlug;
+        }
+      }
+    }
+    const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('ib_selected_insurer_id') : null;
     if (saved) {
       const found = INSURERS_DATA.find(ins => ins.id === saved);
       if (found) return found;

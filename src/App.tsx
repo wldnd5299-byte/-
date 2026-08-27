@@ -215,6 +215,12 @@ export const getViewFromLocation = (): ViewState => {
   if (rawPath.startsWith('/info/')) {
     return 'info';
   }
+  if (rawPath.startsWith('/claim/')) {
+    return 'claim';
+  }
+  if (rawPath.startsWith('/surgery/')) {
+    return 'surgery';
+  }
   if (PATH_VIEW_MAP[rawPath]) {
     return PATH_VIEW_MAP[rawPath];
   }
@@ -227,6 +233,12 @@ export const getViewFromLocation = (): ViewState => {
   }
   if (cleanPath.startsWith('/info/')) {
     return 'info';
+  }
+  if (cleanPath.startsWith('/claim/')) {
+    return 'claim';
+  }
+  if (cleanPath.startsWith('/surgery/')) {
+    return 'surgery';
   }
   if (PATH_VIEW_MAP[cleanPath]) {
     return PATH_VIEW_MAP[cleanPath];

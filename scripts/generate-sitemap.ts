@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { INSURERS_DATA } from '../src/data.ts';
 import { PRECEDENTS_DATA } from '../src/data/disputeData';
 import { INSURER_TERMS_LIST, INSURER_SUBTABS } from '../src/data/terms/index.ts';
 import { loadInfoArticlesAsync } from '../src/data/info/loader.node.ts';
@@ -25,6 +26,12 @@ export async function generateSitemap() {
     { loc: 'https://insurancebridge.co.kr/dispute/', changefreq: 'weekly', priority: '0.8' },
     { loc: 'https://insurancebridge.co.kr/info/', changefreq: 'weekly', priority: '0.9' },
   ];
+
+  const claimUrls = INSURERS_DATA.map((ins) => ({
+    loc: `https://insurancebridge.co.kr/claim/${ins.id}/`,
+    changefreq: 'weekly',
+    priority: '0.8',
+  }));
 
   const infoUrls = infoArticles.filter((a) => a.isPublished).map((item) => ({
     loc: `https://insurancebridge.co.kr/info/${item.slug}/`,
@@ -69,10 +76,11 @@ export async function generateSitemap() {
     { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-5/', changefreq: 'weekly', priority: '0.8' },
   ];
 
-  const allUrls = [...coreUrls, ...surgeryUrls, ...infoUrls, ...disputeUrls, ...termsUrls];
+  const allUrls = [...coreUrls, ...claimUrls, ...surgeryUrls, ...infoUrls, ...disputeUrls, ...termsUrls];
 
   console.log(`Total URLs to include in sitemap: ${allUrls.length}`);
   console.log(`- Core URLs: ${coreUrls.length}`);
+  console.log(`- Insurer Claims (Phase 2-A): ${claimUrls.length}`);
   console.log(`- Surgery Classification (Phase 1): ${surgeryUrls.length}`);
   console.log(`- Info Articles: ${infoUrls.length}`);
   console.log(`- Precedents / Disputes: ${disputeUrls.length}`);
