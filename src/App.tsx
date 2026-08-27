@@ -739,8 +739,18 @@ export default function App() {
                           className="bg-white border border-slate-200/90 rounded-xl p-3.5 flex flex-col justify-between items-center text-center min-h-[142px] group shadow-2xs hover:shadow-xl hover:-translate-y-1 hover:bg-[#cb9f74] hover:border-[#cb9f74] transition-all duration-200 cursor-pointer block"
                         >
                           <div className="space-y-1 flex flex-col items-center w-full">
-                            <h4 className="text-lg md:text-xl font-black text-[#123941] group-hover:text-[#123941] leading-tight transition-colors duration-200 whitespace-nowrap overflow-hidden text-ellipsis">
-                              {item.title}
+                            <h4 className={`font-black text-[#123941] group-hover:text-[#123941] leading-tight transition-colors duration-200 ${
+                              item.id === 'indemnity'
+                                ? 'text-sm sm:text-base md:text-lg lg:text-[13px] xl:text-[15px] 2xl:text-base'
+                                : 'text-lg md:text-xl whitespace-nowrap overflow-hidden text-ellipsis'
+                            }`}>
+                              {item.id === 'indemnity' ? (
+                                <>
+                                  실손의료비<br />계산기
+                                </>
+                              ) : (
+                                item.title
+                              )}
                             </h4>
                             <p className="text-[10px] md:text-xs text-slate-500 group-hover:text-[#123941] font-extrabold leading-normal transition-colors duration-200 max-w-[130px] line-clamp-2">
                               {item.desc}

@@ -47,7 +47,38 @@ export default defineConfig(() => {
   }
 
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'xlsx-download-server',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            const decodedUrl = decodeURIComponent(req.url || '');
+            if (
+              decodedUrl === '/download/surgery-excel' ||
+              decodedUrl === '/insurancebridge_surgery_all.xlsx' ||
+              decodedUrl.includes('보험브릿지_수술명검색_전체수술분류_원본.xlsx')
+            ) {
+              const filePath = path.resolve(__dirname, 'public/보험브릿지_수술명검색_전체수술분류_원본.xlsx');
+              if (fs.existsSync(filePath)) {
+                const stat = fs.statSync(filePath);
+                const fileBuf = fs.readFileSync(filePath);
+                res.writeHead(200, {
+                  'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                  'Content-Disposition': 'attachment; filename="insurancebridge_surgery_all.xlsx"; filename*=UTF-8\'\'%EB%B3%B4%ED%97%98%EB%B8%8C%EB%A6%BF%EC%A7%80_%EC%88%98%EC%88%A0%EB%AA%85%EA%B2%80%EC%83%89_%EC%A0%84%EC%B2%B4%EC%88%98%EC%88%A0%EB%B6%84%EB%A5%98_%EC%9B%90%EB%B3%B8.xlsx',
+                  'Content-Length': stat.size,
+                  'Cache-Control': 'no-cache',
+                });
+                res.end(fileBuf);
+                return;
+              }
+            }
+            next();
+          });
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

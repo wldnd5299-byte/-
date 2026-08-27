@@ -763,37 +763,49 @@ export default function SurgerySearch() {
         {/* 3-1. Search Bar Block & Management Controls */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-4 text-left">
           {/* Surgery Classification standard search sub-tabs */}
-          <div className="flex border-b border-slate-100 pb-3 gap-2 flex-wrap">
-            <button
-              onClick={() => setSurgeryTab('grade1_5')}
-              className={`px-4 py-2 rounded-xl text-xs md:text-sm font-black transition-all cursor-pointer ${
-                surgeryTab === 'grade1_5'
-                  ? 'bg-[#123941] text-white shadow-sm'
-                  : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200/60'
-              }`}
-            >
-              1~3종수술 / 1~5종수술 검색
-            </button>
-            <button
-              onClick={() => setSurgeryTab('grade1_7')}
-              className={`px-4 py-2 rounded-xl text-xs md:text-sm font-black transition-all cursor-pointer ${
-                surgeryTab === 'grade1_7'
-                  ? 'bg-[#123941] text-white shadow-sm'
-                  : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200/60'
-              }`}
-            >
-              1~7종수술 검색
-            </button>
-            <button
-              onClick={() => setSurgeryTab('grade1_8')}
-              className={`px-4 py-2 rounded-xl text-xs md:text-sm font-black transition-all cursor-pointer ${
-                surgeryTab === 'grade1_8'
-                  ? 'bg-[#123941] text-white shadow-sm'
-                  : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200/60'
-              }`}
-            >
-              1~8종수술 검색
-            </button>
+          <div className="flex border-b border-slate-100 pb-3 gap-2 flex-wrap items-center justify-between">
+            <div className="flex gap-2 flex-wrap">
+              <button
+                onClick={() => setSurgeryTab('grade1_5')}
+                className={`px-4 py-2 rounded-xl text-xs md:text-sm font-black transition-all cursor-pointer ${
+                  surgeryTab === 'grade1_5'
+                    ? 'bg-[#123941] text-white shadow-sm'
+                    : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200/60'
+                }`}
+              >
+                1~3종수술 / 1~5종수술 검색
+              </button>
+              <button
+                onClick={() => setSurgeryTab('grade1_7')}
+                className={`px-4 py-2 rounded-xl text-xs md:text-sm font-black transition-all cursor-pointer ${
+                  surgeryTab === 'grade1_7'
+                    ? 'bg-[#123941] text-white shadow-sm'
+                    : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200/60'
+                }`}
+              >
+                1~7종수술 검색
+              </button>
+              <button
+                onClick={() => setSurgeryTab('grade1_8')}
+                className={`px-4 py-2 rounded-xl text-xs md:text-sm font-black transition-all cursor-pointer ${
+                  surgeryTab === 'grade1_8'
+                    ? 'bg-[#123941] text-white shadow-sm'
+                    : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-200/60'
+                }`}
+              >
+                1~8종수술 검색
+              </button>
+            </div>
+
+            {surgeryTab === 'grade1_5' && (
+              <a
+                href="/surgery/1to5/"
+                className="text-xs font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 flex items-center gap-1.5 transition-colors"
+              >
+                <FileText className="w-3.5 h-3.5 text-blue-600" />
+                <span>1~5종 약관 분류표 (2,682건) 전문 &rarr;</span>
+              </a>
+            )}
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

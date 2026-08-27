@@ -60,10 +60,20 @@ export async function generateSitemap() {
     }
   }
 
-  const allUrls = [...coreUrls, ...infoUrls, ...disputeUrls, ...termsUrls];
+  const surgeryUrls = [
+    { loc: 'https://insurancebridge.co.kr/surgery/1to5/', changefreq: 'weekly', priority: '0.9' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-1/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-2/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-3/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-4/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-5/', changefreq: 'weekly', priority: '0.8' },
+  ];
+
+  const allUrls = [...coreUrls, ...surgeryUrls, ...infoUrls, ...disputeUrls, ...termsUrls];
 
   console.log(`Total URLs to include in sitemap: ${allUrls.length}`);
   console.log(`- Core URLs: ${coreUrls.length}`);
+  console.log(`- Surgery Classification (Phase 1): ${surgeryUrls.length}`);
   console.log(`- Info Articles: ${infoUrls.length}`);
   console.log(`- Precedents / Disputes: ${disputeUrls.length}`);
   console.log(`- Terms & Insurers: ${termsUrls.length}`);
