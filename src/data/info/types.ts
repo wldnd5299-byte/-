@@ -64,7 +64,7 @@ export interface PrimaryRelatedLink {
   desc?: string;
   url: string;
   badge?: string;
-  iconType?: 'terms' | 'age' | 'surgery' | 'indemnity' | 'claim' | 'dispute' | 'goods';
+  iconType?: 'terms' | 'age' | 'surgery' | 'indemnity' | 'claim' | 'dispute' | 'goods' | 'planner-goods';
 }
 
 export interface SecondaryToolLink {

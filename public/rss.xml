@@ -5,8 +5,24 @@
     <link>https://insurancebridge.co.kr/info/</link>
     <description>보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 27 Aug 2026 12:34:39 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 14:56:19 GMT</lastBuildDate>
     <atom:link href="https://insurancebridge.co.kr/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>대장암 치료방법 및 부위별 수술·항암치료 가이드 (국가암지식정보센터)</title>
+      <link>https://insurancebridge.co.kr/info/colorectal-cancer-treatment/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/colorectal-cancer-treatment/</guid>
+      <description>국가암지식정보센터·보건복지부 공식 자료 기준 대장암 치료 결정 핵심 기준(침윤도), 내시경 절제술, 결장·직장 부위별 수술법 및 장루 여부, 표적·면역항암제, 방사선치료(TNT) 정보를 정리합니다.</description>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+      <category>cancer</category>
+    </item>
+    <item>
+      <title>중입자치료 원리 및 대상 암종 (연세암병원 공식 가이드)</title>
+      <link>https://insurancebridge.co.kr/info/heavy-ion-therapy/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/heavy-ion-therapy/</guid>
+      <description>연세암병원 중입자치료센터 공식 가이드 기준 탄소이온 Bragg Peak 원리, 입자선별 물리적 특성 비교, 주요 적용 암종 및 치료기간·비용 정보를 정리합니다.</description>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+      <category>cancer</category>
+    </item>
     <item>
       <title>보험나이는 어떻게 계산해요?</title>
       <link>https://insurancebridge.co.kr/info/how-is-insurance-age-calculated/</link>
