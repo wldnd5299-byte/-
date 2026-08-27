@@ -22,7 +22,8 @@ export const INSURER_DATA_MAP = {
   'samsung': ['src/data/terms/samsung.ts'],
   'hyundai': ['src/data/terms/hyundai.ts'],
   'heungkuk': ['src/data/terms/heungkuk.ts'],
-  'nh': ['src/data/terms/nh.ts']
+  'nh': ['src/data/terms/nh.ts'],
+  'hana': ['src/data/terms/hana.ts']
 };
 
 // 보험사 별칭 매핑 (예: lotte-ins, nh-fire 등)
@@ -35,7 +36,8 @@ export const INSURER_ALIASES = {
   'samsung-fire': 'samsung', '삼성': 'samsung',
   'hyundai-marine': 'hyundai', 'hyundai-fire': 'hyundai', '현대': 'hyundai',
   'heungkuk-fire': 'heungkuk', '흥국': 'heungkuk',
-  'nh-fire': 'nh', 'nh-ins': 'nh', 'nonghyup': 'nh', '농협': 'nh'
+  'nh-fire': 'nh', 'nh-ins': 'nh', 'nonghyup': 'nh', '농협': 'nh',
+  'hana-ins': 'hana', 'hana-fire': 'hana', '하나': 'hana'
 };
 
 // 2. 보호 대상 공통 데이터 매핑

@@ -22,8 +22,10 @@ import {
   Download,
   Printer,
   Compass,
-  X
+  X,
+  Loader2
 } from "lucide-react";
+import { downloadPdfFromHtml } from "../utils/pdfGenerator";
 import AdZone from "./AdZone";
 import { SURGERY_1TO8_RECORDS } from "../data1to8";
 import { SURGERY_1TO7_RECORDS } from "../data1to7";
@@ -279,6 +281,18 @@ import {
   NH_SURGERY_71_SUMMARY_SECTIONS,
   NH_SURGERY_144_SECTIONS,
   NH_SURGERY_144_SUMMARY_SECTIONS,
+  HANA_INTEGRATED_CANCER_SECTIONS,
+  HANA_HIGH_COST_CANCER_SECTIONS,
+  HANA_HIGH_COST_CANCER_UNROLLED,
+  HANA_11_SPECIFIC_CANCER_SECTIONS,
+  HANA_11_SPECIFIC_CANCER_UNROLLED,
+  HANA_BRAIN_DISEASE_SECTIONS,
+  HANA_INTEGRATED_HEART_SECTIONS,
+  HANA_INTEGRATED_HEART_SUMMARY,
+  HANA_WOMEN_16_DISEASES_SECTIONS,
+  HANA_SURGERY_1_5_SECTIONS,
+  HANA_SURGERY_73_SECTIONS,
+  HANA_SURGERY_136_SECTIONS,
   SubTabInfo,
   escapeRegExp,
   getCancerGroups,
@@ -338,6 +352,7 @@ export default function TermsMaster() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
   const [hyundaiBrainSubTab, setHyundaiBrainSubTab] = useState<'1' | '2'>('1');
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [kbIntegratedTab, setKbIntegratedTab] = useState<'practical' | 'basic' | 'luxury'>('practical');
   const [meritzDiseaseIntegratedTab, setMeritzDiseaseIntegratedTab] = useState<'20m' | '40m' | '70m'>('20m');
   const [meritzIntegratedTreatmentTab, setMeritzIntegratedTreatmentTab] = useState<'40m' | '80m' | '100m'>('40m');
@@ -5024,9 +5039,12 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
       );
     }
 
-    if (tabKey === 'db_11_specific_cancer') {
+    if (tabKey === 'db_11_specific_cancer' || tabKey === 'hana_11_specific_cancer') {
+      const isHana = tabKey === 'hana_11_specific_cancer';
+      const itemsList = isHana ? HANA_11_SPECIFIC_CANCER_UNROLLED : DB_11_SPECIFIC_CANCER_UNROLLED;
+      const sectionsList = isHana ? HANA_11_SPECIFIC_CANCER_SECTIONS : DB_11_SPECIFIC_CANCER_SECTIONS;
       const queryStr = normalizeString(detailFilter);
-      const filteredItems = DB_11_SPECIFIC_CANCER_UNROLLED.filter((item) => {
+      const filteredItems = itemsList.filter((item) => {
         if (!queryStr) return true;
         return (
           normalizeString(item.name).includes(queryStr) ||
@@ -5035,20 +5053,21 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         );
       });
 
-      const leftItems = queryStr ? filteredItems.slice(0, Math.ceil(filteredItems.length / 2)) : DB_11_SPECIFIC_CANCER_UNROLLED.slice(0, 24);
-      const rightItems = queryStr ? filteredItems.slice(Math.ceil(filteredItems.length / 2)) : DB_11_SPECIFIC_CANCER_UNROLLED.slice(24);
+      const half = isHana ? 15 : 24;
+      const leftItems = queryStr ? filteredItems.slice(0, Math.ceil(filteredItems.length / 2)) : itemsList.slice(0, half);
+      const rightItems = queryStr ? filteredItems.slice(Math.ceil(filteredItems.length / 2)) : itemsList.slice(half);
 
       return (
         <div id="printable-terms-area" className="space-y-4">
           {/* Top Control Bar */}
           <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
             <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
-              <span>DB손해보험 - [별표24] 11대특정암 분류표</span>
+              <span>{isHana ? '하나손해보험 - 【별표17】 11대특정암 분류표' : 'DB손해보험 - [별표24] 11대특정암 분류표'}</span>
             </div>
 
             <div className="flex items-center gap-2">
               <button
-                onClick={() => handleDownloadPDF('11대특정암 분류표', [], DB_11_SPECIFIC_CANCER_SECTIONS)}
+                onClick={() => handleDownloadPDF('11대특정암 분류표', [], sectionsList)}
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -5080,10 +5099,13 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           {/* Header Info Box */}
           <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
             <div className="font-black text-[#123941] text-sm mb-1.5 flex items-center gap-1.5">
-              <span>[별표24] 11대특정암 분류표</span>
+              <span>{isHana ? '【별표17】 11대특정암 분류표' : '[별표24] 11대특정암 분류표'}</span>
             </div>
             <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
-              약관에 규정하는 11대특정암으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청고시 제2015-309호, 2016.1.1. 시행) 중 아래에 적은 질병을 말하며, 개별 질병명 및 KCD 질병코드가 하나씩 세부적으로 나열되어 있습니다.
+              {isHana
+                ? '약관에 규정하는 11대특정암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1 시행)중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 11대특정암 해당 여부를 판단합니다.'
+                : '약관에 규정하는 11대특정암으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청고시 제2015-309호, 2016.1.1. 시행) 중 아래에 적은 질병을 말하며, 개별 질병명 및 KCD 질병코드가 하나씩 세부적으로 나열되어 있습니다.'
+              }
             </p>
           </div>
 
@@ -5174,26 +5196,45 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           {/* Footnotes Box */}
           <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
             <div className="font-extrabold text-[#123941]">주) 약관 적용기준</div>
-            <p className="pl-2">
-              1. 약관에 규정하는 11대특정암으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청고시 제2015-309호, 2016.1.1. 시행) 중 위에 적은 질병을 말합니다.
-            </p>
-            <p className="pl-2">
-              2. 제8차 개정 이후 이 약관에서 보장하는 질병의 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
-            </p>
-            <p className="pl-2">
-              3. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
-            </p>
-            <p className="pl-2">
-              4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서에 따라 기재된 것을 인정합니다.
-            </p>
+            {isHana ? (
+              <>
+                <p className="pl-2">
+                  1. 제10차 개정 이후 이 약관에서 보장하는 11대특정암 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
+                </p>
+                <p className="pl-2">
+                  2. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+                </p>
+                <p className="pl-2">
+                  3. 상기 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 상기 분류에 포함합니다.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="pl-2">
+                  1. 약관에 규정하는 11대특정암으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청고시 제2015-309호, 2016.1.1. 시행) 중 위에 적은 질병을 말합니다.
+                </p>
+                <p className="pl-2">
+                  2. 제8차 개정 이후 이 약관에서 보장하는 질병의 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
+                </p>
+                <p className="pl-2">
+                  3. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+                </p>
+                <p className="pl-2">
+                  4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서에 따라 기재된 것을 인정합니다.
+                </p>
+              </>
+            )}
           </div>
         </div>
       );
     }
 
-    if (tabKey === 'db_high_cost_cancer') {
+    if (tabKey === 'db_high_cost_cancer' || tabKey === 'hana_high_cost_cancer') {
+      const isHana = tabKey === 'hana_high_cost_cancer';
+      const itemsList = isHana ? HANA_HIGH_COST_CANCER_UNROLLED : DB_HIGH_COST_CANCER_UNROLLED;
+      const sectionsList = isHana ? HANA_HIGH_COST_CANCER_SECTIONS : DB_HIGH_COST_CANCER_SECTIONS;
       const queryStr = normalizeString(detailFilter);
-      const filteredItems = DB_HIGH_COST_CANCER_UNROLLED.filter((item) => {
+      const filteredItems = itemsList.filter((item) => {
         if (!queryStr) return true;
         return (
           normalizeString(item.name).includes(queryStr) ||
@@ -5203,20 +5244,20 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
       });
 
       const half = Math.ceil(filteredItems.length / 2);
-      const leftItems = queryStr ? filteredItems.slice(0, half) : DB_HIGH_COST_CANCER_UNROLLED.slice(0, 13);
-      const rightItems = queryStr ? filteredItems.slice(half) : DB_HIGH_COST_CANCER_UNROLLED.slice(13);
+      const leftItems = queryStr ? filteredItems.slice(0, half) : itemsList.slice(0, 13);
+      const rightItems = queryStr ? filteredItems.slice(half) : itemsList.slice(13);
 
       return (
         <div id="printable-terms-area" className="space-y-4">
           {/* Top Control Bar */}
           <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
             <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
-              <span>DB손해보험 - 【별표25】 고액치료비암 분류표</span>
+              <span>{isHana ? '하나손해보험 - 【별표16】 고액치료비암 분류표' : 'DB손해보험 - 【별표25】 고액치료비암 분류표'}</span>
             </div>
 
             <div className="flex items-center gap-2">
               <button
-                onClick={() => handleDownloadPDF('고액치료비암 분류표', [], DB_HIGH_COST_CANCER_SECTIONS)}
+                onClick={() => handleDownloadPDF('고액치료비암 분류표', [], sectionsList)}
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -5248,10 +5289,13 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           {/* Header Info Box */}
           <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
             <div className="font-black text-[#123941] text-sm mb-1.5 flex items-center gap-1.5">
-              <span>【별표25】 고액치료비암 분류표</span>
+              <span>{isHana ? '【별표16】 고액치료비암 분류표' : '【별표25】 고액치료비암 분류표'}</span>
             </div>
             <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
-              약관에 규정하는 고액치료비암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청고시 제2025-299호, 2026. 1. 1 시행)중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우 개정된 기준에 따라 이 약관의 보장 대상 질병 해당 여부를 판단합니다.
+              {isHana
+                ? '약관에 규정하는 고액치료비암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 고액치료비암 해당 여부를 판단합니다.'
+                : '약관에 규정하는 고액치료비암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청고시 제2025-299호, 2026. 1. 1 시행)중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우 개정된 기준에 따라 이 약관의 보장 대상 질병 해당 여부를 판단합니다.'
+              }
             </p>
           </div>
 
@@ -5342,18 +5386,34 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           {/* Footnotes Box */}
           <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
             <div className="font-extrabold text-[#123941]">주) 약관 적용기준</div>
-            <p className="pl-2">
-              1. 제10차 개정 이후 이 약관의 대상질병 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
-            </p>
-            <p className="pl-2">
-              2. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
-            </p>
-            <p className="pl-2">
-              3. 대상질병 분류표의 분류번호와 다르나 한국표준질병·사인분류의 기준에 따라 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 대상질병 분류에 포함합니다.
-            </p>
-            <p className="pl-2">
-              4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서를 따릅니다.
-            </p>
+            {isHana ? (
+              <>
+                <p className="pl-2">
+                  1. 제10차 개정 이후 이 약관에서 보장하는 고액치료비암 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
+                </p>
+                <p className="pl-2">
+                  2. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+                </p>
+                <p className="pl-2">
+                  3. 상기 분류표의 분류번호와 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 상기 분류에 포함합니다.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="pl-2">
+                  1. 제10차 개정 이후 이 약관의 대상질병 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
+                </p>
+                <p className="pl-2">
+                  2. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+                </p>
+                <p className="pl-2">
+                  3. 대상질병 분류표의 분류번호와 다르나 한국표준질병·사인분류의 기준에 따라 연관성이 있어, 분류번호를 동시에 부여 가능한 경우 대상질병 분류에 포함합니다.
+                </p>
+                <p className="pl-2">
+                  4. 진단서 상의 분류번호는 한국표준질병·사인분류 질병코딩지침서를 따릅니다.
+                </p>
+              </>
+            )}
           </div>
         </div>
       );
@@ -6416,6 +6476,35 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           )}
         </div>
 
+        {tabKey === 'hana_integrated_cancer' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 【별표26】 통합암(유사암제외) 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              1. 약관에 규정하는 통합암(유사암제외)으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 통합암(유사암제외)의 해당 여부를 판단합니다.
+            </p>
+          </div>
+        )}
+
+        {tabKey === 'hana_surgery1_5' && (
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs space-y-2">
+            <div className="font-black text-[#123941] text-xs flex items-center gap-1.5">
+              <span>📌 【별표78】 1~5종수술III 분류표 및 사용 지침 안내</span>
+            </div>
+            <div className="text-[11px] text-slate-600 leading-relaxed space-y-1.5 pt-1">
+              <p><strong>1. "수술"의 정의:</strong> 의사, 치과의사 또는 한의사의 자격을 가진 자가 피보험자의 질병 또는 상해 치료를 직접목적으로 의료기관에서 의사의 관리하에 기구를 사용하여 생체에 절단(切斷), 적제(摘除) 등의 조작을 가하는 것(보건복지부 산하 신의료기술평가위원회로부터 안전성과 치료효과를 인정받은 최신 수술기법 포함 / 흡인, 천자, 적제 등의 조치 및 신경 BLOCK 제외).</p>
+              <p><strong>2. 관혈(觀血) 수술:</strong> 병변 부위를 육안으로 직접 보면서 수술적 조작을 하기 위해 피부에 절개를 가하고 병변부위를 노출시켜서 수술하는 것.</p>
+              <p><strong>3. 근본(根本) 혹은 근치(根治) 수술:</strong> 일회의 수술로 해당 질병을 완전히 치유할 수 있는 수술.</p>
+              <p><strong>4. 내시경/카테터 수술 적용:</strong> 1~87항의 수술 중 내시경 수술 또는 카테터 등에 의한 경피적 수술은 88항을 적용 (단, 복강경·흉강경에 의한 수술은 해당 부위 1~87항 수술로 적용).</p>
+              <p><strong>5. 60일 이내 수술:</strong> 특정 수술(Mammotomy, 경질적 수술, 망막박리, 레이저, 냉동응고, 중이내 튜브유치술, ESWL, 내시경/경피적 수술 등)은 개시일부터 60일 이내 2회 이상 시 1회로 간주 지급.</p>
+              <div className="pt-1 text-[10px] text-slate-500 border-t border-slate-200/60">
+                <p>※ 보장 제외: 미용 성형상의 수술, 피임 목적의 수술, 피임 및 불임술 후 가임목적의 수술, 검사 및 진단을 위한 수술(생검, 복강경 검사 등)</p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {tabKey === 'nh_cancer' && (
           <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
             <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
@@ -6731,7 +6820,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         })()}
 
         {/* 2. Top Summary Classification Table */}
-        {tabKey !== 'surgery1_5' && tabKey !== 'surgery1_5_old' && tabKey !== 'kb_surgery1_5' && tabKey !== 'lotte_surgery1_5' && tabKey !== 'meritz_surgery1_5' && tabKey !== 'hanwha_surgery1_5' && tabKey !== 'hanwha_women_life_1_5' && tabKey !== 'hanwha_women_major_life_1_5' && tabKey !== 'nh_surgery1_5' && (
+        {tabKey !== 'surgery1_5' && tabKey !== 'surgery1_5_old' && tabKey !== 'kb_surgery1_5' && tabKey !== 'lotte_surgery1_5' && tabKey !== 'meritz_surgery1_5' && tabKey !== 'hanwha_surgery1_5' && tabKey !== 'hanwha_women_life_1_5' && tabKey !== 'hanwha_women_major_life_1_5' && tabKey !== 'nh_surgery1_5' && tabKey !== 'hana_surgery1_5' && (
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs space-y-0">
             <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
               <span className="text-xs font-black text-white">상단요약분류표</span>
@@ -6917,10 +7006,10 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                         <thead>
                           <tr className="border-b border-slate-200 bg-[#123941]/5 text-[#123941] font-black text-[11px]">
                             <th className="py-2 px-3 text-left w-[70%]">
-                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5') ? '수술명 / 보장대상 수술' : '질병명 / 보장대상 분류'}
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5') ? '수술명 / 보장대상 수술' : '질병명 / 보장대상 분류'}
                             </th>
                             <th className="py-2 px-3 text-center w-[30%]">
-                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5') ? '수술종류' : 'KCD 질병코드'}
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5') ? '수술종류' : 'KCD 질병코드'}
                             </th>
                           </tr>
                         </thead>
@@ -7096,7 +7185,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           )}
 
           {/* 3-1. 1-5종 수술비(동일질병당/질병통합치료비) 사용 지침 및 요실금/KB/메리츠/한화/농협 수술 지침 안내 */}
-          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5') && (
+          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5') && (
             <div className="space-y-4 pt-4 border-t border-slate-200">
               {tabKey === 'hanwha_women_major_life_1_5' ? (
                 <>
@@ -7495,7 +7584,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                     </div>
                   </div>
                 </>
-              ) : (tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5') ? (
+              ) : (tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'hana_surgery1_5') ? (
                 <>
                   {/* KB Notes Box */}
                   <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-700 leading-relaxed space-y-2 shadow-2xs">
@@ -8361,7 +8450,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     );
   };
 
-  const handleDownloadPDF = (title: string, summariesList: any[], sectionsList: any[]) => {
+  const handleDownloadPDF = async (title: string, summariesList: any[], sectionsList: any[]) => {
     // Automatically expand all sections in state
     const allExpanded: Record<number, boolean> = {};
     (sectionsList || []).forEach((_, idx) => {
@@ -8369,7 +8458,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     });
     setExpandedDbSurgerySections(allExpanded);
 
-    const filename = `${selectedInsurer.name}_${title.replace(/[\s\/]/g, '_')}_세부분류표.html`;
+    const filename = `${selectedInsurer.name}_${title.replace(/[\s\/]/g, '_')}_세부분류표.pdf`;
 
     const htmlContent = (activeSubTab === 'meritz_integrated_treatment') ? `<!DOCTYPE html>
 <html lang="ko">
@@ -9109,7 +9198,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     th { background: #f8fafc; color: #0f172a; font-weight: 800; text-align: left; padding: 5px 6px; border-bottom: 1px solid #cbd5e1; }
     td { border-bottom: 1px solid #e2e8f0; padding: 4px 6px; color: #334155; }
     .text-center { text-align: center; }
-    .code { font-family: monospace; font-weight: 700; background: #123941; color: #ffffff; padding: 2px 5px; border-radius: 4px; font-size: 9px; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #123941; color: #ffffff; padding: 2px 6px; border-radius: 4px; font-size: 9px; text-align: center; line-height: 1.2; vertical-align: middle; min-width: 36px; box-sizing: border-box; white-space: nowrap; }
     .footnotes { background: #f8fafc; border-top: 1px solid #cbd5e1; padding: 6px 10px; font-size: 9px; color: #475569; line-height: 1.4; }
     @media print {
       .no-print { display: none !important; }
@@ -9197,7 +9286,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     th { background: #f8fafc; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border-bottom: 1px solid #cbd5e1; }
     td { border-bottom: 1px solid #e2e8f0; padding: 5px 8px; color: #334155; }
     .text-center { text-align: center; }
-    .code { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 5px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
     .footnotes { background: #f8fafc; border-top: 1px solid #cbd5e1; padding: 8px 12px; font-size: 9.5px; color: #475569; line-height: 1.5; }
     .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media print {
@@ -9278,7 +9367,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
     td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
     .text-center { text-align: center; }
-    .code { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 5px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
     .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 9.5px; color: #475569; line-height: 1.5; margin-top: 14px; }
     .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
     @media print {
@@ -9385,7 +9474,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
     .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
     .text-center { text-align: center; }
-    .code { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
     .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
     .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
     @media print {
@@ -9512,7 +9601,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
     .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
     .text-center { text-align: center; }
-    .code { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
     .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
     .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
     @media print {
@@ -9629,7 +9718,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
     .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
     .text-center { text-align: center; }
-    .code { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
     .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
     .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
     @media print {
@@ -10134,7 +10223,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     .sub-row { color: #475569; }
     .text-center { text-align: center; }
     .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
-    .code { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
     .notes { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; font-size: 11px; color: #475569; line-height: 1.6; margin-top: 16px; }
     @media print {
       .no-print { display: none !important; }
@@ -10219,7 +10308,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     td { border: 1px solid #e2e8f0; padding: 7px 10px; color: #334155; }
     .text-center { text-align: center; }
     .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
-    .code { font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
     @media print {
       .no-print { display: none !important; }
       body { padding: 0; }
@@ -10353,32 +10442,25 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 </body>
 </html>`;
 
-    // 1. Direct File Download via Blob
+    // Generate and download true PDF file binary
     try {
-      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setIsGeneratingPdf(true);
+      await downloadPdfFromHtml(htmlContent, filename);
     } catch (e) {
-      console.error('File download failed:', e);
-    }
-
-    // 2. Open printable popup window
-    try {
-      const printWin = window.open('', '_blank');
-      if (printWin) {
-        printWin.document.write(htmlContent);
-        printWin.document.close();
-      } else {
-        window.print();
+      console.error('PDF generation failed:', e);
+      try {
+        const printWin = window.open('', '_blank');
+        if (printWin) {
+          printWin.document.write(htmlContent);
+          printWin.document.close();
+        } else {
+          window.print();
+        }
+      } catch (printErr) {
+        console.error('Fallback print failed:', printErr);
       }
-    } catch (e) {
-      window.print();
+    } finally {
+      setIsGeneratingPdf(false);
     }
   };
 
@@ -10495,6 +10577,17 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'hyundai_71diseases') return HYUNDAI_71_DISEASES_SECTIONS;
         if (activeSubTab === 'hyundai_120diseases') return HYUNDAI_120_DISEASES_SECTIONS;
         return HYUNDAI_MALE_CANCER_SECTIONS;
+      case 'hana-ins':
+        if (activeSubTab === 'hana_integrated_cancer') return HANA_INTEGRATED_CANCER_SECTIONS;
+        if (activeSubTab === 'hana_high_cost_cancer') return HANA_HIGH_COST_CANCER_SECTIONS;
+        if (activeSubTab === 'hana_11_specific_cancer') return HANA_11_SPECIFIC_CANCER_SECTIONS;
+        if (activeSubTab === 'hana_brain_disease') return HANA_BRAIN_DISEASE_SECTIONS;
+        if (activeSubTab === 'hana_integrated_heart') return HANA_INTEGRATED_HEART_SECTIONS;
+        if (activeSubTab === 'hana_women_16_diseases') return HANA_WOMEN_16_DISEASES_SECTIONS;
+        if (activeSubTab === 'hana_surgery1_5') return HANA_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'hana_surgery73') return HANA_SURGERY_73_SECTIONS;
+        if (activeSubTab === 'hana_surgery136') return HANA_SURGERY_136_SECTIONS;
+        return HANA_INTEGRATED_CANCER_SECTIONS;
       case 'nh-fire':
         if (activeSubTab === 'nh_cancer') return NH_CANCER_SECTIONS;
         if (activeSubTab === 'nh_cancer_metastasis') return NH_CANCER_METASTASIS_SECTIONS;
@@ -10828,6 +10921,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
       <div className="pt-2">
         <AdZone type="inline-bottom" id="terms-bottom-ad" />
       </div>
+
+      {/* PDF Generation Floating Toast */}
+      {isGeneratingPdf && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 bg-[#123941] text-white rounded-xl shadow-2xl border border-teal-500/40 text-xs font-bold animate-in fade-in slide-in-from-bottom-4 duration-200">
+          <Loader2 className="w-4 h-4 animate-spin text-teal-300" />
+          <span>정밀 PDF 약관분류표를 생성 중입니다...</span>
+        </div>
+      )}
     </div>
   );
 }

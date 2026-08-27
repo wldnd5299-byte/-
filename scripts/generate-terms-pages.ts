@@ -554,14 +554,14 @@ export function generateTermsPages() {
             보험사별 담보 및 질병코드(KCD) 약관분류표
           </h1>
           <p style="margin: 0 0 16px 0; font-size: 14px; color: #64748b; line-height: 1.6;">
-            DB손해보험, 삼성화재, KB손해보험, 메리츠화재, 한화손해보험, 롯데손해보험, 현대해상 등 주요 7개 손해보험사의 암·뇌·심·수술비 등 총 101개 담보별 약관 질병코드 분류표를 대조하고 검색할 수 있습니다.
+            DB손해보험, 삼성화재, KB손해보험, 메리츠화재, 한화손해보험, 롯데손해보험, 현대해상, NH농협손해보험, 하나손해보험 등 주요 9개 손해보험사의 암·뇌·심·수술비 등 총 110개 담보별 약관 질병코드 분류표를 대조하고 검색할 수 있습니다.
           </p>
         </section>
 
-        <!-- 7 Insurers and 101 Coverage Direct Links -->
+        <!-- 9 Insurers and 110 Coverage Direct Links -->
         <section id="terms-insurers-directory">
           <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 16px;">
-            보험사별 담보 바로가기 (7개 보험사 · 101개 담보)
+            보험사별 담보 바로가기 (9개 보험사 · 110개 담보)
           </h2>
           ${allInsurersCardsHtml}
         </section>

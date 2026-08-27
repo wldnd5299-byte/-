@@ -9,6 +9,7 @@ export * from "./hanwha";
 export * from "./lotte";
 export * from "./hyundai";
 export * from "./nh";
+export * from "./hana";
 
 import { SubTabInfo } from "./types";
 
@@ -150,6 +151,17 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "nh_surgery34", label: "34대수술비" },
     { id: "nh_surgery71", label: "71대수술비" },
     { id: "nh_surgery144", label: "144대수술비" }
+  ],
+  "hana-ins": [
+    { id: "hana_integrated_cancer", label: "통합암(유사암제외)", groupCount: "9개 그룹" },
+    { id: "hana_high_cost_cancer", label: "고액치료비암", groupCount: "5개" },
+    { id: "hana_11_specific_cancer", label: "11대특정암", groupCount: "11개" },
+    { id: "hana_brain_disease", label: "통합뇌질환" },
+    { id: "hana_integrated_heart", label: "통합심질환", groupCount: "5개 그룹" },
+    { id: "hana_women_16_diseases", label: "여성16대질병" },
+    { id: "hana_surgery1_5", label: "1-5종수술비" },
+    { id: "hana_surgery73", label: "73대수술비" },
+    { id: "hana_surgery136", label: "136대수술비" }
   ]
 };
 
@@ -358,6 +370,26 @@ import {
   NH_SURGERY_144_SUMMARY_SECTIONS
 } from "./nh";
 
+import {
+  HANA_INTEGRATED_CANCER_SECTIONS,
+  HANA_INTEGRATED_CANCER_SUMMARY,
+  HANA_HIGH_COST_CANCER_SECTIONS,
+  HANA_HIGH_COST_CANCER_UNROLLED,
+  HANA_11_SPECIFIC_CANCER_SECTIONS,
+  HANA_11_SPECIFIC_CANCER_UNROLLED,
+  HANA_BRAIN_DISEASE_ITEMS,
+  HANA_BRAIN_DISEASE_SECTIONS,
+  HANA_INTEGRATED_HEART_SUMMARY,
+  HANA_INTEGRATED_HEART_SECTIONS,
+  HANA_WOMEN_16_DISEASES_SUMMARY,
+  HANA_WOMEN_16_DISEASES_SECTIONS,
+  HANA_SURGERY_1_5_SECTIONS,
+  HANA_SURGERY_73_SECTIONS,
+  HANA_SURGERY_73_SUMMARY_SECTIONS,
+  HANA_SURGERY_136_SECTIONS,
+  HANA_SURGERY_136_SUMMARY_SECTIONS
+} from "./hana";
+
 export function getSummaryForSubTab(
   insurerId: string,
   subTabId: string,
@@ -366,6 +398,14 @@ export function getSummaryForSubTab(
   dbBrainTab?: string
 ): any {
   switch (insurerId) {
+    case "hana-ins":
+      if (subTabId === "hana_integrated_cancer") return HANA_INTEGRATED_CANCER_SUMMARY;
+      if (subTabId === "hana_integrated_heart") return HANA_INTEGRATED_HEART_SUMMARY;
+      if (subTabId === "hana_women_16_diseases") return HANA_WOMEN_16_DISEASES_SUMMARY;
+      if (subTabId === "hana_surgery73") return HANA_SURGERY_73_SUMMARY_SECTIONS;
+      if (subTabId === "hana_surgery136") return HANA_SURGERY_136_SUMMARY_SECTIONS;
+      return null;
+
     case "nh-fire":
       if (subTabId === "nh_surgery16") return NH_SURGERY_16_SUMMARY_SECTIONS;
       if (subTabId === "nh_surgery34") return NH_SURGERY_34_SUMMARY_SECTIONS;
@@ -553,6 +593,18 @@ export function getSectionsForInsurerSubTab(insurerId: string, subTabId: string)
       if (subTabId === "hyundai_71diseases") return HYUNDAI_71_DISEASES_SECTIONS;
       if (subTabId === "hyundai_120diseases") return HYUNDAI_120_DISEASES_SECTIONS;
       return HYUNDAI_MALE_CANCER_SECTIONS;
+
+    case "hana-ins":
+      if (subTabId === "hana_integrated_cancer") return HANA_INTEGRATED_CANCER_SECTIONS;
+      if (subTabId === "hana_high_cost_cancer") return HANA_HIGH_COST_CANCER_SECTIONS;
+      if (subTabId === "hana_11_specific_cancer") return HANA_11_SPECIFIC_CANCER_SECTIONS;
+      if (subTabId === "hana_brain_disease") return HANA_BRAIN_DISEASE_SECTIONS;
+      if (subTabId === "hana_integrated_heart") return HANA_INTEGRATED_HEART_SECTIONS;
+      if (subTabId === "hana_women_16_diseases") return HANA_WOMEN_16_DISEASES_SECTIONS;
+      if (subTabId === "hana_surgery1_5") return HANA_SURGERY_1_5_SECTIONS;
+      if (subTabId === "hana_surgery73") return HANA_SURGERY_73_SECTIONS;
+      if (subTabId === "hana_surgery136") return HANA_SURGERY_136_SECTIONS;
+      return HANA_INTEGRATED_CANCER_SECTIONS;
 
     case "nh-fire":
       if (subTabId === "nh_cancer") return NH_CANCER_SECTIONS;

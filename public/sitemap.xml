@@ -161,7 +161,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/samsung-fire/samsung_111/</loc>
+    <loc>https://insurancebridge.co.kr/terms/samsung-fire/samsung_15/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -172,6 +172,11 @@
   </url>
   <url>
     <loc>https://insurancebridge.co.kr/terms/samsung-fire/samsung_21/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/samsung-fire/samsung_111/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -261,32 +266,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/db-ins/db_heart_1/</loc>
+    <loc>https://insurancebridge.co.kr/terms/db-ins/db_integrated_heart/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/db-ins/db_heart_2/</loc>
+    <loc>https://insurancebridge.co.kr/terms/db-ins/db_integrated_brain/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://insurancebridge.co.kr/terms/db-ins/db_heart_simple/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://insurancebridge.co.kr/terms/db-ins/db_brain_1/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://insurancebridge.co.kr/terms/db-ins/db_brain_2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://insurancebridge.co.kr/terms/db-ins/db_major_5vascular_brain/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -386,11 +376,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/kb-ins/kb_heart_2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://insurancebridge.co.kr/terms/kb-ins/kb_surgery1_5/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -471,12 +456,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://insurancebridge.co.kr/terms/meritz-fire/meritz_6heart/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://insurancebridge.co.kr/terms/meritz-fire/meritz_disease_integrated_treatment/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://insurancebridge.co.kr/terms/meritz-fire/meritz_surgery1_5/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/meritz-fire/meritz_5diseases_surgery/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -512,16 +507,6 @@
   </url>
   <url>
     <loc>https://insurancebridge.co.kr/terms/meritz-fire/meritz_131diseases/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://insurancebridge.co.kr/terms/meritz-fire/meritz_6heart/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://insurancebridge.co.kr/terms/meritz-fire/meritz_5diseases/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -591,7 +576,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_124diseases/</loc>
+    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_14diseases/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_16diseases/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_18diseases/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -606,17 +601,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_18diseases/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_16diseases/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_14diseases/</loc>
+    <loc>https://insurancebridge.co.kr/terms/hanwha-general/hanwha_124diseases/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -641,17 +626,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_high_cancer/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_brain_disease/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_cardiovascular/</loc>
+    <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_cardiovascular_simple/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_cardiovascular_simple/</loc>
+    <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_cardiovascular/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -687,6 +677,106 @@
   </url>
   <url>
     <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_surgery64/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/lotte-ins/lotte_surgery142/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_cancer/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_cancer_metastasis/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_5specific_cancer/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_cardiovascular_4/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_circulatory_1_5/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_surgery1_5/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_surgery16/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_surgery34/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_surgery71/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/nh-fire/nh_surgery144/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/hana_integrated_cancer/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/hana_high_cost_cancer/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/hana_11_specific_cancer/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/hana_brain_disease/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/hana_integrated_heart/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/hana_women_16_diseases/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/terms/hana-ins/hana_surgery1_5/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

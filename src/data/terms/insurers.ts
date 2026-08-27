@@ -10,7 +10,7 @@ export const INSURER_TERMS_LIST: InsurerTerm[] = [
   { id: 'hanwha-general', name: '한화손해보험', type: 'property', url: 'https://www.hwgeneralins.com/notice/ir/product-ing01.do', defaultSubTab: 'hanwha_integrated_cancer' },
   { id: 'lotte-ins', name: '롯데손해보험', type: 'property', url: 'https://www.lotteins.co.kr/web/C/D/H/cdh190.jsp', defaultSubTab: 'lotte_integrated_cancer' },
   { id: 'nh-fire', name: '농협손해보험', type: 'property', url: 'https://www.nhfire.co.kr/announce/productAnnounce/retrieveInsuranceProductsAnnounce.nhfire', defaultSubTab: 'nh_cancer' },
-  { id: 'hana-ins', name: '하나손해보험', type: 'property', url: 'https://www.hanainsure.co.kr/w/disclosure/product/saleProduct' },
+  { id: 'hana-ins', name: '하나손해보험', type: 'property', url: 'https://www.hanainsure.co.kr/w/disclosure/product/saleProduct', defaultSubTab: 'hana_integrated_cancer' },
   { id: 'heungkuk-fire', name: '흥국화재', type: 'property', url: 'https://www.heungkukfire.co.kr/FRW/announce/insGoodsGongsiSale.do' },
   { id: 'mg-ins', name: 'MG(예별)손해보험', type: 'property', url: 'https://www.yebyeol.co.kr/PB031210DM.scp?menuId=MN0803006' },
   { id: 'lina-fire', name: '라이나손해보험', type: 'property', url: 'https://www.chubb.com/kr-kr/disclosure/product.html' },
