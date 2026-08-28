@@ -5,7 +5,7 @@
     <link>https://insurancebridge.co.kr/info/</link>
     <description>보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드</description>
     <language>ko</language>
-    <lastBuildDate>Thu, 27 Aug 2026 14:56:19 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 28 Aug 2026 03:59:37 GMT</lastBuildDate>
     <atom:link href="https://insurancebridge.co.kr/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>대장암 치료방법 및 부위별 수술·항암치료 가이드 (국가암지식정보센터)</title>
@@ -20,6 +20,14 @@
       <link>https://insurancebridge.co.kr/info/heavy-ion-therapy/</link>
       <guid isPermaLink="true">https://insurancebridge.co.kr/info/heavy-ion-therapy/</guid>
       <description>연세암병원 중입자치료센터 공식 가이드 기준 탄소이온 Bragg Peak 원리, 입자선별 물리적 특성 비교, 주요 적용 암종 및 치료기간·비용 정보를 정리합니다.</description>
+      <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+      <category>cancer</category>
+    </item>
+    <item>
+      <title>위암 재발 및 전이 | 재발 시기·3대 유형·추적검사 가이드 (국가암지식정보센터)</title>
+      <link>https://insurancebridge.co.kr/info/stomach-cancer-recurrence/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/stomach-cancer-recurrence/</guid>
+      <description>국가암지식정보센터·대한위암학회 자료 기준 위암 재발 사례의 발생 시기, 국소·복강내·원격전이 3대 유형, 수술 후 추적검사 주기와 보장 참고사항을 정리합니다.</description>
       <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
       <category>cancer</category>
     </item>

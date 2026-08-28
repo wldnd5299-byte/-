@@ -1,0 +1,211 @@
+import { InfoArticle } from '../types';
+
+export const STOMACH_CANCER_RECURRENCE_ARTICLE: InfoArticle = {
+  id: 'info-008',
+  slug: 'stomach-cancer-recurrence',
+  title: '위암 재발 및 전이 | 재발 시기·3대 유형·추적검사 가이드 (국가암지식정보센터)',
+  description: '국가암지식정보센터·대한위암학회 자료 기준 위암 재발 사례의 발생 시기, 국소·복강내·원격전이 3대 유형, 수술 후 추적검사 주기와 보장 참고사항을 정리합니다.',
+  category: 'cancer',
+  publishedAt: '2026-08-27',
+  updatedAt: '2026-08-27',
+  primaryRelatedLink: {
+    title: '위암 재발 및 전이 영업자료 보기',
+    desc: '국가암지식정보센터 및 보건복지부 공식 자료 기반 위암 재발 시기·3대 재발 유형·추적검사 가이드',
+    url: '/planner-goods/',
+    badge: '영업자료실',
+    iconType: 'planner-goods'
+  },
+  secondaryTools: [
+    'planner-goods',
+    'terms',
+    'surgery',
+    'dispute',
+    'claim',
+    'age'
+  ],
+  sourceDocs: [
+    '보건복지부',
+    '국립암센터',
+    '국가암지식정보센터',
+    '대한암학회 · 대한위암학회 · 대한중앙내과학회 공동제작'
+  ],
+  tags: [
+    '위암',
+    '위암재발',
+    '위암전이',
+    '국소재발',
+    '복강내재발',
+    '복막전이',
+    '원격전이',
+    '위암추적검사',
+    '국가암지식정보센터',
+    '대한위암학회'
+  ],
+  isPublished: true,
+  contentHtml: `
+    <section class="space-y-6 text-slate-800">
+      <div>
+        <h2 class="text-lg font-bold text-slate-900 mb-2">1. 위암 재발의 주요 임상 통계 및 시기별 발생률</h2>
+        <p class="text-sm leading-relaxed text-slate-700 mb-3">
+          국가암지식정보센터 및 대한위암학회 공식 자료에 따르면, 전체 위암 환자의 <strong>40~60%는 재발로 인해 사망</strong>에 이르는 것으로 보고됩니다.
+          위암 수술 후 재발 사례를 시기별로 분석하면 수술 후 5년 이내에 대부분의 재발이 집중되는 특성을 보입니다.
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+          <div class="bg-rose-50 border border-rose-200 rounded-lg p-3 text-center">
+            <span class="text-xs text-rose-800 font-bold block">위암 재발 사망 비율</span>
+            <strong class="text-base sm:text-lg text-rose-900 font-extrabold">40 ~ 60%</strong>
+            <span class="text-[11px] text-rose-700 block mt-0.5">전체 환자 기준 위험성</span>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-center">
+            <span class="text-xs text-amber-800 font-bold block">수술 후 2년 내 재발</span>
+            <strong class="text-base sm:text-lg text-amber-900 font-extrabold">50%</strong>
+            <span class="text-[11px] text-amber-700 block mt-0.5">전체 재발의 절반 발생</span>
+          </div>
+          <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
+            <span class="text-xs text-orange-800 font-bold block">수술 후 3년 내 재발</span>
+            <strong class="text-base sm:text-lg text-orange-900 font-extrabold">70%</strong>
+            <span class="text-[11px] text-orange-700 block mt-0.5">재발 사례의 10명 중 7명</span>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 text-center">
+            <span class="text-xs text-emerald-800 font-bold block">수술 후 5년 내 재발</span>
+            <strong class="text-base sm:text-lg text-emerald-900 font-extrabold">90%</strong>
+            <span class="text-[11px] text-emerald-700 block mt-0.5">재발 사례의 90% 집중</span>
+          </div>
+        </div>
+        <p class="text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg p-3 leading-relaxed">
+          ※ <strong>주의사항 (통계 해석 기준)</strong>: 상기 50%, 70%, 90% 수치는 전체 위암 환자의 90%가 재발한다는 의미가 아니라, <strong>위암 수술 후 실제 재발이 일어난 환자군 중 해당 기간 내에 재발한 비율</strong>을 나타냅니다. 따라서 수술 후 최소 5년간은 집중적인 추적관찰이 필수적입니다.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-slate-900 mb-2">2. 위암 3대 재발 및 전이 유형 비교</h2>
+        <p class="text-sm leading-relaxed text-slate-700 mb-3">
+          위암의 재발은 발생 부위와 암세포의 전파 경로에 따라 크게 <strong>국소 재발(Local)</strong>, <strong>복강 내 재발(Peritoneal)</strong>, <strong>타장기 원격전이(Distant)</strong>의 3가지 유형으로 분류됩니다. 각 유형별로 임상 증상과 수술 가능 여부가 크게 달라집니다.
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left border-collapse border border-slate-300">
+            <thead class="bg-slate-100 text-slate-800 font-bold">
+              <tr>
+                <th class="border border-slate-300 px-2.5 py-2 w-20 text-center">재발 유형</th>
+                <th class="border border-slate-300 px-2.5 py-2">주요 발생 부위</th>
+                <th class="border border-slate-300 px-2.5 py-2">임상 증상 및 특성</th>
+                <th class="border border-slate-300 px-2.5 py-2">표준 치료 방법</th>
+                <th class="border border-slate-300 px-2.5 py-2 w-24 text-center">수술 가능 여부</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-700">
+              <tr>
+                <td class="border border-slate-300 px-2.5 py-2 font-bold text-slate-900 text-center bg-slate-50">국소 재발<br/>(Local)</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 수술 부위 주위 림프절<br/>· 남아있는 위/식도, 십이지장<br/>· 대장 인접 부위 침범</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 초기 무증상 다발<br/>· 복통, 체중 감소, 식욕부진<br/>· 대장 침범 시 대장 막힘(폐색) 발생</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 복부 CT 확인 후 제한적 재수술 고려<br/>· 대동맥 주위 림프절 전이 시 전신 항암화학요법 시행</td>
+                <td class="border border-slate-300 px-2.5 py-2 text-center font-bold text-emerald-700 bg-emerald-50/50">국한 시 제한적<br/>재수술 가능</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 px-2.5 py-2 font-bold text-rose-900 text-center bg-rose-50/50">복강 내 재발<br/>(Peritoneal)</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 복강 내 암세포가 씨 뿌려지듯 복막 전체에 광범위하게 파종(전이)</td>
+                <td class="border border-slate-300 px-2.5 py-2">· <strong>장폐색</strong> (복통, 대변/방귀 차단)<br/>· <strong>복수(물 차오름)</strong> 심각 동반<br/>· 음식물 섭취 불가 및 극심한 고통</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 전신 항암화학요법 시행<br/>· <strong>방사선 치료 불가</strong><br/>· 통증 완화 및 보존적 완화요법</td>
+                <td class="border border-slate-300 px-2.5 py-2 text-center font-bold text-rose-700 bg-rose-50"><strong>재수술 절대 불가</strong><br/>(전신 항암 의존)</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 px-2.5 py-2 font-bold text-blue-900 text-center bg-blue-50/50">타장기 원격전이<br/>(Distant)</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 혈관 및 림프관을 통한 전신 이동<br/>· <strong>간, 폐, 뼈, 뇌</strong> 등 원격 장기</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 뼈/뇌 전이는 발견이 늦는 경향<br/>· 간전이 시 황달, 뼈전이 시 극심한 통증·골절, 뇌전이 시 신경마비</td>
+                <td class="border border-slate-300 px-2.5 py-2">· 전신 항암화학요법<br/>· 뼈/뇌 전이 부위 통증 완화 목적 방사선 치료 병행</td>
+                <td class="border border-slate-300 px-2.5 py-2 text-center font-bold text-slate-600 bg-slate-50">전신 치료 대상<br/>(근치적 수술 불가)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-slate-900 mb-2">3. 복강 내 재발(복막 파종)의 임상적 위험성</h2>
+        <div class="bg-rose-50/80 border border-rose-200 rounded-lg p-3.5 space-y-2 text-xs leading-relaxed text-slate-700">
+          <p>
+            위암 세포가 위의 장막을 뚫고 나와 복강 내 복막 전체로 씨앗처럼 흩뿌려지는 복강 내 재발은 위암 수술 후 발생하는 가장 치명적인 재발 형태 중 하나입니다.
+          </p>
+          <ul class="list-disc list-inside space-y-1 text-slate-800">
+            <li><strong>장폐색 발생</strong>: 흩어진 암세포가 장간막과 장을 압박하여 음식물과 대변, 가스 배출이 차단되는 장폐색을 유발합니다.</li>
+            <li><strong>복수 축적</strong>: 복강 내 림프관 및 모세혈관 장애로 복수가 급격히 차올라 호흡곤란 및 심한 복부 팽만을 유발합니다.</li>
+            <li><strong>치료 한계</strong>: 눈에 보이는 종양 덩어리가 아니므로 칼로 도려내는 <strong>재수술이 원천적으로 불가능</strong>하며, 넓은 복강 전체에 방사선을 쬘 수 없어 <strong>방사선 치료도 적용할 수 없습니다</strong>. 따라서 오직 전신 항암화학요법과 증상 완화 치료에 의존해야 합니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-slate-900 mb-2">4. 수술 후 주기적 추적검사 일정 및 필수 검사항목</h2>
+        <p class="text-sm leading-relaxed text-slate-700 mb-3">
+          위암 수술 후 조기 재발 발견 및 환자 상태 평가를 위해 정기적인 외래 방문과 추적검사가 시행됩니다. 재발 위험도에 따라 시기별 검사 주기가 구분됩니다.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+          <div class="bg-white border border-slate-200 rounded-lg p-3 shadow-sm">
+            <span class="text-xs font-bold text-slate-900 block mb-1">📅 수술 후 1~3년 차 (고위험 시기)</span>
+            <strong class="text-sm text-rose-700 font-extrabold block mb-1">3개월 ~ 6개월 마다</strong>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              전체 재발 사례의 70%가 집중되는 시기로, 3~6개월 주기로 외래 진찰, 혈액검사, 종양표지자 검사를 정밀 추적합니다.
+            </p>
+          </div>
+          <div class="bg-white border border-slate-200 rounded-lg p-3 shadow-sm">
+            <span class="text-xs font-bold text-slate-900 block mb-1">📅 수술 후 3~5년 차</span>
+            <strong class="text-sm text-emerald-700 font-extrabold block mb-1">6개월 ~ 1년 마다</strong>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              6개월~1년 단위로 복부 CT 및 내시경 검사를 병행하여 잔존 부위 재발 및 원격 전이 여부를 평가합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3.5 space-y-2">
+          <span class="text-xs font-bold text-slate-900 block">🩺 필수 추적검사 5가지 항목 및 목적</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+            <div class="bg-white p-2.5 rounded border border-slate-200">
+              <strong class="text-slate-900 block mb-0.5">1. 일반 혈액검사 (CBC) 및 간기능 검사</strong>
+              <span class="text-slate-600">빈혈 유무, 전신 건강 상태, 간기능 이상 여부 확인</span>
+            </div>
+            <div class="bg-white p-2.5 rounded border border-slate-200">
+              <strong class="text-slate-900 block mb-0.5">2. 종양표지자 검사 (CEA, CA19-9)</strong>
+              <span class="text-slate-600">혈액 내 암세포 분비 수치 추적을 통한 재발 조기 감지</span>
+            </div>
+            <div class="bg-white p-2.5 rounded border border-slate-200">
+              <strong class="text-slate-900 block mb-0.5">3. 복부 CT (전산화단층촬영)</strong>
+              <span class="text-slate-600">복강 내 장기, 복막 전이, 림프절 재발 및 간전이 관찰</span>
+            </div>
+            <div class="bg-white p-2.5 rounded border border-slate-200">
+              <strong class="text-slate-900 block mb-0.5">4. 식도·위 내시경 검사</strong>
+              <span class="text-slate-600">남아있는 잔존 위 및 연결(문합) 부위 재발 정밀 관찰</span>
+            </div>
+            <div class="bg-white p-2.5 rounded border border-slate-200 sm:col-span-2">
+              <strong class="text-slate-900 block mb-0.5">5. 흉부 X-선 촬영 (Chest PA)</strong>
+              <span class="text-slate-600">폐 전이 유무 및 흉수(가슴 물 참) 발생 여부 스크리닝</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-slate-900 mb-2">5. 위암 재발·전이 상담 시 보험 참고사항 (원본 자료 기준)</h2>
+        <div class="bg-amber-50/80 border border-amber-200 rounded-lg p-3.5 space-y-2 text-xs leading-relaxed text-slate-700">
+          <ul class="space-y-1.5 list-disc list-inside text-slate-800">
+            <li>
+              <strong>수술 후 5년 내 집중 재발 대비</strong>: 
+              위암 재발의 90%가 수술 후 5년 내에 발생하므로, 최초 1회 지급 후 소멸되는 일반 암진단비 외에 재발 및 전이 시 반복 지급되는 <strong>계속받는 암진단비 / 재발·전이암 특약</strong>의 연계 필요성이 강조됩니다.
+            </li>
+            <li>
+              <strong>복강 내 재발 시 재수술 불가 대비</strong>: 
+              복강 내 재발(복막전이) 시 재수술 및 방사선 치료가 불가하고 전신 항암치료에 전적으로 의존하게 되므로, 비급여 항암약물 치료비 및 <strong>표적/면역항암 특약</strong> 준비가 중요합니다.
+            </li>
+            <li>
+              <strong>장폐색·복수 및 뼈·뇌 전이 합병증 관리</strong>: 
+              장폐색과 복수로 인한 장기 입원 간병 부담, 뼈전이 병적 골절 및 뇌전이 신경마비에 대비하여 <strong>질병후유장해(3~100%)</strong> 및 완화 치료 목적의 보장을 통합적으로 검토합니다.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-slate-200 text-xs text-slate-500">
+        <p><strong>자료 출처</strong>: 보건복지부, 국립암센터, 국가암지식정보센터 (검수: 대한암학회 · 대한위암학회 · 대한중앙내과학회 공동제작)</p>
+      </div>
+    </section>
+  `
+};
