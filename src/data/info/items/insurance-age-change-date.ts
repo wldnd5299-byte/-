@@ -10,7 +10,7 @@ export const INSURANCE_AGE_CHANGE_DATE_ARTICLE: InfoArticle = {
   updatedAt: '2026-08-18',
 
   primaryRelatedLink: {
-    title: '보험나이·상령일 계산하기',
+    title: '내 보험 상령일 직접 계산하기',
     desc: '다음 상령일 날짜 및 보험나이 인상까지 남은 일수 자동 계산',
     url: '/age/',
     badge: '상령일 계산기',

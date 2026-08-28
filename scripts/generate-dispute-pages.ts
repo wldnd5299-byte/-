@@ -51,6 +51,9 @@ function generateDisputePages() {
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="root">
@@ -155,6 +158,9 @@ function generateDisputePages() {
     <meta name="twitter:title" content="${escapeHtml(disputeHubTitle)}" />
     <meta name="twitter:description" content="${escapeHtml(disputeHubDesc)}" />
     <meta name="twitter:image" content="https://insurancebridge.co.kr/og-image.png" />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090" crossorigin="anonymous"></script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">

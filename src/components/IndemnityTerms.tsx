@@ -18,7 +18,6 @@ import {
   ArrowRight,
   Info
 } from 'lucide-react';
-import AdZone from './AdZone';
 
 // Detailed spec for generations 1 to 5
 interface GenerationData {
@@ -361,9 +360,6 @@ export default function IndemnityTerms() {
         </div>
       </div>
 
-      {/* AdZone directly under the main banner */}
-      <AdZone type="inline-top" id="indemnity-header-ad" />
-
       {/* 2. Generation Selector Banner (1st to 5th Generation Tabs) */}
       <div className="bg-white p-5 rounded-3xl border-2 border-slate-200/80 shadow-sm text-left space-y-3">
         <div className="flex items-center gap-2">
@@ -650,10 +646,6 @@ export default function IndemnityTerms() {
 
       </div>
 
-
-
-      <AdZone type="inline-top" id="indemnity-middle-ad" />
-
       {/* Selected Generation Detailed Spec Specifications */}
       {(() => {
         const genColorTheme = 
@@ -885,8 +877,6 @@ export default function IndemnityTerms() {
           </div>
         );
       })()}
-
-      <AdZone type="inline-bottom" id="indemnity-bottom-ad" />
 
     </div>
   );

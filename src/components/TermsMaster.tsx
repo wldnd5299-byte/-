@@ -26,7 +26,6 @@ import {
   Loader2
 } from "lucide-react";
 import { downloadPdfFromHtml } from "../utils/pdfGenerator";
-import AdZone from "./AdZone";
 import { SURGERY_1TO8_RECORDS } from "../data1to8";
 import { SURGERY_1TO7_RECORDS } from "../data1to7";
 import {
@@ -8679,2256 +8678,71 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 
   <div class="notes">
     <strong>ã€ìƒí•´ë°ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ ì•½ê´€ ê·œì •ã€‘</strong><br/>
-    â€¢ <strong>[4] ì—°ê°„ ì´ ì§€ê¸‰ê¸ˆì•¡:</strong> í†µí•©ì¹˜ë£Œí•­ëª©ë³„ ì—°ê°„ ì§€ê¸‰ëœ ì§€ê¸‰ê¸ˆì•¡ì˜ í•©ì‚°ê¸ˆì•¡ì„ ë§í•˜ë©°, ë³´í—˜ê°€ì…ê¸ˆì•¡ì„ í•œë„ë¡œ í•©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>[5] ì—°ê°„ì˜ ì •ì˜:</strong> ê³„ì•½ì¼(ê°±ì‹ ê³„ì•½ì˜ ê²½ìš° ê°±ì‹ ê³„ì•½ì¼)ë¡œë¶€í„° ë§¤ 1ë…„ ë‹¨ìœ„ë¡œ ë„ë˜í•˜ëŠ” ê³„ì•½í•´ë‹¹ì¼ ì „ì¼ê¹Œì§€ì˜ ê¸°ê°„ì„ ë§í•©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>í•œë„ ì‚°ì • ê¸°ì¤€ì¼ì:</strong><br/>
-    &nbsp;&nbsp;1. ìƒí•´ë°ì§ˆë³‘ í†µí•©ì¹˜ë£Œ(ê²€ì‚¬): ê° í†µí•©ì¹˜ë£Œí•­ëª©ë³„ ê²€ì‚¬ë¥¼ ë°›ì€ ë‚ <br/>
-    &nbsp;&nbsp;2. ìƒí•´ë°ì§ˆë³‘ í†µí•©ì¹˜ë£Œ(1-5ì¢…ìˆ˜ìˆ ): ê° í†µí•©ì¹˜ë£Œí•­ëª©ë³„ ìˆ˜ìˆ ì„ ë°›ì€ ë‚ <br/>
-    &nbsp;&nbsp;3. ìƒí•´ë°ì§ˆë³‘ í†µí•©ì¹˜ë£Œ(ì…ì›): ê° í†µí•©ì¹˜ë£Œí•­ëª©ë³„ ì…ì›ì„ ë°›ì€ ë‚ <br/>
-    &nbsp;&nbsp;4. ìƒí•´ë°ì§ˆë³‘ í†µí•©ì¹˜ë£Œ(ì£¼ìš”ì¹˜ë£Œ): ê° í†µí•©ì¹˜ë£Œí•­ëª©ë³„ ì£¼ìš”ì¹˜ë£Œë¥¼ ë°›ì€ ë‚  (íŠ¹ì •ìˆ˜í˜ˆì˜ ê²½ìš° ìˆ˜í˜ˆì„ ë°›ì€ ë‚ )
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : (activeSubTab === 'hanwha_injury_integrated_treatment') ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ìƒí•´í†µí•©ì¹˜ë£Œë¹„ (${hanwhaInjuryTreatmentTab === 'luxury' ? 'ê³ ê¸‰í˜•' : hanwhaInjuryTreatmentTab === 'general' ? 'ì¼ë°˜í˜•' : 'ì‹¤ì†í˜•'})</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .font-bold { font-weight: 700; }
-    .font-black { font-weight: 900; }
-    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ í•œí™”ì†í•´ë³´í—˜ - ìƒí•´í†µí•©ì¹˜ë£Œë¹„ (${hanwhaInjuryTreatmentTab === 'luxury' ? 'ê³ ê¸‰í˜•' : hanwhaInjuryTreatmentTab === 'general' ? 'ì¼ë°˜í˜•' : 'ì‹¤ì†í˜•'}) (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">í•œí™”ì†í•´ë³´í—˜ - ìƒí•´í†µí•©ì¹˜ë£Œë¹„ (${hanwhaInjuryTreatmentTab === 'luxury' ? 'ê³ ê¸‰í˜•' : hanwhaInjuryTreatmentTab === 'general' ? 'ì¼ë°˜í˜•' : 'ì‹¤ì†í˜•'})</h1>
-      <div class="subtitle">674 í•œí™” ì‹œê·¸ë‹ˆì²˜ ì—¬ì„± ê±´ê°•ë³´í—˜4.0 ë¬´ë°°ë‹¹2604</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    <strong>[ìƒí•´í†µí•©ì¹˜ë£Œë¹„ ì•½ê´€ ê·œì •]</strong><br/>
-    [3] ì œ1í•­ì˜ í†µí•©ì¹˜ë£Œ í•­ëª©ë³„ ì§€ê¸‰ê¸ˆì•¡ ë° ì§€ê¸‰í•œë„ë¼ í•¨ì€ ì•„ë˜ì˜ ì§€ê¸‰ê¸ˆì•¡ ë° ì§€ê¸‰í•œë„ë¥¼ ë§í•©ë‹ˆë‹¤.
-  </div>
-
-  <div class="sec-title">ğŸ“‹ &lt;í˜•ë³„ ì§€ê¸‰ê¸ˆì•¡ (${hanwhaInjuryTreatmentTab === 'luxury' ? 'ê³ ê¸‰í˜•' : hanwhaInjuryTreatmentTab === 'general' ? 'ì¼ë°˜í˜•' : 'ì‹¤ì†í˜•'})&gt; ë³´ì¥í•­ëª© ë° ì§€ê¸‰ê¸ˆì•¡</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 22%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 38%;">í†µí•©ì¹˜ë£Œ í•­ëª©</th>
-        <th style="width: 20%; text-align: center;">ì§€ê¸‰í•œë„</th>
-        <th style="width: 20%; text-align: center;" class="highlight">ì§€ê¸‰ê¸ˆì•¡ (${hanwhaInjuryTreatmentTab === 'luxury' ? 'ê³ ê¸‰í˜•' : hanwhaInjuryTreatmentTab === 'general' ? 'ì¼ë°˜í˜•' : 'ì‹¤ì†í˜•'})</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${HANWHA_INJURY_INTEGRATED_TREATMENT_ITEMS.map((item) => {
-        const amount = hanwhaInjuryTreatmentTab === 'luxury' ? item.luxury : hanwhaInjuryTreatmentTab === 'general' ? item.general : item.saving;
-        return `
-          <tr>
-            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-            <td class="font-black">${item.name}</td>
-            <td class="text-center">${item.limit}</td>
-            <td class="text-center highlight font-bold">${amount}</td>
-          </tr>
-        `;
-      }).join('')}
-    </tbody>
-  </table>
-
-  <div class="sec-title" style="background: #334155;">ğŸ“Š &lt;ì „ ìœ í˜•(ê³ ê¸‰í˜• / ì¼ë°˜í˜• / ì‹¤ì†í˜•) ë³´ì¥ê¸ˆì•¡ ì¢…í•© ë¹„êµí‘œ&gt;</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 20%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 32%;">í†µí•©ì¹˜ë£Œ í•­ëª©</th>
-        <th style="width: 18%; text-align: center;">ì§€ê¸‰í•œë„</th>
-        <th style="width: 10%; text-align: center; ${hanwhaInjuryTreatmentTab==='luxury'?'background:#f0fdfa;color:#123941;':''}">ê³ ê¸‰í˜•</th>
-        <th style="width: 10%; text-align: center; ${hanwhaInjuryTreatmentTab==='general'?'background:#f0fdfa;color:#123941;':''}">ì¼ë°˜í˜•</th>
-        <th style="width: 10%; text-align: center; ${hanwhaInjuryTreatmentTab==='saving'?'background:#f0fdfa;color:#123941;':''}">ì‹¤ì†í˜•</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${HANWHA_INJURY_INTEGRATED_TREATMENT_ITEMS.map((item) => `
-        <tr>
-          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-          <td class="font-black">${item.name}</td>
-          <td class="text-center">${item.limit}</td>
-          <td class="text-center" style="${hanwhaInjuryTreatmentTab==='luxury'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.luxury}</td>
-          <td class="text-center" style="${hanwhaInjuryTreatmentTab==='general'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.general}</td>
-          <td class="text-center" style="${hanwhaInjuryTreatmentTab==='saving'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.saving}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-
-  <div class="notes">
-    <strong>ã€ìƒí•´í†µí•©ì¹˜ë£Œë¹„ ì•½ê´€ ê·œì •ã€‘</strong><br/>
-    â€¢ <strong>[4] ì—°ê°„ì˜ ì •ì˜:</strong> ì´ íŠ¹ë³„ì•½ê´€ì—ì„œ â€œì—°ê°„â€ì´ë¼ í•¨ì€ ì´ íŠ¹ë³„ì•½ê´€ì˜ ê³„ì•½ì¼ë¡œë¶€í„° ê·¸ ë‚ ì„ í¬í•¨í•˜ì—¬ ë§¤ 1ë…„ ë‹¨ìœ„ë¡œ ë„ë˜í•˜ëŠ” ê³„ì•½í•´ë‹¹ì¼ ì „ì¼ê¹Œì§€ì˜ ê¸°ê°„ì„ ë§í•©ë‹ˆë‹¤. ë‹¤ë§Œ, í•´ë‹¹ë…„ë„ì˜ ê³„ì•½í•´ë‹¹ì¼ì´ ì—†ëŠ” ê²½ìš°ì—ëŠ” í•´ë‹¹ì›”ì˜ ë§ˆì§€ë§‰ ë‚ ì„ ê³„ì•½í•´ë‹¹ì¼ë¡œ í•©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>ì¶œì²˜:</strong> 674 í•œí™” ì‹œê·¸ë‹ˆì²˜ ì—¬ì„± ê±´ê°•ë³´í—˜4.0 ë¬´ë°°ë‹¹2604
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : (activeSubTab === 'meritz_practical_treatment') ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ì•”í†µí•©ì¹˜ë£Œë¹„(ì‹¤ì†í˜•)</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .font-bold { font-weight: 700; }
-    .font-black { font-weight: 900; }
-    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ë©”ë¦¬ì¸ í™”ì¬ - ì•”í†µí•©ì¹˜ë£Œë¹„(ì‹¤ì†í˜•) (${meritzPracticalTreatmentTab === '10m' ? 'ì‹¤ì†í˜•(1ì²œ)' : meritzPracticalTreatmentTab === '30m' ? 'ì‹¤ì†í˜•(3ì²œ)' : meritzPracticalTreatmentTab === '50m' ? 'ì‹¤ì†í˜•(5ì²œ)' : 'ì‹¤ì†í˜•(7ì²œ)'}) (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">ë©”ë¦¬ì¸ í™”ì¬ - ì•”í†µí•©ì¹˜ë£Œë¹„(ì‹¤ì†í˜•) (${meritzPracticalTreatmentTab === '10m' ? 'ì‹¤ì†í˜•(1ì²œ)' : meritzPracticalTreatmentTab === '30m' ? 'ì‹¤ì†í˜•(3ì²œ)' : meritzPracticalTreatmentTab === '50m' ? 'ì‹¤ì†í˜•(5ì²œ)' : 'ì‹¤ì†í˜•(7ì²œ)'})</h1>
-      <div class="subtitle">2-93. ì•” í†µí•©ì¹˜ë£Œë¹„I(ì‹¤ì†í˜•)(ê±´ê°•ê°€ì…)ë³´ì¥ íŠ¹ë³„ì•½ê´€</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    <strong>[ì•½ê´€ ë° ë³´ì¥ ê°œìš”]</strong><br/>
-    â€¢ ë³¸ ë‹´ë³´ëŠ” ì•” ì§„ë‹¨ í›„ ìˆ˜ìˆ , í•­ì•”ë°©ì‚¬ì„ , í•­ì•”ì•½ë¬¼ ë° í‘œì /ë©´ì—­/ì–‘ì„±ì ë“± í•µì‹¬ ì•” ì¹˜ë£Œì— ëŒ€í•´ ì •ì•¡ ë³´ì¥í•©ë‹ˆë‹¤.<br/>
-    â€¢ ìµœì´ˆ ê³„ì•½ì¼ë¶€í„° 1ë…„ ê²½ê³¼ì‹œì  ì „ì¼ ì´ì „ì€ ê°€ì…ê¸ˆì•¡ì˜ 50%, 1ë…„ ê²½ê³¼ì‹œì  ì´í›„ëŠ” ê°€ì…ê¸ˆì•¡ì˜ 100%ë¥¼ ì§€ê¸‰í•©ë‹ˆë‹¤.
-  </div>
-
-  <div class="sec-title">ğŸ“‹ &lt;${meritzPracticalTreatmentTab === '10m' ? 'ì‹¤ì†í˜•(1ì²œ)' : meritzPracticalTreatmentTab === '30m' ? 'ì‹¤ì†í˜•(3ì²œ)' : meritzPracticalTreatmentTab === '50m' ? 'ì‹¤ì†í˜•(5ì²œ)' : 'ì‹¤ì†í˜•(7ì²œ)'}&gt; ë³´ì¥í•­ëª© ë° ì§€ê¸‰ê¸ˆì•¡ í‘œ</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 42%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 16%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1ë…„ ë¯¸ë§Œ (50%)</th>
-        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1ë…„ ì´ìƒ (100%)</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_PRACTICAL_TREATMENT_ITEMS.map((item) => {
-        const valStr = item[meritzPracticalTreatmentTab];
-        const numVal = parseInt(valStr.replace(/[^0-9]/g, ''), 10);
-        const halfVal = isNaN(numVal) ? '-' : (numVal === 50 ? '25ë§Œì›' : numVal === 250 ? '125ë§Œì›' : (numVal / 2) + 'ë§Œì›');
-        return `
-          <tr>
-            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-            <td class="font-black" style="color: #0f172a;">${item.name}</td>
-            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
-            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${halfVal}</td>
-            <td class="text-center highlight">${valStr}</td>
-          </tr>
-        `;
-      }).join('')}
-    </tbody>
-  </table>
-
-  <div class="sec-title" style="background: #334155;">ğŸ“Š &lt;ì „ ìœ í˜•(ì‹¤ì†í˜• 1ì²œ / 3ì²œ / 5ì²œ / 7ì²œ) ê°€ì…ê¸ˆì•¡ ë¹„êµí‘œ (1ë…„ì´ìƒ 100% ê¸°ì¤€)&gt;</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 42%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 16%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='10m'?'background:#f0fdfa;color:#123941;':''}">1ì²œ</th>
-        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='30m'?'background:#f0fdfa;color:#123941;':''}">3ì²œ</th>
-        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='50m'?'background:#f0fdfa;color:#123941;':''}">5ì²œ</th>
-        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7ì²œ</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_PRACTICAL_TREATMENT_ITEMS.map((item) => `
-        <tr>
-          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-          <td class="font-black">${item.name}</td>
-          <td class="text-center">${item.count}</td>
-          <td class="text-center" style="${meritzPracticalTreatmentTab==='10m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['10m']}</td>
-          <td class="text-center" style="${meritzPracticalTreatmentTab==='30m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['30m']}</td>
-          <td class="text-center" style="${meritzPracticalTreatmentTab==='50m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['50m']}</td>
-          <td class="text-center" style="${meritzPracticalTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m']}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-
-  <div class="notes">
-    <strong>[ì•½ê´€ ìœ ì˜ì‚¬í•­ ë° ë³´ì¥ ê¸°ì¤€]</strong><br/>
-    â€¢ <strong>ì—°ê°„ ì´ ì§€ê¸‰í•œë„:</strong> ìµœì´ˆ ê³„ì•½ì¼ë¶€í„° 1ë…„ ê²½ê³¼ì‹œì  ì „ì¼ ì´ì „ì€ ê°€ì…ê¸ˆì•¡ì˜ 50%, 1ë…„ ê²½ê³¼ì‹œì  ì´í›„ëŠ” ê°€ì…ê¸ˆì•¡ì˜ 100%ë¥¼ í•œë„ë¡œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>ë³´ì¥ê°œì‹œì¼:</strong> ê³„ì•½ì¼ ê¸°ì¤€ 15ì„¸ ì´ìƒì€ ê³„ì•½ì¼ë¶€í„° 90ì¼ì´ ì§€ë‚œ ë‚ ì˜ ë‹¤ìŒë‚ , 15ì„¸ ë¯¸ë§Œì€ ê³„ì•½ì¼ë¶€í„° ê°œì‹œë©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>ì—°ê°„ì˜ ì •ì˜:</strong> ê³„ì•½ì¼ë¶€í„° ë§¤ 1ë…„ ë‹¨ìœ„ë¡œ ë„ë˜í•˜ëŠ” ê³„ì•½í•´ë‹¹ì¼ ì „ì¼ê¹Œì§€ì˜ ê¸°ê°„ì„ ë§í•©ë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : (activeSubTab === 'meritz_noncovered_treatment') ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ì•”í†µí•©ì¹˜ë£Œë¹„(ë¹„ê¸‰ì—¬)</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .font-bold { font-weight: 700; }
-    .font-black { font-weight: 900; }
-    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ë©”ë¦¬ì¸ í™”ì¬ - ì•”í†µí•©ì¹˜ë£Œë¹„(ë¹„ê¸‰ì—¬) (${meritzNoncoveredTreatmentTab === '40m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(4ì²œ)' : meritzNoncoveredTreatmentTab === '70m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(7ì²œ)' : 'ì•”í†µí•©ì¹˜ë£Œë¹„(1ì–µ)'}) (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">ë©”ë¦¬ì¸ í™”ì¬ - ì•”í†µí•©ì¹˜ë£Œë¹„(ë¹„ê¸‰ì—¬) (${meritzNoncoveredTreatmentTab === '40m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(4ì²œ)' : meritzNoncoveredTreatmentTab === '70m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(7ì²œ)' : 'ì•”í†µí•©ì¹˜ë£Œë¹„(1ì–µ)'})</h1>
-      <div class="subtitle">2-94. ì•” í†µí•©ì¹˜ë£Œë¹„II(ë¹„ê¸‰ì—¬(ì „ì•¡ë³¸ì¸ë¶€ë‹´ í¬í•¨))(ê±´ê°•ê°€ì…)ë³´ì¥ íŠ¹ë³„ì•½ê´€</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    <strong>[ì•½ê´€ ë° ë³´ì¥ ê°œìš”]</strong><br/>
-    â€¢ ë³¸ ë‹´ë³´ëŠ” ë¹„ê¸‰ì—¬(ì „ì•¡ë³¸ì¸ë¶€ë‹´ í¬í•¨) ì•” ìˆ˜ìˆ , í•­ì•”ë°©ì‚¬ì„ , í•­ì•”ì•½ë¬¼, ë‹¤ë¹ˆì¹˜ë¡œë´‡ìˆ˜ìˆ , í‘œì /ë©´ì—­í•­ì•”ì•½ë¬¼, í•­ì•”ì–‘ì„±ìë°©ì‚¬ì„ ì¹˜ë£Œì— ëŒ€í•´ ì§‘ì¤‘ ë³´ì¥í•©ë‹ˆë‹¤.<br/>
-    â€¢ ìµœì´ˆ ê³„ì•½ì¼ë¶€í„° 1ë…„ ê²½ê³¼ì‹œì  ì „ì¼ ì´ì „ì€ ê°€ì…ê¸ˆì•¡ì˜ 50%, 1ë…„ ê²½ê³¼ì‹œì  ì´í›„ëŠ” ê°€ì…ê¸ˆì•¡ì˜ 100%ë¥¼ ì§€ê¸‰í•©ë‹ˆë‹¤.
-  </div>
-
-  <div class="sec-title">ğŸ“‹ &lt;${meritzNoncoveredTreatmentTab === '40m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(4ì²œ)' : meritzNoncoveredTreatmentTab === '70m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(7ì²œ)' : 'ì•”í†µí•©ì¹˜ë£Œë¹„(1ì–µ)'}&gt; ë³´ì¥í•­ëª© ë° ì§€ê¸‰ê¸ˆì•¡ í‘œ</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 42%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 16%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1ë…„ ë¯¸ë§Œ (50%)</th>
-        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1ë…„ ì´ìƒ (100%)</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_NONCOVERED_TREATMENT_ITEMS.map((item) => {
-        const amountUnder = meritzNoncoveredTreatmentTab === '40m' ? item['40m_under']
-                          : meritzNoncoveredTreatmentTab === '70m' ? item['70m_under']
-                          : item['100m_under'];
-        const amountOver = meritzNoncoveredTreatmentTab === '40m' ? item['40m_over']
-                         : meritzNoncoveredTreatmentTab === '70m' ? item['70m_over']
-                         : item['100m_over'];
-        return `
-          <tr>
-            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-            <td class="font-black" style="color: #0f172a;">${item.name}</td>
-            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
-            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${amountUnder}</td>
-            <td class="text-center highlight">${amountOver}</td>
-          </tr>
-        `;
-      }).join('')}
-    </tbody>
-  </table>
-
-  <div class="sec-title" style="background: #334155;">ğŸ“Š &lt;ì „ ìœ í˜•(ë¹„ê¸‰ì—¬ 4ì²œ / 7ì²œ / 1ì–µ) ê°€ì…ê¸ˆì•¡ ë¹„êµí‘œ (1ë…„ì´ìƒ 100% ê¸°ì¤€)&gt;</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 42%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 16%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='40m'?'background:#f0fdfa;color:#123941;':''}">4ì²œ</th>
-        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7ì²œ</th>
-        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='100m'?'background:#f0fdfa;color:#123941;':''}">1ì–µ</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_NONCOVERED_TREATMENT_ITEMS.map((item) => `
-        <tr>
-          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-          <td class="font-black">${item.name}</td>
-          <td class="text-center">${item.count}</td>
-          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='40m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['40m_over']}</td>
-          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m_over']}</td>
-          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='100m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['100m_over']}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-
-  <div class="notes">
-    <strong>[ì•½ê´€ ìœ ì˜ì‚¬í•­ ë° ë³´ì¥ ê¸°ì¤€]</strong><br/>
-    â€¢ <strong>ì—°ê°„ ì´ ì§€ê¸‰í•œë„:</strong> ìµœì´ˆ ê³„ì•½ì¼ë¶€í„° 1ë…„ ê²½ê³¼ì‹œì  ì „ì¼ ì´ì „ì€ ê°€ì…ê¸ˆì•¡ì˜ 50%, 1ë…„ ê²½ê³¼ì‹œì  ì´í›„ëŠ” ê°€ì…ê¸ˆì•¡ì˜ 100%ë¥¼ í•œë„ë¡œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>ë³´ì¥ê°œì‹œì¼:</strong> ê³„ì•½ì¼ ê¸°ì¤€ 15ì„¸ ì´ìƒì€ ê³„ì•½ì¼ë¶€í„° 90ì¼ì´ ì§€ë‚œ ë‚ ì˜ ë‹¤ìŒë‚ , 15ì„¸ ë¯¸ë§Œì€ ê³„ì•½ì¼ë¶€í„° ê°œì‹œë©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>ì—°ê°„ì˜ ì •ì˜:</strong> ê³„ì•½ì¼ë¶€í„° ë§¤ 1ë…„ ë‹¨ìœ„ë¡œ ë„ë˜í•˜ëŠ” ê³„ì•½í•´ë‹¹ì¼ ì „ì¼ê¹Œì§€ì˜ ê¸°ê°„ì„ ë§í•©ë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : (activeSubTab === 'meritz_noncovered_primary_treatment') ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ì•”í†µí•©ì¹˜ë£Œë¹„(ë¹„ê¸‰ì—¬/ì£¼ìš”ì¹˜ë£Œ)</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .font-bold { font-weight: 700; }
-    .font-black { font-weight: 900; }
-    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ë©”ë¦¬ì¸ í™”ì¬ - ì•”í†µí•©ì¹˜ë£Œë¹„(ë¹„ê¸‰ì—¬/ì£¼ìš”ì¹˜ë£Œ) (${meritzNoncoveredPrimaryTreatmentTab === '30m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(3ì²œ)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(5ì²œ)' : 'ì•”í†µí•©ì¹˜ë£Œë¹„(7ì²œ)'}) (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">ë©”ë¦¬ì¸ í™”ì¬ - ì•”í†µí•©ì¹˜ë£Œë¹„(ë¹„ê¸‰ì—¬/ì£¼ìš”ì¹˜ë£Œ) (${meritzNoncoveredPrimaryTreatmentTab === '30m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(3ì²œ)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(5ì²œ)' : 'ì•”í†µí•©ì¹˜ë£Œë¹„(7ì²œ)'})</h1>
-      <div class="subtitle">2-96. ì•” í†µí•©ì¹˜ë£Œë¹„(ì£¼ìš”ì¹˜ë£Œ)(ë¹„ê¸‰ì—¬(ì „ì•¡ë³¸ì¸ë¶€ë‹´ í¬í•¨))(ê±´ê°•ê°€ì…)ë³´ì¥ íŠ¹ë³„ì•½ê´€</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    <strong>[ì•½ê´€ ë° ë³´ì¥ ê°œìš”]</strong><br/>
-    â€¢ ë³¸ ë‹´ë³´ëŠ” ë¹„ê¸‰ì—¬(ì „ì•¡ë³¸ì¸ë¶€ë‹´ í¬í•¨) ì•” ìˆ˜ìˆ , ìœ ì‚¬ì•” ìˆ˜ìˆ , í•­ì•”ë°©ì‚¬ì„ ì¹˜ë£Œ, ê¸°íƒ€í”¼ë¶€ì•” ë° ê°‘ìƒì„ ì•” í•­ì•”ë°©ì‚¬ì„ ì¹˜ë£Œ, í•­ì•”ì•½ë¬¼ì¹˜ë£Œ, ê¸°íƒ€í”¼ë¶€ì•” ë° ê°‘ìƒì„ ì•” í•­ì•”ì•½ë¬¼ì¹˜ë£Œì— ëŒ€í•´ ë³´ì¥í•©ë‹ˆë‹¤.<br/>
-    â€¢ ìµœì´ˆ ê³„ì•½ì¼ë¶€í„° 1ë…„ ê²½ê³¼ì‹œì  ì „ì¼ ì´ì „ì€ ê°€ì…ê¸ˆì•¡ì˜ 50%, 1ë…„ ê²½ê³¼ì‹œì  ì´í›„ëŠ” ê°€ì…ê¸ˆì•¡ì˜ 100%ë¥¼ ì§€ê¸‰í•©ë‹ˆë‹¤.
-  </div>
-
-  <div class="sec-title">ğŸ“‹ &lt;${meritzNoncoveredPrimaryTreatmentTab === '30m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(3ì²œ)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? 'ì•”í†µí•©ì¹˜ë£Œë¹„(5ì²œ)' : 'ì•”í†µí•©ì¹˜ë£Œë¹„(7ì²œ)'}&gt; ë³´ì¥í•­ëª© ë° ì§€ê¸‰ê¸ˆì•¡ í‘œ</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 42%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 16%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1ë…„ ë¯¸ë§Œ (50%)</th>
-        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1ë…„ ì´ìƒ (100%)</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.map((item) => {
-        const amountUnder = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_under']
-                          : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_under']
-                          : item['70m_under'];
-        const amountOver = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_over']
-                         : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_over']
-                         : item['70m_over'];
-        return `
-          <tr>
-            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-            <td class="font-black" style="color: #0f172a;">${item.name}</td>
-            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
-            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${amountUnder}</td>
-            <td class="text-center highlight">${amountOver}</td>
-          </tr>
-        `;
-      }).join('')}
-    </tbody>
-  </table>
-
-  <div class="sec-title" style="background: #334155;">ğŸ“Š &lt;ì „ ìœ í˜•(3ì²œ / 5ì²œ / 7ì²œ) ê°€ì…ê¸ˆì•¡ ë¹„êµí‘œ (1ë…„ì´ìƒ 100% ê¸°ì¤€)&gt;</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 42%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 16%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='30m'?'background:#f0fdfa;color:#123941;':''}">3ì²œ</th>
-        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='50m'?'background:#f0fdfa;color:#123941;':''}">5ì²œ</th>
-        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7ì²œ</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.map((item) => `
-        <tr>
-          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-          <td class="font-black">${item.name}</td>
-          <td class="text-center">${item.count}</td>
-          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='30m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['30m_over']}</td>
-          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='50m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['50m_over']}</td>
-          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m_over']}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-
-  <div class="notes">
-    <strong>[ì•½ê´€ ìœ ì˜ì‚¬í•­ ë° ë³´ì¥ ê¸°ì¤€]</strong><br/>
-    â€¢ <strong>ì—°ê°„ ì´ ì§€ê¸‰í•œë„:</strong> ìµœì´ˆ ê³„ì•½ì¼ë¶€í„° 1ë…„ ê²½ê³¼ì‹œì  ì „ì¼ ì´ì „ì€ ê°€ì…ê¸ˆì•¡ì˜ 50%, 1ë…„ ê²½ê³¼ì‹œì  ì´í›„ëŠ” ê°€ì…ê¸ˆì•¡ì˜ 100%ë¥¼ í•œë„ë¡œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>ë³´ì¥ê°œì‹œì¼:</strong> ê³„ì•½ì¼ ê¸°ì¤€ 15ì„¸ ì´ìƒì€ ê³„ì•½ì¼ë¶€í„° 90ì¼ì´ ì§€ë‚œ ë‚ ì˜ ë‹¤ìŒë‚ , 15ì„¸ ë¯¸ë§Œì€ ê³„ì•½ì¼ë¶€í„° ê°œì‹œë©ë‹ˆë‹¤.<br/>
-    â€¢ <strong>ì—°ê°„ì˜ ì •ì˜:</strong> ê³„ì•½ì¼ë¶€í„° ë§¤ 1ë…„ ë‹¨ìœ„ë¡œ ë„ë˜í•˜ëŠ” ê³„ì•½í•´ë‹¹ì¼ ì „ì¼ê¹Œì§€ì˜ ê¸°ê°„ì„ ë§í•©ë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : (activeSubTab === 'hyundai_surgery1_5') ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10.5px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px; margin-top: 14px; margin-bottom: 10px; }
-    .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .group-card { border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 12px; page-break-inside: avoid; overflow: hidden; }
-    .group-header { background: #123941; color: white; padding: 7px 10px; font-weight: 800; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
-    .group-desc { background: #f8fafc; padding: 6px 10px; border-bottom: 1px solid #cbd5e1; font-size: 9.5px; color: #334155; line-height: 1.4; font-weight: 600; }
-    table { width: 100%; border-collapse: collapse; font-size: 9.5px; }
-    th { background: #f8fafc; color: #0f172a; font-weight: 800; text-align: left; padding: 5px 6px; border-bottom: 1px solid #cbd5e1; }
-    td { border-bottom: 1px solid #e2e8f0; padding: 4px 6px; color: #334155; }
-    .text-center { text-align: center; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #123941; color: #ffffff; padding: 2px 6px; border-radius: 4px; font-size: 9px; text-align: center; line-height: 1.2; vertical-align: middle; min-width: 36px; box-sizing: border-box; white-space: nowrap; }
-    .footnotes { background: #f8fafc; border-top: 1px solid #cbd5e1; padding: 6px 10px; font-size: 9px; color: #475569; line-height: 1.4; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ${selectedInsurer.name} - ${title} (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">[ë³„í‘œ153] 1-5ì¢… ìˆ˜ìˆ â…£(ì„ ì²œí¬í•¨)ë¶„ë¥˜í‘œ</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="sec-title">â— [í•˜ë‹¨ ì„¸ë¶€ ë¶„ë¥˜í‘œ] (ìˆ˜ìˆ ëª… ë° ë¶„ë¥˜í‘œ)</div>
-
-  <div class="grid-2col">
-    ${HYUNDAI_SURGERY_1_5_SECTIONS.map((sec, idx) => `
-      <div class="group-card">
-        <div class="group-header">
-          <span>#${idx + 1} ${sec.category}</span>
-          <span style="font-size: 9.5px; opacity: 0.9;">${sec.items.length}ê°œ í•­ëª©</span>
-        </div>
-        ${sec.subTitle ? `<div class="group-desc">${sec.subTitle}</div>` : ''}
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 15%; text-align: center;">No.</th>
-              <th style="width: 65%;">ìˆ˜ìˆ ëª…</th>
-              <th style="width: 20%; text-align: center;">ë¶„ë¥˜í‘œ</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${sec.items.map((item) => `
-              <tr>
-                <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num}</td>
-                <td style="font-weight: 600;">${item.name}</td>
-                <td class="text-center">${item.type !== '-' ? `<span class="code">${item.type}</span>` : '-'}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-        ${sec.footnotes ? `
-          <div class="footnotes">
-            ${sec.footnotes.map((fn) => `<div>${fn}</div>`).join('')}
-          </div>
-        ` : ''}
-      </div>
-    `).join('')}
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : (activeSubTab === 'hyundai_heart' || activeSubTab === 'hyundai_cardiovascular') ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10.5px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .group-card { border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 14px; page-break-inside: avoid; overflow: hidden; }
-    .group-header { background: #123941; color: white; padding: 8px 12px; font-weight: 800; font-size: 11px; display: flex; justify-content: space-between; }
-    .group-desc { background: #f8fafc; padding: 8px 12px; border-bottom: 1px solid #cbd5e1; font-size: 10px; color: #334155; line-height: 1.5; }
-    .cat-title { background: #f1f5f9; padding: 6px 12px; font-weight: 800; color: #123941; font-size: 10.5px; border-bottom: 1px solid #cbd5e1; border-top: 1px solid #cbd5e1; }
-    table { width: 100%; border-collapse: collapse; font-size: 10px; }
-    th { background: #f8fafc; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border-bottom: 1px solid #cbd5e1; }
-    td { border-bottom: 1px solid #e2e8f0; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
-    .footnotes { background: #f8fafc; border-top: 1px solid #cbd5e1; padding: 8px 12px; font-size: 9.5px; color: #475569; line-height: 1.5; }
-    .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ${selectedInsurer.name} - ${title} (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">í•˜ë‹¨ ì„¸ë¶€ë¶„ë¥˜í‘œ (ì´ 7ê°œ ê·¸ë£¹)</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="grid-2col">
-    ${HYUNDAI_HEART_SECTIONS.map((sec, idx) => `
-      <div class="group-card">
-        <div class="group-header">
-          <span>#${idx + 1} ${sec.title}</span>
-          <span>${sec.items.length}ê°œ í•­ëª©</span>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 15%; text-align: center;">No.</th>
-              <th>ëŒ€ìƒì´ ë˜ëŠ” ì§ˆë³‘</th>
-              <th style="width: 25%; text-align: center;">ë¶„ë¥˜ë²ˆí˜¸</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${sec.items.map((item) => `
-              <tr>
-                <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num || ''}</td>
-                <td style="font-weight: 600;">${item.disease}</td>
-                <td class="text-center"><span class="code">${item.code || '-'}</span></td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-    `).join('')}
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : (activeSubTab === 'hyundai_specific_cancer') ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10.5px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
-    .grid-container { display: flex; gap: 12px; margin-top: 10px; }
-    .grid-col { flex: 1; min-width: 0; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 9.5px; color: #475569; line-height: 1.5; margin-top: 14px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ${selectedInsurer.name} - ${title} (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">í•˜ë‹¨ ì„¸ë¶€ë¶„ë¥˜í‘œ</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    â‘  ì•½ê´€ì—ì„œ ê·œì •í•˜ëŠ” 'íŠ¹ì •ì•”'ìœ¼ë¡œ ë¶„ë¥˜ë˜ëŠ” ì§ˆë³‘ì€ ì œ9ì°¨ ê°œì • í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜(í†µê³„ì²­ ê³ ì‹œ ì œ2025-299í˜¸, 2026.1.1 ì‹œí–‰) ì¤‘ ë‹¤ìŒì— ì ì€ ì§ˆë³‘ì„ ë§í•˜ë©°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ê°€ ê°œì •ë˜ëŠ” ê²½ìš°ì—ëŠ” ê°œì •ëœ ê¸°ì¤€ì— ë”°ë¼ í•´ë‹¹ ì—¬ë¶€ë¥¼ íŒë‹¨í•©ë‹ˆë‹¤.
-  </div>
-
-  <div class="sec-title">í•˜ë‹¨ ì„¸ë¶€ë¶„ë¥˜í‘œ</div>
-  <div class="grid-container">
-    <div class="grid-col">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 15%; text-align: center;">No.</th>
-            <th style="width: 60%;">ëŒ€ìƒì´ ë˜ëŠ” ì§ˆë³‘</th>
-            <th style="width: 25%; text-align: center;">ë¶„ë¥˜ë²ˆí˜¸</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${HYUNDAI_SPECIFIC_CANCER_ITEMS.slice(0, 14).map(item => `
-            <tr>
-              <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num}</td>
-              <td style="font-weight: 600;">${item.name}</td>
-              <td class="text-center"><span class="code">${item.code}</span></td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    </div>
-    <div class="grid-col">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 15%; text-align: center;">No.</th>
-            <th style="width: 60%;">ëŒ€ìƒì´ ë˜ëŠ” ì§ˆë³‘</th>
-            <th style="width: 25%; text-align: center;">ë¶„ë¥˜ë²ˆí˜¸</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${HYUNDAI_SPECIFIC_CANCER_ITEMS.slice(14).map(item => `
-            <tr>
-              <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num}</td>
-              <td style="font-weight: 600;">${item.name}</td>
-              <td class="text-center"><span class="code">${item.code}</span></td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="notes">
-    â‘¡ ì œ10ì°¨ ê°œì •ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘ì‚¬ì¸ë¶„ë¥˜ì— ìˆì–´ì„œ ìƒê¸° ìƒë³‘ ë˜ëŠ” ì§ˆë³‘ í•´ë‹¹ ì—¬ë¶€ëŠ” í”¼ë³´í—˜ìê°€ ì§„ë‹¨í™•ì •ëœ ë‹¹ì‹œ ì‹œí–‰í•˜ê³  ìˆëŠ” í•œêµ­í‘œì¤€ì§ˆë³‘ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ íŒë‹¨í•©ë‹ˆë‹¤.<br/>
-    â‘¢ ë‹¤ë§Œ, ì§„ë‹¨í™•ì • ë‹¹ì‹œì˜ í•œêµ­í‘œì¤€ì§ˆë³‘ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ ìƒê¸° ìƒë³‘ ë˜ëŠ” ì§ˆë³‘ì— ëŒ€í•œ ë³´í—˜ê¸ˆ ì§€ê¸‰ì—¬ë¶€ë¥¼ íŒë‹¨í•œ ê²½ìš°ì—ëŠ”, ì´í›„ì— í•œêµ­í‘œì¤€ì§ˆë³‘ì‚¬ì¸ë¶„ë¥˜ê°€ ê°œì •ë˜ë”ë¼ë„ ìƒê¸° ìƒë³‘ ë˜ëŠ” ì§ˆë³‘ í•´ë‹¹ ì—¬ë¶€ë¥¼ ë‹¤ì‹œ íŒë‹¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.<br/>
-    â‘£ ì§„ë‹¨ì„œ ìƒì˜ ë¶„ë¥˜ë²ˆí˜¸ëŠ” í•œêµ­í‘œì¤€ì§ˆë³‘ì‚¬ì¸ë¶„ë¥˜ ì§ˆë³‘ì½”ë”©ì§€ì¹¨ì„œ(í–¥í›„ ì§€ì¹¨ì„œê°€ ë³€ê²½ë˜ëŠ” ê²½ìš° ë³€ê²½ëœ ì§€ì¹¨ì„œì— ë”°ë¦…ë‹ˆë‹¤)ì— ë”°ë¼ ê¸°ì¬ëœ ê²ƒì„ ì¸ì •í•©ë‹ˆë‹¤.<br/>
-    â‘¤ í•œêµ­í‘œì¤€ì§ˆë³‘ì‚¬ì¸ë¶„ë¥˜ ì§€ì¹¨ì„œì˜ 'ì‚¬ë§ ë° ì§ˆë³‘ì´í™˜ì˜ ë¶„ë¥˜ë²ˆí˜¸ë¶€ì—¬ë¥¼ ìœ„í•œ ì„ ì •ì¤€ì¹™ê³¼ ì§€ì¹¨'ì— ë”°ë¼ C77~C80(ë¶ˆëª…í™•í•œ, ì´ì°¨ì„± ë° ìƒì„¸ë¶ˆëª… ë¶€ìœ„ì˜ ì•…ì„±ì‹ ìƒë¬¼(ì•”))ì˜ ê²½ìš° ì¼ì°¨ì„± ì•…ì„±ì‹ ìƒë¬¼(ì•”)ì´ í™•ì¸ë˜ëŠ” ê²½ìš°ì—ëŠ” ì›ë°œë¶€ìœ„(ìµœì´ˆ ë°œìƒí•œ ë¶€ìœ„)ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë¶„ë¥˜í•©ë‹ˆë‹¤.<br/>
-    â‘¥ ìƒê¸° ì™¸ì—ë„ ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜í‘œì˜ ë¶„ë¥˜ë²ˆí˜¸ì™€ ì—°ê´€ì„±ì´ ìˆì–´, ë¶„ë¥˜ë²ˆí˜¸ê°€ ë™ì‹œì— ë¶€ì—¬ëœ ê²½ìš° ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜ì— í¬í•¨í•©ë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : activeSubTab === 'samsung_111' ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4; margin: 12mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
-    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
-    .text-center { text-align: center; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ${selectedInsurer.name} - 111ëŒ€ì§ˆë³‘ìˆ˜ìˆ ë¹„ ë¶„ë¥˜í‘œ (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ ë° í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <!-- ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ -->
-  <div class="sec-title">ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ</div>
-  <div class="info-box">
-    â‘¦ ã€Œ111ëŒ€ì§ˆë³‘ã€ì˜ ì§„ë‹¨í™•ì •ì€ ì˜ë£Œë²• ì œ3ì¡°(ì˜ë£Œê¸°ê´€)ì— ê·œì •í•œ êµ­ë‚´ì˜ ë³‘ì›, ì˜ì› ë˜ëŠ” êµ­ì™¸ì˜ ì˜ë£Œê´€ë ¨ë²•ì—ì„œ ì •í•œ ì˜ë£Œê¸°ê´€ì˜ ì˜ì‚¬ìê²©ì„ ê°€ì§„ ìì— ì˜í•œ ì§„ë‹¨ì„œì— ì˜í•©ë‹ˆë‹¤.
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">êµ¬ë¶„</th>
-        <th style="width: 75%;">í•´ë‹¹ ì§ˆë³‘</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${SAMSUNG_111_SURGERY_SECTIONS.map(sec => `
-        <tr>
-          <td class="cat-td">${sec.category}</td>
-          <td style="font-weight: 600;">${sec.diseases.join(', ')}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-  <div class="notes">
-    <strong>ì œ5ì¡° (ìˆ˜ìˆ ì˜ ì •ì˜ì™€ ì¥ì†Œ)</strong><br/>
-    â‘  ì´ íŠ¹ë³„ì•½ê´€ì—ì„œ ã€Œìˆ˜ìˆ ã€ì´ë¼ í•¨ì€ ë³‘ì› ë˜ëŠ” ì˜ì›ì˜ ì˜ì‚¬ì˜ ë©´í—ˆë¥¼ ê°€ì§„ ì(ì´í•˜ ã€Œì˜ì‚¬ã€ë¼ í•©ë‹ˆë‹¤)ì— ì˜í•˜ì—¬ ã€Œ111ëŒ€ì§ˆë³‘ã€ìœ¼ë¡œ ì¹˜ë£Œê°€ í•„ìš”í•˜ë‹¤ê³  ì¸ì •ëœ ê²½ìš°ë¡œì„œ ìíƒ ë“±ì—ì„œì˜ ì¹˜ë£Œê°€ ê³¤ë€í•˜ì—¬ ì˜ë£Œë²• ì œ3ì¡°(ì˜ë£Œê¸°ê´€)ì— ê·œì •í•œ êµ­ë‚´ì˜ ë³‘ì›, ì˜ì› ë˜ëŠ” êµ­ì™¸ì˜ ì˜ë£Œê´€ë ¨ë²•ì—ì„œ ì •í•œ ì˜ë£Œê¸°ê´€ì—ì„œ ì˜ì‚¬ì˜ ê´€ë¦¬ í•˜ì— ã€Œ111ëŒ€ì§ˆë³‘ã€ì˜ ì§ì ‘ì ì¸ ì¹˜ë£Œë¥¼ ëª©ì ìœ¼ë¡œ ê¸°êµ¬ë¥¼ ì‚¬ìš©í•˜ì—¬ ìƒì²´(ç”Ÿé«”)ì— ì ˆë‹¨(åˆ‡æ–·, íŠ¹ì •ë¶€ìœ„ë¥¼ ì˜ë¼ë‚´ëŠ” ê²ƒ), ì ˆì œ(åˆ‡é™¤, íŠ¹ì •ë¶€ìœ„ë¥¼ ì˜ë¼ ì—†ì• ëŠ” ê²ƒ) ë“±ì˜ ì¡°ì‘(æ“ä½œ)ì„ ê°€í•˜ëŠ” ê²ƒì„ ë§í•©ë‹ˆë‹¤.<br/>
-    â‘¡ ì œ1í•­ì˜ ìˆ˜ìˆ ì€ ë³´ê±´ë³µì§€ë¶€ ì‚°í•˜ ì‹ ì˜ë£Œê¸°ìˆ í‰ê°€ìœ„ì›íšŒ(í–¥í›„ ì œë„ë³€ê²½ ì‹œì—ëŠ” ë™ ìœ„ì›íšŒì™€ ë™ì¼í•œ ê¸°ëŠ¥ì„ ìˆ˜í–‰í•˜ëŠ” ê¸°ê´€)ë¡œë¶€í„° ì•ˆì „ì„±ê³¼ ì¹˜ë£Œíš¨ê³¼ë¥¼ ì¸ì •ë°›ì€ ìµœì‹  ìˆ ê¸°ë²•ìœ¼ë¡œ ìƒì²´ì— ì ˆë‹¨, ì ˆì œ ë“±ì˜ ì¡°ì‘ì„ ê°€í•˜ëŠ” ê²ƒì„ í¬í•¨í•©ë‹ˆë‹¤.
-  </div>
-
-  <!-- í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ -->
-  <div style="margin-top: 24px; font-size: 14px; font-weight: 800; color: #123941; border-bottom: 2px solid #123941; padding-bottom: 6px; margin-bottom: 12px;">
-    í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ
-  </div>
-
-  ${SAMSUNG_111_DISEASE_CODE_SECTIONS.map(cat => {
-    const tableTitleMap: Record<string, string> = {
-      '5ëŒ€ì£¼ìš”ê¸°ê´€ì§ˆë³‘': '[ë³„í‘œ-ì§ˆë³‘ê´€ë ¨39] 5ëŒ€ì£¼ìš”ê¸°ê´€ì§ˆë³‘ ë¶„ë¥˜í‘œâ…¡',
-      '22ëŒ€ì£¼ìš”ì§ˆë³‘': '[ë³„í‘œ-ì§ˆë³‘ê´€ë ¨42] 22ëŒ€ì£¼ìš”ì§ˆë³‘ ë¶„ë¥˜í‘œ',
-      '3ëŒ€ì£¼ìš”ì§ˆë³‘': '[ë³„í‘œ-ì§ˆë³‘ê´€ë ¨43] 3ëŒ€ì£¼ìš”ì§ˆë³‘ ë¶„ë¥˜í‘œ',
-      '19ëŒ€ìƒí™œì§ˆë³‘': '[ë³„í‘œ-ì§ˆë³‘ê´€ë ¨44] 19ëŒ€ìƒí™œì§ˆë³‘ ë¶„ë¥˜í‘œ',
-      '62ëŒ€ìƒí™œì§ˆë³‘': '[ë³„í‘œ-ì§ˆë³‘ê´€ë ¨45] 62ëŒ€ìƒí™œì§ˆë³‘ ë¶„ë¥˜í‘œ',
-    };
-    const secTitle = tableTitleMap[cat.category] || `[ì„¸ë¶€ë¶„ë¥˜í‘œ] ${cat.category}`;
-    return `
-      <div class="sec-title">${secTitle}</div>
-      <div class="info-box">
-        ì•½ê´€ì— ê·œì •í•˜ëŠ” ${cat.category}ìœ¼ë¡œ ë¶„ë¥˜ë˜ëŠ” ì§ˆë³‘ì€ ì œ9ì°¨ ê°œì • í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜(í†µê³„ì²­ ê³ ì‹œ ì œ2025-299í˜¸, 2026. 1. 1 ì‹œí–‰) ì¤‘ ë‹¤ìŒì— ì ì€ ì§ˆë³‘ì„ ë§í•˜ë©°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ê°€ ê°œì •ë˜ëŠ” ê²½ìš°ëŠ” ê°œì •ëœ ê¸°ì¤€ì— ë”°ë¼ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì˜ í•´ë‹¹ ì—¬ë¶€ë¥¼ íŒë‹¨í•©ë‹ˆë‹¤.
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 25%;">êµ¬ë¶„</th>
-            <th style="width: 55%;">ë¶„ë¥˜í•­ëª©</th>
-            <th style="width: 20%; text-align: center;">ë¶„ë¥˜ë²ˆí˜¸</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${cat.subsections.map(sub => {
-            const rowSpan = sub.items.length;
-            return sub.items.map((item, itemIdx) => `
-              <tr>
-                ${itemIdx === 0 ? `<td rowspan="${rowSpan}" class="cat-td">${sub.title}</td>` : ''}
-                <td style="font-weight: 600;">${item.disease}</td>
-                <td class="text-center"><span class="code">${item.code}</span></td>
-              </tr>
-            `).join('');
-          }).join('')}
-        </tbody>
-      </table>
-      <div class="notes">
-        <strong>ì£¼)</strong><br/>
-        1. ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜í‘œì˜ ë¶„ë¥˜ë²ˆí˜¸ì™€ ìƒë‹¹í•œ ì—°ê´€ì„±ì´ ìˆì–´, í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì˜ ê¸°ì¤€ì— ë”°ë¼ ë¶„ë¥˜ë²ˆí˜¸ë¥¼ ë™ì‹œì— ë¶€ì—¬ ê°€ëŠ¥í•œ ê²½ìš° ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜ì— í¬í•¨í•©ë‹ˆë‹¤. ë‹¨, ë³´í†µì•½ê´€ ë° íŠ¹ë³„ì•½ê´€ì— ë³„ë„ì˜ ê·œì •ì´ ìˆëŠ” ê²½ìš° í•´ë‹¹ ì¡°í•­ì„ ìš°ì„  ì ìš©í•©ë‹ˆë‹¤.<br/>
-        2. ì œ10ì°¨ ê°œì • ì´í›„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì˜ í•´ë‹¹ ì—¬ë¶€ëŠ” í”¼ë³´í—˜ìê°€ ì§„ë‹¨ëœ ë‹¹ì‹œ ì‹œí–‰ë˜ê³  ìˆëŠ” í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ íŒë‹¨í•©ë‹ˆë‹¤.<br/>
-        3. ì§„ë‹¨ ë‹¹ì‹œì˜ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì— ëŒ€í•œ ë³´í—˜ê¸ˆ ì§€ê¸‰ ì—¬ë¶€ê°€ íŒë‹¨ëœ ê²½ìš°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ ê°œì •ìœ¼ë¡œ ì§ˆë³‘ë¶„ë¥˜ê°€ ë³€ê²½ë˜ë”ë¼ë„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ í•´ë‹¹ ì—¬ë¶€ë¥¼ ë‹¤ì‹œ íŒë‹¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
-      </div>
-    `;
-  }).join('')}
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : activeSubTab === 'samsung_15_disease' ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4; margin: 12mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
-    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
-    .text-center { text-align: center; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ${selectedInsurer.name} - 15ëŒ€ì§ˆë³‘ìˆ˜ìˆ ë¹„ ë¶„ë¥˜í‘œ (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ ë° í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <!-- ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ -->
-  <div class="sec-title">ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ</div>
-  <div class="info-box">
-    â‘¦ ã€Œ15ëŒ€ì§ˆë³‘ã€ì˜ ì§„ë‹¨í™•ì •ì€ ì˜ë£Œë²• ì œ3ì¡°(ì˜ë£Œê¸°ê´€)ì— ê·œì •í•œ êµ­ë‚´ì˜ ë³‘ì›, ì˜ì› ë˜ëŠ” êµ­ì™¸ì˜ ì˜ë£Œê´€ë ¨ë²•ì—ì„œ ì •í•œ ì˜ë£Œê¸°ê´€ì˜ ì˜ì‚¬ìê²©ì„ ê°€ì§„ ìì— ì˜í•œ ì§„ë‹¨ì„œì— ì˜í•©ë‹ˆë‹¤.
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">êµ¬ë¶„</th>
-        <th style="width: 75%;">í•´ë‹¹ ì§ˆë³‘</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${SAMSUNG_15_SURGERY_SECTIONS.map(sec => `
-        <tr>
-          <td class="cat-td">${sec.category}</td>
-          <td style="font-weight: 600;">${sec.diseases.join(', ')}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-  <div class="notes">
-    <strong>ì œ5ì¡° (ìˆ˜ìˆ ì˜ ì •ì˜ì™€ ì¥ì†Œ)</strong><br/>
-    â‘  ì´ íŠ¹ë³„ì•½ê´€ì—ì„œ ã€Œìˆ˜ìˆ ã€ì´ë¼ í•¨ì€ ë³‘ì› ë˜ëŠ” ì˜ì›ì˜ ì˜ì‚¬ì˜ ë©´í—ˆë¥¼ ê°€ì§„ ì(ì´í•˜ ã€Œì˜ì‚¬ã€ë¼ í•©ë‹ˆë‹¤)ì— ì˜í•˜ì—¬ ã€Œ15ëŒ€ì§ˆë³‘ã€ìœ¼ë¡œ ì¹˜ë£Œê°€ í•„ìš”í•˜ë‹¤ê³  ì¸ì •ëœ ê²½ìš°ë¡œì„œ ìíƒ ë“±ì—ì„œì˜ ì¹˜ë£Œê°€ ê³¤ë€í•˜ì—¬ ì˜ë£Œë²• ì œ3ì¡°(ì˜ë£Œê¸°ê´€)ì— ê·œì •í•œ êµ­ë‚´ì˜ ë³‘ì›, ì˜ì› ë˜ëŠ” êµ­ì™¸ì˜ ì˜ë£Œê´€ë ¨ë²•ì—ì„œ ì •í•œ ì˜ë£Œê¸°ê´€ì—ì„œ ì˜ì‚¬ì˜ ê´€ë¦¬ í•˜ì— ã€Œ15ëŒ€ì§ˆë³‘ã€ì˜ ì§ì ‘ì ì¸ ì¹˜ë£Œë¥¼ ëª©ì ìœ¼ë¡œ ê¸°êµ¬ë¥¼ ì‚¬ìš©í•˜ì—¬ ìƒì²´(ç”Ÿé«”)ì— ì ˆë‹¨(åˆ‡æ–·, íŠ¹ì •ë¶€ìœ„ë¥¼ ì˜ë¼ë‚´ëŠ” ê²ƒ), ì ˆì œ(åˆ‡é™¤, íŠ¹ì •ë¶€ìœ„ë¥¼ ì˜ë¼ ì—†ì• ëŠ” ê²ƒ) ë“±ì˜ ì¡°ì‘(æ“ä½œ)ì„ ê°€í•˜ëŠ” ê²ƒì„ ë§í•©ë‹ˆë‹¤.<br/>
-    â‘¡ ì œ1í•­ì˜ ìˆ˜ìˆ ì€ ë³´ê±´ë³µì§€ë¶€ ì‚°í•˜ ì‹ ì˜ë£Œê¸°ìˆ í‰ê°€ìœ„ì›íšŒ(í–¥í›„ ì œë„ë³€ê²½ ì‹œì—ëŠ” ë™ ìœ„ì›íšŒì™€ ë™ì¼í•œ ê¸°ëŠ¥ì„ ìˆ˜í–‰í•˜ëŠ” ê¸°ê´€)ë¡œë¶€í„° ì•ˆì „ì„±ê³¼ ì¹˜ë£Œíš¨ê³¼ë¥¼ ì¸ì •ë°›ì€ ìµœì‹  ìˆ ê¸°ë²•ìœ¼ë¡œ ìƒì²´ì— ì ˆë‹¨, ì ˆì œ ë“±ì˜ ì¡°ì‘ì„ ê°€í•˜ëŠ” ê²ƒì„ í¬í•¨í•©ë‹ˆë‹¤.
-  </div>
-
-  <!-- í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ -->
-  <div style="margin-top: 24px; font-size: 14px; font-weight: 800; color: #123941; border-bottom: 2px solid #123941; padding-bottom: 6px; margin-bottom: 12px;">
-    í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ
-  </div>
-
-  ${SAMSUNG_15_DISEASE_CODE_SECTIONS.map(cat => `
-    <div class="sec-title">15ëŒ€ì£¼ìš”ì§ˆë³‘ ë¶„ë¥˜í‘œâ…¡</div>
-    <div class="info-box">
-      ì•½ê´€ì— ê·œì •í•˜ëŠ” 15ëŒ€ì£¼ìš”ì§ˆë³‘ìœ¼ë¡œ ë¶„ë¥˜ë˜ëŠ” ì§ˆë³‘ì€ ì œ7ì°¨ ê°œì • í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜(í†µê³„ì²­ ê³ ì‹œ ì œ2015-309í˜¸, 2016. 1. 1 ì‹œí–‰) ì¤‘ ë‹¤ìŒì— ì ì€ ì§ˆë³‘ì„ ë§í•˜ë©°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ê°€ ê°œì •ë˜ëŠ” ê²½ìš°ëŠ” ê°œì •ëœ ê¸°ì¤€ì— ë”°ë¼ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì˜ í•´ë‹¹ ì—¬ë¶€ë¥¼ íŒë‹¨í•©ë‹ˆë‹¤.
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 28%;">êµ¬ë¶„</th>
-          <th style="width: 52%;">ë¶„ë¥˜í•­ëª©</th>
-          <th style="width: 20%; text-align: center;">ë¶„ë¥˜ë²ˆí˜¸</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${cat.subsections.map(sub => {
-          const rowSpan = sub.items.length;
-          return sub.items.map((item, itemIdx) => `
-            <tr>
-              ${itemIdx === 0 ? `<td rowspan="${rowSpan}" class="cat-td">${sub.title}</td>` : ''}
-              <td style="font-weight: 600;">${item.disease}</td>
-              <td class="text-center"><span class="code">${item.code}</span></td>
-            </tr>
-          `).join('');
-        }).join('')}
-      </tbody>
-    </table>
-    <div class="notes">
-      <strong>ì£¼)</strong><br/>
-      1. ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜í‘œì˜ ë¶„ë¥˜ë²ˆí˜¸ì™€ ìƒë‹¹í•œ ì—°ê´€ì„±ì´ ìˆì–´, í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì˜ ê¸°ì¤€ì— ë”°ë¼ ë¶„ë¥˜ë²ˆí˜¸ë¥¼ ë™ì‹œì— ë¶€ì—¬ ê°€ëŠ¥í•œ ê²½ìš° ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜ì— í¬í•¨í•©ë‹ˆë‹¤. ë‹¨, ë³´í†µì•½ê´€ ë° íŠ¹ë³„ì•½ê´€ì— ë³„ë„ì˜ ê·œì •ì´ ìˆëŠ” ê²½ìš° í•´ë‹¹ ì¡°í•­ì„ ìš°ì„  ì ìš©í•©ë‹ˆë‹¤.<br/>
-      2. ì œ8ì°¨ ê°œì • ì´í›„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì˜ í•´ë‹¹ ì—¬ë¶€ëŠ” í”¼ë³´í—˜ìê°€ ì§„ë‹¨ëœ ë‹¹ì‹œ ì‹œí–‰ë˜ê³  ìˆëŠ” í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ íŒë‹¨í•©ë‹ˆë‹¤.<br/>
-      3. ì§„ë‹¨ ë‹¹ì‹œì˜ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì— ëŒ€í•œ ë³´í—˜ê¸ˆ ì§€ê¸‰ ì—¬ë¶€ê°€ íŒë‹¨ëœ ê²½ìš°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ ê°œì •ìœ¼ë¡œ ì§ˆë³‘ë¶„ë¥˜ê°€ ë³€ê²½ë˜ë”ë¼ë„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ í•´ë‹¹ ì—¬ë¶€ë¥¼ ë‹¤ì‹œ íŒë‹¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
-    </div>
-  `).join('')}
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : activeSubTab === 'samsung_21' ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4; margin: 12mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
-    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
-    .text-center { text-align: center; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ${selectedInsurer.name} - 21ëŒ€ì§ˆë³‘ìˆ˜ìˆ ë¹„ ë¶„ë¥˜í‘œ (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ ë° í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <!-- ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ -->
-  <div class="sec-title">ìƒë‹¨ìš”ì•½ë¶„ë¥˜í‘œ</div>
-  <div class="info-box">
-    ì•½ê´€ì— ê·œì •í•˜ëŠ” 21ëŒ€ìƒí™œì§ˆë³‘ìœ¼ë¡œ ë¶„ë¥˜ë˜ëŠ” ì§ˆë³‘ì€ ì œ7ì°¨ ê°œì • í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜(í†µê³„ì²­ ê³ ì‹œ ì œ2015-309í˜¸, 2016. 1. 1ì‹œí–‰) ì¤‘ ë‹¤ìŒì— ì ì€ ì§ˆë³‘ì„ ë§í•©ë‹ˆë‹¤.
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">êµ¬ë¶„</th>
-        <th style="width: 75%;">í•´ë‹¹ ì§ˆë³‘</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${SAMSUNG_21_SURGERY_SECTIONS.map(sec => `
-        <tr>
-          <td class="cat-td">${sec.category}</td>
-          <td style="font-weight: 600;">${sec.diseases.join(', ')}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-
-  <!-- í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ -->
-  <div style="margin-top: 24px; font-size: 14px; font-weight: 800; color: #123941; border-bottom: 2px solid #123941; padding-bottom: 6px; margin-bottom: 12px;">
-    í•˜ë‹¨ì„¸ë¶€ë¶„ë¥˜í‘œ (21ëŒ€ìƒí™œì§ˆë³‘)
-  </div>
-
-  ${SAMSUNG_21_DISEASE_CODE_SECTIONS.map(cat => `
-    ${cat.subsections.map(sub => `
-      <div class="sec-title">[21ëŒ€ìƒí™œì§ˆë³‘] ${sub.title}</div>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 70%;">ë¶„ë¥˜í•­ëª©</th>
-            <th style="width: 30%; text-align: center;">ë¶„ë¥˜ë²ˆí˜¸</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${sub.items.map(item => `
-            <tr>
-              <td style="font-weight: 600;">${item.disease}</td>
-              <td class="text-center"><span class="code">${item.code}</span></td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    `).join('')}
-  `).join('')}
-
-  <div class="notes">
-    <strong>ì£¼) ì•½ê´€ ì ìš©ê¸°ì¤€</strong><br/>
-    1. ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜í‘œì˜ ë¶„ë¥˜ë²ˆí˜¸ì™€ ìƒë‹¹í•œ ì—°ê´€ì„±ì´ ìˆì–´, í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì˜ ê¸°ì¤€ì— ë”°ë¼ ë¶„ë¥˜ë²ˆí˜¸ë¥¼ ë™ì‹œì— ë¶€ì—¬ ê°€ëŠ¥í•œ ê²½ìš° ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜ì— í¬í•¨í•©ë‹ˆë‹¤. ë‹¨, ë³´í†µì•½ê´€ ë° íŠ¹ë³„ì•½ê´€ì— ë³„ë„ì˜ ê·œì •ì´ ìˆëŠ” ê²½ìš° í•´ë‹¹ ì¡°í•­ì„ ìš°ì„  ì ìš©í•©ë‹ˆë‹¤.<br/>
-    2. ì œ7ì°¨ ê°œì • ì´í›„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì˜ í•´ë‹¹ ì—¬ë¶€ëŠ” í”¼ë³´í—˜ìê°€ ì§„ë‹¨ëœ ë‹¹ì‹œ ì‹œí–‰ë˜ê³  ìˆëŠ” í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ íŒë‹¨í•©ë‹ˆë‹¤.<br/>
-    3. ì§„ë‹¨ ë‹¹ì‹œì˜ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì— ëŒ€í•œ ë³´í—˜ê¸ˆ ì§€ê¸‰ ì—¬ë¶€ê°€ íŒë‹¨ëœ ê²½ìš°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ ê°œì •ìœ¼ë¡œ ì§ˆë³‘ë¶„ë¥˜ê°€ ë³€ê²½ë˜ë”ë¼ë„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ í•´ë‹¹ ì—¬ë¶€ë¥¼ ë‹¤ì‹œ íŒë‹¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : activeSubTab === 'samsung_15' ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4; margin: 12mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
-    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
-    .text-center { text-align: center; }
-    .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
-    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
-    .rules-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.6; margin-top: 20px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ${SAMSUNG_1_5_SURGERY_DATA.title} (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">${SAMSUNG_1_5_SURGERY_DATA.title}</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <!-- Section I -->
-  <div class="sec-title">${SAMSUNG_1_5_SURGERY_DATA.section1.title}</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">êµ¬ë¶„</th>
-        <th style="width: 60%;">ìˆ˜ìˆ ëª…</th>
-        <th style="width: 15%; text-align: center;">ìˆ˜ìˆ ì¢…ë¥˜</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${SAMSUNG_1_5_SURGERY_DATA.section1.categories.map((cat) => {
-        const catRows = cat.items.reduce((acc, curr) => acc + 1 + (curr.subItems ? curr.subItems.length : 0), 0);
-        return cat.items.map((item, itemIdx) => {
-          return `
-            <tr>
-              ${itemIdx === 0 ? `<td rowspan="${catRows}" class="cat-td">${cat.category}${cat.subnote ? `<br/><span style="font-size:9px;font-weight:normal;color:#64748b;">${cat.subnote}</span>` : ''}</td>` : ''}
-              <td style="font-weight: 600;">${item.num}. ${item.name}</td>
-              <td class="text-center">${item.grade ? `<span class="badge">${item.grade}ì¢…</span>` : '-'}</td>
-            </tr>
-            ${item.subItems ? item.subItems.map((sub) => `
-              <tr style="background:#f8fafc;">
-                <td style="padding-left: 20px; color: #475569;">- ${sub.num}. ${sub.name}</td>
-                <td class="text-center"><span class="badge" style="background:#64748b;">${sub.grade}ì¢…</span></td>
-              </tr>
-            `).join('') : ''}
-          `;
-        }).join('');
-      }).join('')}
-    </tbody>
-  </table>
-  <div class="notes">
-    <strong>ì£¼)</strong><br/>
-    ${SAMSUNG_1_5_SURGERY_DATA.section1.notes.join('<br/>')}
-  </div>
-
-  <!-- Section II -->
-  <div class="sec-title">${SAMSUNG_1_5_SURGERY_DATA.section2.title}</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 85%;">ìˆ˜ìˆ ëª…</th>
-        <th style="width: 15%; text-align: center;">ìˆ˜ìˆ ì¢…ë¥˜</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${SAMSUNG_1_5_SURGERY_DATA.section2.items.map((item) => `
-        <tr>
-          <td style="font-weight: 600;">${item.num}. ${item.name}</td>
-          <td class="text-center"><span class="badge">${item.grade}ì¢…</span></td>
-        </tr>
-        ${item.subItems ? item.subItems.map((sub) => `
-          <tr style="background:#f8fafc;">
-            <td style="padding-left: 20px; color: #475569;">- ${sub.num}. ${sub.name}</td>
-            <td class="text-center"><span class="badge" style="background:#64748b;">${sub.grade}ì¢…</span></td>
-          </tr>
-        `).join('') : ''}
-      `).join('')}
-    </tbody>
-  </table>
-  <div class="notes">
-    <strong>ì£¼)</strong><br/>
-    ${SAMSUNG_1_5_SURGERY_DATA.section2.notes.join('<br/>')}
-  </div>
-
-  <!-- Section III -->
-  <div class="sec-title">${SAMSUNG_1_5_SURGERY_DATA.section3.title}</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 85%;">ìˆ˜ìˆ ëª…</th>
-        <th style="width: 15%; text-align: center;">ìˆ˜ìˆ ì¢…ë¥˜</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${SAMSUNG_1_5_SURGERY_DATA.section3.items.map((item) => `
-        <tr>
-          <td style="font-weight: 600;">${item.num}. ${item.name}</td>
-          <td class="text-center"><span class="badge">${item.grade}ì¢…</span></td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-  <div class="notes">
-    ${SAMSUNG_1_5_SURGERY_DATA.section3.notes.join('<br/>')}
-  </div>
-
-  <!-- Section IV Guidelines -->
-  <div class="rules-box">
-    <strong style="font-size: 12px; color: #123941;">${SAMSUNG_1_5_SURGERY_DATA.guidelines.title}</strong><br/><br/>
-    ${SAMSUNG_1_5_SURGERY_DATA.guidelines.rules.map(r => `<p style="margin-top:4px;margin-bottom:6px;">${r.replace(/\n/g, '<br/>')}</p>`).join('')}
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : activeSubTab === 'meritz_disease_integrated_treatment' ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(${meritzDiseaseIntegratedTab === '20m' ? '2000ë§Œì›' : meritzDiseaseIntegratedTab === '40m' ? '4000ë§Œì›' : '7000ë§Œì›'})</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 10.5px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 16px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .font-bold { font-weight: 700; }
-    .font-black { font-weight: 900; }
-    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
-    .notes { background: #1e293b; color: #f1f5f9; border: 1px solid #0f172a; padding: 12px; border-radius: 8px; font-size: 9.5px; line-height: 1.6; margin-top: 16px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ ë©”ë¦¬ì¸ í™”ì¬ - ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(${meritzDiseaseIntegratedTab === '20m' ? '2000ë§Œì›' : meritzDiseaseIntegratedTab === '40m' ? '4000ë§Œì›' : '7000ë§Œì›'}) (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">ë©”ë¦¬ì¸ í™”ì¬ - ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(${meritzDiseaseIntegratedTab === '20m' ? '2000ë§Œì›' : meritzDiseaseIntegratedTab === '40m' ? '4000ë§Œì›' : '7000ë§Œì›'})</h1>
-      <div class="subtitle">2-134. ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ë³´ì¥ íŠ¹ë³„ì•½ê´€</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    <strong>[ì•½ê´€ ë° ë³´ì¥ ê°œìš”]</strong><br/>
-    â€¢ ì œ1ì¡°(ë³´í—˜ê¸ˆì˜ ì§€ê¸‰ì‚¬ìœ ): íšŒì‚¬ëŠ” í”¼ë³´í—˜ìê°€ íŠ¹ë³„ì•½ê´€ì˜ ë³´í—˜ê¸°ê°„ ì¤‘ ì§ˆë³‘ì˜ ì§„ë‹¨ ë° ì¹˜ë£Œë¥¼ ìœ„í•œ í•„ìš” ì†Œê²¬ì„ í† ëŒ€ë¡œ ì§ˆë³‘ í†µí•©ì¹˜ë£Œ(ê²€ì‚¬/ìˆ˜ìˆ (1-5ì¢…)/ì£¼ìš”ì¹˜ë£Œ)ë¥¼ ë°›ì€ ê²½ìš° ê° í†µí•©ì¹˜ë£Œí•­ëª©ë³„ ì§€ê¸‰ê¸ˆì•¡ì„ ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ë¡œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    â€¢ ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ì˜ ì—°ê°„ ì´ ì§€ê¸‰ì•¡ì€ ì—°ê°„ ì§€ê¸‰ëœ ì§€ê¸‰ê¸ˆì•¡ì˜ í•©ê³„ì•¡ì„ ë§í•˜ë©°, ë³´í—˜ê°€ì…ê¸ˆì•¡ì„ í•œë„ë¡œ í•©ë‹ˆë‹¤.<br/>
-    â€¢ ã€Œì—°ê°„ã€ì´ë¼ í•¨ì€ ê³„ì•½ì¼ë¶€í„° ë§¤ 1ë…„ ë‹¨ìœ„ë¡œ ë„ë˜í•˜ëŠ” ê³„ì•½í•´ë‹¹ì¼ ì „ì¼ê¹Œì§€ì˜ ê¸°ê°„ì„ ë§í•©ë‹ˆë‹¤.
-  </div>
-
-  <div class="sec-title">&lt;ë³´í—˜ê°€ì…ê¸ˆì•¡ ${meritzDiseaseIntegratedTab === '20m' ? '2000ë§Œì›' : meritzDiseaseIntegratedTab === '40m' ? '4000ë§Œì›' : '7000ë§Œì›'}&gt; ë³´ì¥í•­ëª© ë° ì§€ê¸‰ê¸ˆì•¡ í‘œ</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 20%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 44%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 18%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="width: 18%; text-align: center; background: #e2e8f0;">ì§€ê¸‰ê¸ˆì•¡</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_DISEASE_INTEGRATED_TREATMENT_ITEMS.map((item) => {
-        const amount = item[meritzDiseaseIntegratedTab];
-        return `
-          <tr>
-            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-            <td class="font-black" style="color: #0f172a;">${item.name}</td>
-            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
-            <td class="text-center highlight">${amount}</td>
-          </tr>
-        `;
-      }).join('')}
-    </tbody>
-  </table>
-
-  <!-- ì „ ìœ í˜• (2000ë§Œì› / 4000ë§Œì› / 7000ë§Œì›) ì¢…í•© ë¹„êµí‘œ -->
-  <div class="sec-title" style="background: #334155;">&lt;ì „ ìœ í˜•(2000ë§Œì› / 4000ë§Œì› / 7000ë§Œì›) ë³´ì¥ê¸ˆì•¡ ì¢…í•© ë¹„êµí‘œ&gt;</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%; text-align: center;">êµ¬ë¶„</th>
-        <th style="width: 40%;">í†µí•©ì¹˜ë£Œí•­ëª©</th>
-        <th style="width: 15%; text-align: center;">ì§€ê¸‰íšŸìˆ˜</th>
-        <th style="text-align: center; width: 9%; ${meritzDiseaseIntegratedTab === '20m' ? 'background:#f0fdfa;color:#123941;font-weight:bold;' : 'background:#f1f5f9;'}">2000ë§Œì›</th>
-        <th style="text-align: center; width: 9%; ${meritzDiseaseIntegratedTab === '40m' ? 'background:#f0fdfa;color:#123941;font-weight:bold;' : 'background:#f1f5f9;'}">4000ë§Œì›</th>
-        <th style="text-align: center; width: 9%; ${meritzDiseaseIntegratedTab === '70m' ? 'background:#f0fdfa;color:#123941;font-weight:bold;' : 'background:#f1f5f9;'}">7000ë§Œì›</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${MERITZ_DISEASE_INTEGRATED_TREATMENT_ITEMS.map((item) => `
-        <tr>
-          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-          <td class="font-black">${item.name}</td>
-          <td class="text-center">${item.count}</td>
-          <td class="text-center" style="${meritzDiseaseIntegratedTab === '20m' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item['20m']}</td>
-          <td class="text-center" style="${meritzDiseaseIntegratedTab === '40m' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item['40m']}</td>
-          <td class="text-center" style="${meritzDiseaseIntegratedTab === '70m' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item['70m']}</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-
-  <div class="notes">
-    <strong style="color: #fbbf24; font-size: 10.5px;">ã€ì œ2ì¡°(ë³´í—˜ê¸ˆ ì§€ê¸‰ì— ê´€í•œ ì„¸ë¶€ê·œì •)ã€‘</strong><br/>
-    â‘  í”¼ë³´í—˜ìê°€ ì—°ê°„ 1ë…„ ì´ë‚´ì— ê°ê° ë‹¤ë¥¸ ã€ŒMRIì´¬ì˜(ê¸‰ì—¬)ã€ì„ ë°›ì€ ê²½ìš°ì—ë„ í†µí•©ì¹˜ë£Œí•­ëª© ì¤‘ MRIì´¬ì˜(ê¸‰ì—¬)ì— í•œí•˜ì—¬ ë¶€ìœ„ ë° íšŸìˆ˜ì™€ ê´€ê³„ì—†ì´ 1íšŒì˜ ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ë§Œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    â‘¡ í”¼ë³´í—˜ìê°€ ì—°ê°„ 1ë…„ ì´ë‚´ì— ê°ê° ë‹¤ë¥¸ ã€ŒCTì´¬ì˜(ê¸‰ì—¬)ã€ì„ ë°›ì€ ê²½ìš°ì—ë„ í†µí•©ì¹˜ë£Œí•­ëª© ì¤‘ CTì´¬ì˜(ê¸‰ì—¬)ì— í•œí•˜ì—¬ ë¶€ìœ„ ë° íšŸìˆ˜ì™€ ê´€ê³„ì—†ì´ 1íšŒì˜ ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ë§Œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    â‘¢ í”¼ë³´í—˜ìê°€ ì—°ê°„ 1ë…„ ì´ë‚´ì— ê°ê° ë‹¤ë¥¸ ã€Œì–‘ì „ìë‹¨ì¸µì´¬ì˜(PET)(ê¸‰ì—¬)ã€ì„ ë°›ì€ ê²½ìš°ì—ë„ í†µí•©ì¹˜ë£Œí•­ëª© ì¤‘ ì–‘ì „ìë‹¨ì¸µì´¬ì˜(PET)(ê¸‰ì—¬)ì— í•œí•˜ì—¬ ë¶€ìœ„ ë° íšŸìˆ˜ì™€ ê´€ê³„ì—†ì´ 1íšŒì˜ ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ë§Œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    â‘£ í”¼ë³´í—˜ìê°€ ì—°ê°„ 1ë…„ ì´ë‚´ì— ê°ê° ë‹¤ë¥¸ ã€ŒíŠ¹ì •ì‹œìˆ ì¹˜ë£Œ(í¡ì¸,ì²œì,ì ˆê°œ)(ê¸‰ì—¬)ã€ë¥¼ ë°›ì€ ê²½ìš°ì—ë„ í†µí•©ì¹˜ë£Œí•­ëª© ì¤‘ íŠ¹ì •ì‹œìˆ ì¹˜ë£Œ(í¡ì¸,ì²œì,ì ˆê°œ)(ê¸‰ì—¬)ì— í•œí•˜ì—¬ ë¶€ìœ„ ë° íšŸìˆ˜ì™€ ê´€ê³„ì—†ì´ 1íšŒì˜ ì§ˆë³‘ í†µí•©ì¹˜ë£Œë¹„ë§Œ ì§€ê¸‰í•©ë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : activeSubTab === 'kb_integrated_treatment' ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(${kbIntegratedTab === 'practical' ? 'ì‹¤ì†í˜•' : kbIntegratedTab === 'basic' ? 'ê¸°ë³¸í˜•' : 'ê³ ê¸‰í˜•'})</title>
-  <style>
-    @page { size: A4 portrait; margin: 10mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 10.5px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
-    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 16px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
-    .text-center { text-align: center; }
-    .font-bold { font-weight: 700; }
-    .font-black { font-weight: 900; }
-    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
-    .notes { background: #1e293b; color: #f1f5f9; border: 1px solid #0f172a; padding: 12px; border-radius: 8px; font-size: 9.5px; line-height: 1.6; margin-top: 16px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 12px;">ğŸ“„ KBì†í•´ë³´í—˜ - ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(${kbIntegratedTab === 'practical' ? 'ì‹¤ì†í˜•' : kbIntegratedTab === 'basic' ? 'ê¸°ë³¸í˜•' : 'ê³ ê¸‰í˜•'}) (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">KBì†í•´ë³´í—˜ - ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(${kbIntegratedTab === 'practical' ? 'ì‹¤ì†í˜•' : kbIntegratedTab === 'basic' ? 'ê¸°ë³¸í˜•' : 'ê³ ê¸‰í˜•'})</h1>
-      <div class="subtitle">${
-        kbIntegratedTab === 'practical' ? '237. ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(ì‹¤ì†í˜•)(ë§ì¶¤ê³ ì§€) / 237-1. ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(ì‹¤ì†í˜•)(ë§ì¶¤ê³ ì§€) ã€ê°±ì‹ ê³„ì•½ã€‘'
-        : kbIntegratedTab === 'basic' ? '238. ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(ê¸°ë³¸í˜•)(ë§ì¶¤ê³ ì§€) / 238-1. ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(ê¸°ë³¸í˜•)(ë§ì¶¤ê³ ì§€) ã€ê°±ì‹ ê³„ì•½ã€‘'
-        : '239. ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(ê³ ê¸‰í˜•)(ë§ì¶¤ê³ ì§€) / 239-1. ì§ˆë³‘í†µí•©ì¹˜ë£Œë¹„(ê³ ê¸‰í˜•)(ë§ì¶¤ê³ ì§€) ã€ê°±ì‹ ê³„ì•½ã€‘'
-      }</div>
-    </div>
-    <div style="text-align: right; font-size: 10px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    <strong>(ã€ê°±ì‹ ê³„ì•½ã€‘ì€ ìë™ê°±ì‹ ìœ¼ë¡œ ìš´ì˜í•©ë‹ˆë‹¤)</strong><br/>
-    ì œ1ì¡°(ë³´í—˜ê¸ˆì˜ ì§€ê¸‰ì‚¬ìœ ): íšŒì‚¬ëŠ” í”¼ë³´í—˜ìê°€ íŠ¹ë³„ì•½ê´€ì˜ ë³´í—˜ê¸°ê°„ ì¤‘ ì§ˆë³‘ì˜ ì§„ë‹¨ ë° ì¹˜ë£Œë¥¼ ìœ„í•œ í•„ìš”ì†Œê²¬ì„ í† ëŒ€ë¡œ í•´ë‹¹ë˜ëŠ” ì˜ë£Œí–‰ìœ„ë¥¼ ë°›ì€ ê²½ìš° ë³´ì¥í•­ëª©ë³„ë¡œ ê°ê° ì •í•´ì§„ ì§€ê¸‰ê¸ˆì•¡ì„ ì§€ê¸‰í•©ë‹ˆë‹¤.
-  </div>
-
-  <div class="sec-title">&lt;${kbIntegratedTab === 'practical' ? 'ì‹¤ì†í˜•' : kbIntegratedTab === 'basic' ? 'ê¸°ë³¸í˜•' : 'ê³ ê¸‰í˜•'}&gt; ë³´ì¥í•­ëª© ë° ì§€ê¸‰ê¸ˆì•¡ í‘œ</div>
-  <table>
-    <thead>
-      <tr>
-        <th rowSpan="2" style="width: 22%; text-align: center;">êµ¬ë¶„</th>
-        <th rowSpan="2" style="width: 28%;">ë³´ì¥í•­ëª©</th>
-        <th rowSpan="2" style="width: 14%; text-align: center;">ì§€ê¸‰ë°©ì‹</th>
-        <th colSpan="3" style="text-align: center; background: #e2e8f0;">ì§€ê¸‰ê¸ˆì•¡</th>
-      </tr>
-      <tr>
-        <th style="width: 12%; text-align: center;">ìµœì´ˆì˜ ê³„ì•½<br/>1ë…„ë¯¸ë§Œ</th>
-        <th style="width: 12%; text-align: center;">ìµœì´ˆì˜ ê³„ì•½<br/>1ë…„ì´ìƒ</th>
-        <th style="width: 12%; text-align: center;">ê°±ì‹ ëœ ê³„ì•½</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${KB_INTEGRATED_TREATMENT_ITEMS.map((item) => {
-        const amounts = item[kbIntegratedTab] || item.practical;
-        return `
-          <tr>
-            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-            <td class="font-black" style="color: #0f172a;">${item.name}</td>
-            <td class="text-center font-bold" style="color: #475569;">${item.method}</td>
-            <td class="text-center font-bold">${amounts.under1yr}</td>
-            <td class="text-center highlight">${amounts.over1yr}</td>
-            <td class="text-center highlight">${amounts.renew}</td>
-          </tr>
-        `;
-      }).join('')}
-    </tbody>
-  </table>
-
-  <!-- ì „ ìœ í˜• (ì‹¤ì†í˜• / ê¸°ë³¸í˜• / ê³ ê¸‰í˜•) ì¢…í•© ë¹„êµí‘œ -->
-  <div class="sec-title" style="background: #334155;">&lt;ì „ ìœ í˜•(ì‹¤ì†í˜• / ê¸°ë³¸í˜• / ê³ ê¸‰í˜•) ë³´ì¥ê¸ˆì•¡ ì¢…í•© ë¹„êµí‘œ&gt;</div>
-  <table>
-    <thead>
-      <tr>
-        <th rowSpan="2" style="width: 20%; text-align: center;">êµ¬ë¶„</th>
-        <th rowSpan="2" style="width: 26%;">ë³´ì¥í•­ëª©</th>
-        <th rowSpan="2" style="width: 12%; text-align: center;">ì§€ê¸‰ë°©ì‹</th>
-        <th style="text-align: center; background: #f1f5f9;" colSpan="1">ì‹¤ì†í˜•</th>
-        <th style="text-align: center; background: #f1f5f9;" colSpan="1">ê¸°ë³¸í˜•</th>
-        <th style="text-align: center; background: #f1f5f9;" colSpan="1">ê³ ê¸‰í˜•</th>
-      </tr>
-      <tr>
-        <th style="text-align: center;">1ë…„ì´ìƒ (1ë…„ë¯¸ë§Œ/ê°±ì‹ )</th>
-        <th style="text-align: center;">1ë…„ì´ìƒ (1ë…„ë¯¸ë§Œ/ê°±ì‹ )</th>
-        <th style="text-align: center;">1ë…„ì´ìƒ (1ë…„ë¯¸ë§Œ/ê°±ì‹ )</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${KB_INTEGRATED_TREATMENT_ITEMS.map((item) => `
-        <tr>
-          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
-          <td class="font-black">${item.name}</td>
-          <td class="text-center">${item.method}</td>
-          <td class="text-center" style="${kbIntegratedTab === 'practical' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.practical.over1yr} (${item.practical.under1yr} / ${item.practical.renew})</td>
-          <td class="text-center" style="${kbIntegratedTab === 'basic' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.basic.over1yr} (${item.basic.under1yr} / ${item.basic.renew})</td>
-          <td class="text-center" style="${kbIntegratedTab === 'luxury' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.luxury.over1yr} (${item.luxury.under1yr} / ${item.luxury.renew})</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>
-
-  <div class="notes">
-    <strong style="color: #fbbf24; font-size: 10.5px;">ã€ì œ2ì¡°(ë³´í—˜ê¸ˆ ì§€ê¸‰ì— ê´€í•œ ì„¸ë¶€ê·œì •)ã€‘</strong><br/>
-    1. "ì§ˆë³‘í†µí•©ì¹˜ë£Œ(ìˆ˜ìˆ )"ì˜ ê²½ìš° íšŒì‚¬ëŠ” í”¼ë³´í—˜ìê°€ ë™ì‹œì— ë‘ ì¢…ë¥˜ ì´ìƒì˜ ì§ˆë³‘ìˆ˜ìˆ ì„ ë°›ì€ ê²½ìš°ì—ëŠ” ê·¸ ìˆ˜ìˆ  ì¤‘ ê°€ì¥ ë†’ì€ ì§€ê¸‰ê¸ˆì•¡ì— í•´ë‹¹í•˜ëŠ” í•œ ì¢…ë¥˜ì˜ ìˆ˜ìˆ ì— ëŒ€í•˜ì—¬ë§Œ ë³´ì¥í•©ë‹ˆë‹¤.<br/>
-    2. ë™ì¼í•œ ì‹ ì²´ë¶€ìœ„ë¼ í•¨ì€ ê°ê° ëˆˆ, ê·€, ì½”, ì”¹ì–´ë¨¹ê±°ë‚˜ ë§í•˜ëŠ” ê¸°ëŠ¥ê³¼ ê´€ë ¨ëœ ì‹ ì²´ë¶€ìœ„, ë¨¸ë¦¬, ëª©, ì²™ì¶”(ë“±ë¼ˆ), ì²´ê°„ê³¨, í‰ë¶€ì¥ê¸°Â·ë³µë¶€ì¥ê¸°Â·ë¹„ë‡¨ìƒì‹ê¸°, íŒ”, ë‹¤ë¦¬, ì†ê°€ë½, ë°œê°€ë½ì„ ë§í•˜ë©°, ëˆˆ, ê·€, íŒ”, ë‹¤ë¦¬ëŠ” ì¢ŒÂ·ìš°ë¥¼ ê°ê° ë‹¤ë¥¸ ì‹ ì²´ë¶€ìœ„ë¡œ ë´…ë‹ˆë‹¤.<br/>
-    3. í”¼ë³´í—˜ìê°€ ì—°ê°„ 1ë…„ ì´ë‚´ì— ê°ê° ë‹¤ë¥¸ "ì§ˆë³‘íŠ¹ì •ì‹œìˆ ì¹˜ë£Œ(ë„ìˆ˜ì •ë³µìˆ )" / "ì§ˆë³‘íŠ¹ì •ì‹œìˆ ì¹˜ë£Œ(ê¸°íƒ€ì‹œìˆ )" / "ì§ˆë³‘íŠ¹ì •ì‹œìˆ ì¹˜ë£Œ(ë‹¨ìˆœì°½ìƒë´‰í•©ìˆ )" ë“±ì„ ë°›ì€ ê²½ìš°ì—ë„ ë¶€ìœ„ ë° íšŸìˆ˜ì™€ ê´€ê³„ì—†ì´ ë³´ì¥í•­ëª©ë³„ë¡œ ì—°ê°„ 1íšŒë§Œ ì§€ê¸‰í•©ë‹ˆë‹¤.<br/>
-    4. ì§€ì†ì ì‹ ëŒ€ì²´ìš”ë²•(CRRT), ì¸ê³µí˜¸í¡ê¸°(12ì‹œê°„ì´ˆê³¼)ì¹˜ë£Œ, ì €ì²´ì˜¨ìš”ë²•ì¹˜ë£Œ, ì¢…í•©ë³‘ì› ì „ì‹ ë§ˆì·¨ì¹˜ë£Œ(6ì‹œê°„ì´ìƒ) ë“±ì„ ë°›ì€ ê²½ìš°ì—ë„ ê° ë³´ì¥í•­ëª©ë³„ ë¶€ìœ„ ë° íšŸìˆ˜ì™€ ê´€ê³„ì—†ì´ ê·œì •ì— ë”°ë¼ ì§€ê¸‰í•©ë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : activeSubTab === 'samsung_major_cancer' ? `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title}</title>
-  <style>
-    @page { size: A4; margin: 12mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 12px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 20px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 11px; line-height: 1.6; color: #334155; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #123941; color: #ffffff; font-weight: 800; text-align: left; padding: 10px 12px; border: 1px solid #123941; }
-    td { border: 1px solid #cbd5e1; padding: 8px 12px; color: #334155; }
-    .main-row { background: #f8fafc; font-weight: 800; color: #123941; }
-    .sub-row { color: #475569; }
-    .text-center { text-align: center; }
-    .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
-    .notes { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; font-size: 11px; color: #475569; line-height: 1.6; margin-top: 16px; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 20px; padding: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 13px;">ğŸ“„ [ë³„í‘œ-ì§ˆë³‘ê´€ë ¨7] 10ëŒ€ ì£¼ìš”ì•” ë¶„ë¥˜í‘œ (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 8px 16px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">[ë³„í‘œ-ì§ˆë³‘ê´€ë ¨7] 10ëŒ€ ì£¼ìš”ì•” ë¶„ë¥˜í‘œ</div>
-    </div>
-    <div style="text-align: right; font-size: 11px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  <div class="info-box">
-    <strong>[ë³„í‘œ-ì§ˆë³‘ê´€ë ¨7] 10ëŒ€ ì£¼ìš”ì•” ë¶„ë¥˜í‘œ ì ìš© ì•ˆë‚´</strong><br/>
-    ì•½ê´€ì— ê·œì •í•˜ëŠ” 10ëŒ€ ì£¼ìš”ì•”ìœ¼ë¡œ ë¶„ë¥˜ë˜ëŠ” ì§ˆë³‘ì€ ì œ9ì°¨ ê°œì • í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜(í†µê³„ì²­ ê³ ì‹œ ì œ2025-299í˜¸, 2026. 1. 1 ì‹œí–‰) ì¤‘ ë‹¤ìŒì— ì ì€ ì§ˆë³‘ì„ ë§í•˜ë©°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ê°€ ê°œì •ë˜ëŠ” ê²½ìš°ëŠ” ê°œì •ëœ ê¸°ì¤€ì— ë”°ë¼ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì˜ í•´ë‹¹ ì—¬ë¶€ë¥¼ íŒë‹¨í•©ë‹ˆë‹¤.
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 70%;">ë¶„ë¥˜í•­ëª©</th>
-        <th style="width: 30%; text-align: center;">ë¶„ë¥˜ë²ˆí˜¸</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${SAMSUNG_MAJOR_CANCER_SECTIONS.map((item) => `
-        <tr class="main-row">
-          <td>${item.num}. ${item.disease}</td>
-          <td class="text-center"><span class="badge">${item.code}</span></td>
-        </tr>
-        ${item.subItems ? item.subItems.map((sub) => `
-          <tr class="sub-row">
-            <td style="padding-left: 28px;">- ${sub.disease}</td>
-            <td class="text-center"><span class="code">${sub.code}</span></td>
-          </tr>
-        `).join('') : ''}
-      `).join('')}
-    </tbody>
-  </table>
-
-  <div class="notes">
-    <strong>ì£¼)</strong><br/>
-    1. ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜í‘œì˜ ë¶„ë¥˜ë²ˆí˜¸ì™€ ìƒë‹¹í•œ ì—°ê´€ì„±ì´ ìˆì–´, í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì˜ ê¸°ì¤€ì— ë”°ë¼ ë¶„ë¥˜ë²ˆí˜¸ë¥¼ ë™ì‹œì— ë¶€ì—¬ ê°€ëŠ¥í•œ ê²½ìš° ëŒ€ìƒì§ˆë³‘ ë¶„ë¥˜ì— í¬í•¨í•©ë‹ˆë‹¤. ë‹¨, ë³´í†µì•½ê´€ ë° íŠ¹ë³„ì•½ê´€ì— ë³„ë„ì˜ ê·œì •ì´ ìˆëŠ” ê²½ìš° í•´ë‹¹ ì¡°í•­ì„ ìš°ì„  ì ìš©í•©ë‹ˆë‹¤.<br/>
-    2. ì œ10ì°¨ ê°œì • ì´í›„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì˜ í•´ë‹¹ ì—¬ë¶€ëŠ” í”¼ë³´í—˜ìê°€ ì§„ë‹¨ëœ ë‹¹ì‹œ ì‹œí–‰ë˜ê³  ìˆëŠ” í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ íŒë‹¨í•©ë‹ˆë‹¤.<br/>
-    3. ì§„ë‹¨ ë‹¹ì‹œì˜ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ì— ë”°ë¼ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ì— ëŒ€í•œ ë³´í—˜ê¸ˆ ì§€ê¸‰ ì—¬ë¶€ê°€ íŒë‹¨ëœ ê²½ìš°, ì´í›„ í•œêµ­í‘œì¤€ì§ˆë³‘Â·ì‚¬ì¸ë¶„ë¥˜ ê°œì •ìœ¼ë¡œ ì§ˆë³‘ë¶„ë¥˜ê°€ ë³€ê²½ë˜ë”ë¼ë„ ì´ ì•½ê´€ì—ì„œ ë³´ì¥í•˜ëŠ” ì§ˆë³‘ í•´ë‹¹ ì—¬ë¶€ë¥¼ ë‹¤ì‹œ íŒë‹¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
-  </div>
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>` : `<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>${selectedInsurer.name} - ${title} ì•½ê´€ ë¶„ë¥˜í‘œ</title>
-  <style>
-    @page { size: A4; margin: 12mm; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 12px; background: #fff; }
-    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 20px; font-weight: 800; color: #123941; margin: 0; }
-    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
-    .section-title { font-size: 14px; font-weight: 800; color: #123941; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px 12px; border-radius: 6px; margin-top: 24px; margin-bottom: 12px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px; page-break-inside: auto; }
-    tr { page-break-inside: avoid; page-break-after: auto; }
-    th { background: #f8fafc; color: #123941; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
-    td { border: 1px solid #e2e8f0; padding: 7px 10px; color: #334155; }
-    .text-center { text-align: center; }
-    .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
-    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
-    @media print {
-      .no-print { display: none !important; }
-      body { padding: 0; }
-    }
-  </style>
-</head>
-<body>
-  <div class="no-print" style="margin-bottom: 20px; padding: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-weight: bold; color: #123941; font-size: 13px;">ğŸ“„ ì•½ê´€ ì„¸ë¶€ ì§ˆë³‘ ë¶„ë¥˜í‘œ / KCD ì½”ë“œ (ì¸ì‡„ ë° PDF ì €ì¥ìš©)</span>
-    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 8px 16px; font-weight: bold; border-radius: 6px; cursor: pointer;">ğŸ–¨ï¸ PDF ì¶œë ¥ / ì¸ì‡„í•˜ê¸°</button>
-  </div>
-
-  <div class="header">
-    <div>
-      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
-      <div class="subtitle">ì•½ê´€ ì„¸ë¶€ ì§ˆë³‘ ë¶„ë¥˜í‘œ ë° KCD ì§ˆë³‘ì½”ë“œ ìš”ì•½ì§‘</div>
-    </div>
-    <div style="text-align: right; font-size: 11px; color: #64748b;">
-      ë°œê¸‰ì¼: ${new Date().toLocaleDateString('ko-KR')}
-    </div>
-  </div>
-
-  ${summariesList && summariesList.length > 0 ? `
-  <div class="section-title">ğŸ“Œ [ìƒë‹¨ ìš”ì•½ ë¶„ë¥˜í‘œ]</div>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 160px; text-align: center;">êµ¬ ë¶„</th>
-        <th>í•´ë‹¹ ì§ˆë³‘ / ì£¼ìš” ë³´ì¥ ë¶„ë¥˜</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${summariesList.map((sec: any, idx: number) => {
-        let categoryLabel = sec.category;
-        if (!categoryLabel) {
-          if (sec.group && sec.title && sec.group !== sec.title) {
-            categoryLabel = `${sec.group} (${sec.title})`;
-          } else {
-            categoryLabel = sec.title || sec.group || sec.name || `ê·¸ë£¹ ${idx + 1}`;
-          }
-        }
-
-        let diseasesList: string[] = [];
-        if (Array.isArray(sec.diseases)) {
-          diseasesList = sec.diseases;
-        } else if (typeof sec.diseases === 'string') {
-          diseasesList = sec.diseases.split(',').map((s: string) => s.trim()).filter(Boolean);
-        } else if (Array.isArray(sec.items)) {
-          diseasesList = sec.items.map((i: any) => i.disease || i.name || '').filter(Boolean);
-        } else if (sec.title && sec.group && sec.title !== sec.group) {
-          diseasesList = [sec.title];
-        } else if (sec.title && sec.title !== categoryLabel) {
-          diseasesList = [sec.title];
-        } else if (sec.name) {
-          diseasesList = [sec.name];
-        }
-
-        const diseasesText = diseasesList.length > 0 ? diseasesList.join(', ') : '-';
-
-        return `<tr>
-          <td class="text-center" style="font-weight: bold; background: #f8fafc; vertical-align: top; width: 160px;">${categoryLabel}</td>
-          <td style="font-weight: bold; color: #0f172a; line-height: 1.5; white-space: pre-wrap;">${diseasesText}</td>
-        </tr>`;
-      }).join('')}
-    </tbody>
-  </table>
-  ` : ''}
-
-  <div class="section-title">ğŸ“‹ [í•˜ë‹¨ ì„¸ë¶€ ë¶„ë¥˜í‘œ] (ì„¸ë¶€ ì§ˆë³‘ëª… ë° KCD ë¶„ë¥˜ë²ˆí˜¸)</div>
-  ${(sectionsList || []).map((sec: any, idx: number) => {
-    const itemList = sec.items || sec.diseases || [];
-    let groupBadge = sec.group || '';
-    let displayTitle = sec.title || sec.category || 'êµ¬ë¶„';
-
-    if (!groupBadge && displayTitle.startsWith('[')) {
-      const match = displayTitle.match(/^\[(.*?)\]\s*(.*)$/);
-      if (match) {
-        groupBadge = match[1];
-        displayTitle = match[2];
-      }
-    }
-
-    return `
-    <div style="margin-top: 16px; margin-bottom: 8px; font-weight: 800; font-size: 13px; color: #0f172a; display: flex; align-items: center; gap: 8px;">
-      ${groupBadge ? `<span class="badge">${groupBadge}</span>` : `<span class="badge" style="background:#64748b;">#${idx+1}</span>`}
-      <span>${displayTitle}</span>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 70%;">ì§ˆë³‘ëª… / ë³´ì¥ëŒ€ìƒ ë¶„ë¥˜</th>
-          <th style="width: 30%; text-align: center;">KCD ì§ˆë³‘ì½”ë“œ</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${itemList.map((item: any) => {
-          const isObj = typeof item === 'object' && item !== null;
-          const diseaseName = isObj ? (item.disease || item.name) : item;
-          const diseaseCode = isObj ? (item.code || '-') : '-';
-          let rows = `<tr>
-            <td style="font-weight: 600; white-space: pre-wrap;">${diseaseName}</td>
-            <td class="text-center">${diseaseCode !== '-' ? `<span class="code">${diseaseCode}</span>` : '-'}</td>
-          </tr>`;
-          if (isObj && item.subItems && Array.isArray(item.subItems)) {
-            rows += item.subItems.map((sub: any) => `
-              <tr style="background: #f8fafc;">
-                <td style="font-weight: 500; padding-left: 24px; font-size: 10.5px; color: #334155;">- ${sub.disease || sub.name}</td>
-                <td class="text-center">${sub.code ? `<span class="code" style="font-size: 10px;">${sub.code}</span>` : '-'}</td>
-              </tr>
-            `).join('');
-          }
-          return rows;
-        }).join('')}
-      </tbody>
-    </table>
-    ${sec.notes && Array.isArray(sec.notes) && sec.notes.length > 0 ? `
-      <div style="margin-top: -10px; margin-bottom: 16px; padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 10.5px; color: #475569;">
-        ${sec.notes.map((n: string) => `<div><strong>ì£¼)</strong> ${n}</div>`).join('')}
-      </div>
-    ` : ''}
-    `;
-  }).join('')}
-
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        window.print();
-      }, 300);
-    };
-  </script>
-</body>
-</html>`;
-
-    // Generate and download true PDF file binary
-    try {
-      setIsGeneratingPdf(true);
-      await downloadPdfFromHtml(htmlContent, filename);
-    } catch (e) {
-      console.error('PDF generation failed:', e);
-      try {
-        const printWin = window.open('', '_blank');
-        if (printWin) {
-          printWin.document.write(htmlContent);
-          printWin.document.close();
-        } else {
-          window.print();
-        }
-      } catch (printErr) {
-        console.error('Fallback print failed:', printErr);
-      }
-    } finally {
-      setIsGeneratingPdf(false);
-    }
-  };
-
-  // Main Return for TermsMaster
-  const currentSections = (() => {
-    switch (selectedInsurer.id) {
-      case 'meritz-fire':
-        if (activeSubTab === 'meritz_integrated_cancer') return MERITZ_INTEGRATED_CANCER_SECTIONS;
-        if (activeSubTab === 'meritz_integrated_cancer_metastasis') return MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS;
-        if (activeSubTab === 'meritz_integrated_treatment') return MERITZ_INTEGRATED_TREATMENT_SECTIONS;
-        if (activeSubTab === 'meritz_practical_treatment') return MERITZ_PRACTICAL_TREATMENT_SECTIONS;
-        if (activeSubTab === 'meritz_noncovered_treatment') return MERITZ_NONCOVERED_TREATMENT_SECTIONS;
-        if (activeSubTab === 'meritz_noncovered_primary_treatment') return MERITZ_NONCOVERED_PRIMARY_TREATMENT_SECTIONS;
-        if (activeSubTab === 'meritz_disease_integrated_treatment') return MERITZ_DISEASE_INTEGRATED_TREATMENT_SECTIONS;
-        if (activeSubTab === 'meritz_surgery1_5') return MERITZ_SURGERY1_5_SECTIONS;
-        if (activeSubTab === 'meritz_7diseases') return MERITZ_7_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_18diseases') return MERITZ_18_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_30diseases') return MERITZ_30_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_32diseases') return MERITZ_32_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_64diseases') return MERITZ_64_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_82diseases') return MERITZ_82_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_131diseases') return MERITZ_131_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_6heart') return MERITZ_6HEART_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_5diseases' || activeSubTab === 'meritz_5diseases_surgery') return MERITZ_5_DISEASES_SECTIONS;
-        if (activeSubTab === 'meritz_integrated_cancer_standard') return MERITZ_INTEGRATED_CANCER_SECTIONS;
-        return MERITZ_INTEGRATED_CANCER_SECTIONS;
-      case 'samsung-fire':
-        if (activeSubTab === 'samsung_cancer') return SAMSUNG_CANCER_SECTIONS;
-        if (activeSubTab === 'samsung_major_cancer') return SAMSUNG_MAJOR_CANCER_SECTIONS;
-        if (activeSubTab === 'samsung_111') return SAMSUNG_111_SURGERY_SECTIONS;
-        if (activeSubTab === 'samsung_15_disease') return SAMSUNG_15_SURGERY_SECTIONS;
-        if (activeSubTab === 'samsung_15') return SAMSUNG_15_SURGERY_SECTIONS;
-        if (activeSubTab === 'samsung_21') return SAMSUNG_21_SURGERY_SECTIONS;
-        return SAMSUNG_CANCER_SECTIONS;
-      case 'kb-ins':
-        if (activeSubTab === 'kb_cancer') return KB_CANCER_SECTIONS;
-        if (activeSubTab === 'kb_cancer_metastasis') return KB_CANCER_METASTASIS_SECTIONS;
-        if (activeSubTab === 'kb_metastasis') return KB_METASTASIS_SECTIONS;
-        if (activeSubTab === 'kb_specific_cancer2') return KB_SPECIFIC_CANCER2_SECTIONS;
-        if (activeSubTab === 'kb_10high_cancer') return KB_10HIGH_CANCER_SECTIONS;
-        if (activeSubTab === 'kb_brain') return KB_BRAIN_SECTIONS;
-        if (activeSubTab === 'kb_heart_1') return KB_HEART_SPECIFIC1_SECTIONS;
-        if (activeSubTab === 'kb_heart_2') return KB_HEART_SPECIFIC2_SECTIONS;
-        if (activeSubTab === 'kb_surgery1_5') return KB_SURGERY_1_5_SECTIONS;
-        if (activeSubTab === 'kb_integrated_treatment') return KB_INTEGRATED_TREATMENT_SECTIONS;
-        if (activeSubTab === 'kb_surgery14') return KB_SURGERY_14_SECTIONS;
-        if (activeSubTab === 'kb_surgery16') return KB_SURGERY_16_SECTIONS;
-        if (activeSubTab === 'kb_surgery20') return KB_SURGERY_20_SECTIONS;
-        if (activeSubTab === 'kb_surgery21') return KB_SURGERY_21_SECTIONS;
-        if (activeSubTab === 'kb_surgery101') return KB_SURGERY_101_SECTIONS;
-        if (activeSubTab === 'kb_surgery112') return KB_SURGERY_112_SECTIONS;
-        if (activeSubTab === 'kb_surgery116') return KB_SURGERY_116_SECTIONS;
-        return KB_CANCER_SECTIONS;
-      case 'hanwha-general':
-        if (activeSubTab === 'hanwha_integrated_cancer') return HANWHA_WOMEN_INTEGRATED_CANCER_SECTIONS;
-        if (activeSubTab === 'hanwha_integrated_cancer_primary') return HANWHA_WOMEN_PRIMARY_CANCER_SECTIONS;
-        if (activeSubTab === 'hanwha_integrated_metastatic_cancer') return HANWHA_WOMEN_METASTATIC_CANCER_SECTIONS;
-        if (activeSubTab === 'hanwha_integrated_heart_1') return HANWHA_HEART_1_SECTIONS;
-        if (activeSubTab === 'hanwha_integrated_heart_2') return HANWHA_HEART_2_SECTIONS;
-        if (activeSubTab === 'hanwha_cardiovascular_5') {
-          if (hanwhaCardio5Tab === 'tab1') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB1;
-          if (hanwhaCardio5Tab === 'tab2') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB2;
-          if (hanwhaCardio5Tab === 'tab3') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB3;
-          if (hanwhaCardio5Tab === 'tab4') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB4;
-          if (hanwhaCardio5Tab === 'tab5') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB5;
-          return HANWHA_CARDIOVASCULAR_5_ALL_SECTIONS;
-        }
-        if (activeSubTab === 'hanwha_integrated_brain') return HANWHA_INTEGRATED_BRAIN_SECTIONS;
-        if (activeSubTab === 'hanwha_integrated_treatment') return HANWHA_INTEGRATED_TREATMENT_SECTIONS;
-        if (activeSubTab === 'hanwha_injury_integrated_treatment') return HANWHA_INJURY_INTEGRATED_TREATMENT_SECTIONS;
-        if (activeSubTab === 'hanwha_surgery1_5') return HANWHA_SURGERY_1_5_SECTIONS;
-        if (activeSubTab === 'hanwha_women_life_1_5') return HANWHA_WOMEN_LIFE_1_5_SECTIONS;
-        if (activeSubTab === 'hanwha_women_major_life_1_5') return HANWHA_WOMEN_MAJOR_LIFE_1_5_SECTIONS;
-        if (activeSubTab === 'hanwha_124diseases') return HANWHA_124_DISEASES_SECTIONS;
-        if (activeSubTab === 'hanwha_34diseases') return HANWHA_34_DISEASES_SECTIONS;
-        if (activeSubTab === 'hanwha_56diseases') return HANWHA_56_DISEASES_SECTIONS;
-        if (activeSubTab === 'hanwha_18diseases') return HANWHA_18_DISEASES_SECTIONS;
-        if (activeSubTab === 'hanwha_16diseases') return HANWHA_16_DISEASES_SECTIONS;
-        if (activeSubTab === 'hanwha_14diseases') return HANWHA_14_DISEASES_SECTIONS;
-        return HANWHA_WOMEN_INTEGRATED_CANCER_SECTIONS;
-      case 'lotte-ins':
-        if (activeSubTab === 'lotte_integrated_cancer') return LOTTE_INTEGRATED_CANCER_SECTIONS;
-        if (activeSubTab === 'lotte_integrated_cancer_with_metastasis') return LOTTE_INTEGRATED_CANCER_WITH_METASTASIS_SECTIONS;
-        if (activeSubTab === 'lotte_integrated_metastatic_cancer') return LOTTE_INTEGRATED_METASTATIC_CANCER_SECTIONS;
-        if (activeSubTab === 'lotte_high_cancer') return LOTTE_HIGH_CANCER_SECTIONS;
-        if (activeSubTab === 'lotte_brain_disease') return LOTTE_BRAIN_DISEASE_SECTIONS;
-        if (activeSubTab === 'lotte_cardiovascular_simple') {
-          return lotteCardiovascularSimpleTab === 'I'
-            ? LOTTE_CARDIOVASCULAR_SIMPLE_I_SECTIONS
-            : lotteCardiovascularSimpleTab === 'II'
-            ? LOTTE_CARDIOVASCULAR_SIMPLE_II_SECTIONS
-            : LOTTE_CARDIOVASCULAR_SIMPLE_15_SECTIONS;
-        }
-        if (activeSubTab === 'lotte_cardiovascular') return LOTTE_CARDIOVASCULAR_SECTIONS;
-        if (activeSubTab === 'lotte_surgery1_5') return LOTTE_SURGERY1_5_SECTIONS;
-        if (activeSubTab === 'lotte_surgery7') return LOTTE_SURGERY_7_SECTIONS;
-        if (activeSubTab === 'lotte_surgery16') return LOTTE_SURGERY_16_SECTIONS;
-        if (activeSubTab === 'lotte_surgery18') return LOTTE_SURGERY_18_SECTIONS;
-        if (activeSubTab === 'lotte_surgery20') return LOTTE_SURGERY_20_SECTIONS;
-        if (activeSubTab === 'lotte_surgery34') return LOTTE_SURGERY_34_SECTIONS;
-        if (activeSubTab === 'lotte_surgery64') return LOTTE_SURGERY_64_SECTIONS;
-        if (activeSubTab === 'lotte_surgery142') return LOTTE_SURGERY_142_SECTIONS;
-        return LOTTE_INTEGRATED_CANCER_SECTIONS;
-      case 'hyundai-marine':
-        if (activeSubTab === 'hyundai_male_cancer') return HYUNDAI_MALE_CANCER_SECTIONS;
-        if (activeSubTab === 'hyundai_female_cancer') return HYUNDAI_FEMALE_CANCER_SECTIONS;
-        if (activeSubTab === 'hyundai_specific_cancer') return HYUNDAI_SPECIFIC_CANCER_SECTIONS;
-        if (activeSubTab === 'hyundai_heart') return HYUNDAI_HEART_SECTIONS;
-        if (activeSubTab === 'hyundai_brain') return hyundaiBrainSubTab === '1' ? HYUNDAI_BRAIN_I_SECTIONS : HYUNDAI_BRAIN_II_SECTIONS;
-        if (activeSubTab === 'hyundai_surgery1_5') return HYUNDAI_SURGERY_1_5_SECTIONS;
-        if (activeSubTab === 'hyundai_7diseases') return HYUNDAI_7_DISEASES_SECTIONS;
-        if (activeSubTab === 'hyundai_14diseases') return HYUNDAI_14_DISEASES_SECTIONS;
-        if (activeSubTab === 'hyundai_16diseases') return HYUNDAI_16_DISEASES_SECTIONS;
-        if (activeSubTab === 'hyundai_71diseases') return HYUNDAI_71_DISEASES_SECTIONS;
-        if (activeSubTab === 'hyundai_120diseases') return HYUNDAI_120_DISEASES_SECTIONS;
-        return HYUNDAI_MALE_CANCER_SECTIONS;
-      case 'hana-ins':
-        if (activeSubTab === 'hana_integrated_cancer') return HANA_INTEGRATED_CANCER_SECTIONS;
-        if (activeSubTab === 'hana_high_cost_cancer') return HANA_HIGH_COST_CANCER_SECTIONS;
-        if (activeSubTab === 'hana_11_specific_cancer') return HANA_11_SPECIFIC_CANCER_SECTIONS;
-        if (activeSubTab === 'hana_brain_disease') return HANA_BRAIN_DISEASE_SECTIONS;
-        if (activeSubTab === 'hana_integrated_heart') return HANA_INTEGRATED_HEART_SECTIONS;
-        if (activeSubTab === 'hana_women_16_diseases') return HANA_WOMEN_16_DISEASES_SECTIONS;
-        if (activeSubTab === 'hana_surgery1_5') return HANA_SURGERY_1_5_SECTIONS;
-        if (activeSubTab === 'hana_surgery73') return HANA_SURGERY_73_SECTIONS;
-        if (activeSubTab === 'hana_surgery136') return HANA_SURGERY_136_SECTIONS;
-        return HANA_INTEGRATED_CANCER_SECTIONS;
-      case 'nh-fire':
-        if (activeSubTab === 'nh_cancer') return NH_CANCER_SECTIONS;
-        if (activeSubTab === 'nh_cancer_metastasis') return NH_CANCER_METASTASIS_SECTIONS;
-        if (activeSubTab === 'nh_5specific_cancer') return NH_5SPECIFIC_CANCER_SECTIONS;
-        if (activeSubTab === 'nh_cardiovascular_4') {
-          if (nhCardio4Tab === 'tab1') return NH_CARDIOVASCULAR_4_SECTIONS_TAB1;
-          if (nhCardio4Tab === 'tab2') return NH_CARDIOVASCULAR_4_SECTIONS_TAB2;
-          if (nhCardio4Tab === 'tab3') return NH_CARDIOVASCULAR_4_SECTIONS_TAB3;
-          if (nhCardio4Tab === 'tab4') return NH_CARDIOVASCULAR_4_SECTIONS_TAB4;
-          return NH_CARDIOVASCULAR_4_SECTIONS_TAB1;
-        }
-        if (activeSubTab === 'nh_circulatory_1_5') return NH_CIRCULATORY_1_5_SECTIONS;
-        if (activeSubTab === 'nh_surgery1_5') return NH_SURGERY_1_5_SECTIONS;
-        if (activeSubTab === 'nh_surgery16') return NH_SURGERY_16_SECTIONS;
-        if (activeSubTab === 'nh_surgery34') return NH_SURGERY_34_SECTIONS;
-        if (activeSubTab === 'nh_surgery71') return NH_SURGERY_71_SECTIONS;
-        if (activeSubTab === 'nh_surgery144') return NH_SURGERY_144_SECTIONS;
-        return NH_CANCER_SECTIONS;
-      default:
-        if (activeSubTab === 'cancer') return DB_CANCER_SECTIONS;
-        if (activeSubTab === 'db_cancer_metastasis') return DB_CANCER_METASTASIS_SECTIONS;
-        if (activeSubTab === 'db_11_specific_cancer') return DB_11_SPECIFIC_CANCER_SECTIONS;
-        if (activeSubTab === 'db_high_cost_cancer') return DB_HIGH_COST_CANCER_SECTIONS;
-        if (activeSubTab === 'db_integrated_heart') return dbHeartTab === 'I' ? DB_HEART_I_SECTIONS : DB_HEART_II_SECTIONS;
-        if (activeSubTab === 'db_heart_1') return DB_HEART_I_SECTIONS;
-        if (activeSubTab === 'db_heart_2') return DB_HEART_II_SECTIONS;
-        if (activeSubTab === 'db_heart_simple') return DB_HEART_SIMPLE_SECTIONS;
-        if (activeSubTab === 'db_integrated_brain') return dbBrainTab === 'I' ? DB_BRAIN_I_SECTIONS : DB_BRAIN_II_SECTIONS;
-        if (activeSubTab === 'db_brain_1') return DB_BRAIN_I_SECTIONS;
-        if (activeSubTab === 'db_brain_2') return DB_BRAIN_II_SECTIONS;
-        if (activeSubTab === 'db_major_5vascular_brain') return DB_MAJOR_5VASCULAR_BRAIN_SECTIONS;
-        if (activeSubTab === 'surgery1_5') return DB_SURGERY_1_5_SECTIONS;
-        if (activeSubTab === 'surgery1_5_old') return DB_SURGERY_1_5_OLD_SECTIONS;
-        if (activeSubTab === 'surgery13') return DB_SURGERY_13_SECTIONS;
-        if (activeSubTab === 'surgery16') return DB_SURGERY_16_SECTIONS;
-        if (activeSubTab === 'surgery18') return DB_SURGERY_18_SECTIONS;
-        if (activeSubTab === 'surgery21') return DB_SURGERY_21_SECTIONS;
-        if (activeSubTab === 'surgery40') return DB_SURGERY_40_SECTIONS;
-        if (activeSubTab === 'surgery77') return DB_SURGERY_77_SECTIONS;
-        if (activeSubTab === 'surgery106') return DB_SURGERY_106_SECTIONS;
-        if (activeSubTab === 'surgery119') return DB_SURGERY_119_SECTIONS;
-        if (activeSubTab === 'surgery120') return DB_SURGERY_120_SECTIONS;
-        return DB_CANCER_SECTIONS;
-    }
-  })();
-
-  const query = normalizeString(detailFilter);
-  const filteredCurrentSections = (currentSections || []).filter((sec: any) => {
-    if (!query) return true;
-    const titleMatch = normalizeString(sec.title || sec.category || sec.group || '').includes(query);
-    const itemList = sec.items || sec.diseases || [];
-    const itemMatch = itemList.some((i: any) => {
-      if (typeof i === 'string') return normalizeString(i).includes(query);
-      const directMatch = (
-        normalizeString(i.disease || i.name || '').includes(query) ||
-        normalizeString(i.code || '').includes(query) ||
-        normalizeString(i.num || '').includes(query) ||
-        normalizeString(i.grade || '').includes(query)
-      );
-      if (directMatch) return true;
-      if (i.subItems && Array.isArray(i.subItems)) {
-        return i.subItems.some((s: any) =>
-          typeof s === 'string'
-            ? normalizeString(s).includes(query)
-            : (
-              normalizeString(s.disease || s.name || '').includes(query) ||
-              normalizeString(s.code || '').includes(query)
-            )
-        );
-      }
-      return false;
-    });
-    // For surgery1_5_old, also check if query matches top coverage text or comparison table text
-    let topMatch = false;
-    if (activeSubTab === 'surgery1_5_old' || activeSubTab === 'surgery1_5') {
-      const topSearchText = normalizeString(
-        "MRI ê²€ì‚¬ PET ê²€ì‚¬ CT ê²€ì‚¬ 1-5ì¢…ìˆ˜ìˆ ë¹„ ì „ì‹ ë§ˆì·¨ìˆ˜ìˆ  6ì‹œê°„ì´ìƒ ìœ ë°©ì ˆë‹¨ìˆ˜ìˆ  ì„¸ë¶„í™” Mastectomy ìœ ë°©ì˜ ë¹„ëŒ€ N62 ì£¼ì„ ì˜ˆì™¸ì‚¬í•­ ìš”ì‹¤ê¸ˆ ì¹˜í•µ ì¹˜ë£¨"
-      );
-      if (topSearchText.includes(query)) topMatch = true;
-    }
-    return titleMatch || itemMatch || topMatch;
-  });
-
-  const availableSubtabs = INSURER_SUBTABS[selectedInsurer.id] || [];
-  const activeSubtabObj = availableSubtabs.find(st => st.id === activeSubTab);
-  const currentSubtabLabel = activeSubtabObj ? activeSubtabObj.label : '';
-
-  const selectedTheme = getInsurerTheme(selectedInsurer.id);
-  const selectedLogoText = getLogoText(selectedInsurer.name);
-  const selectedPhone = INSURER_PHONE_MAP[selectedInsurer.id] || '1588-0000';
-
-  return (
-    <div className="space-y-6">
-      {/* Top Banner & Ad Zone */}
-      <div className="space-y-4">
-        <div className="relative bg-[#123941] p-6 sm:p-7 rounded-2xl border border-slate-900 shadow-md overflow-hidden text-white">
-          <div className="absolute inset-0 bg-[radial-gradient(#f59e0b_0.5px,transparent_0.5px)] [background-size:32px_32px] opacity-5 pointer-events-none" />
-          <div className="relative z-10">
-            <h1 className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight break-keep leading-tight">
-              <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 inline-block mr-2 align-text-bottom shrink-0" />
-              ë³´í—˜ì‚¬ë³„ <span className="text-amber-400">ë‹´ë³´ ë¶„ë¥˜í‘œ</span>ë¥¼ ì œê³µí•©ë‹ˆë‹¤.
-            </h1>
-            <p className="text-xs md:text-sm text-slate-200 mt-2 leading-relaxed font-semibold break-keep">
-              ë³´í—˜ì‚¬ë³„ ì•”/ë‡Œ/ì‹¬ì¥/ìˆ˜ìˆ ë¹„ ë“± <span className="text-amber-400 font-bold">ë‹´ë³´ë³„ ë¶„ë¥˜í‘œ</span>, <span className="text-amber-400 font-bold">ì„¸ë¶€ì§ˆë³‘ì½”ë“œ</span>ë¥¼ ì—´ëŒ ë° ë‹¤ìš´ë¡œë“œ í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
-            </p>
-          </div>
-        </div>
-
-        <AdZone type="header" id="terms-header-ad" />
-      </div>
-
-      {/* Grid Layout: Left Column (Insurer List) & Right Column (Selected Insurer Details & Tables) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column: Insurer Search & Card Selector (5 Grid Span) */}
-        <div className="lg:col-span-5 bg-white p-5 rounded-2xl border border-slate-200/80 space-y-4 shadow-2xs h-fit">
-          {/* Search Input Box */}
-          <div className="relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <input
-              type="text"
-              placeholder="ë³´í—˜ì‚¬ëª… ê²€ìƒ‰ (ì˜ˆ: ì‚¼ì„±, í˜„ëŒ€, DB)"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 text-xs font-semibold border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] bg-slate-50/80 text-slate-900 transition-colors placeholder:text-slate-400"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
-              >
-                âœ•
-              </button>
-            )}
-          </div>
-
-          {/* Type Filter Tabs */}
-          <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200/60">
-            <button
-              onClick={() => setActiveTab('all')}
-              className={`flex-1 text-center py-2 text-xs font-bold transition-all duration-150 rounded-lg cursor-pointer ${
-                activeTab === 'all'
-                  ? 'bg-[#123941] text-white shadow-2xs font-black'
-                  : 'text-slate-600 hover:text-[#123941]'
-              }`}
-            >
-              ì „ì²´ ({INSURER_TERMS_LIST.length})
-            </button>
-            <button
-              onClick={() => setActiveTab('property')}
-              className={`flex-1 text-center py-2 text-xs font-bold transition-all duration-150 rounded-lg cursor-pointer ${
-                activeTab === 'property'
-                  ? 'bg-[#123941] text-white shadow-2xs font-black'
-                  : 'text-slate-600 hover:text-[#123941]'
-              }`}
-            >
-              ì†í•´ë³´í—˜
-            </button>
-            <button
-              onClick={() => setActiveTab('life')}
-              className={`flex-1 text-center py-2 text-xs font-bold transition-all duration-150 rounded-lg cursor-pointer ${
-                activeTab === 'life'
-                  ? 'bg-[#123941] text-white shadow-2xs font-black'
-                  : 'text-slate-600 hover:text-[#123941]'
-              }`}
-            >
-              ìƒëª…ë³´í—˜
-            </button>
-          </div>
-
-          {/* Scrollable Insurer Cards List */}
-          <div className="space-y-2 max-h-[560px] overflow-y-auto pr-1">
-            {filteredInsurers.length > 0 ? (
-              filteredInsurers.map((insurer) => {
-                const isSelected = selectedInsurer.id === insurer.id;
-                const theme = getInsurerTheme(insurer.id);
-                const logoText = getLogoText(insurer.name);
-                const phone = INSURER_PHONE_MAP[insurer.id] || '1588-0000';
-
-                return (
-                  <button
-                    key={insurer.id}
-                    onClick={() => {
-                      setSelectedInsurer(insurer);
-                      const subtabs = INSURER_SUBTABS[insurer.id];
-                      const defaultTab = insurer.defaultSubTab || (subtabs ? subtabs[0].id : null);
-                      setActiveSubTab(defaultTab);
-                      setDetailFilter('');
-                      localStorage.setItem('ib_terms_selected_insurer_id', insurer.id);
-                      if (typeof window !== 'undefined') {
-                        const targetUrl = defaultTab ? `/terms/${insurer.id}/${defaultTab}/` : `/terms/${insurer.id}/`;
-                        window.history.pushState(null, '', targetUrl);
-                      }
-                    }}
-                    className={`w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer ${
-                      isSelected
-                        ? 'border-amber-300 bg-amber-50/40 text-[#123941] font-bold shadow-xs ring-1 ring-amber-300/60'
-                        : 'border-slate-200/80 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-800'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3 text-left">
-                      <div
-                        className={`w-10 h-10 rounded-xl font-black text-xs flex items-center justify-center shrink-0 border border-slate-200/60 shadow-2xs ${theme.logoColor}`}
-                      >
-                        {logoText}
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold flex items-center gap-1.5 text-[#123941]">
-                          {insurer.name}
-                          <span
-                            className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full border uppercase ${
-                              isSelected
-                                ? 'border-amber-300/80 bg-white text-[#123941]'
-                                : 'border-slate-200 bg-slate-50 text-slate-500'
-                            }`}
-                          >
-                            {insurer.type === 'property' ? 'ì†í•´' : 'ìƒëª…'}
-                          </span>
-                        </h4>
-                      </div>
-                    </div>
-                    <div className={`text-xs font-bold transition-all ${isSelected ? 'text-[#123941] flex items-center gap-1' : 'text-slate-400 group-hover:text-[#123941] group-hover:translate-x-0.5'}`}>
-                      {isSelected ? (
-                        <>
-                          <span className="w-2 h-2 rounded-full bg-[#123941] inline-block animate-pulse"></span>
-                          <span>ì„ íƒë¨</span>
-                        </>
-                      ) : (
-                        'ìƒì„¸ë³´ê¸° â†’'
-                      )}
-                    </div>
-                  </button>
-                );
-              })
-            ) : (
-              <div className="text-center py-10 bg-slate-50 rounded-xl border border-dashed border-slate-200">
-                <p className="text-xs text-slate-500 font-bold">ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.</p>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Right Column: Selected Insurer Details, Subtabs & Main Content (7 Grid Span) */}
-        <div className="lg:col-span-7 space-y-5">
-          {/* Subtabs for Selected Insurer */}
-          {availableSubtabs.length > 0 && (
-            <div className="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-2xs space-y-3">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#123941]" />
-                  <h3 className="text-xs font-black text-slate-800">
-                    {selectedInsurer.name} ë‹´ë³´ë³„ ì•½ê´€ ë¶„ë¥˜ ì„ íƒ
-                  </h3>
-                </div>
-                <span className="text-[11px] font-bold text-slate-500">
-                  {availableSubtabs.length}ê°œ ë‹´ë³´ ë¶„ë¥˜
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1">
-                {availableSubtabs.map((st) => {
-                  const isSubActive = activeSubTab === st.id;
-                  return (
-                    <button
-                      key={st.id}
-                      onClick={() => {
-                        setActiveSubTab(st.id);
-                        setDetailFilter('');
-                        if (typeof window !== 'undefined') {
-                          window.history.pushState(null, '', `/terms/${selectedInsurer.id}/${st.id}/`);
-                        }
-                      }}
-                      className={`px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer text-center w-full truncate flex flex-col items-center justify-center ${
-                        isSubActive
-                          ? 'bg-[#123941] text-white shadow-xs font-black'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80'
-                      }`}
-                    >
-                      <span>{st.label}</span>
-                      {st.groupCount && (
-                        <span className={`text-[10px] font-medium mt-0.5 ${isSubActive ? 'text-amber-300' : 'text-slate-500'}`}>
-                          ({st.groupCount})
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* Main Content Tables */}
-          {availableSubtabs.length > 0 ? (
-            renderDbSurgeryTab(
-              activeSubTab || 'default',
-              selectedInsurer.name + (currentSubtabLabel ? ` - ${currentSubtabLabel}` : ' ì•½ê´€ ë¶„ë¥˜í‘œ'),
-              currentSections,
-              filteredCurrentSections,
-              expandedDbSurgery1_5Sections,
-              setExpandedDbSurgery1_5Sections,
-              (idx: number) => setExpandedDbSurgery1_5Sections(prev => ({ ...prev, [idx]: !prev[idx] })),
-              getSummaryForSubTab(selectedInsurer.id, activeSubTab || '', hyundaiBrainSubTab, dbHeartTab, dbBrainTab)
-            )
-          ) : (
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs text-center space-y-4">
-              <div className="w-12 h-12 bg-slate-100 text-[#123941] rounded-2xl flex items-center justify-center mx-auto">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <div className="max-w-md mx-auto space-y-1">
-                <h3 className="text-base font-black text-slate-900">{selectedInsurer.name} ì•½ê´€ ë° ìƒí’ˆê³µì‹œ ì•ˆë‚´</h3>
-                <p className="text-xs text-slate-500 font-medium">
-                  í•´ë‹¹ ë³´í—˜ì‚¬ì˜ ë‹´ë³´ë³„ ìƒì„¸ ë¶„ë¥˜í‘œëŠ” ì›ë³¸ ìƒí’ˆê³µì‹œì‹¤ì„ í†µí•´ ì •í™•í•œ ìµœì‹  ì•½ê´€ì„ ì§ì ‘ í™•ì¸í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
-                </p>
-              </div>
-              {selectedInsurer.url && (
-                <a
-                  href={selectedInsurer.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#123941] text-white rounded-xl text-xs font-bold shadow-xs hover:bg-[#1a4d58] transition-all cursor-pointer"
-                >
-                  <span>{selectedInsurer.name} ìƒí’ˆê³µì‹œì‹¤ ë°”ë¡œê°€ê¸°</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Bottom AdZone Banner under ë‹´ë³´ë³„ë¶„ë¥˜í‘œ */}
-      <div className="pt-2">
-        <AdZone type="inline-bottom" id="terms-bottom-ad" />
-      </div>
-
-      {/* PDF Generation Floating Toast */}
-      {isGeneratingPdf && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 bg-[#123941] text-white rounded-xl shadow-2xl border border-teal-500/40 text-xs font-bold animate-in fade-in slide-in-from-bottom-4 duration-200">
-          <Loader2 className="w-4 h-4 animate-spin text-teal-300" />
-          <span>ì •ë°€ PDF ì•½ê´€ë¶„ë¥˜í‘œë¥¼ ìƒì„± ì¤‘ì…ë‹ˆë‹¤...</span>
-        </div>
-      )}
-    </div>
-  );
-}
+    â€¢ <strong>[4] ì—°ê°„ ì´ ì§€ê¸‰ê¸ˆì•¡:</strong> í†µí•©ì¹˜ë£Œí•­ëª©ë³„ ì—°êxœì}ıWG¶àïù+jÏHšA 	‰/çLŞøkÌœ<‹©…ÄJ"6ãaq°‡Äübbì€'ÎØõœGlœàsœ_ŞŸ’ì¾=5gßŸ°÷ÖGwuwµÔ`§u#uWİºUuëÖıª[Ä¸?¿½õqei•ÛŞZ4–ïk+dgù¡qiCü^ •ûK;Ë+•‡Í¤òdsçæÊöÆ¼qç²U`gyµòéBåî*V­\]¬\½×rd¬ØzôŸæ¿$GJåb!?qôLj„77¶7°!c}ştiåoÉö“cù{cíyx{ããêºø½B¶oÜŞ öÇÏ#ĞfåÛù…@ò‰W.¶W«ÄéÎ
+¢şÉzgy³rõÔ„¶…çÛÏ®Aïi[+Şİêİ`&0JĞ¬jÜ Ï;KVg¬š¿Ì•¦³ã-ÄøèCDcãSãşbåÉu²så)ø³•ÊW×ÂÛçK"İĞÓmov–ÿQùûÃÊ“ÂŠT¾~N*_kó¤ri]İX¢FcñhÊøò²±¸b,®Wm’¡ƒS£É¶Mİ_,UoŒñÓX²Vc_=7nß`?ª7)´,	ï|òétqegeQ¢Dñ@Æ2iÍd?8ú~+¥‹Ùé2Cû|6Ÿ)œo)äs-CzÈøL>]Îòá¹HRÒËÃÙ)½0S+Şš ¦‹Ù|99ÌŸÏ5“¶XŒÿœ;L1i+dfñïdy*wô,é&a  ÍŒkc¤§§‡„&µüùIm4›ÿÃLqş”õ‰¢VÖ3£å¢®•§ô|9!o’³G~vìTßğû§û	…öÆüCrZ~¢§é\¡	èZ»{dJ/k$=©¡O=Mï¿íl¢/ÊÙrN?zèbIÏéihc _š)êÅ–¼6¥Ï‘(ŸNy’*ÏHøĞE†ä ÅqXàev!7s‡ ËĞö“u`f;+Ë!èmõZz^/j9ZVoec…WWïWş‚¿æ"GZÒtFË³ì!ÿ4­Mèä")eÿ¨w“Ş$™.ËE-[>L¦´âD6ßMâ±©©ÃdÇ‰€Òã…|9:®Mes³İ$ªMOçôhi¶TÖ§šÉ[¹lşÜ	-=D¿%›IÓ>QĞÉ{MÍd°0V(àÙ»zî½œMkä¤>£Ã›ŞbVË5“’–/EKz1;~˜¤¹B±›ü<6ïHhN±ÃdZËd²ù‰n’ˆM_8ÌPb½ˆÓcZúÜD±0“Ï@ıññqÑ…œ^½½+áKĞ)¦ ÎôR*ä²òóx¢­+7Û0‹0È	ëaf²¥éœÃ1ÓáçfJåìøl4hÁdu“Ò´–Ö£czù¼®ç-—ÈG³0B%V%ªç3&ŠtªÄ8óNuš½<¯g'&dg,f@Y!¬43¦‚Gx¢v{²#Ù9æ€ßğygË…énB;* êé¨
+l¢:šãôã˜Çpw“˜
+>‹lŠZ&;#Õ/ğÿq —qËæÇ0=pmTĞ9®§P¨dÍxz,“Òe°yŞ7
+rlkKÆS©ÃVäCoIyÃ¸¬Ñ<ŸÍ”'bìf³ 8§M— !ñÍÖzWKÊ“&qmGÇ€aœ‹fó¥lŠk3å‚Ù*.U™
+ÙŒ­¶6^Æñ²Utn|<5Şå^³nb(ëÊQººIN/KÃ“Ûiºr8s	WŸÉ” éœ"±Ø›4,RÊdÜØC³ íÈX!—$/:Õ‹9
+å``œ¥º¤R“ğ(‡…”kÚ>Ì±ñÌ¸fBÊÊziW„®¢ñNs*ˆ%;R©ö.‘·{¯ÉšÒ3YĞ]ß ù(bñÏ|!¯“Ÿe§p#ÒòeÀÜ{LÄÍÑœcÒÛÔ@H Û÷&3ÀdH:§•J=M¢½&BK÷49—M;[66tï&µ‡W5»Ù"8)6±]ûÍ‹>ØèÉÓM@Nİtô¿şúUxvnİ0®,¡ìIU¢WSv!acmËø3Ê¨Ÿ’ÓÇŞ­4·¯ÛA¬Á¡à£26Ó˜'…|:—MŸëi²‹šæ¤+÷>dç'aÀ­™Ebtp'FŠAWmé™b	ÁN²|şşë¯Ÿ?ø[¼ß®VÖ¿&­„uT<ĞÁ@Ú¥İ8j—Â%*fŒ Z‚­#“qQ†nÍMGÊÃª›½º*d—¦£íIN¯Ä¸ººıİh¶ÆcP¾o>2¾!Ûßlno,³.&[b¤ò´©P’í±$F
+\úŠíp’¹~'µÊÏe¥&oecúÖM]ÌëçÉ1P;Â‘–ráx!­åtü9Tœ‡Î¢¿Eæì¸¨§YH1æšç¶õôËßooÎ“íïVAÍQ¨ïgÚF`İ¬ÆA]¤Ö©>‘THÉˆB—{ÀM#kÏ¡èTe4JPëGÕ¨…Ê†ÏŞšò$åMWÉ/såÃ@.œ^*™şrˆ˜2©Ã?kN©LÇ§®,TJö«(¾ÒW‚¹ğ—Hüâ°J
+i:ºıôQåÛPä&«Õoëü”ULo­Š‰˜WÃòŒ6Åä^Bôp_…‰•{ß‹‚YHw¤,$
+üºønïÉß½Û;:pòŸß|ş÷¿3Ø;Ültx°¿wøDÿÉáÑáşC-SÚt8ŒÛx„ô•!°ï—ÊD›‚¨LzjtÃê<Bja?ëé<­ÆC=ú³¤} \é°‰QQ/Ïóä¬ùÀA¬ìAÆÜc$ÁÙ”Õ»,—˜šºH[NOœ(gç`ˆ3X²´Y‘ZXªV’°2kå²SÙ²ïjÄ’Î­n(6U.0½àç¬iÑŠ´üvıpÈb÷&ÁWÆ<™ r¹âB9ä'”CëÀW×ˆÃæš ò'tü.È<Â9_oÆ——CØ;¶Ÿ.í\_EŞ¶ÜË“‰øä^‰¹W¼s/¸WÜ}âÍœ`¡‰ÕùfHš.¡¨1±AÈ™¡îPhCLÖ>!$¾ŒL’Ù'Œ¯©!A·/7Ÿ•ºmc{ûÌô`y1<JùÆi\Ö†¨2¤œQ´·ÈU¥÷º°ãö½jÄ_v9y:ÛÀ®CMH-ãÇù%zÆó×š†ÍSš¬ê)5Ö6ÉÎ'Ï*Ô«	p›KÆÂ*@Xe•~˜_ƒ"²Şá¬€®,áGµÜ¨ ¢'‹zu?}uA·Mq¿Ü« î^åşµfÂjB ÕBÍ„‡Ø7¯Ğ–¨ÿú‹?x/n`ÊıEh­rÿcÑ?jãÛUP¥Şú| İSz1[şãèt_şRÜ€Ë7Ë'lIcC.pÈ¹À!8ä‡\àrè«<¼QùÛ#ck6wÕ!ĞfÊäœÓBÌqÛ AZ`ÆOQ-7¯FĞZ³n›«n›ïº)Wİ”¨+=ë Ï_ã.¾Ÿ.ÍÔv&¢]É¹|ƒ8d@‘0S~X4p„ÙHm:ækæ>d
+<®3Ş×íUãö•ÏUÊÊP¥¯¢÷5UKãş¨ÏdçQ‹zï?àMeã¡q	ôIó´Uyôœ¶µs}ÕXÿ°µòpÓ¸ùVãóë vw–Hå³o ğSãê#›Î¨Å¤rmT^j2@Ç"wº©Õ^ãéª±¹(˜€jú ho?yJ¯±¾Äõy´"ĞoóÄ¾BR±_4«ê­mBw©Şî¨€¢!z9…•¹!Gçë²$kûG‘vïeğ6öûó2$]^ŸN†öN†Û…QŠ‡‡×¥!wè’èĞ¥”œ€¦˜ıêß¶*÷¯‘0ĞkdÚãb¬CTáíáŠùèCFroÄ[z¢p`ø_FOööôõ¯ÓKú–Hz¨ßòL¢9ì¨™Ÿ™ú­–ƒšÓh¿ )Áj)ê û¥õpë™ÿ‹v´N4“P(‹?qÂ˜ÔrãH¶tR;f0ÑŒŠâB‹F`Á¤bø8‘‚Ù1¾XÂ·ÒË{—_‹Ê­$!¿&!ş&r Ü²ªCÅlÌ]«ÀÖ¡ßXˆ*=± N'’ñXZ½ô°5>õø±6#µWÕcl²o‚[	`û“b(O·íw–³pÎ'ğÓC‘½ñ"lşî„TİåÑM„{¼)NÚ¾¡ÒV*mû‰Jª.TRû‰JG]¨t8PÙŸ­òõqZ«™zMÇk£‹ªÇë
+fdÏ‘ó\fõ!×¶/Èy.¼úKírK±>ä:Èí‡?]¨İ°õ‚ÖZ2lH6œnŸ^:¸éÖ¥Nqbl®Ù¢le‡úË×„­cÔNXİ)•¶±Š-¬=W£æÃCâ)ca‹ë"gG7»bÂÉ~¾ri•9ĞWĞ;o¬]ƒÍÓT•¥îug¿÷÷@÷AöÉçùtá½ø’Îæº­£(Ön}lÜ|8å§|à”œòS>pÊNùÀ)ïß)o‰–ƒõ¤)ç¸İ*IáVqƒJÚ}3Õ txCé°¼4î—qãó§×}ß½î“(|¹Õ“j·ú€Õç0j2Ëw+O¶`@ª\İä±Ø‘Àå^ËİÏˆ2ß¹g|3U¶ˆsvwµ²ùg³–ì ·×à¿„ÏŞ„ìvÖß¿nÜ»şqÖ¿ò+9ğÆŞøª.†“§Nöúmÿ`ƒ‡–ßË£… Ç!óåÀL®ğct«†FlUû§õaZr}æ|«¸ÓİÏzwêƒF;‡«!ÑP×j•:Æ
+¯B´VŒ"°èñU$0E’´bàİˆ‚‚ú7%äIuÙıbÉº\ÔIŞòÆqÙ»|oqA¾XWpÅçO_ÀÆ8ï%çúÜ¼Ö¶¼÷(î'zßPô&şzƒ ¼|æÏ<ğ™¿Ÿ941¥g_5ßy«-MyàHé#=p¤ôÀ‘8ÒGzıt»<¡r f‚P•ónğm^ŞO`)o`©jN˜àdû‹õ±¿.ôâËıŞ®t¿Ûo
+
+\ñ/ß¦‹Kª8çÙ\5£ÊºóÑüÎT±8"¸½quv(„S­®';êë„%W’|ø?5çıà
++?påûõ8œ8Ñ;øşºôk-óZCıZ«Æ<GV‡ƒ¿£Aÿ¾ÿÖïæ÷ßO¿ŞşÀÙ8û_°³?Èğ‚]ü
+¶±?GôwÒŞÕß5J/òÈ~İ›pàşß%©×}L~Ï\ìõ®€ºÏÌï7¦û¶DADÀ~\t=«UË–fŠzq6>šzq ‡.Òs?)÷>sFş×ÓÁ¯r":g$&!:QÌf¢	h_ö"âÃÃôß(L<+ëèIŸ™ÊC#ññ"şïµiÑ#Xaf:šÖŠ5¼Ë*ÿÉ„—ù×q“ÏÎwƒ¾™É ÍØp°¨¸¶ƒI1®îrÑÆø#í(gôRÚËm÷zÉSo—{”½=ĞaI…ïUŒ…gàïâ®R,²ÅÏ¨¸âT…õ„Ş9.óÑ¤h`·aéBF——Z6O'a,WHŸ;üâöwFµ…bò%k_q¸XÊIÇvÓ…¿UÃá ½Äaš¦Æ%§`]ç€”¦€+ˆëôx“:ÅÃœBxN—s”®;ôŸ/jÓR`I¡ì#ØƒsÍ*ív!õ²FxG2æx…ƒ9jËˆAàC£~äïZAg*Ov®¯ÆSm#$M_^æ.è.F?ğãUî°®|»PùzEv(O¿äåıáæ§äj„WPPAw$fçF€iÿ+¿ÌLâMD×”óx]|÷ı÷NëzoğşÁ÷GAóêï8u’ö —f’Í\°÷ì@…¼×$YJ\l´ÂÑóóC<ù5‰ÏÑ˜–m|Öš’ªØVºM¾( ËÈ–¥ÄZ˜«ÁQ–Ñ’ÓóåÉ9PãÍÛWíÀ%ú`cƒuø†©Ê¨«O(­‰VDÉ9İPhÎ‚.yÄÙ/ 9œZJ[}ÊËV²Ğb7>{hO¡›À$•¼ïÁ•–›İÁã°9‹–dË³<úlæ¼ìËCVÓ Xe‹0—¸0ÏL)¼^¢<˜kyÿªà(j–g§aßGãH4D©R>¯€¤­¤X*”ì¢!e“Î©PØ0Í‚ö1í™öé±ä©7í®Yi¡˜ešTl¾e“<gSL·’CÇób1yái[±ö%'½tT?¸æ1X9ÅrˆüéOÄ»2âlá­”ÉiÅÀŒ˜Ñºm/J‡:öÏ Ôi‚Ù{ƒRı¶£Nç™¶#¿'t„C+›–Oå	»"SÃ ªRÛÄÒ«Ù‰:ı®-[²!uŸ[={oØÚ³ó=Ã°å"Â6Ç ÛYU8“@ıØ¸R¾Œ\ÉäK7r9øV=§˜RûâYlfÍ,°™Õi3³™L=ædst 1dû»­ÊWÏ"ÓPæmĞz·¿wpøå›²Ä4)íX»²O½dƒÒÑÊµyk³I*K4^Å¸¿Xyrİ§)É³EF¢•Ç‹;+[¯¥5	µ÷Ú@ãÓ¦{€®•ê5+yÛ¨Ğ†XQ»%º}5½–™Ò´ÎgÓ£i-ŸÖ³K`v9ğf—W9=	İ÷qä5P<Š²èÏ&GÒl0\AOL3ÁJğÖ¦5õâ uj ¯H`wx½ì»Ï¢â;]o#ÄOoØ>ÛG`ûØkÛÇÁ´t8’üp}°ƒCÆÍ%cÍ8«Æú2?:Úùä?Y¾2VŸÓ“%L­–5u<äb¬¯vèá–õe< ³ıôxkÆ½yVèß¿ÃÜ˜ë‡w®<Åc)ÿA¶Ÿ¬WW@"–HE]] °7ƒ°ho‰·Ä	¼Üùüã¡wgĞS6˜ÃX§§süèÊJåáF3??T‡íy.ïÍöãïÛ =boVùÁ šäÆFeOáIbÜ|„Ô€Ç‘®-yÔ—t£I¹lS¦Œ*½£@Î¤§IÇmĞQzß¥1GÃØ ßæ½2îØÍ.ÃÛ¬#¯îïx{ o´¯÷d_ÿ ?–ZVª‡cÍÀ÷"Ôêƒ[Ûæ£´íwôĞîb‡3ñxÛvœ–¥]ÇaÕ±Ùtœ|4 ğGàu¿0êVïrtÛ×ïâ–Y›ªç¶&ojto¼³h|¾‰{9Ğ%ì^øŠ‘ÊÊ’E]cN¬'›;7WŒ;K¸7÷pW»µÌ÷A<=Š5İQP{²MÑª5q[§c§”Î¾^ÿ’^¾uÿZ³­eŞ,SõİJ•n›¹¼V	ëìöÖ"?DìŞÏWm",DuTì’Å_n N•Oê˜ÀEmÊ
+àrÚ'Æ'OC÷2>çô@²Ä@jO‘ïoTn<ÄcÁÏVxçó¯‘äÌØ±Ê“y›Èd>[µŠŠéøÛe†oDš”¨î<¢²ÕãPxCáeNYÜ«ºhº‚W•ûk<7wn­¸†äÛykÌ˜¶º€3Qÿ°Æ …g·¶Ÿ<çPCÖ}ÿ³¯3®|»Xùûe N¨Fi–¨±ğkÓÈm±ÛXeG¸—/ãípW×Ö*‡ADèÑk6~x¤œQ•Ä­ôX!¨_,ªÀÚ
+ó³ùğ êS"§Ï#ØQ.ÇÊb¼zÄ¿6)õÖ6¤Ë÷8F«¦´êTãĞèÍÔ% xFr¢f[!JCŸŞÂ5cËæaiÕ$%wKtÁÑãépºÛÅSÒ¦J3ù‰Ñx<zE½:’3'qĞœ9ñ}såÈæ»…êÀ¹rûãÊiÛW+¢´¦+'!‡Lîµw…Ù† ¥ÓáÛ‹uPÕÃÃBu]ÙØ;İ®8V§Kæ7ğŞü„¼7r0©Ãäìí† ˜CËjM·§À³ó<; ¢¬Ëtv~òÙ‘+‡ÏKsø êômšÜœœ
+f·?¸ ŸE£Dİ»hÔ¹–%w…²ŠÒ[áò/ıü8M¦öçÿB•bÉÊC}9k4¯÷ãe4|µw7Âì	¦'Ûœ§öá›mñé?*—6©
+Ëç‹%TÄWà¯0«À{Ô^±ds¾²ş €s/#·À£máÎÒöã‡h˜Àt÷@]¢†µµZIØZÌgn­Ôn¢®+sk‚©ö—¥µƒ–Æ#—İÙg†Î¡ŞCï|Sóü¾-àÁoFN&Š³ìU“lV³ìbeZâVÖft½Ë4ŠŞW3ïŞúj
+hO$D°ğQã0à+x›;…"ºQÑN#]ÁI¨ŸÁ¢t¿É<ˆâéš–@JÀ"q?ÜÜ¹¹H­7&%†Ñ¢µ¼BáÒ‚ —}(™Ú(]®à­ÃŠÕÇl@,­/Úcv–`iSÖvšu©=Î²Ê@iºhî,í|´F*Ÿ}ÃºFq5l?¹W¹3Ï}é‹™¿1Gëüí¡è-yr¤õëÔµ¼Å;FM±ˆÏØ !ø§Ìp€o?ııhÍx¼ş¿7şúŸÿë›€u˜‹áÿ³øçÿøü»fÂéÌGkßYA³ğ¥MfĞû(ÒŒ5`°°ÆŞºçUƒ7¯Ëë¢Dıî†qçzø?>ûËÿş~5ÂY—ÈÿÈŒ¬¶ä2å2OŞ{€8Ù#unn³Yyò3]~ÄiÉm“b ¡äÎ§#i®.À|íÜ¾fšŒ×i†Nj&ÌÖGïùô1ËâŠBKàÚsJ[•O¾¦ÖàÅæa È3‚¡çÙ.åEL`¹ğµÒ²ÌÔ·À:FŒp7¾ ÊÓU@À­#l Nötª¬)oJåV·BâÖªä­Õ.3+†3Í•BÜRßEV·)«]eÉbâ*%%ú¶^Úw‹cCı½Cı£}§õÛ·àüÖM
+ìjÊƒij“U;¨§ä»€!(ĞôïQÒcê.¡.Pzk_Ôt±†ºIˆ'ğ‰²'Œ´uuKªşáòİP³ ŸH˜¥«CN&Fˆ«°Ô‚Øæ`Ûq–UÁ‹wQsøÚÎ­Õ “#ÄUX±=ábj„¸
+» Î–æöl–â¦Ç>Õg€LI`ˆœ=ã ± +¹ÔOàï¸®ÁC8¥â‚œ3GQÜ!–âÇÜ¥í1OL^FÜèúäÅG>Õ{¢Y°WîØ†dÅWx”CSÚ£€oÉY]>EËW˜ûvVjd/Ú³ $CPI¶ÑCÅœÁoû5Öò+Î¡Í¢‡@!ÛYÀÃ¶Ò|MY…ÌƒlÍôâ”Ç¹FÏ	`Xò*ÔÅ£n-í´Q`ÆuÖ\“BC L÷TÆ•éÊjø%ekø›<à®HxmÏ(o…¾zÊWÏUz~€yÔá¯EÅşŸUÛZ¬„ç·s
+›£h‡»+õ¬ ¿^_BÅ5Ü¸òTº¬Î¡tA>)jßñÈ©ÂÛ<êî{Aæ¼½a,¬SæŠ2½[LÆO¢Å“#8nc¼Ñ3èÆn|ºj¸cRüÜà§­…7X5ÊÆ¸¯^{Üğa 
+(EÓR8}oe"6Š‹ö´„µÉY±*VœˆÆqïiT‚±-ş©å|5X‚€… `!X‚€… `!Xøé,¤‚x… ^á§¯
+Â^ùp…T­ğZF+¤‚`g°‚‚±
+A¬B«à3V!U;Tá¬%¹å‰xÊÓ]ÿÃå»ÇÖ]>g³xMŸsÇî}ÎñT´-&|ÎñŸ„ÏY&»ÃÍåu.¡§ÓÛÓ¬ğ3'jù™÷ÆË,³Ó¿ìÛ»\o¹1Ï²Â¯¼ÿ^å]û”_`rkˆ¾d›'ÙmÀÓ‹\Ó‡x÷ÅƒÌüÇ¯‰û8pï©óØÜœÎlŸq"8ÜøŠ_qà+|Å¯8ğ¾âÀWüÓó'‚³í¯øµ÷{˜sñKÇ¦^š9·kîkâN¼îGØ_gï	»ÖNÄÃ£“ğqø”MvUSw“…g\øàIEÙÂ¼×gØ:bœIk{QgÒì¶ıºRs»¿SZ
+.£]­À¯GøşÁMÆÌ®0ÇÆø}0Æ3S|ÇkaŠñ{hˆ?¸YeSİ=°»v÷ÀîØİ÷Ôî>¦e&ªŞ«YŸ³p#o1œjÆq—åu³Bgrzi×fè=³@·{óÀüüJšŸÍğÎQë(À±ŞáŞ–àÒ¼—og®9=Ì²<ÄÌGd º5¹J·¹*îìÿ1³²Ëª¸7æï—k÷¾‹GİyÔ³İœŞñnqÍê<€~Gìa©,(Î—@C³JõÌLZ‡µtºWQ‘Ö„_ä×$ÿ‡ñÊ±X&ÛoÓ
+zV,ÒLbRä%mµòm•CgÉË3*Æ¤V´+ï©*ÚÕ–«Ì4u¢ˆ@á ‘ÀÍnéúé‚Õ#³£|¡8¥å³õ$_Ñ%Á5T»Û [¼÷«…4z¯7œ“uV¶R©Í^fhVÆ?R4çÎëÄAH4cûÍ(~y%ÍRlbnrvÕ6nBeDI\ˆ#«éh”eÅPÒï^#éÓÊÆN…·DØsXëN”å"³Ê`gÓX²G§æÔqÏ~xÇ‘ 5&^[Å®÷ŠÄí©ƒÁÿN©é·Û>SÇºğâ)Ş~½]ğºøÇ>òË7ìƒçÅ/öêm£Ü Q77Ø5;hûÉ±ƒ¶×ì’nıŒY„ù[òÎL6££=¤¤ QÓNc_9n‘Òa
+æ:rUÂ06I[^Š¾Ö£ƒ¢J‰¥HéäÈ´"5q»é¤Z],‚1Ó@ƒhı}¾u¢™˜£w¤uú¨câœ«hJ/fË)ıFÑ´ TJşh¹¨kå) òæCb>º+Ow–òãëÏÂ‡.21LÍ>$bSˆ#üÅ*÷¯_,… ¯µj%y­¤­V¨Ãú9ñéÍ"hÙ+jÙ²äÖŠ4·VlßÜZ1•[+y İZÜYÓ¸cë`DYûqÅ%öÂ×áp!ÕvÅÉ¸ÕëŠ“Ğïbéa-?p®¸v»Óh/<q)ÒÃçÛYF;‚vm§Ó±‚möœ³T—Tjåğ±ÒÿçŠP´sl<3®Uw˜ÅõDWÛ˜DÃ|jÃ%f©ºÏ©Ó±9ÕUw2Éş°ÀÉô
+:™*oTşöÈØZß¹uÃ¸óè•”\?W£~®ƒ0»µ=m‰h¼-Ùb†½Ùqg‘q¶ Êäxó>|!Ì7g¤ÈQŞWŒ&¼}cD•ølşKš@
+s|™Œ,Æ2bLâêz¤›`Æ§KTa¶àTšŒAÙØŞX ç,¬Q”	ˆY	ºŒÕŒ¢dIÌˆqåÚöãG4]Ó•õÊµy+üÑ6áíÇó€O+³µ„ãÑ”ñååH+OD‹Dh€#K&Å£b·7>´Aaáä€=ï-v}ù.—USEK*sqáP*ëÑ¾ßd²¹&†[š7ŸÓg)jGWâé†—”fˆó0¶Ëâ0”˜ºëî*ñBóÎÑ6]ùìh3ßòd]•û÷H¼ry£’1ØØwVD^-Z•7»=}¾ıìtÇMC3UÎÓxş~™+vw¼D®óË	Xò"¨É†‘±4YÄvHªa¶çÁ^íd’rQyM{f§§=“Qüí¿ÂbkŠ]ÒzçxÌÍ†¯Sé‰şÁá1½œîg°w¸ÿØèğ`ïğ‰ş“Ã£Ãı'†ÆR§ß\›ÄÊ¤‡ú ÎxËˆËıíğLøqS#PË¦'CÛğ:nekÀÒ L¨•Ê2öÖãĞP`ëòš˜çK`ı6µÀfÀmu¶»=êòz
+›.p%ØcÖwV–IØâ
+ C%åÖRØJ`ñ`ÜÛO—j–TÎ!W³ğÙ>ã2œ©8‘A>´{.ã½Ú}r™Xƒ\ÆÛkâ‡Ë¨8‡Ü€ıo6×!Óy˜ïeqJëtC°UcêqhÄMsòöóä¾`|˜wìæJÌ÷yãğsXv?X½šÑWeè5b„ÔÌÚ£’@~WëË5»öÉ1O¶@ğ5²÷VYGõb˜Ü«¬—z1ìP`ØĞùêêNÉ`|ll<‘Tôh:úãüÏ·é›B#Â¼›ôL;ÍN7F~œ¿î‘²ÛuÄ)STiAİæÍjj~ {T¾ŞBıçÄà€±ùÈXù0L[}¡ªĞ‚][Ä¤ÇŸ.(ôEªÔº@ĞãœË«<£4KüÌoÒ-¢BßPeºyëÅQ£¦:±RÓ¼­š¦yın£]ïŞmÏ^lÇ¿l´ãÆç×Q?½ƒ'­§¼§û‡#Em˜/vp¾jtpX¶r<)»¸Î,;kwµ­fãñ*€j6Ö·7Vå¡rYWªU½-ìÿÀÄx…sc¯fŒÂ¹1Å>6]Ä¤µİÍŒ«÷Œ+%7)eù1­”MÓ²˜ñıÉ/Ú~²¿‚„ $!IB‚„ $!IBDHÂoŞ2®,¡ŠŠ¾¯‚œ 4€ğêÍ¥Ÿƒ½¦àï«D[G‹G¯L„#áÊı;Æ·xè-p¨×]ïÇyP¿1®®3_íó×C&ª5‡$ÑÖéÕ 9Z*D;½õ¬WQ@¥Ë¤˜**]UPñªçÊA: ];N$ìî(H¸zü-öBäŸº½i¬|h]P§°Æ½B1$ª¤ 2ÒĞv>ÿ˜ßÍf‘}ü˜h¯cöšĞt“^ãç
+©f[ğqxq\lÿÂøÅC=M‰&g(C¢^'cXô~)¹õÔ'«»+«knˆ°RÄ¶¦jî°Fƒj»i=G¯ÇÛ¤‹Œ-^ºÑÌWù·­Êık5ı°õ6Ö6>l0ã(4\¿Ûî7oí6Æ£$‚<ëh„üéOìª¹ö‚X*±Szy²i²ìQj1Ğ‹ñÙâ®bFJ-…öJQ‡wßPL^Ò‰É«ñ»)Œìcô‰Æ÷%ô¤
+W¯;Ø­
+¬ö]íŞ±êáwWà–‹&kK‰h1!{×œÜ½†+¥ŞíL9°Ö¦BÂÖÎÕÊö‰H=¨¿,Xû°m½>&[DÍğñ®##¬]ŞÜ=HØõÊÜŸ€Gº^²ı"²7İ³øİwÂrw‹=Vt‰½ØÓîäf.Ìg÷¨?˜»Cü¹¢Gü²K¯KôK¼…4¹íüÖûH•ßy*pO­[J[~}‰°„„q>Ë•.®WFà€ï¶ø¥ãTM§Áú_“Ê•e÷iHZ2õçoÒTì+<Ñ7oRº¸\$ÕF§?úìÅn®LWnİ>–ŠÇ›ü²ué<sX\lDç›‰ñıøçÆ3ãóÍÊƒgÛßlT.­ˆ#ì¶òÊ'_ãÍäüŠú%;èfRy°UùÛ£f¼T =¾e|{#\ùì›ÊóE¼şñæöÆÂö“Ídgíc¬‚’ÔÆ¿WyòTşõl¡òçxùÕ5x …¯V‹+85•µï›©9ˆ~uü0û#Õ¤v/¯ıûwx…ô×Ï!¶Âc›—UIÓ‰TèïÀõ0­ëËx=%¬PïÒ0;Í³G5Šb´Íâª±ñ=æößD³«C¯€WğÔ Q˜}D÷aU¼¡GÍæA”ÃôúWÑæ„wÔß¾Qy¼îFâXÛÚ~òtgekgí.t5O@—ğtÌæ"\„õ¬™º	 êÊVÛ|L%q\_,Ñc6ĞÈıEã»|DÚ90ºv#Õ‚Îœ½«>‡_3 ¥È‚iDø)í…âhZË§õb1~ïãX/4c<k¿ãX¤^¾ã÷$ŠÅÓa®ô.».p;ÑÕ
+»L!ïq%Á‹Q¤5÷Èl^%FÄ6d›ÑDQ"Vz0‘)³X8ïE*µ‰Ú¢dÇ™ôü@&”KË)¸YöÀİ,Ëİ.uÆÿ°Y¯‘´ÿÀ‡1–é™×&¨ÍŠ:òìÎõÕ(Ó˜×1œdrÂ³,ßx/^¥l»İ%T¼ºq:{‘¿ŞÙÚuøE\!e½´4õ’*»»Ë‹ ˆ«B0Ô—¯: Ö¼zµk÷W¯&RÑD—¸z5Á¯^%õÜ½Ê,>/KCSC˜÷‡i¼ô¼ê¾Ä¯±{í¾vß;gŸøFOd×ºær/®¸¬3í‰Ş>58Ú×{²¯Ğ~¨‡¿BP¼1mÙ˜”3Êt³^—\6qÖû†Ë=L>mq1WI•„Ót“	¦½oö¬ë^OUíZÏ=L]Ûî•7:¸®sß®ëŒÇ‚û:ƒû:Ô}/Ôº*.–$ÈÀÜ˜[÷â‚N\Êcx~/w…J*Õï±±ñLLiàS©…îËíUWÎ¿F–XçM—6Á¼ËÓe²NRîö¼^`Ì£óh`w|µì\Î`;Ä©èVò›¾c~Rù,09¾T“c‰Â9¡SÅ”6aÔpö½qÿúÁ±?¢i`
+VcV/Ï–Êä—¿$¶â^Ç£ìvEÇœØÄJá×Èª™?àƒaÙÈ$#l§|Â+œ¨Á
+İˆÍ`+7pŠ„Ç½l_öQb† =BH~¶™d3`ÍLéEÇ“œNoß¤±µÇµ1=Ô3ãm­Ã$Ùqş™­hÄvG&¾Çš¸¦§é¼Á&gòìÍÏzz¬WvÄ…ÊY\:¼& 4kÎE¤÷=WÒk@³0úÓŸ$Œø\“øıìöw[•¯¡±-s/³·ô†õÍ6ŒÜ4F' 89%ø3#Ğì™û(ö‹ÚlK¶DÿÒ1U#öñ!rôÅ#érEÖs\Öã¶r<bˆ"ò½v©l9jE8)‰Qò)µÀ÷©p$Ò2Í¹‡ß*rº–(±rw—nhµû*_F	™6XÒ“Oæ¬…Bş°ñ J½
+¥¯ª¢yÆ¬4â¯5«*K©FpjÁR2‹€ÙY3Qg8Ô‘AØ¯í³Á6f†[`Å	4_gšªˆ3JáË)¨‚òh¦ød¼™_zk´ÒZ_[Š–wÂ›¬;]Ô£TÚÅvåÁT¥2¬ïP!âvŞš{ŞUrÍq¸ç1iÁÚó@†“ˆÊß/›’ƒll˜{ã¡‹aŞ #$XigF"şöFS¸Š‹Z°\“KQ°l<•Ò…÷Õ{ìŒ:²Jqaz˜.)wOë±sY‚6éf&µ«S†ÖR*kÅréwÙòd8t&$±*Ö§)­œdÄªC†[ÿûïÏ„[~õfä÷#¿/ı
+¾Eµšœ›¥Åä¥jë,}{&.-RG/Y„Y@¨>oÈËÍ%Ş¹Ã@Gz+§ÖàZ…F¥°	mš5Ğd‰+R§=ï{¶ÊÈ—U«
+W½¨ôçt#ÿuÜ"vp
+ˆ-Ts„çlªŒ$+K2¢SJTyR;I­E×Êå=æ¯QH}j0ŞS§ìï;å£n­W–#…‹Ñ"ñ—µùÊ_Ş¥Sc ºä²g2GaìÀ8B¸´èCÜóò3¹ÜaÎNâNŞÃ¾IÂ²“Õ<åÌö¹núÃRšyœ¨í9AÔÚ§¬úÈOŠì
+zçfå½GPSkÍàd}÷ğšõh/pÔ U×"T©ì\Ñí›~±Aâ“dy–á]n³½8åv:t¿îñpG[ôãïRuâïVuÛ\¤$ë p]»l¤{æyc‡w›n İ¾n¹¶ÕS¦ºiU*N§¸÷ÕöN9~Îº/YÇ|%;ßp²”—³ÏY,Âb
+’BõL#iˆ£‹DÌW!í²Ëk]*;ë±;EÕIíyÁ$WBQ–5ÓÚ)ÄL ñG«c”¾ó6Õè,µ)Ğ8Âñ¸l{ÍY)È®WÛ½ñ*úG¹XÕÚJŞÑó:ª„%Ÿ! •¡U.ÎèÔØ*šNÆ²y­8Ë*³2š%^Æótf<ŒõL„´óZ¶lÂ„×oSïBûaD¢ÙP›it›à˜£¦ÒZX·Kq #¶èÅb¡!b¼İBŒk !ÓÕ¶Œ§Ømèxı.›‡A“0­ã,*4:–Óòçä¥ˆÌVÔ°³Oñ´%SHÏ`ZÜ–óE`¤r¯lKÚ]>+”ô°[á•[QO²Å Ìq¢%ú‹Åˆ£ÃÒ€½­år¸ò¸ß0³®C<…IÉCªs=®ÊbÒŞ $÷%©Œñ ã]ã…"Ö‹S¥Z	îb.Ò3Å"Œ¿·ñpX’XJç³´oN;l6#r~~³rt<[ÔCİ¶Éó¼…YÊlÌcE«å÷5H§èQi‡lbC@K)eK>Z;Ñ?Ü;ÿí¢a+ks•­$u6dP¯ÒÎéÁ^€Ù×{¼ñfò…|OdWíÏÉS'ûNı¶p7ı‘‚EÛÙ¬¿Oœè|¿ñ†«Ş	îl¸êE"u6+jB/ÎÆGS®føïôº÷ú€vf‡@¾nšwzw6µ-æ	µ-Ö8Ô„7ÔDÃPÛ“PÛ“CíôÆµ³q\ãmqïéj‹7> İ+¢ıİşŞÁá†¡¦L\Q‰¨]L¬©†Qpï°Oä3Z1ÓĞ¾To¶ò3ÊşöQq Ù¹{Šxî:÷LåùhPe¸_ĞñxÜ
+NW?À”`Ü
+¸©]€İSp	E¯Õ:ío"ÉœÃªšÄrnÌ5¥¿y«Şy4(å(^‚€ö€Ù°Ò´ÎgÓá„äĞéş¾·ú8¾‰z Çc˜ON5˜ñØ»ï¼ÛÀ˜AT·zk°wàd= (WÛ€0–,ú¯\¢
+¸ºÆL%ãà4ğP€ãu%ŠwWb™„nRm²XíjXíÀJÄ”°±F`ÅÕ°ê¢ÑÇ˜<oZ<¡†oˆô¼&@95$c½“Zşü¤e6\MÌŠWÓ{ßí=ù»w{Gw
+(vÚ¯WCB¥òhPèP»n3ò²É}=äœ}ØdÄ»hÓÅ yKŒkù'@/È	Èş‰‘CNƒD™-| •Ò39­H9¢3ˆ•ì£Sfı²6æî^_ïà±S¿íê{ïxï ÄGG‡{ßŠ;½€İ½«
+8áp[}€Û|NÖ8épª>À)pz½Ç+¨e®nŠtÈ¼9‰_Ô'>¸Pl«îFêßZÍ†ş0SœõÛŞ?¿,i/šU	!¼•Fõ|ğÍeÇõQdÆè¼İß8p¦Õh‚ée6O(L>¼«_©æpÛ¼Á¶55Õî	5ÕŞ0T•}KAö-Õ×ø.p­2]UÇµ1Aƒ‰;¹B¹¬ûR6iÉj‚ÎñSÃÃı»p<=Ÿ-O*õH¯70ün#¦*2«íÆåÖ¬Re­4¢2 tSq[SX¶¡³w}€O);5ÓRoŒVè³•¢ÅM!©!orü[íĞÀ‰ÓÇaÈMLm•ºı´S_C-U«W±éZÒ€jL³ål®®éRm“lîÈ€£¢Øî°µÚ±Óbgce]İ±uİ±-é±Í¿aÂ±İb{ƒãÉ„ç@&USÛW¿ggò-ÅùÚær^Ä©œîÖKßïä±Ş£÷×­ŒrÀãzUĞo÷ï¸Ãéï°iÖİ€Ã¯#Àr«_À
+ü>•‹Ç1BO´Äö‹“÷t¼¨ÔT2¿°F„~Wá_`p°
+¨J©ƒ­.ÖÕ€«’AÜF„P1
+
+£9¸M|
+§°‰p¢ª[¸õlñ4_B-¬a¼ëİÑNã’]¡TVCgÒİ©¡á†€ÇãU¸‚GG\£\ğ!)ìÆ$Hç˜;™”cÈëdVœ©Ø°
+”
+•P‘TÕ<›Lˆm ;ÚÃ°­İÃ¶*&rŸDÏ–Z~ÒŸc;ïÖnNÖ­Õ˜@”ú ¯å@§<W@N5ºŠ(Î6m)©0ç'™ê’ô0Ó¾Ù4 KŒSš…• şºÌÁJ€mşºÌÀJ€Iÿ mæßú‡©–R†ó–-âŒ•ÅY»•›Ä†OÕ¹Ş¬Š ÄF¸‡­]Ì¿ÖdÁjK*aÕ¡‹X°:âJXş½7R“jÄà¹77óæ2}\›É•kq.'38VwˆE¦jˆÅ±İ„X èj" ÀŞ…  À½… İ°è’«" dÆŞÅ’yŠc"VÁ¦KXOı«E`…ºo0	˜à˜64'0nYjllJ[fŒêk®±UèiÖÓº:ÃäEûØ:¡û“P©ó³¤Ì½×1 •9YRæ†QŸŸMÅË5c-ä2àN?V7È654ÿR¥b“9ÖPÄ‹Â('òo‘SÄºk(Ö…JÆ”€’ş-zbÃëPêğo5Co<F;VÿpÇ»Ô â]uƒJ¨*®´}ÖØ2éÙ–ÁyCœ^ù3Ğé!ùBqJËeÿ(Òåd`çÌæŞ¦i-èÉVœå¹Ğ3}îC/Îs0ü¼>ÏŒaÙ—Æ`ÇF0{ˆ§®®¬=zªş?óîÄ±ê±{ÇÙıHK6ŸÎÍdôR˜µ(·Ro¢ «–@Í<¹\]Ø–4DhØYqR™Ï°HÂûîì^ÖgëÈqÆZ`6‰ÀÇ;m‰><®Å<Æ\oÅüÌTCõ`Oõl‘W³å7DAP¬L¶ÚAcõ)cÉzË'¹dN²¤‰D8¶)v¸Á\tìÕ;öé–æV=T%Ûña¿3ì«Ê<ÛêZ¿gîÌ!£çê8ëáeZ[ÉÛ…"±o¾Í
+HzROŸÃYbL‰æ›€…W.Lz 	Îâ‘g Ò…©i­˜-ò<%'¾ -àyz¨"Ö…„ƒ/9@}xÂ&w\´-Chk$Êô$O]ãPs”šNíÇóÆ¥Gätÿ°øÚg~‹GSÆ——Ù½•gö[ëØ‘¶[ëğ’j¼dy}‘^ïÇ®”Ä$+;·nzL1].LÍŠr˜;üÙ^mp²=A³-¬ceÑ¸µÍï,ÿƒf*»zæy~¶²³ü”ĞËò4©V›­ßNB‰ÈS`­AFbiZ¼çX0ˆÊ‡ß`”cî?Ú°+á|ÃäÀ¼ãÆ3pöDÜêŞ{k¸÷­¡3îƒ–#ïæPÄü–CÂ	¶­|&Œ;ÂQ\=›¡d Ó…´)ŠV¿œm¼é|Ò’£%»ib–À~xR§9)&ô2ï}¢:FzØUùxa¢À©ê‹_®ºæQe{íÓ“˜ÿÒØÓï:Ùrûi¯¡ÅSÑ|XOøü2Ê·a6Š&–gr6Únl¿Øú+2kü--Ÿ×‹¸r†ü¢ğ«Vóˆº¤t<ŞY¦¨ç4p26=ÃÓ<éh;)MuOG;=»¯g¢‰9~8_œÑ/AM=Ú‹‘Ò¤–)œNe2 ñ|ŸÌf2zåB¡8ìW68° Z*äfÊ:ÉæKz9£Ø` -Åı-„şùxªKÒ Íå¢–‡"I±'‘rÆÊ6Àò´%¦/Œâ?#¤ ƒ‘-ÏFS"ËdTÿ ê–¢˜¼²‰´VCÏ¤?Fã1çÅ"›$+J;œ›ÀÑ£_aÔ¦2ì+ u¶44°ôáæÅ(c®Â’ŸÓõi`ÓZÆ|áÊ¶q$O’°„Áyèâ$üœgÓ8	XRL MÂŒÉ‰uÉT1šà™h1–Ôf8ó¹hÌ18øáéü/=Â[>¥$Ò˜m5­\İ„
+r®tš>óÎë«x{©|å‰Ô=)é&2íjçBÉàÒë&#Ìts
+FİCœÅz†§“Ğ§²˜BLl×ğÚzi,ßh­üùZ«qõ‘qçëVkÿ©|öM­!.SçƒÁnGµGs=`Xš0{F!kTonVî\£™Ã0±ÿíÍÊİUÌ7Š‰ı¯ŞÃ;‘é½rryÔ§íYi¤Ô©ŸVZPÁ¡Ş)Â&p\›-Ì”»Éq}¼Lú`aO›ãÜ üö5HI]¼â<“ˆbÇ¨fâ'Æ§©Âç&°Qüs‹—¢q’›è–~&0Á•ÄI¦rİf«l«†FÑ	@R F…S¬cC0À2"nT eh³åa	c|~Ôb¤@¯­1b2mÁU@áèÎ²/ìÇv ?=S&o.Ø0óæbNÆÁ¨Ø1æé‰¶µ¤PÔˆÆ[$JÙ.Åw–>8ˆNÂÿÒÂÃ5ïdG²ˆ¤c}¡Àh¼Éñf8¤>	„®{š¬eø÷ËTüèc¬›—@8û¦™ì¬ ¼Ö}Ä	é-7£÷\,Ñ>ş7”ºæ%
+ù¾I-?…0	J2zyÈ*Ö[Êˆµå
+*â¬nã¼ã3¹ »™†%K¦g£	=Î¨œGM&¡Ğí"=Sê†ÅÄò²=•=D©H]úamßì!l=rd­¤(¥IS†›8Ù,MUH³ë”äYèvÌ¯ms-6ªN½Œ' v<¥AR_«¦AJÅ£|“fiväh›7ÉŠÙ°w‰L¢ì"÷³]æ¸<Gu”N2s' úauÙÙo)eµõ±õÊÎPé`¢Øë„0#rÃRu™ş¬¹C/` dªòâ>í.ÙF9Sîyê¥2; i¹œ{¢,ä.¥·rÄ‰|G®û¡#.$@%™–ş'OYk$-ûÄC]S¡	ô˜–Š(ºÊ Å!d“%ùLâÄ– §‚jŠƒ€$ª2A;kÎµ˜“˜PÃ}¼IÂ…®1Ü?xbhôøÀĞ0Ïİ5g·9¨)­Ùœ.¦õbyöUŸRÏƒ5¯W–0Ù8İŞögşğ(Ï«>wÇƒ5o­(âsŞÔ,}(]ÄËoĞ$'dO9KT<®Áß…„˜ SÚ…èdôL
+S)Xº÷lo¶A	$î`è…g‚7êÈıçÜ©]¥YÆQöË•o”}DÖQS¢ï!nƒù¬ùó°”²‡y'k7ë¨ªæÔÆ¬Ó¨£ª;íiÚÉV7éØ?6ıã%áçœ>ÛsÑjÈ-ôàÇ±êİÓÀ>T†²¾9{îÎËCPò4JCPd¡ëÜœkşaÃ¢¥7E›gb#H!İ4­'š&Ÿc ÂVkÕª“üuÎDœò'‡÷bê§Mè-˜
+¯¬O…CÙ±Ñ2¦¶=Ê»5šÍ„šIUªdÉ½ÅÒı±ü±È<ÇAÂÏ„œy[İÃÊ”‘÷Šh=•†øMr¶•"×zH&øešk¥ù™•åÎz¡l&&œÎT(Î¶LÏ”&‡ÊxƒNP3ÁtŠ&R=W“ñœú±¼Aq¥ŠÙÕPgŸ¦
+©B›öÚ P§¢21õXŠ]N\íÃïòaY¾}ì^|"Mşæ9l¸1	›pÚbÔ¬É~€–ä˜¬¶‰½–op°¿q5ş1á€¤®ÚíØ§Ûl×fW0ml”tAñD®„ÈJ;ggÌ£AçVÉ>nm?J=Å6'h§i³¦Z‘]Ø‚ä½LlÄšø$şcSªí6X”"<Éƒÿ¶Ğ*º“,•ºH·®Ü…úP™V“÷Xáç¢ØÃ¼ª:Lsî1ò†}d2é²3–¦$
+TON\3L¢õœ#Úy»õêEfUŞÛg•aĞ…2…ğôŠ¯1‰=PŞÁçlftî¹¬ÅÇÇòÅ2·-·ê¢¦û£X¾²áF^•)¯U)>ŞT‡Ÿj3'ÍîW-;Í”—âËäáPÕ	–²ö«ßO&=)Ù›Ì«½²sN5Õ4Ø-©õM®9HÜY½"B%MIt/‰ªTû+Ó0u‰6Óå5vÔT"%ïuµIu¹€YwL8V‹¬tÙüDZ>;…ØNÏäJzÓÑZs*.p0Öw€B–Ô&¯wEx‡õ	á•Ú[ mom®ü«×ªPXY»T¤ÖÃ)$›œóÿ  ÿÿ¤]OOA¿û)FRb)ÒR@Bcâ¼xĞ!Ò¦‹m(İfiµJš "!rP1S¯U$áà'j·ßÁy3»³óçÍ¶hĞİÎ¾yûæ÷~ïí>ñw•ÕCÖ×?ÍçUïs+_WÌï”œ¢±a¯âG£eª‘cJ·ŞÿÕëŸÿa…º?DA"-.d8ŒÎÔ6•0ŒZ"¶0P’„™7øÛ¦ƒ×n“ÄÂ¿DfD”%kU‚Á‹¬qTÇ|×È‡¼iƒøÖ’‚Cs8 EÃCÈ¯!cÆ…G"-ı†ÕAÕs2î¸ !L»Æ‚si `–(aë´±vKÖ	D³ÎJLÏu˜'¬²Xj@FñZ¥ä7áV5¥2Z¸Á#¾kPÏQ7ê=‹^€M[ı^‡(xD6Ì.›ÄÛ{MC¾A´™á:@juƒŠÂeæIêVRC°KwÿIÎÌCc©H˜#ÃÈÄs2+Ã:¶Áœ1)“º`½Zç+ñÿÉ0ŒåëGüÉëßÀif#FHÛZè ıS Ÿ±qÔÒ¢©;Í±—×ŞağUHæ@ñâT‡c½Â?BRÑ˜áÍq¤¸ÃÏë*²Û’ÉX¼·hÁW[6¿ÁŠĞ™ı€™¯5üâ€´c0ø­:!ÖzFœ¿Ù[Â@BÁêÆ6¤ú€ãÇ@¼0!Š®™ÖÁ…ŠİğI¨òj@O6ö²­àÓ†1”	8SïYYŒ]S-= ¡ (bst£û Cï;ï~á1Ï ³¦‰©XiàÎ^r2©5Ä–ar3zrBÊ½C6XfóP‹ÕèQ—ìáqgrJ?›ö<†~Øò$‡ŞÌiÒ‰§†GÀìÓ¬­-5ç®Ğ<¡×nñûDÍsC»Ä.I¥R°•$k´“õ%r¶ØwªGÆP<sèB‘â—+®®M†‰Oš3Ió½+Ié‘É¤ôˆŸ-;ó™¬YËµéÅ1 sèø„|’‹Ÿó$•ài^#Ã-4’LÜn² †©ïºîÖ£š£aãy*À<‚~QP©_ 	YnnpZqí"Ã°t(3Mß0jÎá½×û@¨>ütØ?¿ğ:tÿáàÍoJÛcåVEÂAo‘6Æ2ú#Ï¸‚È$ŞŸÿëÇÁù¥"¦tæŸî“áÁíøİöğK{Ø¦Ò_ĞCİàâ …ÿãµß=&ô°z9V‚%Ÿ¹qœiÄ)ix|Å\Î#CQòœÍÖ¶ñ Nn‚—ÆÒ3œàã9•ÜDÕ…*ZT«.íİ¡vÑÈ†‚4‰dq¹Í†™r64$;õE·¸@9´“ü\1»¸MÁ­ŞªUÍU¥¡ú~2øŞé÷öú—=; X~Ğ¤§¯æ+«åê–z³³|JÔÕ]Éë;54€-üè13sj¬=Œj¬­T\Vø‹<qóJFÅWJY0UR Üd\$”S3ÆsóæÉ+`¸,ú $~“çNfÆÑÁˆè¼IİÉWÀ`ˆH›¢4!™Y†°ŠìÿN¥Ì¾LozTÚ@è9%¨>Å°êÒ_zidşD÷;µrğ'cäÆi·=èí±Ià¦%²OÏıöÔßÿIü³cÿÛ»À¤¤Rºv),*Uû(”l]û  ÿÿ KÇ£

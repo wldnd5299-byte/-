@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import { INSURERS_DATA } from '../data';
 import { Insurer, InsurerType } from '../types';
 import { Phone, FileText, Search, Landmark, ExternalLink, HelpCircle, Check, Info, BookOpen } from 'lucide-react';
-import AdZone from './AdZone';
 
 const getLogoText = (name: string): string => {
   if (name.startsWith('BNP')) return 'BNP';
@@ -202,9 +201,6 @@ export default function ClaimForms() {
         </div>
       </div>
 
-      {/* Top Banner Advertisement (Swapped here) */}
-      <AdZone type="header" id="global-ad-header" />
-
       {/* Detail Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
@@ -308,11 +304,6 @@ export default function ClaimForms() {
                 <p className="text-xs text-slate-500 mt-2 font-bold uppercase tracking-wider">No matching insurers</p>
               </div>
             )}
-          </div>
-
-          {/* AdZone inside Sidebar Area */}
-          <div className="pt-2">
-            <AdZone type="sidebar" id="ad-claim-sidebar" />
           </div>
 
         </div>
@@ -430,9 +421,6 @@ export default function ClaimForms() {
             </div>
 
           </div>
-
-          {/* Bottom Banner Advertisement */}
-          <AdZone type="inline-bottom" id="ad-claim-detail-bottom" />
 
         </div>
 

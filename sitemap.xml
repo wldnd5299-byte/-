@@ -246,6 +246,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://insurancebridge.co.kr/info/kb-21-disease-surgery/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://insurancebridge.co.kr/info/colorectal-cancer-treatment/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

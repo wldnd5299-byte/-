@@ -38,7 +38,6 @@ import AgeCalculator from './components/AgeCalculator';
 import PlannerGoods from './components/PlannerGoods';
 import DisputePrecedent from './components/DisputePrecedent';
 import InfoArticles from './components/InfoArticles';
-import AdZone from './components/AdZone';
 
 import { INSURERS_DATA } from './data';
 
@@ -698,13 +697,7 @@ export default function App() {
             {currentView === 'home' ? (
               /* Landing Dashboard View */
               <div className="space-y-10">
-                
-                {/* 1. Global Adsense Horizontal Banner Placeholder (Above Main Banner) */}
-                <div className="w-full">
-                  <AdZone type="header" id="global-ad-header" />
-                </div>
-
-                {/* 2. Unified Mega Banner & Shortcuts Block (No space, merged background) */}
+                {/* 1. Unified Mega Banner & Shortcuts Block (No space, merged background) */}
                 <div className="bg-[#123941] rounded-2xl border border-white/10 shadow-xl overflow-hidden flex flex-col">
                   {/* High-Fidelity Premium Hero Banner with clean solid #123941 background */}
                   <div 

@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import { CANCER_CLASSIFICATIONS } from '../data';
 import { CancerClassification } from '../types';
 import { Search, Flame, ShieldAlert, BadgePercent, HelpCircle, AlertTriangle, CheckCircle, Award } from 'lucide-react';
-import AdZone from './AdZone';
 
 export default function CancerTerms() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -80,9 +79,6 @@ export default function CancerTerms() {
           </p>
         </div>
       </div>
-
-      {/* Top Banner Advertisement */}
-      <AdZone type="inline-top" id="ad-cancer-top" />
 
       {/* Cancer Categories Cards Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -239,9 +235,6 @@ export default function CancerTerms() {
           </div>
         </div>
       </div>
-
-      {/* Bottom Banner Advertisement */}
-      <AdZone type="inline-bottom" id="ad-cancer-bottom" />
     </div>
   );
 }

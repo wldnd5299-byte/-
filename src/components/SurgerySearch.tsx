@@ -33,7 +33,6 @@ import {
   Plus,
   Trash2
 } from 'lucide-react';
-import AdZone from './AdZone';
 import { SURGERY_RECORDS } from '../data';
 import { SURGERY_1TO7_RECORDS } from '../data1to7';
 import { SURGERY_1TO8_RECORDS } from '../data1to8';
@@ -755,9 +754,6 @@ export default function SurgerySearch() {
         </div>
       </div>
 
-      {/* Top Banner Advertisement */}
-      <AdZone type="inline-top" id="ad-surgery-top" />
-
       <div className="space-y-6">
         
         {/* 3-1. Search Bar Block & Management Controls */}
@@ -1125,9 +1121,6 @@ export default function SurgerySearch() {
         </div>
 
       </div>
-
-      {/* 5. Bottom AdZone */}
-      <AdZone type="inline-bottom" id="ad-surg-insurance-bottom" />
 
     </div>
   );

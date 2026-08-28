@@ -5,7 +5,6 @@
 
 import React, { useState } from 'react';
 import { ShoppingBag, Search, Download, ExternalLink, Filter, HelpCircle, CheckCircle, Tag, Layers, Star, Printer, ArrowRight, FileText, PieChart, TrendingUp, Users, Eye, X, Award } from 'lucide-react';
-import AdZone from './AdZone';
 
 interface GoodItem {
   id: number;
@@ -3067,9 +3066,6 @@ export default function PlannerGoods() {
         </div>
       </div>
 
-      {/* Top Banner Advertisement */}
-      <AdZone type="header" id="ad-planner-goods-top" />
-
       {/* Search Input Bar */}
       <div className="relative w-full text-left">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
@@ -5499,9 +5495,6 @@ export default function PlannerGoods() {
           </div>
         )}
       </div>
-
-      {/* Bottom Ad Zone */}
-      <AdZone type="inline-bottom" id="ad-planner-goods-bottom" />
 
       {/* Report Details Modal */}
       {showReportModal && (
@@ -8181,200 +8174,21 @@ export default function PlannerGoods() {
                             <span>2ìœ„ ì•…ì„±ì‹ ìƒë¬¼ (ì•”)</span>
                             <span>10%~15%</span>
                           </div>
-                          <div className="flex justify-between font-medium text-slate-600 p-1">
-                            <span>3ìœ„ ìš´ìˆ˜ì‚¬ê³  / ê°„ì§ˆí™˜</span>
-                            <span>5%~8%</span>
-                          </div>
-                        </div>
-                      </div>
+                          <div classNxœìZmsÛÆþž_qUÆ6•	øN‰V(u’4™ñLšz¢|óøHB"j`@Ð’êqFN¨„1ÝZNE›rH•iäHnå)-S15U¾äç‡™þ„î š”ÜôÅ•G–xÜÞí>»ûìžø¬0?µ$	«ä·Å‚*.­qIA]„Y’s*—Òb1KTaUå
+¯
+ÜL0Hò\hjá52â+QÈó¹…­—}Ø¦åýì û¬I¤Û*Ñ½²¾]KØ3c,;÷iüÜ‹OÒâuïFN›“^³0IR_(|È£¾ò\Ä#ÉeNÈ
 
-                      <div className="p-3.5 bg-emerald-50/80 border border-emerald-200 rounded-xl">
-                        <span className="text-xs font-black text-emerald-950 block mb-2">40~79ì„¸ (ì¤‘ìž¥ë…„ ë° ì‹œë‹ˆì–´)</span>
-                        <div className="space-y-1 text-xs">
-                          <div className="flex justify-between font-black text-rose-700 bg-rose-50 p-1.5 rounded">
-                            <span>1ìœ„ ì•…ì„±ì‹ ìƒë¬¼ (ì•”)</span>
-                            <span>êµ¬ì„±ë¹„ 25%~41%</span>
-                          </div>
-                          <div className="flex justify-between font-bold text-emerald-900 p-1">
-                            <span>2ìœ„ ì‹¬ìž¥ ì§ˆí™˜ / ë‡Œí˜ˆê´€ ì§ˆí™˜</span>
-                            <span>8%~12%</span>
-                          </div>
-                          <div className="flex justify-between font-medium text-emerald-800 p-1">
-                            <span>3ìœ„ ê°„ ì§ˆí™˜ / íë ´</span>
-                            <span>5%~8%</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="p-3.5 bg-sky-50/80 border border-sky-200 rounded-xl md:col-span-2">
-                        <span className="text-xs font-black text-sky-950 block mb-2">80ì„¸ ì´ìƒ (ì´ˆê³ ë ¹ì¸µ)</span>
-                        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
-                          <div className="p-2 bg-white rounded border border-sky-200 text-center font-bold">
-                            <span className="text-[10px] text-slate-400 block">1ìœ„</span>
-                            <span className="text-rose-700">ì•” (16.3%)</span>
-                          </div>
-                          <div className="p-2 bg-white rounded border border-sky-200 text-center font-bold">
-                            <span className="text-[10px] text-slate-400 block">2ìœ„</span>
-                            <span className="text-sky-800">íë ´ (11.8%)</span>
-                          </div>
-                          <div className="p-2 bg-white rounded border border-sky-200 text-center font-bold">
-                            <span className="text-[10px] text-slate-400 block">3ìœ„</span>
-                            <span className="text-slate-800">ì‹¬ìž¥ì§ˆí™˜ (10.5%)</span>
-                          </div>
-                          <div className="p-2 bg-white rounded border border-sky-200 text-center font-bold">
-                            <span className="text-[10px] text-slate-400 block">4ìœ„</span>
-                            <span className="text-slate-800">ë‡Œí˜ˆê´€ (7.3%)</span>
-                          </div>
-                          <div className="p-2 bg-white rounded border border-sky-200 text-center font-bold">
-                            <span className="text-[10px] text-slate-400 block">5ìœ„</span>
-                            <span className="text-amber-800">ì•Œì¸ í•˜ì´ë¨¸ (5.5%)</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* SALES TAB */}
-              {activeReportSubTab === 'sales' && (
-                <div className="space-y-4">
-                  <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-3">
-                    <h4 className="text-base font-black text-emerald-950 flex items-center gap-2">
-                      <Award className="w-5 h-5 text-emerald-600" />
-                      <span>ì„¤ê³„ì‚¬ ëŒ€ë©´ ìƒë‹´ ë° ë³´ìž¥ ì œì•ˆ í™œìš© ì…€ë§ í¬ì¸íŠ¸</span>
-                    </h4>
-
-                    <div className="space-y-3 pt-1 text-xs text-emerald-900 leading-relaxed font-medium">
-                      <div className="p-3.5 bg-white rounded-xl border border-emerald-200">
-                        <strong className="text-emerald-950 font-black block text-sm mb-1">
-                          1. 3ëŒ€ ì§ˆë³‘(ì•”Â·ë‡ŒÂ·ì‹¬) í†µí•© ë³´ìž¥ì˜ ì ˆëŒ€ì  í•„ìš”ì„±
-                        </strong>
-                        í†µê³„ì²­ ë°œí‘œ ê²°ê³¼ ì‚¬ë§ ì›ì¸ì˜ 42.6%ê°€ ì•”, ì‹¬ìž¥ì§ˆí™˜, íë ´ 3ê°€ì§€ì— ì§‘ì¤‘ë˜ì–´ ìžˆìŠµë‹ˆë‹¤. íŠ¹ížˆ 40ëŒ€ ì´ìƒë¶€í„° ì•” ì‚¬ë§ë¥ ì´ ê¸‰ì¦í•˜ë¯€ë¡œ, 3ëŒ€ ì§ˆë³‘ ì§„ë‹¨ë¹„ ë° ìˆ˜ìˆ ë¹„ ë¹„ê°±ì‹ í˜• í†µí•© íŠ¹ì•½ ì„¤ê³„ë¥¼ ì ê·¹ ì•ˆë‚´í•´ì•¼ í•©ë‹ˆë‹¤.
-                      </div>
-
-                      <div className="p-3.5 bg-white rounded-xl border border-emerald-200">
-                        <strong className="text-emerald-950 font-black block text-sm mb-1">
-                          2. ì„±ë³„ì— íŠ¹í™”ëœ ë‹´ë³´ ê°€ìž… ì œì•ˆ
-                        </strong>
-                        ë‚¨ì„±ì€ ì•” ì‚¬ë§ë¥ (215.1ëª…)ì´ ì—¬ì„±(133.7ëª…)ì˜ 1.6ë°°ì— ë‹¬í•˜ê³  ê°„ ì§ˆí™˜(21.8ëª…) ìœ„í—˜ì´ ë†’ìŠµë‹ˆë‹¤. ë°˜ë©´ ì—¬ì„±ì€ ì•Œì¸ í•˜ì´ë¨¸ ì¹˜ë§¤(32.8ëª…) ë° ê³ í˜ˆì••ì„± ì§ˆí™˜ ì‚¬ë§ ìœ„í—˜ì´ í˜„ì €ížˆ ë†’ìœ¼ë¯€ë¡œ, ì„±ë³„ ë§žì¶¤ ë‹´ë³´ë¥¼ êµ¬ì²´ì  í†µê³„ ìˆ˜ì¹˜ì™€ í•¨ê»˜ ìŠ¤í¬ë¦½íŠ¸í™”í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
-                      </div>
-
-                      <div className="p-3.5 bg-white rounded-xl border border-emerald-200">
-                        <strong className="text-emerald-950 font-black block text-sm mb-1">
-                          3. ì´ˆê³ ë ¹í™”(80ì„¸ ì´ìƒ) ëŒ€ë¹„ ì¹˜ë§¤ê°„ë³‘ ë° í˜¸í¡ê¸° íŠ¹ì•½
-                        </strong>
-                        80ì„¸ ì´ìƒ ì‚¬ë§ ë¹„ì¤‘ì´ 54.1%ë¡œ ì—­ëŒ€ ìµœê³ ì¹˜ë¥¼ ê¸°ë¡í–ˆìŠµë‹ˆë‹¤. 80ì„¸ ì´ìƒì—ì„œëŠ” íë ´(11.8%)ê³¼ ì•Œì¸ í•˜ì´ë¨¸(5.5%)ê°€ ì‚¬ë§ì›ì¸ 2ìœ„ì™€ 5ìœ„ë¥¼ ì°¨ì§€í•˜ë¯€ë¡œ, ë…¸í›„ ìž¬ê°€ê°„ë³‘/ì¹˜ë§¤ì§„ë‹¨ë¹„ ë° ì§ˆë³‘ìž…ì›ì¼ë‹¹ ë³´ìž¥ ì†Œêµ¬ê°€ ëŒ€ë©´ ê°œì²™ì˜ í•µì‹¬ìž…ë‹ˆë‹¤.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* Modal Bottom Footer */}
-            <div className="p-4 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
-              <span className="text-xs text-slate-500 font-bold hidden sm:inline">
-                ìžë£Œì¶œì²˜: {
-                  Number(selectedReportId) === 10 ? 'ì—°ì„¸ì•”ë³‘ì› ì¤‘ìž…ìžì¹˜ë£Œì„¼í„° Â· ëŒ€í•œë°©ì‚¬ì„ ì¢…ì–‘í•™íšŒ Â· Nature 508' :
-                  Number(selectedReportId) === 9 ? 'êµ­ê°€ì•”ì§€ì‹ì •ë³´ì„¼í„° Â· ëŒ€í•œìœ„ì•”í•™íšŒ Â· ëŒ€í•œì¤‘ì•™ë‚´ê³¼í•™íšŒ' :
-                  Number(selectedReportId) === 8 ? 'êµ­ê°€ì•”ì§€ì‹ì •ë³´ì„¼í„° Â· ë³´ê±´ë³µì§€ë¶€ Â· ëž€ì…‹(Lancet) ìž„ìƒ' :
-                  Number(selectedReportId) === 7 ? 'êµ­ê°€ì•”ì§€ì‹ì •ë³´ì„¼í„° Â· ë³´ê±´ë³µì§€ë¶€ (ì¹˜ë£Œì§€ì¹¨)' :
-                  Number(selectedReportId) === 6 ? 'êµ­ê°€ì•”ì§€ì‹ì •ë³´ì„¼í„° Â· ë³´ê±´ë³µì§€ë¶€ (êµ­ê°€ì•”í†µê³„ê³µì‹œ)' :
-                  Number(selectedReportId) === 5 ? 'êµ­ê°€ì•”ì§€ì‹ì •ë³´ì„¼í„° Â· ë³´ê±´ë³µì§€ë¶€ (êµ­ê°€ì•”í†µê³„ê³µì‹œ)' :
-                  Number(selectedReportId) === 4 ? 'êµ­ê°€ì•”ì •ë³´ì„¼í„° Â· ë³´ê±´ë³µì§€ë¶€ (êµ­ê°€ì•”í†µê³„ê³µì‹œ)' :
-                  Number(selectedReportId) === 3 ? 'êµ­ë¦½ì•”ì„¼í„° Â· ë³´ê±´ë³µì§€ë¶€ (ê³µì‹ìžë£Œ)' :
-                  Number(selectedReportId) === 2 ? 'ë³´ê±´ë³µì§€ë¶€ ë“±ë¡ ìž¥ì• ì¸ í†µê³„ & ì•½ê´€ë¶„ì„ (ê³µì‹ìžë£Œ)' :
-                  'í†µê³„ì²­ ì‚¬íšŒí†µê³„êµ­ ì¸êµ¬ë™í–¥ê³¼ (2025ë…„ ë°œí‘œ)'
-                }
-              </span>
-              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                <button
-                  onClick={() => handleOpenReportPdf(selectedReportId)}
-                  className="px-4 py-2 bg-[#123941] hover:bg-[#0c282e] text-white text-xs font-bold rounded-lg transition-all cursor-pointer flex items-center gap-1.5 active:scale-95"
-                >
-                  <Printer className="w-4 h-4 text-[#cb9f74]" />
-                  PDF ì¶œë ¥ / ì¸ì‡„
-                </button>
-                <button
-                  onClick={() => setShowReportModal(false)}
-                  className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold rounded-lg transition-all cursor-pointer active:scale-95"
-                >
-                  ë‹«ê¸°
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      )}
-
-      {/* Inquiry Modal Simulation */}
-      {selectedInquiryProduct && (
-        <div className="fixed inset-0 bg-nike-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-none shadow-none max-w-md w-full p-6 border-2 border-nike-black relative">
-            <h3 className="text-base font-bold text-nike-black uppercase tracking-tight">ë§žì¶¤ ì œìž‘ &amp; ê³µë™êµ¬ë§¤ ë¬¸ì˜</h3>
-            <p className="text-xs text-[#707072] mt-1 font-medium">ì„ íƒí•˜ì‹  ì œí’ˆì— ëŒ€í•œ ë‹¨ì²´ ì œìž‘ ì£¼ë¬¸ ë° ì„¤ê³„ì‚¬ í• ì¸ ìš°ëŒ€ ì •ë³´ë¥¼ ìœ ì„  ì•ˆë‚´í•´ ë“œë¦½ë‹ˆë‹¤.</p>
-
-            <div className="p-3 bg-soft-cloud border border-hairline-soft my-4 text-left rounded-none">
-              <span className="text-[8px] font-bold text-[#707072] block uppercase tracking-wider">ë¬¸ì˜ ìƒí’ˆ</span>
-              <span className="text-xs font-bold text-nike-black mt-0.5 block">{selectedInquiryProduct.title}</span>
-              <span className="text-[10px] text-nike-black font-bold mt-0.5 block uppercase tracking-wider">PRICE: {selectedInquiryProduct.price}</span>
-            </div>
-
-            {inquirySuccess ? (
-              <div className="p-4 bg-soft-cloud text-nike-black rounded-none text-center border border-hairline font-bold text-xs">
-                <p>ðŸŽ‰ ì œíœ´ ìš°ëŒ€ ë¬¸ì˜ê°€ ì „ë‹¬ë˜ì—ˆìŠµë‹ˆë‹¤!</p>
-                <p className="text-[10px] text-[#707072] mt-1 font-medium">24ì‹œê°„ ì´ë‚´ì— ì „ë‹´ ìƒë‹´ì›ì´ ë§žì¶¤ ì œì•ˆì„œë¥¼ ì „ë‹¬í•´ ë“œë¦¬ê² ìŠµë‹ˆë‹¤.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleInquirySubmit} className="space-y-4 text-left">
-                <div>
-                  <label className="block text-xs font-bold text-[#707072] mb-1">ìƒí•¨ (ì„¤ê³„ì‚¬ ì„±í•¨)</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="ì˜ˆ: í™ê¸¸ë™"
-                    value={inquiryName}
-                    onChange={(e) => setInquiryName(e.target.value)}
-                    className="w-full px-3 py-2 text-xs border border-hairline rounded-none focus:outline-hidden focus:ring-1 focus:ring-nike-black focus:border-nike-black font-bold"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-[#707072] mb-1">íœ´ëŒ€í° ë²ˆí˜¸</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="ì˜ˆ: 010-1234-5678"
-                    value={inquiryPhone}
-                    onChange={(e) => setInquiryPhone(e.target.value)}
-                    className="w-full px-3 py-2 text-xs border border-hairline rounded-none focus:outline-hidden focus:ring-1 focus:ring-nike-black focus:border-nike-black font-bold"
-                  />
-                </div>
-
-                <div className="flex gap-2 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedInquiryProduct(null)}
-                    className="w-1/2 py-2 border border-hairline hover:bg-soft-cloud rounded-none text-xs font-bold text-[#707072] cursor-pointer uppercase tracking-wider"
-                  >
-                    ë‹«ê¸°
-                  </button>
-                  <button
-                    type="submit"
-                    className="w-1/2 py-2 bg-nike-black hover:bg-nike-black/90 text-white rounded-none text-xs font-bold cursor-pointer uppercase tracking-wider"
-                  >
-                    ì‹ ì²­í•˜ê¸°
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+/¥¹X0’¤¬¤ÅüÑ›ƒÂ¹˜KinU¡7vX»¦õÕ‚a‰¤Ä§®†°V¾™’ÃÙ$žZˆ?½HKâ£»÷èÎ#m£D´Ö]B+u­R¦÷ÛÓ/R¢ó ðtJàÖ¸1÷2ÒìÎ·½ae;Œ"ntêd¿Ç¾@¿¦ÒÆBZˆ!­ºAKOi¥I?oh' †êÖÜ_£{t ¯kÇ%ÄECg‡ÜD*‘¥´Ã¼xZ˜¿r V'†{«i_ÞÑkån{LêqñsŸ†Â?ïùí‘ÆÒ@|ÒXÁ¥|ýî¦Ölÿ/„™Âµ5×ƒãƒá…dÓs)YâðÎlP†3ÐÄƒeh£M?¿^Ö.Ch×šÇ´s4q„YVÄ4Áÿ8Øv“Bv®ÿ1F–ù<ž&úà{ »•Œ¨
+–†<ôÇ–O	9¦zÎ8ê†x%Ì¯^µçËhÐÔÝRcÃqhi+PN-@X#¾ÐŒ?rnŒè6±‹þçé-|&½áfã¨6#€æBþø+¢¹ÈÙ4Ç–cº3R‹Z}¡ ?öŠh0ú²4ØOÆ¾ÙWÆscgÒŸMÂ–üUïÐNS¯Ö éhûÀpc/ã$ë‰¦<&\‡§o:‰ÀÀdñíÞ[$¿ýy#pÓ9Ï§Tñºð‘—u±˜ü˜O’ùùyr¡ÀKBá9žø†e{pú¨«¹‡1å(tÆ¨rÂÀC,)P%2Ñ!{'ù‚0²ØaìÀ-XØeôÀ·‰·Wx%m—³ÇÉÀ÷ÀÒPÒN‘€ç"c´´Û}V‚*–hwÖµÇmÔG«´Y}¥=k3ÞÝ¬Ój™èÛuúð1¡ëÚÞ- ¡´ÑÑowFa5ÈD=X¡—õ"$¯öË²áÂAø´˜ƒ’JøU6Ží­./þ9Qezb`$ãT9·<dõ÷oðM#¬d‘wŽ.B~Ë û×žÝÃÊï§çrz™kšè_éÕÇ¦¡h£¶*ÃÓ´	ª–èÃ-(üF	cçÞâayÇá€C]¿W'ÝÃV÷Ù	¸h{B¿Ù ØhØ?s®Û‚mV·Þ$ö¤ú¦Y®LÓ½uú`Îr
+ym³¥;¡;ezûêx­²ë'úíc}§L¢AvfFÄµÖõRW6åjš0Cº¯è÷ÚßÖµoëoÚõ?JZek^Ö((×h¹É>—º-,¥õZÕÒÈ¤Õ‰á	Ú#8^óV÷ù1H,kŸµõj›VO@Í=¾Üè¿ ‚a?Áþ l‡ÚÞÒ6ë¢àŽ Yw6Ì q¬iŸíc“£±>hi_8ó‡´¿lL£ÍéleøB‘ˆÖ«‡Ìh­îM« °×¯—á}%²õ˜g‰öÅ×6Èi­‹{liCþ`N¦Ç5mo×	›!¢@°Z­Â;VenyEOŽ^+Ñæ:â%ÖO, Ú$ÚÞýa×Ô#â5‡mæ¼Ìñnkt{à·ßý;ˆ¸½«ß:Ð¾ÿ/˜A¯6ñ™Azåð|Z¥:(Åg¯â§YZÇ7Œ¸Àè€Ôk½ñm·Ó2ýÿÐh˜( ™Ø¬Ä¢þÐ9°; ì	‹PGuØ+îMÞiiß6ôûöh_`MKuíö–FÍ"áA˜Ì‘Å`¶#8¬1@ÈXYlkíC¶EMm££úÙ9€wýe9b(¬àêlá­rÜã_Üä¢d“Bt[uz¸¾©WX2Ø›MMÈHG>c›wº	R×_Ëi^"ïÈª*gÉû²ŒÍIb‡(Ê:\¬r-zÉ©½Š…Í ½fŽFâú=›\¶j%Ú°1rØ„s’˜\ŠîljßÝ¡?€íjsä†‹Ê?,báâ+’R…´A×/¥§WÉ/Éú à…ŽXùRý.ƒÌÎ&B
+V/`.ÿé9BE¯ÖµÖc@+-5éŸ7èý{zu[x§?äÕ¢"X0~ÌMº•‹¸“îÑLMÕ-$•mV®ùèÕ­¾Xs6]Ý†ÜnfÌbñq6ñ¬Ý}
+Ñÿ¦æ°¡uºQñ}ÀçR‚
+Ik§QàâgO!Þg	>ÞŸ>…Ð™Óí=o$½.ÌTê§‘û·JJÿÙäFL¹@
+Pî‰(¢axùi…QsUíO!¤ûÕ&æ“¹œ‡ôôc·Ï”h©1–ðýjb8©™#øÜè@†Ñînë÷aêó…ƒá˜qˆeÉô…¡åœ÷*Õõg¸'+ÜRQ’0z®p|Q•{ZÈ¹5—É"¤ŠœËåÜ»’˜º6Ã:] >—–„ßä…œ¡êËé¥aå;‚_öD³
+™&¿f´È®¼
+G.FCWIF¾.(sl(˜
+ÇÃ‚ÙÊ2øÜà¥&‹áIËDUø\ATE9ÇñpêTQ)È
+——E£«æª#¼×4š8s…/	@é¦†öíšÆ/+ÆºÍŒ(ÉÀ·Ñ‡{=•¼¸4½êÑÊ¸ü«÷	$-­ùˆ(ôË’)0,rSu1#¯Va„À·ÄKa"óôs~Ï<ÆPÄj]ö«g1Ñ©¡Uþ
+dtlÕ¹ð¬á
+ÃñÐÀÇ~—)Ö¥Ü'EQY3©Ö¢˜-‚"àx6žuÃòóÙËŠœ.¦ÔÁæàG‹Ø$s`>Ž]ÅçÄk‚Qf¢0 ?ÓŠœ‡‘¢‚ÚþçÚŽ³üÝü˜w4R‡ê¦œœH!Ã§åã÷,¿Ê­pÙ´ZòÜŒEÃÖ/ý­ìv¡MÁ&‘‰Œj6önÞm+óyAIá3€¡Ô5l¥©ârFZ0ËQ,äwî‘ó|6ÿ”¹Gu1öîA¡z€½žD qì"ïIE¯¼>„á«$‹]½f°>ýsìßÐJ¥ê_—YÏ(Àqjak7ô»nÔ!½†¥ndú°ÅÊ*–qY‰SoÂÚýö$©:dG³IòŽ*Ø¥öeÎ*/©\J’‹Î»†/*È¡Ù$»fE*I€v‹ÉÛ¯Äñ¢Áa²¾æŒjØÅn+"ììÆÌ‚}[Ð Gž})î†°W; Æ}‡‡ïùUQ•„›“µ_«ØÄõ7b<âÔ—?ºôî{s^AÁŸWÄ”ûÆÜú 7DãíÅb*%
+@tœ×^å]#Î¸¾ýZÊLNS¸þQ@"¿ð?ýá+æ-õ¶…| ¬òoBÅ~€Õý†Â/â‡—išQŽŽUe¶F<ŒutQ°uwÀmb‹'Õ261XgµÄšt¦Ot›ýÆ‡Ë>]²Ì4™¶Î’¬d!c/“YQ¿aðªK–Qqð¦ëUQßqÝ´íÕyø¤ Äû~ÃjØ©lªd,tÔê>[½@FKOad:`»Šsù¢êÚ Q×ò¦‡ó<~)jAH»NæªB¶*(óS´Vž#úöï»}÷Õ®óRQ˜·üOïÆ{#,Ã£>ÁâO—ú/ù¿Ê+Ë‚êgº’(2H	4¹ŠDký¿œñò¦ï[’SÅÂœ\TYÔ6[!Æ ‚!%dÿ0”pt8÷/–]¶íBR½Z¯ÿ"€AhÀ$z·E´Ã²^ëœWÒKU0ä 4‰r±™Ùø8ÐºœËMŒ-öÖÿÁÅÆÝj[£œÍ«wËÞÕ…ãwºTL®ÉÙ—mc•P l–NîvèQý4<œvG9Œ£pò¤.{uoW{TQ£JÐqÔ^`9Ì]í* [OS¶òçbÐÞxÞ^º¢ð¯™ŸàuÝ„êrmð'È DÁŽ°T¢cÓo½vóµ  ÿÿ N1±

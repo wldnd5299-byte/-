@@ -244,7 +244,7 @@ export function generateTermsPages() {
     <meta name="twitter:image" content="https://insurancebridge.co.kr/og-image.png" />
 
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234907937320078" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090" crossorigin="anonymous"></script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -306,16 +306,6 @@ export function generateTermsPages() {
 
         <!-- Summary if present -->
         ${summaryHtml}
-
-        <!-- AdZone Top Slot -->
-        <div style="margin: 20px 0; text-align: center;">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-1234907937320078"
-               data-ad-slot="terms-detail-top"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
 
         <!-- Static Rendered Disease / Surgery Table -->
         <section id="terms-static-table-content">

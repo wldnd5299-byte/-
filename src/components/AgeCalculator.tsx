@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calculator, Calendar, AlertCircle, CheckCircle2, Clock, Info } from 'lucide-react';
-import AdZone from './AdZone';
+import { Calculator, Calendar, AlertCircle, CheckCircle2, Clock, Info, BookOpen, ArrowRight } from 'lucide-react';
 
 export default function AgeCalculator() {
   const [birthInput, setBirthInput] = useState<string>('');
@@ -153,9 +152,6 @@ export default function AgeCalculator() {
         </div>
       </div>
 
-      {/* Top Banner Advertisement */}
-      <AdZone type="header" id="global-ad-header" />
-
       {/* Main Single Column Layout Card */}
       <div className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-xs space-y-6">
         
@@ -226,23 +222,67 @@ export default function AgeCalculator() {
 
           </div>
 
-          {/* Information Card */}
-          <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/60 space-y-2 text-left">
-            <span className="text-xs font-bold text-[#123941] flex items-center gap-1 uppercase tracking-wider">
-              <Info className="w-3.5 h-3.5 text-[#cb9f74]" />
-              보험나이란 무엇인가요?
-            </span>
-            <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
-              실제 만 나이를 기준으로 <strong>6개월 미만의 단수는 버리고, 6개월 이상의 단수는 1년으로 반올림</strong>하여 계산하는 보험 전용 나이입니다. 따라서 내 진짜 생일로부터 6개월이 지나면 보험나이는 벌써 1살이 오르게 됩니다 (상령일 도래).
-            </p>
+          {/* Information Card & SEO Content */}
+          <div className="p-5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-4 text-left">
+            <div className="space-y-1.5">
+              <h2 className="text-xs sm:text-sm font-bold text-[#123941] flex items-center gap-1.5 uppercase tracking-wider">
+                <Info className="w-4 h-4 text-[#cb9f74] shrink-0" />
+                보험 상령일이란?
+              </h2>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                <strong>상령일(보험 상령일)</strong>은 실제 생년월일에서 6개월이 경과하여 보험 약관상 <strong>보험나이가 1세 올라가는 기준일</strong>을 의미합니다. 법적 만 나이와 달리, 보험료 산출과 위험률 적용의 공식 기준점이 됩니다.
+              </p>
+            </div>
+
+            <div className="space-y-1.5 border-t border-slate-200/60 pt-3">
+              <h2 className="text-xs sm:text-sm font-bold text-[#123941] flex items-center gap-1.5 uppercase tracking-wider">
+                <Clock className="w-4 h-4 text-[#cb9f74] shrink-0" />
+                보험 상령일은 어떻게 계산하나요?
+              </h2>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                보험 약관에서는 계약일(또는 현재일) 현재의 실제 만 나이를 기준으로 <strong>6개월 미만의 단수는 버리고, 6개월 이상의 단수는 1년으로 반올림</strong>하여 계산합니다. 즉, <strong>매년 실제 생일로부터 정확히 6개월이 지난 날</strong>이 상령일이 됩니다.
+              </p>
+            </div>
+
+            <div className="space-y-2 border-t border-slate-200/60 pt-3">
+              <h2 className="text-xs sm:text-sm font-bold text-[#123941] flex items-center gap-1.5 uppercase tracking-wider">
+                <Calendar className="w-4 h-4 text-[#cb9f74] shrink-0" />
+                상령일 계산 예시
+              </h2>
+              <div className="bg-white p-3 rounded-lg border border-slate-200 text-xs text-slate-700 space-y-1.5 font-medium">
+                <p>• <strong>예시 1:</strong> 생일이 <strong>1월 15일</strong>인 경우 → 매년 <strong>7월 15일</strong>이 상령일</p>
+                <p>• <strong>예시 2:</strong> 생일이 <strong>8월 20일</strong>인 경우 → 다음 해 <strong>2월 20일</strong>이 상령일</p>
+              </div>
+            </div>
+
+            <div className="space-y-1.5 border-t border-slate-200/60 pt-3">
+              <h2 className="text-xs sm:text-sm font-bold text-[#123941] flex items-center gap-1.5 uppercase tracking-wider">
+                <BookOpen className="w-4 h-4 text-[#cb9f74] shrink-0" />
+                보험나이와 상령일의 관계
+              </h2>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                실제 생일로부터 6개월이 지나 상령일이 도래하면 만 나이보다 먼저 보험나이가 1세 증가하게 됩니다. 위 계산기에서 생년월일 8자리를 입력하시면 다음 상령일 날짜와 인상까지 남은 일수를 실시간으로 확인하실 수 있습니다.
+              </p>
+            </div>
+
+            {/* Link to Info Article */}
+            <div className="pt-2">
+              <a
+                href="/info/insurance-age-change-date/"
+                className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-200/80 hover:border-[#cb9f74]/50 hover:bg-slate-50/80 transition-all text-xs font-bold text-[#123941] group"
+              >
+                <span className="flex items-center gap-2">
+                  <span className="px-1.5 py-0.5 rounded bg-[#123941]/10 text-[#123941] text-[10px] font-bold">상세 가이드</span>
+                  상령일 뜻과 보험나이 계산법 자세히 보기
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#cb9f74] group-hover:translate-x-0.5 transition-all shrink-0" />
+              </a>
+            </div>
           </div>
 
         </div>
 
       </div>
-
-      {/* Bottom Banner Ad */}
-      <AdZone type="inline-bottom" id="ad-age-calc-bottom" />
     </div>
   );
 }

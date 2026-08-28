@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Scale, Download, Printer, FileText, X, FileCheck, Eye } from 'lucide-react';
-import AdZone from './AdZone';
 import { PRECEDENTS_DATA, PrecedentItem } from '../data/disputeData';
 
 const updateDisputeItemSEOMeta = (item: PrecedentItem) => {
@@ -374,9 +373,6 @@ ${item.tip}
           </div>
         </div>
       </div>
-
-      {/* Top Banner Advertisement */}
-      <AdZone type="header" id="global-ad-header" />
 
       {/* Search Input Bar */}
       <div className="relative w-full">

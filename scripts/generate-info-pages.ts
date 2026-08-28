@@ -150,6 +150,9 @@ export async function generateInfoPages() {
     <meta name="twitter:description" content="${escapeHtml(hubDesc)}" />
     <meta name="twitter:image" content="https://insurancebridge.co.kr/og-image.png" />
 
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090" crossorigin="anonymous"></script>
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -335,6 +338,9 @@ export async function generateInfoPages() {
     <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />
     <meta name="twitter:description" content="${escapeHtml(art.description)}" />
     <meta name="twitter:image" content="https://insurancebridge.co.kr/og-image.png" />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090" crossorigin="anonymous"></script>
 
     <!-- JSON-LD Article Schema -->
     <script type="application/ld+json">

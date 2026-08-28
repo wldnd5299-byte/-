@@ -184,7 +184,7 @@ export async function generateClaimPages() {
     <meta name="twitter:image" content="https://insurancebridge.co.kr/og-image.png" />
 
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234907937320078" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090" crossorigin="anonymous"></script>
 
     <!-- JSON-LD BreadcrumbList -->
     <script type="application/ld+json">
