@@ -62,23 +62,31 @@ export async function downloadPdfFromHtml(
     styleOverride.textContent = `
       .code {
         display: inline-block !important;
-        box-sizing: border-box !important;
+        align-items: center !important;
+        justify-content: center !important;
         text-align: center !important;
         vertical-align: middle !important;
-        line-height: 1.25 !important;
-        padding: 3px 8px !important;
+        line-height: 1.4 !important;
+        padding: 2px 8px 5px 8px !important;
         min-width: 44px !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
         font-weight: 700 !important;
         white-space: nowrap !important;
+        box-sizing: border-box !important;
       }
       .badge {
         display: inline-block !important;
-        box-sizing: border-box !important;
+        align-items: center !important;
+        justify-content: center !important;
         text-align: center !important;
         vertical-align: middle !important;
-        line-height: 1.25 !important;
+        line-height: 1.4 !important;
+        padding: 1px 8px 4px 8px !important;
+        min-width: 36px !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        font-weight: 700 !important;
         white-space: nowrap !important;
+        box-sizing: border-box !important;
       }
       td.text-center, th.text-center {
         text-align: center !important;
@@ -92,6 +100,23 @@ export async function downloadPdfFromHtml(
 
     // Give browser a moment to layout and render fonts
     await new Promise((resolve) => setTimeout(resolve, 200));
+
+    // Collect protected element boundary boxes relative to container
+    const containerRect = container.getBoundingClientRect();
+    const containerRenderedHeight = containerRect.height || container.offsetHeight || 1;
+
+    const protectedEls = container.querySelectorAll(
+      'tr, .sec-title, .group-card, .notes, .header, .info-box'
+    );
+    const protectedRangesDom: { top: number; bottom: number }[] = [];
+    protectedEls.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const top = rect.top - containerRect.top;
+      const bottom = rect.bottom - containerRect.top;
+      if (bottom > top) {
+        protectedRangesDom.push({ top, bottom });
+      }
+    });
 
     onProgress?.('processing');
 
@@ -120,6 +145,12 @@ export async function downloadPdfFromHtml(
     const pdfPageHeight = 297; // A4 mm
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
+    const canvasYRatio = canvasHeight / containerRenderedHeight;
+
+    const protectedRanges = protectedRangesDom.map((r) => ({
+      top: r.top * canvasYRatio,
+      bottom: r.bottom * canvasYRatio,
+    }));
 
     // Height of one A4 page in canvas pixels
     const pageCanvasHeight = canvasWidth * (pdfPageHeight / pdfPageWidth);
@@ -130,13 +161,76 @@ export async function downloadPdfFromHtml(
       const imgHeightMm = (canvasHeight * pdfPageWidth) / canvasWidth;
       pdf.addImage(imgData, 'JPEG', 0, 0, pdfPageWidth, imgHeightMm);
     } else {
-      // Multi-page document with smart page slicing
-      const totalPages = Math.ceil(canvasHeight / pageCanvasHeight);
+      // Multi-page document with element-aware page splitting
+      let currentY = 0;
+      let pageCount = 0;
 
-      for (let pageIdx = 0; pageIdx < totalPages; pageIdx++) {
-        const srcY = pageIdx * pageCanvasHeight;
-        const srcH = Math.min(pageCanvasHeight, canvasHeight - srcY);
+      while (currentY < canvasHeight) {
+        const remainingH = canvasHeight - currentY;
 
+        if (remainingH <= pageCanvasHeight) {
+          // Last page fits within one pageCanvasHeight
+          const srcH = remainingH;
+          const pageCanvas = document.createElement('canvas');
+          pageCanvas.width = canvasWidth;
+          pageCanvas.height = pageCanvasHeight;
+          const ctx = pageCanvas.getContext('2d');
+
+          if (ctx) {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, pageCanvas.width, pageCanvas.height);
+            ctx.drawImage(
+              canvas,
+              0,
+              currentY,
+              canvasWidth,
+              srcH,
+              0,
+              0,
+              canvasWidth,
+              srcH
+            );
+          }
+
+          const imgData = pageCanvas.toDataURL('image/jpeg', 0.98);
+
+          if (pageCount > 0) {
+            pdf.addPage('a4', 'portrait');
+          }
+
+          pdf.addImage(imgData, 'JPEG', 0, 0, pdfPageWidth, pdfPageHeight);
+          pageCount++;
+          break;
+        }
+
+        // Default target split point
+        const targetY = currentY + pageCanvasHeight;
+        let splitY = targetY;
+
+        // Check if targetY cuts through any protected element (top < targetY < bottom)
+        const intersecting = protectedRanges.find(
+          (r) => r.top < targetY && targetY < r.bottom
+        );
+
+        if (intersecting) {
+          const elementHeight = intersecting.bottom - intersecting.top;
+          const minPageHeight = pageCanvasHeight * 0.25;
+          const proposedSplitY = intersecting.top;
+
+          if (
+            elementHeight <= pageCanvasHeight &&
+            proposedSplitY - currentY >= minPageHeight
+          ) {
+            splitY = proposedSplitY;
+          }
+        }
+
+        // Safety fallback: ensure strictly forward progress
+        if (splitY <= currentY) {
+          splitY = targetY;
+        }
+
+        const srcH = Math.min(splitY - currentY, canvasHeight - currentY);
         if (srcH <= 0) break;
 
         const pageCanvas = document.createElement('canvas');
@@ -150,7 +244,7 @@ export async function downloadPdfFromHtml(
           ctx.drawImage(
             canvas,
             0,
-            srcY,
+            currentY,
             canvasWidth,
             srcH,
             0,
@@ -162,11 +256,14 @@ export async function downloadPdfFromHtml(
 
         const imgData = pageCanvas.toDataURL('image/jpeg', 0.98);
 
-        if (pageIdx > 0) {
+        if (pageCount > 0) {
           pdf.addPage('a4', 'portrait');
         }
 
         pdf.addImage(imgData, 'JPEG', 0, 0, pdfPageWidth, pdfPageHeight);
+        pageCount++;
+
+        currentY = splitY;
       }
     }
 

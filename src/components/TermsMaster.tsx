@@ -26,6 +26,7 @@ import {
   Loader2
 } from "lucide-react";
 import { downloadPdfFromHtml } from "../utils/pdfGenerator";
+import AdZone from "./AdZone";
 import { SURGERY_1TO8_RECORDS } from "../data1to8";
 import { SURGERY_1TO7_RECORDS } from "../data1to7";
 import {
@@ -8678,20 +8679,2256 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
 
   <div class="notes">
     <strong>【상해및질병 통합치료비 약관 규정】</strong><br/>
-    • <strong>[4] 연간 총 지급금액:</strong> 통합치료항목별 연�x��[{oו�ߟ�IS�ˡH��%��V���Y�v!�!璜z8C�-iU�#wU���k����ɺ���@�/�?5Cl?��7e��,���;��{�y�ι�z��?�8>��wwO<m�;_�����y�����&x���wv�'�x��v�{��[��Ξ��M��=:����*N����3�?��#L;�m��م�E�\����nuzX���o_Ѕ���t�������R,��K������6?������(c����=�?��ݾ�g���?�?�M@e�߹��~q2���qo�����_.F�<~������y������!��ك�6pI��ws��T�����/���G����{|����!�Ú~c�}r��q9c˺�Y�E�4,U�htͺ�[f~��  ����6��n>�m@�c릛���-�Ds}�q ��Y�*��r���Tai�'s�x�ڿ|���3���ٜ�]�r���ez�M\�-�F�fr�\��L��Ww2��CRw�v�t�6����&���kl���0Ʉ��'�_t�&�5p�#U8W��e����S�V��nV�\j��`��{���t���֍�*(j�c�Yu\�.�yC7�_V��}G 7O��O.�
-pժY��}�q��
-WH���s��pT�Qb�)�[�eW�R�|vDy*MAG�4�lVa��Y��,�]�YGM�_o�V��p~�ѐ[(R�wQ�l|P��j#��
-8��k�Nydt�R��pʜ���B;5��*��al���zcU�#[�t��t�:Qj�]&Ĝ�Л����>E!���T%�,65�r�����(�B	I�#Ĝn-�^�ғ��+g+��qJ_lֵ:U`�TI]�";r2����NB�U8��Z�:�UM���W�k�o�Zcl-�ۢJ+�4 �|j�AN�S�t&�c5L=E��D��覣k8\��V�*5��17,]��V.��[�c[n�5&���KV\��S�p#r���ň;	m�^��H9`@"sT@rL�����V�cc��Rn�h��Ţ���` �H�24i@rSgK�� �5U�4�D����-�bnW������\%ͮ���L��e�u�}�2q��S�`�TS�
+    • <strong>[4] 연간 총 지급금액:</strong> 통합치료항목별 연간 지급된 지급금액의 합산금액을 말하며, 보험가입금액을 한도로 합니다.<br/>
+    • <strong>[5] 연간의 정의:</strong> 계약일(갱신계약의 경우 갱신계약일)로부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.<br/>
+    • <strong>한도 산정 기준일자:</strong><br/>
+    &nbsp;&nbsp;1. 상해및질병 통합치료(검사): 각 통합치료항목별 검사를 받은 날<br/>
+    &nbsp;&nbsp;2. 상해및질병 통합치료(1-5종수술): 각 통합치료항목별 수술을 받은 날<br/>
+    &nbsp;&nbsp;3. 상해및질병 통합치료(입원): 각 통합치료항목별 입원을 받은 날<br/>
+    &nbsp;&nbsp;4. 상해및질병 통합치료(주요치료): 각 통합치료항목별 주요치료를 받은 날 (특정수혈의 경우 수혈을 받은 날)
+  </div>
 
-q%Sɰ�шט�K���'j�~���E�%V�H ��b���ٱ�q���(-��rq|���M4]ނ���+�'D;�2	�DoӰ���$D���@[�<,��ѐE�i�Fl��*���\/l�L.���-�hJ5*i��x���&�.L=�c�45�bVE�?�I8�����7��1������`�~�]�`�&q��đ	�O��4�2�^�>��g3��31Z0��­�2�f�������!�vm���X���߾��?�ϑ���{���0|{�v�0�bۘ�'z��^*���9�*�1Lp�S�O�r0?�����i`>z|�Y��f����u����	���#�,��N�
-0#�I������a~�ip7`�e�S]�*��GV]5mλ��f3M�WsC�q^B����w�m�=�8�����A�&F�Y(���t&%#�+0K��O/�����E���]�˶6�k)0�G1��f�_<EYc��:y�Y6Z�B�ƻ�AO8��C���|lk�7��]�`��!&����;03+���ڡI��V��
-kZ�*�������=R���\���Z� ��`FTC��QW�dß9������@-�{�����Y�9i9l@(lH-ҳғ�D�q*4�H�ﴤ{© ӫ�̊&~:����f�X�W[���*���+6��=�zww����=�w�5K�X�|x϶��G��兹�7�먾��^FӦZ-PU^�V����EXŐ��f�O�8�ȟ��a����"�%�I�1�DX��E������M��i1333�f�b�o�k�1��н�\/��rT����r��%�ƽ�z*6�N�鮂��sZ��S9av�6�fȒ%�-K���9�b����RT�g!m��wLC�!�b)�N)EV%S4�m��RL+
-)�K�y%�5O��qzb	�z2Ӗ���{�Yj�|
-�����2q/��l�&u�q��ׂ�x��G� e@���:��i��Š/zϏD��=}IK{�+Zd�0 �g=D��f�p0Y�z��X��)�����߱*m�����A��G����Vf��� 1�H>'w��'��w�hn��)
-�����b������IZ��+S��1M�!��ޣ���oy�r��.��H�1�ָh[�qD���Ih�Ϩ%F{���� ��kj�ƃKW�?���������s���JֵEj��S�d<-�H~�ѸDE��Vo��9ND#�k�ြ``���>.A�~VW�:�64h!�a���'(ʼKAͥh J�5�8	։�^<g�"�"a�WٺhقsN+�J!�Z�,�K,�;qA���}֟X�w�V�H���mU7�ޯ�>$��F�l���f�n �-�6�ΧE4�(�L>�R������W��� �6�s(�C^�}���'^�_�1����� Uk*�� L4etŀ�2.����`D��R	���8 ��ER�yZT�u_<�A[��g�Z��,�J���Qi���Q*�X*8@
-�\�x��Ei��R���/";+�Hq:�J	��Dy`��\p�q�֙!RǓ�lk���A������N��u�) �}p��<\>7��%,m��4c��~s����"�@jQ~9�a�]�EQ�!�D
-�"Ǔ�K�"�\ഫ�q�#��2�-���@jq�S1�n��-��{�ﱃA�ݰ�!z:��)� v�)��{�9Q�q���.�$x������<�������ަ���ޜ����=?�D��0 ?�
-/,;�ď�2��'$��j� �+`�,D6�T�V�����q	�Q��G�������K������ �(%ݞ���������g�9&�X�!!�F��ɟp+kK� �(��]�V�D�fm�tt
-�x05D�O�>��Rn�JFXPe̤� �s��'��y��&�e� v5�9Y*%g�"֓�k�`�v����@�F��������$�����o��|�!���v�A��0n�~�|��}s�ZI�$&Gy���(<`��(�2����A��a�SCp�Ðe5�V�}W�^7����1�]k�,W�(+#��*��2g^d�b�LΙ���9�ː#b�4m��duf-��4���TS3gOpl'=9��#/9�0C�i�i-�j'���)�d��@D�/O����݉.Ĝ(8ND�l�MA�+�z�dһ�����Մ��1,3 j���]�����ީ�&g+����W�\�3�byn`B�(����;�Q.͝ⱄ^$�6�ۆ8Y�����,�"#Ҭ¬>�M���RD�9��0���ӻ�?`ǲ� ���dG�X�{=2)����4mXq��0�&��MKR��[���2�I�Q@fBd>UB���hCS���q0B
-�����B�,��0ku����X�_TCr�́�Y�$S��J<^q�:'a�+QW�ڮ����q2���}Xwa��Ѷ����G}��<�&�< ��<ve)(�Y``(�	C�c ����A���*�������(3@oQ�	1�.�%U��I��)�Z0Xa�7%�,_�@<�`��T~�/�5��"��j�[��W��"�+BVNQ���vX`��WGO(]��C���E�i����ed����� �[F�F?Yd	�k!~�� �\��x�1�����M&x5*nC7T��v�E�4�snLg�8&O��.��D\����t��I-��39^��SM!]�*Ъ��u���.㏟m����X,�����E<��Eб�I�A�sƴ9�|�%-��jBW��u�V�e_��λ�D�#� '���Of�ѭ�4ST�N{6O��G�\`���*��l0i���@���՘�I�s\�A2�K��Y@tBx��-�S�V���OƲ��y��w�s����y8˺�����B�YB����&���Af$y_�{�U��d��&���y�����0@Fm$���m>7�J yDK�tL�c`ھbQ,�F�pY�M�F춃���Po�u���]c�܋{�"Z��飦!�j�]�Z{5���κ��zu
-{KύXX���etYA��u|gB<��4�\��D_J��k�SN�vT�p�}2s������*�*i���:�+����Zc)ǫ���R�q��v3�����&+���� ��2~��h9e ı�]��d2X%��H�K@��{+�r������<\Lz^�~i�3+?t���.��x��y�7�>?8��.�C���*����%[�����ކ���n�/c�c_�`#r=��1�sE��J��@������gQ�^���d�:����ϯ���w��[�+�Ue���~���}��K�/�^�Ş��[�?���2��'�:q�g7�������/#�x�]��p.�~���2<�k������ƃ����  �� Ȅ�e
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'hanwha_injury_integrated_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 상해통합치료비 (${hanwhaInjuryTreatmentTab === 'luxury' ? '고급형' : hanwhaInjuryTreatmentTab === 'general' ? '일반형' : '실속형'})</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 한화손해보험 - 상해통합치료비 (${hanwhaInjuryTreatmentTab === 'luxury' ? '고급형' : hanwhaInjuryTreatmentTab === 'general' ? '일반형' : '실속형'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">한화손해보험 - 상해통합치료비 (${hanwhaInjuryTreatmentTab === 'luxury' ? '고급형' : hanwhaInjuryTreatmentTab === 'general' ? '일반형' : '실속형'})</h1>
+      <div class="subtitle">674 한화 시그니처 여성 건강보험4.0 무배당2604</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[상해통합치료비 약관 규정]</strong><br/>
+    [3] 제1항의 통합치료 항목별 지급금액 및 지급한도라 함은 아래의 지급금액 및 지급한도를 말합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;형별 지급금액 (${hanwhaInjuryTreatmentTab === 'luxury' ? '고급형' : hanwhaInjuryTreatmentTab === 'general' ? '일반형' : '실속형'})&gt; 보장항목 및 지급금액</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%; text-align: center;">구분</th>
+        <th style="width: 38%;">통합치료 항목</th>
+        <th style="width: 20%; text-align: center;">지급한도</th>
+        <th style="width: 20%; text-align: center;" class="highlight">지급금액 (${hanwhaInjuryTreatmentTab === 'luxury' ? '고급형' : hanwhaInjuryTreatmentTab === 'general' ? '일반형' : '실속형'})</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${HANWHA_INJURY_INTEGRATED_TREATMENT_ITEMS.map((item) => {
+        const amount = hanwhaInjuryTreatmentTab === 'luxury' ? item.luxury : hanwhaInjuryTreatmentTab === 'general' ? item.general : item.saving;
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black">${item.name}</td>
+            <td class="text-center">${item.limit}</td>
+            <td class="text-center highlight font-bold">${amount}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(고급형 / 일반형 / 실속형) 보장금액 종합 비교표&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%; text-align: center;">구분</th>
+        <th style="width: 32%;">통합치료 항목</th>
+        <th style="width: 18%; text-align: center;">지급한도</th>
+        <th style="width: 10%; text-align: center; ${hanwhaInjuryTreatmentTab==='luxury'?'background:#f0fdfa;color:#123941;':''}">고급형</th>
+        <th style="width: 10%; text-align: center; ${hanwhaInjuryTreatmentTab==='general'?'background:#f0fdfa;color:#123941;':''}">일반형</th>
+        <th style="width: 10%; text-align: center; ${hanwhaInjuryTreatmentTab==='saving'?'background:#f0fdfa;color:#123941;':''}">실속형</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${HANWHA_INJURY_INTEGRATED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.limit}</td>
+          <td class="text-center" style="${hanwhaInjuryTreatmentTab==='luxury'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.luxury}</td>
+          <td class="text-center" style="${hanwhaInjuryTreatmentTab==='general'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.general}</td>
+          <td class="text-center" style="${hanwhaInjuryTreatmentTab==='saving'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.saving}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>【상해통합치료비 약관 규정】</strong><br/>
+    • <strong>[4] 연간의 정의:</strong> 이 특별약관에서 “연간”이라 함은 이 특별약관의 계약일로부터 그 날을 포함하여 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다. 다만, 해당년도의 계약해당일이 없는 경우에는 해당월의 마지막 날을 계약해당일로 합니다.<br/>
+    • <strong>출처:</strong> 674 한화 시그니처 여성 건강보험4.0 무배당2604
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'meritz_practical_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 암통합치료비(실속형)</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 암통합치료비(실속형) (${meritzPracticalTreatmentTab === '10m' ? '실속형(1천)' : meritzPracticalTreatmentTab === '30m' ? '실속형(3천)' : meritzPracticalTreatmentTab === '50m' ? '실속형(5천)' : '실속형(7천)'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 암통합치료비(실속형) (${meritzPracticalTreatmentTab === '10m' ? '실속형(1천)' : meritzPracticalTreatmentTab === '30m' ? '실속형(3천)' : meritzPracticalTreatmentTab === '50m' ? '실속형(5천)' : '실속형(7천)'})</h1>
+      <div class="subtitle">2-93. 암 통합치료비I(실속형)(건강가입)보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 본 담보는 암 진단 후 수술, 항암방사선, 항암약물 및 표적/면역/양성자 등 핵심 암 치료에 대해 정액 보장합니다.<br/>
+    • 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 지급합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;${meritzPracticalTreatmentTab === '10m' ? '실속형(1천)' : meritzPracticalTreatmentTab === '30m' ? '실속형(3천)' : meritzPracticalTreatmentTab === '50m' ? '실속형(5천)' : '실속형(7천)'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1년 미만 (50%)</th>
+        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1년 이상 (100%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_PRACTICAL_TREATMENT_ITEMS.map((item) => {
+        const valStr = item[meritzPracticalTreatmentTab];
+        const numVal = parseInt(valStr.replace(/[^0-9]/g, ''), 10);
+        const halfVal = isNaN(numVal) ? '-' : (numVal === 50 ? '25만원' : numVal === 250 ? '125만원' : (numVal / 2) + '만원');
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${halfVal}</td>
+            <td class="text-center highlight">${valStr}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(실속형 1천 / 3천 / 5천 / 7천) 가입금액 비교표 (1년이상 100% 기준)&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='10m'?'background:#f0fdfa;color:#123941;':''}">1천</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='30m'?'background:#f0fdfa;color:#123941;':''}">3천</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='50m'?'background:#f0fdfa;color:#123941;':''}">5천</th>
+        <th style="width: 6%; text-align: center; ${meritzPracticalTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7천</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_PRACTICAL_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='10m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['10m']}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='30m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['30m']}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='50m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['50m']}</td>
+          <td class="text-center" style="${meritzPracticalTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>[약관 유의사항 및 보장 기준]</strong><br/>
+    • <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.<br/>
+    • <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.<br/>
+    • <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'meritz_noncovered_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 암통합치료비(비급여)</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 암통합치료비(비급여) (${meritzNoncoveredTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzNoncoveredTreatmentTab === '70m' ? '암통합치료비(7천)' : '암통합치료비(1억)'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 암통합치료비(비급여) (${meritzNoncoveredTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzNoncoveredTreatmentTab === '70m' ? '암통합치료비(7천)' : '암통합치료비(1억)'})</h1>
+      <div class="subtitle">2-94. 암 통합치료비II(비급여(전액본인부담 포함))(건강가입)보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 본 담보는 비급여(전액본인부담 포함) 암 수술, 항암방사선, 항암약물, 다빈치로봇수술, 표적/면역항암약물, 항암양성자방사선치료에 대해 집중 보장합니다.<br/>
+    • 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 지급합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;${meritzNoncoveredTreatmentTab === '40m' ? '암통합치료비(4천)' : meritzNoncoveredTreatmentTab === '70m' ? '암통합치료비(7천)' : '암통합치료비(1억)'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1년 미만 (50%)</th>
+        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1년 이상 (100%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_TREATMENT_ITEMS.map((item) => {
+        const amountUnder = meritzNoncoveredTreatmentTab === '40m' ? item['40m_under']
+                          : meritzNoncoveredTreatmentTab === '70m' ? item['70m_under']
+                          : item['100m_under'];
+        const amountOver = meritzNoncoveredTreatmentTab === '40m' ? item['40m_over']
+                         : meritzNoncoveredTreatmentTab === '70m' ? item['70m_over']
+                         : item['100m_over'];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${amountUnder}</td>
+            <td class="text-center highlight">${amountOver}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(비급여 4천 / 7천 / 1억) 가입금액 비교표 (1년이상 100% 기준)&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='40m'?'background:#f0fdfa;color:#123941;':''}">4천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredTreatmentTab==='100m'?'background:#f0fdfa;color:#123941;':''}">1억</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='40m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['40m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredTreatmentTab==='100m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['100m_over']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>[약관 유의사항 및 보장 기준]</strong><br/>
+    • <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.<br/>
+    • <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.<br/>
+    • <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'meritz_noncovered_primary_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 암통합치료비(비급여/주요치료)</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 암통합치료비(비급여/주요치료) (${meritzNoncoveredPrimaryTreatmentTab === '30m' ? '암통합치료비(3천)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '암통합치료비(5천)' : '암통합치료비(7천)'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 암통합치료비(비급여/주요치료) (${meritzNoncoveredPrimaryTreatmentTab === '30m' ? '암통합치료비(3천)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '암통합치료비(5천)' : '암통합치료비(7천)'})</h1>
+      <div class="subtitle">2-96. 암 통합치료비(주요치료)(비급여(전액본인부담 포함))(건강가입)보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 본 담보는 비급여(전액본인부담 포함) 암 수술, 유사암 수술, 항암방사선치료, 기타피부암 및 갑상선암 항암방사선치료, 항암약물치료, 기타피부암 및 갑상선암 항암약물치료에 대해 보장합니다.<br/>
+    • 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 지급합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;${meritzNoncoveredPrimaryTreatmentTab === '30m' ? '암통합치료비(3천)' : meritzNoncoveredPrimaryTreatmentTab === '50m' ? '암통합치료비(5천)' : '암통합치료비(7천)'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 12%; text-align: center; background: #fff7ed; color: #9a3412;">1년 미만 (50%)</th>
+        <th style="width: 12%; text-align: center; background: #f0fdfa; color: #123941;">1년 이상 (100%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.map((item) => {
+        const amountUnder = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_under']
+                          : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_under']
+                          : item['70m_under'];
+        const amountOver = meritzNoncoveredPrimaryTreatmentTab === '30m' ? item['30m_over']
+                         : meritzNoncoveredPrimaryTreatmentTab === '50m' ? item['50m_over']
+                         : item['70m_over'];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center font-bold" style="color: #c2410c; background: #fff7ed;">${amountUnder}</td>
+            <td class="text-center highlight">${amountOver}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(3천 / 5천 / 7천) 가입금액 비교표 (1년이상 100% 기준)&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 42%;">통합치료항목</th>
+        <th style="width: 16%; text-align: center;">지급횟수</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='30m'?'background:#f0fdfa;color:#123941;':''}">3천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='50m'?'background:#f0fdfa;color:#123941;':''}">5천</th>
+        <th style="width: 8%; text-align: center; ${meritzNoncoveredPrimaryTreatmentTab==='70m'?'background:#f0fdfa;color:#123941;':''}">7천</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_NONCOVERED_PRIMARY_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='30m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['30m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='50m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['50m_over']}</td>
+          <td class="text-center" style="${meritzNoncoveredPrimaryTreatmentTab==='70m'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item['70m_over']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>[약관 유의사항 및 보장 기준]</strong><br/>
+    • <strong>연간 총 지급한도:</strong> 최초 계약일부터 1년 경과시점 전일 이전은 가입금액의 50%, 1년 경과시점 이후는 가입금액의 100%를 한도로 지급합니다.<br/>
+    • <strong>보장개시일:</strong> 계약일 기준 15세 이상은 계약일부터 90일이 지난 날의 다음날, 15세 미만은 계약일부터 개시됩니다.<br/>
+    • <strong>연간의 정의:</strong> 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'hyundai_surgery1_5') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10.5px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px; margin-top: 14px; margin-bottom: 10px; }
+    .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .group-card { border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 12px; page-break-inside: avoid; overflow: hidden; }
+    .group-header { background: #123941; color: white; padding: 7px 10px; font-weight: 800; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+    .group-desc { background: #f8fafc; padding: 6px 10px; border-bottom: 1px solid #cbd5e1; font-size: 9.5px; color: #334155; line-height: 1.4; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; }
+    th { background: #f8fafc; color: #0f172a; font-weight: 800; text-align: left; padding: 5px 6px; border-bottom: 1px solid #cbd5e1; }
+    td { border-bottom: 1px solid #e2e8f0; padding: 4px 6px; color: #334155; }
+    .text-center { text-align: center; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #123941; color: #ffffff; padding: 2px 6px; border-radius: 4px; font-size: 9px; text-align: center; line-height: 1.2; vertical-align: middle; min-width: 36px; box-sizing: border-box; white-space: nowrap; }
+    .footnotes { background: #f8fafc; border-top: 1px solid #cbd5e1; padding: 6px 10px; font-size: 9px; color: #475569; line-height: 1.4; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 ${selectedInsurer.name} - ${title} (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">[별표153] 1-5종 수술Ⅳ(선천포함)분류표</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="sec-title">● [하단 세부 분류표] (수술명 및 분류표)</div>
+
+  <div class="grid-2col">
+    ${HYUNDAI_SURGERY_1_5_SECTIONS.map((sec, idx) => `
+      <div class="group-card">
+        <div class="group-header">
+          <span>#${idx + 1} ${sec.category}</span>
+          <span style="font-size: 9.5px; opacity: 0.9;">${sec.items.length}개 항목</span>
+        </div>
+        ${sec.subTitle ? `<div class="group-desc">${sec.subTitle}</div>` : ''}
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 15%; text-align: center;">No.</th>
+              <th style="width: 65%;">수술명</th>
+              <th style="width: 20%; text-align: center;">분류표</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sec.items.map((item) => `
+              <tr>
+                <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num}</td>
+                <td style="font-weight: 600;">${item.name}</td>
+                <td class="text-center">${item.type !== '-' ? `<span class="code">${item.type}</span>` : '-'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        ${sec.footnotes ? `
+          <div class="footnotes">
+            ${sec.footnotes.map((fn) => `<div>${fn}</div>`).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `).join('')}
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'hyundai_heart' || activeSubTab === 'hyundai_cardiovascular') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10.5px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .group-card { border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 14px; page-break-inside: avoid; overflow: hidden; }
+    .group-header { background: #123941; color: white; padding: 8px 12px; font-weight: 800; font-size: 11px; display: flex; justify-content: space-between; }
+    .group-desc { background: #f8fafc; padding: 8px 12px; border-bottom: 1px solid #cbd5e1; font-size: 10px; color: #334155; line-height: 1.5; }
+    .cat-title { background: #f1f5f9; padding: 6px 12px; font-weight: 800; color: #123941; font-size: 10.5px; border-bottom: 1px solid #cbd5e1; border-top: 1px solid #cbd5e1; }
+    table { width: 100%; border-collapse: collapse; font-size: 10px; }
+    th { background: #f8fafc; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border-bottom: 1px solid #cbd5e1; }
+    td { border-bottom: 1px solid #e2e8f0; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
+    .footnotes { background: #f8fafc; border-top: 1px solid #cbd5e1; padding: 8px 12px; font-size: 9.5px; color: #475569; line-height: 1.5; }
+    .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 ${selectedInsurer.name} - ${title} (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">하단 세부분류표 (총 7개 그룹)</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="grid-2col">
+    ${HYUNDAI_HEART_SECTIONS.map((sec, idx) => `
+      <div class="group-card">
+        <div class="group-header">
+          <span>#${idx + 1} ${sec.title}</span>
+          <span>${sec.items.length}개 항목</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 15%; text-align: center;">No.</th>
+              <th>대상이 되는 질병</th>
+              <th style="width: 25%; text-align: center;">분류번호</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sec.items.map((item) => `
+              <tr>
+                <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num || ''}</td>
+                <td style="font-weight: 600;">${item.disease}</td>
+                <td class="text-center"><span class="code">${item.code || '-'}</span></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `).join('')}
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'hyundai_specific_cancer') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10.5px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .grid-container { display: flex; gap: 12px; margin-top: 10px; }
+    .grid-col { flex: 1; min-width: 0; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 9.5px; color: #475569; line-height: 1.5; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 ${selectedInsurer.name} - ${title} (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">하단 세부분류표</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    ① 약관에서 규정하는 '특정암'으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우에는 개정된 기준에 따라 해당 여부를 판단합니다.
+  </div>
+
+  <div class="sec-title">하단 세부분류표</div>
+  <div class="grid-container">
+    <div class="grid-col">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 15%; text-align: center;">No.</th>
+            <th style="width: 60%;">대상이 되는 질병</th>
+            <th style="width: 25%; text-align: center;">분류번호</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${HYUNDAI_SPECIFIC_CANCER_ITEMS.slice(0, 14).map(item => `
+            <tr>
+              <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num}</td>
+              <td style="font-weight: 600;">${item.name}</td>
+              <td class="text-center"><span class="code">${item.code}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-col">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 15%; text-align: center;">No.</th>
+            <th style="width: 60%;">대상이 되는 질병</th>
+            <th style="width: 25%; text-align: center;">분류번호</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${HYUNDAI_SPECIFIC_CANCER_ITEMS.slice(14).map(item => `
+            <tr>
+              <td class="text-center" style="font-weight: bold; color: #64748b;">${item.num}</td>
+              <td style="font-weight: 600;">${item.name}</td>
+              <td class="text-center"><span class="code">${item.code}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notes">
+    ② 제10차 개정이후 한국표준질병사인분류에 있어서 상기 상병 또는 질병 해당 여부는 피보험자가 진단확정된 당시 시행하고 있는 한국표준질병사인분류에 따라 판단합니다.<br/>
+    ③ 다만, 진단확정 당시의 한국표준질병사인분류에 따라 상기 상병 또는 질병에 대한 보험금 지급여부를 판단한 경우에는, 이후에 한국표준질병사인분류가 개정되더라도 상기 상병 또는 질병 해당 여부를 다시 판단하지 않습니다.<br/>
+    ④ 진단서 상의 분류번호는 한국표준질병사인분류 질병코딩지침서(향후 지침서가 변경되는 경우 변경된 지침서에 따릅니다)에 따라 기재된 것을 인정합니다.<br/>
+    ⑤ 한국표준질병사인분류 지침서의 '사망 및 질병이환의 분류번호부여를 위한 선정준칙과 지침'에 따라 C77~C80(불명확한, 이차성 및 상세불명 부위의 악성신생물(암))의 경우 일차성 악성신생물(암)이 확인되는 경우에는 원발부위(최초 발생한 부위)를 기준으로 분류합니다.<br/>
+    ⑥ 상기 외에도 대상질병 분류표의 분류번호와 연관성이 있어, 분류번호가 동시에 부여된 경우 대상질병 분류에 포함합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : activeSubTab === 'samsung_111' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
+    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
+    .text-center { text-align: center; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 ${selectedInsurer.name} - 111대질병수술비 분류표 (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">상단요약분류표 및 하단세부분류표</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <!-- 상단요약분류표 -->
+  <div class="sec-title">상단요약분류표</div>
+  <div class="info-box">
+    ⑦ 「111대질병」의 진단확정은 의료법 제3조(의료기관)에 규정한 국내의 병원, 의원 또는 국외의 의료관련법에서 정한 의료기관의 의사자격을 가진 자에 의한 진단서에 의합니다.
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">구분</th>
+        <th style="width: 75%;">해당 질병</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${SAMSUNG_111_SURGERY_SECTIONS.map(sec => `
+        <tr>
+          <td class="cat-td">${sec.category}</td>
+          <td style="font-weight: 600;">${sec.diseases.join(', ')}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+  <div class="notes">
+    <strong>제5조 (수술의 정의와 장소)</strong><br/>
+    ① 이 특별약관에서 「수술」이라 함은 병원 또는 의원의 의사의 면허를 가진 자(이하 「의사」라 합니다)에 의하여 「111대질병」으로 치료가 필요하다고 인정된 경우로서 자택 등에서의 치료가 곤란하여 의료법 제3조(의료기관)에 규정한 국내의 병원, 의원 또는 국외의 의료관련법에서 정한 의료기관에서 의사의 관리 하에 「111대질병」의 직접적인 치료를 목적으로 기구를 사용하여 생체(生體)에 절단(切斷, 특정부위를 잘라내는 것), 절제(切除, 특정부위를 잘라 없애는 것) 등의 조작(操作)을 가하는 것을 말합니다.<br/>
+    ② 제1항의 수술은 보건복지부 산하 신의료기술평가위원회(향후 제도변경 시에는 동 위원회와 동일한 기능을 수행하는 기관)로부터 안전성과 치료효과를 인정받은 최신 술기법으로 생체에 절단, 절제 등의 조작을 가하는 것을 포함합니다.
+  </div>
+
+  <!-- 하단세부분류표 -->
+  <div style="margin-top: 24px; font-size: 14px; font-weight: 800; color: #123941; border-bottom: 2px solid #123941; padding-bottom: 6px; margin-bottom: 12px;">
+    하단세부분류표
+  </div>
+
+  ${SAMSUNG_111_DISEASE_CODE_SECTIONS.map(cat => {
+    const tableTitleMap: Record<string, string> = {
+      '5대주요기관질병': '[별표-질병관련39] 5대주요기관질병 분류표Ⅱ',
+      '22대주요질병': '[별표-질병관련42] 22대주요질병 분류표',
+      '3대주요질병': '[별표-질병관련43] 3대주요질병 분류표',
+      '19대생활질병': '[별표-질병관련44] 19대생활질병 분류표',
+      '62대생활질병': '[별표-질병관련45] 62대생활질병 분류표',
+    };
+    const secTitle = tableTitleMap[cat.category] || `[세부분류표] ${cat.category}`;
+    return `
+      <div class="sec-title">${secTitle}</div>
+      <div class="info-box">
+        약관에 규정하는 ${cat.category}으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026. 1. 1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 질병의 해당 여부를 판단합니다.
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">구분</th>
+            <th style="width: 55%;">분류항목</th>
+            <th style="width: 20%; text-align: center;">분류번호</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${cat.subsections.map(sub => {
+            const rowSpan = sub.items.length;
+            return sub.items.map((item, itemIdx) => `
+              <tr>
+                ${itemIdx === 0 ? `<td rowspan="${rowSpan}" class="cat-td">${sub.title}</td>` : ''}
+                <td style="font-weight: 600;">${item.disease}</td>
+                <td class="text-center"><span class="code">${item.code}</span></td>
+              </tr>
+            `).join('');
+          }).join('')}
+        </tbody>
+      </table>
+      <div class="notes">
+        <strong>주)</strong><br/>
+        1. 대상질병 분류표의 분류번호와 상당한 연관성이 있어, 한국표준질병·사인분류의 기준에 따라 분류번호를 동시에 부여 가능한 경우 대상질병 분류에 포함합니다. 단, 보통약관 및 특별약관에 별도의 규정이 있는 경우 해당 조항을 우선 적용합니다.<br/>
+        2. 제10차 개정 이후 이 약관에서 보장하는 질병의 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.<br/>
+        3. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+      </div>
+    `;
+  }).join('')}
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : activeSubTab === 'samsung_15_disease' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
+    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
+    .text-center { text-align: center; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 ${selectedInsurer.name} - 15대질병수술비 분류표 (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">상단요약분류표 및 하단세부분류표</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <!-- 상단요약분류표 -->
+  <div class="sec-title">상단요약분류표</div>
+  <div class="info-box">
+    ⑦ 「15대질병」의 진단확정은 의료법 제3조(의료기관)에 규정한 국내의 병원, 의원 또는 국외의 의료관련법에서 정한 의료기관의 의사자격을 가진 자에 의한 진단서에 의합니다.
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">구분</th>
+        <th style="width: 75%;">해당 질병</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${SAMSUNG_15_SURGERY_SECTIONS.map(sec => `
+        <tr>
+          <td class="cat-td">${sec.category}</td>
+          <td style="font-weight: 600;">${sec.diseases.join(', ')}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+  <div class="notes">
+    <strong>제5조 (수술의 정의와 장소)</strong><br/>
+    ① 이 특별약관에서 「수술」이라 함은 병원 또는 의원의 의사의 면허를 가진 자(이하 「의사」라 합니다)에 의하여 「15대질병」으로 치료가 필요하다고 인정된 경우로서 자택 등에서의 치료가 곤란하여 의료법 제3조(의료기관)에 규정한 국내의 병원, 의원 또는 국외의 의료관련법에서 정한 의료기관에서 의사의 관리 하에 「15대질병」의 직접적인 치료를 목적으로 기구를 사용하여 생체(生體)에 절단(切斷, 특정부위를 잘라내는 것), 절제(切除, 특정부위를 잘라 없애는 것) 등의 조작(操作)을 가하는 것을 말합니다.<br/>
+    ② 제1항의 수술은 보건복지부 산하 신의료기술평가위원회(향후 제도변경 시에는 동 위원회와 동일한 기능을 수행하는 기관)로부터 안전성과 치료효과를 인정받은 최신 술기법으로 생체에 절단, 절제 등의 조작을 가하는 것을 포함합니다.
+  </div>
+
+  <!-- 하단세부분류표 -->
+  <div style="margin-top: 24px; font-size: 14px; font-weight: 800; color: #123941; border-bottom: 2px solid #123941; padding-bottom: 6px; margin-bottom: 12px;">
+    하단세부분류표
+  </div>
+
+  ${SAMSUNG_15_DISEASE_CODE_SECTIONS.map(cat => `
+    <div class="sec-title">15대주요질병 분류표Ⅱ</div>
+    <div class="info-box">
+      약관에 규정하는 15대주요질병으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청 고시 제2015-309호, 2016. 1. 1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 질병의 해당 여부를 판단합니다.
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 28%;">구분</th>
+          <th style="width: 52%;">분류항목</th>
+          <th style="width: 20%; text-align: center;">분류번호</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${cat.subsections.map(sub => {
+          const rowSpan = sub.items.length;
+          return sub.items.map((item, itemIdx) => `
+            <tr>
+              ${itemIdx === 0 ? `<td rowspan="${rowSpan}" class="cat-td">${sub.title}</td>` : ''}
+              <td style="font-weight: 600;">${item.disease}</td>
+              <td class="text-center"><span class="code">${item.code}</span></td>
+            </tr>
+          `).join('');
+        }).join('')}
+      </tbody>
+    </table>
+    <div class="notes">
+      <strong>주)</strong><br/>
+      1. 대상질병 분류표의 분류번호와 상당한 연관성이 있어, 한국표준질병·사인분류의 기준에 따라 분류번호를 동시에 부여 가능한 경우 대상질병 분류에 포함합니다. 단, 보통약관 및 특별약관에 별도의 규정이 있는 경우 해당 조항을 우선 적용합니다.<br/>
+      2. 제8차 개정 이후 이 약관에서 보장하는 질병의 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.<br/>
+      3. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+    </div>
+  `).join('')}
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : activeSubTab === 'samsung_21' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
+    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
+    .text-center { text-align: center; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 12px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 ${selectedInsurer.name} - 21대질병수술비 분류표 (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">상단요약분류표 및 하단세부분류표</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <!-- 상단요약분류표 -->
+  <div class="sec-title">상단요약분류표</div>
+  <div class="info-box">
+    약관에 규정하는 21대생활질병으로 분류되는 질병은 제7차 개정 한국표준질병·사인분류(통계청 고시 제2015-309호, 2016. 1. 1시행) 중 다음에 적은 질병을 말합니다.
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">구분</th>
+        <th style="width: 75%;">해당 질병</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${SAMSUNG_21_SURGERY_SECTIONS.map(sec => `
+        <tr>
+          <td class="cat-td">${sec.category}</td>
+          <td style="font-weight: 600;">${sec.diseases.join(', ')}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <!-- 하단세부분류표 -->
+  <div style="margin-top: 24px; font-size: 14px; font-weight: 800; color: #123941; border-bottom: 2px solid #123941; padding-bottom: 6px; margin-bottom: 12px;">
+    하단세부분류표 (21대생활질병)
+  </div>
+
+  ${SAMSUNG_21_DISEASE_CODE_SECTIONS.map(cat => `
+    ${cat.subsections.map(sub => `
+      <div class="sec-title">[21대생활질병] ${sub.title}</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 70%;">분류항목</th>
+            <th style="width: 30%; text-align: center;">분류번호</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${sub.items.map(item => `
+            <tr>
+              <td style="font-weight: 600;">${item.disease}</td>
+              <td class="text-center"><span class="code">${item.code}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `).join('')}
+  `).join('')}
+
+  <div class="notes">
+    <strong>주) 약관 적용기준</strong><br/>
+    1. 대상질병 분류표의 분류번호와 상당한 연관성이 있어, 한국표준질병·사인분류의 기준에 따라 분류번호를 동시에 부여 가능한 경우 대상질병 분류에 포함합니다. 단, 보통약관 및 특별약관에 별도의 규정이 있는 경우 해당 조항을 우선 적용합니다.<br/>
+    2. 제7차 개정 이후 이 약관에서 보장하는 질병의 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.<br/>
+    3. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : activeSubTab === 'samsung_15' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 11px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 13px; font-weight: 800; color: #ffffff; background: #123941; padding: 8px 12px; border-radius: 6px 6px 0 0; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0px; font-size: 10.5px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 6px 10px; color: #334155; }
+    .cat-td { font-weight: 800; background: #f8fafc; color: #0f172a; vertical-align: top; }
+    .text-center { text-align: center; }
+    .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 10px; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; border-top: none; padding: 10px 12px; border-radius: 0 0 6px 6px; font-size: 10px; color: #475569; line-height: 1.5; margin-bottom: 16px; }
+    .rules-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.6; margin-top: 20px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 ${SAMSUNG_1_5_SURGERY_DATA.title} (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">${SAMSUNG_1_5_SURGERY_DATA.title}</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <!-- Section I -->
+  <div class="sec-title">${SAMSUNG_1_5_SURGERY_DATA.section1.title}</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">구분</th>
+        <th style="width: 60%;">수술명</th>
+        <th style="width: 15%; text-align: center;">수술종류</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${SAMSUNG_1_5_SURGERY_DATA.section1.categories.map((cat) => {
+        const catRows = cat.items.reduce((acc, curr) => acc + 1 + (curr.subItems ? curr.subItems.length : 0), 0);
+        return cat.items.map((item, itemIdx) => {
+          return `
+            <tr>
+              ${itemIdx === 0 ? `<td rowspan="${catRows}" class="cat-td">${cat.category}${cat.subnote ? `<br/><span style="font-size:9px;font-weight:normal;color:#64748b;">${cat.subnote}</span>` : ''}</td>` : ''}
+              <td style="font-weight: 600;">${item.num}. ${item.name}</td>
+              <td class="text-center">${item.grade ? `<span class="badge">${item.grade}종</span>` : '-'}</td>
+            </tr>
+            ${item.subItems ? item.subItems.map((sub) => `
+              <tr style="background:#f8fafc;">
+                <td style="padding-left: 20px; color: #475569;">- ${sub.num}. ${sub.name}</td>
+                <td class="text-center"><span class="badge" style="background:#64748b;">${sub.grade}종</span></td>
+              </tr>
+            `).join('') : ''}
+          `;
+        }).join('');
+      }).join('')}
+    </tbody>
+  </table>
+  <div class="notes">
+    <strong>주)</strong><br/>
+    ${SAMSUNG_1_5_SURGERY_DATA.section1.notes.join('<br/>')}
+  </div>
+
+  <!-- Section II -->
+  <div class="sec-title">${SAMSUNG_1_5_SURGERY_DATA.section2.title}</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 85%;">수술명</th>
+        <th style="width: 15%; text-align: center;">수술종류</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${SAMSUNG_1_5_SURGERY_DATA.section2.items.map((item) => `
+        <tr>
+          <td style="font-weight: 600;">${item.num}. ${item.name}</td>
+          <td class="text-center"><span class="badge">${item.grade}종</span></td>
+        </tr>
+        ${item.subItems ? item.subItems.map((sub) => `
+          <tr style="background:#f8fafc;">
+            <td style="padding-left: 20px; color: #475569;">- ${sub.num}. ${sub.name}</td>
+            <td class="text-center"><span class="badge" style="background:#64748b;">${sub.grade}종</span></td>
+          </tr>
+        `).join('') : ''}
+      `).join('')}
+    </tbody>
+  </table>
+  <div class="notes">
+    <strong>주)</strong><br/>
+    ${SAMSUNG_1_5_SURGERY_DATA.section2.notes.join('<br/>')}
+  </div>
+
+  <!-- Section III -->
+  <div class="sec-title">${SAMSUNG_1_5_SURGERY_DATA.section3.title}</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 85%;">수술명</th>
+        <th style="width: 15%; text-align: center;">수술종류</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${SAMSUNG_1_5_SURGERY_DATA.section3.items.map((item) => `
+        <tr>
+          <td style="font-weight: 600;">${item.num}. ${item.name}</td>
+          <td class="text-center"><span class="badge">${item.grade}종</span></td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+  <div class="notes">
+    ${SAMSUNG_1_5_SURGERY_DATA.section3.notes.join('<br/>')}
+  </div>
+
+  <!-- Section IV Guidelines -->
+  <div class="rules-box">
+    <strong style="font-size: 12px; color: #123941;">${SAMSUNG_1_5_SURGERY_DATA.guidelines.title}</strong><br/><br/>
+    ${SAMSUNG_1_5_SURGERY_DATA.guidelines.rules.map(r => `<p style="margin-top:4px;margin-bottom:6px;">${r.replace(/\n/g, '<br/>')}</p>`).join('')}
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : activeSubTab === 'meritz_disease_integrated_treatment' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 질병통합치료비(${meritzDiseaseIntegratedTab === '20m' ? '2000만원' : meritzDiseaseIntegratedTab === '40m' ? '4000만원' : '7000만원'})</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 10.5px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 16px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #1e293b; color: #f1f5f9; border: 1px solid #0f172a; padding: 12px; border-radius: 8px; font-size: 9.5px; line-height: 1.6; margin-top: 16px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 메리츠화재 - 질병통합치료비(${meritzDiseaseIntegratedTab === '20m' ? '2000만원' : meritzDiseaseIntegratedTab === '40m' ? '4000만원' : '7000만원'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">메리츠화재 - 질병통합치료비(${meritzDiseaseIntegratedTab === '20m' ? '2000만원' : meritzDiseaseIntegratedTab === '40m' ? '4000만원' : '7000만원'})</h1>
+      <div class="subtitle">2-134. 질병 통합치료비보장 특별약관</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[약관 및 보장 개요]</strong><br/>
+    • 제1조(보험금의 지급사유): 회사는 피보험자가 특별약관의 보험기간 중 질병의 진단 및 치료를 위한 필요 소견을 토대로 질병 통합치료(검사/수술(1-5종)/주요치료)를 받은 경우 각 통합치료항목별 지급금액을 질병 통합치료비로 지급합니다.<br/>
+    • 질병 통합치료비의 연간 총 지급액은 연간 지급된 지급금액의 합계액을 말하며, 보험가입금액을 한도로 합니다.<br/>
+    • 「연간」이라 함은 계약일부터 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다.
+  </div>
+
+  <div class="sec-title">&lt;보험가입금액 ${meritzDiseaseIntegratedTab === '20m' ? '2000만원' : meritzDiseaseIntegratedTab === '40m' ? '4000만원' : '7000만원'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%; text-align: center;">구분</th>
+        <th style="width: 44%;">통합치료항목</th>
+        <th style="width: 18%; text-align: center;">지급횟수</th>
+        <th style="width: 18%; text-align: center; background: #e2e8f0;">지급금액</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_DISEASE_INTEGRATED_TREATMENT_ITEMS.map((item) => {
+        const amount = item[meritzDiseaseIntegratedTab];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.count}</td>
+            <td class="text-center highlight">${amount}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <!-- 전 유형 (2000만원 / 4000만원 / 7000만원) 종합 비교표 -->
+  <div class="sec-title" style="background: #334155;">&lt;전 유형(2000만원 / 4000만원 / 7000만원) 보장금액 종합 비교표&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%; text-align: center;">구분</th>
+        <th style="width: 40%;">통합치료항목</th>
+        <th style="width: 15%; text-align: center;">지급횟수</th>
+        <th style="text-align: center; width: 9%; ${meritzDiseaseIntegratedTab === '20m' ? 'background:#f0fdfa;color:#123941;font-weight:bold;' : 'background:#f1f5f9;'}">2000만원</th>
+        <th style="text-align: center; width: 9%; ${meritzDiseaseIntegratedTab === '40m' ? 'background:#f0fdfa;color:#123941;font-weight:bold;' : 'background:#f1f5f9;'}">4000만원</th>
+        <th style="text-align: center; width: 9%; ${meritzDiseaseIntegratedTab === '70m' ? 'background:#f0fdfa;color:#123941;font-weight:bold;' : 'background:#f1f5f9;'}">7000만원</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${MERITZ_DISEASE_INTEGRATED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.count}</td>
+          <td class="text-center" style="${meritzDiseaseIntegratedTab === '20m' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item['20m']}</td>
+          <td class="text-center" style="${meritzDiseaseIntegratedTab === '40m' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item['40m']}</td>
+          <td class="text-center" style="${meritzDiseaseIntegratedTab === '70m' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item['70m']}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong style="color: #fbbf24; font-size: 10.5px;">【제2조(보험금 지급에 관한 세부규정)】</strong><br/>
+    ① 피보험자가 연간 1년 이내에 각각 다른 「MRI촬영(급여)」을 받은 경우에도 통합치료항목 중 MRI촬영(급여)에 한하여 부위 및 횟수와 관계없이 1회의 질병 통합치료비만 지급합니다.<br/>
+    ② 피보험자가 연간 1년 이내에 각각 다른 「CT촬영(급여)」을 받은 경우에도 통합치료항목 중 CT촬영(급여)에 한하여 부위 및 횟수와 관계없이 1회의 질병 통합치료비만 지급합니다.<br/>
+    ③ 피보험자가 연간 1년 이내에 각각 다른 「양전자단층촬영(PET)(급여)」을 받은 경우에도 통합치료항목 중 양전자단층촬영(PET)(급여)에 한하여 부위 및 횟수와 관계없이 1회의 질병 통합치료비만 지급합니다.<br/>
+    ④ 피보험자가 연간 1년 이내에 각각 다른 「특정시술치료(흡인,천자,절개)(급여)」를 받은 경우에도 통합치료항목 중 특정시술치료(흡인,천자,절개)(급여)에 한하여 부위 및 횟수와 관계없이 1회의 질병 통합치료비만 지급합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : activeSubTab === 'kb_integrated_treatment' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 질병통합치료비(${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'})</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 10.5px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 16px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #1e293b; color: #f1f5f9; border: 1px solid #0f172a; padding: 12px; border-radius: 8px; font-size: 9.5px; line-height: 1.6; margin-top: 16px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 KB손해보험 - 질병통합치료비(${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">KB손해보험 - 질병통합치료비(${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'})</h1>
+      <div class="subtitle">${
+        kbIntegratedTab === 'practical' ? '237. 질병통합치료비(실속형)(맞춤고지) / 237-1. 질병통합치료비(실속형)(맞춤고지) 【갱신계약】'
+        : kbIntegratedTab === 'basic' ? '238. 질병통합치료비(기본형)(맞춤고지) / 238-1. 질병통합치료비(기본형)(맞춤고지) 【갱신계약】'
+        : '239. 질병통합치료비(고급형)(맞춤고지) / 239-1. 질병통합치료비(고급형)(맞춤고지) 【갱신계약】'
+      }</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>(【갱신계약】은 자동갱신으로 운영합니다)</strong><br/>
+    제1조(보험금의 지급사유): 회사는 피보험자가 특별약관의 보험기간 중 질병의 진단 및 치료를 위한 필요소견을 토대로 해당되는 의료행위를 받은 경우 보장항목별로 각각 정해진 지급금액을 지급합니다.
+  </div>
+
+  <div class="sec-title">&lt;${kbIntegratedTab === 'practical' ? '실속형' : kbIntegratedTab === 'basic' ? '기본형' : '고급형'}&gt; 보장항목 및 지급금액 표</div>
+  <table>
+    <thead>
+      <tr>
+        <th rowSpan="2" style="width: 22%; text-align: center;">구분</th>
+        <th rowSpan="2" style="width: 28%;">보장항목</th>
+        <th rowSpan="2" style="width: 14%; text-align: center;">지급방식</th>
+        <th colSpan="3" style="text-align: center; background: #e2e8f0;">지급금액</th>
+      </tr>
+      <tr>
+        <th style="width: 12%; text-align: center;">최초의 계약<br/>1년미만</th>
+        <th style="width: 12%; text-align: center;">최초의 계약<br/>1년이상</th>
+        <th style="width: 12%; text-align: center;">갱신된 계약</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${KB_INTEGRATED_TREATMENT_ITEMS.map((item) => {
+        const amounts = item[kbIntegratedTab] || item.practical;
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black" style="color: #0f172a;">${item.name}</td>
+            <td class="text-center font-bold" style="color: #475569;">${item.method}</td>
+            <td class="text-center font-bold">${amounts.under1yr}</td>
+            <td class="text-center highlight">${amounts.over1yr}</td>
+            <td class="text-center highlight">${amounts.renew}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <!-- 전 유형 (실속형 / 기본형 / 고급형) 종합 비교표 -->
+  <div class="sec-title" style="background: #334155;">&lt;전 유형(실속형 / 기본형 / 고급형) 보장금액 종합 비교표&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th rowSpan="2" style="width: 20%; text-align: center;">구분</th>
+        <th rowSpan="2" style="width: 26%;">보장항목</th>
+        <th rowSpan="2" style="width: 12%; text-align: center;">지급방식</th>
+        <th style="text-align: center; background: #f1f5f9;" colSpan="1">실속형</th>
+        <th style="text-align: center; background: #f1f5f9;" colSpan="1">기본형</th>
+        <th style="text-align: center; background: #f1f5f9;" colSpan="1">고급형</th>
+      </tr>
+      <tr>
+        <th style="text-align: center;">1년이상 (1년미만/갱신)</th>
+        <th style="text-align: center;">1년이상 (1년미만/갱신)</th>
+        <th style="text-align: center;">1년이상 (1년미만/갱신)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${KB_INTEGRATED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.method}</td>
+          <td class="text-center" style="${kbIntegratedTab === 'practical' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.practical.over1yr} (${item.practical.under1yr} / ${item.practical.renew})</td>
+          <td class="text-center" style="${kbIntegratedTab === 'basic' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.basic.over1yr} (${item.basic.under1yr} / ${item.basic.renew})</td>
+          <td class="text-center" style="${kbIntegratedTab === 'luxury' ? 'background:#f0fdfa;font-weight:bold;color:#123941;' : ''}">${item.luxury.over1yr} (${item.luxury.under1yr} / ${item.luxury.renew})</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong style="color: #fbbf24; font-size: 10.5px;">【제2조(보험금 지급에 관한 세부규정)】</strong><br/>
+    1. "질병통합치료(수술)"의 경우 회사는 피보험자가 동시에 두 종류 이상의 질병수술을 받은 경우에는 그 수술 중 가장 높은 지급금액에 해당하는 한 종류의 수술에 대하여만 보장합니다.<br/>
+    2. 동일한 신체부위라 함은 각각 눈, 귀, 코, 씹어먹거나 말하는 기능과 관련된 신체부위, 머리, 목, 척추(등뼈), 체간골, 흉부장기·복부장기·비뇨생식기, 팔, 다리, 손가락, 발가락을 말하며, 눈, 귀, 팔, 다리는 좌·우를 각각 다른 신체부위로 봅니다.<br/>
+    3. 피보험자가 연간 1년 이내에 각각 다른 "질병특정시술치료(도수정복술)" / "질병특정시술치료(기타시술)" / "질병특정시술치료(단순창상봉합술)" 등을 받은 경우에도 부위 및 횟수와 관계없이 보장항목별로 연간 1회만 지급합니다.<br/>
+    4. 지속적신대체요법(CRRT), 인공호흡기(12시간초과)치료, 저체온요법치료, 종합병원 전신마취치료(6시간이상) 등을 받은 경우에도 각 보장항목별 부위 및 횟수와 관계없이 규정에 따라 지급합니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : activeSubTab === 'samsung_major_cancer' ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title}</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 12px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 20px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 11px; line-height: 1.6; color: #334155; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #123941; color: #ffffff; font-weight: 800; text-align: left; padding: 10px 12px; border: 1px solid #123941; }
+    td { border: 1px solid #cbd5e1; padding: 8px 12px; color: #334155; }
+    .main-row { background: #f8fafc; font-weight: 800; color: #123941; }
+    .sub-row { color: #475569; }
+    .text-center { text-align: center; }
+    .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
+    .notes { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; font-size: 11px; color: #475569; line-height: 1.6; margin-top: 16px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 20px; padding: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 13px;">📄 [별표-질병관련7] 10대 주요암 분류표 (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 8px 16px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">[별표-질병관련7] 10대 주요암 분류표</div>
+    </div>
+    <div style="text-align: right; font-size: 11px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[별표-질병관련7] 10대 주요암 분류표 적용 안내</strong><br/>
+    약관에 규정하는 10대 주요암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026. 1. 1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 질병의 해당 여부를 판단합니다.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 70%;">분류항목</th>
+        <th style="width: 30%; text-align: center;">분류번호</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${SAMSUNG_MAJOR_CANCER_SECTIONS.map((item) => `
+        <tr class="main-row">
+          <td>${item.num}. ${item.disease}</td>
+          <td class="text-center"><span class="badge">${item.code}</span></td>
+        </tr>
+        ${item.subItems ? item.subItems.map((sub) => `
+          <tr class="sub-row">
+            <td style="padding-left: 28px;">- ${sub.disease}</td>
+            <td class="text-center"><span class="code">${sub.code}</span></td>
+          </tr>
+        `).join('') : ''}
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>주)</strong><br/>
+    1. 대상질병 분류표의 분류번호와 상당한 연관성이 있어, 한국표준질병·사인분류의 기준에 따라 분류번호를 동시에 부여 가능한 경우 대상질병 분류에 포함합니다. 단, 보통약관 및 특별약관에 별도의 규정이 있는 경우 해당 조항을 우선 적용합니다.<br/>
+    2. 제10차 개정 이후 이 약관에서 보장하는 질병의 해당 여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.<br/>
+    3. 진단 당시의 한국표준질병·사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급 여부가 판단된 경우, 이후 한국표준질병·사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - ${title} 약관 분류표</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 12px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 20px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 12px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .section-title { font-size: 14px; font-weight: 800; color: #123941; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px 12px; border-radius: 6px; margin-top: 24px; margin-bottom: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f8fafc; color: #123941; font-weight: 800; text-align: left; padding: 8px 10px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #e2e8f0; padding: 7px 10px; color: #334155; }
+    .text-center { text-align: center; }
+    .badge { display: inline-block; background: #123941; color: #fff; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+    .code { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 700; background: #f1f5f9; padding: 3px 8px; border-radius: 4px; border: 1px solid #cbd5e1; color: #123941; text-align: center; line-height: 1.25; vertical-align: middle; min-width: 44px; box-sizing: border-box; white-space: nowrap; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 20px; padding: 12px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 13px;">📄 약관 세부 질병 분류표 / KCD 코드 (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 8px 16px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">${selectedInsurer.name} - ${title}</h1>
+      <div class="subtitle">약관 세부 질병 분류표 및 KCD 질병코드 요약집</div>
+    </div>
+    <div style="text-align: right; font-size: 11px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  ${summariesList && summariesList.length > 0 ? `
+  <div class="section-title">📌 [상단 요약 분류표]</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 160px; text-align: center;">구 분</th>
+        <th>해당 질병 / 주요 보장 분류</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${summariesList.map((sec: any, idx: number) => {
+        let categoryLabel = sec.category;
+        if (!categoryLabel) {
+          if (sec.group && sec.title && sec.group !== sec.title) {
+            categoryLabel = `${sec.group} (${sec.title})`;
+          } else {
+            categoryLabel = sec.title || sec.group || sec.name || `그룹 ${idx + 1}`;
+          }
+        }
+
+        let diseasesList: string[] = [];
+        if (Array.isArray(sec.diseases)) {
+          diseasesList = sec.diseases;
+        } else if (typeof sec.diseases === 'string') {
+          diseasesList = sec.diseases.split(',').map((s: string) => s.trim()).filter(Boolean);
+        } else if (Array.isArray(sec.items)) {
+          diseasesList = sec.items.map((i: any) => i.disease || i.name || '').filter(Boolean);
+        } else if (sec.title && sec.group && sec.title !== sec.group) {
+          diseasesList = [sec.title];
+        } else if (sec.title && sec.title !== categoryLabel) {
+          diseasesList = [sec.title];
+        } else if (sec.name) {
+          diseasesList = [sec.name];
+        }
+
+        const diseasesText = diseasesList.length > 0 ? diseasesList.join(', ') : '-';
+
+        return `<tr>
+          <td class="text-center" style="font-weight: bold; background: #f8fafc; vertical-align: top; width: 160px;">${categoryLabel}</td>
+          <td style="font-weight: bold; color: #0f172a; line-height: 1.5; white-space: pre-wrap;">${diseasesText}</td>
+        </tr>`;
+      }).join('')}
+    </tbody>
+  </table>
+  ` : ''}
+
+  <div class="section-title">📋 [하단 세부 분류표] (세부 질병명 및 KCD 분류번호)</div>
+  ${(sectionsList || []).map((sec: any, idx: number) => {
+    const itemList = sec.items || sec.diseases || [];
+    let groupBadge = sec.group || '';
+    let displayTitle = sec.title || sec.category || '구분';
+
+    if (!groupBadge && displayTitle.startsWith('[')) {
+      const match = displayTitle.match(/^\[(.*?)\]\s*(.*)$/);
+      if (match) {
+        groupBadge = match[1];
+        displayTitle = match[2];
+      }
+    }
+
+    return `
+    <div style="margin-top: 16px; margin-bottom: 8px; font-weight: 800; font-size: 13px; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+      ${groupBadge ? `<span class="badge">${groupBadge}</span>` : `<span class="badge" style="background:#64748b;">#${idx+1}</span>`}
+      <span>${displayTitle}</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 70%;">질병명 / 보장대상 분류</th>
+          <th style="width: 30%; text-align: center;">KCD 질병코드</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${itemList.map((item: any) => {
+          const isObj = typeof item === 'object' && item !== null;
+          const diseaseName = isObj ? (item.disease || item.name) : item;
+          const diseaseCode = isObj ? (item.code || '-') : '-';
+          let rows = `<tr>
+            <td style="font-weight: 600; white-space: pre-wrap;">${diseaseName}</td>
+            <td class="text-center">${diseaseCode !== '-' ? `<span class="code">${diseaseCode}</span>` : '-'}</td>
+          </tr>`;
+          if (isObj && item.subItems && Array.isArray(item.subItems)) {
+            rows += item.subItems.map((sub: any) => `
+              <tr style="background: #f8fafc;">
+                <td style="font-weight: 500; padding-left: 24px; font-size: 10.5px; color: #334155;">- ${sub.disease || sub.name}</td>
+                <td class="text-center">${sub.code ? `<span class="code" style="font-size: 10px;">${sub.code}</span>` : '-'}</td>
+              </tr>
+            `).join('');
+          }
+          return rows;
+        }).join('')}
+      </tbody>
+    </table>
+    ${sec.notes && Array.isArray(sec.notes) && sec.notes.length > 0 ? `
+      <div style="margin-top: -10px; margin-bottom: 16px; padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 10.5px; color: #475569;">
+        ${sec.notes.map((n: string) => `<div><strong>주)</strong> ${n}</div>`).join('')}
+      </div>
+    ` : ''}
+    `;
+  }).join('')}
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>`;
+
+    // Generate and download true PDF file binary
+    try {
+      setIsGeneratingPdf(true);
+      await downloadPdfFromHtml(htmlContent, filename);
+    } catch (e) {
+      console.error('PDF generation failed:', e);
+      try {
+        const printWin = window.open('', '_blank');
+        if (printWin) {
+          printWin.document.write(htmlContent);
+          printWin.document.close();
+        } else {
+          window.print();
+        }
+      } catch (printErr) {
+        console.error('Fallback print failed:', printErr);
+      }
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
+
+  // Main Return for TermsMaster
+  const currentSections = (() => {
+    switch (selectedInsurer.id) {
+      case 'meritz-fire':
+        if (activeSubTab === 'meritz_integrated_cancer') return MERITZ_INTEGRATED_CANCER_SECTIONS;
+        if (activeSubTab === 'meritz_integrated_cancer_metastasis') return MERITZ_INTEGRATED_CANCER_METASTASIS_SECTIONS;
+        if (activeSubTab === 'meritz_integrated_treatment') return MERITZ_INTEGRATED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_practical_treatment') return MERITZ_PRACTICAL_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_noncovered_treatment') return MERITZ_NONCOVERED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_noncovered_primary_treatment') return MERITZ_NONCOVERED_PRIMARY_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_disease_integrated_treatment') return MERITZ_DISEASE_INTEGRATED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'meritz_surgery1_5') return MERITZ_SURGERY1_5_SECTIONS;
+        if (activeSubTab === 'meritz_7diseases') return MERITZ_7_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_18diseases') return MERITZ_18_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_30diseases') return MERITZ_30_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_32diseases') return MERITZ_32_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_64diseases') return MERITZ_64_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_82diseases') return MERITZ_82_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_131diseases') return MERITZ_131_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_6heart') return MERITZ_6HEART_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_5diseases' || activeSubTab === 'meritz_5diseases_surgery') return MERITZ_5_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_integrated_cancer_standard') return MERITZ_INTEGRATED_CANCER_SECTIONS;
+        return MERITZ_INTEGRATED_CANCER_SECTIONS;
+      case 'samsung-fire':
+        if (activeSubTab === 'samsung_cancer') return SAMSUNG_CANCER_SECTIONS;
+        if (activeSubTab === 'samsung_major_cancer') return SAMSUNG_MAJOR_CANCER_SECTIONS;
+        if (activeSubTab === 'samsung_111') return SAMSUNG_111_SURGERY_SECTIONS;
+        if (activeSubTab === 'samsung_15_disease') return SAMSUNG_15_SURGERY_SECTIONS;
+        if (activeSubTab === 'samsung_15') return SAMSUNG_15_SURGERY_SECTIONS;
+        if (activeSubTab === 'samsung_21') return SAMSUNG_21_SURGERY_SECTIONS;
+        return SAMSUNG_CANCER_SECTIONS;
+      case 'kb-ins':
+        if (activeSubTab === 'kb_cancer') return KB_CANCER_SECTIONS;
+        if (activeSubTab === 'kb_cancer_metastasis') return KB_CANCER_METASTASIS_SECTIONS;
+        if (activeSubTab === 'kb_metastasis') return KB_METASTASIS_SECTIONS;
+        if (activeSubTab === 'kb_specific_cancer2') return KB_SPECIFIC_CANCER2_SECTIONS;
+        if (activeSubTab === 'kb_10high_cancer') return KB_10HIGH_CANCER_SECTIONS;
+        if (activeSubTab === 'kb_brain') return KB_BRAIN_SECTIONS;
+        if (activeSubTab === 'kb_heart_1') return KB_HEART_SPECIFIC1_SECTIONS;
+        if (activeSubTab === 'kb_heart_2') return KB_HEART_SPECIFIC2_SECTIONS;
+        if (activeSubTab === 'kb_surgery1_5') return KB_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'kb_integrated_treatment') return KB_INTEGRATED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'kb_surgery14') return KB_SURGERY_14_SECTIONS;
+        if (activeSubTab === 'kb_surgery16') return KB_SURGERY_16_SECTIONS;
+        if (activeSubTab === 'kb_surgery20') return KB_SURGERY_20_SECTIONS;
+        if (activeSubTab === 'kb_surgery21') return KB_SURGERY_21_SECTIONS;
+        if (activeSubTab === 'kb_surgery101') return KB_SURGERY_101_SECTIONS;
+        if (activeSubTab === 'kb_surgery112') return KB_SURGERY_112_SECTIONS;
+        if (activeSubTab === 'kb_surgery116') return KB_SURGERY_116_SECTIONS;
+        return KB_CANCER_SECTIONS;
+      case 'hanwha-general':
+        if (activeSubTab === 'hanwha_integrated_cancer') return HANWHA_WOMEN_INTEGRATED_CANCER_SECTIONS;
+        if (activeSubTab === 'hanwha_integrated_cancer_primary') return HANWHA_WOMEN_PRIMARY_CANCER_SECTIONS;
+        if (activeSubTab === 'hanwha_integrated_metastatic_cancer') return HANWHA_WOMEN_METASTATIC_CANCER_SECTIONS;
+        if (activeSubTab === 'hanwha_integrated_heart_1') return HANWHA_HEART_1_SECTIONS;
+        if (activeSubTab === 'hanwha_integrated_heart_2') return HANWHA_HEART_2_SECTIONS;
+        if (activeSubTab === 'hanwha_cardiovascular_5') {
+          if (hanwhaCardio5Tab === 'tab1') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB1;
+          if (hanwhaCardio5Tab === 'tab2') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB2;
+          if (hanwhaCardio5Tab === 'tab3') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB3;
+          if (hanwhaCardio5Tab === 'tab4') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB4;
+          if (hanwhaCardio5Tab === 'tab5') return HANWHA_CARDIOVASCULAR_5_SECTIONS_TAB5;
+          return HANWHA_CARDIOVASCULAR_5_ALL_SECTIONS;
+        }
+        if (activeSubTab === 'hanwha_integrated_brain') return HANWHA_INTEGRATED_BRAIN_SECTIONS;
+        if (activeSubTab === 'hanwha_integrated_treatment') return HANWHA_INTEGRATED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'hanwha_injury_integrated_treatment') return HANWHA_INJURY_INTEGRATED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'hanwha_surgery1_5') return HANWHA_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'hanwha_women_life_1_5') return HANWHA_WOMEN_LIFE_1_5_SECTIONS;
+        if (activeSubTab === 'hanwha_women_major_life_1_5') return HANWHA_WOMEN_MAJOR_LIFE_1_5_SECTIONS;
+        if (activeSubTab === 'hanwha_124diseases') return HANWHA_124_DISEASES_SECTIONS;
+        if (activeSubTab === 'hanwha_34diseases') return HANWHA_34_DISEASES_SECTIONS;
+        if (activeSubTab === 'hanwha_56diseases') return HANWHA_56_DISEASES_SECTIONS;
+        if (activeSubTab === 'hanwha_18diseases') return HANWHA_18_DISEASES_SECTIONS;
+        if (activeSubTab === 'hanwha_16diseases') return HANWHA_16_DISEASES_SECTIONS;
+        if (activeSubTab === 'hanwha_14diseases') return HANWHA_14_DISEASES_SECTIONS;
+        return HANWHA_WOMEN_INTEGRATED_CANCER_SECTIONS;
+      case 'lotte-ins':
+        if (activeSubTab === 'lotte_integrated_cancer') return LOTTE_INTEGRATED_CANCER_SECTIONS;
+        if (activeSubTab === 'lotte_integrated_cancer_with_metastasis') return LOTTE_INTEGRATED_CANCER_WITH_METASTASIS_SECTIONS;
+        if (activeSubTab === 'lotte_integrated_metastatic_cancer') return LOTTE_INTEGRATED_METASTATIC_CANCER_SECTIONS;
+        if (activeSubTab === 'lotte_high_cancer') return LOTTE_HIGH_CANCER_SECTIONS;
+        if (activeSubTab === 'lotte_brain_disease') return LOTTE_BRAIN_DISEASE_SECTIONS;
+        if (activeSubTab === 'lotte_cardiovascular_simple') {
+          return lotteCardiovascularSimpleTab === 'I'
+            ? LOTTE_CARDIOVASCULAR_SIMPLE_I_SECTIONS
+            : lotteCardiovascularSimpleTab === 'II'
+            ? LOTTE_CARDIOVASCULAR_SIMPLE_II_SECTIONS
+            : LOTTE_CARDIOVASCULAR_SIMPLE_15_SECTIONS;
+        }
+        if (activeSubTab === 'lotte_cardiovascular') return LOTTE_CARDIOVASCULAR_SECTIONS;
+        if (activeSubTab === 'lotte_surgery1_5') return LOTTE_SURGERY1_5_SECTIONS;
+        if (activeSubTab === 'lotte_surgery7') return LOTTE_SURGERY_7_SECTIONS;
+        if (activeSubTab === 'lotte_surgery16') return LOTTE_SURGERY_16_SECTIONS;
+        if (activeSubTab === 'lotte_surgery18') return LOTTE_SURGERY_18_SECTIONS;
+        if (activeSubTab === 'lotte_surgery20') return LOTTE_SURGERY_20_SECTIONS;
+        if (activeSubTab === 'lotte_surgery34') return LOTTE_SURGERY_34_SECTIONS;
+        if (activeSubTab === 'lotte_surgery64') return LOTTE_SURGERY_64_SECTIONS;
+        if (activeSubTab === 'lotte_surgery142') return LOTTE_SURGERY_142_SECTIONS;
+        return LOTTE_INTEGRATED_CANCER_SECTIONS;
+      case 'hyundai-marine':
+        if (activeSubTab === 'hyundai_male_cancer') return HYUNDAI_MALE_CANCER_SECTIONS;
+        if (activeSubTab === 'hyundai_female_cancer') return HYUNDAI_FEMALE_CANCER_SECTIONS;
+        if (activeSubTab === 'hyundai_specific_cancer') return HYUNDAI_SPECIFIC_CANCER_SECTIONS;
+        if (activeSubTab === 'hyundai_heart') return HYUNDAI_HEART_SECTIONS;
+        if (activeSubTab === 'hyundai_brain') return hyundaiBrainSubTab === '1' ? HYUNDAI_BRAIN_I_SECTIONS : HYUNDAI_BRAIN_II_SECTIONS;
+        if (activeSubTab === 'hyundai_surgery1_5') return HYUNDAI_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'hyundai_7diseases') return HYUNDAI_7_DISEASES_SECTIONS;
+        if (activeSubTab === 'hyundai_14diseases') return HYUNDAI_14_DISEASES_SECTIONS;
+        if (activeSubTab === 'hyundai_16diseases') return HYUNDAI_16_DISEASES_SECTIONS;
+        if (activeSubTab === 'hyundai_71diseases') return HYUNDAI_71_DISEASES_SECTIONS;
+        if (activeSubTab === 'hyundai_120diseases') return HYUNDAI_120_DISEASES_SECTIONS;
+        return HYUNDAI_MALE_CANCER_SECTIONS;
+      case 'hana-ins':
+        if (activeSubTab === 'hana_integrated_cancer') return HANA_INTEGRATED_CANCER_SECTIONS;
+        if (activeSubTab === 'hana_high_cost_cancer') return HANA_HIGH_COST_CANCER_SECTIONS;
+        if (activeSubTab === 'hana_11_specific_cancer') return HANA_11_SPECIFIC_CANCER_SECTIONS;
+        if (activeSubTab === 'hana_brain_disease') return HANA_BRAIN_DISEASE_SECTIONS;
+        if (activeSubTab === 'hana_integrated_heart') return HANA_INTEGRATED_HEART_SECTIONS;
+        if (activeSubTab === 'hana_women_16_diseases') return HANA_WOMEN_16_DISEASES_SECTIONS;
+        if (activeSubTab === 'hana_surgery1_5') return HANA_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'hana_surgery73') return HANA_SURGERY_73_SECTIONS;
+        if (activeSubTab === 'hana_surgery136') return HANA_SURGERY_136_SECTIONS;
+        return HANA_INTEGRATED_CANCER_SECTIONS;
+      case 'nh-fire':
+        if (activeSubTab === 'nh_cancer') return NH_CANCER_SECTIONS;
+        if (activeSubTab === 'nh_cancer_metastasis') return NH_CANCER_METASTASIS_SECTIONS;
+        if (activeSubTab === 'nh_5specific_cancer') return NH_5SPECIFIC_CANCER_SECTIONS;
+        if (activeSubTab === 'nh_cardiovascular_4') {
+          if (nhCardio4Tab === 'tab1') return NH_CARDIOVASCULAR_4_SECTIONS_TAB1;
+          if (nhCardio4Tab === 'tab2') return NH_CARDIOVASCULAR_4_SECTIONS_TAB2;
+          if (nhCardio4Tab === 'tab3') return NH_CARDIOVASCULAR_4_SECTIONS_TAB3;
+          if (nhCardio4Tab === 'tab4') return NH_CARDIOVASCULAR_4_SECTIONS_TAB4;
+          return NH_CARDIOVASCULAR_4_SECTIONS_TAB1;
+        }
+        if (activeSubTab === 'nh_circulatory_1_5') return NH_CIRCULATORY_1_5_SECTIONS;
+        if (activeSubTab === 'nh_surgery1_5') return NH_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'nh_surgery16') return NH_SURGERY_16_SECTIONS;
+        if (activeSubTab === 'nh_surgery34') return NH_SURGERY_34_SECTIONS;
+        if (activeSubTab === 'nh_surgery71') return NH_SURGERY_71_SECTIONS;
+        if (activeSubTab === 'nh_surgery144') return NH_SURGERY_144_SECTIONS;
+        return NH_CANCER_SECTIONS;
+      default:
+        if (activeSubTab === 'cancer') return DB_CANCER_SECTIONS;
+        if (activeSubTab === 'db_cancer_metastasis') return DB_CANCER_METASTASIS_SECTIONS;
+        if (activeSubTab === 'db_11_specific_cancer') return DB_11_SPECIFIC_CANCER_SECTIONS;
+        if (activeSubTab === 'db_high_cost_cancer') return DB_HIGH_COST_CANCER_SECTIONS;
+        if (activeSubTab === 'db_integrated_heart') return dbHeartTab === 'I' ? DB_HEART_I_SECTIONS : DB_HEART_II_SECTIONS;
+        if (activeSubTab === 'db_heart_1') return DB_HEART_I_SECTIONS;
+        if (activeSubTab === 'db_heart_2') return DB_HEART_II_SECTIONS;
+        if (activeSubTab === 'db_heart_simple') return DB_HEART_SIMPLE_SECTIONS;
+        if (activeSubTab === 'db_integrated_brain') return dbBrainTab === 'I' ? DB_BRAIN_I_SECTIONS : DB_BRAIN_II_SECTIONS;
+        if (activeSubTab === 'db_brain_1') return DB_BRAIN_I_SECTIONS;
+        if (activeSubTab === 'db_brain_2') return DB_BRAIN_II_SECTIONS;
+        if (activeSubTab === 'db_major_5vascular_brain') return DB_MAJOR_5VASCULAR_BRAIN_SECTIONS;
+        if (activeSubTab === 'surgery1_5') return DB_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'surgery1_5_old') return DB_SURGERY_1_5_OLD_SECTIONS;
+        if (activeSubTab === 'surgery13') return DB_SURGERY_13_SECTIONS;
+        if (activeSubTab === 'surgery16') return DB_SURGERY_16_SECTIONS;
+        if (activeSubTab === 'surgery18') return DB_SURGERY_18_SECTIONS;
+        if (activeSubTab === 'surgery21') return DB_SURGERY_21_SECTIONS;
+        if (activeSubTab === 'surgery40') return DB_SURGERY_40_SECTIONS;
+        if (activeSubTab === 'surgery77') return DB_SURGERY_77_SECTIONS;
+        if (activeSubTab === 'surgery106') return DB_SURGERY_106_SECTIONS;
+        if (activeSubTab === 'surgery119') return DB_SURGERY_119_SECTIONS;
+        if (activeSubTab === 'surgery120') return DB_SURGERY_120_SECTIONS;
+        return DB_CANCER_SECTIONS;
+    }
+  })();
+
+  const query = normalizeString(detailFilter);
+  const filteredCurrentSections = (currentSections || []).filter((sec: any) => {
+    if (!query) return true;
+    const titleMatch = normalizeString(sec.title || sec.category || sec.group || '').includes(query);
+    const itemList = sec.items || sec.diseases || [];
+    const itemMatch = itemList.some((i: any) => {
+      if (typeof i === 'string') return normalizeString(i).includes(query);
+      const directMatch = (
+        normalizeString(i.disease || i.name || '').includes(query) ||
+        normalizeString(i.code || '').includes(query) ||
+        normalizeString(i.num || '').includes(query) ||
+        normalizeString(i.grade || '').includes(query)
+      );
+      if (directMatch) return true;
+      if (i.subItems && Array.isArray(i.subItems)) {
+        return i.subItems.some((s: any) =>
+          typeof s === 'string'
+            ? normalizeString(s).includes(query)
+            : (
+              normalizeString(s.disease || s.name || '').includes(query) ||
+              normalizeString(s.code || '').includes(query)
+            )
+        );
+      }
+      return false;
+    });
+    // For surgery1_5_old, also check if query matches top coverage text or comparison table text
+    let topMatch = false;
+    if (activeSubTab === 'surgery1_5_old' || activeSubTab === 'surgery1_5') {
+      const topSearchText = normalizeString(
+        "MRI 검사 PET 검사 CT 검사 1-5종수술비 전신마취수술 6시간이상 유방절단수술 세분화 Mastectomy 유방의 비대 N62 주석 예외사항 요실금 치핵 치루"
+      );
+      if (topSearchText.includes(query)) topMatch = true;
+    }
+    return titleMatch || itemMatch || topMatch;
+  });
+
+  const availableSubtabs = INSURER_SUBTABS[selectedInsurer.id] || [];
+  const activeSubtabObj = availableSubtabs.find(st => st.id === activeSubTab);
+  const currentSubtabLabel = activeSubtabObj ? activeSubtabObj.label : '';
+
+  const selectedTheme = getInsurerTheme(selectedInsurer.id);
+  const selectedLogoText = getLogoText(selectedInsurer.name);
+  const selectedPhone = INSURER_PHONE_MAP[selectedInsurer.id] || '1588-0000';
+
+  return (
+    <div className="space-y-6">
+      {/* Top Banner & Ad Zone */}
+      <div className="space-y-4">
+        <div className="relative bg-[#123941] p-6 sm:p-7 rounded-2xl border border-slate-900 shadow-md overflow-hidden text-white">
+          <div className="absolute inset-0 bg-[radial-gradient(#f59e0b_0.5px,transparent_0.5px)] [background-size:32px_32px] opacity-5 pointer-events-none" />
+          <div className="relative z-10">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight break-keep leading-tight">
+              <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 inline-block mr-2 align-text-bottom shrink-0" />
+              보험사별 <span className="text-amber-400">담보 분류표</span>를 제공합니다.
+            </h1>
+            <p className="text-xs md:text-sm text-slate-200 mt-2 leading-relaxed font-semibold break-keep">
+              보험사별 암/뇌/심장/수술비 등 <span className="text-amber-400 font-bold">담보별 분류표</span>, <span className="text-amber-400 font-bold">세부질병코드</span>를 열람 및 다운로드 하실 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <AdZone type="header" id="terms-header-ad" />
+      </div>
+
+      {/* Grid Layout: Left Column (Insurer List) & Right Column (Selected Insurer Details & Tables) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Left Column: Insurer Search & Card Selector (5 Grid Span) */}
+        <div className="lg:col-span-5 bg-white p-5 rounded-2xl border border-slate-200/80 space-y-4 shadow-2xs h-fit">
+          {/* Search Input Box */}
+          <div className="relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder="보험사명 검색 (예: 삼성, 현대, DB)"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 text-xs font-semibold border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] bg-slate-50/80 text-slate-900 transition-colors placeholder:text-slate-400"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+
+          {/* Type Filter Tabs */}
+          <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200/60">
+            <button
+              onClick={() => setActiveTab('all')}
+              className={`flex-1 text-center py-2 text-xs font-bold transition-all duration-150 rounded-lg cursor-pointer ${
+                activeTab === 'all'
+                  ? 'bg-[#123941] text-white shadow-2xs font-black'
+                  : 'text-slate-600 hover:text-[#123941]'
+              }`}
+            >
+              전체 ({INSURER_TERMS_LIST.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('property')}
+              className={`flex-1 text-center py-2 text-xs font-bold transition-all duration-150 rounded-lg cursor-pointer ${
+                activeTab === 'property'
+                  ? 'bg-[#123941] text-white shadow-2xs font-black'
+                  : 'text-slate-600 hover:text-[#123941]'
+              }`}
+            >
+              손해보험
+            </button>
+            <button
+              onClick={() => setActiveTab('life')}
+              className={`flex-1 text-center py-2 text-xs font-bold transition-all duration-150 rounded-lg cursor-pointer ${
+                activeTab === 'life'
+                  ? 'bg-[#123941] text-white shadow-2xs font-black'
+                  : 'text-slate-600 hover:text-[#123941]'
+              }`}
+            >
+              생명보험
+            </button>
+          </div>
+
+          {/* Scrollable Insurer Cards List */}
+          <div className="space-y-2 max-h-[560px] overflow-y-auto pr-1">
+            {filteredInsurers.length > 0 ? (
+              filteredInsurers.map((insurer) => {
+                const isSelected = selectedInsurer.id === insurer.id;
+                const theme = getInsurerTheme(insurer.id);
+                const logoText = getLogoText(insurer.name);
+                const phone = INSURER_PHONE_MAP[insurer.id] || '1588-0000';
+
+                return (
+                  <button
+                    key={insurer.id}
+                    onClick={() => {
+                      setSelectedInsurer(insurer);
+                      const subtabs = INSURER_SUBTABS[insurer.id];
+                      const defaultTab = insurer.defaultSubTab || (subtabs ? subtabs[0].id : null);
+                      setActiveSubTab(defaultTab);
+                      setDetailFilter('');
+                      localStorage.setItem('ib_terms_selected_insurer_id', insurer.id);
+                      if (typeof window !== 'undefined') {
+                        const targetUrl = defaultTab ? `/terms/${insurer.id}/${defaultTab}/` : `/terms/${insurer.id}/`;
+                        window.history.pushState(null, '', targetUrl);
+                      }
+                    }}
+                    className={`w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer ${
+                      isSelected
+                        ? 'border-amber-300 bg-amber-50/40 text-[#123941] font-bold shadow-xs ring-1 ring-amber-300/60'
+                        : 'border-slate-200/80 bg-white hover:bg-slate-50 hover:border-slate-300 text-slate-800'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 text-left">
+                      <div
+                        className={`w-10 h-10 rounded-xl font-black text-xs flex items-center justify-center shrink-0 border border-slate-200/60 shadow-2xs ${theme.logoColor}`}
+                      >
+                        {logoText}
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold flex items-center gap-1.5 text-[#123941]">
+                          {insurer.name}
+                          <span
+                            className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full border uppercase ${
+                              isSelected
+                                ? 'border-amber-300/80 bg-white text-[#123941]'
+                                : 'border-slate-200 bg-slate-50 text-slate-500'
+                            }`}
+                          >
+                            {insurer.type === 'property' ? '손해' : '생명'}
+                          </span>
+                        </h4>
+                      </div>
+                    </div>
+                    <div className={`text-xs font-bold transition-all ${isSelected ? 'text-[#123941] flex items-center gap-1' : 'text-slate-400 group-hover:text-[#123941] group-hover:translate-x-0.5'}`}>
+                      {isSelected ? (
+                        <>
+                          <span className="w-2 h-2 rounded-full bg-[#123941] inline-block animate-pulse"></span>
+                          <span>선택됨</span>
+                        </>
+                      ) : (
+                        '상세보기 →'
+                      )}
+                    </div>
+                  </button>
+                );
+              })
+            ) : (
+              <div className="text-center py-10 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                <p className="text-xs text-slate-500 font-bold">검색 결과가 없습니다.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right Column: Selected Insurer Details, Subtabs & Main Content (7 Grid Span) */}
+        <div className="lg:col-span-7 space-y-5">
+          {/* Subtabs for Selected Insurer */}
+          {availableSubtabs.length > 0 && (
+            <div className="bg-white p-4.5 rounded-2xl border border-slate-200/80 shadow-2xs space-y-3">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#123941]" />
+                  <h3 className="text-xs font-black text-slate-800">
+                    {selectedInsurer.name} 담보별 약관 분류 선택
+                  </h3>
+                </div>
+                <span className="text-[11px] font-bold text-slate-500">
+                  {availableSubtabs.length}개 담보 분류
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1">
+                {availableSubtabs.map((st) => {
+                  const isSubActive = activeSubTab === st.id;
+                  return (
+                    <button
+                      key={st.id}
+                      onClick={() => {
+                        setActiveSubTab(st.id);
+                        setDetailFilter('');
+                        if (typeof window !== 'undefined') {
+                          window.history.pushState(null, '', `/terms/${selectedInsurer.id}/${st.id}/`);
+                        }
+                      }}
+                      className={`px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer text-center w-full truncate flex flex-col items-center justify-center ${
+                        isSubActive
+                          ? 'bg-[#123941] text-white shadow-xs font-black'
+                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80'
+                      }`}
+                    >
+                      <span>{st.label}</span>
+                      {st.groupCount && (
+                        <span className={`text-[10px] font-medium mt-0.5 ${isSubActive ? 'text-amber-300' : 'text-slate-500'}`}>
+                          ({st.groupCount})
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Main Content Tables */}
+          {availableSubtabs.length > 0 ? (
+            renderDbSurgeryTab(
+              activeSubTab || 'default',
+              selectedInsurer.name + (currentSubtabLabel ? ` - ${currentSubtabLabel}` : ' 약관 분류표'),
+              currentSections,
+              filteredCurrentSections,
+              expandedDbSurgery1_5Sections,
+              setExpandedDbSurgery1_5Sections,
+              (idx: number) => setExpandedDbSurgery1_5Sections(prev => ({ ...prev, [idx]: !prev[idx] })),
+              getSummaryForSubTab(selectedInsurer.id, activeSubTab || '', hyundaiBrainSubTab, dbHeartTab, dbBrainTab)
+            )
+          ) : (
+            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs text-center space-y-4">
+              <div className="w-12 h-12 bg-slate-100 text-[#123941] rounded-2xl flex items-center justify-center mx-auto">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div className="max-w-md mx-auto space-y-1">
+                <h3 className="text-base font-black text-slate-900">{selectedInsurer.name} 약관 및 상품공시 안내</h3>
+                <p className="text-xs text-slate-500 font-medium">
+                  해당 보험사의 담보별 상세 분류표는 원본 상품공시실을 통해 정확한 최신 약관을 직접 확인하실 수 있습니다.
+                </p>
+              </div>
+              {selectedInsurer.url && (
+                <a
+                  href={selectedInsurer.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#123941] text-white rounded-xl text-xs font-bold shadow-xs hover:bg-[#1a4d58] transition-all cursor-pointer"
+                >
+                  <span>{selectedInsurer.name} 상품공시실 바로가기</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom AdZone Banner under 담보별분류표 */}
+      <div className="pt-2">
+        <AdZone type="inline-bottom" id="terms-bottom-ad" />
+      </div>
+
+      {/* PDF Generation Floating Toast */}
+      {isGeneratingPdf && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 bg-[#123941] text-white rounded-xl shadow-2xl border border-teal-500/40 text-xs font-bold animate-in fade-in slide-in-from-bottom-4 duration-200">
+          <Loader2 className="w-4 h-4 animate-spin text-teal-300" />
+          <span>정밀 PDF 약관분류표를 생성 중입니다...</span>
+        </div>
+      )}
+    </div>
+  );
+}
