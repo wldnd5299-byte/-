@@ -39,7 +39,7 @@ import PlannerGoods from './components/PlannerGoods';
 import DisputePrecedent from './components/DisputePrecedent';
 import InfoArticles from './components/InfoArticles';
 
-import { INSURERS_DATA } from './data';
+import { searchSite, SearchResultItem } from './data/searchIndex';
 
 export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info';
 
@@ -253,65 +253,6 @@ export const getViewFromLocation = (): ViewState => {
   return 'home';
 };
 
-interface SearchItem {
-  title: string;
-  desc: string;
-  category: string;
-  view: ViewState;
-  insurerId?: string;
-  subTab?: string;
-  filter?: string;
-  query?: string;
-}
-
-const GLOBAL_SEARCH_ITEMS: SearchItem[] = [
-  // Pages / Tools
-  { title: '정보글·약관해설', desc: '약관 분석, N대 질병수술비 해설, 질병코드 분류표 및 보상 실무 가이드', category: '정보글', view: 'info' },
-  { title: '삼성화재 15대질병수술비 약관 질병코드 보장항목', desc: '15대 질병 종류, 질병코드(KCD), 수술 인정기준 및 세부 분류표 연계', category: '정보글', view: 'info' },
-  { title: '보험나이 계산기', desc: '고객 생년월일 기준 보험나이와 상령일 자동 연산', category: '도구', view: 'age' },
-  { title: '상령일 계산', desc: '보험나이가 한 살 올라가는 날 계산', category: '도구', view: 'age' },
-  { title: '실손의료비 계산기', desc: '1세대부터 5세대까지 세대별 맞춤형 예상 실손의료비 계산', category: '도구', view: 'indemnity' },
-  { title: '실손의료비 1세대/2세대/3세대/4세대/5세대', desc: '실손의료비 예상액 및 부담금 연산', category: '도구', view: 'indemnity' },
-  { title: '영업자료 홍보몰', desc: '맞춤 명함, 천연 가죽 서류 바인더 및 필수 보상 요약집', category: '영업자료', view: 'planner-goods' },
-  { title: '판례 ＆ 분쟁조정 DB', desc: '금융감독원 분쟁조정사례, 대법원 중요 판례 및 실무 보상 분쟁 가이드', category: '판례＆분쟁', view: 'dispute' },
-  { title: '보험금 청구 서류 및 고객센터 연락처', desc: '주요 손해 및 생명보험사 정보 제공', category: '보험사정보', view: 'claim' },
-  { title: '수술명 검색', desc: '표준 수술 및 종수술비 약관 정보를 수술명으로 조회', category: '수술명검색', view: 'surgery' },
-
-  // Classifications (TermsMaster)
-  { title: '통합암(유사암제외) 분류표 - DB손보', desc: 'DB손해보험 통합암 진단 기준 및 질병코드 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'cancer', filter: '' },
-  { title: '통합전이암 분류표 - DB손보', desc: 'DB손해보험 통합전이암 분류표 (림프절 전이암 등)', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'cancer', filter: '' },
-  { title: '심장질환진단비(간편) 분류표 - DB손보', desc: '협심증(I20), 심근경색증(I21), 심부전(I50) 등 간편 심장질환 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'db_heart_simple', filter: '' },
-  { title: '통합형 심장관련질환진단비I 분류표 - DB손보', desc: '급성심근경색증, 허혈심장질환 등 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'heart', filter: '' },
-  { title: '통합형 심장관련질환진단비II 분류표 - DB손보', desc: '주요심장염증질환, 심근병증, 특정3대심장질환 등 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'heart', filter: '' },
-  { title: '통합형 뇌관련질환진단비 분류표 - DB손보', desc: '뇌출혈, 뇌경색증, 기타 뇌혈관질환 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'brain', filter: '' },
-  { title: '1-5종 수술비 분류표 (동일질병당) - DB손보', desc: '피부, 골격, 호흡기, 순환기 등 최신 1-5종 수술분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery1_5', filter: '' },
-  { title: '1-5종 수술비 분류표 (구형) - DB손보', desc: '과거 표준 1-5종 수술분류표 기준 조회', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery1_5_old', filter: '' },
-  { title: '13대 질병수술 분류표 - DB손보', desc: '당뇨병, 심장질환, 고혈압, 뇌혈관질환 등 13대 수술분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery13', filter: '' },
-  { title: '16대 질병수술 분류표 - DB손보', desc: '당뇨병, 심장질환, 고혈압, 뇌혈관질환 등 16대 수술분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery16', filter: '' },
-  { title: '18대 질병수술 분류표 - DB손보', desc: '백내장, 녹내장, 결핵 등 18대 수술분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery18', filter: '' },
-  { title: '21대 질병수술 분류표 - DB손보', desc: '유방선종, 생식기질환 등 21대 질병수술분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery21', filter: '' },
-  { title: '40대 질병수술 분류표 - DB손보', desc: '당뇨병, 심장질환, 고혈압, 뇌혈관질환 등 40대 수술분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery40', filter: '' },
-  { title: '106대 질병수술 분류표 - DB손보', desc: '특정 106대 질병수술비 분류 및 지급 조건', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery106', filter: '' },
-  { title: '119대 질병수술 분류표 - DB손보', desc: '특정 119대 질병수술비 대상질병 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery119', filter: '' },
-  { title: '120대 질병수술 분류표 - DB손보', desc: '특정 120대 질병수술비 대상 및 코드 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery120', filter: '' },
-
-  // Key Specific Diseases
-  { title: '협심증 (I20) - DB손보 심장질환진단비(간편)', desc: '협심증(I20) 진단 기준 및 질병코드 조회', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'db_heart_simple', filter: '협심증' },
-  { title: '급성 심근경색증 (I21) - DB손보 심장질환(간편)', desc: '급성 심근경색증(I21) 분류표 및 진단비 기준', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'db_heart_simple', filter: '심근경색' },
-  { title: '심부전 (I50) - DB손보 심장질환진단비(간편)', desc: '심부전(I50) 진단 기준 및 질병코드 조회', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'db_heart_simple', filter: '심부전' },
-  { title: '심방세동 및 조동 (I48) - DB손보 심장질환(간편)', desc: '부정맥 심방세동 및 조동(I48) 질병코드 조회', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'db_heart_simple', filter: '심방세동' },
-  { title: '발작성 빈맥 (I47) - DB손보 심장질환(간편)', desc: '발작성 빈맥(I47) 질병분류표 확인', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'db_heart_simple', filter: '발작성 빈맥' },
-  { title: '인공소생에 성공한 심장정지 (I46.0)', desc: '심장정지 인공소생 성공(I46.0) 분류표 확인', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'db_heart_simple', filter: '인공소생' },
-  { title: '뇌경색증 (I63) - DB손보 통합형 뇌관련질환', desc: '뇌경색증(I63) 진단비 및 질병코드 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'brain', filter: '뇌경색' },
-  { title: '뇌출혈 (I60~I62) - DB손보 통합형 뇌관련질환', desc: '지주막하출혈, 뇌내출혈 등 뇌출혈 진단비 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'brain', filter: '뇌출혈' },
-  { title: '기타 뇌혈관질환 (I67~I69) - DB손보 통합형 뇌관련질환', desc: '기타 뇌혈관질환(I67), 뇌혈관질환 후유증(I69) 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'brain', filter: '뇌혈관' },
-  { title: '위암 / 폐암 / 간암 / 유방암 / 대장암 (통합암)', desc: '원발암 통합형 암진단비 분류표 조회', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'cancer', filter: '' },
-  { title: '치핵 / 치열 / 치루 수술 (1-5종 수술비)', desc: '항문 질환 수술 1종 보장 범위 및 제외 사항', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery1_5', filter: '치핵' },
-  { title: '요도결석 / 요로결석 (체외충격파쇄석술)', desc: '쇄석술 2종 수술비 지급 기준 분류표', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery1_5', filter: '쇄석술' },
-  { title: '제왕절개만출술 (자궁/난소 수술 1종)', desc: '제왕절개 1종 수술비 보장 안내 (질병통합치료비 전용)', category: '담보별 분류표', view: 'terms', insurerId: 'db-ins', subTab: 'surgery1_5', filter: '제왕절개' },
-  { title: '1-5종 수술비II 분류표 - 메리츠화재', desc: '일반질병 및 상해 치료목적 수술, 악성신생물 수술 등 메리츠화재 1-5종 수술분류표II', category: '담보별 분류표', view: 'terms', insurerId: 'meritz-fire', subTab: 'meritz_surgery1_5', filter: '' },
-];
-
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>(() => {
     if (typeof window !== 'undefined') {
@@ -377,35 +318,18 @@ export default function App() {
     }
   };
 
-  const getSearchResults = () => {
-    if (!globalSearchQuery.trim()) return [];
-    const normalize = (str: string) => str.replace(/\s+/g, '').toLowerCase();
-    const normalizedQuery = normalize(globalSearchQuery);
-    
-    // 1. Filter static items
-    const matchedStatic = GLOBAL_SEARCH_ITEMS.filter(item => 
-      normalize(item.title).includes(normalizedQuery) || 
-      normalize(item.desc).includes(normalizedQuery) ||
-      normalize(item.category).includes(normalizedQuery)
-    );
-    
-    // 2. Filter insurers dynamically
-    const matchedInsurers = INSURERS_DATA.filter(ins => 
-      normalize(ins.name).includes(normalizedQuery)
-    ).map(ins => ({
-      title: `${ins.name} 고객센터 및 청구서류`,
-      desc: `고객센터: ${ins.phone} | 팩스: ${ins.fax || '정보 없음'}`,
-      category: '보험사정보',
-      view: 'claim' as ViewState,
-      insurerId: ins.id,
-      query: ins.name
-    }));
-
-    return [...matchedStatic, ...matchedInsurers].slice(0, 10);
+  const getSearchResults = (): SearchResultItem[] => {
+    return searchSite(globalSearchQuery, 10);
   };
 
-  const handleSearchResultClick = (item: any) => {
-    handleNavigate(item.view);
+  const handleSearchResultClick = (item: SearchResultItem) => {
+    if (item.view === 'dispute' && item.filter) {
+      handleNavigate('dispute');
+      window.history.pushState(null, '', `/dispute/${item.filter}/`);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    } else {
+      handleNavigate(item.view);
+    }
     setGlobalSearchQuery('');
     setShowSearchResults(false);
     
@@ -439,7 +363,6 @@ export default function App() {
   // Quick navigation menu data
   const menus = [
     { id: 'home' as ViewState, label: 'HOME' },
-    { id: 'info' as ViewState, label: '정보글' },
     { id: 'claim' as ViewState, label: '보험사정보' },
     { id: 'terms' as ViewState, label: '담보별 분류표' },
     { id: 'surgery' as ViewState, label: '수술명검색' },
@@ -471,12 +394,18 @@ export default function App() {
               >
                 {menu.label}
               </a>
-              {idx < menus.length - 1 && (
-                <span className="text-white/10 font-normal mx-0.5 select-none">|</span>
-              )}
+              <span className="text-white/10 font-normal mx-0.5 select-none">|</span>
             </React.Fragment>
           );
         })}
+        <a
+          href="https://open.kakao.com/o/sWUpRzLi"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whitespace-nowrap ml-1 px-2.5 lg:px-3 xl:px-3.5 py-1 text-xs lg:text-[13px] xl:text-[13.5px] font-bold tracking-tight uppercase transition-all cursor-pointer border rounded-md inline-flex items-center bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white/35 shadow-sm"
+        >
+          광고·제휴 문의
+        </a>
       </div>
     );
   };
@@ -678,6 +607,17 @@ export default function App() {
                 {menu.label}
               </a>
             ))}
+            <div className="pt-2 pb-1 px-4">
+              <a
+                href="https://open.kakao.com/o/sWUpRzLi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-semibold uppercase transition-colors rounded-lg bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:border-white/35"
+              >
+                <span>광고·제휴 문의</span>
+                <span className="text-xs text-white/70 font-normal">오픈채팅 ↗</span>
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -835,11 +775,11 @@ export default function App() {
             <div className="flex flex-wrap gap-4 text-[11px] text-[#707072]">
               <a href="/" onClick={(e) => { e.preventDefault(); handleNavigate('home'); }} className="hover:text-nike-black font-semibold cursor-pointer">홈으로</a>
               <span>|</span>
-              <a href="/info/" onClick={(e) => { e.preventDefault(); handleNavigate('info'); }} className="hover:text-nike-black font-semibold cursor-pointer">정보글</a>
-              <span>|</span>
               <a href="/planner-goods/" onClick={(e) => { e.preventDefault(); handleNavigate('planner-goods'); }} className="hover:text-nike-black font-semibold cursor-pointer">영업자료</a>
               <span>|</span>
               <a href="/dispute/" onClick={(e) => { e.preventDefault(); handleNavigate('dispute'); }} className="hover:text-nike-black font-semibold cursor-pointer">판례＆분쟁</a>
+              <span>|</span>
+              <a href="https://open.kakao.com/o/sWUpRzLi" target="_blank" rel="noopener noreferrer" className="hover:text-nike-black font-semibold">광고·제휴 문의</a>
               <span>|</span>
               <a href="https://www.fss.or.kr" target="_blank" rel="noreferrer" className="hover:text-nike-black font-semibold flex items-center gap-1">
                 금융감독원 바로가기

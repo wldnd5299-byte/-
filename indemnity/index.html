@@ -22,6 +22,25 @@
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8437372601039090" crossorigin="anonymous"></script>
+
+    <!-- JSON-LD WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "실손의료비 계산기·세대별 실손보험 비교",
+      "url": "https://insurancebridge.co.kr/indemnity/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "description": "1세대부터 최신 세대까지 실손의료비 보장 기준과 자기부담금을 확인하고 예상 보험금을 계산할 수 있습니다.",
+      "inLanguage": "ko-KR",
+      "publisher": {
+        "@type": "Organization",
+        "name": "보험브릿지",
+        "url": "https://insurancebridge.co.kr"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root">
@@ -29,6 +48,86 @@
         <h1>실손의료비 계산기 및 세대별 보장 비교</h1>
         <p>1세대(구실손, 100% 보장), 2세대(표준화실손, 10%/20% 공제), 3세대(착한실손, 3대 비급여 특약 분리), 4세대(비급여 차등제), 5세대 실손의료비의 가입 시기별 보장 구조와 자기부담금 규정을 제공합니다.</p>
         <p>입원 및 통원 의료비(급여/비급여), 3대 비급여 특약(도수치료·체외충격파, 비급여 주사료, 비급여 MRI) 발생 시 세대별 실제 예상 지급 보험금과 본인부담금을 모의 계산할 수 있습니다.</p>
+
+        <section style="margin-top: 2rem;">
+          <h2>실손의료비 계산기란?</h2>
+          <p>실손의료비 계산기는 병·의원 진료 시 발생한 급여 병원 치료비, 비급여 치료비, 약제비, 3대 비급여 특약(도수치료, 비급여 주사제, 비급여 MRI) 금액을 입력하여 1세대부터 5세대까지 세대별 예상 지급 보험금과 본인부담금(자기부담금)을 산출하고 비교할 수 있는 실무 계산 도구입니다.</p>
+          <p>입원과 통원 구분에 따른 자기부담금 공제 방식과 병원 규모별(의원, 병원, 종합병원) 최소 공제 기준을 반영하여 세대별 보장 차이를 한눈에 파악할 수 있습니다.</p>
+
+          <h2>세대별 실손보험 확인하기</h2>
+          <p>실손의료비는 가입 시기에 따라 1세대부터 5세대까지 보장 비율과 자기부담금 규정이 구분됩니다.</p>
+          <ul>
+            <li><strong>1세대 실손 (2009년 9월 이전 가입):</strong> 입원 치료 시 자기부담금 0%(100% 보장), 외래 통원 시 5,000원 정액 공제.</li>
+            <li><strong>2세대 실손 (2009년 10월 ~ 2017년 3월):</strong> 표준화 실손으로 입원 10% 또는 20% 본인부담. 통원 시 의원 1만 원, 병원 1.5만 원, 종합병원 2만 원 공제.</li>
+            <li><strong>3세대 실손 (2017년 4월 ~ 2021년 6월):</strong> 착한 실손으로 급여 10~20%, 기본 비급여 20% 공제. 3대 비급여 특약(도수치료, 주사료, MRI)을 분리하여 30% 또는 2만 원 중 큰 금액 공제.</li>
+            <li><strong>4세대 실손 (2021년 7월 ~ 2026년 5월):</strong> 급여 20%, 비급여 30% 공제. 비급여 이용량에 따른 보험료 차등제 적용.</li>
+            <li><strong>5세대 실손 (2026년 5월 개정~):</strong> 중증질환(산정특례) 비급여 30% 본인부담(70% 보장), 일반 비중증 비급여 50% 본인부담(50% 보장), 급여 20% 본인부담(80% 보장).</li>
+          </ul>
+
+          <h3>세대별 실손의료비 보장 구조 비교</h3>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-align: left; border: 1px solid #e2e8f0;">
+            <thead>
+              <tr style="background-color: #f8fafc; border-bottom: 2px solid #cbd5e1;">
+                <th style="padding: 8px 12px; border: 1px solid #e2e8f0;">구분</th>
+                <th style="padding: 8px 12px; border: 1px solid #e2e8f0;">가입 시기</th>
+                <th style="padding: 8px 12px; border: 1px solid #e2e8f0;">입원 자기부담</th>
+                <th style="padding: 8px 12px; border: 1px solid #e2e8f0;">통원 자기부담</th>
+                <th style="padding: 8px 12px; border: 1px solid #e2e8f0;">재가입 주기</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold;">1세대</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">2009년 9월 이전</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">0% (100% 보장)</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">5,000원 공제</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">없음 (평생 유지)</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold;">2세대</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">2009년 10월 ~ 2017년 3월</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">10% 또는 20%</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">1만 / 1.5만 / 2만 원</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">15년</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold;">3세대</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">2017년 4월 ~ 2021년 6월</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">급여 10~20%, 비급여 20%</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">기본 1~2만 원 / 특약 30%</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">15년</td>
+              </tr>
+              <tr style="background-color: #f8fafc;">
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold;">4세대</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">2021년 7월 ~ 2026년 5월</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">급여 20%, 비급여 30%</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">급여 1~2만 / 비급여 3만 원</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">5년</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold;">5세대</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">2026년 5월 개정~</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">급여 20%, 중증 30%, 일반비급여 50%</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">급여 1~2만 / 중증 3만 / 일반 5만 원</td>
+                <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">5년</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>실손보험 자기부담금 계산</h2>
+          <p>실손의료비 계산기에서는 다음 항목을 입력하여 실제 지급액과 본인부담금을 모의 연산합니다.</p>
+          <ul>
+            <li><strong>진료 유형:</strong> 입원 치료 또는 통원 치료 선택</li>
+            <li><strong>의료기관 구분 (통원 시):</strong> 의원, 병원, 종합병원 선택에 따른 최소 공제액 차등 적용</li>
+            <li><strong>급여 본인부담 치료비:</strong> 국민건강보험 적용 후 본인부담금 입력</li>
+            <li><strong>일반 비급여 치료비:</strong> 건강보험이 적용되지 않는 병원 치료비 입력</li>
+            <li><strong>약제비 (통원 시):</strong> 처방조제 약국 영수증 금액 입력</li>
+            <li><strong>3대 비급여 특약 (선택):</strong> 도수치료·체외충격파, 비급여 주사제, 비급여 MRI 진료비 입력</li>
+          </ul>
+
+          <h2>실손보험을 확인할 때 알아둘 점</h2>
+          <p>실손의료비 보험은 가입 시기에 따라 갱신 주기와 재가입 주기, 비급여 보장 항목의 한도가 상이합니다. 특히 2세대 이후 가입 상품은 재가입 주기가 도래하면 변경된 당시의 표준약관으로 전환되며, 3세대 이후부터는 비급여 3대 특약(도수치료 연간 횟수 및 한도)의 별도 제한이 적용됩니다.</p>
+        </section>
       </main>
     </div>
     <script type="module" src="/src/main.tsx"></script>

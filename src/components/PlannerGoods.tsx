@@ -5,7 +5,6 @@
 
 import React, { useState } from 'react';
 import { ShoppingBag, Search, Download, ExternalLink, Filter, HelpCircle, CheckCircle, Tag, Layers, Star, Printer, ArrowRight, FileText, PieChart, TrendingUp, Users, Eye, X, Award } from 'lucide-react';
-import AdZone from './AdZone';
 
 interface GoodItem {
   id: number;
@@ -3067,9 +3066,6 @@ export default function PlannerGoods() {
         </div>
       </div>
 
-      {/* Top Banner Advertisement */}
-      <AdZone type="header" id="ad-planner-goods-top" />
-
       {/* Search Input Bar */}
       <div className="relative w-full text-left">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
@@ -5499,9 +5495,6 @@ export default function PlannerGoods() {
           </div>
         )}
       </div>
-
-      {/* Bottom Ad Zone */}
-      <AdZone type="inline-bottom" id="ad-planner-goods-bottom" />
 
       {/* Report Details Modal */}
       {showReportModal && (

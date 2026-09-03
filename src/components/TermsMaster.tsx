@@ -26,7 +26,6 @@ import {
   Loader2
 } from "lucide-react";
 import { downloadPdfFromHtml } from "../utils/pdfGenerator";
-import AdZone from "./AdZone";
 import { SURGERY_1TO8_RECORDS } from "../data1to8";
 import { SURGERY_1TO7_RECORDS } from "../data1to7";
 import {
@@ -10695,8 +10694,6 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </p>
           </div>
         </div>
-
-        <AdZone type="header" id="terms-header-ad" />
       </div>
 
       {/* Grid Layout: Left Column (Insurer List) & Right Column (Selected Insurer Details & Tables) */}
@@ -10915,11 +10912,6 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
           )}
         </div>
-      </div>
-
-      {/* Bottom AdZone Banner under 담보별분류표 */}
-      <div className="pt-2">
-        <AdZone type="inline-bottom" id="terms-bottom-ad" />
       </div>
 
       {/* PDF Generation Floating Toast */}

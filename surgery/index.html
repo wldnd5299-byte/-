@@ -19,24 +19,55 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="보험 수술명 검색·수술분류표 | 보험브릿지" />
     <meta name="twitter:description" content="질병수술비 1~5종, 1~7종, 1~8종 등 보험사별 수술분류와 수술명을 검색할 수 있는 보험설계사 실무 도구입니다." />
+
+    <!-- JSON-LD WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "보험 수술명 검색·수술분류표",
+      "url": "https://insurancebridge.co.kr/surgery/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "description": "질병수술비 1~5종, 1~7종, 1~8종 등 보험사별 수술분류와 수술명을 검색할 수 있는 보험설계사 실무 도구입니다.",
+      "inLanguage": "ko-KR",
+      "publisher": {
+        "@type": "Organization",
+        "name": "보험브릿지",
+        "url": "https://insurancebridge.co.kr"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root">
       <main style="padding: 2rem; max-width: 800px; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6;">
         <h1>보험 수술명 검색 및 종수술 분류표</h1>
-        <p>수술명을 입력하면 표준 1~5종, 1~7종, 1~8종 수술비 약관 분류와 해당 종수(1종, 2종, 3종, 4종, 5종 등), 수술 정의 및 지급 제외 기준을 실시간으로 검색할 수 있습니다.</p>
-        <p>백내장, 치핵, 제왕절개, 스텐트삽입술, 용종제거술, 체외충격파쇄석술, 관절경 수술 등 주요 다빈도 수술의 부위별 분류와 보상 기준을 확인하세요.</p>
-        <div style="margin-top: 1.5rem; padding: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-          <strong>주요 수술비 분류표 바로가기:</strong>
-          <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0;">
-            <li><a href="/surgery/1to5/" style="color: #0369a1; text-decoration: underline; font-weight: bold;">1~5종 수술비 전체 분류표 (2,682개 수술)</a></li>
-            <li><a href="/surgery/1to5/type-1/">1종 수술 목록 (피부이식, 치핵, 백내장 등)</a></li>
-            <li><a href="/surgery/1to5/type-2/">2종 수술 목록 (대장용종, 맹장, 체외충격파쇄석술 등)</a></li>
-            <li><a href="/surgery/1to5/type-3/">3종 수술 목록 (담낭, 자궁근종, 인공관절, 스텐트 등)</a></li>
-            <li><a href="/surgery/1to5/type-4/">4종 수술 목록 (위·대장·신장·폐 관혈 절제술 등)</a></li>
-            <li><a href="/surgery/1to5/type-5/">5종 수술 목록 (5대장기이식, 개두 뇌동맥류, 개심술 등)</a></li>
-          </ul>
-        </div>
+
+        <section style="margin-top: 1.5rem;">
+          <h2>수술명 검색 및 종수술 안내</h2>
+          <p>수술명을 입력하면 표준 1~5종, 1~7종, 1~8종 수술비 약관 분류와 해당 종수(1종, 2종, 3종, 4종, 5종 등), 수술 정의 및 지급 제외 기준을 실시간으로 검색할 수 있습니다.</p>
+          <p>백내장, 치핵, 제왕절개, 스텐트삽입술, 용종제거술, 체외충격파쇄석술, 관절경 수술 등 주요 다빈도 수술의 부위별 분류와 보상 기준을 확인하세요.</p>
+        </section>
+
+        <section style="margin-top: 1.5rem;">
+          <h2>주요 수술비 분류표 바로가기</h2>
+          <div style="margin-top: 0.5rem; padding: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0;">
+              <li><a href="/surgery/1to5/" style="color: #0369a1; text-decoration: underline; font-weight: bold;">1~5종 수술비 전체 분류표 (2,682개 수술)</a></li>
+              <li><a href="/surgery/1to5/type-1/">1종 수술 목록 (피부이식, 치핵, 백내장 등)</a></li>
+              <li><a href="/surgery/1to5/type-2/">2종 수술 목록 (대장용종, 맹장, 체외충격파쇄석술 등)</a></li>
+              <li><a href="/surgery/1to5/type-3/">3종 수술 목록 (담낭, 자궁근종, 인공관절, 스텐트 등)</a></li>
+              <li><a href="/surgery/1to5/type-4/">4종 수술 목록 (위·대장·신장·폐 관혈 절제술 등)</a></li>
+              <li><a href="/surgery/1to5/type-5/">5종 수술 목록 (5대장기이식, 개두 뇌동맥류, 개심술 등)</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <section style="margin-top: 1.5rem;">
+          <h2>이용 시 유의사항</h2>
+          <p>본 정보는 약관상 수술분류표 기준을 따릅니다. 단, 가입 시기 및 상품에 따라 보장 내용이 상이할 수 있으므로, 정확한 지급 여부는 반드시 가입하신 상품에 맞는 개별 약관을 확인하시기 바랍니다.</p>
+        </section>
       </main>
     </div>
     <script type="module" src="/src/main.tsx"></script>

@@ -793,15 +793,36 @@ export default function SurgerySearch() {
               </button>
             </div>
 
-            {surgeryTab === 'grade1_5' && (
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-1.5 w-full sm:w-auto">
               <a
-                href="/surgery/1to5/"
-                className="text-xs font-bold text-blue-700 hover:text-blue-900 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 flex items-center gap-1.5 transition-colors"
+                href="/downloads/1-3종_수술분류표.pdf"
+                download="1-3종_수술분류표.pdf"
+                className="text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100/80 px-3 py-1.5 rounded-lg border border-blue-200 transition-colors cursor-pointer text-center whitespace-nowrap inline-flex items-center justify-center"
               >
-                <FileText className="w-3.5 h-3.5 text-blue-600" />
-                <span>1~5종 약관 분류표 (2,682건) 전문 &rarr;</span>
+                1~3종 분류표
               </a>
-            )}
+              <a
+                href="/downloads/1-5종_수술분류표.pdf"
+                download="1-5종_수술분류표.pdf"
+                className="text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100/80 px-3 py-1.5 rounded-lg border border-blue-200 transition-colors cursor-pointer text-center whitespace-nowrap inline-flex items-center justify-center"
+              >
+                1~5종 분류표
+              </a>
+              <a
+                href="/downloads/1-7종수술비 분류표pd.pdf"
+                download="1-7종수술비 분류표pd.pdf"
+                className="text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100/80 px-3 py-1.5 rounded-lg border border-blue-200 transition-colors cursor-pointer text-center whitespace-nowrap inline-flex items-center justify-center"
+              >
+                1~7종 분류표
+              </a>
+              <a
+                href="/downloads/1-8종수술비분류표.pdf"
+                download="1-8종수술비분류표.pdf"
+                className="text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100/80 px-3 py-1.5 rounded-lg border border-blue-200 transition-colors cursor-pointer text-center whitespace-nowrap inline-flex items-center justify-center"
+              >
+                1~8종 분류표
+              </a>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
