@@ -531,8 +531,7 @@ export const HYUNDAI_BRAIN_I_SECTIONS = [
 ];
 
 export const HYUNDAI_BRAIN_II_SUMMARY = [
-  { group: '그룹 1', category: '그룹 1 (뇌혈관질환(Ⅱ))', title: '뇌혈관질환(Ⅱ)', diseases: '거미막하출혈(I60), 뇌내출혈(I61), 기타 비외상성 두개내 출혈(I62), 뇌경색증(I63), 뇌경색증을 유발하지 않은 뇌전동맥의 폐쇄 및 협착(I65), 뇌경색증을 유발하지 않은 대뇌동맥의 폐쇄 및 협착(I66)' },
-  { group: '그룹 2', category: '그룹 2 (신생아뇌출혈)', title: '신생아뇌출혈', diseases: '출산 손상으로 인한 두 개내 열상 및 출혈(P10), 태아 및 신생아의 두 개내 비외상성 출혈(P52)' }
+  { group: '그룹 1', category: '그룹 1 (뇌혈관질환(Ⅱ))', title: '뇌혈관질환(Ⅱ)', diseases: '거미막하출혈(I60), 뇌내출혈(I61), 기타 비외상성 두개내 출혈(I62), 뇌경색증(I63), 뇌경색증을 유발하지 않은 뇌전동맥의 폐쇄 및 협착(I65), 뇌경색증을 유발하지 않은 대뇌동맥의 폐쇄 및 협착(I66)' }
 ];
 
 export const HYUNDAI_BRAIN_II_SECTIONS = [
@@ -547,15 +546,6 @@ export const HYUNDAI_BRAIN_II_SECTIONS = [
       { num: '4', disease: '뇌경색증', code: 'I63' },
       { num: '5', disease: '뇌경색증을 유발하지 않은 뇌전동맥의 폐쇄 및 협착', code: 'I65' },
       { num: '6', disease: '뇌경색증을 유발하지 않은 대뇌동맥의 폐쇄 및 협착', code: 'I66' }
-    ]
-  },
-  {
-    group: '그룹 2',
-    title: '신생아뇌출혈',
-    category: '신생아뇌출혈',
-    items: [
-      { num: '1', disease: '출산 손상으로 인한 두 개내 열상 및 출혈', code: 'P10' },
-      { num: '2', disease: '태아 및 신생아의 두 개내 비외상성 출혈', code: 'P52' }
     ]
   }
 ];
@@ -2224,4 +2214,547 @@ export const HYUNDAI_120_DISEASES_SECTIONS: Hyundai71Section[] = [
     ]
   }
 ];
+
+export const HYUNDAI_123_SUMMARY_SECTIONS: SummarySection[] = [
+  {
+    category: '26대질병',
+    diseases: [
+      '중증근무력증', '안와장애', '유리체의 장애', '하지정맥류', '과민대장증후군', '치열 및 치루',
+      '전신결합조직장애Ⅱ', '골수염', '골괴사증', '뼈의 파젯병', '뼈의기타장애', '연골병증',
+      '신장 및 요관의 결석', '요도결석증', '다한증', '눈및부속기관의 양성종양', '수면무호흡증',
+      '결막장애', '외이의 질환', '림프절염', '대상포진', '급성기관지염', '급성 세기관지염',
+      '정맥염 및 혈전정맥염', '기타 정맥의 색전증 및혈전증', '식도정맥류'
+    ]
+  },
+  {
+    category: '59대질병',
+    diseases: [
+      '담석증', '사타구니 탈장', '편도 및 아데노이드의 만성 질환', '만성 부비동염', '급성상기도감염',
+      '후각특정질환', '인후부위의 특정질환', '성대결절', '근육장애', '발바닥근막성 섬유종증',
+      '중이염', '중이 및 유돌의질환', '내이의 질환', '황반변성', '공막·각막·홍채·섬모체의 장애',
+      '맥락막 및 망막의 장애', '시신경 및 시각경로의 장애', '사구체질환', '신세뇨관-간질질환',
+      '방광의결석', '신장 및 요관의 기타 장애', '비뇨계통의 기타 질환', '유방의장애', '특정 부위의 탈장',
+      '비감염성장염 및 결장염', '특정장질환', '복막의질환', '담낭담도질환', '척추변형', '척추병증',
+      '추간판장애(디스크질환)', '골다공증', '안면신경장애', '손목터널증후군', '단일신경병증',
+      '특정 누적외상성질환', '윤활막 및 힘줄장애', '식도질환', '위·십이지장 질환', '어깨병변',
+      '고혈압', '당뇨병', '갑상선질환', '용혈-요독증후군(햄버거병)', '비장질환', '부갑상선질환',
+      '뇌하수체질환', '대사장애', '마비', '귀의 기타장애', '동맥및세동맥의 질환', '외부요인에의한폐질환',
+      '폐부종', '특정호흡기질환', '침샘질환', '위공장궤양', '특정소화기질환', '장흡수장애', '전신결합조직장애Ⅰ'
+    ]
+  },
+  {
+    category: '24대질병',
+    diseases: [
+      '심장질환', '뇌혈관질환', '간질환', '위궤양 및십이지장궤양', '동맥경화증', '만성하부호흡기질환',
+      '폐렴', '녹내장', '결핵', '신부전', '패혈증', '중추신경계통의염증성질환(수막염)',
+      '중추신경계통의염증성질환(뇌및척수의염증성질환)', '파킨슨병', '다발경화증', '자율신경계통의 장애',
+      '대동맥류', '폐질환', '급성 췌장염', '췌장질환', '뇌전증', '뇌성마비', '수두증', '버거씨병'
+    ]
+  },
+  {
+    category: '치핵',
+    diseases: [
+      '치핵 및 항문주위정맥혈전증'
+    ]
+  },
+  {
+    category: '3대질병',
+    diseases: [
+      '관절염', '백내장', '생식기질환'
+    ]
+  },
+  {
+    category: '10대질병',
+    diseases: [
+      '소화기계통의양성신생물', '중이‧호흡계통및 흉곽의양성신생물', '골 및관절연골의양성신생물',
+      '조직의양성신생물', '생식기양성종양', '비뇨기관의양성신생물', '수막의양성신생물',
+      '뇌 및중추신경계통의양성신생물', '갑상선 및내분비선의양성신생물', '유방의 양성종양'
+    ]
+  }
+];
+
+export const HYUNDAI_123_DISEASES_SECTIONS: DiseaseSection[] = [
+  {
+    category: '26대질병',
+    items: [
+      { disease: '중증근무력증', code: 'G70' },
+      { disease: '안와장애', code: 'H05' },
+      { disease: '유리체의 장애', code: 'H43' },
+      { disease: '하지정맥류', code: 'I83, O22.0, O87.8' },
+      { disease: '과민대장증후군', code: 'K58' },
+      { disease: '치열 및 치루', code: 'K60 ~ K62' },
+      { disease: '전신결합조직장애Ⅱ', code: 'M32 ~ M34' },
+      { disease: '골수염', code: 'M86' },
+      { disease: '골괴사증', code: 'M87' },
+      { disease: '뼈의 파젯병', code: 'M88' },
+      { disease: '뼈의기타장애', code: 'M89' },
+      { disease: '연골병증', code: 'M91 ~ M94' },
+      { disease: '신장 및 요관의 결석', code: 'N20' },
+      { disease: '요도결석증', code: 'N21.1, N21.8, N21.9, N22' },
+      { disease: '다한증', code: 'R61' },
+      { disease: '눈및부속기관의 양성종양', code: 'D31' },
+      { disease: '수면무호흡증', code: 'G47.3' },
+      { disease: '결막장애', code: 'H10, H11, H13' },
+      { disease: '외이의 질환', code: 'H60 ~ H62' },
+      { disease: '림프절염', code: 'I88, I89' },
+      { disease: '대상포진', code: 'B02' },
+      { disease: '급성기관지염', code: 'J20' },
+      { disease: '급성 세기관지염', code: 'J21' },
+      { disease: '정맥염 및 혈전정맥염', code: 'I80' },
+      { disease: '기타 정맥의 색전증 및혈전증', code: 'I82' },
+      { disease: '식도정맥류', code: 'I85' }
+    ]
+  },
+  {
+    category: '59대질병',
+    items: [
+      { disease: '담석증', code: 'K80' },
+      { disease: '사타구니 탈장', code: 'K40' },
+      { disease: '편도 및 아데노이드의 만성 질환', code: 'J35' },
+      { disease: '만성 부비동염', code: 'J32' },
+      { disease: '급성상기도감염', code: 'J00 ~ J06' },
+      { disease: '후각특정질환', code: 'J30, J31, J33, J34' },
+      { disease: '인후부위의 특정질환', code: 'J36, J37, J39' },
+      { disease: '성대결절', code: 'J38' },
+      { disease: '근육장애', code: 'M60 ~ M63' },
+      { disease: '발바닥근막성 섬유종증', code: 'M72.2' },
+      { disease: '중이염', code: 'H65 ~ H67' },
+      { disease: '중이 및 유돌의질환', code: 'H68 ~ H75' },
+      { disease: '내이의 질환', code: 'H80 ~ H83' },
+      { disease: '황반변성', code: 'H35.3' },
+      { disease: '공막·각막·홍채·섬모체의 장애', code: 'H15 ~ H22' },
+      { disease: '맥락막 및 망막의 장애', code: 'H30 ~ H36 (H35.3, H35.0(고혈압성), H36.0 제외)' },
+      { disease: '시신경 및 시각경로의 장애', code: 'H46 ~ H48' },
+      { disease: '사구체질환', code: 'N00 ~ N08 (N08.3 제외)' },
+      { disease: '신세뇨관-간질질환', code: 'N10 ~ N16' },
+      { disease: '방광의결석', code: 'N21.0' },
+      { disease: '신장 및 요관의 기타 장애', code: 'N25 ~ N29' },
+      { disease: '비뇨계통의 기타 질환', code: 'N30 ~ N33, N37, N39 (N33.0, N39.3, N39.4 제외)' },
+      { disease: '유방의장애', code: 'N60 ~ N64' },
+      { disease: '특정 부위의 탈장', code: 'K41 ~ K46' },
+      { disease: '비감염성장염 및 결장염', code: 'K50 ~ K52' },
+      { disease: '특정장질환', code: 'K55 ~ K57' },
+      { disease: '복막의질환', code: 'K65 ~ K67 (K67.3 제외)' },
+      { disease: '담낭담도질환', code: 'K81 ~ K83' },
+      { disease: '척추변형', code: 'M40 ~ M43' },
+      { disease: '척추병증', code: 'M45 ~ M48' },
+      { disease: '추간판장애(디스크질환)', code: 'M50, M51' },
+      { disease: '골다공증', code: 'M80 ~ M82, M84' },
+      { disease: '안면신경장애', code: 'G50 ~ G52' },
+      { disease: '손목터널증후군', code: 'G56.0' },
+      { disease: '단일신경병증', code: 'G56 ~ G59 (G56.0, G59.0 제외)' },
+      { disease: '특정 누적외상성질환', code: 'M35, M53.1, M70 ~ M79 (M74, M78, M72.2, M75 제외)' },
+      { disease: '윤활막 및 힘줄장애', code: 'M65 ~ M68' },
+      { disease: '식도질환', code: 'K20 ~ K23' },
+      { disease: '위·십이지장 질환', code: 'K29, K30' },
+      { disease: '어깨병변', code: 'M75' },
+      { disease: '고혈압', code: 'I10 ~ I13, I15' },
+      { disease: '고혈압성 합병증', code: 'I67.4, H35.0' },
+      { disease: '당뇨병', code: 'E10 ~ E14' },
+      { disease: '당뇨병성 합병증', code: 'G59.0, G63.2, H28.0, H36.0, M14.2, N08.3' },
+      { disease: '갑상선질환', code: 'E00 ~ E07, E89.0' },
+      { disease: '용혈-요독증후군(햄버거병)', code: 'D59.3' },
+      { disease: '비장질환', code: 'D73' },
+      { disease: '부갑상선질환', code: 'E20, E21' },
+      { disease: '뇌하수체질환', code: 'E22, E23' },
+      { disease: '대사장애', code: 'E24 ~ E27' },
+      { disease: '마비', code: 'G81 ~ G83' },
+      { disease: '귀의 기타장애', code: 'H90 ~ H95' },
+      { disease: '동맥및세동맥의 질환', code: 'I74, I77' },
+      { disease: '외부요인에의한폐질환', code: 'J60 ~ J70' },
+      { disease: '폐부종', code: 'J81' },
+      { disease: '특정호흡기질환', code: 'J82, J84' },
+      { disease: '침샘질환', code: 'K11' },
+      { disease: '위공장궤양', code: 'K28' },
+      { disease: '특정소화기질환', code: 'K31 (K31.7 제외)' },
+      { disease: '장흡수장애', code: 'K90' },
+      { disease: '전신결합조직장애Ⅰ', code: 'M30, M31' }
+    ]
+  },
+  {
+    category: '24대질병',
+    items: [
+      { disease: '심장질환', code: 'I00 ~ I09, I20 ~ I25, I26 ~ I28, I30 ~ I52' },
+      { disease: '뇌혈관질환', code: 'I60 ~ I69' },
+      { disease: '간질환', code: 'B15 ~ B19, K70 ~ K77' },
+      { disease: '위궤양 및십이지장궤양', code: 'K25 ~ K27' },
+      { disease: '동맥경화증', code: 'I70' },
+      { disease: '만성하부호흡기질환', code: 'J40 ~ J42, J45, J46' },
+      { disease: '폐렴', code: 'J12 ~ J18, A48.1, B05.2' },
+      { disease: '녹내장', code: 'H40, H42' },
+      { disease: '결핵', code: 'A15 ~ A19, B90' },
+      { disease: '신부전', code: 'N17 ~ N19' },
+      { disease: '패혈증', code: 'A40, A41' },
+      { disease: '중추신경계통의염증성질환(수막염)', code: 'G00 ~ G03' },
+      { disease: '중추신경계통의염증성질환(뇌및척수의염증성질환)', code: 'G04 ~ G09' },
+      { disease: '파킨슨병', code: 'G20, G21' },
+      { disease: '다발경화증', code: 'G35' },
+      { disease: '자율신경계통의 장애', code: 'G90' },
+      { disease: '대동맥류', code: 'I71' },
+      { disease: '폐질환', code: 'J43, J44, J47, J85 ~ J86, J90 ~ J94' },
+      { disease: '급성 췌장염', code: 'K85' },
+      { disease: '췌장질환', code: 'K86, K87' },
+      { disease: '뇌전증', code: 'G40, G41' },
+      { disease: '뇌성마비', code: 'G80' },
+      { disease: '수두증', code: 'G91' },
+      { disease: '버거씨병', code: 'I73.1' }
+    ]
+  },
+  {
+    category: '치핵',
+    items: [
+      { disease: '치핵 및 항문주위정맥혈전증', code: 'K64' }
+    ]
+  },
+  {
+    category: '3대질병',
+    items: [
+      { disease: '관절염', code: 'M00 ~ M03, M05 ~ M14 (M14.2 제외), M15 ~ M19, M20 ~ M25' },
+      { disease: '백내장', code: 'H25 ~ H27' },
+      { disease: '생식기질환', code: 'N40 ~ N45, N49 ~ N51, N70 ~ N77, N80 ~ N95, N99' }
+    ]
+  },
+  {
+    category: '10대질병',
+    items: [
+      { disease: '소화기계통의양성신생물', code: 'D13' },
+      { disease: '중이‧호흡계통및 흉곽의양성신생물', code: 'D14, D15' },
+      { disease: '골 및관절연골의양성신생물', code: 'D16' },
+      { disease: '조직의양성신생물', code: 'D19 ~ D21' },
+      { disease: '생식기양성종양', code: 'D25 ~ D29' },
+      { disease: '비뇨기관의양성신생물', code: 'D30' },
+      { disease: '수막의양성신생물', code: 'D32' },
+      { disease: '뇌 및중추신경계통의양성신생물', code: 'D33' },
+      { disease: '갑상선 및내분비선의양성신생물', code: 'D34, D35' },
+      { disease: '유방의 양성종양', code: 'D24' }
+    ]
+  }
+];
+
+export const HYUNDAI_SIMULTANEOUS_123_59_DISEASES: HyundaiSimultaneousRow[] = [
+  {
+    targetDisease: '경추간판장애 및 기타 추간판장애',
+    targetCode: 'M50~M51+',
+    simultaneousItems: [
+      { disease: '추간판 장애에서의 신경근 및 신경총 압박', code: 'G55.1*' }
+    ]
+  },
+  {
+    targetDisease: '결핵에서의 중이염',
+    targetCode: 'H67.0*',
+    simultaneousItems: [
+      { disease: '결핵성 중이염', code: 'A18.6+' }
+    ]
+  },
+  {
+    targetDisease: '홍역에서의 중이염',
+    targetCode: 'H67.1*',
+    simultaneousItems: [
+      { disease: '중이염이 합병된 홍역(H67.1*)', code: 'B05.3+' },
+      { disease: '홍역후 중이염(H67.1*)', code: 'B05.3+' }
+    ]
+  },
+  {
+    targetDisease: '결핵성 맥락망막염 / 상공막염 / 각막염 / 홍채섬모체염',
+    targetCode: 'H32.0*주1), H19.0*주1), H19.2*주1), H22.0*주1)',
+    simultaneousItems: [
+      { disease: '눈의 결핵', code: 'A18.5+' }
+    ]
+  },
+  {
+    targetDisease: '헤르페스바이러스[단순헤르페스]감염에서의 홍채섬모체염',
+    targetCode: 'H22.0*',
+    simultaneousItems: [
+      { disease: '홍채섬모체염', code: 'B00.50+' },
+      { disease: '홍채염', code: 'B00.50+' },
+      { disease: '전방포도막염', code: 'B00.50+' }
+    ]
+  },
+  {
+    targetDisease: '헤르페스바이러스 각막염 및 각막결막염',
+    targetCode: 'H19.1*',
+    simultaneousItems: [
+      { disease: '각막염', code: 'B00.51+' },
+      { disease: '각막결막염', code: 'B00.51+' },
+      { disease: '각막상피염', code: 'B00.51+' },
+      { disease: '간질각막염', code: 'B00.51+' },
+      { disease: '각막내피염', code: 'B00.51+' }
+    ]
+  },
+  {
+    targetDisease: '유행성 각막결막염',
+    targetCode: 'H19.2*',
+    simultaneousItems: [
+      { disease: '아데노바이러스에 의한 각막결막염', code: 'B30.0+' },
+      { disease: '유행성 각막결막염', code: 'B30.0+' },
+      { disease: '조선소눈병', code: 'B30.0+' }
+    ]
+  },
+  {
+    targetDisease: '전신홍반루푸스에서의 사구체장애',
+    targetCode: 'N08.5*',
+    simultaneousItems: [
+      { disease: '사구체질환 동반 전신홍반루푸스(제외 - 사구체질환 동반 이외의 전신홍반루푸스)', code: 'M32.1+' }
+    ]
+  },
+  {
+    targetDisease: '전신홍반루푸스에서의 신세뇨관-간질장애',
+    targetCode: 'N16.4*',
+    simultaneousItems: [
+      { disease: '세뇨관-간질신장병증 동반 전신홍반루푸스(제외 - 신세뇨관-간질신장병증동반 이외의 전신홍반루푸스)', code: 'M32.1+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 감염성 및 기생충성질환에서의 신장 및 요관의 기타장애',
+    targetCode: 'N29.1*',
+    simultaneousItems: [
+      { disease: '신장의 결핵', code: 'A18.10+' },
+      { disease: '요관의 결핵', code: 'A18.18+' }
+    ]
+  },
+  {
+    targetDisease: '결핵성 식도염',
+    targetCode: 'K23.0*',
+    simultaneousItems: [
+      { disease: '식도의 결핵', code: 'A18.82+' }
+    ]
+  },
+  {
+    targetDisease: '결핵성 방광염',
+    targetCode: 'N33.0*',
+    simultaneousItems: [
+      { disease: '방광의 결핵', code: 'A18.11†' }
+    ]
+  },
+  {
+    targetDisease: '클라미디아복막염',
+    targetCode: 'K67.0*',
+    simultaneousItems: [
+      { disease: '클라미디아복막염', code: 'A74.8+' }
+    ]
+  },
+  {
+    targetDisease: '각막결막염을(를) 동반한 쉐그렌증후군',
+    targetCode: 'M35.0+',
+    simultaneousItems: [
+      { disease: '건성 각막결막염', code: 'H19.3*' }
+    ]
+  },
+  {
+    targetDisease: '결핵에서의 윤활막염 및 힘줄윤활막염',
+    targetCode: 'M68.0*',
+    simultaneousItems: [
+      { disease: '결핵성 윤활막염', code: 'A18.08†' },
+      { disease: '결핵성 힘줄윤활막염', code: 'A18.08†' }
+    ]
+  },
+  {
+    targetDisease: '갑상선독증[갑상선기능항진증]',
+    targetCode: 'E05-+',
+    simultaneousItems: [
+      { disease: '갑상선이상성 안구돌출', code: 'H06.2*' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 감염성 및 기생충성질환에서의 결막염',
+    targetCode: 'H13.1*',
+    simultaneousItems: [
+      { disease: '아데노바이러스에 의한 결막염', code: 'B30.1+' },
+      { disease: '클라미디아결막염', code: 'A74.0+' },
+      { disease: '급성 유행성 출혈성 결막염(엔테로바이러스)', code: 'B30.3+' },
+      { disease: '기타 바이러스결막염', code: 'B00.52+, B30.8+' }
+    ]
+  }
+];
+
+export const HYUNDAI_SIMULTANEOUS_123_24_DISEASES: HyundaiSimultaneousRow[] = [
+  {
+    targetDisease: '뼈 및 관절의 결핵',
+    targetCode: 'A18.0+',
+    simultaneousItems: [
+      { disease: '결핵 관절염', code: 'M01.1*' },
+      { disease: '척추의 결핵', code: 'M49.0*' },
+      { disease: '뼈의 결핵', code: 'M90.0*' }
+    ]
+  },
+  {
+    targetDisease: '비뇨생식계통의 결핵',
+    targetCode: 'A18.1+',
+    simultaneousItems: [
+      { disease: '결핵성 방광염', code: 'N33.0*' },
+      { disease: '자궁경부의 결핵감염', code: 'N74.0*' },
+      { disease: '여성 결핵성 골반염증질환', code: 'N74.1*' }
+    ]
+  },
+  {
+    targetDisease: '장, 복막 및 장간막림프절의 결핵',
+    targetCode: 'A18.3+',
+    simultaneousItems: [
+      { disease: '결핵성 복막염', code: 'K67.3*' },
+      { disease: '장, 복막 및 장간막림프절의 결핵성 장애', code: 'K93.0*' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 질환에서의 상세불명 판막의 심내막염',
+    targetCode: 'I39.8*',
+    simultaneousItems: [
+      { disease: '칸디다심내막염', code: 'B37.6+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 바이러스질환에서의 폐렴',
+    targetCode: 'J17.1*',
+    simultaneousItems: [
+      { disease: '거대세포바이러스폐렴', code: 'B25.0+' },
+      { disease: '폐렴이 합병된 홍역', code: 'B05.2+' },
+      { disease: '수두폐렴', code: 'B01.2+' }
+    ]
+  },
+  {
+    targetDisease: '톡소포자충증에서의 폐렴',
+    targetCode: 'J17.3*',
+    simultaneousItems: [
+      { disease: '폐톡소포자충증', code: 'B58.3+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 감염성 및 기생충성 질환에서의 간장애',
+    targetCode: 'K77.0*',
+    simultaneousItems: [
+      { disease: '거대세포바이러스간염', code: 'B25.1+' },
+      { disease: '톡소포자충간염', code: 'B58.1+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 세균성 질환에서의 심장막염/심내막염/심근염/기타심장장애',
+    targetCode: 'I32.0*주1), I39.8*주1), I41.0*주1), I52.0*주1)',
+    simultaneousItems: [
+      { disease: '수막알균성 심장막염 / 심내막염 / 심근염 / 심장염 NOS', code: 'A39.5+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 세균성질환에서의 수막염',
+    targetCode: 'G01*',
+    simultaneousItems: [
+      { disease: '수막알균수막염', code: 'A39.0' },
+      { disease: '결핵성 수막염', code: 'A17.0+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 바이러스질환에서의 수막염',
+    targetCode: 'G02.0*',
+    simultaneousItems: [
+      { disease: '아데노바이러스수막염', code: 'A87.1+' },
+      { disease: '엔테로바이러스수막염', code: 'A87.0+' },
+      { disease: '헤르페스바이러스수막염', code: 'B00.3+' },
+      { disease: '수막염이 합병된 홍역', code: 'B05.1+' },
+      { disease: '볼거리수막염', code: 'B26.1+' },
+      { disease: '수두수막염', code: 'B01.0+' },
+      { disease: '대상포진수막염', code: 'B02.1+' }
+    ]
+  },
+  {
+    targetDisease: '진균증에서의 수막염',
+    targetCode: 'G02.1*',
+    simultaneousItems: [
+      { disease: '칸디다수막염', code: 'B37.5+' },
+      { disease: '콕시디오이데스진균수막염', code: 'B38.4+' }
+    ]
+  },
+  {
+    targetDisease: '결핵(~에서의) 뇌염, 척수염 또는 뇌척수염',
+    targetCode: 'G05.0*',
+    simultaneousItems: [
+      { disease: '결핵성 수막뇌염', code: 'A17.81+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 바이러스질환에서의 뇌염, 척수염 및 뇌척수염',
+    targetCode: 'G05.1*',
+    simultaneousItems: [
+      { disease: '아데노바이러스뇌염', code: 'A85.1+' },
+      { disease: '엔테로바이러스뇌염', code: 'A85.0+' },
+      { disease: '헤르페스바이러스뇌염', code: 'B00.4+' },
+      { disease: '뇌염이 합병된 홍역', code: 'B05.0+' },
+      { disease: '볼거리뇌염', code: 'B26.2+' },
+      { disease: '수두뇌염', code: 'B01.1+' },
+      { disease: '대상포진뇌염', code: 'B02.0+' }
+    ]
+  },
+  {
+    targetDisease: '풍진에서의 뇌염, 척수염 또는 뇌척수염 / 풍진(에 의한)수막염',
+    targetCode: 'G05.1*주2), G02.0*주2)',
+    simultaneousItems: [
+      { disease: '신경학적 합병증을 동반한 풍진', code: 'B06.0+' }
+    ]
+  },
+  {
+    targetDisease: '리스테리아(~에서의)수막염 / 뇌염, 척수염 또는 뇌척수염',
+    targetCode: 'G01*주3), G05.0*주3)',
+    simultaneousItems: [
+      { disease: '리스테리아 수막염 및 수막뇌염', code: 'A32.1+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 질환에서의 두개내 및 척추내 농양 및 육아종',
+    targetCode: 'G07*',
+    simultaneousItems: [
+      { disease: '아메바성 뇌농양', code: 'A06.6' },
+      { disease: '수막결핵종', code: 'A17.1+' },
+      { disease: '뇌 및 척수의 결핵종', code: 'A17.80+' },
+      { disease: '기타 신경계통의 결핵', code: 'A17.88+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 질환에서의 췌장장애',
+    targetCode: 'K87.1*',
+    simultaneousItems: [
+      { disease: '거대세포바이러스췌장염', code: 'B25.2+' },
+      { disease: '볼거리췌장염', code: 'B26.3+' }
+    ]
+  },
+  {
+    targetDisease: '남성생식기관의 결핵 동시진단 규정 (약관 제2조 ④)',
+    targetCode: 'A18.14',
+    simultaneousItems: [
+      { disease: '전립선장애(N51.0) 동시진단시 24대질병 간주', code: 'N51.0' },
+      { disease: '고환 및 부고환의 장애(N51.1) 동시진단시 24대질병 간주', code: 'N51.1' },
+      { disease: '남성생식기관의 기타 장애(N51.8) 동시진단시 24대질병 간주', code: 'N51.8' }
+    ]
+  }
+];
+
+export const HYUNDAI_SIMULTANEOUS_123_3_DISEASES: HyundaiSimultaneousRow[] = [
+  {
+    targetDisease: '류마티스 폐질환',
+    targetCode: 'M05.1+',
+    simultaneousItems: [
+      { disease: '류마티스 폐질환', code: 'J99.0*' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 질환에서의 전립선장애',
+    targetCode: 'N51.0*',
+    simultaneousItems: [
+      { disease: '편모충성 전립선염', code: 'A59.08+' },
+      { disease: '결핵 전립선염', code: 'A18.14+' }
+    ]
+  },
+  {
+    targetDisease: '달리 분류된 질환에서의 고환 및 부고환의 장애',
+    targetCode: 'N51.1*',
+    simultaneousItems: [
+      { disease: '볼거리고환염', code: 'B26.0+' },
+      { disease: '부고환의 결핵', code: 'A18.14+' }
+    ]
+  },
+  {
+    targetDisease: '자궁경부의 결핵감염 및 결핵성 자궁내막염',
+    targetCode: 'N74.0*, N74.1*',
+    simultaneousItems: [
+      { disease: '여성 생식기관의 결핵', code: 'A18.17+' }
+    ]
+  }
+];
+
 

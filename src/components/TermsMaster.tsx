@@ -119,6 +119,8 @@ import {
   HEART_GROUPS,
   HYUNDAI_120_DISEASES_SECTIONS,
   HYUNDAI_120_SUMMARY_SECTIONS,
+  HYUNDAI_123_DISEASES_SECTIONS,
+  HYUNDAI_123_SUMMARY_SECTIONS,
   HYUNDAI_14_DISEASES_SECTIONS,
   HYUNDAI_14_DISEASES_SUMMARY,
   HYUNDAI_16_DISEASES_SECTIONS,
@@ -141,6 +143,9 @@ import {
   HYUNDAI_SIMULTANEOUS_120_24_DISEASES,
   HYUNDAI_SIMULTANEOUS_120_58_DISEASES,
   HYUNDAI_SIMULTANEOUS_120_THYROID_DISEASES,
+  HYUNDAI_SIMULTANEOUS_123_3_DISEASES,
+  HYUNDAI_SIMULTANEOUS_123_24_DISEASES,
+  HYUNDAI_SIMULTANEOUS_123_59_DISEASES,
   HYUNDAI_SIMULTANEOUS_13_DISEASES,
   HYUNDAI_SIMULTANEOUS_22_DISEASES,
   HYUNDAI_SIMULTANEOUS_35_DISEASES,
@@ -2516,13 +2521,25 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, curSummary, curSections)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {isHeart1 ? (
+                <a
+                  href="/downloads/db-integrated-heart-disease-1.pdf"
+                  download="db-integrated-heart-disease-1.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              ) : (
+                <a
+                  href="/downloads/db-integrated-heart-disease-2.pdf"
+                  download="db-integrated-heart-disease-2.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              )}
             </div>
           </div>
 
@@ -2947,13 +2964,24 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {(() => {
+                const pdfFile =
+                  dbHeartSimpleTab === 'I'
+                    ? 'db-heart-diagnosis-1.pdf'
+                    : dbHeartSimpleTab === 'II'
+                    ? 'db-heart-diagnosis-2.pdf'
+                    : 'db-heart-diagnosis-3.pdf';
+                return (
+                  <a
+                    href={`/downloads/${pdfFile}`}
+                    download={pdfFile}
+                    className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    PDF 다운로드
+                  </a>
+                );
+              })()}
             </div>
           </div>
 
@@ -3877,13 +3905,25 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, curSummary, curSections)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {isBrain1 ? (
+                <a
+                  href="/downloads/db-integrated-brain-disease-1.pdf"
+                  download="db-integrated-brain-disease-1.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              ) : (
+                <a
+                  href="/downloads/db-integrated-brain-disease-2.pdf"
+                  download="db-integrated-brain-disease-2.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              )}
             </div>
           </div>
 
@@ -4560,13 +4600,25 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, curSummary, curSections)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {isBrain1 ? (
+                <a
+                  href="/downloads/hyundai-cerebrovascular-disease-1.pdf"
+                  download="hyundai-cerebrovascular-disease-1.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              ) : (
+                <a
+                  href="/downloads/hyundai-cerebrovascular-disease-2.pdf"
+                  download="hyundai-cerebrovascular-disease-2.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              )}
             </div>
           </div>
 
@@ -4721,13 +4773,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
               >
                 전체 접기
               </button>
-              <button
-                onClick={() => handleDownloadPDF(tabTitle, [], HYUNDAI_SURGERY_1_5_SECTIONS)}
+              <a
+                href="/downloads/hyundai-surgery-1to5.pdf"
+                download="hyundai-surgery-1to5.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -4898,13 +4951,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(tabTitle, [], HYUNDAI_SPECIFIC_CANCER_SECTIONS)}
+              <a
+                href="/downloads/hyundai-specific-cancer.pdf"
+                download="hyundai-specific-cancer.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -5065,13 +5119,24 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF('11대특정암 분류표', [], sectionsList)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {!isHana ? (
+                <a
+                  href="/downloads/db-specific-cancer-11.pdf"
+                  download="db-specific-cancer-11.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              ) : (
+                <button
+                  onClick={() => handleDownloadPDF('11대특정암 분류표', [], sectionsList)}
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </button>
+              )}
             </div>
           </div>
 
@@ -5255,13 +5320,24 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF('고액치료비암 분류표', [], sectionsList)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {!isHana ? (
+                <a
+                  href="/downloads/db-high-cost-cancer.pdf"
+                  download="db-high-cost-cancer.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              ) : (
+                <button
+                  onClick={() => handleDownloadPDF('고액치료비암 분류표', [], sectionsList)}
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </button>
+              )}
             </div>
           </div>
 
@@ -5428,13 +5504,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(tabTitle, summaries, allSections)}
+              <a
+                href="/downloads/samsung-major-10-cancer.pdf"
+                download="samsung-major-10-cancer.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -5592,13 +5669,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(tabTitle, summaries, allSections)}
+              <a
+                href="/downloads/samsung-disease-surgery-111.pdf"
+                download="samsung-disease-surgery-111.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -5805,13 +5883,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(tabTitle, summaries, allSections)}
+              <a
+                href="/downloads/samsung-disease-surgery-15.pdf"
+                download="samsung-disease-surgery-15.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -5977,13 +6056,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(tabTitle, summaries, allSections)}
+              <a
+                href="/downloads/samsung-surgery-1to5.pdf"
+                download="samsung-surgery-1to5.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -6249,13 +6329,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(tabTitle, summaries, allSections)}
+              <a
+                href="/downloads/samsung-disease-surgery-21.pdf"
+                download="samsung-disease-surgery-21.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -6445,13 +6526,56 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             >
               전체 접기
             </button>
-            <button
-              onClick={() => handleDownloadPDF(tabTitle, summaries, allSections)}
-              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-            >
-              <Download className="w-3.5 h-3.5" />
-              PDF 다운로드
-            </button>
+            {(() => {
+              const directPdfMap: Record<string, string> = {
+                samsung_cancer: 'samsung-integrated-cancer.pdf',
+                hyundai_male_cancer: 'hyundai-male-integrated-cancer.pdf',
+                hyundai_female_cancer: 'hyundai-female-integrated-cancer.pdf',
+                hyundai_heart: 'hyundai-cardiovascular-disease.pdf',
+                hyundai_7diseases: 'hyundai-disease-surgery-7.pdf',
+                hyundai_16diseases: 'hyundai-disease-surgery-16.pdf',
+                hyundai_71diseases: 'hyundai-disease-surgery-71.pdf',
+                hyundai_120diseases: 'hyundai-disease-surgery-120.pdf',
+                hyundai_123diseases: 'hyundai-disease-surgery-123.pdf',
+              };
+              const dbDirectPdfMap: Record<string, string> = {
+                cancer: 'db-integrated-cancer.pdf',
+                db_cancer_metastasis: 'db-integrated-metastatic-cancer.pdf',
+                surgery1_5: 'db-surgery-1to5-same-disease.pdf',
+                surgery1_5_old: 'db-surgery-1to5-integrated-treatment.pdf',
+                surgery13: 'db-disease-surgery-13.pdf',
+                surgery16: 'db-disease-surgery-16.pdf',
+                surgery18: 'db-disease-surgery-18.pdf',
+                surgery21: 'db-disease-surgery-21.pdf',
+                surgery40: 'db-disease-surgery-40.pdf',
+                surgery77: 'db-disease-surgery-77.pdf',
+                surgery106: 'db-disease-surgery-106.pdf',
+                surgery119: 'db-disease-surgery-119.pdf',
+                surgery120: 'db-disease-surgery-120.pdf',
+              };
+              const directPdf = directPdfMap[tabKey] || (selectedInsurer?.id === 'db-ins' ? dbDirectPdfMap[tabKey] : undefined);
+              if (directPdf) {
+                return (
+                  <a
+                    href={`/downloads/${directPdf}`}
+                    download={directPdf}
+                    className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    PDF 다운로드
+                  </a>
+                );
+              }
+              return (
+                <button
+                  onClick={() => handleDownloadPDF(tabTitle, summaries, allSections)}
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </button>
+              );
+            })()}
           </div>
         </div>
 
@@ -8440,6 +8564,419 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                     </div>
                   );
                 })()}
+              </div>
+            </div>
+          )}
+
+          {/* 6. 현대해상 123대질병수술비 하단 세부분류표 아래 동시진단가능 질병 안내 및 분류표 */}
+          {tabKey === 'hyundai_123diseases' && (
+            <div className="space-y-3 pt-6 border-t-2 border-[#123941]/20">
+              {/* Header Bar matching screenshot design */}
+              <div className="px-4 py-3 bg-[#123941]/5 border border-[#123941]/10 rounded-2xl flex items-center justify-between shadow-2xs">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#123941]"></span>
+                  <h4 className="text-xs font-black text-[#123941]">
+                    [유의사항] (동시진단가능 질병코드 및 보험금 동일 지급 기준)
+                  </h4>
+                </div>
+                <span className="text-[11px] font-bold text-[#123941] bg-[#123941]/10 px-2.5 py-0.5 rounded-md border border-[#123941]/20">
+                  현대해상 123대질병수술비
+                </span>
+              </div>
+
+              {/* Notice Banner */}
+              <div className="p-3 bg-amber-50/60 border border-amber-200/80 rounded-xl text-xs text-amber-900 leading-relaxed font-bold shadow-3xs">
+                💡 한국표준질병사인분류 기준에 의거하여 상기 123대질병 중 일부는 아래와 같이 동시 진단될 수 있으며, 동시 진단 가능 코드가 기재된 진단서를 제출한 경우에도 동일하게 보험금을 지급합니다.
+              </div>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {/* Card 1: 59대질병 */}
+                {(() => {
+                  const isExp = !!query || (expandedSimultaneousSections['sim_123_59'] ?? false);
+                  return (
+                    <div
+                      className={`bg-white rounded-2xl border transition-all overflow-hidden ${
+                        isExp
+                          ? 'border-[#123941]/40 ring-1 ring-[#123941]/15 shadow-sm md:col-span-2'
+                          : 'border-slate-200/90 hover:border-[#123941]/30 shadow-2xs'
+                      }`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => toggleSimultaneousSection('sim_123_59')}
+                        className="w-full px-4 py-3 bg-slate-100/90 hover:bg-slate-200/70 border-b border-slate-200 flex items-center justify-between text-left transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2 pr-2 min-w-0">
+                          <span className="px-2.5 py-0.5 rounded-md bg-[#123941] text-white text-[11px] font-black shrink-0 shadow-2xs">
+                            별표-유의사항
+                          </span>
+                          <span className="text-xs sm:text-[13px] font-black text-slate-900 truncate">
+                            59대질병 대상코드 및 동시진단코드
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0 ml-1">
+                          <span className="px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700 text-[10px] font-bold hidden sm:inline-block">
+                            17개 항목
+                          </span>
+                          <div className="flex items-center gap-1 text-[11px] font-extrabold text-[#123941] bg-white px-2.5 py-1 rounded-lg border border-slate-200/80 shadow-2xs">
+                            <span>{isExp ? '접기' : '상세보기'}</span>
+                            {isExp ? (
+                              <ChevronUp className="w-3.5 h-3.5 text-[#123941]" />
+                            ) : (
+                              <ChevronDown className="w-3.5 h-3.5 text-[#123941]" />
+                            )}
+                          </div>
+                        </div>
+                      </button>
+
+                      {isExp && (
+                        <div className="p-3 bg-white space-y-3">
+                          <div className="overflow-x-auto">
+                            <table className="w-full text-left text-xs border-collapse">
+                              <thead>
+                                <tr className="bg-slate-100 text-slate-900 font-black border-b border-slate-200 text-center">
+                                  <th className="py-2.5 px-3 w-[50%] border-r border-slate-200 bg-slate-200/60" colSpan={2}>
+                                    59대질병 대상코드
+                                  </th>
+                                  <th className="py-2.5 px-3 w-[50%] bg-amber-50/80 text-amber-900" colSpan={2}>
+                                    동시진단코드
+                                  </th>
+                                </tr>
+                                <tr className="bg-slate-50 text-slate-800 font-black border-b border-slate-200 text-xs">
+                                  <th className="py-2 px-3 w-[35%] border-r border-slate-200">대상이 되는 질병</th>
+                                  <th className="py-2 px-3 w-[15%] text-center border-r border-slate-200">분류번호</th>
+                                  <th className="py-2 px-3 w-[35%] border-r border-slate-200">대상이 되는 질병</th>
+                                  <th className="py-2 px-3 w-[15%] text-center">분류번호</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-200">
+                                {HYUNDAI_SIMULTANEOUS_123_59_DISEASES.map((row, idx) => {
+                                  const rowMatch = !detailFilter || 
+                                    normalizeString(row.targetDisease).includes(query) ||
+                                    normalizeString(row.targetCode).includes(query) ||
+                                    row.simultaneousItems.some(i => normalizeString(i.disease).includes(query) || normalizeString(i.code).includes(query));
+                                  
+                                  if (!rowMatch) return null;
+
+                                  return (
+                                    <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                                      <td className="py-2.5 px-3 font-bold text-slate-900 border-r border-slate-200/80 align-middle">
+                                        {highlightText(row.targetDisease)}
+                                      </td>
+                                      <td className="py-2.5 px-3 text-center border-r border-slate-200/80 align-middle">
+                                        <span className="inline-block px-2 py-0.5 bg-slate-100 text-[#123941] font-mono font-extrabold rounded border border-slate-200 text-[11px]">
+                                          {highlightText(row.targetCode)}
+                                        </span>
+                                      </td>
+                                      <td className="py-2.5 px-3 font-semibold text-slate-800 border-r border-slate-200/80 align-middle">
+                                        <div className="space-y-1">
+                                          {row.simultaneousItems.map((item, itemIdx) => (
+                                            <div key={itemIdx} className="leading-snug">
+                                              {highlightText(item.disease)}
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </td>
+                                      <td className="py-2.5 px-3 text-center align-middle">
+                                        <div className="space-y-1">
+                                          {row.simultaneousItems.map((item, itemIdx) => (
+                                            <div key={itemIdx}>
+                                              <span className="inline-block px-2 py-0.5 bg-amber-50 text-amber-900 font-mono font-extrabold rounded border border-amber-200/80 text-[11px]">
+                                                {highlightText(item.code)}
+                                              </span>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-600 space-y-1 font-medium">
+                            <p className="font-extrabold text-[#123941]">주) 59대질병 약관 적용 유의사항</p>
+                            <p className="pl-2">주1) H19.0~H32.0은 약관상 동시에 보장하고 있는 경우만 A18.5도 보장합니다. 즉, H19.0~H32.0 중 일부만 보장하는 경우 A18.5는 보장하지 않습니다.</p>
+                            <p className="pl-2 text-slate-700 font-bold">※ 상기외에도 대상질병 분류표의 분류번호와 연관성이 있어, 분류번호가 동시에 부여된 경우 대상질병 분류에 포함합니다.</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
+                {/* Card 2: 24대질병 */}
+                {(() => {
+                  const isExp = !!query || (expandedSimultaneousSections['sim_123_24'] ?? false);
+                  return (
+                    <div
+                      className={`bg-white rounded-2xl border transition-all overflow-hidden ${
+                        isExp
+                          ? 'border-[#123941]/40 ring-1 ring-[#123941]/15 shadow-sm md:col-span-2'
+                          : 'border-slate-200/90 hover:border-[#123941]/30 shadow-2xs'
+                      }`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => toggleSimultaneousSection('sim_123_24')}
+                        className="w-full px-4 py-3 bg-slate-100/90 hover:bg-slate-200/70 border-b border-slate-200 flex items-center justify-between text-left transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2 pr-2 min-w-0">
+                          <span className="px-2.5 py-0.5 rounded-md bg-[#123941] text-white text-[11px] font-black shrink-0 shadow-2xs">
+                            별표-유의사항
+                          </span>
+                          <span className="text-xs sm:text-[13px] font-black text-slate-900 truncate">
+                            24대질병 대상코드 및 동시진단코드
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0 ml-1">
+                          <span className="px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700 text-[10px] font-bold hidden sm:inline-block">
+                            4개 항목
+                          </span>
+                          <div className="flex items-center gap-1 text-[11px] font-extrabold text-[#123941] bg-white px-2.5 py-1 rounded-lg border border-slate-200/80 shadow-2xs">
+                            <span>{isExp ? '접기' : '상세보기'}</span>
+                            {isExp ? (
+                              <ChevronUp className="w-3.5 h-3.5 text-[#123941]" />
+                            ) : (
+                              <ChevronDown className="w-3.5 h-3.5 text-[#123941]" />
+                            )}
+                          </div>
+                        </div>
+                      </button>
+
+                      {isExp && (
+                        <div className="p-3 bg-white space-y-3">
+                          <div className="overflow-x-auto">
+                            <table className="w-full text-left text-xs border-collapse">
+                              <thead>
+                                <tr className="bg-slate-100 text-slate-900 font-black border-b border-slate-200 text-center">
+                                  <th className="py-2.5 px-3 w-[50%] border-r border-slate-200 bg-slate-200/60" colSpan={2}>
+                                    24대질병 대상코드
+                                  </th>
+                                  <th className="py-2.5 px-3 w-[50%] bg-amber-50/80 text-amber-900" colSpan={2}>
+                                    동시진단코드
+                                  </th>
+                                </tr>
+                                <tr className="bg-slate-50 text-slate-800 font-black border-b border-slate-200 text-xs">
+                                  <th className="py-2 px-3 w-[35%] border-r border-slate-200">대상이 되는 질병</th>
+                                  <th className="py-2 px-3 w-[15%] text-center border-r border-slate-200">분류번호</th>
+                                  <th className="py-2 px-3 w-[35%] border-r border-slate-200">대상이 되는 질병</th>
+                                  <th className="py-2 px-3 w-[15%] text-center">분류번호</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-200">
+                                {HYUNDAI_SIMULTANEOUS_123_24_DISEASES.map((row, idx) => {
+                                  const rowMatch = !detailFilter || 
+                                    normalizeString(row.targetDisease).includes(query) ||
+                                    normalizeString(row.targetCode).includes(query) ||
+                                    row.simultaneousItems.some(i => normalizeString(i.disease).includes(query) || normalizeString(i.code).includes(query));
+                                  
+                                  if (!rowMatch) return null;
+
+                                  return (
+                                    <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                                      <td className="py-2.5 px-3 font-bold text-slate-900 border-r border-slate-200/80 align-middle">
+                                        {highlightText(row.targetDisease)}
+                                      </td>
+                                      <td className="py-2.5 px-3 text-center border-r border-slate-200/80 align-middle">
+                                        <span className="inline-block px-2 py-0.5 bg-slate-100 text-[#123941] font-mono font-extrabold rounded border border-slate-200 text-[11px]">
+                                          {highlightText(row.targetCode)}
+                                        </span>
+                                      </td>
+                                      <td className="py-2.5 px-3 font-semibold text-slate-800 border-r border-slate-200/80 align-middle">
+                                        <div className="space-y-1">
+                                          {row.simultaneousItems.map((item, itemIdx) => (
+                                            <div key={itemIdx} className="leading-snug">
+                                              {highlightText(item.disease)}
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </td>
+                                      <td className="py-2.5 px-3 text-center align-middle">
+                                        <div className="space-y-1">
+                                          {row.simultaneousItems.map((item, itemIdx) => (
+                                            <div key={itemIdx}>
+                                              <span className="inline-block px-2 py-0.5 bg-amber-50 text-amber-900 font-mono font-extrabold rounded border border-amber-200/80 text-[11px]">
+                                                {highlightText(item.code)}
+                                              </span>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-600 space-y-1 font-medium">
+                            <p className="font-extrabold text-[#123941]">주) 24대질병 약관 적용 유의사항</p>
+                            <p className="pl-2">※ 상기외에도 대상질병 분류표의 분류번호와 연관성이 있어, 분류번호가 동시에 부여된 경우 대상질병 분류에 포함합니다.</p>
+                            <p className="pl-2 text-slate-700 font-bold">※ [약관 제2조 ④] ‘남성생식기관의 결핵(A18.14)’과 ‘전립선장애(N51.0)’, ‘고환 및 부고환의 장애(N51.1)’ 또는 ‘남성생식기관의 기타 장애(N51.8)’가 동시에 진단 확정된 경우 ‘24대질병’으로 봅니다.</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
+                {/* Card 3: 3대질병 */}
+                {(() => {
+                  const isExp = !!query || (expandedSimultaneousSections['sim_123_3'] ?? false);
+                  return (
+                    <div
+                      className={`bg-white rounded-2xl border transition-all overflow-hidden ${
+                        isExp
+                          ? 'border-[#123941]/40 ring-1 ring-[#123941]/15 shadow-sm md:col-span-2'
+                          : 'border-slate-200/90 hover:border-[#123941]/30 shadow-2xs'
+                      }`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => toggleSimultaneousSection('sim_123_3')}
+                        className="w-full px-4 py-3 bg-slate-100/90 hover:bg-slate-200/70 border-b border-slate-200 flex items-center justify-between text-left transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2 pr-2 min-w-0">
+                          <span className="px-2.5 py-0.5 rounded-md bg-[#123941] text-white text-[11px] font-black shrink-0 shadow-2xs">
+                            별표-유의사항
+                          </span>
+                          <span className="text-xs sm:text-[13px] font-black text-slate-900 truncate">
+                            3대질병 대상코드 및 동시진단코드
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0 ml-1">
+                          <span className="px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700 text-[10px] font-bold hidden sm:inline-block">
+                            4개 항목
+                          </span>
+                          <div className="flex items-center gap-1 text-[11px] font-extrabold text-[#123941] bg-white px-2.5 py-1 rounded-lg border border-slate-200/80 shadow-2xs">
+                            <span>{isExp ? '접기' : '상세보기'}</span>
+                            {isExp ? (
+                              <ChevronUp className="w-3.5 h-3.5 text-[#123941]" />
+                            ) : (
+                              <ChevronDown className="w-3.5 h-3.5 text-[#123941]" />
+                            )}
+                          </div>
+                        </div>
+                      </button>
+
+                      {isExp && (
+                        <div className="p-3 bg-white space-y-3">
+                          <div className="overflow-x-auto">
+                            <table className="w-full text-left text-xs border-collapse">
+                              <thead>
+                                <tr className="bg-slate-100 text-slate-900 font-black border-b border-slate-200 text-center">
+                                  <th className="py-2.5 px-3 w-[50%] border-r border-slate-200 bg-slate-200/60" colSpan={2}>
+                                    3대질병 대상코드
+                                  </th>
+                                  <th className="py-2.5 px-3 w-[50%] bg-amber-50/80 text-amber-900" colSpan={2}>
+                                    동시진단코드
+                                  </th>
+                                </tr>
+                                <tr className="bg-slate-50 text-slate-800 font-black border-b border-slate-200 text-xs">
+                                  <th className="py-2 px-3 w-[35%] border-r border-slate-200">대상이 되는 질병</th>
+                                  <th className="py-2 px-3 w-[15%] text-center border-r border-slate-200">분류번호</th>
+                                  <th className="py-2 px-3 w-[35%] border-r border-slate-200">대상이 되는 질병</th>
+                                  <th className="py-2 px-3 w-[15%] text-center">분류번호</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-200">
+                                {HYUNDAI_SIMULTANEOUS_123_3_DISEASES.map((row, idx) => {
+                                  const rowMatch = !detailFilter || 
+                                    normalizeString(row.targetDisease).includes(query) ||
+                                    normalizeString(row.targetCode).includes(query) ||
+                                    row.simultaneousItems.some(i => normalizeString(i.disease).includes(query) || normalizeString(i.code).includes(query));
+                                  
+                                  if (!rowMatch) return null;
+
+                                  return (
+                                    <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                                      <td className="py-2.5 px-3 font-bold text-slate-900 border-r border-slate-200/80 align-middle">
+                                        {highlightText(row.targetDisease)}
+                                      </td>
+                                      <td className="py-2.5 px-3 text-center border-r border-slate-200/80 align-middle">
+                                        <span className="inline-block px-2 py-0.5 bg-slate-100 text-[#123941] font-mono font-extrabold rounded border border-slate-200 text-[11px]">
+                                          {highlightText(row.targetCode)}
+                                        </span>
+                                      </td>
+                                      <td className="py-2.5 px-3 font-semibold text-slate-800 border-r border-slate-200/80 align-middle">
+                                        <div className="space-y-1">
+                                          {row.simultaneousItems.map((item, itemIdx) => (
+                                            <div key={itemIdx} className="leading-snug">
+                                              {highlightText(item.disease)}
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </td>
+                                      <td className="py-2.5 px-3 text-center align-middle">
+                                        <div className="space-y-1">
+                                          {row.simultaneousItems.map((item, itemIdx) => (
+                                            <div key={itemIdx}>
+                                              <span className="inline-block px-2 py-0.5 bg-amber-50 text-amber-900 font-mono font-extrabold rounded border border-amber-200/80 text-[11px]">
+                                                {highlightText(item.code)}
+                                              </span>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-600 space-y-1 font-medium">
+                            <p className="font-extrabold text-[#123941]">주) 3대질병 약관 적용 유의사항</p>
+                            <p className="pl-2 text-slate-700 font-bold">※ 상기외에도 대상질병 분류표의 분류번호와 연관성이 있어, 분류번호가 동시에 부여된 경우 대상질병 분류에 포함합니다.</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
+                {/* Card 4: 고혈압 및 당뇨병 합병증 보장 규정 */}
+                <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs md:col-span-2 space-y-3">
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
+                    <span className="px-2.5 py-0.5 rounded-md bg-[#123941] text-white text-[11px] font-black shrink-0">
+                      약관 제2조 ②, ③
+                    </span>
+                    <h5 className="text-xs sm:text-[13px] font-black text-slate-900">
+                      고혈압 및 당뇨병 합병증 수술 보장 규정 (59대질병수술 간주)
+                    </h5>
+                  </div>
+                  <div className="text-xs text-slate-700 leading-relaxed space-y-2">
+                    <p className="font-semibold text-slate-900">
+                      회사는 위 표에서 정한 질병 중 ‘고혈압’ 또는 ‘당뇨병’으로 인하여 합병증이 발생하고 그 합병증의 치료를 직접적인 목적으로 수술을 받은 경우에는 ‘59대질병수술’을 받은 것으로 봅니다.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1 text-[11px]">
+                      <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                        <div className="font-bold text-[#123941]">고혈압성 합병증</div>
+                        <ul className="list-disc list-inside space-y-0.5 text-slate-600">
+                          <li>고혈압성 뇌병증 (I67.4)</li>
+                          <li>배경망막병증 및 망막혈관변화(고혈압성 망막병증) (H35.0)<br/><span className="text-[10px] text-slate-500 pl-4">(단, 고혈압성 망막병증 이외의 배경망막병증 및 망막혈관변화는 제외)</span></li>
+                        </ul>
+                      </div>
+                      <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                        <div className="font-bold text-[#123941]">당뇨병성 합병증</div>
+                        <ul className="list-disc list-inside space-y-0.5 text-slate-600">
+                          <li>당뇨병성 단일신경병증 (G59.0*)</li>
+                          <li>당뇨병성 다발신경병증 (G63.2*)</li>
+                          <li>당뇨병성 백내장 (H28.0*)</li>
+                          <li>당뇨병성 망막병증 (H36.0*)</li>
+                          <li>당뇨병성 관절병증 (M14.2*)</li>
+                          <li>당뇨병에서의 사구체장애 (N08.3*)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -10575,6 +11112,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'hyundai_16diseases') return HYUNDAI_16_DISEASES_SECTIONS;
         if (activeSubTab === 'hyundai_71diseases') return HYUNDAI_71_DISEASES_SECTIONS;
         if (activeSubTab === 'hyundai_120diseases') return HYUNDAI_120_DISEASES_SECTIONS;
+        if (activeSubTab === 'hyundai_123diseases') return HYUNDAI_123_DISEASES_SECTIONS;
         return HYUNDAI_MALE_CANCER_SECTIONS;
       case 'hana-ins':
         if (activeSubTab === 'hana_integrated_cancer') return HANA_INTEGRATED_CANCER_SECTIONS;

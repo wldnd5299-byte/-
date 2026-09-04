@@ -38,6 +38,7 @@ import AgeCalculator from './components/AgeCalculator';
 import PlannerGoods from './components/PlannerGoods';
 import DisputePrecedent from './components/DisputePrecedent';
 import InfoArticles from './components/InfoArticles';
+import AdBannerStrip from './components/AdBannerStrip';
 
 import { searchSite, SearchResultItem } from './data/searchIndex';
 
@@ -623,7 +624,9 @@ export default function App() {
       </AnimatePresence>
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-3.5 pb-6 sm:pt-4 sm:pb-8 space-y-4 sm:space-y-5">
+        {/* Top Ad Banner Strip (PC 5 / Mobile 1 Auto-slide) */}
+        <AdBannerStrip />
 
         {/* Views Router */}
         <AnimatePresence mode="wait">

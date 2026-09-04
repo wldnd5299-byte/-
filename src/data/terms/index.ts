@@ -138,7 +138,8 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "hyundai_14diseases", label: "14대 질병수술비" },
     { id: "hyundai_16diseases", label: "16대 질병수술비" },
     { id: "hyundai_71diseases", label: "71대 질병수술비" },
-    { id: "hyundai_120diseases", label: "120대 질병수술비" }
+    { id: "hyundai_120diseases", label: "120대 질병수술비" },
+    { id: "hyundai_123diseases", label: "123대질병수술비" }
   ],
   "nh-fire": [
     { id: "nh_cancer", label: "통합암(유사암제외)", groupCount: "10개 그룹" },
@@ -302,6 +303,7 @@ import {
   HYUNDAI_16_DISEASES_SECTIONS,
   HYUNDAI_71_DISEASES_SECTIONS,
   HYUNDAI_120_DISEASES_SECTIONS,
+  HYUNDAI_123_DISEASES_SECTIONS,
   HYUNDAI_MALE_CANCER_SUMMARY,
   HYUNDAI_FEMALE_CANCER_SUMMARY,
   HYUNDAI_HEART_SUMMARY,
@@ -311,7 +313,8 @@ import {
   HYUNDAI_14_DISEASES_SUMMARY,
   HYUNDAI_16_DISEASES_SUMMARY,
   HYUNDAI_71_SUMMARY_SECTIONS,
-  HYUNDAI_120_SUMMARY_SECTIONS
+  HYUNDAI_120_SUMMARY_SECTIONS,
+  HYUNDAI_123_SUMMARY_SECTIONS
 } from "./hyundai";
 
 import {
@@ -472,6 +475,7 @@ export function getSummaryForSubTab(
       if (subTabId === "hyundai_16diseases") return HYUNDAI_16_DISEASES_SUMMARY;
       if (subTabId === "hyundai_71diseases") return HYUNDAI_71_SUMMARY_SECTIONS;
       if (subTabId === "hyundai_120diseases") return HYUNDAI_120_SUMMARY_SECTIONS;
+      if (subTabId === "hyundai_123diseases") return HYUNDAI_123_SUMMARY_SECTIONS;
       return null;
 
     default: // DB
@@ -592,6 +596,7 @@ export function getSectionsForInsurerSubTab(insurerId: string, subTabId: string)
       if (subTabId === "hyundai_16diseases") return HYUNDAI_16_DISEASES_SECTIONS;
       if (subTabId === "hyundai_71diseases") return HYUNDAI_71_DISEASES_SECTIONS;
       if (subTabId === "hyundai_120diseases") return HYUNDAI_120_DISEASES_SECTIONS;
+      if (subTabId === "hyundai_123diseases") return HYUNDAI_123_DISEASES_SECTIONS;
       return HYUNDAI_MALE_CANCER_SECTIONS;
 
     case "hana-ins":
