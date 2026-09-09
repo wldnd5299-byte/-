@@ -142,12 +142,20 @@ export async function generateClaimPages() {
     const isStandardFax = ins.fax && /^[0-9\-\s~]+$/.test(ins.fax);
     
     const title = isStandardFax
-      ? `${ins.name} 고객센터 전화번호·보험금청구 팩스(${ins.fax})·구비서류 | 보험브릿지`
-      : `${ins.name} 고객센터 전화번호(${ins.phone})·보험금청구 방법·구비서류 | 보험브릿지`;
+      ? `${ins.name} 고객센터 전화번호·보험금청구 팩스번호 | 보험브릿지`
+      : `${ins.name} 고객센터 전화번호·보험금청구 접수안내 | 보험브릿지`;
 
-    const description = `${ins.name}(${typeLabel}) 대표 고객센터 전화번호(${ins.phone}), 보험금 청구 접수 채널, ${ins.fax ? `팩스 접수처(${ins.fax}), ` : ''}필수 구비서류 5종 목록 및 보상 청구 실무 팁 안내.`;
+    const descItems: string[] = ['고객센터 전화번호'];
+    if (ins.fax) {
+      descItems.push(isStandardFax ? '보험금청구 팩스번호' : '보험금청구 접수방법');
+    }
+    if (ins.monitoringPhone) {
+      descItems.push('인콜 모니터링 번호');
+    }
+    descItems.push('청구서류 및 약관조회 정보');
+    const description = `${ins.name} ${descItems.join(', ')}를 보험브릿지에서 확인하세요.`;
 
-    const h1 = `${ins.name} 고객센터 및 보험금 청구 가이드`;
+    const h1 = `${ins.name} 고객센터·보험금청구 정보`;
 
     const homepage = getHomepageUrl(ins);
     const disclosureUrl = DISCLOSURE_URL_MAP[ins.id] || '';
@@ -207,7 +215,7 @@ export async function generateClaimPages() {
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "${escapeHtml(ins.name)} 고객센터 및 보험금청구",
+          "name": "${escapeHtml(ins.name)} 고객센터·보험금청구 정보",
           "item": "${canonicalUrl}"
         }
       ]
@@ -271,47 +279,81 @@ export async function generateClaimPages() {
             ${escapeHtml(h1)}
           </h1>
           <p style="font-size: 14px; color: #475569; margin: 0 0 20px 0; line-height: 1.6;">
-            <strong>${escapeHtml(ins.name)}</strong>의 대표 고객센터 전화번호, 사고접수 콜센터, 전용 청구 팩스(FAX) 번호, 공식 청구 페이지 및 필수 제출 구비서류 정보를 안내합니다.
+            <strong>${escapeHtml(ins.name)}</strong>의 대표 <strong>고객센터 전화번호</strong>, ${ins.monitoringPhone ? `<strong>모니터링 번호</strong>, ` : ''}<strong>${isStandardFax ? '보험금청구 팩스번호' : '보험금청구 방법'}</strong>, <strong>보험금 청구서류</strong> 구비목록, 공식 홈페이지 및 <strong>약관조회</strong> 정보를 안내합니다.
           </p>
 
-          <!-- Core Contact Highlights Box -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px;">
-            <div>
-              <div style="font-size: 12px; color: #64748b; font-weight: 700; margin-bottom: 4px;">대표 고객센터</div>
+          <!-- Core Contact Highlights Sections -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
+            <section style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px;">
+              <h2 style="font-size: 14px; font-weight: 800; color: #0f766e; margin: 0 0 4px 0;">
+                📞 ${escapeHtml(ins.name)} 고객센터 전화번호
+              </h2>
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 8px 0; line-height: 1.4;">
+                ${escapeHtml(ins.name)} 대표 고객센터 전화번호는 <strong>${escapeHtml(ins.phone)}</strong>입니다.
+              </p>
               <div style="font-size: 20px; font-weight: 900; color: #0f766e;">
                 <a href="tel:${escapeHtml(ins.phone.replace(/[^0-9]/g, ''))}" style="color: #0f766e; text-decoration: none;">
                   📞 ${escapeHtml(ins.phone)}
                 </a>
               </div>
-              <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">평일 09:00 ~ 18:00 (사고접수 24시간)</div>
-            </div>
+            </section>
 
             ${ins.monitoringPhone ? `
-            <div>
-              <div style="font-size: 12px; color: #64748b; font-weight: 700; margin-bottom: 4px;">사고접수 모니터링</div>
+            <section style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px;">
+              <h2 style="font-size: 14px; font-weight: 800; color: #1e293b; margin: 0 0 4px 0;">
+                📞 ${escapeHtml(ins.name)} 모니터링 번호
+              </h2>
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 8px 0; line-height: 1.4;">
+                ${escapeHtml(ins.name)} 모니터링 번호는 <strong>${escapeHtml(ins.monitoringPhone)}</strong>입니다.
+              </p>
               <div style="font-size: 18px; font-weight: 800; color: #1e293b;">
                 <a href="tel:${escapeHtml(ins.monitoringPhone.replace(/[^0-9]/g, ''))}" style="color: #1e293b; text-decoration: none;">
                   📞 ${escapeHtml(ins.monitoringPhone)}
                 </a>
               </div>
-              <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">사고접수 전용 회선</div>
-            </div>` : ''}
+            </section>` : ''}
 
-            <div>
-              <div style="font-size: 12px; color: #64748b; font-weight: 700; margin-bottom: 4px;">보험금 청구 팩스(FAX)</div>
-              <div style="font-size: ${isStandardFax ? '18px' : '15px'}; font-weight: 800; color: #2563eb;">
-                📠 ${escapeHtml(ins.fax || '고객센터 문의 또는 앱 접수')}
-              </div>
-              <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">발송 전 피보험자 주민번호·계약확인 필</div>
-            </div>
+            <section style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px;">
+              ${isStandardFax ? `
+              <h2 style="font-size: 14px; font-weight: 800; color: #2563eb; margin: 0 0 4px 0;">
+                📠 ${escapeHtml(ins.name)} 보험금청구 팩스번호
+              </h2>
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 8px 0; line-height: 1.4;">
+                ${escapeHtml(ins.name)} 보험금청구 팩스번호는 <strong>${escapeHtml(ins.fax)}</strong>입니다.
+              </p>
+              <div style="font-size: 18px; font-weight: 800; color: #2563eb;">
+                📠 ${escapeHtml(ins.fax)}
+              </div>` : ins.id === 'heungkuk-fire' ? `
+              <h2 style="font-size: 14px; font-weight: 800; color: #2563eb; margin: 0 0 4px 0;">
+                📠 ${escapeHtml(ins.name)} 보험금청구 접수안내
+              </h2>
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 8px 0; line-height: 1.4;">
+                ${escapeHtml(ins.name)} 보험금청구 팩스 접수안내는 <strong>${escapeHtml(ins.fax)}</strong>입니다.
+              </p>
+              <div style="font-size: 15px; font-weight: 800; color: #2563eb;">
+                📠 ${escapeHtml(ins.fax)}
+              </div>` : `
+              <h2 style="font-size: 14px; font-weight: 800; color: #2563eb; margin: 0 0 4px 0;">
+                💻 ${escapeHtml(ins.name)} 보험금청구 방법
+              </h2>
+              <p style="font-size: 12px; color: #64748b; margin: 0 0 8px 0; line-height: 1.4;">
+                ${escapeHtml(ins.name)} 보험금청구 접수방법은 <strong>${escapeHtml(ins.fax || '공식 창구 문의')}</strong>입니다.
+              </p>
+              <div style="font-size: 15px; font-weight: 800; color: #2563eb;">
+                📱 ${escapeHtml(ins.fax || '공식 창구 문의')}
+              </div>`}
+            </section>
           </div>
         </div>
 
         <!-- Section 1: Claim Methods and Official Links -->
         <section style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
-          <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
-            <span style="color: #0f766e;">🌐</span> ${escapeHtml(ins.name)} 공식 웹사이트 및 청구 채널
+          <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; display: flex; align-items: center; gap: 8px;">
+            <span style="color: #0f766e;">🌐</span> ${escapeHtml(ins.name)} ${disclosureUrl ? '보험약관 조회 및 공식 웹사이트' : '공식 웹사이트 및 접수처'}
           </h2>
+          <p style="font-size: 14px; color: #475569; margin: 0 0 16px 0; line-height: 1.6;">
+            ${escapeHtml(ins.name)}의 ${disclosureUrl ? '공식 홈페이지, 상품공시실 약관조회 및 ' : '공식 홈페이지 및 '}온라인 보험금 청구 접수창구 바로가기 링크입니다.
+          </p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
             ${ins.claimUrl ? `
             <a href="${escapeHtml(ins.claimUrl)}" target="_blank" rel="noopener noreferrer" style="display: block; padding: 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; text-decoration: none; color: #166534; font-weight: 700; font-size: 14px;">
@@ -341,11 +383,11 @@ export async function generateClaimPages() {
 
         <!-- Section 2: Required Documents -->
         <section style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-bottom: 24px;">
-          <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px;">
-            <span style="color: #2563eb;">📑</span> ${escapeHtml(ins.name)} 보험금 청구 필수 구비서류
+          <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; display: flex; align-items: center; gap: 8px;">
+            <span style="color: #2563eb;">📑</span> ${escapeHtml(ins.name)} 보험금 청구서류
           </h2>
           <p style="font-size: 13px; color: #64748b; margin: 0 0 16px 0;">
-            보험금 청구 시 아래 기본 서류를 준비하시기 바랍니다. 청구 유형(통원, 입원, 수술, 진단 등)에 따라 추가 진료 증빙이 필요할 수 있습니다.
+            ${escapeHtml(ins.name)} 보험금 청구 시 구비해야 하는 기본 서류 목록입니다. 청구 유형(통원, 입원, 수술, 진단 등)에 따라 추가 진료 증빙이 필요할 수 있습니다.
           </p>
           <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
             <ul style="margin: 0; padding: 0; list-style: none;">
@@ -434,31 +476,69 @@ export async function generateClaimPages() {
 `;
 
     const targetSubPath = `claim/${ins.id}`;
+    const insurerSubPath = `insurer/${ins.id}`;
 
-    // 1. Root directory (claim/{id}/index.html)
+    // 1. Root directory (claim/{id}/index.html & insurer/{id}/index.html)
     const rootTargetDir = path.join(rootDir, targetSubPath);
     if (!fs.existsSync(rootTargetDir)) {
       fs.mkdirSync(rootTargetDir, { recursive: true });
     }
     fs.writeFileSync(path.join(rootTargetDir, 'index.html'), html, 'utf-8');
 
-    // 2. Public directory (public/claim/{id}/index.html)
+    const rootInsurerDir = path.join(rootDir, insurerSubPath);
+    if (!fs.existsSync(rootInsurerDir)) {
+      fs.mkdirSync(rootInsurerDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(rootInsurerDir, 'index.html'), html, 'utf-8');
+
+    // 2. Public directory (public/claim/{id}/index.html & public/insurer/{id}/index.html)
     const publicTargetDir = path.join(rootDir, 'public', targetSubPath);
     if (!fs.existsSync(publicTargetDir)) {
       fs.mkdirSync(publicTargetDir, { recursive: true });
     }
     fs.writeFileSync(path.join(publicTargetDir, 'index.html'), html, 'utf-8');
 
+    const publicInsurerDir = path.join(rootDir, 'public', insurerSubPath);
+    if (!fs.existsSync(publicInsurerDir)) {
+      fs.mkdirSync(publicInsurerDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(publicInsurerDir, 'index.html'), html, 'utf-8');
+
     // 3. Dist directory if exists
-    const distTargetDir = path.join(rootDir, 'dist', targetSubPath);
     if (fs.existsSync(path.join(rootDir, 'dist'))) {
+      const distTargetDir = path.join(rootDir, 'dist', targetSubPath);
       if (!fs.existsSync(distTargetDir)) {
         fs.mkdirSync(distTargetDir, { recursive: true });
       }
       fs.writeFileSync(path.join(distTargetDir, 'index.html'), html, 'utf-8');
+
+      const distInsurerDir = path.join(rootDir, 'dist', insurerSubPath);
+      if (!fs.existsSync(distInsurerDir)) {
+        fs.mkdirSync(distInsurerDir, { recursive: true });
+      }
+      fs.writeFileSync(path.join(distInsurerDir, 'index.html'), html, 'utf-8');
     }
 
     generatedCount++;
+  }
+
+  // Ensure /insurer/index.html exists based on /claim/index.html
+  const claimIndexSrc = path.join(rootDir, 'claim/index.html');
+  if (fs.existsSync(claimIndexSrc)) {
+    const claimIndexHtml = fs.readFileSync(claimIndexSrc, 'utf-8');
+    const insurerRoot = path.join(rootDir, 'insurer');
+    if (!fs.existsSync(insurerRoot)) fs.mkdirSync(insurerRoot, { recursive: true });
+    fs.writeFileSync(path.join(insurerRoot, 'index.html'), claimIndexHtml, 'utf-8');
+
+    const publicInsurerRoot = path.join(rootDir, 'public/insurer');
+    if (!fs.existsSync(publicInsurerRoot)) fs.mkdirSync(publicInsurerRoot, { recursive: true });
+    fs.writeFileSync(path.join(publicInsurerRoot, 'index.html'), claimIndexHtml, 'utf-8');
+
+    if (fs.existsSync(path.join(rootDir, 'dist'))) {
+      const distInsurerRoot = path.join(rootDir, 'dist/insurer');
+      if (!fs.existsSync(distInsurerRoot)) fs.mkdirSync(distInsurerRoot, { recursive: true });
+      fs.writeFileSync(path.join(distInsurerRoot, 'index.html'), claimIndexHtml, 'utf-8');
+    }
   }
 
   console.log(`🎉 Successfully generated all ${generatedCount} insurer claim SEO static pages!`);
