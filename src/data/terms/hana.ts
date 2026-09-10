@@ -1,3 +1,5 @@
+import type { HanaInjuryIntegratedTreatmentItem, HanaDiseaseIntegratedTreatmentItem } from './types';
+
 // Hana Insurance terms data
 // 【별표26】 통합암(유사암제외) 분류표
 // 2-28. 통합암진단비(유사암제외)(건강Grade)(갱신형) 특별약관
@@ -2503,6 +2505,492 @@ export const HANA_SURGERY_73_SUMMARY_SECTIONS = (() => {
     items: diseases.map((d) => ({ disease: d }))
   }));
 })();
+
+// 하나손해보험 상해통합치료비 (고급형 / 표준형 / 실속형) 데이터 - 무배당 하나더퍼스트 5N5 건강보험(1640)(2604)
+// 1-51. 건강고지 상해통합치료비(고급형) 특별약관
+// 1-52. 건강고지 상해통합치료비(표준형) 특별약관
+// 1-53. 건강고지 상해통합치료비(실속형) 특별약관
+
+export const HANA_INJURY_INTEGRATED_TREATMENT_ITEMS: HanaInjuryIntegratedTreatmentItem[] = [
+  // 상해통합치료(검사)
+  {
+    category: '상해통합치료(검사)',
+    name: '상해 MRI검사(급여)',
+    limit: '연간1회한',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '5만원'
+  },
+  {
+    category: '상해통합치료(검사)',
+    name: '상해 CT검사(급여)',
+    limit: '연간1회한',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '5만원'
+  },
+  {
+    category: '상해통합치료(검사)',
+    name: '상해 골밀도검사(급여)',
+    limit: '연간1회한',
+    luxury: '5만원',
+    standard: '3만원',
+    practical: '3만원'
+  },
+
+  // 상해통합치료(주요치료)
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해 특정시술치료(급여)(흡인,천자,절개,배액,배농)',
+    limit: '연간1회한',
+    luxury: '20만원',
+    standard: '10만원',
+    practical: '5만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해 특정시술치료(급여)(신경차단술)',
+    limit: '연간1회한',
+    luxury: '20만원',
+    standard: '10만원',
+    practical: '5만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해 특정시술치료(급여)(화상처치)',
+    limit: '연간1회한',
+    luxury: '20만원',
+    standard: '10만원',
+    practical: '5만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해 특정시술치료(급여)(도수정복술)',
+    limit: '연간1회한',
+    luxury: '20만원',
+    standard: '10만원',
+    practical: '5만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해 특정시술치료(급여)(기타)',
+    limit: '연간1회한',
+    luxury: '2만원',
+    standard: '2만원',
+    practical: '1만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '창상봉합술(급여)',
+    limit: '연간3회한(1일1회한)',
+    luxury: '50만원',
+    standard: '30만원',
+    practical: '10만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '깁스치료',
+    limit: '1사고당',
+    luxury: '30만원',
+    standard: '20만원',
+    practical: '10만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '골절(치아파절제외) 부목치료(급여)',
+    limit: '1사고당',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '5만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해특정마취치료(정맥,급여)',
+    limit: '연간3회한',
+    luxury: '30만원',
+    standard: '20만원',
+    practical: '10만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해특정수혈치료(전혈및성분제제)',
+    limit: '연간3회한',
+    luxury: '30만원',
+    standard: '20만원',
+    practical: '10만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해특정수혈치료(혈액성분채집술)',
+    limit: '연간3회한',
+    luxury: '30만원',
+    standard: '20만원',
+    practical: '10만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '특정상해흉터성형수술',
+    limit: '1사고당 500만원한도',
+    luxury: '안면부: 1cm당 14만원 / 상·하지: 1cm당 7만원(3cm이상 한정)',
+    standard: '안면부: 1cm당 14만원 / 상·하지: 1cm당 7만원(3cm이상 한정)',
+    practical: '안면부: 1cm당 14만원 / 상·하지: 1cm당 7만원(3cm이상 한정)'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해응급실내원비(응급환자한정)',
+    limit: '내원1회당',
+    luxury: '3만원',
+    standard: '3만원',
+    practical: '3만원'
+  },
+  {
+    category: '상해통합치료(주요치료)',
+    name: '상해고압산소치료(급여)',
+    limit: '1치료당(1일1회한)',
+    luxury: '10만원',
+    standard: '10만원',
+    practical: '5만원'
+  },
+
+  // 상해통합치료(중증치료)
+  {
+    category: '상해통합치료(중증치료)',
+    name: '상해 지속적 신대체 요법(CRRT)(급여)',
+    limit: '연간1회한',
+    luxury: '300만원',
+    standard: '200만원',
+    practical: '100만원'
+  },
+  {
+    category: '상해통합치료(중증치료)',
+    name: '상해 인공호흡기치료(12시간초과)(급여)',
+    limit: '연간1회한',
+    luxury: '200만원',
+    standard: '150만원',
+    practical: '100만원'
+  },
+  {
+    category: '상해통합치료(중증치료)',
+    name: '상해 치료적저체온요법치료(급여)',
+    limit: '연간1회한',
+    luxury: '100만원',
+    standard: '100만원',
+    practical: '100만원'
+  },
+  {
+    category: '상해통합치료(중증치료)',
+    name: '상해 부분체외순환치료(급여)',
+    limit: '연간1회한',
+    luxury: '2,000만원',
+    standard: '1,000만원',
+    practical: '500만원'
+  },
+  {
+    category: '상해통합치료(중증치료)',
+    name: '상해 종합병원 전신마취치료(6시간이상, 급여)',
+    limit: '연간1회한',
+    luxury: '500만원',
+    standard: '400만원',
+    practical: '300만원'
+  },
+  {
+    category: '상해통합치료(중증치료)',
+    name: '상해 종합병원중환자실치료',
+    limit: '연간1회한',
+    luxury: '1,000만원',
+    standard: '500만원',
+    practical: '300만원'
+  },
+  {
+    category: '상해통합치료(중증치료)',
+    name: '중증외상치료(권역외상센터)',
+    limit: '1사고당',
+    luxury: '1,000만원',
+    standard: '500만원',
+    practical: '300만원'
+  },
+
+  // 상해통합치료(수술(1-5종)Ⅲ)
+  {
+    category: '상해통합치료(수술(1-5종)Ⅲ)',
+    name: '상해 1종 수술',
+    limit: '수술1회당',
+    luxury: '20만원',
+    standard: '10만원',
+    practical: '10만원'
+  },
+  {
+    category: '상해통합치료(수술(1-5종)Ⅲ)',
+    name: '상해 2종 수술',
+    limit: '수술1회당',
+    luxury: '50만원',
+    standard: '20만원',
+    practical: '20만원'
+  },
+  {
+    category: '상해통합치료(수술(1-5종)Ⅲ)',
+    name: '상해 3종 수술',
+    limit: '수술1회당',
+    luxury: '300만원',
+    standard: '100만원',
+    practical: '30만원'
+  },
+  {
+    category: '상해통합치료(수술(1-5종)Ⅲ)',
+    name: '상해 4종 수술',
+    limit: '수술1회당',
+    luxury: '1,000만원',
+    standard: '300만원',
+    practical: '100만원'
+  },
+  {
+    category: '상해통합치료(수술(1-5종)Ⅲ)',
+    name: '상해 5종 수술',
+    limit: '수술1회당',
+    luxury: '2,000만원',
+    standard: '600만원',
+    practical: '200만원'
+  },
+
+  // 상해통합치료(수술)
+  {
+    category: '상해통합치료(수술)',
+    name: '상해 종합병원 수술',
+    limit: '동일사고1회당',
+    luxury: '20만원',
+    standard: '20만원',
+    practical: '20만원'
+  },
+  {
+    category: '상해통합치료(수술)',
+    name: '상해 상급종합병원 수술',
+    limit: '동일사고1회당',
+    luxury: '200만원',
+    standard: '100만원',
+    practical: '30만원'
+  },
+  {
+    category: '상해통합치료(수술)',
+    name: '상해골절철심제거술(급여)',
+    limit: '연간1회한',
+    luxury: '50만원',
+    standard: '30만원',
+    practical: '10만원'
+  },
+
+  // 상해통합치료(재활치료)
+  {
+    category: '상해통합치료(재활치료)',
+    name: '입원상해재활치료(급여)',
+    limit: '연간 15회한(일1회한)',
+    luxury: '2만원',
+    standard: '1만원',
+    practical: '1만원'
+  },
+  {
+    category: '상해통합치료(재활치료)',
+    name: '통원상해재활치료(급여)',
+    limit: '연간 15회한(일1회한)',
+    luxury: '2만원',
+    standard: '1만원',
+    practical: '1만원'
+  }
+];
+
+export const HANA_INJURY_INTEGRATED_TREATMENT_SECTIONS = (() => {
+  const map: Record<string, any[]> = {};
+  HANA_INJURY_INTEGRATED_TREATMENT_ITEMS.forEach((item, idx) => {
+    if (!map[item.category]) map[item.category] = [];
+    map[item.category].push({
+      num: String(idx + 1),
+      disease: `${item.name} (${item.limit}) [고급형: ${item.luxury} | 표준형: ${item.standard} | 실속형: ${item.practical}]`,
+      code: '상해통합치료'
+    });
+  });
+  return Object.keys(map).map(cat => ({
+    title: cat,
+    items: map[cat]
+  }));
+})();
+
+export const HANA_INJURY_INTEGRATED_TREATMENT_SUMMARY = (() => {
+  const groupMap: Record<string, string[]> = {};
+  HANA_INJURY_INTEGRATED_TREATMENT_ITEMS.forEach((item) => {
+    if (!groupMap[item.category]) groupMap[item.category] = [];
+    groupMap[item.category].push(item.name);
+  });
+  return Object.entries(groupMap).map(([title, items]) => ({
+    group: title,
+    title,
+    diseases: items.join(', ')
+  }));
+})();
+
+// 하나손해보험 질병통합치료비 (고급형 / 표준형 / 실속형)
+// 원본 약관 SOURCE-LOCK: public/downloads/hana-integrated-disease-treatment.pdf
+// 2-109. 건강고지 질병통합치료비(고급형) 특별약관 (무배당 하나더퍼스트 5N5 건강보험(1640)(2604) | 435)
+// 2-110. 건강고지 질병통합치료비(표준형) 특별약관 (무배당 하나더퍼스트 5N5 건강보험(1640)(2604) | 444)
+// 2-111. 건강고지 질병통합치료비(실속형) 특별약관 (무배당 하나더퍼스트 5N5 건강보험(1640)(2604) | 453)
+
+export const HANA_DISEASE_INTEGRATED_TREATMENT_ITEMS: HanaDiseaseIntegratedTreatmentItem[] = [
+  // 주요치료
+  {
+    category: '주요치료',
+    name: '질병 특정시술치료(급여)(흡인,천자,절개,배액,배농)',
+    limit: '연간1회한',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '5만원'
+  },
+  {
+    category: '주요치료',
+    name: '질병 특정시술치료(급여)(신경차단술)',
+    limit: '연간1회한',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '5만원'
+  },
+  {
+    category: '주요치료',
+    name: '질병 특정시술치료(급여)(도수정복술)',
+    limit: '연간1회한',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '5만원'
+  },
+  {
+    category: '주요치료',
+    name: '질병 특정시술치료(급여)(기타)',
+    limit: '연간1회한',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '5만원'
+  },
+
+  // 중증치료
+  {
+    category: '중증치료',
+    name: '질병 지속적 신대체 요법(CRRT)(급여)',
+    limit: '연간1회한',
+    luxury: '500만원',
+    standard: '400만원',
+    practical: '300만원'
+  },
+  {
+    category: '중증치료',
+    name: '질병 인공호흡기치료(12시간초과)(급여)',
+    limit: '연간1회한',
+    luxury: '200만원',
+    standard: '150만원',
+    practical: '100만원'
+  },
+  {
+    category: '중증치료',
+    name: '질병 치료적저체온요법치료(급여)',
+    limit: '연간1회한',
+    luxury: '100만원',
+    standard: '75만원',
+    practical: '50만원'
+  },
+  {
+    category: '중증치료',
+    name: '질병 부분체외순환치료(급여)',
+    limit: '연간1회한',
+    luxury: '1,000만원',
+    standard: '750만원',
+    practical: '500만원'
+  },
+  {
+    category: '중증치료',
+    name: '질병 종합병원 전신마취치료(6시간이상, 급여)',
+    limit: '연간1회한',
+    luxury: '500만원',
+    standard: '400만원',
+    practical: '300만원'
+  },
+
+  // 1-5종수술Ⅲ
+  {
+    category: '1-5종수술Ⅲ',
+    name: '질병 1종 수술',
+    limit: '수술1회당',
+    luxury: '20만원',
+    standard: '10만원',
+    practical: '10만원'
+  },
+  {
+    category: '1-5종수술Ⅲ',
+    name: '질병 2종 수술',
+    limit: '수술1회당',
+    luxury: '50만원',
+    standard: '20만원',
+    practical: '20만원'
+  },
+  {
+    category: '1-5종수술Ⅲ',
+    name: '질병 3종 수술',
+    limit: '수술1회당',
+    luxury: '200만원',
+    standard: '50만원',
+    practical: '30만원'
+  },
+  {
+    category: '1-5종수술Ⅲ',
+    name: '질병 4종 수술',
+    limit: '수술1회당',
+    luxury: '500만원',
+    standard: '200만원',
+    practical: '100만원'
+  },
+  {
+    category: '1-5종수술Ⅲ',
+    name: '질병 5종 수술',
+    limit: '수술1회당',
+    luxury: '1,000만원',
+    standard: '400만원',
+    practical: '200만원'
+  },
+
+  // 수술입원
+  {
+    category: '수술입원',
+    name: '질병수술입원일당(종합병원)(1일이상180일한도)',
+    limit: '1일당 (1회 수술동반입원당 180일한도)',
+    luxury: '10만원',
+    standard: '5만원',
+    practical: '3만원'
+  }
+];
+
+export const HANA_DISEASE_INTEGRATED_TREATMENT_SECTIONS = (() => {
+  const map: Record<string, any[]> = {};
+  HANA_DISEASE_INTEGRATED_TREATMENT_ITEMS.forEach((item, idx) => {
+    if (!map[item.category]) map[item.category] = [];
+    map[item.category].push({
+      num: String(idx + 1),
+      disease: `${item.name} (${item.limit}) [고급형: ${item.luxury} | 표준형: ${item.standard} | 실속형: ${item.practical}]`,
+      code: '질병통합치료'
+    });
+  });
+  return Object.keys(map).map(cat => ({
+    title: cat,
+    items: map[cat]
+  }));
+})();
+
+export const HANA_DISEASE_INTEGRATED_TREATMENT_SUMMARY = (() => {
+  const groupMap: Record<string, string[]> = {};
+  HANA_DISEASE_INTEGRATED_TREATMENT_ITEMS.forEach((item) => {
+    if (!groupMap[item.category]) groupMap[item.category] = [];
+    groupMap[item.category].push(item.name);
+  });
+  return Object.entries(groupMap).map(([title, items]) => ({
+    group: title,
+    title,
+    diseases: items.join(', ')
+  }));
+})();
+
 
 
 

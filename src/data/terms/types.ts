@@ -141,3 +141,21 @@ export interface HanwhaInjuryIntegratedTreatmentItem {
   general: string;
   saving: string;
 }
+
+export interface HanaInjuryIntegratedTreatmentItem {
+  category: string;
+  name: string;
+  limit: string;
+  luxury: string;
+  standard: string;
+  practical: string;
+}
+
+export interface HanaDiseaseIntegratedTreatmentItem {
+  category: string;
+  name: string;
+  limit: string;
+  luxury: string;
+  standard: string;
+  practical: string;
+}

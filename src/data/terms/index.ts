@@ -10,6 +10,7 @@ export * from "./lotte";
 export * from "./hyundai";
 export * from "./nh";
 export * from "./hana";
+export * from "./lina";
 
 import { SubTabInfo } from "./types";
 
@@ -87,6 +88,7 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "meritz_30diseases", label: "30대 질병" },
     { id: "meritz_32diseases", label: "32대 질병" },
     { id: "meritz_64diseases", label: "64대 질병" },
+    { id: "meritz_80diseases", label: "80대질병수술" },
     { id: "meritz_82diseases", label: "82대 질병" },
     { id: "meritz_131diseases", label: "131대 질병" }
   ],
@@ -103,6 +105,7 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "hanwha_surgery1_5", label: "1-5종 수술" },
     { id: "hanwha_women_life_1_5", label: "여성생활 1-5종" },
     { id: "hanwha_women_major_life_1_5", label: "여성주요생활 1-5종" },
+    { id: "hanwha_7diseases", label: "7대질병수술" },
     { id: "hanwha_14diseases", label: "14대질병수술" },
     { id: "hanwha_16diseases", label: "16대질병수술" },
     { id: "hanwha_18diseases", label: "18대질병수술" },
@@ -115,9 +118,7 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "lotte_integrated_cancer_with_metastasis", label: "통합암(전이포함)", groupCount: "8개 그룹" },
     { id: "lotte_integrated_metastatic_cancer", label: "통합전이암", groupCount: "8개 그룹" },
     { id: "lotte_high_cancer", label: "고액암" },
-    { id: "lotte_brain_disease", label: "뇌혈관질환", groupCount: "6개 그룹" },
     { id: "lotte_cardiovascular_simple", label: "심혈관질환(I/II/15대)" },
-    { id: "lotte_cardiovascular", label: "허혈성심장질환", groupCount: "5개 그룹" },
     { id: "lotte_surgery1_5", label: "1-5종 수술" },
     { id: "lotte_surgery7", label: "7대 수술" },
     { id: "lotte_surgery16", label: "16대 수술" },
@@ -159,10 +160,18 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "hana_11_specific_cancer", label: "11대특정암", groupCount: "11개" },
     { id: "hana_brain_disease", label: "통합뇌질환" },
     { id: "hana_integrated_heart", label: "통합심질환", groupCount: "5개 그룹" },
+    { id: "hana_integrated_injury_treatment", label: "상해통합치료비" },
+    { id: "hana_integrated_disease_treatment", label: "질병통합치료비" },
     { id: "hana_women_16_diseases", label: "여성16대질병" },
     { id: "hana_surgery1_5", label: "1-5종수술비" },
     { id: "hana_surgery73", label: "73대수술비" },
     { id: "hana_surgery136", label: "136대수술비" }
+  ],
+  "lina-fire": [
+    { id: "lina_integrated_cancer", label: "통합암", groupCount: "10개 그룹" },
+    { id: "lina_integrated_cancer_metastasis", label: "통합전이암", groupCount: "8개 그룹" },
+    { id: "lina_high_cost_cancer", label: "고액치료비암", groupCount: "5개" },
+    { id: "lina_surgery1_5", label: "1-5종수술비" }
   ]
 };
 
@@ -180,6 +189,8 @@ import {
   MERITZ_30_DISEASES_SECTIONS,
   MERITZ_32_DISEASES_SECTIONS,
   MERITZ_64_DISEASES_SECTIONS,
+  MERITZ_80_DISEASES_SECTIONS,
+  MERITZ_80_DISEASES_SUMMARY_SECTIONS,
   MERITZ_82_DISEASES_SECTIONS,
   MERITZ_131_DISEASES_SECTIONS,
   MERITZ_6HEART_DISEASES_SECTIONS,
@@ -244,6 +255,7 @@ import {
   HANWHA_18_DISEASES_SECTIONS,
   HANWHA_16_DISEASES_SECTIONS,
   HANWHA_14_DISEASES_SECTIONS,
+  HANWHA_7_DISEASES_SECTIONS,
   HANWHA_HEART_1_SUMMARY,
   HANWHA_HEART_2_SUMMARY,
   HANWHA_WOMEN_PRIMARY_CANCER_SUMMARY,
@@ -256,7 +268,8 @@ import {
   HANWHA_56_DISEASES_SUMMARY,
   HANWHA_18_DISEASES_SUMMARY,
   HANWHA_16_DISEASES_SUMMARY,
-  HANWHA_14_DISEASES_SUMMARY
+  HANWHA_14_DISEASES_SUMMARY,
+  HANWHA_7_DISEASES_SUMMARY
 } from "./hanwha";
 
 import {
@@ -384,6 +397,10 @@ import {
   HANA_BRAIN_DISEASE_SECTIONS,
   HANA_INTEGRATED_HEART_SUMMARY,
   HANA_INTEGRATED_HEART_SECTIONS,
+  HANA_INJURY_INTEGRATED_TREATMENT_SECTIONS,
+  HANA_INJURY_INTEGRATED_TREATMENT_SUMMARY,
+  HANA_DISEASE_INTEGRATED_TREATMENT_SECTIONS,
+  HANA_DISEASE_INTEGRATED_TREATMENT_SUMMARY,
   HANA_WOMEN_16_DISEASES_SUMMARY,
   HANA_WOMEN_16_DISEASES_SECTIONS,
   HANA_SURGERY_1_5_SECTIONS,
@@ -393,6 +410,15 @@ import {
   HANA_SURGERY_136_SUMMARY_SECTIONS
 } from "./hana";
 
+import {
+  LINA_INTEGRATED_CANCER_METASTASIS_SECTIONS,
+  LINA_INTEGRATED_CANCER_METASTASIS_SUMMARY,
+  LINA_HIGH_COST_CANCER_SECTIONS,
+  LINA_INTEGRATED_CANCER_SECTIONS,
+  LINA_INTEGRATED_CANCER_SUMMARY,
+  LINA_SURGERY_1_5_SECTIONS
+} from "./lina";
+
 export function getSummaryForSubTab(
   insurerId: string,
   subTabId: string,
@@ -401,9 +427,16 @@ export function getSummaryForSubTab(
   dbBrainTab?: string
 ): any {
   switch (insurerId) {
+    case "lina-fire":
+      if (subTabId === "lina_integrated_cancer") return LINA_INTEGRATED_CANCER_SUMMARY;
+      if (subTabId === "lina_integrated_cancer_metastasis") return LINA_INTEGRATED_CANCER_METASTASIS_SUMMARY;
+      return null;
+
     case "hana-ins":
       if (subTabId === "hana_integrated_cancer") return HANA_INTEGRATED_CANCER_SUMMARY;
       if (subTabId === "hana_integrated_heart") return HANA_INTEGRATED_HEART_SUMMARY;
+      if (subTabId === "hana_integrated_injury_treatment") return HANA_INJURY_INTEGRATED_TREATMENT_SUMMARY;
+      if (subTabId === "hana_integrated_disease_treatment") return HANA_DISEASE_INTEGRATED_TREATMENT_SUMMARY;
       if (subTabId === "hana_women_16_diseases") return HANA_WOMEN_16_DISEASES_SUMMARY;
       if (subTabId === "hana_surgery73") return HANA_SURGERY_73_SUMMARY_SECTIONS;
       if (subTabId === "hana_surgery136") return HANA_SURGERY_136_SUMMARY_SECTIONS;
@@ -423,6 +456,7 @@ export function getSummaryForSubTab(
       if (subTabId === "meritz_noncovered_primary_treatment") return MERITZ_NONCOVERED_PRIMARY_TREATMENT_SUMMARY;
       if (subTabId === "meritz_disease_integrated_treatment") return MERITZ_DISEASE_INTEGRATED_TREATMENT_SUMMARY;
       if (subTabId === "meritz_64diseases") return MERITZ_64_DISEASES_SUMMARY_SECTIONS;
+      if (subTabId === "meritz_80diseases") return MERITZ_80_DISEASES_SUMMARY_SECTIONS;
       return null;
 
     case "samsung-fire":
@@ -449,6 +483,7 @@ export function getSummaryForSubTab(
       if (subTabId === "hanwha_18diseases") return HANWHA_18_DISEASES_SUMMARY;
       if (subTabId === "hanwha_16diseases") return HANWHA_16_DISEASES_SUMMARY;
       if (subTabId === "hanwha_14diseases") return HANWHA_14_DISEASES_SUMMARY;
+      if (subTabId === "hanwha_7diseases") return HANWHA_7_DISEASES_SUMMARY;
       return null;
 
     case "lotte-ins":
@@ -511,6 +546,7 @@ export function getSectionsForInsurerSubTab(insurerId: string, subTabId: string)
       if (subTabId === "meritz_30diseases") return MERITZ_30_DISEASES_SECTIONS;
       if (subTabId === "meritz_32diseases") return MERITZ_32_DISEASES_SECTIONS;
       if (subTabId === "meritz_64diseases") return MERITZ_64_DISEASES_SECTIONS;
+      if (subTabId === "meritz_80diseases") return MERITZ_80_DISEASES_SECTIONS;
       if (subTabId === "meritz_82diseases") return MERITZ_82_DISEASES_SECTIONS;
       if (subTabId === "meritz_131diseases") return MERITZ_131_DISEASES_SECTIONS;
       if (subTabId === "meritz_6heart") return MERITZ_6HEART_DISEASES_SECTIONS;
@@ -564,6 +600,7 @@ export function getSectionsForInsurerSubTab(insurerId: string, subTabId: string)
       if (subTabId === "hanwha_18diseases") return HANWHA_18_DISEASES_SECTIONS;
       if (subTabId === "hanwha_16diseases") return HANWHA_16_DISEASES_SECTIONS;
       if (subTabId === "hanwha_14diseases") return HANWHA_14_DISEASES_SECTIONS;
+      if (subTabId === "hanwha_7diseases") return HANWHA_7_DISEASES_SECTIONS;
       return HANWHA_WOMEN_INTEGRATED_CANCER_SECTIONS;
 
     case "lotte-ins":
@@ -599,12 +636,21 @@ export function getSectionsForInsurerSubTab(insurerId: string, subTabId: string)
       if (subTabId === "hyundai_123diseases") return HYUNDAI_123_DISEASES_SECTIONS;
       return HYUNDAI_MALE_CANCER_SECTIONS;
 
+    case "lina-fire":
+      if (subTabId === "lina_surgery1_5") return LINA_SURGERY_1_5_SECTIONS;
+      if (subTabId === "lina_integrated_cancer") return LINA_INTEGRATED_CANCER_SECTIONS;
+      if (subTabId === "lina_high_cost_cancer") return LINA_HIGH_COST_CANCER_SECTIONS;
+      if (subTabId === "lina_integrated_cancer_metastasis") return LINA_INTEGRATED_CANCER_METASTASIS_SECTIONS;
+      return LINA_INTEGRATED_CANCER_SECTIONS;
+
     case "hana-ins":
       if (subTabId === "hana_integrated_cancer") return HANA_INTEGRATED_CANCER_SECTIONS;
       if (subTabId === "hana_high_cost_cancer") return HANA_HIGH_COST_CANCER_SECTIONS;
       if (subTabId === "hana_11_specific_cancer") return HANA_11_SPECIFIC_CANCER_SECTIONS;
       if (subTabId === "hana_brain_disease") return HANA_BRAIN_DISEASE_SECTIONS;
       if (subTabId === "hana_integrated_heart") return HANA_INTEGRATED_HEART_SECTIONS;
+      if (subTabId === "hana_integrated_injury_treatment") return HANA_INJURY_INTEGRATED_TREATMENT_SECTIONS;
+      if (subTabId === "hana_integrated_disease_treatment") return HANA_DISEASE_INTEGRATED_TREATMENT_SECTIONS;
       if (subTabId === "hana_women_16_diseases") return HANA_WOMEN_16_DISEASES_SECTIONS;
       if (subTabId === "hana_surgery1_5") return HANA_SURGERY_1_5_SECTIONS;
       if (subTabId === "hana_surgery73") return HANA_SURGERY_73_SECTIONS;

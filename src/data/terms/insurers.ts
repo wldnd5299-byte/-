@@ -13,7 +13,7 @@ export const INSURER_TERMS_LIST: InsurerTerm[] = [
   { id: 'hana-ins', name: '하나손해보험', type: 'property', url: 'https://www.hanainsure.co.kr/w/disclosure/product/saleProduct', defaultSubTab: 'hana_integrated_cancer' },
   { id: 'heungkuk-fire', name: '흥국화재', type: 'property', url: 'https://www.heungkukfire.co.kr/FRW/announce/insGoodsGongsiSale.do' },
   { id: 'mg-ins', name: 'MG(예별)손해보험', type: 'property', url: 'https://www.yebyeol.co.kr/PB031210DM.scp?menuId=MN0803006' },
-  { id: 'lina-fire', name: '라이나손해보험', type: 'property', url: 'https://www.chubb.com/kr-kr/disclosure/product.html' },
+  { id: 'lina-fire', name: '라이나손해보험', type: 'property', url: 'https://www.chubb.com/kr-kr/disclosure/product.html', defaultSubTab: 'lina_integrated_cancer_metastasis' },
   { id: 'aig-ins', name: 'AIG손해보험', type: 'property', url: 'https://www.aig.co.kr/wo/dpwot001.html?menuId=MS702' },
   { id: 'shinhanez-ins', name: '신한EZ손해보험', type: 'property', url: 'https://www.shinhanez.co.kr/static/pub/PUB2000T021.html?ver=1.2_utm_source=shinhanez' },
   { id: 'axa-ins', name: 'AXA손해보험', type: 'property', url: 'https://www.axa.co.kr/AsianPlatformInternet/html/axacms/common/intro/disclosure/insurance/index.html' },

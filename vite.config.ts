@@ -5,8 +5,21 @@ import fs from 'fs';
 import {defineConfig} from 'vite';
 import { PRECEDENTS_DATA } from './src/data/disputeData';
 import { INSURER_TERMS_LIST, INSURER_SUBTABS } from './src/data/terms/index.ts';
+import { INSURERS_DATA } from './src/data.ts';
 
 export default defineConfig(() => {
+  const claimInputs: Record<string, string> = {};
+  INSURERS_DATA.forEach(ins => {
+    const claimFilePath = path.resolve(__dirname, `claim/${ins.id}/index.html`);
+    if (fs.existsSync(claimFilePath)) {
+      claimInputs[`claim_${ins.id.replace(/[^a-zA-Z0-9]/g, '_')}`] = claimFilePath;
+    }
+    const insurerFilePath = path.resolve(__dirname, `insurer/${ins.id}/index.html`);
+    if (fs.existsSync(insurerFilePath)) {
+      claimInputs[`insurer_${ins.id.replace(/[^a-zA-Z0-9]/g, '_')}`] = insurerFilePath;
+    }
+  });
+
   const disputeInputs: Record<string, string> = {};
   PRECEDENTS_DATA.forEach(item => {
     const filePath = path.resolve(__dirname, `dispute/${item.id}/index.html`);
@@ -104,6 +117,7 @@ export default defineConfig(() => {
           ...disputeInputs,
           ...termsInputs,
           ...infoInputs,
+          ...claimInputs,
         },
       },
     },

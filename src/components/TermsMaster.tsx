@@ -72,6 +72,8 @@ import {
   DbCancerTableItem,
   HANWHA_124_DISEASES_SECTIONS,
   HANWHA_124_DISEASES_SUMMARY,
+  HANWHA_7_DISEASES_SECTIONS,
+  HANWHA_7_DISEASES_SUMMARY,
   HANWHA_14_DISEASES_SECTIONS,
   HANWHA_14_DISEASES_SUMMARY,
   HANWHA_16_DISEASES_SECTIONS,
@@ -229,6 +231,7 @@ import {
   MERITZ_5_DISEASES_SUMMARY,
   MERITZ_64_DISEASES_SECTIONS,
   MERITZ_64_DISEASES_SUMMARY_SECTIONS,
+  MERITZ_80_DISEASES_SECTIONS,
   MERITZ_6HEART_DISEASES_SECTIONS,
   MERITZ_7_DISEASES_SECTIONS,
   MERITZ_82_DISEASES_SECTIONS,
@@ -294,9 +297,19 @@ import {
   HANA_INTEGRATED_HEART_SECTIONS,
   HANA_INTEGRATED_HEART_SUMMARY,
   HANA_WOMEN_16_DISEASES_SECTIONS,
+  HANA_INJURY_INTEGRATED_TREATMENT_ITEMS,
+  HANA_INJURY_INTEGRATED_TREATMENT_SECTIONS,
+  HANA_DISEASE_INTEGRATED_TREATMENT_ITEMS,
+  HANA_DISEASE_INTEGRATED_TREATMENT_SECTIONS,
   HANA_SURGERY_1_5_SECTIONS,
   HANA_SURGERY_73_SECTIONS,
   HANA_SURGERY_136_SECTIONS,
+  LINA_INTEGRATED_CANCER_SECTIONS,
+  LINA_INTEGRATED_CANCER_METASTASIS_SECTIONS,
+  LINA_INTEGRATED_CANCER_METASTASIS_SUMMARY,
+  LINA_HIGH_COST_CANCER_UNROLLED,
+  LINA_HIGH_COST_CANCER_SECTIONS,
+  LINA_SURGERY_1_5_SECTIONS,
   SubTabInfo,
   escapeRegExp,
   getCancerGroups,
@@ -358,6 +371,8 @@ export default function TermsMaster() {
   const [hyundaiBrainSubTab, setHyundaiBrainSubTab] = useState<'1' | '2'>('1');
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [kbIntegratedTab, setKbIntegratedTab] = useState<'practical' | 'basic' | 'luxury'>('practical');
+  const [hanaInjuryTreatmentTab, setHanaInjuryTreatmentTab] = useState<'luxury' | 'standard' | 'practical'>('luxury');
+  const [hanaDiseaseTreatmentTab, setHanaDiseaseTreatmentTab] = useState<'luxury' | 'standard' | 'practical'>('luxury');
   const [meritzDiseaseIntegratedTab, setMeritzDiseaseIntegratedTab] = useState<'20m' | '40m' | '70m'>('20m');
   const [meritzIntegratedTreatmentTab, setMeritzIntegratedTreatmentTab] = useState<'40m' | '80m' | '100m'>('40m');
   const [meritzPracticalTreatmentTab, setMeritzPracticalTreatmentTab] = useState<'10m' | '30m' | '50m' | '70m'>('10m');
@@ -2439,6 +2454,375 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
       );
     }
 
+    if (tabKey === 'hana_integrated_injury_treatment') {
+      const typeLabel = hanaInjuryTreatmentTab === 'luxury' ? '고급형' : hanaInjuryTreatmentTab === 'standard' ? '표준형' : '실속형';
+      const curTitle = `하나손해보험 - 상해통합치료비(${typeLabel})`;
+      const clauseNum = hanaInjuryTreatmentTab === 'luxury'
+        ? '1-51. 건강고지 상해통합치료비(고급형) 특별약관'
+        : hanaInjuryTreatmentTab === 'standard'
+        ? '1-52. 건강고지 상해통합치료비(표준형) 특별약관'
+        : '1-53. 건강고지 상해통합치료비(실속형) 특별약관';
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredItems = HANA_INJURY_INTEGRATED_TREATMENT_ITEMS.filter((item) => {
+        if (!queryStr) return true;
+        const amount = item[hanaInjuryTreatmentTab];
+        return (
+          normalizeString(item.category).includes(queryStr) ||
+          normalizeString(item.name).includes(queryStr) ||
+          normalizeString(item.limit).includes(queryStr) ||
+          normalizeString(amount).includes(queryStr) ||
+          normalizeString(item.luxury).includes(queryStr) ||
+          normalizeString(item.standard).includes(queryStr) ||
+          normalizeString(item.practical).includes(queryStr)
+        );
+      });
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection (고급형 / 표준형 / 실속형) */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-3xs">
+            <button
+              onClick={() => {
+                setHanaInjuryTreatmentTab('luxury');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                hanaInjuryTreatmentTab === 'luxury'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              고급형
+            </button>
+            <button
+              onClick={() => {
+                setHanaInjuryTreatmentTab('standard');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                hanaInjuryTreatmentTab === 'standard'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              표준형
+            </button>
+            <button
+              onClick={() => {
+                setHanaInjuryTreatmentTab('practical');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                hanaInjuryTreatmentTab === 'practical'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              실속형
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="/downloads/hana-integrated-injury-treatment.pdf"
+                download="hana-integrated-injury-treatment.pdf"
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </a>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`상해통합치료비(${typeLabel}) 내 검색 (보장항목, 구분, 지급금액 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. Header Clause Title & Notice */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
+            <div className="font-black text-[#123941] text-sm mb-1 flex items-center gap-1.5">
+              <span>{clauseNum}</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              무배당 하나더퍼스트 5N5 건강보험(1640)(2604) <br/>
+              제1조(보험금의 지급사유): 회사는 피보험자가 특별약관의 보험기간 중 발생한 상해의 직접결과로써 진단 및 치료의 필요소견을 토대로 상해통합치료(검사/주요치료/중증치료/수술(1-5종)Ⅲ/수술/재활치료)를 받은 경우 각 통합치료항목별 지급금액을 상해통합치료비로 지급합니다. (연간이란 계약일로부터 매1년 단위로 도래하는 계약해당일 전일까지 기간을 의미)
+            </p>
+          </div>
+
+          {/* 5. Main Table for 하나손해보험 상해통합치료비 */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">&lt;{typeLabel}&gt; 보장항목 및 지급금액 표</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {filteredItems.length}개 보장 항목
+              </span>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[20%]">구분</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-left w-[36%]">보장항목</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[22%]">지급횟수</th>
+                    <th className="py-2.5 px-3 text-center bg-teal-50/50 text-[#123941] font-black w-[22%]">지급금액 ({typeLabel})</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredItems.map((item, idx) => {
+                    const amount = item[hanaInjuryTreatmentTab];
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                        <td className="py-2.5 px-3 font-bold text-slate-700 text-center border-r border-slate-200/80 bg-slate-50/50">
+                          {highlightText(item.category)}
+                        </td>
+                        <td className="py-2.5 px-3 font-black text-slate-900 border-r border-slate-200/80">
+                          {highlightText(item.name)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-bold text-slate-600 border-r border-slate-200/80">
+                          {highlightText(item.limit)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-extrabold text-[#123941] bg-teal-50/30">
+                          {highlightText(amount)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 6. Special Provisions Notice Box */}
+          <div className="p-4 bg-slate-900 text-slate-200 rounded-2xl space-y-3 shadow-lg border border-slate-800">
+            <h4 className="font-extrabold text-white text-xs sm:text-sm border-b border-slate-700 pb-2 flex items-center gap-2">
+              <span className="w-2 h-4 bg-amber-400 rounded-xs"></span>
+              【제2조(보험금 지급에 관한 세부규정)】
+            </h4>
+            <div className="text-[11px] leading-relaxed space-y-2 text-slate-300 font-medium">
+              <p>① 피보험자가 연간 1년 이내에 각각 다른 “상해 MRI검사(급여)”를 받은 경우에도 통합치료항목 중 상해 MRI검사(급여)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>② 피보험자가 연간 1년 이내에 각각 다른 “상해 CT검사(급여)”를 받은 경우에도 통합치료항목 중 상해 CT검사(급여)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>③ 피보험자가 연간 1년 이내에 각각 다른 “상해 골밀도검사(급여)”를 받은 경우에도 통합치료항목 중 상해 골밀도검사(급여)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>④ 피보험자가 연간 1년 이내에 각각 다른 “상해 특정시술치료(급여)(흡인,천자,절개,배액,배농)”를 받은 경우에도 통합치료항목 중 상해 특정시술치료(급여)(흡인,천자,절개,배액,배농)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>⑤ 피보험자가 연간 1년 이내에 각각 다른 “상해 특정시술치료(급여)(신경차단술)”를 받은 경우에도 통합치료항목 중 상해 특정시술치료(급여)(신경차단술)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>⑥ 피보험자가 연간 1년 이내에 각각 다른 “상해 특정시술치료(급여)(화상처치)”를 받은 경우에도 통합치료항목 중 상해 특정시술치료(급여)(화상처치)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>⑦ 피보험자가 연간 1년 이내에 각각 다른 “상해 특정시술치료(급여)(도수정복술)”를 받은 경우에도 통합치료항목 중 상해 특정시술치료(급여)(도수정복술)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>⑧ 피보험자가 연간 1년 이내에 각각 다른 “상해 특정시술치료(급여)(기타)”를 받은 경우에도 통합치료항목 중 상해 특정시술치료(급여)(기타)에 한하여 사고, 부위 및 횟수와 상관없이 1회의 상해통합치료비만 지급합니다.</p>
+              <p>⑨ 피보험자가 연간 1년 이내에 각각 다른 “창상봉합술(급여)”을 받은 경우에도 통합치료항목 중 창상봉합술(급여)에 한하여 사고, 부위 및 횟수와 상관없이 1일 1회에 한하여 연간 3회한도로 보장합니다.</p>
+              <p>⑩ 피보험자가 동일한 질병 또는 상해로 인하여 “깁스치료”를 2회 이상 받은 경우, 또는 동시에 서로 다른 신체부위에 깁스치료를 받은 경우에는 사고당 1회에 한하여 상해통합치료비를 지급합니다.</p>
+              <p>⑪ 동일한 상해를 직접적인 원인으로 골절(치아파절제외)상태가 발생하여 “골절(치아파절제외) 부목치료(급여)”를 2회 이상 받거나 동시에 서로 다른 신체부위에 “골절(치아파절제외) 부목치료(급여)”를 받은 경우에는 사고당 1회에 한하여 상해통합치료비를 지급합니다.</p>
+              <p>⑫ “상해특정마취치료(정맥,급여)”는 상해의 직접적인 치료를 목적으로 받은 마취 의료행위 1회당 보험금을 지급하며, 연간 발생한 의료행위 횟수를 기준으로 최대 3회 한도로 지급합니다.</p>
+              <p>⑬ “상해특정수혈치료(전혈 및 성분제제)”는 상해의 직접적인 치료를 목적으로 받은 전혈, 혈액성분제제 중 성분제제에 의한 수혈시(전혈기준 합산 400ml 당 1회) 보험금을 지급하며, 연간 발생한 의료행위 횟수를 기준으로 최대 3회 한도로 지급합니다. 단, 수혈의 의료행위 횟수가 소수로 나올 경우, 정수단위로 올림(예: 1.3회 → 2회로 산정)하여 상기 보험금 지급기준을 적용합니다.</p>
+              <p>⑭ “상해특정수혈치료(혈액성분채집술)”는 상해의 직접적인 치료를 목적으로 받은 혈액성분제제 중 혈액성분채집술에 의한 수혈시(합산 250ml 당 1회) 보험금을 지급하며, 연간 발생한 의료행위 횟수를 기준으로 최대 3회 한도로 지급합니다. 단, 수혈의 의료행위 횟수가 소수로 나올 경우, 정수단위로 올림(예: 1.3회 → 2회로 산정)하여 상기 보험금 지급기준을 적용합니다.</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (tabKey === 'hana_integrated_disease_treatment') {
+      const typeLabel = hanaDiseaseTreatmentTab === 'luxury' ? '고급형' : hanaDiseaseTreatmentTab === 'standard' ? '표준형' : '실속형';
+      const curTitle = `하나손해보험 - 질병통합치료비(${typeLabel})`;
+      const clauseNum = hanaDiseaseTreatmentTab === 'luxury'
+        ? '2-109. 건강고지 질병통합치료비(고급형) 특별약관'
+        : hanaDiseaseTreatmentTab === 'standard'
+        ? '2-110. 건강고지 질병통합치료비(표준형) 특별약관'
+        : '2-111. 건강고지 질병통합치료비(실속형) 특별약관';
+
+      const queryStr = normalizeString(detailFilter);
+
+      const filteredItems = HANA_DISEASE_INTEGRATED_TREATMENT_ITEMS.filter((item) => {
+        if (!queryStr) return true;
+        const amount = item[hanaDiseaseTreatmentTab];
+        return (
+          normalizeString(item.category).includes(queryStr) ||
+          normalizeString(item.name).includes(queryStr) ||
+          normalizeString(item.limit).includes(queryStr) ||
+          normalizeString(amount).includes(queryStr) ||
+          normalizeString(item.luxury).includes(queryStr) ||
+          normalizeString(item.standard).includes(queryStr) ||
+          normalizeString(item.practical).includes(queryStr)
+        );
+      });
+
+      return (
+        <div id="printable-terms-area" className="space-y-4">
+          {/* 1. Sub-tabs Selection (고급형 / 표준형 / 실속형) */}
+          <div className="no-print flex items-center gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200/80 shadow-3xs">
+            <button
+              onClick={() => {
+                setHanaDiseaseTreatmentTab('luxury');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                hanaDiseaseTreatmentTab === 'luxury'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              고급형
+            </button>
+            <button
+              onClick={() => {
+                setHanaDiseaseTreatmentTab('standard');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                hanaDiseaseTreatmentTab === 'standard'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              표준형
+            </button>
+            <button
+              onClick={() => {
+                setHanaDiseaseTreatmentTab('practical');
+                setDetailFilter('');
+              }}
+              className={`flex-1 py-2.5 px-3 text-xs font-black rounded-xl transition-all cursor-pointer text-center ${
+                hanaDiseaseTreatmentTab === 'practical'
+                  ? 'bg-[#123941] text-white shadow-xs'
+                  : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80'
+              }`}
+            >
+              실속형
+            </button>
+          </div>
+
+          {/* 2. Top Control Bar with PDF Download */}
+          <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
+            <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
+              <span>{curTitle}</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="/downloads/hana-integrated-disease-treatment.pdf"
+                download="hana-integrated-disease-treatment.pdf"
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </a>
+            </div>
+          </div>
+
+          {/* 3. Search Bar */}
+          <div className="no-print relative">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`질병통합치료비(${typeLabel}) 내 검색 (보장항목, 구분, 지급금액 등)`}
+              value={detailFilter}
+              onChange={(e) => setDetailFilter(e.target.value)}
+              className="w-full pl-10 pr-16 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-[#123941] focus:border-[#123941] transition-colors bg-white text-slate-900 font-bold shadow-3xs"
+            />
+            {detailFilter && (
+              <button
+                onClick={() => setDetailFilter('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 hover:text-slate-600 font-bold cursor-pointer"
+              >
+                지우기
+              </button>
+            )}
+          </div>
+
+          {/* 4. Header Clause Title & Notice */}
+          <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
+            <div className="font-black text-[#123941] text-sm mb-1 flex items-center gap-1.5">
+              <span>{clauseNum}</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              무배당 하나더퍼스트 5N5 건강보험(1640)(2604) <br/>
+              제1조(보험금의 지급사유): 회사는 피보험자가 이 특별약관의 보험기간 중 진단확정된 질병으로 질병통합치료(주요치료/중증치료/수술(1-5종)Ⅲ/수술입원)를 받은 경우 각 통합치료항목별 지급금액을 질병통합치료비로 지급합니다. (수술입원일당은 종합병원에 입원하여 제11조 수술을 받은 수술동반입원 시 1회 입원당 180일 한도로 입원 첫날부터 1일당 지급 / 연간이란 계약일로부터 매1년 단위로 도래하는 계약해당일 전일까지 기간을 의미)
+            </p>
+          </div>
+
+          {/* 5. Main Table for 하나손해보험 질병통합치료비 */}
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
+              <span className="text-xs font-black text-white">&lt;{typeLabel}&gt; 보장항목 및 지급금액 표</span>
+              <span className="text-[11px] font-medium text-slate-200">
+                총 {filteredItems.length}개 보장 항목
+              </span>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="bg-slate-100 text-slate-900 font-black text-xs border-b border-slate-200">
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[20%]">구분</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-left w-[36%]">보장항목</th>
+                    <th className="py-2.5 px-3 border-r border-slate-200 text-center w-[22%]">지급횟수</th>
+                    <th className="py-2.5 px-3 text-center bg-teal-50/50 text-[#123941] font-black w-[22%]">지급금액 ({typeLabel})</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-xs">
+                  {filteredItems.map((item, idx) => {
+                    const amount = item[hanaDiseaseTreatmentTab];
+                    return (
+                      <tr key={idx} className="hover:bg-slate-50 transition-colors even:bg-slate-50/40">
+                        <td className="py-2.5 px-3 font-bold text-slate-700 text-center border-r border-slate-200/80 bg-slate-50/50">
+                          {highlightText(item.category)}
+                        </td>
+                        <td className="py-2.5 px-3 font-black text-slate-900 border-r border-slate-200/80">
+                          {highlightText(item.name)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-bold text-slate-600 border-r border-slate-200/80">
+                          {highlightText(item.limit)}
+                        </td>
+                        <td className="py-2.5 px-3 text-center font-extrabold text-[#123941] bg-teal-50/30">
+                          {highlightText(amount)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 6. Special Provisions Notice Box */}
+          <div className="p-4 bg-slate-900 text-slate-200 rounded-2xl space-y-3 shadow-lg border border-slate-800">
+            <h4 className="font-extrabold text-white text-xs sm:text-sm border-b border-slate-700 pb-2 flex items-center gap-2">
+              <span className="w-2 h-4 bg-amber-400 rounded-xs"></span>
+              【제2조(보험금 지급에 관한 세부규정)】
+            </h4>
+            <div className="text-[11px] leading-relaxed space-y-2 text-slate-300 font-medium">
+              <p>① 피보험자가 연간 1년 이내에 각각 다른 “질병 특정시술치료(급여)(흡인,천자,절개,배액,배농)”를 받은 경우에도 통합치료항목 중 질병 특정시술치료(급여)(흡인,천자,절개,배액,배농)에 한하여 질병, 부위, 종류 및 횟수와 상관없이 1회의 질병통합치료비만 지급합니다.</p>
+              <p>② 피보험자가 연간 1년 이내에 각각 다른 “질병 특정시술치료(급여)(신경차단술)”를 받은 경우에도 통합치료항목 중 질병 특정시술치료(급여)(신경차단술)에 한하여 질병, 부위, 종류 및 횟수와 상관없이 1회의 질병통합치료비만 지급합니다.</p>
+              <p>③ 피보험자가 연간 1년 이내에 각각 다른 “질병 특정시술치료(급여)(도수정복술)”를 받은 경우에도 통합치료항목 중 질병 특정시술치료(급여)(도수정복술)에 한하여 질병, 부위, 종류 및 횟수와 상관없이 1회의 질병통합치료비만 지급합니다.</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     if (tabKey === 'db_integrated_heart' || tabKey === 'db_heart_1' || tabKey === 'db_heart_2') {
       const isHeart1 = dbHeartTab === 'I';
       const curTitle = isHeart1
@@ -2753,13 +3137,25 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {isHeart1 ? (
+                <a
+                  href="/downloads/kb-specific-heart-disease-1.pdf"
+                  download="kb-specific-heart-disease-1.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              ) : (
+                <a
+                  href="/downloads/kb-specific-heart-disease-2.pdf"
+                  download="kb-specific-heart-disease-2.pdf"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  PDF 다운로드
+                </a>
+              )}
             </div>
           </div>
 
@@ -3197,13 +3593,24 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {(() => {
+                const cardioPdf =
+                  lotteCardiovascularSimpleTab === 'I'
+                    ? 'lotte-cardiovascular-disease-1.pdf'
+                    : lotteCardiovascularSimpleTab === 'II'
+                    ? 'lotte-cardiovascular-disease-2.pdf'
+                    : 'lotte-heart-disease-15.pdf';
+                return (
+                  <a
+                    href={`/downloads/${cardioPdf}`}
+                    download={cardioPdf}
+                    className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    PDF 다운로드
+                  </a>
+                );
+              })()}
             </div>
           </div>
 
@@ -3463,13 +3870,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
+              <a
+                href="/downloads/hanwha-cardiovascular-disease-5-coverages.pdf"
+                download="hanwha-cardiovascular-disease-5-coverages.pdf"
                 className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
               >
                 <Download className="w-3.5 h-3.5" />
                 PDF 다운로드
-              </button>
+              </a>
             </div>
           </div>
 
@@ -3708,13 +4116,26 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleDownloadPDF(curTitle, [], curSections)}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-              >
-                <Download className="w-3.5 h-3.5" />
-                PDF 다운로드
-              </button>
+              {(() => {
+                const cardioPdf =
+                  nhCardio4Tab === 'tab1'
+                    ? 'nh-cardiovascular-specific-1.pdf'
+                    : nhCardio4Tab === 'tab2'
+                    ? 'nh-cardiovascular-specific-1-excluding-arrhythmia.pdf'
+                    : nhCardio4Tab === 'tab3'
+                    ? 'nh-cardiomyopathy.pdf'
+                    : 'nh-major-inflammatory-heart-disease.pdf';
+                return (
+                  <a
+                    href={`/downloads/${cardioPdf}`}
+                    download={cardioPdf}
+                    className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    PDF 다운로드
+                  </a>
+                );
+              })()}
             </div>
           </div>
 
@@ -5119,24 +5540,14 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </div>
 
             <div className="flex items-center gap-2">
-              {!isHana ? (
-                <a
-                  href="/downloads/db-specific-cancer-11.pdf"
-                  download="db-specific-cancer-11.pdf"
-                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  PDF 다운로드
-                </a>
-              ) : (
-                <button
-                  onClick={() => handleDownloadPDF('11대특정암 분류표', [], sectionsList)}
-                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  PDF 다운로드
-                </button>
-              )}
+              <a
+                href={isHana ? '/downloads/hana-specific-cancer-11.pdf' : '/downloads/db-specific-cancer-11.pdf'}
+                download={isHana ? 'hana-specific-cancer-11.pdf' : 'db-specific-cancer-11.pdf'}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </a>
             </div>
           </div>
 
@@ -5293,10 +5704,11 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
       );
     }
 
-    if (tabKey === 'db_high_cost_cancer' || tabKey === 'hana_high_cost_cancer') {
+    if (tabKey === 'db_high_cost_cancer' || tabKey === 'hana_high_cost_cancer' || tabKey === 'lina_high_cost_cancer') {
       const isHana = tabKey === 'hana_high_cost_cancer';
-      const itemsList = isHana ? HANA_HIGH_COST_CANCER_UNROLLED : DB_HIGH_COST_CANCER_UNROLLED;
-      const sectionsList = isHana ? HANA_HIGH_COST_CANCER_SECTIONS : DB_HIGH_COST_CANCER_SECTIONS;
+      const isLina = tabKey === 'lina_high_cost_cancer';
+      const itemsList = isLina ? LINA_HIGH_COST_CANCER_UNROLLED : isHana ? HANA_HIGH_COST_CANCER_UNROLLED : DB_HIGH_COST_CANCER_UNROLLED;
+      const sectionsList = isLina ? LINA_HIGH_COST_CANCER_SECTIONS : isHana ? HANA_HIGH_COST_CANCER_SECTIONS : DB_HIGH_COST_CANCER_SECTIONS;
       const queryStr = normalizeString(detailFilter);
       const filteredItems = itemsList.filter((item) => {
         if (!queryStr) return true;
@@ -5316,28 +5728,18 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           {/* Top Control Bar */}
           <div className="no-print flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2.5 bg-slate-100 rounded-2xl border border-slate-200/80">
             <div className="px-3 py-1 text-xs font-black text-[#123941] shrink-0 flex items-center gap-2">
-              <span>{isHana ? '하나손해보험 - 【별표16】 고액치료비암 분류표' : 'DB손해보험 - 【별표25】 고액치료비암 분류표'}</span>
+              <span>{isLina ? '라이나손해보험 - 【별표17】 고액치료비암 분류표' : isHana ? '하나손해보험 - 【별표16】 고액치료비암 분류표' : 'DB손해보험 - 【별표25】 고액치료비암 분류표'}</span>
             </div>
 
             <div className="flex items-center gap-2">
-              {!isHana ? (
-                <a
-                  href="/downloads/db-high-cost-cancer.pdf"
-                  download="db-high-cost-cancer.pdf"
-                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  PDF 다운로드
-                </a>
-              ) : (
-                <button
-                  onClick={() => handleDownloadPDF('고액치료비암 분류표', [], sectionsList)}
-                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  PDF 다운로드
-                </button>
-              )}
+              <a
+                href={isLina ? '/downloads/lina-high-cost-cancer.pdf' : isHana ? '/downloads/hana-high-cost-cancer.pdf' : '/downloads/db-high-cost-cancer.pdf'}
+                download={isLina ? 'lina-high-cost-cancer.pdf' : isHana ? 'hana-high-cost-cancer.pdf' : 'db-high-cost-cancer.pdf'}
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-black text-white bg-[#123941] hover:bg-[#123941]/90 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 shrink-0"
+              >
+                <Download className="w-3.5 h-3.5" />
+                PDF 다운로드
+              </a>
             </div>
           </div>
 
@@ -5364,10 +5766,12 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           {/* Header Info Box */}
           <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs">
             <div className="font-black text-[#123941] text-sm mb-1.5 flex items-center gap-1.5">
-              <span>{isHana ? '【별표16】 고액치료비암 분류표' : '【별표25】 고액치료비암 분류표'}</span>
+              <span>{isLina ? '【별표17】 고액치료비암 분류표' : isHana ? '【별표16】 고액치료비암 분류표' : '【별표25】 고액치료비암 분류표'}</span>
             </div>
             <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
-              {isHana
+              {isLina
+                ? '약관에서 규정하는 ‘고액치료비암’으로 분류되는 질병은 제9차 개정 한국표준질병･사인분류(통계청고시 제2025-299호, 2026.1.1.시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병･사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 ‘고액치료비암’ 해당여부를 판단합니다.'
+                : isHana
                 ? '약관에 규정하는 고액치료비암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 고액치료비암 해당 여부를 판단합니다.'
                 : '약관에 규정하는 고액치료비암으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청고시 제2025-299호, 2026. 1. 1 시행)중 다음에 적은 질병을 말하며, 이후 한국표준질병·사인분류가 개정되는 경우 개정된 기준에 따라 이 약관의 보장 대상 질병 해당 여부를 판단합니다.'
               }
@@ -5461,7 +5865,16 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           {/* Footnotes Box */}
           <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
             <div className="font-extrabold text-[#123941]">주) 약관 적용기준</div>
-            {isHana ? (
+            {isLina ? (
+              <>
+                <p className="pl-2">
+                  주) 제10차 개정 이후 이 약관에서 보장하는 ‘고액치료비암’ 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병･사인분류에 따라 판단합니다. 또한, 상기 분류표의 분류번호와 연관성이 있어 분류번호를 동시에 부여 가능한 경우 대상 분류에 포함합니다.
+                </p>
+                <p className="pl-2">
+                  ② 진단 당시의 한국표준질병･사인분류에 따라 이 약관에서 보장하는 질병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병･사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 질병 해당 여부를 다시 판단하지 않습니다.
+                </p>
+              </>
+            ) : isHana ? (
               <>
                 <p className="pl-2">
                   1. 제10차 개정 이후 이 약관에서 보장하는 고액치료비암 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병·사인분류에 따라 판단합니다.
@@ -6553,7 +6966,125 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                 surgery119: 'db-disease-surgery-119.pdf',
                 surgery120: 'db-disease-surgery-120.pdf',
               };
-              const directPdf = directPdfMap[tabKey] || (selectedInsurer?.id === 'db-ins' ? dbDirectPdfMap[tabKey] : undefined);
+              const kbDirectPdfMap: Record<string, string> = {
+                kb_cancer: 'kb-integrated-cancer.pdf',
+                kb_cancer_metastasis: 'kb-integrated-cancer-metastasis.pdf',
+                kb_metastasis: 'kb-integrated-metastatic-cancer.pdf',
+                kb_specific_cancer2: 'kb-specific-cancer.pdf',
+                kb_10high_cancer: 'kb-high-cost-cancer-10.pdf',
+                kb_brain: 'kb-integrated-brain-disease.pdf',
+                kb_surgery1_5: 'kb-surgery-1to5.pdf',
+                kb_surgery14: 'kb-disease-surgery-14.pdf',
+                kb_surgery16: 'kb-disease-surgery-16.pdf',
+                kb_surgery20: 'kb-disease-surgery-20.pdf',
+                kb_surgery21: 'kb-disease-surgery-21.pdf',
+                kb_surgery101: 'kb-disease-surgery-101.pdf',
+                kb_surgery112: 'kb-disease-surgery-112.pdf',
+                kb_surgery116: 'kb-disease-surgery-116.pdf',
+              };
+              const meritzDirectPdfMap: Record<string, string> = {
+                meritz_integrated_cancer: 'meritz-integrated-cancer.pdf',
+                meritz_integrated_cancer_metastasis: 'meritz-integrated-cancer-metastasis.pdf',
+                meritz_6heart: 'meritz-heart-disease-6.pdf',
+                meritz_5diseases_surgery: 'meritz-disease-surgery-5.pdf',
+                meritz_5diseases: 'meritz-disease-surgery-5.pdf',
+                meritz_30diseases: 'meritz-disease-surgery-30.pdf',
+                meritz_82diseases: 'meritz-disease-surgery-82.pdf',
+                meritz_surgery1_5: 'meritz-surgery-1to5.pdf',
+                meritz_18diseases: 'meritz-disease-surgery-18.pdf',
+                meritz_64diseases: 'meritz-disease-surgery-64.pdf',
+                meritz_80diseases: 'meritz-disease-surgery-80.pdf',
+                meritz_7diseases: 'meritz-disease-surgery-7.pdf',
+                meritz_32diseases: 'meritz-disease-surgery-32.pdf',
+                meritz_131diseases: 'meritz-disease-surgery-131.pdf',
+              };
+              const hanwhaDirectPdfMap: Record<string, string> = {
+                hanwha_integrated_cancer: 'hanwha-female-integrated-cancer.pdf',
+                hanwha_integrated_cancer_primary: 'hanwha-female-integrated-cancer-metastasis.pdf',
+                hanwha_integrated_metastatic_cancer: 'hanwha-female-integrated-metastatic-cancer.pdf',
+                hanwha_integrated_heart_1: 'hanwha-integrated-heart-diagnosis.pdf',
+                hanwha_integrated_heart_2: 'hanwha-integrated-heart-diagnosis-2.pdf',
+                hanwha_cardiovascular_5: 'hanwha-cardiovascular-disease-5-coverages.pdf',
+                hanwha_integrated_brain: 'hanwha-integrated-cerebrovascular-disease.pdf',
+                hanwha_surgery1_5: 'hanwha-surgery-1to5.pdf',
+                hanwha_women_life_1_5: 'hanwha-female-lifestyle-surgery-1to5.pdf',
+                hanwha_women_major_life_1_5: 'hanwha-female-major-lifestyle-surgery-1to5.pdf',
+                hanwha_7diseases: 'hanwha-disease-surgery-7.pdf',
+                hanwha_14diseases: 'hanwha-disease-surgery-14.pdf',
+                hanwha_16diseases: 'hanwha-disease-surgery-16.pdf',
+                hanwha_18diseases: 'hanwha-disease-surgery-18.pdf',
+                hanwha_34diseases: 'hanwha-disease-surgery-34.pdf',
+                hanwha_56diseases: 'hanwha-disease-surgery-56.pdf',
+                hanwha_124diseases: 'hanwha-disease-surgery-124.pdf',
+              };
+              const lotteDirectPdfMap: Record<string, string> = {
+                lotte_integrated_cancer: 'lotte-integrated-cancer.pdf',
+                lotte_integrated_cancer_with_metastasis: 'lotte-integrated-cancer-metastasis.pdf',
+                lotte_integrated_metastatic_cancer: 'lotte-integrated-metastatic-cancer.pdf',
+                lotte_high_cancer: 'lotte-high-cost-cancer.pdf',
+                lotte_cardiovascular_simple:
+                  lotteCardiovascularSimpleTab === 'I'
+                    ? 'lotte-cardiovascular-disease-1.pdf'
+                    : lotteCardiovascularSimpleTab === 'II'
+                    ? 'lotte-cardiovascular-disease-2.pdf'
+                    : 'lotte-heart-disease-15.pdf',
+                lotte_surgery1_5: 'lotte-surgery-1to5.pdf',
+                lotte_surgery7: 'lotte-disease-surgery-7.pdf',
+                lotte_surgery16: 'lotte-disease-surgery-16.pdf',
+                lotte_surgery18: 'lotte-disease-surgery-18.pdf',
+                lotte_surgery20: 'lotte-disease-surgery-20.pdf',
+                lotte_surgery34: 'lotte-disease-surgery-34.pdf',
+                lotte_surgery64: 'lotte-disease-surgery-64.pdf',
+                lotte_surgery142: 'lotte-disease-surgery-142.pdf',
+              };
+              const nhDirectPdfMap: Record<string, string> = {
+                nh_cancer: 'nh-integrated-cancer.pdf',
+                nh_cancer_metastasis: 'nh-integrated-cancer-metastasis.pdf',
+                nh_5specific_cancer: 'nh-specific-cancer-5.pdf',
+                nh_cardiovascular_4:
+                  nhCardio4Tab === 'tab1'
+                    ? 'nh-cardiovascular-specific-1.pdf'
+                    : nhCardio4Tab === 'tab2'
+                    ? 'nh-cardiovascular-specific-1-excluding-arrhythmia.pdf'
+                    : nhCardio4Tab === 'tab3'
+                    ? 'nh-cardiomyopathy.pdf'
+                    : 'nh-major-inflammatory-heart-disease.pdf',
+                nh_circulatory_1_5: 'nh-specific-circulatory-disease-1to5.pdf',
+                nh_surgery1_5: 'nh-surgery-1to5.pdf',
+                nh_surgery16: 'nh-disease-surgery-16.pdf',
+                nh_surgery34: 'nh-disease-surgery-34.pdf',
+                nh_surgery71: 'nh-disease-surgery-71.pdf',
+                nh_surgery144: 'nh-disease-surgery-144.pdf',
+              };
+              const hanaDirectPdfMap: Record<string, string> = {
+                hana_integrated_cancer: 'hana-integrated-cancer.pdf',
+                hana_high_cost_cancer: 'hana-high-cost-cancer.pdf',
+                hana_11_specific_cancer: 'hana-specific-cancer-11.pdf',
+                hana_brain_disease: 'hana-integrated-brain-disease.pdf',
+                hana_integrated_heart: 'hana-integrated-heart-disease.pdf',
+                hana_integrated_injury_treatment: 'hana-integrated-injury-treatment.pdf',
+                hana_integrated_disease_treatment: 'hana-integrated-disease-treatment.pdf',
+                hana_women_16_diseases: 'hana-women-disease-16.pdf',
+                hana_surgery1_5: 'hana-surgery-1to5.pdf',
+                hana_surgery73: 'hana-disease-surgery-73.pdf',
+                hana_surgery136: 'hana-disease-surgery-136.pdf',
+              };
+              const linaDirectPdfMap: Record<string, string> = {
+                lina_surgery1_5: 'lina-surgery-1to5.pdf',
+                lina_integrated_cancer: 'lina-integrated-cancer.pdf',
+                lina_integrated_cancer_metastasis: 'lina-integrated-cancer-metastasis.pdf',
+                lina_high_cost_cancer: 'lina-high-cost-cancer.pdf',
+              };
+              const directPdf =
+                directPdfMap[tabKey] ||
+                (selectedInsurer?.id === 'db-ins' ? dbDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'kb-ins' ? kbDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'meritz-fire' ? meritzDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'hanwha-general' ? hanwhaDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'lotte-ins' ? lotteDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'nh-fire' ? nhDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'hana-ins' ? hanaDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'lina-fire' ? linaDirectPdfMap[tabKey] : undefined);
               if (directPdf) {
                 return (
                   <a
@@ -6598,6 +7129,37 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </button>
           )}
         </div>
+
+        {tabKey === 'lina_integrated_cancer' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 【별표79】 통합암 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              ① 약관에서 규정하는 통합암으로 분류되는 질병은 제9차 개정 한국표준질병･사인분류(통계청고시 제2025-299호, 2026.1.1. 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병･사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 통합암 해당여부를 판단합니다.
+            </p>
+            <div className="text-[10px] text-slate-500 font-medium space-y-0.5 pt-1 border-t border-slate-200/60">
+              <p>주1) 제10차 개정 이후 이 약관에서 보장하는 ‘통합암’ 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병･사인분류에 따라 판단합니다. 또한, 상기 분류표의 분류번호와 연관성이 있어 분류번호를 동시에 부여 가능한 경우 대상분류에 포함합니다.</p>
+              <p>② 진단 당시의 한국표준질병･사인분류에 따라 이 약관에서 보장하는 상병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병･사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 상병 해당 여부를 다시 판단하지 않습니다.</p>
+              <p>③ 한국표준질병･사인분류 지침서의 ‘사망 및 질병이환의 분류번호 부여를 위한 선정준칙과 지침’에 따라 C77~C80(이차성 및 상세불명 부위의 악성신생물)의 경우 일차성 악성신생물이 확인되는 경우에는 원발부위(최초 발생한 부위)를 기준으로 분류합니다. 다만, 이 경우에도 원발부위의 암이 완치되었다면 이차성 및 상세불명 부위의 악성신생물(암)(C77~C80)의 진단 확정 시점은 원발암 진단 확정 시점으로 변경되지 않습니다.</p>
+            </div>
+          </div>
+        )}
+
+        {tabKey === 'lina_integrated_cancer_metastasis' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 【별표88】 통합전이암 분류표 적용 안내</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              ① 약관에서 규정하는 통합전이암으로 분류되는 질병은 제9차 개정 한국표준질병･사인분류(통계청고시 제2025-299호, 2026.1.1.시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병･사인분류가 개정되는 경우는 개정된 기준에 따라 이 약관에서 보장하는 통합전이암 해당여부를 판단합니다.
+            </p>
+            <div className="text-[10px] text-slate-500 font-medium space-y-0.5 pt-1 border-t border-slate-200/60">
+              <p>주) 제10차 개정 이후 이 약관에서 보장하는 통합전이암 해당여부는 피보험자가 진단된 당시 시행되고 있는 한국표준질병･사인분류에 따라 판단합니다. 또한, 상기 분류표의 분류번호와 연관성이 있어 분류번호를 동시에 부여 가능한 경우 대상분류에 포함합니다.</p>
+              <p>② 진단 당시의 한국표준질병･사인분류에 따라 이 약관에서 보장하는 상병에 대한 보험금 지급여부가 판단된 경우, 이후 한국표준질병･사인분류 개정으로 질병분류가 변경되더라도 이 약관에서 보장하는 상병 해당 여부를 다시 판단하지 않습니다.</p>
+            </div>
+          </div>
+        )}
 
         {tabKey === 'hana_integrated_cancer' && (
           <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
@@ -6943,7 +7505,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         })()}
 
         {/* 2. Top Summary Classification Table */}
-        {tabKey !== 'surgery1_5' && tabKey !== 'surgery1_5_old' && tabKey !== 'kb_surgery1_5' && tabKey !== 'lotte_surgery1_5' && tabKey !== 'meritz_surgery1_5' && tabKey !== 'hanwha_surgery1_5' && tabKey !== 'hanwha_women_life_1_5' && tabKey !== 'hanwha_women_major_life_1_5' && tabKey !== 'nh_surgery1_5' && tabKey !== 'hana_surgery1_5' && (
+        {tabKey !== 'surgery1_5' && tabKey !== 'surgery1_5_old' && tabKey !== 'kb_surgery1_5' && tabKey !== 'lotte_surgery1_5' && tabKey !== 'meritz_surgery1_5' && tabKey !== 'hanwha_surgery1_5' && tabKey !== 'hanwha_women_life_1_5' && tabKey !== 'hanwha_women_major_life_1_5' && tabKey !== 'nh_surgery1_5' && tabKey !== 'hana_surgery1_5' && tabKey !== 'lina_surgery1_5' && (
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs space-y-0">
             <div className="px-4 py-3 bg-[#123941] text-white font-black text-xs flex items-center justify-between">
               <span className="text-xs font-black text-white">상단요약분류표</span>
@@ -7129,10 +7691,10 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                         <thead>
                           <tr className="border-b border-slate-200 bg-[#123941]/5 text-[#123941] font-black text-[11px]">
                             <th className="py-2 px-3 text-left w-[70%]">
-                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5') ? '수술명 / 보장대상 수술' : '질병명 / 보장대상 분류'}
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5' || tabKey === 'lina_surgery1_5') ? '수술명 / 보장대상 수술' : '질병명 / 보장대상 분류'}
                             </th>
                             <th className="py-2 px-3 text-center w-[30%]">
-                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5') ? '수술종류' : 'KCD 질병코드'}
+                              {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5' || tabKey === 'lina_surgery1_5') ? '수술종류' : 'KCD 질병코드'}
                             </th>
                           </tr>
                         </thead>
@@ -7308,7 +7870,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
           )}
 
           {/* 3-1. 1-5종 수술비(동일질병당/질병통합치료비) 사용 지침 및 요실금/KB/메리츠/한화/농협 수술 지침 안내 */}
-          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5') && (
+          {(tabKey === 'surgery1_5' || tabKey === 'surgery1_5_old' || tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'meritz_surgery1_5' || tabKey === 'hanwha_surgery1_5' || tabKey === 'hanwha_women_life_1_5' || tabKey === 'hanwha_women_major_life_1_5' || tabKey === 'nh_surgery1_5' || tabKey === 'hana_surgery1_5' || tabKey === 'lina_surgery1_5') && (
             <div className="space-y-4 pt-4 border-t border-slate-200">
               {tabKey === 'hanwha_women_major_life_1_5' ? (
                 <>
@@ -7707,7 +8269,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                     </div>
                   </div>
                 </>
-              ) : (tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'hana_surgery1_5') ? (
+              ) : (tabKey === 'kb_surgery1_5' || tabKey === 'lotte_surgery1_5' || tabKey === 'hana_surgery1_5' || tabKey === 'lina_surgery1_5') ? (
                 <>
                   {/* KB Notes Box */}
                   <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-700 leading-relaxed space-y-2 shadow-2xs">
@@ -9336,6 +9898,239 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     <strong>【상해통합치료비 약관 규정】</strong><br/>
     • <strong>[4] 연간의 정의:</strong> 이 특별약관에서 “연간”이라 함은 이 특별약관의 계약일로부터 그 날을 포함하여 매 1년 단위로 도래하는 계약해당일 전일까지의 기간을 말합니다. 다만, 해당년도의 계약해당일이 없는 경우에는 해당월의 마지막 날을 계약해당일로 합니다.<br/>
     • <strong>출처:</strong> 674 한화 시그니처 여성 건강보험4.0 무배당2604
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'hana_integrated_injury_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 상해통합치료비 (${hanaInjuryTreatmentTab === 'luxury' ? '고급형' : hanaInjuryTreatmentTab === 'standard' ? '표준형' : '실속형'})</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 하나손해보험 - 상해통합치료비 (${hanaInjuryTreatmentTab === 'luxury' ? '고급형' : hanaInjuryTreatmentTab === 'standard' ? '표준형' : '실속형'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">하나손해보험 - 상해통합치료비 (${hanaInjuryTreatmentTab === 'luxury' ? '고급형' : hanaInjuryTreatmentTab === 'standard' ? '표준형' : '실속형'})</h1>
+      <div class="subtitle">무배당 하나더퍼스트 5N5 건강보험(1640)(2604) | ${hanaInjuryTreatmentTab === 'luxury' ? '1-51. 건강고지 상해통합치료비(고급형) 특별약관' : hanaInjuryTreatmentTab === 'standard' ? '1-52. 건강고지 상해통합치료비(표준형) 특별약관' : '1-53. 건강고지 상해통합치료비(실속형) 특별약관'}</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[제1조(보험금의 지급사유)]</strong><br/>
+    회사는 피보험자가 특별약관의 보험기간 중 발생한 상해의 직접결과로써 진단 및 치료의 필요소견을 토대로 상해통합치료(검사/주요치료/중증치료/수술(1-5종)Ⅲ/수술/재활치료)를 받은 경우 각 통합치료항목별 지급금액을 상해통합치료비로 지급합니다.
+  </div>
+
+  <div class="sec-title">📋 &lt;${hanaInjuryTreatmentTab === 'luxury' ? '고급형' : hanaInjuryTreatmentTab === 'standard' ? '표준형' : '실속형'}&gt; 보장항목 및 지급금액</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%; text-align: center;">구분</th>
+        <th style="width: 38%;">보장항목</th>
+        <th style="width: 20%; text-align: center;">지급횟수</th>
+        <th style="width: 20%; text-align: center;" class="highlight">지급금액 (${hanaInjuryTreatmentTab === 'luxury' ? '고급형' : hanaInjuryTreatmentTab === 'standard' ? '표준형' : '실속형'})</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${HANA_INJURY_INTEGRATED_TREATMENT_ITEMS.map((item) => {
+        const amount = item[hanaInjuryTreatmentTab];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black">${item.name}</td>
+            <td class="text-center">${item.limit}</td>
+            <td class="text-center highlight font-bold">${amount}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(고급형 / 표준형 / 실속형) 보장금액 종합 비교표&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%; text-align: center;">구분</th>
+        <th style="width: 35%;">보장항목</th>
+        <th style="width: 15%; text-align: center;">지급횟수</th>
+        <th style="width: 10%; text-align: center; ${hanaInjuryTreatmentTab==='luxury'?'background:#f0fdfa;color:#123941;':''}">고급형</th>
+        <th style="width: 10%; text-align: center; ${hanaInjuryTreatmentTab==='standard'?'background:#f0fdfa;color:#123941;':''}">표준형</th>
+        <th style="width: 10%; text-align: center; ${hanaInjuryTreatmentTab==='practical'?'background:#f0fdfa;color:#123941;':''}">실속형</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${HANA_INJURY_INTEGRATED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.limit}</td>
+          <td class="text-center" style="${hanaInjuryTreatmentTab==='luxury'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.luxury}</td>
+          <td class="text-center" style="${hanaInjuryTreatmentTab==='standard'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.standard}</td>
+          <td class="text-center" style="${hanaInjuryTreatmentTab==='practical'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.practical}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>【제2조(보험금 지급에 관한 세부규정)】</strong><br/>
+    1. 상해 MRI/CT/골밀도검사(급여): 연간 1년 이내 각각 다른 검사를 받은 경우에도 사고, 부위 및 횟수 상관없이 연간 1회만 지급<br/>
+    2. 상해 특정시술치료(급여)(흡인·천자·절개·배액·배농/신경차단술/화상처치/도수정복술/기타): 사고, 부위 및 횟수 상관없이 연간 1회만 지급<br/>
+    3. 창상봉합술(급여): 1일 1회한, 연간 3회한도로 보장<br/>
+    4. 깁스치료 / 골절(치아파절제외) 부목치료(급여): 1사고당 1회 지급<br/>
+    5. 상해특정마취치료(정맥,급여): 1회당 지급, 연간 최대 3회 한도<br/>
+    6. 상해특정수혈치료(전혈및성분제제 / 혈액성분채집술): 연간 최대 3회 한도 (소수 올림)
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 300);
+    };
+  </script>
+</body>
+</html>` : (activeSubTab === 'hana_integrated_disease_treatment') ? `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>${selectedInsurer.name} - 질병통합치료비 (${hanaDiseaseTreatmentTab === 'luxury' ? '고급형' : hanaDiseaseTreatmentTab === 'standard' ? '표준형' : '실속형'})</title>
+  <style>
+    @page { size: A4 portrait; margin: 10mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 10px; background: #fff; }
+    .header { border-bottom: 2px solid #123941; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 18px; font-weight: 800; color: #123941; margin: 0; }
+    .subtitle { font-size: 11px; color: #64748b; font-weight: 600; margin-top: 4px; }
+    .sec-title { font-size: 12px; font-weight: 800; color: #ffffff; background: #123941; padding: 7px 10px; border-radius: 6px 6px 0 0; margin-top: 14px; }
+    .info-box { background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 6px; font-size: 10px; color: #334155; line-height: 1.5; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 14px; page-break-inside: auto; }
+    tr { page-break-inside: avoid; page-break-after: auto; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 800; text-align: left; padding: 6px 8px; border: 1px solid #cbd5e1; }
+    td { border: 1px solid #cbd5e1; padding: 5px 8px; color: #334155; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-black { font-weight: 900; }
+    .highlight { font-weight: 800; color: #123941; background: #f0fdfa; }
+    .notes { background: #f8fafc; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-size: 9.5px; color: #475569; line-height: 1.6; margin-top: 14px; }
+    @media print {
+      .no-print { display: none !important; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="margin-bottom: 16px; padding: 10px 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: bold; color: #123941; font-size: 12px;">📄 하나손해보험 - 질병통합치료비 (${hanaDiseaseTreatmentTab === 'luxury' ? '고급형' : hanaDiseaseTreatmentTab === 'standard' ? '표준형' : '실속형'}) (인쇄 및 PDF 저장용)</span>
+    <button onclick="window.print()" style="background: #123941; color: white; border: none; padding: 6px 14px; font-weight: bold; border-radius: 6px; cursor: pointer;">🖨️ PDF 출력 / 인쇄하기</button>
+  </div>
+
+  <div class="header">
+    <div>
+      <h1 class="title">하나손해보험 - 질병통합치료비 (${hanaDiseaseTreatmentTab === 'luxury' ? '고급형' : hanaDiseaseTreatmentTab === 'standard' ? '표준형' : '실속형'})</h1>
+      <div class="subtitle">무배당 하나더퍼스트 5N5 건강보험(1640)(2604) | ${hanaDiseaseTreatmentTab === 'luxury' ? '2-109. 건강고지 질병통합치료비(고급형) 특별약관' : hanaDiseaseTreatmentTab === 'standard' ? '2-110. 건강고지 질병통합치료비(표준형) 특별약관' : '2-111. 건강고지 질병통합치료비(실속형) 특별약관'}</div>
+    </div>
+    <div style="text-align: right; font-size: 10px; color: #64748b;">
+      발급일: ${new Date().toLocaleDateString('ko-KR')}
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>[제1조(보험금의 지급사유)]</strong><br/>
+    회사는 피보험자가 이 특별약관의 보험기간 중 진단확정된 질병으로 질병통합치료(주요치료/중증치료/수술(1-5종)Ⅲ/수술입원)를 받은 경우 각 통합치료항목별 지급금액을 질병통합치료비로 지급합니다. (수술입원일당은 1회 수술동반입원 당 180일을 한도로 입원 첫날부터 1일당 지급)
+  </div>
+
+  <div class="sec-title">📋 &lt;${hanaDiseaseTreatmentTab === 'luxury' ? '고급형' : hanaDiseaseTreatmentTab === 'standard' ? '표준형' : '실속형'}&gt; 보장항목 및 지급금액</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%; text-align: center;">구분</th>
+        <th style="width: 38%;">보장항목</th>
+        <th style="width: 20%; text-align: center;">지급횟수</th>
+        <th style="width: 20%; text-align: center;" class="highlight">지급금액 (${hanaDiseaseTreatmentTab === 'luxury' ? '고급형' : hanaDiseaseTreatmentTab === 'standard' ? '표준형' : '실속형'})</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${HANA_DISEASE_INTEGRATED_TREATMENT_ITEMS.map((item) => {
+        const amount = item[hanaDiseaseTreatmentTab];
+        return `
+          <tr>
+            <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+            <td class="font-black">${item.name}</td>
+            <td class="text-center">${item.limit}</td>
+            <td class="text-center highlight font-bold">${amount}</td>
+          </tr>
+        `;
+      }).join('')}
+    </tbody>
+  </table>
+
+  <div class="sec-title" style="background: #334155;">📊 &lt;전 유형(고급형 / 표준형 / 실속형) 보장금액 종합 비교표&gt;</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%; text-align: center;">구분</th>
+        <th style="width: 35%;">보장항목</th>
+        <th style="width: 15%; text-align: center;">지급횟수</th>
+        <th style="width: 10%; text-align: center; ${hanaDiseaseTreatmentTab==='luxury'?'background:#f0fdfa;color:#123941;':''}">고급형</th>
+        <th style="width: 10%; text-align: center; ${hanaDiseaseTreatmentTab==='standard'?'background:#f0fdfa;color:#123941;':''}">표준형</th>
+        <th style="width: 10%; text-align: center; ${hanaDiseaseTreatmentTab==='practical'?'background:#f0fdfa;color:#123941;':''}">실속형</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${HANA_DISEASE_INTEGRATED_TREATMENT_ITEMS.map((item) => `
+        <tr>
+          <td class="text-center font-bold" style="background: #f8fafc;">${item.category}</td>
+          <td class="font-black">${item.name}</td>
+          <td class="text-center">${item.limit}</td>
+          <td class="text-center" style="${hanaDiseaseTreatmentTab==='luxury'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.luxury}</td>
+          <td class="text-center" style="${hanaDiseaseTreatmentTab==='standard'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.standard}</td>
+          <td class="text-center" style="${hanaDiseaseTreatmentTab==='practical'?'background:#f0fdfa;font-weight:bold;color:#123941;':''}">${item.practical}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>【제2조(보험금 지급에 관한 세부규정)】</strong><br/>
+    1. 질병 특정시술치료(급여)(흡인,천자,절개,배액,배농): 연간 1년 이내 각각 다른 시술을 받은 경우에도 질병, 부위, 종류 및 횟수와 상관없이 1회만 지급<br/>
+    2. 질병 특정시술치료(급여)(신경차단술): 연간 1년 이내 각각 다른 시술을 받은 경우에도 질병, 부위, 종류 및 횟수와 상관없이 1회만 지급<br/>
+    3. 질병 특정시술치료(급여)(도수정복술): 연간 1년 이내 각각 다른 시술을 받은 경우에도 질병, 부위, 종류 및 횟수와 상관없이 1회만 지급
   </div>
 
   <script>
@@ -11017,6 +11812,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'meritz_30diseases') return MERITZ_30_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_32diseases') return MERITZ_32_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_64diseases') return MERITZ_64_DISEASES_SECTIONS;
+        if (activeSubTab === 'meritz_80diseases') return MERITZ_80_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_82diseases') return MERITZ_82_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_131diseases') return MERITZ_131_DISEASES_SECTIONS;
         if (activeSubTab === 'meritz_6heart') return MERITZ_6HEART_DISEASES_SECTIONS;
@@ -11076,6 +11872,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'hanwha_18diseases') return HANWHA_18_DISEASES_SECTIONS;
         if (activeSubTab === 'hanwha_16diseases') return HANWHA_16_DISEASES_SECTIONS;
         if (activeSubTab === 'hanwha_14diseases') return HANWHA_14_DISEASES_SECTIONS;
+        if (activeSubTab === 'hanwha_7diseases') return HANWHA_7_DISEASES_SECTIONS;
         return HANWHA_WOMEN_INTEGRATED_CANCER_SECTIONS;
       case 'lotte-ins':
         if (activeSubTab === 'lotte_integrated_cancer') return LOTTE_INTEGRATED_CANCER_SECTIONS;
@@ -11114,12 +11911,20 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'hyundai_120diseases') return HYUNDAI_120_DISEASES_SECTIONS;
         if (activeSubTab === 'hyundai_123diseases') return HYUNDAI_123_DISEASES_SECTIONS;
         return HYUNDAI_MALE_CANCER_SECTIONS;
+      case 'lina-fire':
+        if (activeSubTab === 'lina_surgery1_5') return LINA_SURGERY_1_5_SECTIONS;
+        if (activeSubTab === 'lina_integrated_cancer') return LINA_INTEGRATED_CANCER_SECTIONS;
+        if (activeSubTab === 'lina_high_cost_cancer') return LINA_HIGH_COST_CANCER_SECTIONS;
+        if (activeSubTab === 'lina_integrated_cancer_metastasis') return LINA_INTEGRATED_CANCER_METASTASIS_SECTIONS;
+        return LINA_INTEGRATED_CANCER_SECTIONS;
       case 'hana-ins':
         if (activeSubTab === 'hana_integrated_cancer') return HANA_INTEGRATED_CANCER_SECTIONS;
         if (activeSubTab === 'hana_high_cost_cancer') return HANA_HIGH_COST_CANCER_SECTIONS;
         if (activeSubTab === 'hana_11_specific_cancer') return HANA_11_SPECIFIC_CANCER_SECTIONS;
         if (activeSubTab === 'hana_brain_disease') return HANA_BRAIN_DISEASE_SECTIONS;
         if (activeSubTab === 'hana_integrated_heart') return HANA_INTEGRATED_HEART_SECTIONS;
+        if (activeSubTab === 'hana_integrated_injury_treatment') return HANA_INJURY_INTEGRATED_TREATMENT_SECTIONS;
+        if (activeSubTab === 'hana_integrated_disease_treatment') return HANA_DISEASE_INTEGRATED_TREATMENT_SECTIONS;
         if (activeSubTab === 'hana_women_16_diseases') return HANA_WOMEN_16_DISEASES_SECTIONS;
         if (activeSubTab === 'hana_surgery1_5') return HANA_SURGERY_1_5_SECTIONS;
         if (activeSubTab === 'hana_surgery73') return HANA_SURGERY_73_SECTIONS;

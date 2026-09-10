@@ -3763,3 +3763,83 @@ export const HANWHA_INJURY_INTEGRATED_TREATMENT_SUMMARY = [
 ];
 
 // KB손해보험 질병통합치료비 (고급형/기본형/실속형) 데이터
+
+export const HANWHA_7_DISEASES_SUMMARY = [
+  {
+    title: '7대질병',
+    diseases: '심장질환, 뇌혈관질환, 간질환, 고혈압, 당뇨병, 만성하기도질환, 위궤양 및십이지장궤양'
+  }
+];
+
+export const HANWHA_7_DISEASES_SECTIONS = [
+  {
+    category: '1. 심장질환',
+    items: [
+      { disease: '급성 류마티스열', code: 'I00~I02' },
+      { disease: '만성류마티스 심장 질환', code: 'I05~I09' },
+      { disease: '허혈성 심장 질환', code: 'I20~I25' },
+      { disease: '폐성 심장병 및 폐순환의 질환', code: 'I26~I28' },
+      { disease: '기타 형태의 심장병', code: 'I30~I52' }
+    ]
+  },
+  {
+    category: '2. 뇌혈관질환',
+    items: [
+      { disease: '뇌혈관 질환', code: 'I60~I69' }
+    ]
+  },
+  {
+    category: '3. 간질환',
+    items: [
+      { disease: '바이러스 간염', code: 'B15~B19' },
+      { disease: '간의 질환', code: 'K70~K77' }
+    ]
+  },
+  {
+    category: '4. 고혈압',
+    items: [
+      { disease: '본태성(일차성) 고혈압', code: 'I10' },
+      { disease: '고혈압성 심장병', code: 'I11' },
+      { disease: '고혈압성 신장질환', code: 'I12' },
+      { disease: '고혈압성 심장 및 신장질환', code: 'I13' },
+      { disease: '이차성 고혈압', code: 'I15' },
+      { disease: '고혈압성 뇌병증', code: 'I67.4' },
+      { disease: '고혈압성 망막병증', code: 'H35.02' }
+    ]
+  },
+  {
+    category: '5. 당뇨병',
+    items: [
+      { disease: '인슐린-의존 당뇨병', code: 'E10' },
+      { disease: '인슐린-비의존 당뇨병', code: 'E11' },
+      { disease: '영양실조 관련 당뇨병', code: 'E12' },
+      { disease: '기타명시된 당뇨병', code: 'E13' },
+      { disease: '상세불명의 당뇨병', code: 'E14' },
+      { disease: '당뇨병성단일신경병증', code: 'G59.0' },
+      { disease: '당뇨병성 다발신경병증', code: 'G63.2' },
+      { disease: '당뇨병성 백내장', code: 'H28.0' },
+      { disease: '당뇨병성 망막변증', code: 'H36.0' },
+      { disease: '당뇨병성 관절변증', code: 'M14.2' },
+      { disease: '당뇨병에서의사구체장애', code: 'N08.3' }
+    ]
+  },
+  {
+    category: '6. 만성하기도질환',
+    items: [
+      { disease: '급성인지 만성인지 명시되지 않은 기관지염', code: 'J40' },
+      { disease: '단순성 및 점액농성만성기관지염', code: 'J41' },
+      { disease: '상세불명의 만성 기관지염', code: 'J42' },
+      { disease: '천식', code: 'J45' },
+      { disease: '천식지속상태', code: 'J46' }
+    ]
+  },
+  {
+    category: '7. 위궤양 및십이지장궤양',
+    items: [
+      { disease: '위궤양', code: 'K25' },
+      { disease: '십이지장궤양', code: 'K26' },
+      { disease: '상세불명부위의 소화성 궤양', code: 'K27' }
+    ]
+  }
+];
+

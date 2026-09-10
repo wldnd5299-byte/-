@@ -201,6 +201,8 @@ export const PATH_VIEW_MAP: Record<string, ViewState> = {
   '/dispute/': 'dispute',
   '/info': 'info',
   '/info/': 'info',
+  '/insurer': 'claim',
+  '/insurer/': 'claim',
 };
 
 export const getViewFromLocation = (): ViewState => {
@@ -215,7 +217,7 @@ export const getViewFromLocation = (): ViewState => {
   if (rawPath.startsWith('/info/')) {
     return 'info';
   }
-  if (rawPath.startsWith('/claim/')) {
+  if (rawPath.startsWith('/claim/') || rawPath.startsWith('/insurer/')) {
     return 'claim';
   }
   if (rawPath.startsWith('/surgery/')) {
@@ -234,7 +236,7 @@ export const getViewFromLocation = (): ViewState => {
   if (cleanPath.startsWith('/info/')) {
     return 'info';
   }
-  if (cleanPath.startsWith('/claim/')) {
+  if (cleanPath.startsWith('/claim/') || cleanPath.startsWith('/insurer/')) {
     return 'claim';
   }
   if (cleanPath.startsWith('/surgery/')) {
@@ -261,6 +263,9 @@ export default function App() {
       if (pathname.startsWith('/dispute/')) {
         return 'dispute';
       }
+      if (pathname.startsWith('/claim/') || pathname.startsWith('/insurer/')) {
+        return 'claim';
+      }
       if (PATH_VIEW_MAP[pathname]) {
         return PATH_VIEW_MAP[pathname];
       }
@@ -278,11 +283,12 @@ export default function App() {
     setCurrentView(initialView);
     localStorage.setItem('ib_current_view', initialView);
     
-    // If not a dispute or terms or info sub-item page, update SEO meta with default view meta
+    // If not a dispute or terms or info or claim/insurer sub-item page, update SEO meta with default view meta
     const isSubPath = typeof window !== 'undefined' && (
       Boolean(window.location.pathname.match(/^\/dispute\/[a-zA-Z0-9_-]+\/?$/)) ||
       Boolean(window.location.pathname.match(/^\/terms\/[a-zA-Z0-9_-]+/)) ||
-      Boolean(window.location.pathname.match(/^\/info\/[a-zA-Z0-9_-]+\/?$/))
+      Boolean(window.location.pathname.match(/^\/info\/[a-zA-Z0-9_-]+\/?$/)) ||
+      Boolean(window.location.pathname.match(/^\/(claim|insurer)\/[a-zA-Z0-9_-]+\/?$/))
     );
     if (!isSubPath) {
       updateSEOMeta(initialView);

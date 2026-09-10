@@ -135,8 +135,8 @@ export default function ClaimForms() {
   const [selectedInsurer, setSelectedInsurer] = useState<Insurer>(() => {
     if (typeof window !== 'undefined') {
       const pathname = window.location.pathname;
-      if (pathname.startsWith('/claim/')) {
-        const slug = pathname.replace(/^\/claim\//, '').replace(/\/+$/, '');
+      if (pathname.startsWith('/claim/') || pathname.startsWith('/insurer/')) {
+        const slug = pathname.replace(/^\/(claim|insurer)\//, '').replace(/\/+$/, '');
         if (slug) {
           const foundBySlug = INSURERS_DATA.find(ins => ins.id === slug);
           if (foundBySlug) return foundBySlug;
@@ -150,6 +150,33 @@ export default function ClaimForms() {
     }
     return INSURERS_DATA[0];
   });
+
+  React.useEffect(() => {
+    const handlePopState = () => {
+      if (typeof window !== 'undefined') {
+        const pathname = window.location.pathname;
+        if (pathname.startsWith('/claim/') || pathname.startsWith('/insurer/')) {
+          const slug = pathname.replace(/^\/(claim|insurer)\//, '').replace(/\/+$/, '');
+          if (slug) {
+            const found = INSURERS_DATA.find(ins => ins.id === slug);
+            if (found) setSelectedInsurer(found);
+          }
+        }
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  React.useEffect(() => {
+    if (typeof document !== 'undefined' && selectedInsurer) {
+      const isStandardFax = selectedInsurer.fax && /^[0-9\-\s~]+$/.test(selectedInsurer.fax);
+      const title = isStandardFax
+        ? `${selectedInsurer.name} 고객센터 전화번호·보험금청구 팩스번호 | 보험브릿지`
+        : `${selectedInsurer.name} 고객센터 전화번호·보험금청구 접수안내 | 보험브릿지`;
+      document.title = title;
+    }
+  }, [selectedInsurer]);
 
   React.useEffect(() => {
     const handleNav = (e: Event) => {
@@ -259,10 +286,17 @@ export default function ClaimForms() {
               filteredInsurers.map((insurer) => {
                 const isSelected = selectedInsurer.id === insurer.id;
                 return (
-                  <button
+                  <a
                     key={insurer.id}
-                    onClick={() => handleSelectInsurer(insurer)}
-                    className={`w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-center justify-between group cursor-pointer ${
+                    href={`/claim/${insurer.id}/`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleSelectInsurer(insurer);
+                      if (typeof window !== 'undefined') {
+                        window.history.pushState(null, '', `/claim/${insurer.id}/`);
+                      }
+                    }}
+                    className={`w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-center justify-between group cursor-pointer no-underline ${
                       isSelected
                         ? 'border-amber-500/30 bg-amber-500/5 text-[#123941] font-bold shadow-xs'
                         : 'border-slate-200/80 bg-white hover:bg-slate-100/60 hover:border-[#123941]/40 text-nike-black'
@@ -295,7 +329,7 @@ export default function ClaimForms() {
                     <div className={`text-xs font-bold transition-all ${isSelected ? 'text-[#123941]' : 'text-slate-400 group-hover:text-[#123941] group-hover:translate-x-1'}`}>
                       {isSelected ? '● 선택됨' : '상세보기 →'}
                     </div>
-                  </button>
+                  </a>
                 );
               })
             ) : (
