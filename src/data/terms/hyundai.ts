@@ -425,22 +425,19 @@ export const HYUNDAI_FEMALE_CANCER_SECTIONS = [
 export const HYUNDAI_HEART_SECTIONS = [
   {
     group: '그룹 1',
-    title: '심혈관질환(특정 I, I49제외)',
+    title: '심혈관질환(특정Ⅰ, I49제외)',
     items: [
       { num: '1', disease: '협심증', code: 'I20' },
       { num: '2', disease: '기타 급성 허혈심장질환', code: 'I24' },
       { num: '3', disease: '만성 허혈심장병', code: 'I25' },
       { num: '4', disease: '발작성 빈맥', code: 'I47' },
       { num: '5', disease: '심방세동 및 조동', code: 'I48' },
-      { num: '6', disease: '심부전', code: 'I50' },
-      { num: '7', disease: '신생아심부전', code: 'P29.0' },
-      { num: '8', disease: '신생아의 일과성 심근허혈', code: 'P29.4' },
-      { num: '9', disease: '출생전후기에 기원한 심혈관장애', code: 'P29.8' }
+      { num: '6', disease: '심부전', code: 'I50' }
     ]
   },
   {
     group: '그룹 2',
-    title: '심혈관질환(특정 II)',
+    title: '심혈관질환(특정Ⅱ)',
     items: [
       { num: '1', disease: '급성심근경색증', code: 'I21' },
       { num: '2', disease: '후속심근경색증', code: 'I22' },
@@ -453,7 +450,7 @@ export const HYUNDAI_HEART_SECTIONS = [
     title: '심혈관질환(주요심장염증)',
     items: [
       { num: '1', disease: '급성 심장막염', code: 'I30' },
-      { num: '2', disease: '심장막의 기타 질환', code: 'I31' },
+      { num: '2', disease: '심장막의 기타질환', code: 'I31' },
       { num: '3', disease: '달리 분류된 질환에서의 심장막염', code: 'I32' },
       { num: '4', disease: '급성 및 아급성 심내막염', code: 'I33' },
       { num: '5', disease: '상세불명 판막의 심내막염', code: 'I38' },
@@ -465,8 +462,7 @@ export const HYUNDAI_HEART_SECTIONS = [
     group: '그룹 4',
     title: '심혈관질환(I49)',
     items: [
-      { num: '1', disease: '기타 심장부정맥', code: 'I49' },
-      { num: '2', disease: '신생아심장리듬장애', code: 'P29.1' }
+      { num: '1', disease: '기타 심장부정맥', code: 'I49' }
     ]
   },
   {
@@ -478,8 +474,7 @@ export const HYUNDAI_HEART_SECTIONS = [
       { num: '3', disease: '기타 및 상세불명의 심방실차단', code: 'I44.3' },
       { num: '4', disease: '이중성유속차단', code: 'I45.2' },
       { num: '5', disease: '삼중성유속차단', code: 'I45.3' },
-      { num: '6', disease: '기타 심장부정맥', code: 'I49' },
-      { num: '7', disease: '신생아심장리듬장애', code: 'P29.1' }
+      { num: '6', disease: '기타 심장부정맥', code: 'I49' }
     ]
   },
   {
@@ -503,11 +498,11 @@ export const HYUNDAI_HEART_SECTIONS = [
 ];
 
 export const HYUNDAI_HEART_SUMMARY = [
-  { group: '그룹 1', title: '심혈관질환(특정 I, I49제외)', category: '그룹 1 (심혈관질환(특정 I, I49제외))', diseases: '협심증(I20), 기타 급성 허혈심장질환(I24), 만성 허혈심장병(I25), 발작성 빈맥(I47), 심방세동 및 조동(I48), 심부전(I50), 신생아특정심혈관질환(P29.0, P29.4, P29.8)' },
-  { group: '그룹 2', title: '심혈관질환(특정 II)', category: '그룹 2 (심혈관질환(특정 II))', diseases: '급성심근경색증(I21), 후속심근경색증(I22), 급성심근경색증 후 특정 현존 합병증(I23), 인공소생에 성공한 심장정지(I46.0)' },
-  { group: '그룹 3', title: '심혈관질환(주요심장염증)', category: '그룹 3 (심혈관질환(주요심장염증))', diseases: '급성 심장막염(I30), 심장막의 기타 질환(I31), 달리 분류된 질환에서의 심장막염(I32), 급성 및 아급성 심내막염(I33), 상세불명 판막의 심내막염(I38), 급성 심근염(I40), 달리 분류된 질환에서의 심근염(I41)' },
-  { group: '그룹 4', title: '심혈관질환(I49)', category: '그룹 4 (심혈관질환(I49))', diseases: '기타 심장부정맥(I49), 신생아심장리듬장애(P29.1)' },
-  { group: '그룹 5', title: '심혈관질환(특정2대)', category: '그룹 5 (심혈관질환(특정2대))', diseases: '특정 방실차단 및 전도장애(I44.1, I44.2, I44.3, I45.2, I45.3), 기타 심장부정맥(I49), 신생아심장리듬장애(P29.1)' },
+  { group: '그룹 1', title: '심혈관질환(특정Ⅰ, I49제외)', category: '그룹 1 (심혈관질환(특정Ⅰ, I49제외))', diseases: '협심증(I20), 기타 급성 허혈심장질환(I24), 만성 허혈심장병(I25), 발작성 빈맥(I47), 심방세동 및 조동(I48), 심부전(I50)' },
+  { group: '그룹 2', title: '심혈관질환(특정Ⅱ)', category: '그룹 2 (심혈관질환(특정Ⅱ))', diseases: '급성심근경색증(I21), 후속심근경색증(I22), 급성심근경색증 후 특정 현존 합병증(I23), 인공소생에 성공한 심장정지(I46.0)' },
+  { group: '그룹 3', title: '심혈관질환(주요심장염증)', category: '그룹 3 (심혈관질환(주요심장염증))', diseases: '급성 심장막염(I30), 심장막의 기타질환(I31), 달리 분류된 질환에서의 심장막염(I32), 급성 및 아급성 심내막염(I33), 상세불명 판막의 심내막염(I38), 급성 심근염(I40), 달리 분류된 질환에서의 심근염(I41)' },
+  { group: '그룹 4', title: '심혈관질환(I49)', category: '그룹 4 (심혈관질환(I49))', diseases: '기타 심장부정맥(I49)' },
+  { group: '그룹 5', title: '심혈관질환(특정2대)', category: '그룹 5 (심혈관질환(특정2대))', diseases: '특정 방실차단 및 전도장애(I44.1, I44.2, I44.3, I45.2, I45.3), 기타 심장부정맥(I49)' },
   { group: '그룹 6', title: '심혈관질환(대동맥판막협착증)', category: '그룹 6 (심혈관질환(대동맥판막협착증))', diseases: '류마티스성 대동맥협착(I06.0), 폐쇄부전이 있는 류마티스성 대동맥협착(I06.2), 대동맥판협착(I35.0), 폐쇄부전을 동반한 대동맥판협착(I35.2)' },
   { group: '그룹 7', title: '심혈관질환(심근병증)', category: '그룹 7 (심혈관질환(심근병증))', diseases: '심근병증(I42), 달리 분류된 질환에서의 심근병증(I43)' }
 ];
