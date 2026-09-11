@@ -9,7 +9,7 @@ import { ShoppingBag, Search, Download, ExternalLink, Filter, HelpCircle, CheckC
 interface GoodItem {
   id: number;
   title: string;
-  category: 'materials' | 'stationery' | 'gifts' | 'digital' | 'disability' | 'breastcancer' | 'breastcancerrecurrence' | 'stomachcancerrecurrence' | 'heavyiontherapy' | 'cancerstats' | 'agecancer' | 'insitucancer' | 'coloncancertreat';
+  category: 'materials' | 'stationery' | 'gifts' | 'digital' | 'disability' | 'breastcancer' | 'breastcancerrecurrence' | 'stomachcancerrecurrence' | 'heavyiontherapy' | 'cerebrovasculartreat' | 'cancerstats' | 'agecancer' | 'insitucancer' | 'coloncancertreat';
   categoryLabel: string;
   badgeLeft?: string;
   badgeRight?: string;
@@ -190,8 +190,8 @@ function Age80Char() {
 
 export default function PlannerGoods() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeTab, setActiveTab] = useState<'all' | 'heavyiontherapy' | 'stomachcancerrecurrence' | 'agecancer' | 'cancerstats' | 'breastcancer' | 'breastcancerrecurrence' | 'disability' | 'insitucancer' | 'coloncancertreat' | 'materials' | 'stationery' | 'gifts' | 'digital'>('all');
-  const [downloadCount, setDownloadCount] = useState<Record<number, number>>({ 1: 1248, 2: 954, 3: 1120, 4: 1380, 5: 1450, 9: 1620, 10: 2150 });
+  const [activeTab, setActiveTab] = useState<'all' | 'cerebrovasculartreat' | 'heavyiontherapy' | 'stomachcancerrecurrence' | 'agecancer' | 'cancerstats' | 'breastcancer' | 'breastcancerrecurrence' | 'disability' | 'insitucancer' | 'coloncancertreat' | 'materials' | 'stationery' | 'gifts' | 'digital'>('all');
+  const [downloadCount, setDownloadCount] = useState<Record<number, number>>({ 1: 1248, 2: 954, 3: 1120, 4: 1380, 5: 1450, 9: 1620, 10: 2150, 11: 1890 });
   const [selectedInquiryProduct, setSelectedInquiryProduct] = useState<GoodItem | null>(null);
   const [showReportModal, setShowReportModal] = useState<boolean>(false);
   const [selectedReportId, setSelectedReportId] = useState<number>(1);
@@ -201,6 +201,20 @@ export default function PlannerGoods() {
   const [inquirySuccess, setInquirySuccess] = useState(false);
 
   const goods: GoodItem[] = [
+    {
+      id: 11,
+      title: '뇌혈관 진료현황 (건강보험심사평가원 급여적정성 평가 및 진료통계)',
+      category: 'cerebrovasculartreat',
+      categoryLabel: '뇌혈관 진료현황',
+      badgeLeft: '건강보험심사평가원',
+      badgeRight: '진료통계분석',
+      price: '무료 PDF / 웹뷰',
+      desc: '건강보험심사평가원 최신 급여적정성 평가 및 뇌혈관질환(뇌경색·뇌출혈·지주막하출혈) 진료현황 리포트. 연령별/질환별 환자수 및 진료비 추이, 급성기 치료 골든타임, 혈전용해제(tPA) 및 혈전제거술, 뇌혈관 수술 및 통원 치료 현황, 뇌혈관질환 진단비·수술비·산정특례 영업 브리핑 가이드.',
+      isDownloadable: true,
+      downloadUrl: '/planner-goods-files/cerebrovascular-treatment-status.pdf',
+      image: 'bg-[#123941] text-white',
+      tags: ['뇌혈관질환', '뇌혈관진료현황', '건강보험심사평가원', '뇌경색', '뇌출혈', '골든타임', '혈전용해술', '뇌혈관수술비', '산정특례', '영업브리핑자료']
+    },
     {
       id: 10,
       title: '중입자치료 (연세암병원 중입자치료센터 공식 가이드)',
@@ -2979,7 +2993,14 @@ export default function PlannerGoods() {
 
   const handleOpenReportPdf = (reportId: number | string) => {
     const id = Number(reportId);
-    if (id === 10) {
+    if (id === 11) {
+      const link = document.createElement('a');
+      link.href = '/planner-goods-files/cerebrovascular-treatment-status.pdf';
+      link.download = 'cerebrovascular-treatment-status.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (id === 10) {
       handleOpenHeavyIonPdfPrint();
     } else if (id === 9) {
       handleOpenStomachCancerRecurrencePdfPrint();
@@ -3004,6 +3025,7 @@ export default function PlannerGoods() {
 
   const getReportFilename = (reportId: number | string) => {
     const id = Number(reportId);
+    if (id === 11) return 'cerebrovascular-treatment-status.pdf';
     if (id === 10) return '중입자치료_연세암병원_공식가이드.pdf';
     if (id === 9) return '위암_재발및전이_국가암지식정보센터.pdf';
     if (id === 8) return '유방암_재발및전이_국가암지식정보센터.pdf';
@@ -3092,6 +3114,7 @@ export default function PlannerGoods() {
         <div className="flex flex-wrap gap-1.5">
           {[
             { id: 'all', label: '전체' },
+            { id: 'cerebrovasculartreat', label: '뇌혈관 진료현황' },
             { id: 'heavyiontherapy', label: '중입자치료' },
             { id: 'stomachcancerrecurrence', label: '위암 재발 및 전이' },
             { id: 'breastcancerrecurrence', label: '유방암 재발 및 전이' },
@@ -5510,7 +5533,9 @@ export default function PlannerGoods() {
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-0.5 bg-[#cb9f74] text-slate-950 text-[10px] font-black rounded uppercase">
-                      {selectedReportId === 10
+                      {selectedReportId === 11
+                        ? '건강보험심사평가원'
+                        : selectedReportId === 10
                         ? '연세암병원 중입자치료센터'
                         : selectedReportId === 9
                         ? '국가암지식정보센터 & 대한위암학회'
@@ -5531,7 +5556,9 @@ export default function PlannerGoods() {
                         : '통계청 OFFICIAL'}
                     </span>
                     <span className="text-xs text-slate-300 font-bold">
-                      {selectedReportId === 10
+                      {selectedReportId === 11
+                        ? '급여적정성 평가 및 진료통계 (HIRA 심평원 공식)'
+                        : selectedReportId === 10
                         ? '공식 가이드 (연세암병원·대한방사선종양학회 검수)'
                         : selectedReportId === 9
                         ? '공식 가이드 (대한위암학회·대한중앙내과학회 검수)'
@@ -5553,7 +5580,9 @@ export default function PlannerGoods() {
                     </span>
                   </div>
                   <h2 className="text-lg sm:text-xl font-black text-white mt-1">
-                    {selectedReportId === 10
+                    {selectedReportId === 11
+                      ? '뇌혈관 진료현황 (건강보험심사평가원 급여적정성 평가 · 뇌경색/뇌출혈 진료통계 · 골든타임 가이드)'
+                      : selectedReportId === 10
                       ? '중입자치료 (연세암병원 중입자치료센터 공식 가이드 · 브래그 피크 · 입자비교 · DNA절단 리포트)'
                       : selectedReportId === 9
                       ? '위암 재발 및 전이 (수술 후 5년 내 90% 재발·3대 재발 패턴·추적검사 주기·항암치료 가이드)'
@@ -5622,9 +5651,9 @@ export default function PlannerGoods() {
                 }`}
               >
                 <TrendingUp className="w-4 h-4" />
-                {selectedReportId === 10 ? '입자물리 특성비교' : selectedReportId === 9 ? '재발률/누적비율' : selectedReportId === 8 ? '재발률/통계개요' : selectedReportId === 7 ? '내시경/수술 절제' : selectedReportId === 6 ? '25년간 추이' : selectedReportId === 5 ? '연령군별 발생률' : selectedReportId === 4 ? '남녀 전체 Top10' : selectedReportId === 3 ? '치료제/자가검진' : selectedReportId === 2 ? '대표질환별 지급률' : '10대 사망원인 그래프'}
+                {selectedReportId === 11 ? '진료통계/환자추이' : selectedReportId === 10 ? '입자물리 특성비교' : selectedReportId === 9 ? '재발률/누적비율' : selectedReportId === 8 ? '재발률/통계개요' : selectedReportId === 7 ? '내시경/수술 절제' : selectedReportId === 6 ? '25년간 추이' : selectedReportId === 5 ? '연령군별 발생률' : selectedReportId === 4 ? '남녀 전체 Top10' : selectedReportId === 3 ? '치료제/자가검진' : selectedReportId === 2 ? '대표질환별 지급률' : '10대 사망원인 그래프'}
               </button>
-              {(selectedReportId === 1 || selectedReportId === 4 || selectedReportId === 5 || selectedReportId === 6 || selectedReportId === 7 || selectedReportId === 8 || selectedReportId === 9 || selectedReportId === 10) && (
+              {(selectedReportId === 1 || selectedReportId === 4 || selectedReportId === 5 || selectedReportId === 6 || selectedReportId === 7 || selectedReportId === 8 || selectedReportId === 9 || selectedReportId === 10 || selectedReportId === 11) && (
                 <button
                   onClick={() => setActiveReportSubTab('gender')}
                   className={`py-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
@@ -5634,7 +5663,7 @@ export default function PlannerGoods() {
                   }`}
                 >
                   <Users className="w-4 h-4" />
-                  {selectedReportId === 10 ? '브래그피크 & DNA' : selectedReportId === 9 ? '3대 재발유형' : selectedReportId === 8 ? '원격 전이 치료법' : selectedReportId === 7 ? '항암/표적/면역치료' : selectedReportId === 6 ? '성별 주요 발생암' : selectedReportId === 5 ? '50대 남녀역전 분석' : selectedReportId === 4 ? '성별 발생 비교' : '성별 비교 분석'}
+                  {selectedReportId === 11 ? '골든타임 & 급성기치료' : selectedReportId === 10 ? '브래그피크 & DNA' : selectedReportId === 9 ? '3대 재발유형' : selectedReportId === 8 ? '원격 전이 치료법' : selectedReportId === 7 ? '항암/표적/면역치료' : selectedReportId === 6 ? '성별 주요 발생암' : selectedReportId === 5 ? '50대 남녀역전 분석' : selectedReportId === 4 ? '성별 발생 비교' : '성별 비교 분석'}
                 </button>
               )}
               <button
@@ -5646,7 +5675,7 @@ export default function PlannerGoods() {
                 }`}
               >
                 <Layers className="w-4 h-4" />
-                {selectedReportId === 10 ? '치료혜택 & 대상암종' : selectedReportId === 9 ? '추적검사 일정' : selectedReportId === 8 ? '국소재발 vs 원격전이' : selectedReportId === 7 ? '방사선치료/TNT' : selectedReportId === 6 ? '연도별 통계표' : selectedReportId === 5 ? '연령대별 주요 암종' : selectedReportId === 4 ? '조발생률/표준화' : selectedReportId === 3 ? '검진권고안' : selectedReportId === 2 ? '연령별 장애인 통계' : '연령별 5대 사망원인'}
+                {selectedReportId === 11 ? '수술·치료비·산정특례' : selectedReportId === 10 ? '치료혜택 & 대상암종' : selectedReportId === 9 ? '추적검사 일정' : selectedReportId === 8 ? '국소재발 vs 원격전이' : selectedReportId === 7 ? '방사선치료/TNT' : selectedReportId === 6 ? '연도별 통계표' : selectedReportId === 5 ? '연령대별 주요 암종' : selectedReportId === 4 ? '조발생률/표준화' : selectedReportId === 3 ? '검진권고안' : selectedReportId === 2 ? '연령별 장애인 통계' : '연령별 5대 사망원인'}
               </button>
               <button
                 onClick={() => setActiveReportSubTab('sales')}
@@ -5664,8 +5693,241 @@ export default function PlannerGoods() {
             {/* Modal Body Content (Scrollable) */}
             <div className="p-4 sm:p-6 overflow-y-auto space-y-6 flex-1 text-slate-800">
               
-              {/* HEAVY ION THERAPY REPORT CONTENT (selectedReportId === 10) */}
-              {selectedReportId === 10 ? (
+              {/* CEREBROVASCULAR TREATMENT STATUS REPORT CONTENT (selectedReportId === 11) */}
+              {selectedReportId === 11 ? (
+                <div className="space-y-6 text-left">
+                  {/* Overview Banner */}
+                  <div className="p-4 bg-gradient-to-r from-[#123941] via-slate-900 to-[#1e4d56] text-white rounded-2xl space-y-2 border border-teal-800/50 shadow-md">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="px-2.5 py-1 bg-[#cb9f74] text-slate-950 text-[11px] font-black rounded-md uppercase tracking-wide">
+                        건강보험심사평가원 공식 통계 및 급여적정성 평가
+                      </span>
+                      <span className="text-xs text-teal-200 font-bold">
+                        뇌혈관질환(I60~I69) · 뇌경색(I63) · 뇌출혈(I60~I62)
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-black text-white flex items-center gap-2">
+                      <span>🧠 뇌혈관질환 진료현황 및 급성기 치료 핵심 리포트</span>
+                    </h3>
+                    <p className="text-xs text-slate-200 leading-relaxed">
+                      뇌혈관질환은 우리나라 사망원인 4위이자 단일 질환 기준 최상위 중증질환입니다. 건강보험심사평가원 급여적정성 평가 및 진료통계에 따르면, <strong className="text-amber-300 underline font-black">골든타임(증상 발생 후 3~4.5시간)</strong> 내 정맥 내 혈전용해술(tPA) 및 혈관내 재개통술 시행 여부가 환자의 영구적 후유장해와 생존율을 결정합니다.
+                    </p>
+                  </div>
+
+                  {/* Summary / Top10 Subtab Content */}
+                  {(activeReportSubTab === 'summary' || activeReportSubTab === 'top10') && (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-teal-50/80 border border-teal-200 rounded-2xl space-y-2">
+                        <h4 className="text-sm font-black text-[#123941] flex items-center gap-1.5">
+                          <span>📌 뇌혈관질환 진료통계 핵심 지표 (심평원 급여적정성 평가)</span>
+                        </h4>
+                        <p className="text-xs text-slate-700 leading-relaxed">
+                          뇌혈관질환 진료 실인원은 연간 <strong className="text-rose-700 underline font-black">110만 명을 돌파</strong>하였으며, 총 진료비는 <strong className="text-emerald-900 underline font-black">3조 5,000억 원 이상</strong>으로 지속 증가하고 있습니다. 특히 허혈성(뇌경색)이 전체 환자의 약 75%를 차지하고, 출혈성(뇌출혈)은 진료비와 치명률이 월등히 높아 조기 보장 설계가 필수적입니다.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="p-4 bg-rose-50 border border-rose-200 rounded-xl space-y-1.5 text-center">
+                          <span className="text-[11px] font-bold text-rose-800">급성 뇌경색 골든타임</span>
+                          <strong className="text-xl font-black text-rose-950 block">3~4.5시간 이내</strong>
+                          <p className="text-[11px] text-rose-900 leading-normal">
+                            tPA 정맥 투여 4.5시간, 동맥내 혈전제거술 6~24시간 내 신속 시행 필수.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-1.5 text-center">
+                          <span className="text-[11px] font-bold text-amber-800">연간 총 진료 환자수</span>
+                          <strong className="text-xl font-black text-amber-950 block">1,170,000+ 명</strong>
+                          <p className="text-[11px] text-amber-900 leading-normal">
+                            뇌경색(I63) 52만 명, 뇌출혈(I60~I62) 10만 명, 기타 뇌혈관 질환.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-teal-50 border border-teal-200 rounded-xl space-y-1.5 text-center">
+                          <span className="text-[11px] font-bold text-teal-800">환자 1인당 평균 진료비</span>
+                          <strong className="text-xl font-black text-teal-950 block">뇌출혈 1,600만+</strong>
+                          <p className="text-[11px] text-teal-900 leading-normal">
+                            급성기 입원 + 중환자실 + 개두술/코일색전술 시 수천만 원 비급여 발생.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+                        <h4 className="text-xs font-black text-slate-800">
+                          📊 질환 분류별 비중 및 치명률 비교 (심평원 질병소분류 통계)
+                        </h4>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-xs text-left">
+                            <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                              <tr>
+                                <th className="p-2.5">질환명 (상병코드)</th>
+                                <th className="p-2.5">환자 비중</th>
+                                <th className="p-2.5">급성기 치료법</th>
+                                <th className="p-2.5">평균 입원일수</th>
+                                <th className="p-2.5">보장 포인트</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-200 text-slate-600">
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-bold text-slate-900">뇌경색증 (I63)</td>
+                                <td className="p-2.5 text-blue-700 font-bold">약 75%</td>
+                                <td className="p-2.5">혈전용해제(tPA), 스텐트 혈전제거술</td>
+                                <td className="p-2.5">18.4일</td>
+                                <td className="p-2.5 font-semibold text-rose-700">뇌출혈 진단비에서는 부지급! 뇌혈관 진단비 필수</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-bold text-slate-900">지주막하출혈 (I60)</td>
+                                <td className="p-2.5 text-rose-700 font-bold">약 7%</td>
+                                <td className="p-2.5">코일색전술, 개두술 클립결찰술</td>
+                                <td className="p-2.5">26.8일</td>
+                                <td className="p-2.5 font-semibold text-rose-700">초기 사망률 30~40%, 고액 수술비 필요</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-bold text-slate-900">뇌내출혈 (I61, I62)</td>
+                                <td className="p-2.5 text-amber-700 font-bold">약 18%</td>
+                                <td className="p-2.5">혈종제거술, 뇌감압술, 보존치료</td>
+                                <td className="p-2.5">28.5일</td>
+                                <td className="p-2.5 font-semibold text-rose-700">고혈압성 뇌출혈 다발, 중증 후유장해 유발</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Gender / Golden Time Subtab Content */}
+                  {activeReportSubTab === 'gender' && (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-indigo-50/80 border border-indigo-200 rounded-2xl space-y-2">
+                        <h4 className="text-sm font-black text-indigo-950 flex items-center gap-1.5">
+                          <span>⏱️ 급성기 뇌경색 치료 프로세스 및 골든타임 관리 지침</span>
+                        </h4>
+                        <p className="text-xs text-slate-700 leading-relaxed">
+                          뇌세포는 혈류 공급이 중단되면 <strong className="text-rose-700 underline font-black">1분에 190만 개의 신경세포가 괴사</strong>합니다. 따라서 응급실 도착 직후 60분 이내(Door-to-Needle) 혈전용해제를 투여하고, 대혈관 폐색의 경우 혈관조영실로 이동하여 스텐트 리트리버를 통한 혈전제거술을 완료해야 후유증을 최소화할 수 있습니다.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2 shadow-2xs">
+                          <span className="px-2 py-0.5 bg-blue-100 text-blue-900 text-[10px] font-black rounded uppercase">
+                            단계 1 · 정맥 내 혈전용해술 (IV-tPA)
+                          </span>
+                          <h5 className="text-xs font-black text-slate-900">증상 발현 후 4.5시간 이내 투여</h5>
+                          <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside leading-relaxed">
+                            <li>혈관을 막고 있는 피떡(혈전)을 약물로 화학적 용해</li>
+                            <li>응급실 도착 즉시 뇌 CT/MRI 시행 후 출혈 배제 시 투약</li>
+                            <li>골든타임 경과 시 뇌출혈 전환 위험으로 투약 불가 판정</li>
+                          </ul>
+                        </div>
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2 shadow-2xs">
+                          <span className="px-2 py-0.5 bg-purple-100 text-purple-900 text-[10px] font-black rounded uppercase">
+                            단계 2 · 동맥 내 혈관재개통술 (EVT)
+                          </span>
+                          <h5 className="text-xs font-black text-slate-900">대혈관 폐색 시 6~24시간 내 기계적 혈전제거</h5>
+                          <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside leading-relaxed">
+                            <li>대퇴동맥을 통해 카테터를 뇌혈관까지 진입시켜 혈전 직접 흡인/포획</li>
+                            <li>혈관 재개통 성공률 80~90% 이상, 신경학적 회복 대폭 증대</li>
+                            <li>고가 의료장비 및 중환자실 집중 치료 동반</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-amber-50/70 border border-amber-200 rounded-xl space-y-2">
+                        <h4 className="text-xs font-black text-amber-950">
+                          🚨 뇌졸중 조기증상 인지 공식: F.A.S.T 법칙
+                        </h4>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                          <div className="p-2.5 bg-white rounded-lg border border-amber-200">
+                            <span className="font-black text-amber-900 block text-sm">F (Face)</span>
+                            <span className="text-slate-600 text-[11px]">안면 마비 (웃을 때 입꼬리 처짐)</span>
+                          </div>
+                          <div className="p-2.5 bg-white rounded-lg border border-amber-200">
+                            <span className="font-black text-amber-900 block text-sm">A (Arms)</span>
+                            <span className="text-slate-600 text-[11px]">팔 마비 (두 팔 들 때 한쪽 처짐)</span>
+                          </div>
+                          <div className="p-2.5 bg-white rounded-lg border border-amber-200">
+                            <span className="font-black text-amber-900 block text-sm">S (Speech)</span>
+                            <span className="text-slate-600 text-[11px]">발음 이상 (어눌함, 말문 막힘)</span>
+                          </div>
+                          <div className="p-2.5 bg-white rounded-lg border border-amber-200">
+                            <span className="font-black text-amber-900 block text-sm">T (Time)</span>
+                            <span className="text-slate-600 text-[11px]">즉시 119 호출 및 대형병원 이송</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Age / Cost Subtab Content */}
+                  {activeReportSubTab === 'age' && (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-emerald-50/80 border border-emerald-200 rounded-2xl space-y-2">
+                        <h4 className="text-sm font-black text-emerald-950 flex items-center gap-1.5">
+                          <span>💰 뇌혈관질환 수술 및 산정특례·재활치료 비용 체계</span>
+                        </h4>
+                        <p className="text-xs text-slate-700 leading-relaxed">
+                          뇌혈관질환은 건강보험 중증질환 <strong className="text-emerald-900 underline font-black">산정특례 대상(본인부담금 5%)</strong>으로 지정되어 급여 비용 부담은 낮아지지만, 로봇재활, 비급여 MRI/혈관조영, 간병비, 간병인 사용료, 퇴원 후 장기 통원 및 언어·물리 재활치료로 인해 <strong className="text-rose-700 underline font-black">간접 의료비와 소득 상실</strong>이 치명적입니다.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-2xs">
+                          <span className="text-[11px] font-bold text-slate-500">산정특례 적용 기간</span>
+                          <strong className="text-lg font-black text-slate-900 block">최대 30일 (급성기)</strong>
+                          <p className="text-[11px] text-slate-600 leading-normal">
+                            암(5년)과 달리 뇌혈관질환은 수술/급성기 30일만 특례 적용 후 일반 본인부담금으로 전환!
+                          </p>
+                        </div>
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-2xs">
+                          <span className="text-[11px] font-bold text-slate-500">간병비 부담</span>
+                          <strong className="text-lg font-black text-rose-700 block">월 350~450만 원</strong>
+                          <p className="text-[11px] text-slate-600 leading-normal">
+                            편마비·인지저하 환자의 전문 간병 필수, 비급여로 전액 환자 자부담.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-2xs">
+                          <span className="text-[11px] font-bold text-slate-500">장기 재활 통원비용</span>
+                          <strong className="text-lg font-black text-blue-700 block">연간 1,500만+</strong>
+                          <p className="text-[11px] text-slate-600 leading-normal">
+                            신경계 재활 치료, 도수치료, 비급여 기능회복 훈련의 지속적 비용 발생.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Sales Guide Subtab Content */}
+                  {activeReportSubTab === 'sales' && (
+                    <div className="p-5 bg-gradient-to-br from-amber-50/90 to-orange-50/70 border border-amber-200 rounded-2xl space-y-4">
+                      <div className="flex items-center gap-2">
+                        <Award className="w-5 h-5 text-amber-700" />
+                        <h4 className="text-sm font-black text-slate-900">
+                          🎯 설계사를 위한 뇌혈관질환 실전 영업 화법 및 클로징 포인트
+                        </h4>
+                      </div>
+                      <div className="space-y-3 text-xs text-slate-700 leading-relaxed">
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-emerald-900 block">1. "고객님 증권에 '뇌출혈'만 들어있지 않으신가요?"</span>
+                          <p className="text-slate-600">
+                            통계상 뇌혈관 환자의 75%는 뇌경색(I63)입니다. 예전 생명보험이나 구형 손해보험의 '뇌출혈' 담보는 뇌경색 발생 시 보험금이 0원입니다. 반드시 I60~I69 전체를 보장하는 '뇌혈관질환 진단비'로 업그레이드해야 함을 심평원 통계로 제시하세요.
+                          </p>
+                        </div>
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-emerald-900 block">2. "산정특례는 암처럼 5년이 아니라 딱 30일입니다!"</span>
+                          <p className="text-slate-600">
+                            뇌혈관질환 산정특례는 급성기 입원 최대 30일(수술 미시행 시 14일)만 적용됩니다. 이후 수년 동안 이어지는 편마비 재활, 간병인 비용, 언어치료는 고객의 통장에서 고스란히 빠져나갑니다.
+                          </p>
+                        </div>
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-emerald-900 block">3. "혈전용해치료비와 뇌혈관 수술비, 간병인보험의 3단 방어선"</span>
+                          <p className="text-slate-600">
+                            급성기 혈전용해제 투여 시 지급되는 혈전용해치료비 담보, 코일색전술/스텐트 삽입 시 반복 지급되는 뇌혈관질환 수술비, 그리고 마비 후유증을 지켜주는 간병인 사용일당을 세트로 제안하세요.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : selectedReportId === 10 ? (
                 <div className="space-y-6 text-left">
                   {/* Overview Banner */}
                   <div className="p-4 bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white rounded-2xl space-y-2 border border-blue-800/50 shadow-md">
