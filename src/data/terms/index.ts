@@ -172,6 +172,12 @@ export const INSURER_SUBTABS: Record<string, SubTabInfo[]> = {
     { id: "lina_integrated_cancer_metastasis", label: "통합전이암", groupCount: "8개 그룹" },
     { id: "lina_high_cost_cancer", label: "고액치료비암", groupCount: "5개" },
     { id: "lina_surgery1_5", label: "1-5종수술비" }
+  ],
+  "samsung-life": [
+    { id: "samsung_life_integrated_cancer", label: "통합암(전이포함) 분류표", groupCount: "9개 그룹" },
+    { id: "samsung_life_benign_neoplasm", label: "통합양성신생물 분류표", groupCount: "8개 그룹" },
+    { id: "samsung_life_50_diseases", label: "50대질병 분류표", groupCount: "50개 질병" },
+    { id: "samsung_life_18_diseases", label: "18대질병 분류표", groupCount: "18개 질병" }
   ]
 };
 
@@ -419,6 +425,27 @@ import {
   LINA_SURGERY_1_5_SECTIONS
 } from "./lina";
 
+export {
+  SAMSUNG_LIFE_INTEGRATED_CANCER_SECTIONS,
+  SAMSUNG_LIFE_INTEGRATED_CANCER_SUMMARY,
+  SAMSUNG_LIFE_BENIGN_NEOPLASM_SECTIONS,
+  SAMSUNG_LIFE_BENIGN_NEOPLASM_SUMMARY,
+  SAMSUNG_LIFE_50_DISEASES_SECTIONS,
+  SAMSUNG_LIFE_50_DISEASES_SUMMARY,
+  SAMSUNG_LIFE_18_DISEASES_SECTIONS,
+  SAMSUNG_LIFE_18_DISEASES_SUMMARY
+} from "./samsungLife";
+import {
+  SAMSUNG_LIFE_INTEGRATED_CANCER_SECTIONS,
+  SAMSUNG_LIFE_INTEGRATED_CANCER_SUMMARY,
+  SAMSUNG_LIFE_BENIGN_NEOPLASM_SECTIONS,
+  SAMSUNG_LIFE_BENIGN_NEOPLASM_SUMMARY,
+  SAMSUNG_LIFE_50_DISEASES_SECTIONS,
+  SAMSUNG_LIFE_50_DISEASES_SUMMARY,
+  SAMSUNG_LIFE_18_DISEASES_SECTIONS,
+  SAMSUNG_LIFE_18_DISEASES_SUMMARY
+} from "./samsungLife";
+
 export function getSummaryForSubTab(
   insurerId: string,
   subTabId: string,
@@ -427,6 +454,12 @@ export function getSummaryForSubTab(
   dbBrainTab?: string
 ): any {
   switch (insurerId) {
+    case "samsung-life":
+      if (subTabId === "samsung_life_integrated_cancer") return SAMSUNG_LIFE_INTEGRATED_CANCER_SUMMARY;
+      if (subTabId === "samsung_life_benign_neoplasm") return SAMSUNG_LIFE_BENIGN_NEOPLASM_SUMMARY;
+      if (subTabId === "samsung_life_50_diseases") return SAMSUNG_LIFE_50_DISEASES_SUMMARY;
+      if (subTabId === "samsung_life_18_diseases") return SAMSUNG_LIFE_18_DISEASES_SUMMARY;
+      return null;
     case "lina-fire":
       if (subTabId === "lina_integrated_cancer") return LINA_INTEGRATED_CANCER_SUMMARY;
       if (subTabId === "lina_integrated_cancer_metastasis") return LINA_INTEGRATED_CANCER_METASTASIS_SUMMARY;
@@ -669,6 +702,13 @@ export function getSectionsForInsurerSubTab(insurerId: string, subTabId: string)
       if (subTabId === "nh_surgery71") return NH_SURGERY_71_SECTIONS;
       if (subTabId === "nh_surgery144") return NH_SURGERY_144_SECTIONS;
       return NH_CANCER_SECTIONS;
+
+    case "samsung-life":
+      if (subTabId === "samsung_life_integrated_cancer") return SAMSUNG_LIFE_INTEGRATED_CANCER_SECTIONS;
+      if (subTabId === "samsung_life_benign_neoplasm") return SAMSUNG_LIFE_BENIGN_NEOPLASM_SECTIONS;
+      if (subTabId === "samsung_life_50_diseases") return SAMSUNG_LIFE_50_DISEASES_SECTIONS;
+      if (subTabId === "samsung_life_18_diseases") return SAMSUNG_LIFE_18_DISEASES_SECTIONS;
+      return [];
 
     default: // DB
       if (subTabId === "cancer") return DB_CANCER_SECTIONS;

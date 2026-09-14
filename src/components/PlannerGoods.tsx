@@ -9,7 +9,7 @@ import { ShoppingBag, Search, Download, ExternalLink, Filter, HelpCircle, CheckC
 interface GoodItem {
   id: number;
   title: string;
-  category: 'materials' | 'stationery' | 'gifts' | 'digital' | 'disability' | 'breastcancer' | 'breastcancerrecurrence' | 'stomachcancerrecurrence' | 'heavyiontherapy' | 'cerebrovasculartreat' | 'cancerstats' | 'agecancer' | 'insitucancer' | 'coloncancertreat';
+  category: 'materials' | 'stationery' | 'gifts' | 'digital' | 'disability' | 'breastcancer' | 'breastcancerrecurrence' | 'stomachcancerrecurrence' | 'heavyiontherapy' | 'cerebrovasculartreat' | 'heartdiseasetreat' | 'cancerstats' | 'agecancer' | 'insitucancer' | 'coloncancertreat';
   categoryLabel: string;
   badgeLeft?: string;
   badgeRight?: string;
@@ -190,8 +190,8 @@ function Age80Char() {
 
 export default function PlannerGoods() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeTab, setActiveTab] = useState<'all' | 'cerebrovasculartreat' | 'heavyiontherapy' | 'stomachcancerrecurrence' | 'agecancer' | 'cancerstats' | 'breastcancer' | 'breastcancerrecurrence' | 'disability' | 'insitucancer' | 'coloncancertreat' | 'materials' | 'stationery' | 'gifts' | 'digital'>('all');
-  const [downloadCount, setDownloadCount] = useState<Record<number, number>>({ 1: 1248, 2: 954, 3: 1120, 4: 1380, 5: 1450, 9: 1620, 10: 2150, 11: 1890 });
+  const [activeTab, setActiveTab] = useState<'all' | 'cerebrovasculartreat' | 'heartdiseasetreat' | 'heavyiontherapy' | 'stomachcancerrecurrence' | 'agecancer' | 'cancerstats' | 'breastcancer' | 'breastcancerrecurrence' | 'disability' | 'insitucancer' | 'coloncancertreat' | 'materials' | 'stationery' | 'gifts' | 'digital'>('all');
+  const [downloadCount, setDownloadCount] = useState<Record<number, number>>({ 1: 1248, 2: 954, 3: 1120, 4: 1380, 5: 1450, 9: 1620, 10: 2150, 11: 1890, 12: 1720 });
   const [selectedInquiryProduct, setSelectedInquiryProduct] = useState<GoodItem | null>(null);
   const [showReportModal, setShowReportModal] = useState<boolean>(false);
   const [selectedReportId, setSelectedReportId] = useState<number>(1);
@@ -201,6 +201,20 @@ export default function PlannerGoods() {
   const [inquirySuccess, setInquirySuccess] = useState(false);
 
   const goods: GoodItem[] = [
+    {
+      id: 12,
+      title: '심장질환 진료현황 (건강보험심사평가원 5개년 진료통계 및 주요 수술 분석)',
+      category: 'heartdiseasetreat',
+      categoryLabel: '심장질환 진료현황',
+      badgeLeft: '건강보험심사평가원',
+      badgeRight: '진료통계분석',
+      price: '무료 PDF / 웹뷰',
+      desc: '건강보험심사평가원 최신 5개년(2018~2022년) 심장질환(I05~I09, I20~I27, I30~I52) 진료현황 분석 리포트. 연간 환자수 183만 명 및 총 진료비 2조 5,391억 원, 허혈성심질환(협심증·심근경색증) 및 부정맥 환자 추이, 경피적 관상동맥 중재술(PCI)·관상동맥 우회술(CABG)·부정맥수술 진료현황, 심장질환 진단비·수술비·산정특례 영업 브리핑 가이드.',
+      isDownloadable: true,
+      downloadUrl: '/planner-goods-files/heart-disease-treatment-status.pdf',
+      image: 'bg-[#123941] text-white',
+      tags: ['심장질환', '심장질환진료현황', '건강보험심사평가원', '허혈성심질환', '협심증', '심근경색증', '부정맥질환', '관상동맥중재술PCI', '관상동맥우회술CABG', '영업브리핑자료']
+    },
     {
       id: 11,
       title: '뇌혈관 진료현황 (건강보험심사평가원 급여적정성 평가 및 진료통계)',
@@ -2993,7 +3007,14 @@ export default function PlannerGoods() {
 
   const handleOpenReportPdf = (reportId: number | string) => {
     const id = Number(reportId);
-    if (id === 11) {
+    if (id === 12) {
+      const link = document.createElement('a');
+      link.href = '/planner-goods-files/heart-disease-treatment-status.pdf';
+      link.download = 'heart-disease-treatment-status.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (id === 11) {
       const link = document.createElement('a');
       link.href = '/planner-goods-files/cerebrovascular-treatment-status.pdf';
       link.download = 'cerebrovascular-treatment-status.pdf';
@@ -3025,6 +3046,7 @@ export default function PlannerGoods() {
 
   const getReportFilename = (reportId: number | string) => {
     const id = Number(reportId);
+    if (id === 12) return 'heart-disease-treatment-status.pdf';
     if (id === 11) return 'cerebrovascular-treatment-status.pdf';
     if (id === 10) return '중입자치료_연세암병원_공식가이드.pdf';
     if (id === 9) return '위암_재발및전이_국가암지식정보센터.pdf';
@@ -3115,6 +3137,7 @@ export default function PlannerGoods() {
           {[
             { id: 'all', label: '전체' },
             { id: 'cerebrovasculartreat', label: '뇌혈관 진료현황' },
+            { id: 'heartdiseasetreat', label: '심장질환 진료현황' },
             { id: 'heavyiontherapy', label: '중입자치료' },
             { id: 'stomachcancerrecurrence', label: '위암 재발 및 전이' },
             { id: 'breastcancerrecurrence', label: '유방암 재발 및 전이' },
@@ -5533,7 +5556,9 @@ export default function PlannerGoods() {
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-0.5 bg-[#cb9f74] text-slate-950 text-[10px] font-black rounded uppercase">
-                      {selectedReportId === 11
+                      {selectedReportId === 12
+                        ? '건강보험심사평가원'
+                        : selectedReportId === 11
                         ? '건강보험심사평가원'
                         : selectedReportId === 10
                         ? '연세암병원 중입자치료센터'
@@ -5556,7 +5581,9 @@ export default function PlannerGoods() {
                         : '통계청 OFFICIAL'}
                     </span>
                     <span className="text-xs text-slate-300 font-bold">
-                      {selectedReportId === 11
+                      {selectedReportId === 12
+                        ? '5개년 진료통계 및 주요 수술 분석 (HIRA 심평원 공식)'
+                        : selectedReportId === 11
                         ? '급여적정성 평가 및 진료통계 (HIRA 심평원 공식)'
                         : selectedReportId === 10
                         ? '공식 가이드 (연세암병원·대한방사선종양학회 검수)'
@@ -5580,7 +5607,9 @@ export default function PlannerGoods() {
                     </span>
                   </div>
                   <h2 className="text-lg sm:text-xl font-black text-white mt-1">
-                    {selectedReportId === 11
+                    {selectedReportId === 12
+                      ? '심장질환 진료현황 (건강보험심사평가원 5개년 진료통계 · 허혈성/부정맥 분석 · 주요 수술 가이드)'
+                      : selectedReportId === 11
                       ? '뇌혈관 진료현황 (건강보험심사평가원 급여적정성 평가 · 뇌경색/뇌출혈 진료통계 · 골든타임 가이드)'
                       : selectedReportId === 10
                       ? '중입자치료 (연세암병원 중입자치료센터 공식 가이드 · 브래그 피크 · 입자비교 · DNA절단 리포트)'
@@ -5651,9 +5680,9 @@ export default function PlannerGoods() {
                 }`}
               >
                 <TrendingUp className="w-4 h-4" />
-                {selectedReportId === 11 ? '진료통계/환자추이' : selectedReportId === 10 ? '입자물리 특성비교' : selectedReportId === 9 ? '재발률/누적비율' : selectedReportId === 8 ? '재발률/통계개요' : selectedReportId === 7 ? '내시경/수술 절제' : selectedReportId === 6 ? '25년간 추이' : selectedReportId === 5 ? '연령군별 발생률' : selectedReportId === 4 ? '남녀 전체 Top10' : selectedReportId === 3 ? '치료제/자가검진' : selectedReportId === 2 ? '대표질환별 지급률' : '10대 사망원인 그래프'}
+                {selectedReportId === 12 ? '진료통계/환자추이' : selectedReportId === 11 ? '진료통계/환자추이' : selectedReportId === 10 ? '입자물리 특성비교' : selectedReportId === 9 ? '재발률/누적비율' : selectedReportId === 8 ? '재발률/통계개요' : selectedReportId === 7 ? '내시경/수술 절제' : selectedReportId === 6 ? '25년간 추이' : selectedReportId === 5 ? '연령군별 발생률' : selectedReportId === 4 ? '남녀 전체 Top10' : selectedReportId === 3 ? '치료제/자가검진' : selectedReportId === 2 ? '대표질환별 지급률' : '10대 사망원인 그래프'}
               </button>
-              {(selectedReportId === 1 || selectedReportId === 4 || selectedReportId === 5 || selectedReportId === 6 || selectedReportId === 7 || selectedReportId === 8 || selectedReportId === 9 || selectedReportId === 10 || selectedReportId === 11) && (
+              {(selectedReportId === 1 || selectedReportId === 4 || selectedReportId === 5 || selectedReportId === 6 || selectedReportId === 7 || selectedReportId === 8 || selectedReportId === 9 || selectedReportId === 10 || selectedReportId === 11 || selectedReportId === 12) && (
                 <button
                   onClick={() => setActiveReportSubTab('gender')}
                   className={`py-3 px-3 text-xs sm:text-sm font-bold border-b-2 transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
@@ -5663,7 +5692,7 @@ export default function PlannerGoods() {
                   }`}
                 >
                   <Users className="w-4 h-4" />
-                  {selectedReportId === 11 ? '골든타임 & 급성기치료' : selectedReportId === 10 ? '브래그피크 & DNA' : selectedReportId === 9 ? '3대 재발유형' : selectedReportId === 8 ? '원격 전이 치료법' : selectedReportId === 7 ? '항암/표적/면역치료' : selectedReportId === 6 ? '성별 주요 발생암' : selectedReportId === 5 ? '50대 남녀역전 분석' : selectedReportId === 4 ? '성별 발생 비교' : '성별 비교 분석'}
+                  {selectedReportId === 12 ? '허혈성심질환 & 부정맥' : selectedReportId === 11 ? '골든타임 & 급성기치료' : selectedReportId === 10 ? '브래그피크 & DNA' : selectedReportId === 9 ? '3대 재발유형' : selectedReportId === 8 ? '원격 전이 치료법' : selectedReportId === 7 ? '항암/표적/면역치료' : selectedReportId === 6 ? '성별 주요 발생암' : selectedReportId === 5 ? '50대 남녀역전 분석' : selectedReportId === 4 ? '성별 발생 비교' : '성별 비교 분석'}
                 </button>
               )}
               <button
@@ -5675,7 +5704,7 @@ export default function PlannerGoods() {
                 }`}
               >
                 <Layers className="w-4 h-4" />
-                {selectedReportId === 11 ? '수술·치료비·산정특례' : selectedReportId === 10 ? '치료혜택 & 대상암종' : selectedReportId === 9 ? '추적검사 일정' : selectedReportId === 8 ? '국소재발 vs 원격전이' : selectedReportId === 7 ? '방사선치료/TNT' : selectedReportId === 6 ? '연도별 통계표' : selectedReportId === 5 ? '연령대별 주요 암종' : selectedReportId === 4 ? '조발생률/표준화' : selectedReportId === 3 ? '검진권고안' : selectedReportId === 2 ? '연령별 장애인 통계' : '연령별 5대 사망원인'}
+                {selectedReportId === 12 ? '주요수술·치료비·산정특례' : selectedReportId === 11 ? '수술·치료비·산정특례' : selectedReportId === 10 ? '치료혜택 & 대상암종' : selectedReportId === 9 ? '추적검사 일정' : selectedReportId === 8 ? '국소재발 vs 원격전이' : selectedReportId === 7 ? '방사선치료/TNT' : selectedReportId === 6 ? '연도별 통계표' : selectedReportId === 5 ? '연령대별 주요 암종' : selectedReportId === 4 ? '조발생률/표준화' : selectedReportId === 3 ? '검진권고안' : selectedReportId === 2 ? '연령별 장애인 통계' : '연령별 5대 사망원인'}
               </button>
               <button
                 onClick={() => setActiveReportSubTab('sales')}
@@ -5693,8 +5722,316 @@ export default function PlannerGoods() {
             {/* Modal Body Content (Scrollable) */}
             <div className="p-4 sm:p-6 overflow-y-auto space-y-6 flex-1 text-slate-800">
               
-              {/* CEREBROVASCULAR TREATMENT STATUS REPORT CONTENT (selectedReportId === 11) */}
-              {selectedReportId === 11 ? (
+              {/* HEART DISEASE TREATMENT STATUS REPORT CONTENT (selectedReportId === 12) */}
+              {selectedReportId === 12 ? (
+                <div className="space-y-6 text-left">
+                  {/* Overview Banner */}
+                  <div className="p-4 bg-gradient-to-r from-[#123941] via-slate-900 to-[#1e4d56] text-white rounded-2xl space-y-2 border border-teal-800/50 shadow-md">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="px-2.5 py-1 bg-[#cb9f74] text-slate-950 text-[11px] font-black rounded-md uppercase tracking-wide">
+                        건강보험심사평가원 공식 5개년 진료통계 분석
+                      </span>
+                      <span className="text-xs text-teal-200 font-bold">
+                        심장질환(I05~I09, I20~I27, I30~I52) · 허혈성(I20~I25) · 부정맥(I47~I49)
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-black text-white flex items-center gap-2">
+                      <span>🫀 심장질환 진료현황 및 주요 수술 치료 핵심 리포트</span>
+                    </h3>
+                    <p className="text-xs text-slate-200 leading-relaxed">
+                      심장질환은 우리나라 <strong className="text-amber-300 underline font-black">사망원인 2위 질환</strong>(통계청 2022년 사망원인통계)에 해당합니다. 건강보험심사평가원 최근 5개년(2018~2022년) 진료내역 분석 결과에 따르면, 연간 총 진료비가 <strong className="text-amber-300 underline font-black">2조 5,391억 원(38.5% 증가)</strong>으로 급증하였으며, 환자는 50대 이상 고령층뿐만 아니라 10~20대 젊은 층에서도 환자비율이 빠르게 증가하고 있습니다.
+                    </p>
+                  </div>
+
+                  {/* Summary / Top10 Subtab Content */}
+                  {(activeReportSubTab === 'summary' || activeReportSubTab === 'top10') && (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-teal-50/80 border border-teal-200 rounded-2xl space-y-2">
+                        <h4 className="text-sm font-black text-[#123941] flex items-center gap-1.5">
+                          <span>📌 심장질환 진료통계 핵심 지표 (심평원 5개년 추이 분석)</span>
+                        </h4>
+                        <p className="text-xs text-slate-700 leading-relaxed">
+                          최근 5년간 심장질환 진료 환자 수는 <strong className="text-rose-700 underline font-black">152만 9,537명에서 183만 3,320명으로 19.9% 증가</strong>(남성 23.2%↑, 여성 15.6%↑)하였고, 연간 총 진료비는 <strong className="text-emerald-900 underline font-black">1조 8,329억 원에서 2조 5,391억 원으로 38.5% 증가</strong>(남성 41.8%↑, 여성 33.2%↑)했습니다. 환자 1인당 진료비 역시 138만 4,947원으로 15.6% 증가했습니다.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="p-4 bg-rose-50 border border-rose-200 rounded-xl space-y-1.5 text-center">
+                          <span className="text-[11px] font-bold text-rose-800">연간 총 진료 환자수</span>
+                          <strong className="text-xl font-black text-rose-950 block">1,833,320명</strong>
+                          <p className="text-[11px] text-rose-900 leading-normal">
+                            2018년 대비 19.9% 증가 (남성 105만 4,345명으로 23.2% 급증)
+                          </p>
+                        </div>
+                        <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-1.5 text-center">
+                          <span className="text-[11px] font-bold text-amber-800">연간 총 진료비</span>
+                          <strong className="text-xl font-black text-amber-950 block">2조 5,391억 원</strong>
+                          <p className="text-[11px] text-amber-900 leading-normal">
+                            2018년 대비 38.5% 증가 (남성 진료비 1조 6,055억 원 41.8%↑)
+                          </p>
+                        </div>
+                        <div className="p-4 bg-teal-50 border border-teal-200 rounded-xl space-y-1.5 text-center">
+                          <span className="text-[11px] font-bold text-teal-800">연령별 최고 환자비율</span>
+                          <strong className="text-xl font-black text-teal-950 block">80세 이상 15.47%</strong>
+                          <p className="text-[11px] text-teal-900 leading-normal">
+                            70대 13.53%, 60대 7.37% 순 (10대 40.5%↑, 20대 40.9%↑ 급증)
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+                        <h4 className="text-xs font-black text-slate-800">
+                          📊 최근 5년(2018~2022년) 성별 심장질환 진료현황 (심평원 [표1])
+                        </h4>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-xs text-left">
+                            <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                              <tr>
+                                <th className="p-2.5">구분</th>
+                                <th className="p-2.5">2018년</th>
+                                <th className="p-2.5">2020년</th>
+                                <th className="p-2.5">2022년</th>
+                                <th className="p-2.5">'18년 대비 '22년 증감률</th>
+                                <th className="p-2.5">연평균 증감률</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-200 text-slate-600">
+                              <tr className="hover:bg-white transition-colors bg-teal-50/40 font-bold text-slate-900">
+                                <td className="p-2.5">전체 환자수</td>
+                                <td className="p-2.5">1,529,537명</td>
+                                <td className="p-2.5">1,625,042명</td>
+                                <td className="p-2.5 text-teal-900 font-black">1,833,320명</td>
+                                <td className="p-2.5 text-rose-700 font-black">▲ 19.9%</td>
+                                <td className="p-2.5">▲ 4.6%</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-semibold text-slate-800">남성 환자수</td>
+                                <td className="p-2.5">855,689명</td>
+                                <td className="p-2.5">929,533명</td>
+                                <td className="p-2.5 font-bold text-blue-700">1,054,345명</td>
+                                <td className="p-2.5 text-rose-700 font-bold">▲ 23.2%</td>
+                                <td className="p-2.5">▲ 5.4%</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-semibold text-slate-800">여성 환자수</td>
+                                <td className="p-2.5">673,848명</td>
+                                <td className="p-2.5">695,509명</td>
+                                <td className="p-2.5">778,975명</td>
+                                <td className="p-2.5 text-rose-700 font-bold">▲ 15.6%</td>
+                                <td className="p-2.5">▲ 3.7%</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors bg-teal-50/40 font-bold text-slate-900">
+                                <td className="p-2.5">전체 진료비</td>
+                                <td className="p-2.5">1조 8,329억 원</td>
+                                <td className="p-2.5">2조 918억 원</td>
+                                <td className="p-2.5 text-teal-900 font-black">2조 5,391억 원</td>
+                                <td className="p-2.5 text-rose-700 font-black">▲ 38.5%</td>
+                                <td className="p-2.5">▲ 8.5%</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-semibold text-slate-800">남성 진료비</td>
+                                <td className="p-2.5">1조 1,321억 원</td>
+                                <td className="p-2.5">1조 3,150억 원</td>
+                                <td className="p-2.5 font-bold text-blue-700">1조 6,055억 원</td>
+                                <td className="p-2.5 text-rose-700 font-bold">▲ 41.8%</td>
+                                <td className="p-2.5">▲ 9.1%</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-semibold text-slate-800">1인당 진료비</td>
+                                <td className="p-2.5">119만 8,341원</td>
+                                <td className="p-2.5">128만 7,253원</td>
+                                <td className="p-2.5 font-bold text-slate-900">138만 4,947원</td>
+                                <td className="p-2.5 text-rose-700 font-bold">▲ 15.6%</td>
+                                <td className="p-2.5">▲ 3.7%</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Ischemic Heart Disease & Arrhythmia Subtab Content */}
+                  {activeReportSubTab === 'gender' && (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-indigo-50/80 border border-indigo-200 rounded-2xl space-y-2">
+                        <h4 className="text-sm font-black text-indigo-950 flex items-center gap-1.5">
+                          <span>🫀 허혈성심질환(협심증·심근경색증) & 부정맥질환 집중 분석</span>
+                        </h4>
+                        <p className="text-xs text-slate-700 leading-relaxed">
+                          심장질환 환자의 과반 이상인 <strong className="text-rose-700 underline font-black">56.1%가 허혈성심장질환[I20~I25]</strong>(102만 7,842명)입니다. 특히 만성 허혈심장병(29.3%↑)과 심근경색증(19.6%↑) 환자가 지속 증가하고 있습니다. 또한 대표적 심장질환인 <strong className="text-rose-700 underline font-black">부정맥질환[I47~I49]</strong> 환자는 46만 3,538명으로 25.0% 증가하였고, 연간 총 진료비는 5년간 <strong className="text-rose-700 underline font-black">61.6% 급증</strong>했습니다.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2 shadow-2xs">
+                          <span className="px-2 py-0.5 bg-blue-100 text-blue-900 text-[10px] font-black rounded uppercase">
+                            허혈성심질환 세부상병 진료현황 (심평원 [표5, 표6])
+                          </span>
+                          <h5 className="text-xs font-black text-slate-900">협심증 70.5만 명 · 심근경색증 13.2만 명</h5>
+                          <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside leading-relaxed">
+                            <li><strong className="text-slate-900">협심증(I20)</strong>: '22년 70만 5,259명 (진료비 5,755억 원, 17.1%↑)</li>
+                            <li><strong className="text-slate-900">심근경색증(I21~I22)</strong>: '22년 13만 2,041명 (19.6%↑, 진료비 4,345억 원 28.2%↑)</li>
+                            <li><strong className="text-slate-900">만성 허혈심장병(I25)</strong>: '22년 25만 225명 (5년간 29.3% 증가)</li>
+                            <li><strong className="text-slate-900">심근경색 1인당 진료비</strong>: 329만 원 (협심증 1인당 81.6만 원 대비 4배 고액)</li>
+                          </ul>
+                        </div>
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-2 shadow-2xs">
+                          <span className="px-2 py-0.5 bg-purple-100 text-purple-900 text-[10px] font-black rounded uppercase">
+                            부정맥질환[I47~I49] 진료현황 (심평원 [표8])
+                          </span>
+                          <h5 className="text-xs font-black text-slate-900">환자 46.3만 명 · 총 진료비 61.6% 급증</h5>
+                          <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside leading-relaxed">
+                            <li><strong className="text-slate-900">부정맥 환자수</strong>: 37만 822명('18년) → 46만 3,538명('22년) (25.0%↑)</li>
+                            <li><strong className="text-slate-900">연간 총 진료비</strong>: 2,470억 원('18년) → 3,992억 원('22년) (61.6%↑)</li>
+                            <li><strong className="text-slate-900">성별</strong>: 남성 24만 2,953명(26.8%↑, 진료비 70.5%↑), 여성 22만 585명(23.1%↑)</li>
+                            <li><strong className="text-slate-900">연령별 환자비율</strong>: 80세 이상 3.73%, 70대 3.23% (10대 33.5%↑, 20대 32.3%↑)</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-amber-50/70 border border-amber-200 rounded-xl space-y-2">
+                        <h4 className="text-xs font-black text-amber-950">
+                          ⚠️ 심장질환 보장 공백 주의: 허혈성 vs 급성심근경색 담보 범위
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center text-xs">
+                          <div className="p-2.5 bg-white rounded-lg border border-amber-200">
+                            <span className="font-black text-slate-900 block text-xs">협심증 (I20)</span>
+                            <span className="text-rose-700 font-bold text-[11px]">705,259명 (전체의 68.6%)</span>
+                            <p className="text-slate-500 text-[10px] mt-1">급성심근경색 담보 시 미지급!</p>
+                          </div>
+                          <div className="p-2.5 bg-white rounded-lg border border-amber-200">
+                            <span className="font-black text-slate-900 block text-xs">심근경색증 (I21~I22)</span>
+                            <span className="text-blue-700 font-bold text-[11px]">132,041명 (전체의 12.8%)</span>
+                            <p className="text-slate-500 text-[10px] mt-1">급성심근경색 담보 지급 대상</p>
+                          </div>
+                          <div className="p-2.5 bg-white rounded-lg border border-amber-200">
+                            <span className="font-black text-slate-900 block text-xs">부정맥 (I47~I49)</span>
+                            <span className="text-purple-700 font-bold text-[11px]">463,538명 (급증세)</span>
+                            <p className="text-slate-500 text-[10px] mt-1">허혈성 담보에서도 미지급! 심혈관 담보 필요</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Age / Cost Subtab Content */}
+                  {activeReportSubTab === 'age' && (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-emerald-50/80 border border-emerald-200 rounded-2xl space-y-2">
+                        <h4 className="text-sm font-black text-emerald-950 flex items-center gap-1.5">
+                          <span>💰 심장질환 주요 수술(PCI·CABG·부정맥수술) 및 진료비 통계</span>
+                        </h4>
+                        <p className="text-xs text-slate-700 leading-relaxed">
+                          심장질환은 약물 치료 외에도 <strong className="text-emerald-900 underline font-black">경피적 관상동맥 중재술(PCI), 관상동맥 우회술(CABG), 부정맥 수술</strong> 등 고난도 중증 수술 치료가 빈번하게 시행됩니다. 심평원 분석에 따르면 주요 수술 환자수와 총 진료비가 가파르게 상승하고 있으며, 특히 관상동맥 우회술은 1인당 진료비가 1,000만 원에 육박하고 부정맥 수술 총 진료비는 78.3% 급증했습니다.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-2xs">
+                          <span className="text-[11px] font-bold text-slate-500">경피적 관상동맥 중재술 (PCI)</span>
+                          <strong className="text-lg font-black text-blue-700 block">연간 56,497명</strong>
+                          <p className="text-[11px] text-slate-600 leading-normal">
+                            총 진료비 1,304억 원(27.0%↑), 1인당 진료비 230만 7,465원(22.3%↑). 스텐트 삽입술 등.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-2xs">
+                          <span className="text-[11px] font-bold text-slate-500">관상동맥 우회술 (CABG)</span>
+                          <strong className="text-lg font-black text-rose-700 block">1인당 981만 원</strong>
+                          <p className="text-[11px] text-slate-600 leading-normal">
+                            연간 환자 2,337명(8.1%↑), 총 진료비 229억 원(13.9%↑). 개흉술을 통한 고액 수술.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-2xs">
+                          <span className="text-[11px] font-bold text-slate-500">부정맥 수술 (자200-1, 자654 등)</span>
+                          <strong className="text-lg font-black text-purple-700 block">진료비 78.3% 급증</strong>
+                          <p className="text-[11px] text-slate-600 leading-normal">
+                            환자수 12,047명(36.5%↑), 총 진료비 414억 원(78.3%↑), 1인당 343만 9,774원(30.6%↑).
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+                        <h4 className="text-xs font-black text-slate-800">
+                          📊 최근 5년(2018~2022년) 심장질환 주요 수술 진료현황 (심평원 [표7, 표10])
+                        </h4>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-xs text-left">
+                            <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                              <tr>
+                                <th className="p-2.5">수술 구분</th>
+                                <th className="p-2.5">2018년</th>
+                                <th className="p-2.5">2022년</th>
+                                <th className="p-2.5">5년간 증감률</th>
+                                <th className="p-2.5">2022년 1인당 진료비</th>
+                                <th className="p-2.5">수술 특성 및 보장 필요성</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-200 text-slate-600">
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-bold text-slate-900">관상동맥중재술(PCI)</td>
+                                <td className="p-2.5">54,431명</td>
+                                <td className="p-2.5 font-bold text-blue-700">56,497명</td>
+                                <td className="p-2.5 text-rose-700 font-bold">환자 3.8%↑ / 진료비 27.0%↑</td>
+                                <td className="p-2.5">2,307,465원</td>
+                                <td className="p-2.5 text-slate-600">스텐트 혈관확장술, 재협착 시 재시술 발생 가능</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-bold text-slate-900">관상동맥우회술(CABG)</td>
+                                <td className="p-2.5">2,162명</td>
+                                <td className="p-2.5 font-bold text-rose-700">2,337명</td>
+                                <td className="p-2.5 text-rose-700 font-bold">환자 8.1%↑ / 진료비 13.9%↑</td>
+                                <td className="p-2.5 font-bold text-rose-800">9,810,196원</td>
+                                <td className="p-2.5 text-slate-600">다혈관 중증 협착 시 개흉 수술, 1인당 진료비 최고액</td>
+                              </tr>
+                              <tr className="hover:bg-white transition-colors">
+                                <td className="p-2.5 font-bold text-slate-900">부정맥수술</td>
+                                <td className="p-2.5">8,828명</td>
+                                <td className="p-2.5 font-bold text-purple-700">12,047명</td>
+                                <td className="p-2.5 text-rose-700 font-bold">환자 36.5%↑ / 진료비 78.3%↑</td>
+                                <td className="p-2.5">3,439,774원</td>
+                                <td className="p-2.5 text-slate-600">인공심박동기, 전극도자절제술 등 수술 건수 급증</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Sales Guide Subtab Content */}
+                  {activeReportSubTab === 'sales' && (
+                    <div className="p-5 bg-gradient-to-br from-amber-50/90 to-orange-50/70 border border-amber-200 rounded-2xl space-y-4">
+                      <div className="flex items-center gap-2">
+                        <Award className="w-5 h-5 text-amber-700" />
+                        <h4 className="text-sm font-black text-slate-900">
+                          🎯 설계사를 위한 심장질환 실전 영업 화법 및 클로징 포인트
+                        </h4>
+                      </div>
+                      <div className="space-y-3 text-xs text-slate-700 leading-relaxed">
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-emerald-900 block">1. "고객님 증권에 '급성심근경색'만 들어있지 않으신가요?"</span>
+                          <p className="text-slate-600">
+                            심평원 공식 통계상 허혈성심장질환 환자의 68.6%(70만 5,259명)는 협심증(I20)입니다. 구형 생명보험이나 기존 보험의 '급성심근경색' 담보는 협심증 발생 시 보험금이 0원입니다. 반드시 I20 협심증을 보장하는 '허혈성심장질환 진단비'가 필수임을 심평원 통계표로 설명하세요.
+                          </p>
+                        </div>
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-emerald-900 block">2. "부정맥(I47~I49) 환자 46만 명, 진료비는 61.6% 급증했습니다!"</span>
+                          <p className="text-slate-600">
+                            허혈성심장질환 담보(I20~I25)를 가입했더라도 발작성 빈맥, 심방세동 등 '부정맥(I47~I49)'과 '심부전(I50)'은 보장되지 않습니다. 부정맥 수술 환자가 5년간 36.5% 급증한 만큼, 심혈관질환(특정심장질환) 진단비와 심장질환 수술비 담보로 보장 공백을 메워야 합니다.
+                          </p>
+                        </div>
+                        <div className="p-3 bg-white rounded-xl border border-amber-200 space-y-1">
+                          <span className="font-black text-emerald-900 block">3. "스텐트 시술(PCI) 5.6만 명, 관상동맥우회술(CABG) 천만 원 시대"</span>
+                          <p className="text-slate-600">
+                            스텐트 삽입술(PCI)을 받는 환자가 연간 5만 6천 명을 넘고, 개흉을 통한 관상동맥우회술은 1인당 진료비가 약 981만 원에 달합니다. 심장 시술은 1회로 끝나지 않고 재발이나 다혈관 시술로 이어질 수 있으므로, 회당 지급되는 심혈관질환 수술비와 혈전용해치료비를 필수 결합하세요.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : selectedReportId === 11 ? (
                 <div className="space-y-6 text-left">
                   {/* Overview Banner */}
                   <div className="p-4 bg-gradient-to-r from-[#123941] via-slate-900 to-[#1e4d56] text-white rounded-2xl space-y-2 border border-teal-800/50 shadow-md">
@@ -8533,6 +8870,8 @@ export default function PlannerGoods() {
             <div className="p-4 bg-slate-100 border-t border-slate-200 flex items-center justify-between">
               <span className="text-xs text-slate-500 font-bold hidden sm:inline">
                 자료출처: {
+                  Number(selectedReportId) === 12 ? '건강보험심사평가원 급여정보분석실 · 보건복지부 (2023년 11월 발표)' :
+                  Number(selectedReportId) === 11 ? '건강보험심사평가원 급여적정성평가부 · 보건복지부' :
                   Number(selectedReportId) === 10 ? '연세암병원 중입자치료센터 · 대한방사선종양학회 · Nature 508' :
                   Number(selectedReportId) === 9 ? '국가암지식정보센터 · 대한위암학회 · 대한중앙내과학회' :
                   Number(selectedReportId) === 8 ? '국가암지식정보센터 · 보건복지부 · 란셋(Lancet) 임상' :

@@ -310,6 +310,10 @@ import {
   LINA_HIGH_COST_CANCER_UNROLLED,
   LINA_HIGH_COST_CANCER_SECTIONS,
   LINA_SURGERY_1_5_SECTIONS,
+  SAMSUNG_LIFE_INTEGRATED_CANCER_SECTIONS,
+  SAMSUNG_LIFE_BENIGN_NEOPLASM_SECTIONS,
+  SAMSUNG_LIFE_50_DISEASES_SECTIONS,
+  SAMSUNG_LIFE_18_DISEASES_SECTIONS,
   SubTabInfo,
   escapeRegExp,
   getCancerGroups,
@@ -6906,7 +6910,7 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
     const filteredSummaries = summaries.filter((sec: any) => {
       if (!query) return true;
       const titleMatch = normalizeString(sec.title || sec.category || '').includes(query);
-      const diseasesStr = typeof sec.diseases === 'string' ? sec.diseases : '';
+      const diseasesStr = typeof sec.diseases === 'string' ? sec.diseases : (Array.isArray(sec.diseases) ? sec.diseases.join(', ') : '');
       const itemMatch = (sec.items || []).some((i: any) =>
         normalizeString(i.disease || i.name || '').includes(query) ||
         normalizeString(i.code || '').includes(query)
@@ -7075,6 +7079,12 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                 lina_integrated_cancer_metastasis: 'lina-integrated-cancer-metastasis.pdf',
                 lina_high_cost_cancer: 'lina-high-cost-cancer.pdf',
               };
+              const samsungLifeDirectPdfMap: Record<string, string> = {
+                samsung_life_integrated_cancer: 'samsung-life-integrated-cancer-metastasis.pdf',
+                samsung_life_benign_neoplasm: 'samsung-life-integrated-benign-neoplasm.pdf',
+                samsung_life_50_diseases: 'samsung-life-50-diseases.pdf',
+                samsung_life_18_diseases: 'samsung-life-18-diseases.pdf',
+              };
               const directPdf =
                 directPdfMap[tabKey] ||
                 (selectedInsurer?.id === 'db-ins' ? dbDirectPdfMap[tabKey] : undefined) ||
@@ -7084,7 +7094,8 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
                 (selectedInsurer?.id === 'lotte-ins' ? lotteDirectPdfMap[tabKey] : undefined) ||
                 (selectedInsurer?.id === 'nh-fire' ? nhDirectPdfMap[tabKey] : undefined) ||
                 (selectedInsurer?.id === 'hana-ins' ? hanaDirectPdfMap[tabKey] : undefined) ||
-                (selectedInsurer?.id === 'lina-fire' ? linaDirectPdfMap[tabKey] : undefined);
+                (selectedInsurer?.id === 'lina-fire' ? linaDirectPdfMap[tabKey] : undefined) ||
+                (selectedInsurer?.id === 'samsung-life' ? samsungLifeDirectPdfMap[tabKey] : undefined);
               if (directPdf) {
                 return (
                   <a
@@ -7171,6 +7182,18 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
             </p>
           </div>
         )}
+
+        {tabKey === 'samsung_life_integrated_cancer' && (
+          <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-700 leading-relaxed font-bold shadow-3xs space-y-1.5">
+            <div className="font-black text-[#123941] mb-1 text-[11px] flex items-center gap-1.5">
+              <span>📌 【별표2】 통합암(전이포함) 분류표 적용 안내 (초기유방암, 중증 이외 갑상선암, 기타피부암, 비침습 방광암 및 대장점막내암 제외)</span>
+            </div>
+            <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+              ① 약관에 규정하는 “통합암(전이포함)으로 분류되는 질병”은 제9차 개정 한국표준질병ㆍ사인분류(통계청 고시 제2025-299호, 2026.1.1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병ㆍ사인분류가 개정되는 경우에는 진단 시점에 시행 중인 한국표준질병ㆍ사인분류를 적용합니다.
+            </p>
+          </div>
+        )}
+
 
         {tabKey === 'hana_surgery1_5' && (
           <div className="p-3.5 bg-slate-50 border border-slate-200/90 rounded-2xl text-xs text-slate-800 leading-relaxed font-medium shadow-3xs space-y-2">
@@ -7865,6 +7888,48 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
               </p>
               <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
                 무배당 NH가성비굿건강보험1904 특별약관
+              </div>
+            </div>
+          )}
+
+          {tabKey === 'samsung_life_50_diseases' && (
+            <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+              <div className="font-extrabold text-[#123941] text-xs">📌 【별표5】 50대질병 분류표 적용 안내</div>
+              <p className="pl-2">
+                약관에 규정하는 50대질병으로 분류되는 질병은 제9차 개정 한국표준질병·사인분류(통계청 고시 제2025-299호, 2026.1.1. 시행) 중 다음에 적은 질병을 말합니다.
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주1) 제10차 개정 이후 한국표준질병·사인분류에 있어서 상기 질병 이외에 추가로 상기 분류번호에 해당하는 질병이 있는 경우에는 그 질병도 포함하는 것으로 합니다.
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주2) 상기 대상 질병의 세부 분류번호(소분류 이하)는 한국표준질병·사인분류를 따릅니다.
+              </p>
+              <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
+                50대질병진단특약LC(무배당,무해약환급금형) 약관
+              </div>
+            </div>
+          )}
+
+          {tabKey === 'samsung_life_18_diseases' && (
+            <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl text-[11px] text-slate-600 leading-relaxed space-y-1.5 shadow-3xs">
+              <div className="font-extrabold text-[#123941] text-xs">📌 【별표2】 18대 질병 분류표 적용 안내</div>
+              <p className="pl-2">
+                ① 약관에 규정하는 “18대 질병으로 분류되는 질병”은 제9차 개정 한국표준질병ㆍ사인분류(통계청 고시 제2025-299호, 2026.1.1 시행) 중 다음에 적은 질병을 말하며, 이후 한국표준질병ㆍ사인분류가 개정되는 경우에는 진단 시점에 시행 중인 한국표준질병ㆍ사인분류를 적용합니다.
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ※ 주) 제10차 개정 이후 이 약관에서 규정하는 “18대 질병으로 분류되는 질병”은 진단 시점에 시행되고 있는 한국표준질병ㆍ사인분류를 적용합니다.
+              </p>
+              <p className="pl-4 text-slate-500 font-medium text-[10.5px]">
+                [설명] 피보험자가 제9차 개정 한국표준질병ㆍ사인분류를 적용할 때, 약관에서 규정하는 “18대 질병으로 분류되는 질병”으로 진단될 수 있었다고 하더라도 진단 당시에 시행 중인 제10차 개정 이후 한국표준질병ㆍ사인분류를 적용할 때 약관에서 규정하는 “18대 질병으로 분류되는 질병”이 아닌 경우에는 약관에서 규정하는 “18대 질병으로 분류되는 질병”으로 보지 않습니다. 반대로 피보험자가 제9차 개정 한국표준질병ㆍ사인분류를 적용할 때, 약관에서 규정하는 “18대 질병으로 분류되는 질병”으로 진단될 수 없었다고 하더라도 진단 당시에 시행 중인 제10차 개정 이후 한국표준질병ㆍ사인분류를 적용할 때 약관에서 규정하는 “18대 질병으로 분류되는 질병”인 경우에는 약관에서 규정하는 “18대 질병으로 분류되는 질병”으로 봅니다.
+              </p>
+              <p className="pl-2 text-slate-500 font-medium">
+                ② 진단 시점에 약관에서 규정하는 “18대 질병으로 분류되는 질병” 인지 여부가 확인된 경우, 진단 이후 한국표준질병ㆍ사인분류의 개정으로 질병분류가 추가 또는 제외되더라도 약관에서 규정하는 “18대 질병으로 분류되는 질병” 인지 여부를 다시 판단하지 않습니다.
+              </p>
+              <p className="pl-4 text-slate-500 font-medium text-[10.5px]">
+                [설명] 진단 당시의 한국표준질병∙사인분류를 적용하여 약관에서 규정하는 “18대 질병으로 분류되는 질병”으로 진단될 수 없었다면, 진단 이후 한국표준질병∙사인분류가 개정되어 약관에서 규정하는 “18대 질병으로 분류되는 질병”으로 볼 수 있어 재진단서를 제출한다고 하더라도 약관에서 규정하는 “18대 질병으로 분류되는 질병”으로 보지 않습니다.
+              </p>
+              <div className="pt-2 text-[10px] text-slate-400 font-medium text-right border-t border-slate-200/60">
+                18대질병진단특약LC(무배당,무해약환급금형) 약관
               </div>
             </div>
           )}
@@ -11948,6 +12013,12 @@ const [expandedLotteSurgery16Sections, setExpandedLotteSurgery16Sections] = useS
         if (activeSubTab === 'nh_surgery71') return NH_SURGERY_71_SECTIONS;
         if (activeSubTab === 'nh_surgery144') return NH_SURGERY_144_SECTIONS;
         return NH_CANCER_SECTIONS;
+      case 'samsung-life':
+        if (activeSubTab === 'samsung_life_integrated_cancer') return SAMSUNG_LIFE_INTEGRATED_CANCER_SECTIONS;
+        if (activeSubTab === 'samsung_life_benign_neoplasm') return SAMSUNG_LIFE_BENIGN_NEOPLASM_SECTIONS;
+        if (activeSubTab === 'samsung_life_50_diseases') return SAMSUNG_LIFE_50_DISEASES_SECTIONS;
+        if (activeSubTab === 'samsung_life_18_diseases') return SAMSUNG_LIFE_18_DISEASES_SECTIONS;
+        return [];
       default:
         if (activeSubTab === 'cancer') return DB_CANCER_SECTIONS;
         if (activeSubTab === 'db_cancer_metastasis') return DB_CANCER_METASTASIS_SECTIONS;
