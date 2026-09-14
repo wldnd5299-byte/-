@@ -12,6 +12,7 @@ import {
   Table,
   Layers,
   ChevronRight,
+  ChevronDown,
   Network,
   Award,
   Users,
@@ -39,10 +40,11 @@ import PlannerGoods from './components/PlannerGoods';
 import DisputePrecedent from './components/DisputePrecedent';
 import InfoArticles from './components/InfoArticles';
 import AdBannerStrip from './components/AdBannerStrip';
+import PlannerSupplies from './components/PlannerSupplies';
 
 import { searchSite, SearchResultItem } from './data/searchIndex';
 
-export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info';
+export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info' | 'planner-supplies';
 
 export interface SEOData {
   title: string;
@@ -105,6 +107,12 @@ export const SEO_CONFIG: Record<ViewState, SEOData> = {
     description: '보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드를 제공합니다.',
     canonical: 'https://insurancebridge.co.kr/info/',
     path: '/info/',
+  },
+  'planner-supplies': {
+    title: '보험설계사용품 | 보험브릿지',
+    description: '보험설계사를 위한 실무용품 카테고리입니다.',
+    canonical: 'https://insurancebridge.co.kr/planner-supplies/',
+    path: '/planner-supplies/',
   },
 };
 
@@ -181,6 +189,7 @@ export const VIEW_PATH_MAP: Record<ViewState, string> = {
   'planner-goods': '/planner-goods/',
   dispute: '/dispute/',
   info: '/info/',
+  'planner-supplies': '/planner-supplies/',
 };
 
 export const PATH_VIEW_MAP: Record<string, ViewState> = {
@@ -201,6 +210,8 @@ export const PATH_VIEW_MAP: Record<string, ViewState> = {
   '/dispute/': 'dispute',
   '/info': 'info',
   '/info/': 'info',
+  '/planner-supplies': 'planner-supplies',
+  '/planner-supplies/': 'planner-supplies',
   '/insurer': 'claim',
   '/insurer/': 'claim',
 };
@@ -223,6 +234,9 @@ export const getViewFromLocation = (): ViewState => {
   if (rawPath.startsWith('/surgery/')) {
     return 'surgery';
   }
+  if (rawPath.startsWith('/planner-supplies')) {
+    return 'planner-supplies';
+  }
   if (PATH_VIEW_MAP[rawPath]) {
     return PATH_VIEW_MAP[rawPath];
   }
@@ -241,6 +255,9 @@ export const getViewFromLocation = (): ViewState => {
   }
   if (cleanPath.startsWith('/surgery/')) {
     return 'surgery';
+  }
+  if (cleanPath.startsWith('/planner-supplies')) {
+    return 'planner-supplies';
   }
   if (PATH_VIEW_MAP[cleanPath]) {
     return PATH_VIEW_MAP[cleanPath];
@@ -265,6 +282,9 @@ export default function App() {
       }
       if (pathname.startsWith('/claim/') || pathname.startsWith('/insurer/')) {
         return 'claim';
+      }
+      if (pathname.startsWith('/planner-supplies')) {
+        return 'planner-supplies';
       }
       if (PATH_VIEW_MAP[pathname]) {
         return PATH_VIEW_MAP[pathname];
@@ -367,23 +387,23 @@ export default function App() {
     }, 150);
   };
 
-  // Quick navigation menu data
-  const menus = [
+  // Quick navigation primary menu data
+  const primaryMenus = [
     { id: 'home' as ViewState, label: 'HOME' },
     { id: 'claim' as ViewState, label: '보험사정보' },
     { id: 'terms' as ViewState, label: '담보별 분류표' },
     { id: 'surgery' as ViewState, label: '수술명검색' },
     { id: 'indemnity' as ViewState, label: '실손의료비계산기' },
     { id: 'age' as ViewState, label: '보험나이계산기' },
-    { id: 'planner-goods' as ViewState, label: '영업자료' },
-    { id: 'dispute' as ViewState, label: '판례＆분쟁' }
   ];
+
+  const isMaterialsActive = currentView === 'planner-goods' || currentView === 'dispute';
 
   // Main navigation link renderer
   const renderNavLinks = () => {
     return (
       <div className="flex items-center border border-white/10 bg-[#0F172A]/40 p-1 rounded-none gap-0.5">
-        {menus.map((menu, idx) => {
+        {primaryMenus.map((menu) => {
           const isActive = currentView === menu.id;
           return (
             <React.Fragment key={menu.id}>
@@ -405,6 +425,79 @@ export default function App() {
             </React.Fragment>
           );
         })}
+
+        {/* 보험자료 (영업자료, 판례＆분쟁 세부 카테고리 포함) */}
+        <div className="relative group inline-block">
+          <a
+            href="/planner-goods/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavigate('planner-goods');
+            }}
+            className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-flex items-center gap-1 ${
+              isMaterialsActive
+                ? 'bg-[#cb9f74] text-white border-[#cb9f74] shadow-md'
+                : 'bg-transparent text-slate-100 border-transparent hover:text-white hover:bg-white/10'
+            }`}
+          >
+            <span>보험자료</span>
+            <ChevronDown className="w-3 h-3 opacity-70 group-hover:rotate-180 transition-transform duration-200" />
+          </a>
+
+          {/* 드롭다운 메뉴 */}
+          <div className="absolute left-0 top-full pt-1 hidden group-hover:block z-50 min-w-[130px]">
+            <div className="bg-[#123941] border border-white/15 rounded-md shadow-2xl py-1 overflow-hidden backdrop-blur-md">
+              <a
+                href="/planner-goods/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate('planner-goods');
+                }}
+                className={`block px-3 py-2 text-xs lg:text-[13px] font-bold tracking-tight text-left transition-colors cursor-pointer ${
+                  currentView === 'planner-goods'
+                    ? 'bg-[#cb9f74] text-white font-black'
+                    : 'text-slate-100 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                영업자료
+              </a>
+              <div className="h-px bg-white/10 my-0.5" />
+              <a
+                href="/dispute/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate('dispute');
+                }}
+                className={`block px-3 py-2 text-xs lg:text-[13px] font-bold tracking-tight text-left transition-colors cursor-pointer ${
+                  currentView === 'dispute'
+                    ? 'bg-[#cb9f74] text-white font-black'
+                    : 'text-slate-100 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                판례 ＆ 분쟁
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <span className="text-white/10 font-normal mx-0.5 select-none">|</span>
+
+        {/* 설계사용품 */}
+        <a
+          href="/planner-supplies/"
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavigate('planner-supplies');
+          }}
+          className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-block ${
+            currentView === 'planner-supplies'
+              ? 'bg-[#cb9f74] text-white border-[#cb9f74] shadow-md'
+              : 'bg-transparent text-slate-100 border-transparent hover:text-white hover:bg-white/10'
+          }`}
+        >
+          설계사용품
+        </a>
+
         <a
           href="https://open.kakao.com/o/sWUpRzLi"
           target="_blank"
@@ -597,13 +690,14 @@ export default function App() {
 
             <div className="h-px bg-white/10 my-1" />
 
-            {menus.map((menu) => (
+            {primaryMenus.map((menu) => (
               <a
                 key={menu.id}
                 href={VIEW_PATH_MAP[menu.id]}
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavigate(menu.id);
+                  setMobileMenuOpen(false);
                 }}
                 className={`w-full block text-left px-5 py-3 text-base font-medium uppercase transition-colors rounded-none ${
                   currentView === menu.id
@@ -614,6 +708,67 @@ export default function App() {
                 {menu.label}
               </a>
             ))}
+
+            {/* 모바일 보험자료 세부 카테고리 아코디언 */}
+            <div className="space-y-1">
+              <div className={`flex items-center justify-between px-5 py-3 text-base font-medium uppercase transition-colors rounded-none ${
+                isMaterialsActive
+                  ? 'bg-[#cb9f74] text-white font-semibold shadow-sm'
+                  : 'text-white hover:bg-white/10'
+              }`}>
+                <span>보험자료</span>
+                <span className="text-xs text-white/80 font-bold">2개 카테고리</span>
+              </div>
+              <div className="pl-6 space-y-1 border-l-2 border-[#cb9f74]/50 ml-5 my-1">
+                <a
+                  href="/planner-goods/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigate('planner-goods');
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full block text-left px-4 py-2 text-sm font-medium transition-colors ${
+                    currentView === 'planner-goods'
+                      ? 'text-[#cb9f74] font-black'
+                      : 'text-slate-200 hover:text-white'
+                  }`}
+                >
+                  ↳ 영업자료
+                </a>
+                <a
+                  href="/dispute/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigate('dispute');
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`w-full block text-left px-4 py-2 text-sm font-medium transition-colors ${
+                    currentView === 'dispute'
+                      ? 'text-[#cb9f74] font-black'
+                      : 'text-slate-200 hover:text-white'
+                  }`}
+                >
+                  ↳ 판례 ＆ 분쟁
+                </a>
+              </div>
+            </div>
+
+            {/* 설계사용품 */}
+            <a
+              href="/planner-supplies/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigate('planner-supplies');
+                setMobileMenuOpen(false);
+              }}
+              className={`w-full block text-left px-5 py-3 text-base font-medium uppercase transition-colors rounded-none ${
+                currentView === 'planner-supplies'
+                  ? 'bg-[#cb9f74] text-white font-semibold shadow-sm'
+                  : 'text-white hover:bg-white/10'
+              }`}
+            >
+              설계사용품
+            </a>
             <div className="pt-2 pb-1 px-4">
               <a
                 href="https://open.kakao.com/o/sWUpRzLi"
@@ -680,8 +835,8 @@ export default function App() {
                         { id: 'surgery' as ViewState, title: '수술명검색', desc: '약관 기반 수술비 및 종수술비 검색' },
                         { id: 'indemnity' as ViewState, title: '실손의료비계산기', desc: '1~5세대 맞춤형 계산기' },
                         { id: 'age' as ViewState, title: '보험나이계산기', desc: '상령일 계산기' },
-                        { id: 'planner-goods' as ViewState, title: '영업자료', desc: '실무역량을 극대화 해주는 용품' },
-                        { id: 'dispute' as ViewState, title: '판례＆분쟁', desc: '분쟁조정 및 주요 판례 DB' },
+                        { id: 'planner-goods' as ViewState, title: '보험자료', desc: '영업자료 · 판례 및 분쟁사례' },
+                        { id: 'planner-supplies' as ViewState, title: '설계사용품', desc: '보험설계사를 위한 실무용품' },
                       ].map((item) => (
                         <a 
                           key={item.id}
@@ -762,9 +917,85 @@ export default function App() {
             ) : currentView === 'age' ? (
               <AgeCalculator />
             ) : currentView === 'dispute' ? (
-              <DisputePrecedent />
+              <div className="space-y-4">
+                {/* 보험자료 상위/세부 카테고리 전환 바 */}
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">상위 카테고리</span>
+                    <span className="text-xs font-black px-2.5 py-1 rounded-md bg-[#123941] text-white">
+                      보험자료
+                    </span>
+                    <span className="text-xs text-slate-300">/</span>
+                    <span className="text-xs font-black text-[#123941]">
+                      판례 ＆ 분쟁
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-lg border border-slate-200/70 self-start sm:self-auto">
+                    <a
+                      href="/planner-goods/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigate('planner-goods');
+                      }}
+                      className="px-3.5 py-1.5 rounded-md text-xs sm:text-[13px] font-black transition-all cursor-pointer text-slate-600 hover:text-[#123941] hover:bg-white/80"
+                    >
+                      영업자료
+                    </a>
+                    <a
+                      href="/dispute/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigate('dispute');
+                      }}
+                      className="px-3.5 py-1.5 rounded-md text-xs sm:text-[13px] font-black transition-all cursor-pointer bg-[#123941] text-white shadow-sm"
+                    >
+                      판례 ＆ 분쟁
+                    </a>
+                  </div>
+                </div>
+                <DisputePrecedent />
+              </div>
             ) : currentView === 'planner-goods' ? (
-              <PlannerGoods />
+              <div className="space-y-4">
+                {/* 보험자료 상위/세부 카테고리 전환 바 */}
+                <div className="bg-white border border-slate-200/90 rounded-xl p-3 sm:p-3.5 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">상위 카테고리</span>
+                    <span className="text-xs font-black px-2.5 py-1 rounded-md bg-[#123941] text-white">
+                      보험자료
+                    </span>
+                    <span className="text-xs text-slate-300">/</span>
+                    <span className="text-xs font-black text-[#123941]">
+                      영업자료
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-lg border border-slate-200/70 self-start sm:self-auto">
+                    <a
+                      href="/planner-goods/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigate('planner-goods');
+                      }}
+                      className="px-3.5 py-1.5 rounded-md text-xs sm:text-[13px] font-black transition-all cursor-pointer bg-[#123941] text-white shadow-sm"
+                    >
+                      영업자료
+                    </a>
+                    <a
+                      href="/dispute/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigate('dispute');
+                      }}
+                      className="px-3.5 py-1.5 rounded-md text-xs sm:text-[13px] font-black transition-all cursor-pointer text-slate-600 hover:text-[#123941] hover:bg-white/80"
+                    >
+                      판례 ＆ 분쟁
+                    </a>
+                  </div>
+                </div>
+                <PlannerGoods />
+              </div>
+            ) : currentView === 'planner-supplies' ? (
+              <PlannerSupplies />
             ) : null}
           </motion.div>
         </AnimatePresence>
@@ -787,6 +1018,8 @@ export default function App() {
               <a href="/planner-goods/" onClick={(e) => { e.preventDefault(); handleNavigate('planner-goods'); }} className="hover:text-nike-black font-semibold cursor-pointer">영업자료</a>
               <span>|</span>
               <a href="/dispute/" onClick={(e) => { e.preventDefault(); handleNavigate('dispute'); }} className="hover:text-nike-black font-semibold cursor-pointer">판례＆분쟁</a>
+              <span>|</span>
+              <a href="/planner-supplies/" onClick={(e) => { e.preventDefault(); handleNavigate('planner-supplies'); }} className="hover:text-nike-black font-semibold cursor-pointer">설계사용품</a>
               <span>|</span>
               <a href="https://open.kakao.com/o/sWUpRzLi" target="_blank" rel="noopener noreferrer" className="hover:text-nike-black font-semibold">광고·제휴 문의</a>
               <span>|</span>
