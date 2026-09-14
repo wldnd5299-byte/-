@@ -1,6 +1,6 @@
 {
   "name": "보험브릿지",
-  "description": "보험약관·담보분류·수술명 검색·실손의료비 계산·판례 및 분쟁조정사례 등 보험설계사를 위한 실무 정보를 제공합니다.",
+  "description": "보험약관·담보분류·수술명 검색·실손의료비 계산·판례 및 분쟁조정사례 등 보험설계사를 위한 실무 정보를 제공합니다. 설계사닷컴",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
