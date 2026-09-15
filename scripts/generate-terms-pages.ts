@@ -123,9 +123,20 @@ export function generateTermsPages() {
         fs.mkdirSync(dirPath, { recursive: true });
       }
 
-      const pageTitle = `${insurer.name} ${st.label} 약관 및 질병코드 분류표 | 보험브릿지`;
+      let pageTitle = `${insurer.name} ${st.label} 약관 및 질병코드 분류표 | 보험브릿지`;
       const canonicalUrl = `https://insurancebridge.co.kr/terms/${insurer.id}/${st.id}/`;
-      const description = `${insurer.name}의 ${st.label} 담보별 질병코드(KCD), 수술 및 진단비 분류 기준, 보장 범위 상세 정보를 보험설계사 실무용으로 확인하세요.`;
+      let description = `${insurer.name}의 ${st.label} 담보별 질병코드(KCD), 수술 및 진단비 분류 기준, 보장 범위 상세 정보를 보험설계사 실무용으로 확인하세요.`;
+      let pageH1 = `${insurer.name} ${st.label} 약관 및 질병코드 분류표`;
+
+      if (insurer.id === 'db-ins' && st.id === 'surgery1_5') {
+        pageTitle = 'DB손해보험 1-5종수술비 동일질병당 약관 및 질병코드 분류표 | 보험브릿지';
+        pageH1 = 'DB손해보험 1-5종수술비 동일질병당 약관 및 질병코드 분류표';
+        description = 'DB손해보험 1-5종수술비 동일질병당 담보의 질병코드(KCD), 수술 분류 및 약관 기준을 보험설계사 실무용으로 확인할 수 있습니다.';
+      } else if (insurer.id === 'db-ins' && st.id === 'surgery1_5_old') {
+        pageTitle = 'DB손해보험 1-5종수술비 질병통합치료비 약관 및 질병코드 분류표 | 보험브릿지';
+        pageH1 = 'DB손해보험 1-5종수술비 질병통합치료비 약관 및 질병코드 분류표';
+        description = 'DB손해보험 질병통합치료비 특약의 1-5종수술비 질병코드(KCD), 수술 분류 및 약관 기준을 보험설계사 실무용으로 확인할 수 있습니다.';
+      }
       
       const sections = getSectionsForInsurerSubTab(insurer.id, st.id) || [];
       const summary = getSummaryForSubTab(insurer.id, st.id);
@@ -287,7 +298,7 @@ export function generateTermsPages() {
                 <span style="background: #f1f5f9; color: #475569; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 600;">고객센터: ${escapeHtml(phone)}</span>
               </div>
               <h1 style="margin: 0; font-size: 22px; font-weight: 800; color: #0f172a; line-height: 1.4;">
-                ${escapeHtml(insurer.name)} ${escapeHtml(st.label)} 약관 및 질병코드 분류표
+                ${escapeHtml(pageH1)}
               </h1>
             </div>
             <a href="/terms/" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #123941; color: #ffffff; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 2px 4px rgba(18,57,65,0.2);">
