@@ -74,6 +74,10 @@ export async function generateSitemap() {
     { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-3/', changefreq: 'weekly', priority: '0.8' },
     { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-4/', changefreq: 'weekly', priority: '0.8' },
     { loc: 'https://insurancebridge.co.kr/surgery/1to5/type-5/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to3/', changefreq: 'weekly', priority: '0.9' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to3/type-1/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to3/type-2/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/surgery/1to3/type-3/', changefreq: 'weekly', priority: '0.8' },
   ];
 
   const allUrls = [...coreUrls, ...claimUrls, ...surgeryUrls, ...infoUrls, ...disputeUrls, ...termsUrls];
