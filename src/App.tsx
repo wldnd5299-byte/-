@@ -73,8 +73,8 @@ export const SEO_CONFIG: Record<ViewState, SEOData> = {
     path: '/terms/',
   },
   surgery: {
-    title: '보험 수술명 검색·수술분류표 | 보험브릿지',
-    description: '질병수술비 1~5종, 1~7종, 1~8종 등 보험사별 수술분류와 수술명을 검색할 수 있는 보험설계사 실무 도구입니다.',
+    title: '보험 수술명 검색·종수술비 분류표 (수술분류표) | 보험브릿지',
+    description: '질병수술비 1~5종, 1~7종, 1~8종 등 보험사별 종 수술비 약관 기준과 종수술비 분류표, 수술분류표 세부 수술명을 실시간으로 검색할 수 있는 보험설계사 실무 도구입니다.',
     canonical: 'https://insurancebridge.co.kr/surgery/',
     path: '/surgery/',
   },
