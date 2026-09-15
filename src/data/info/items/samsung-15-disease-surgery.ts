@@ -132,6 +132,9 @@ export const SAMSUNG_15_DISEASE_SURGERY_ARTICLE: InfoArticle = {
             </tbody>
           </table>
         </div>
+        <div class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-600">
+          💡 뇌질환(I60~I69) 급성기 치료와 골든타임 기준은 <a href="/info/cerebrovascular-golden-time/" class="text-blue-600 font-bold hover:underline">뇌경색 골든타임 및 혈전용해술 안내</a>에서 확인할 수 있습니다.
+        </div>
       </div>
 
       <div>
