@@ -18,6 +18,7 @@ export async function generateSitemap() {
   const coreUrls = [
     { loc: 'https://insurancebridge.co.kr/', changefreq: 'daily', priority: '1.0' },
     { loc: 'https://insurancebridge.co.kr/claim/', changefreq: 'weekly', priority: '0.8' },
+    { loc: 'https://insurancebridge.co.kr/claim/documents/', changefreq: 'weekly', priority: '0.8' },
     { loc: 'https://insurancebridge.co.kr/terms/', changefreq: 'weekly', priority: '0.9' },
     { loc: 'https://insurancebridge.co.kr/disease-code/', changefreq: 'weekly', priority: '0.9' },
     { loc: 'https://insurancebridge.co.kr/surgery/', changefreq: 'weekly', priority: '0.9' },

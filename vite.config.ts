@@ -134,6 +134,7 @@ export default defineConfig(() => {
           terms: path.resolve(__dirname, 'terms/index.html'),
           diseaseCode: path.resolve(__dirname, 'disease-code/index.html'),
           claim: path.resolve(__dirname, 'claim/index.html'),
+          claimDocuments: path.resolve(__dirname, 'claim/documents/index.html'),
           plannerGoods: path.resolve(__dirname, 'planner-goods/index.html'),
           dispute: path.resolve(__dirname, 'dispute/index.html'),
           ...disputeInputs,
