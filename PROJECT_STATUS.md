@@ -356,6 +356,16 @@ AI가 임의로 추가해서는 안 된다.
   * vite.config.ts 다중 진입점(MPA) 17개 등록 및 public/sitemap.xml (총 236개 URL) 정상 반영
   * /surgery/index.html 허브 및 1~7종/1~8종 상호 교차 링크 완료
 
+KCD 질병코드·담보 역검색 기능 구축 (1단계 완료, 2026-09):
+- 신규 URL: `/disease-code/`
+- 기능: KCD 질병코드 또는 질병명 입력 시, 보험브릿지 등록 약관 원본(src/data/terms/*)에 존재하는 보험사/담보/분류표 역조회
+- SOURCE-LOCK 및 엄격한 사실 기반 원칙 준수 (인위적 코드 확장/임의 하위코드 생성 0)
+- 안전장치(안내문): "보험금 지급 여부를 판단하는 도구가 아니며, 등록 약관 기재 여부 단순 대조 참고자료" 명시
+- 정적 SEO 허브 페이지: `disease-code/index.html` (JSON-LD WebPage 스키마 포함)
+- MPA 및 사이트맵 갱신: `vite.config.ts` 진입점 등록, `sitemap.xml` 총 238개 URL 반영
+- 기존 보험 데이터 파일(`src/data/terms/*.ts`, `surgeryData.ts` 등) 일체 무수정 유지 (수정 0건)
+- GitHub Push 절대 보류 유지
+
 네이버 KB손해보험 검색 노출 문제는
 현재 코드 수정 없이 색인 진행 상태를 관찰한다.
 

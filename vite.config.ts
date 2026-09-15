@@ -132,6 +132,7 @@ export default defineConfig(() => {
           surgery_1to8_type8: path.resolve(__dirname, 'surgery/1to8/type-8/index.html'),
           indemnity: path.resolve(__dirname, 'indemnity/index.html'),
           terms: path.resolve(__dirname, 'terms/index.html'),
+          diseaseCode: path.resolve(__dirname, 'disease-code/index.html'),
           claim: path.resolve(__dirname, 'claim/index.html'),
           plannerGoods: path.resolve(__dirname, 'planner-goods/index.html'),
           dispute: path.resolve(__dirname, 'dispute/index.html'),

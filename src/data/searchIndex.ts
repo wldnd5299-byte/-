@@ -13,7 +13,7 @@ import { SURGERY_1TO7_RECORDS } from '../data1to7';
 import { SURGERY_1TO8_RECORDS } from '../data1to8';
 import { INSURER_SUBTABS, getSectionsForInsurerSubTab } from './terms/index';
 
-export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info';
+export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'disease-code' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info';
 
 export interface SearchResultItem {
   id: string;
@@ -86,6 +86,14 @@ export function buildSearchIndex(): SearchResultItem[] {
       category: '수술',
       view: 'surgery',
       keywords: ['수술명검색', '수술검색', '수술분류표', '종수술비', '1-5종', '1-7종', '1-8종', '수술비']
+    },
+    {
+      id: 'tool-disease-code',
+      title: '질병코드 검색 (KCD)',
+      desc: '한국표준질병사인분류(KCD) 질병코드 및 질병명으로 보험사별 담보 분류표 역조회',
+      category: '도구',
+      view: 'disease-code',
+      keywords: ['질병코드', 'KCD', '질병코드검색', 'KCD코드', '질병명', '담보역검색', '분류표검색']
     },
     {
       id: 'tool-dispute-db',

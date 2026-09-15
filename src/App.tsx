@@ -41,10 +41,11 @@ import DisputePrecedent from './components/DisputePrecedent';
 import InfoArticles from './components/InfoArticles';
 import AdBannerStrip from './components/AdBannerStrip';
 import PlannerSupplies from './components/PlannerSupplies';
+import DiseaseCodeSearch from './components/DiseaseCodeSearch';
 
 import { searchSite, SearchResultItem } from './data/searchIndex';
 
-export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info' | 'planner-supplies';
+export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'disease-code' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info' | 'planner-supplies';
 
 export interface SEOData {
   title: string;
@@ -77,6 +78,12 @@ export const SEO_CONFIG: Record<ViewState, SEOData> = {
     description: '질병수술비 1~5종, 1~7종, 1~8종 등 보험사별 종 수술비 약관 기준과 종수술비 분류표, 수술분류표 세부 수술명을 실시간으로 검색할 수 있는 보험설계사 실무 도구입니다.',
     canonical: 'https://insurancebridge.co.kr/surgery/',
     path: '/surgery/',
+  },
+  'disease-code': {
+    title: '질병코드 검색 | KCD 코드별 보험 담보 분류표 찾기 | 보험브릿지',
+    description: 'KCD 질병코드 또는 질병명을 검색하여 보험브릿지에 등록된 보험사별 담보 분류표에서 해당 코드가 기재된 항목을 확인할 수 있습니다.',
+    canonical: 'https://insurancebridge.co.kr/disease-code/',
+    path: '/disease-code/',
   },
   indemnity: {
     title: '실손의료비 계산기·세대별 실손보험 비교 | 보험브릿지',
@@ -184,6 +191,7 @@ export const VIEW_PATH_MAP: Record<ViewState, string> = {
   claim: '/claim/',
   terms: '/terms/',
   surgery: '/surgery/',
+  'disease-code': '/disease-code/',
   indemnity: '/indemnity/',
   age: '/age/',
   'planner-goods': '/planner-goods/',
@@ -200,6 +208,8 @@ export const PATH_VIEW_MAP: Record<string, ViewState> = {
   '/terms/': 'terms',
   '/surgery': 'surgery',
   '/surgery/': 'surgery',
+  '/disease-code': 'disease-code',
+  '/disease-code/': 'disease-code',
   '/indemnity': 'indemnity',
   '/indemnity/': 'indemnity',
   '/age': 'age',
@@ -222,6 +232,9 @@ export const getViewFromLocation = (): ViewState => {
   if (rawPath.startsWith('/dispute/')) {
     return 'dispute';
   }
+  if (rawPath.startsWith('/disease-code')) {
+    return 'disease-code';
+  }
   if (rawPath.startsWith('/terms/')) {
     return 'terms';
   }
@@ -243,6 +256,9 @@ export const getViewFromLocation = (): ViewState => {
   const cleanPath = rawPath.replace(/\/+$/, '') || '/';
   if (cleanPath.startsWith('/dispute/')) {
     return 'dispute';
+  }
+  if (cleanPath.startsWith('/disease-code')) {
+    return 'disease-code';
   }
   if (cleanPath.startsWith('/terms/')) {
     return 'terms';
@@ -912,6 +928,23 @@ export default function App() {
               <TermsMaster />
             ) : currentView === 'surgery' ? (
               <SurgerySearch />
+            ) : currentView === 'disease-code' ? (
+              <DiseaseCodeSearch
+                onNavigateTerms={(insurerId, subTabId, filter) => {
+                  handleNavigate('terms');
+                  setTimeout(() => {
+                    window.dispatchEvent(
+                      new CustomEvent('ib-navigate-terms', {
+                        detail: {
+                          insurerId,
+                          subTab: subTabId,
+                          filter: filter || '',
+                        },
+                      })
+                    );
+                  }, 150);
+                }}
+              />
             ) : currentView === 'indemnity' ? (
               <IndemnityTerms />
             ) : currentView === 'age' ? (
