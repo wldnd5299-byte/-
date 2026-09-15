@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { SURGERY_RECORDS } from '../src/data.ts';
+import { SURGERY_1TO7_RECORDS } from '../src/data1to7.ts';
+import { SURGERY_1TO8_RECORDS } from '../src/data1to8.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -786,7 +788,792 @@ export async function generateSurgeryPages() {
     totalPagesGenerated++;
   }
 
-  console.log(`🎉 Successfully generated all ${totalPagesGenerated} surgery SEO static pages!`);
+  // ==========================================
+  // PHASE 3: Generate 1~7종 Pages (8 pages)
+  // ==========================================
+  console.log('\n🚀 Generating 1~7 Surgery Classification SEO static pages (Phase 3)...');
+  const all1to7Records = SURGERY_1TO7_RECORDS;
+  const countTotal1to7 = all1to7Records.length;
+
+  const countByGrade1to7: Record<string, number> = {
+    '1종': all1to7Records.filter(r => r.grade1to7 === '1종').length,
+    '2종': all1to7Records.filter(r => r.grade1to7 === '2종').length,
+    '3종': all1to7Records.filter(r => r.grade1to7 === '3종').length,
+    '4종': all1to7Records.filter(r => r.grade1to7 === '4종').length,
+    '5종': all1to7Records.filter(r => r.grade1to7 === '5종').length,
+    '6종': all1to7Records.filter(r => r.grade1to7 === '6종').length,
+    '7종': all1to7Records.filter(r => r.grade1to7 === '7종').length,
+  };
+
+  const pages1to7Config = [
+    {
+      typeKey: 'all',
+      pathSegment: '',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/',
+      title: '1~7종 수술비 분류표 및 수술명 검색 (1-7종수술비) | 보험브릿지',
+      h1: '1~7종 수술비 분류표 및 수술명 검색 (1~7종수술분류표)',
+      description: '1~7종수술비(1-7종수술비) 기준 630개 전체 수술분류표. 1종부터 7종까지 수술명과 종수 분류를 검색하고 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류표입니다. 1종부터 7종까지 분류된 총 630개 수술 항목을 수술명과 종수별로 확인할 수 있습니다. 가입한 보험상품과 약관에 따라 실제 보장 여부 및 분류 기준은 달라질 수 있으므로 해당 계약의 약관을 함께 확인하시기 바랍니다.',
+      badge: '1~7종 전체',
+      badgeColor: '#0284c7',
+    },
+    {
+      typeKey: '1',
+      pathSegment: 'type-1',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/type-1/',
+      title: '1~7종 중 1종수술비 종류 및 1종 수술 분류표 (214개) | 보험브릿지',
+      h1: '1~7종 수술비 중 [1종수술비] 분류표 (1종 수술)',
+      description: '1~7종 수술비 기준 1종수술비(1종 수술비) 214개 목록. 1종수술 종류와 1종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류 데이터 중 1종으로 분류된 214개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '1종 수술',
+      badgeColor: '#0284c7',
+    },
+    {
+      typeKey: '2',
+      pathSegment: 'type-2',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/type-2/',
+      title: '1~7종 중 2종수술비 종류 및 2종 수술 분류표 (95개) | 보험브릿지',
+      h1: '1~7종 수술비 중 [2종수술비] 분류표 (2종 수술)',
+      description: '1~7종 수술비 기준 2종수술비(2종 수술비) 95개 목록. 2종수술 종류와 2종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류 데이터 중 2종으로 분류된 95개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '2종 수술',
+      badgeColor: '#0d9488',
+    },
+    {
+      typeKey: '3',
+      pathSegment: 'type-3',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/type-3/',
+      title: '1~7종 중 3종수술비 종류 및 3종 수술 분류표 (43개) | 보험브릿지',
+      h1: '1~7종 수술비 중 [3종수술비] 분류표 (3종 수술)',
+      description: '1~7종 수술비 기준 3종수술비(3종 수술비) 43개 목록. 3종수술 종류와 3종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류 데이터 중 3종으로 분류된 43개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '3종 수술',
+      badgeColor: '#f59e0b',
+    },
+    {
+      typeKey: '4',
+      pathSegment: 'type-4',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/type-4/',
+      title: '1~7종 중 4종수술비 종류 및 4종 수술 분류표 (105개) | 보험브릿지',
+      h1: '1~7종 수술비 중 [4종수술비] 분류표 (4종 수술)',
+      description: '1~7종 수술비 기준 4종수술비(4종 수술비) 105개 목록. 4종수술 종류와 4종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류 데이터 중 4종으로 분류된 105개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '4종 수술',
+      badgeColor: '#ea580c',
+    },
+    {
+      typeKey: '5',
+      pathSegment: 'type-5',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/type-5/',
+      title: '1~7종 중 5종수술비 종류 및 5종 수술 분류표 (63개) | 보험브릿지',
+      h1: '1~7종 수술비 중 [5종수술비] 분류표 (5종 수술)',
+      description: '1~7종 수술비 기준 5종수술비(5종 수술비) 63개 목록. 5종수술 종류와 5종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류 데이터 중 5종으로 분류된 63개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '5종 수술',
+      badgeColor: '#dc2626',
+    },
+    {
+      typeKey: '6',
+      pathSegment: 'type-6',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/type-6/',
+      title: '1~7종 중 6종수술비 종류 및 6종 수술 분류표 (64개) | 보험브릿지',
+      h1: '1~7종 수술비 중 [6종수술비] 분류표 (6종 수술)',
+      description: '1~7종 수술비 기준 6종수술비(6종 수술비) 64개 목록. 6종수술 종류와 6종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류 데이터 중 6종으로 분류된 64개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '6종 수술',
+      badgeColor: '#9333ea',
+    },
+    {
+      typeKey: '7',
+      pathSegment: 'type-7',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to7/type-7/',
+      title: '1~7종 중 7종수술비 종류 및 7종 수술 분류표 (46개) | 보험브릿지',
+      h1: '1~7종 수술비 중 [7종수술비] 분류표 (7종 수술)',
+      description: '1~7종 수술비 기준 7종수술비(7종 수술비) 46개 목록. 7종수술 종류와 7종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~7종 수술비 분류 데이터 중 7종으로 분류된 46개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '7종 수술',
+      badgeColor: '#475569',
+    },
+  ];
+
+  for (const page of pages1to7Config) {
+    let pageRecords = all1to7Records;
+    if (page.typeKey !== 'all') {
+      const targetGrade = `${page.typeKey}종`;
+      pageRecords = all1to7Records.filter(r => r.grade1to7 === targetGrade);
+    }
+
+    // Top Category Navigation Tabs (1~7)
+    const categoryNavHtml = `
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <a href="/surgery/1to7/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === 'all' ? '#0f172a' : '#cbd5e1'}; background: ${page.typeKey === 'all' ? '#0f172a' : '#ffffff'}; color: ${page.typeKey === 'all' ? '#ffffff' : '#334155'};">
+          전체 (${countTotal1to7})
+        </a>
+        <a href="/surgery/1to7/type-1/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '1' ? '#0284c7' : '#cbd5e1'}; background: ${page.typeKey === '1' ? '#0284c7' : '#ffffff'}; color: ${page.typeKey === '1' ? '#ffffff' : '#334155'};">
+          1종 (${countByGrade1to7['1종']})
+        </a>
+        <a href="/surgery/1to7/type-2/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '2' ? '#0d9488' : '#cbd5e1'}; background: ${page.typeKey === '2' ? '#0d9488' : '#ffffff'}; color: ${page.typeKey === '2' ? '#ffffff' : '#334155'};">
+          2종 (${countByGrade1to7['2종']})
+        </a>
+        <a href="/surgery/1to7/type-3/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '3' ? '#f59e0b' : '#cbd5e1'}; background: ${page.typeKey === '3' ? '#f59e0b' : '#ffffff'}; color: ${page.typeKey === '3' ? '#ffffff' : '#334155'};">
+          3종 (${countByGrade1to7['3종']})
+        </a>
+        <a href="/surgery/1to7/type-4/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '4' ? '#ea580c' : '#cbd5e1'}; background: ${page.typeKey === '4' ? '#ea580c' : '#ffffff'}; color: ${page.typeKey === '4' ? '#ffffff' : '#334155'};">
+          4종 (${countByGrade1to7['4종']})
+        </a>
+        <a href="/surgery/1to7/type-5/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '5' ? '#dc2626' : '#cbd5e1'}; background: ${page.typeKey === '5' ? '#dc2626' : '#ffffff'}; color: ${page.typeKey === '5' ? '#ffffff' : '#334155'};">
+          5종 (${countByGrade1to7['5종']})
+        </a>
+        <a href="/surgery/1to7/type-6/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '6' ? '#9333ea' : '#cbd5e1'}; background: ${page.typeKey === '6' ? '#9333ea' : '#ffffff'}; color: ${page.typeKey === '6' ? '#ffffff' : '#334155'};">
+          6종 (${countByGrade1to7['6종']})
+        </a>
+        <a href="/surgery/1to7/type-7/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '7' ? '#475569' : '#cbd5e1'}; background: ${page.typeKey === '7' ? '#475569' : '#ffffff'}; color: ${page.typeKey === '7' ? '#ffffff' : '#334155'};">
+          7종 (${countByGrade1to7['7종']})
+        </a>
+      </div>
+      <div style="margin-top: 6px; font-size: 12px; color: #475569;">
+        <span>💡 1~8종 수술비 분류표를 찾으시나요?</span>
+        <a href="/surgery/1to8/" style="color: #0369a1; text-decoration: underline; font-weight: 700; margin-left: 6px;">
+          1~8종 수술비 분류표 바로가기 &rarr;
+        </a>
+      </div>
+    `;
+
+    // Table rows
+    const tableRowsHtml = pageRecords.map((r, idx) => {
+      return `
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; color: #64748b; font-size: 13px; text-align: center; width: 50px;">${idx + 1}</td>
+          <td style="padding: 12px 12px; color: #334155; font-size: 13px; font-weight: 600; white-space: nowrap; width: 130px;">
+            <span style="background: #f1f5f9; color: #475569; padding: 3px 8px; border-radius: 6px; font-size: 11px; display: inline-block;">
+              ${escapeHtml(r.category || '기타')}
+            </span>
+          </td>
+          <td style="padding: 12px 14px; color: #0f172a; font-size: 14px; font-weight: 700;">
+            <div style="color: #0f172a; margin-bottom: 4px;">${escapeHtml(r.name)}</div>
+            ${r.description ? `<div style="font-size: 12px; color: #64748b; font-weight: 400; line-height: 1.5;">${escapeHtml(r.description)}</div>` : ''}
+            ${r.tips ? `<div style="margin-top: 6px; font-size: 11px; color: #0369a1; background: #f0f9ff; padding: 4px 8px; border-radius: 4px; font-weight: 500; display: inline-block;">💡 ${escapeHtml(r.tips)}</div>` : ''}
+          </td>
+          <td style="padding: 12px 10px; text-align: center; width: 80px; white-space: nowrap;">
+            <span style="display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; background: #e0f2fe; color: #0369a1;">
+              ${escapeHtml(r.grade1to7)}
+            </span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; width: 80px; white-space: nowrap; color: #64748b; font-size: 12px; font-weight: 600;">
+            ${escapeHtml(r.code || '-')}
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // JSON-LD
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "홈",
+              "item": "https://insurancebridge.co.kr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "수술명 검색",
+              "item": "https://insurancebridge.co.kr/surgery/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "1~7종 수술비 분류표",
+              "item": "https://insurancebridge.co.kr/surgery/1to7/"
+            },
+            ...(page.typeKey !== 'all' ? [{
+              "@type": "ListItem",
+              "position": 4,
+              "name": `${page.typeKey}종 수술`,
+              "item": page.canonicalUrl
+            }] : [])
+          ]
+        },
+        {
+          "@type": "MedicalWebPage",
+          "headline": page.title,
+          "description": page.description,
+          "url": page.canonicalUrl,
+          "publisher": {
+            "@type": "Organization",
+            "name": "보험브릿지",
+            "url": "https://insurancebridge.co.kr/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://insurancebridge.co.kr/og-image.png"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": page.canonicalUrl
+          }
+        }
+      ]
+    };
+
+    const html = `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="naver-site-verification" content="29e08a26b48fedc496835f8449859ea98a16ddd7" />
+    <title>${escapeHtml(page.title)}</title>
+    <meta name="description" content="${escapeHtml(page.description)}" />
+    <link rel="canonical" href="${page.canonicalUrl}" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="보험브릿지" />
+    <meta property="og:title" content="${escapeHtml(page.title)}" />
+    <meta property="og:description" content="${escapeHtml(page.description)}" />
+    <meta property="og:url" content="${page.canonicalUrl}" />
+    <meta property="og:image" content="https://insurancebridge.co.kr/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeHtml(page.title)}" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeHtml(page.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <meta name="twitter:image" content="https://insurancebridge.co.kr/og-image.png" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+${JSON.stringify(jsonLd, null, 2)}
+    </script>
+  </head>
+  <body style="margin: 0; background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif; color: #0f172a;">
+    <div id="root">
+      <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 12px 20px;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+          <a href="/" style="font-size: 18px; font-weight: 800; color: #123941; text-decoration: none;">보험브릿지</a>
+          <nav style="display: flex; gap: 16px; font-size: 13px; font-weight: 600;">
+            <a href="/surgery/" style="color: #0369a1; text-decoration: none;">수술명 검색기</a>
+            <a href="/surgery/1to5/" style="color: #475569; text-decoration: none;">1~5종</a>
+            <a href="/surgery/1to3/" style="color: #475569; text-decoration: none;">1~3종</a>
+            <a href="/surgery/1to7/" style="color: #0369a1; text-decoration: underline; font-weight: 700;">1~7종</a>
+            <a href="/surgery/1to8/" style="color: #475569; text-decoration: none;">1~8종</a>
+          </nav>
+        </div>
+      </header>
+
+      <main style="max-width: 1100px; margin: 0 auto; padding: 24px 16px;">
+        <!-- Breadcrumb UI -->
+        <nav aria-label="Breadcrumb" style="font-size: 12px; color: #64748b; margin-bottom: 16px;">
+          <ol style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+            <li><a href="/" style="color: #64748b; text-decoration: none;">홈</a></li>
+            <li>&gt;</li>
+            <li><a href="/surgery/" style="color: #64748b; text-decoration: none;">수술명 검색</a></li>
+            <li>&gt;</li>
+            <li><a href="/surgery/1to7/" style="color: ${page.typeKey === 'all' ? '#0f172a; font-weight: 700;' : '#64748b; text-decoration: none;'}">1~7종 수술비 분류표</a></li>
+            ${page.typeKey !== 'all' ? `<li>&gt;</li><li style="color: #0f172a; font-weight: 700;">${escapeHtml(page.typeKey)}종 수술</li>` : ''}
+          </ol>
+        </nav>
+
+        <!-- Main Title & Intro Box -->
+        <article style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px 24px; margin-bottom: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+          <div style="display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #ffffff; background: ${page.badgeColor}; margin-bottom: 12px;">
+            ${escapeHtml(page.badge)}
+          </div>
+          <h1 style="margin: 0 0 12px 0; font-size: 24px; font-weight: 800; color: #0f172a; line-height: 1.35;">
+            ${escapeHtml(page.h1)}
+          </h1>
+          <p style="margin: 0 0 20px 0; font-size: 14px; color: #475569; line-height: 1.6;">
+            ${escapeHtml(page.summaryText)}
+          </p>
+
+          <!-- Type Navigation Tabs -->
+          <div style="border-top: 1px solid #f1f5f9; padding-top: 16px;">
+            <div style="font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 10px;">
+              종수별 수술분류표 바로가기:
+            </div>
+            ${categoryNavHtml}
+          </div>
+        </article>
+
+        <!-- Static Rendered Surgery Table -->
+        <section style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); margin-bottom: 24px;">
+          <div style="padding: 16px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #0f172a;">
+              ${escapeHtml(page.h1)} 상세 목록 (${pageRecords.length}건)
+            </h2>
+            <span style="font-size: 12px; color: #64748b;">약관 기준 원본 데이터 전수 수록</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+              <thead>
+                <tr style="background: #f1f5f9; border-bottom: 2px solid #cbd5e1; font-size: 13px; color: #475569; font-weight: 700;">
+                  <th style="padding: 12px 10px; text-align: center; width: 50px;">NO</th>
+                  <th style="padding: 12px 12px; width: 130px;">수술부위/분류</th>
+                  <th style="padding: 12px 14px;">수술명 및 보장 기준</th>
+                  <th style="padding: 12px 10px; text-align: center; width: 80px;">1~7종</th>
+                  <th style="padding: 12px 10px; text-align: center; width: 80px;">수술코드</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRowsHtml}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Bottom CTA Box -->
+        <div style="background: linear-gradient(135deg, #123941 0%, #1e5865 100%); border-radius: 16px; padding: 24px; color: #ffffff; text-align: center; margin-top: 32px; box-shadow: 0 4px 12px rgba(18,57,65,0.15);">
+          <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 800; color: #fde047;">
+            실시간 수술명 및 종수술 등급 즉시 검색
+          </h3>
+          <p style="margin: 0 0 16px 0; font-size: 13px; color: #cbd5e1; max-width: 600px; margin-left: auto; margin-right: auto;">
+            보험브릿지 대화형 수술명 검색기에서 키워드 실시간 검색, 1~7종/1~8종 수술코드(KDRG) 비교 및 PDF 인쇄 기능을 바로 이용하실 수 있습니다.
+          </p>
+          <a href="/surgery/" style="display: inline-block; padding: 12px 24px; background: #fde047; color: #123941; border-radius: 10px; font-size: 14px; font-weight: 800; text-decoration: none;">
+            대화형 수술명 검색기 열기
+          </a>
+        </div>
+      </main>
+
+      <footer style="margin-top: 48px; border-top: 1px solid #e2e8f0; background: #ffffff; padding: 32px 16px; text-align: center; font-size: 12px; color: #64748b;">
+        <div style="max-width: 1100px; margin: 0 auto; line-height: 1.8;">
+          <p style="font-weight: 700; color: #334155; margin-bottom: 4px;">보험브릿지 | 보험설계사 실무 정보 플랫폼</p>
+          <p>본 사이트에서 제공하는 정보는 보험설계사의 실무 참고용으로 제공되며 법적 효력을 갖는 유권해석이 아닙니다. 정확한 보장 및 보상 기준은 해당 보험사의 최신 개별 상품 약관을 반드시 확인하시기 바랍니다.</p>
+          <p style="margin-top: 8px; color: #94a3b8;">© 2026 InsuranceBridge. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+`;
+
+    const targetSubPath = page.pathSegment ? `surgery/1to7/${page.pathSegment}` : 'surgery/1to7';
+    const rootTargetDir = path.join(rootDir, targetSubPath);
+    if (!fs.existsSync(rootTargetDir)) {
+      fs.mkdirSync(rootTargetDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(rootTargetDir, 'index.html'), html, 'utf-8');
+
+    const distTargetDir = path.join(rootDir, 'dist', targetSubPath);
+    if (fs.existsSync(path.join(rootDir, 'dist'))) {
+      if (!fs.existsSync(distTargetDir)) {
+        fs.mkdirSync(distTargetDir, { recursive: true });
+      }
+      fs.writeFileSync(path.join(distTargetDir, 'index.html'), html, 'utf-8');
+    }
+
+    console.log(`✅ Generated: /${targetSubPath}/ (${pageRecords.length} records)`);
+    totalPagesGenerated++;
+  }
+
+  // ==========================================
+  // PHASE 4: Generate 1~8종 Pages (9 pages)
+  // ==========================================
+  console.log('\n🚀 Generating 1~8 Surgery Classification SEO static pages (Phase 4)...');
+  const all1to8Records = SURGERY_1TO8_RECORDS;
+  const countTotal1to8 = all1to8Records.length;
+
+  const countByGrade1to8: Record<string, number> = {
+    '1종': all1to8Records.filter(r => r.grade1to8 === '1종').length,
+    '2종': all1to8Records.filter(r => r.grade1to8 === '2종').length,
+    '3종': all1to8Records.filter(r => r.grade1to8 === '3종').length,
+    '4종': all1to8Records.filter(r => r.grade1to8 === '4종').length,
+    '5종': all1to8Records.filter(r => r.grade1to8 === '5종').length,
+    '6종': all1to8Records.filter(r => r.grade1to8 === '6종').length,
+    '7종': all1to8Records.filter(r => r.grade1to8 === '7종').length,
+    '8종': all1to8Records.filter(r => r.grade1to8 === '8종').length,
+  };
+
+  const pages1to8Config = [
+    {
+      typeKey: 'all',
+      pathSegment: '',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/',
+      title: '1~8종 수술비 분류표 및 수술명 검색 (1-8종수술비) | 보험브릿지',
+      h1: '1~8종 수술비 분류표 및 수술명 검색 (1~8종수술분류표)',
+      description: '1~8종수술비(1-8종수술비) 기준 628개 전체 수술분류표. 1종부터 8종까지 수술명과 종수 분류를 검색하고 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류표입니다. 1종부터 8종까지 분류된 총 628개 수술 항목을 수술명과 종수별로 확인할 수 있습니다. 가입한 보험상품과 약관에 따라 실제 보장 여부 및 분류 기준은 달라질 수 있으므로 해당 계약의 약관을 함께 확인하시기 바랍니다.',
+      badge: '1~8종 전체',
+      badgeColor: '#0284c7',
+    },
+    {
+      typeKey: '1',
+      pathSegment: 'type-1',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-1/',
+      title: '1~8종 중 1종수술비 종류 및 1종 수술 분류표 (212개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [1종수술비] 분류표 (1종 수술)',
+      description: '1~8종 수술비 기준 1종수술비(1종 수술비) 212개 목록. 1종수술 종류와 1종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 1종으로 분류된 212개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '1종 수술',
+      badgeColor: '#0284c7',
+    },
+    {
+      typeKey: '2',
+      pathSegment: 'type-2',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-2/',
+      title: '1~8종 중 2종수술비 종류 및 2종 수술 분류표 (95개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [2종수술비] 분류표 (2종 수술)',
+      description: '1~8종 수술비 기준 2종수술비(2종 수술비) 95개 목록. 2종수술 종류와 2종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 2종으로 분류된 95개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '2종 수술',
+      badgeColor: '#0d9488',
+    },
+    {
+      typeKey: '3',
+      pathSegment: 'type-3',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-3/',
+      title: '1~8종 중 3종수술비 종류 및 3종 수술 분류표 (43개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [3종수술비] 분류표 (3종 수술)',
+      description: '1~8종 수술비 기준 3종수술비(3종 수술비) 43개 목록. 3종수술 종류와 3종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 3종으로 분류된 43개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '3종 수술',
+      badgeColor: '#f59e0b',
+    },
+    {
+      typeKey: '4',
+      pathSegment: 'type-4',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-4/',
+      title: '1~8종 중 4종수술비 종류 및 4종 수술 분류표 (105개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [4종수술비] 분류표 (4종 수술)',
+      description: '1~8종 수술비 기준 4종수술비(4종 수술비) 105개 목록. 4종수술 종류와 4종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 4종으로 분류된 105개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '4종 수술',
+      badgeColor: '#ea580c',
+    },
+    {
+      typeKey: '5',
+      pathSegment: 'type-5',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-5/',
+      title: '1~8종 중 5종수술비 종류 및 5종 수술 분류표 (33개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [5종수술비] 분류표 (5종 수술)',
+      description: '1~8종 수술비 기준 5종수술비(5종 수술비) 33개 목록. 5종수술 종류와 5종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 5종으로 분류된 33개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '5종 수술',
+      badgeColor: '#dc2626',
+    },
+    {
+      typeKey: '6',
+      pathSegment: 'type-6',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-6/',
+      title: '1~8종 중 6종수술비 종류 및 6종 수술 분류표 (30개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [6종수술비] 분류표 (6종 수술)',
+      description: '1~8종 수술비 기준 6종수술비(6종 수술비) 30개 목록. 6종수술 종류와 6종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 6종으로 분류된 30개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '6종 수술',
+      badgeColor: '#9333ea',
+    },
+    {
+      typeKey: '7',
+      pathSegment: 'type-7',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-7/',
+      title: '1~8종 중 7종수술비 종류 및 7종 수술 분류표 (64개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [7종수술비] 분류표 (7종 수술)',
+      description: '1~8종 수술비 기준 7종수술비(7종 수술비) 64개 목록. 7종수술 종류와 7종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 7종으로 분류된 64개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '7종 수술',
+      badgeColor: '#0891b2',
+    },
+    {
+      typeKey: '8',
+      pathSegment: 'type-8',
+      canonicalUrl: 'https://insurancebridge.co.kr/surgery/1to8/type-8/',
+      title: '1~8종 중 8종수술비 종류 및 8종 수술 분류표 (46개) | 보험브릿지',
+      h1: '1~8종 수술비 중 [8종수술비] 분류표 (8종 수술)',
+      description: '1~8종 수술비 기준 8종수술비(8종 수술비) 46개 목록. 8종수술 종류와 8종 수술 분류표를 수술명별로 확인할 수 있습니다.',
+      summaryText: '1~8종 수술비 분류 데이터 중 8종으로 분류된 46개 수술 항목입니다. 수술명과 분류 내용을 확인할 수 있으며 실제 보험금 지급 여부는 가입한 상품의 약관을 확인하시기 바랍니다.',
+      badge: '8종 수술',
+      badgeColor: '#475569',
+    },
+  ];
+
+  for (const page of pages1to8Config) {
+    let pageRecords = all1to8Records;
+    if (page.typeKey !== 'all') {
+      const targetGrade = `${page.typeKey}종`;
+      pageRecords = all1to8Records.filter(r => r.grade1to8 === targetGrade);
+    }
+
+    // Top Category Navigation Tabs (1~8)
+    const categoryNavHtml = `
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <a href="/surgery/1to8/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === 'all' ? '#0f172a' : '#cbd5e1'}; background: ${page.typeKey === 'all' ? '#0f172a' : '#ffffff'}; color: ${page.typeKey === 'all' ? '#ffffff' : '#334155'};">
+          전체 (${countTotal1to8})
+        </a>
+        <a href="/surgery/1to8/type-1/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '1' ? '#0284c7' : '#cbd5e1'}; background: ${page.typeKey === '1' ? '#0284c7' : '#ffffff'}; color: ${page.typeKey === '1' ? '#ffffff' : '#334155'};">
+          1종 (${countByGrade1to8['1종']})
+        </a>
+        <a href="/surgery/1to8/type-2/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '2' ? '#0d9488' : '#cbd5e1'}; background: ${page.typeKey === '2' ? '#0d9488' : '#ffffff'}; color: ${page.typeKey === '2' ? '#ffffff' : '#334155'};">
+          2종 (${countByGrade1to8['2종']})
+        </a>
+        <a href="/surgery/1to8/type-3/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '3' ? '#f59e0b' : '#cbd5e1'}; background: ${page.typeKey === '3' ? '#f59e0b' : '#ffffff'}; color: ${page.typeKey === '3' ? '#ffffff' : '#334155'};">
+          3종 (${countByGrade1to8['3종']})
+        </a>
+        <a href="/surgery/1to8/type-4/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '4' ? '#ea580c' : '#cbd5e1'}; background: ${page.typeKey === '4' ? '#ea580c' : '#ffffff'}; color: ${page.typeKey === '4' ? '#ffffff' : '#334155'};">
+          4종 (${countByGrade1to8['4종']})
+        </a>
+        <a href="/surgery/1to8/type-5/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '5' ? '#dc2626' : '#cbd5e1'}; background: ${page.typeKey === '5' ? '#dc2626' : '#ffffff'}; color: ${page.typeKey === '5' ? '#ffffff' : '#334155'};">
+          5종 (${countByGrade1to8['5종']})
+        </a>
+        <a href="/surgery/1to8/type-6/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '6' ? '#9333ea' : '#cbd5e1'}; background: ${page.typeKey === '6' ? '#9333ea' : '#ffffff'}; color: ${page.typeKey === '6' ? '#ffffff' : '#334155'};">
+          6종 (${countByGrade1to8['6종']})
+        </a>
+        <a href="/surgery/1to8/type-7/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '7' ? '#0891b2' : '#cbd5e1'}; background: ${page.typeKey === '7' ? '#0891b2' : '#ffffff'}; color: ${page.typeKey === '7' ? '#ffffff' : '#334155'};">
+          7종 (${countByGrade1to8['7종']})
+        </a>
+        <a href="/surgery/1to8/type-8/" style="padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid ${page.typeKey === '8' ? '#475569' : '#cbd5e1'}; background: ${page.typeKey === '8' ? '#475569' : '#ffffff'}; color: ${page.typeKey === '8' ? '#ffffff' : '#334155'};">
+          8종 (${countByGrade1to8['8종']})
+        </a>
+      </div>
+      <div style="margin-top: 6px; font-size: 12px; color: #475569;">
+        <span>💡 1~7종 수술비 분류표를 찾으시나요?</span>
+        <a href="/surgery/1to7/" style="color: #0369a1; text-decoration: underline; font-weight: 700; margin-left: 6px;">
+          1~7종 수술비 분류표 바로가기 &rarr;
+        </a>
+      </div>
+    `;
+
+    // Table rows
+    const tableRowsHtml = pageRecords.map((r, idx) => {
+      return `
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; color: #64748b; font-size: 13px; text-align: center; width: 50px;">${idx + 1}</td>
+          <td style="padding: 12px 12px; color: #334155; font-size: 13px; font-weight: 600; white-space: nowrap; width: 130px;">
+            <span style="background: #f1f5f9; color: #475569; padding: 3px 8px; border-radius: 6px; font-size: 11px; display: inline-block;">
+              ${escapeHtml(r.category || '기타')}
+            </span>
+          </td>
+          <td style="padding: 12px 14px; color: #0f172a; font-size: 14px; font-weight: 700;">
+            <div style="color: #0f172a; margin-bottom: 4px;">${escapeHtml(r.name)}</div>
+            ${r.description ? `<div style="font-size: 12px; color: #64748b; font-weight: 400; line-height: 1.5;">${escapeHtml(r.description)}</div>` : ''}
+            ${r.tips ? `<div style="margin-top: 6px; font-size: 11px; color: #0369a1; background: #f0f9ff; padding: 4px 8px; border-radius: 4px; font-weight: 500; display: inline-block;">💡 ${escapeHtml(r.tips)}</div>` : ''}
+          </td>
+          <td style="padding: 12px 10px; text-align: center; width: 80px; white-space: nowrap;">
+            <span style="display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; background: #e0f2fe; color: #0369a1;">
+              ${escapeHtml(r.grade1to8)}
+            </span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; width: 80px; white-space: nowrap; color: #64748b; font-size: 12px; font-weight: 600;">
+            ${escapeHtml(r.code || '-')}
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // JSON-LD
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "홈",
+              "item": "https://insurancebridge.co.kr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "수술명 검색",
+              "item": "https://insurancebridge.co.kr/surgery/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "1~8종 수술비 분류표",
+              "item": "https://insurancebridge.co.kr/surgery/1to8/"
+            },
+            ...(page.typeKey !== 'all' ? [{
+              "@type": "ListItem",
+              "position": 4,
+              "name": `${page.typeKey}종 수술`,
+              "item": page.canonicalUrl
+            }] : [])
+          ]
+        },
+        {
+          "@type": "MedicalWebPage",
+          "headline": page.title,
+          "description": page.description,
+          "url": page.canonicalUrl,
+          "publisher": {
+            "@type": "Organization",
+            "name": "보험브릿지",
+            "url": "https://insurancebridge.co.kr/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://insurancebridge.co.kr/og-image.png"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": page.canonicalUrl
+          }
+        }
+      ]
+    };
+
+    const html = `<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="naver-site-verification" content="29e08a26b48fedc496835f8449859ea98a16ddd7" />
+    <title>${escapeHtml(page.title)}</title>
+    <meta name="description" content="${escapeHtml(page.description)}" />
+    <link rel="canonical" href="${page.canonicalUrl}" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="보험브릿지" />
+    <meta property="og:title" content="${escapeHtml(page.title)}" />
+    <meta property="og:description" content="${escapeHtml(page.description)}" />
+    <meta property="og:url" content="${page.canonicalUrl}" />
+    <meta property="og:image" content="https://insurancebridge.co.kr/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeHtml(page.title)}" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeHtml(page.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <meta name="twitter:image" content="https://insurancebridge.co.kr/og-image.png" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+${JSON.stringify(jsonLd, null, 2)}
+    </script>
+  </head>
+  <body style="margin: 0; background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif; color: #0f172a;">
+    <div id="root">
+      <header style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 12px 20px;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+          <a href="/" style="font-size: 18px; font-weight: 800; color: #123941; text-decoration: none;">보험브릿지</a>
+          <nav style="display: flex; gap: 16px; font-size: 13px; font-weight: 600;">
+            <a href="/surgery/" style="color: #0369a1; text-decoration: none;">수술명 검색기</a>
+            <a href="/surgery/1to5/" style="color: #475569; text-decoration: none;">1~5종</a>
+            <a href="/surgery/1to3/" style="color: #475569; text-decoration: none;">1~3종</a>
+            <a href="/surgery/1to7/" style="color: #475569; text-decoration: none;">1~7종</a>
+            <a href="/surgery/1to8/" style="color: #0369a1; text-decoration: underline; font-weight: 700;">1~8종</a>
+          </nav>
+        </div>
+      </header>
+
+      <main style="max-width: 1100px; margin: 0 auto; padding: 24px 16px;">
+        <!-- Breadcrumb UI -->
+        <nav aria-label="Breadcrumb" style="font-size: 12px; color: #64748b; margin-bottom: 16px;">
+          <ol style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+            <li><a href="/" style="color: #64748b; text-decoration: none;">홈</a></li>
+            <li>&gt;</li>
+            <li><a href="/surgery/" style="color: #64748b; text-decoration: none;">수술명 검색</a></li>
+            <li>&gt;</li>
+            <li><a href="/surgery/1to8/" style="color: ${page.typeKey === 'all' ? '#0f172a; font-weight: 700;' : '#64748b; text-decoration: none;'}">1~8종 수술비 분류표</a></li>
+            ${page.typeKey !== 'all' ? `<li>&gt;</li><li style="color: #0f172a; font-weight: 700;">${escapeHtml(page.typeKey)}종 수술</li>` : ''}
+          </ol>
+        </nav>
+
+        <!-- Main Title & Intro Box -->
+        <article style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px 24px; margin-bottom: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+          <div style="display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #ffffff; background: ${page.badgeColor}; margin-bottom: 12px;">
+            ${escapeHtml(page.badge)}
+          </div>
+          <h1 style="margin: 0 0 12px 0; font-size: 24px; font-weight: 800; color: #0f172a; line-height: 1.35;">
+            ${escapeHtml(page.h1)}
+          </h1>
+          <p style="margin: 0 0 20px 0; font-size: 14px; color: #475569; line-height: 1.6;">
+            ${escapeHtml(page.summaryText)}
+          </p>
+
+          <!-- Type Navigation Tabs -->
+          <div style="border-top: 1px solid #f1f5f9; padding-top: 16px;">
+            <div style="font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 10px;">
+              종수별 수술분류표 바로가기:
+            </div>
+            ${categoryNavHtml}
+          </div>
+        </article>
+
+        <!-- Static Rendered Surgery Table -->
+        <section style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); margin-bottom: 24px;">
+          <div style="padding: 16px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #0f172a;">
+              ${escapeHtml(page.h1)} 상세 목록 (${pageRecords.length}건)
+            </h2>
+            <span style="font-size: 12px; color: #64748b;">약관 기준 원본 데이터 전수 수록</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+              <thead>
+                <tr style="background: #f1f5f9; border-bottom: 2px solid #cbd5e1; font-size: 13px; color: #475569; font-weight: 700;">
+                  <th style="padding: 12px 10px; text-align: center; width: 50px;">NO</th>
+                  <th style="padding: 12px 12px; width: 130px;">수술부위/분류</th>
+                  <th style="padding: 12px 14px;">수술명 및 보장 기준</th>
+                  <th style="padding: 12px 10px; text-align: center; width: 80px;">1~8종</th>
+                  <th style="padding: 12px 10px; text-align: center; width: 80px;">수술코드</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRowsHtml}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Bottom CTA Box -->
+        <div style="background: linear-gradient(135deg, #123941 0%, #1e5865 100%); border-radius: 16px; padding: 24px; color: #ffffff; text-align: center; margin-top: 32px; box-shadow: 0 4px 12px rgba(18,57,65,0.15);">
+          <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 800; color: #fde047;">
+            실시간 수술명 및 종수술 등급 즉시 검색
+          </h3>
+          <p style="margin: 0 0 16px 0; font-size: 13px; color: #cbd5e1; max-width: 600px; margin-left: auto; margin-right: auto;">
+            보험브릿지 대화형 수술명 검색기에서 키워드 실시간 검색, 1~7종/1~8종 수술코드(KDRG) 비교 및 PDF 인쇄 기능을 바로 이용하실 수 있습니다.
+          </p>
+          <a href="/surgery/" style="display: inline-block; padding: 12px 24px; background: #fde047; color: #123941; border-radius: 10px; font-size: 14px; font-weight: 800; text-decoration: none;">
+            대화형 수술명 검색기 열기
+          </a>
+        </div>
+      </main>
+
+      <footer style="margin-top: 48px; border-top: 1px solid #e2e8f0; background: #ffffff; padding: 32px 16px; text-align: center; font-size: 12px; color: #64748b;">
+        <div style="max-width: 1100px; margin: 0 auto; line-height: 1.8;">
+          <p style="font-weight: 700; color: #334155; margin-bottom: 4px;">보험브릿지 | 보험설계사 실무 정보 플랫폼</p>
+          <p>본 사이트에서 제공하는 정보는 보험설계사의 실무 참고용으로 제공되며 법적 효력을 갖는 유권해석이 아닙니다. 정확한 보장 및 보상 기준은 해당 보험사의 최신 개별 상품 약관을 반드시 확인하시기 바랍니다.</p>
+          <p style="margin-top: 8px; color: #94a3b8;">© 2026 InsuranceBridge. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+`;
+
+    const targetSubPath = page.pathSegment ? `surgery/1to8/${page.pathSegment}` : 'surgery/1to8';
+    const rootTargetDir = path.join(rootDir, targetSubPath);
+    if (!fs.existsSync(rootTargetDir)) {
+      fs.mkdirSync(rootTargetDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(rootTargetDir, 'index.html'), html, 'utf-8');
+
+    const distTargetDir = path.join(rootDir, 'dist', targetSubPath);
+    if (fs.existsSync(path.join(rootDir, 'dist'))) {
+      if (!fs.existsSync(distTargetDir)) {
+        fs.mkdirSync(distTargetDir, { recursive: true });
+      }
+      fs.writeFileSync(path.join(distTargetDir, 'index.html'), html, 'utf-8');
+    }
+
+    console.log(`✅ Generated: /${targetSubPath}/ (${pageRecords.length} records)`);
+    totalPagesGenerated++;
+  }
 }
 
 generateSurgeryPages();

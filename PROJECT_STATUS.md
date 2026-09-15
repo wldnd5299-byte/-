@@ -349,8 +349,12 @@ AI가 임의로 추가해서는 안 된다.
 - 1~5종 수술비 정적 SEO 페이지 6개 운영 (/surgery/1to5/, type-1~5)
 - 1~3종 수술비 전용 정적 SEO 페이지 4개 신규 구축 완료 (/surgery/1to3/, type-1~3)
   * SOURCE-LOCK 원칙 준수: src/data.ts SURGERY_RECORDS 기존 grade1to3 데이터 원본 전수 수록 (총 2,171건: 1종 912건, 2종 981건, 3종 278건)
-  * vite.config.ts 다중 진입점(MPA) 및 sitemap.xml 정상 반영
-  * 1~5종 및 수술 허브 상호 교차 링크 완료
+- 1~7종 수술비 전용 정적 SEO 페이지 8개 신규 구축 완료 (/surgery/1to7/, type-1~7)
+  * SOURCE-LOCK 원칙 준수: src/data.ts SURGERY_1TO7_RECORDS 데이터 원본 전수 수록 (총 630건: 1종 214, 2종 95, 3종 43, 4종 105, 5종 63, 6종 64, 7종 46)
+- 1~8종 수술비 전용 정적 SEO 페이지 9개 신규 구축 완료 (/surgery/1to8/, type-1~8)
+  * SOURCE-LOCK 원칙 준수: src/data.ts SURGERY_1TO8_RECORDS 데이터 원본 전수 수록 (총 628건: 1종 212, 2종 95, 3종 43, 4종 105, 5종 33, 6종 30, 7종 64, 8종 46)
+  * vite.config.ts 다중 진입점(MPA) 17개 등록 및 public/sitemap.xml (총 236개 URL) 정상 반영
+  * /surgery/index.html 허브 및 1~7종/1~8종 상호 교차 링크 완료
 
 네이버 KB손해보험 검색 노출 문제는
 현재 코드 수정 없이 색인 진행 상태를 관찰한다.
