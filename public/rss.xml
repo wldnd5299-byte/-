@@ -5,8 +5,16 @@
     <link>https://insurancebridge.co.kr/info/</link>
     <description>보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 15 Sep 2026 06:55:49 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 10:20:57 GMT</lastBuildDate>
     <atom:link href="https://insurancebridge.co.kr/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>후유장해 지급률 및 신체 부위별 장해분류표</title>
+      <link>https://insurancebridge.co.kr/info/disability-payout-rate/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/disability-payout-rate/</guid>
+      <description>보험 약관의 장해분류표에 기재된 후유장해 지급률을 신체 부위별로 확인할 수 있습니다. 눈·관절·척추·신경계 등 장해 판정 기준과 확인 시 유의사항을 안내합니다.</description>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+      <category>planner</category>
+    </item>
     <item>
       <title>개인실손 중지·재개, 단체실손 가입했다면 꼭 확인하세요</title>
       <link>https://insurancebridge.co.kr/info/personal-indemnity-suspension/</link>
