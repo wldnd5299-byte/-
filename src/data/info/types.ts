@@ -83,6 +83,8 @@ export interface InfoArticle {
   id: string;
   slug: string;
   title: string;
+  seoTitle?: string;
+  h1?: string;
   description: string;
   category: InfoCategory;
   publishedAt: string;

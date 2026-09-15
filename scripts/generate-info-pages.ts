@@ -198,7 +198,8 @@ export async function generateInfoPages() {
       fs.mkdirSync(articleDir, { recursive: true });
     }
 
-    const pageTitle = `${art.title} | 보험브릿지`;
+    const pageTitle = art.seoTitle || `${art.title} | 보험브릿지`;
+    const h1Title = art.h1 || art.title;
     const canonicalUrl = `https://insurancebridge.co.kr/info/${art.slug}/`;
     const catMeta = INFO_CATEGORIES.find((c) => c.id === art.category);
 
@@ -254,7 +255,7 @@ export async function generateInfoPages() {
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": art.title,
+      "headline": h1Title,
       "description": art.description,
       "image": "https://insurancebridge.co.kr/og-image.png",
       "datePublished": art.publishedAt,
@@ -304,7 +305,7 @@ export async function generateInfoPages() {
         {
           "@type": "ListItem",
           "position": 4,
-          "name": art.title,
+          "name": h1Title,
           "item": canonicalUrl
         }
       ]
@@ -364,7 +365,7 @@ export async function generateInfoPages() {
         <article style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);">
           <header style="border-bottom: 1px solid #f1f5f9; padding-bottom: 18px; margin-bottom: 24px;">
             <h1 style="font-size: 24px; font-weight: 800; color: #0f172a; line-height: 1.35; margin: 0 0 10px 0;">
-              ${escapeHtml(art.title)}
+              ${escapeHtml(h1Title)}
             </h1>
             <div style="font-size: 12px; color: #94a3b8;">
               <span>발행일: ${art.publishedAt}</span>
