@@ -149,6 +149,12 @@ export function generateTermsPages() {
         contentHtml = keys.map((k, idx) => renderSectionToHtml((sections as any)[k], idx)).join('\n');
       }
 
+      // Search alias determination (strict regex: N대질병수술비 -> N대수술비)
+      let searchAlias = '';
+      if (/^\d+대질병수술비$/.test(st.label)) {
+        searchAlias = st.label.replace('대질병수술비', '대수술비');
+      }
+
       // Render summary banner if available
       let summaryHtml = '';
       if (summary) {
@@ -159,7 +165,7 @@ export function generateTermsPages() {
               <span style="font-size: 16px;">💡</span> ${insurer.name} ${st.label} 핵심 보약 요약
             </h4>
             <div style="font-size: 13px; color: #15803d; line-height: 1.6;">
-              ${sumItems.map((s: any) => typeof s === 'string' ? `<p style="margin: 4px 0;">• ${escapeHtml(s)}</p>` : `<p style="margin: 4px 0;">• <strong>${escapeHtml(s.title || s.name || '')}:</strong> ${escapeHtml(s.desc || s.summary || s.diseases || '')}</p>`).join('')}
+              ${sumItems.map((s: any) => typeof s === 'string' ? `<p style="margin: 4px 0;">• ${escapeHtml(s)}</p>` : `<p style="margin: 4px 0;">• <strong>${escapeHtml(s.title || s.category || s.name || '')}:</strong> ${escapeHtml(s.desc || s.summary || s.diseases || '')}</p>`).join('')}
             </div>
           </div>
         `;
@@ -299,7 +305,12 @@ export function generateTermsPages() {
               </div>
               <h1 style="margin: 0; font-size: 22px; font-weight: 800; color: #0f172a; line-height: 1.4;">
                 ${escapeHtml(pageH1)}
-              </h1>
+              </h1>${searchAlias ? `
+                <div style="margin-top: 8px; font-size: 13px; color: #475569; display: flex; align-items: center; gap: 6px;">
+                  <span style="background: #e2e8f0; color: #334155; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">관련 검색 표현</span>
+                  <span><strong>${escapeHtml(searchAlias)}</strong></span>
+                </div>
+              ` : ''}
             </div>
             <a href="/terms/" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #123941; color: #ffffff; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 2px 4px rgba(18,57,65,0.2);">
               <span>대화형 검색기로 열기</span> &rarr;
