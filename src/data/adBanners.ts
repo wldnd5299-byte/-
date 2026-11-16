@@ -1,47 +1,85 @@
-export interface AdBannerItem {
+export interface CoupangAdBanner {
   id: string;
+  src: string;
+  width: number;
+  height: number;
+  frameBorder: string;
+  scrolling: 'no';
+  referrerPolicy: 'unsafe-url';
   title: string;
-  subtitle?: string;
-  image?: string;
-  alt?: string;
-  link?: string;
-  enabled: boolean;
 }
 
-export const AD_BANNERS: AdBannerItem[] = [
+export const COUPANG_AD_BANNERS: CoupangAdBanner[] = [
   {
-    id: 'ad-1',
-    title: '광고 및 제휴 배너 1',
-    alt: '광고 및 제휴 배너 1',
-    link: '',
-    enabled: true,
+    id: 'coupang-1',
+    src: 'https://coupa.ng/cq0N69',
+    width: 120,
+    height: 240,
+    frameBorder: '0',
+    scrolling: 'no',
+    referrerPolicy: 'unsafe-url',
+    title: '추천 상품 1',
   },
   {
-    id: 'ad-2',
-    title: '광고 및 제휴 배너 2',
-    alt: '광고 및 제휴 배너 2',
-    link: '',
-    enabled: true,
+    id: 'coupang-2',
+    src: 'https://coupa.ng/cq0ObR',
+    width: 120,
+    height: 240,
+    frameBorder: '0',
+    scrolling: 'no',
+    referrerPolicy: 'unsafe-url',
+    title: '추천 상품 2',
   },
   {
-    id: 'ad-3',
-    title: '광고 및 제휴 배너 3',
-    alt: '광고 및 제휴 배너 3',
-    link: '',
-    enabled: true,
+    id: 'coupang-3',
+    src: 'https://coupa.ng/cq0Of9',
+    width: 120,
+    height: 240,
+    frameBorder: '0',
+    scrolling: 'no',
+    referrerPolicy: 'unsafe-url',
+    title: '추천 상품 3',
   },
   {
-    id: 'ad-4',
-    title: '광고 및 제휴 배너 4',
-    alt: '광고 및 제휴 배너 4',
-    link: '',
-    enabled: true,
+    id: 'coupang-4',
+    src: 'https://coupa.ng/cq0Oif',
+    width: 120,
+    height: 240,
+    frameBorder: '0',
+    scrolling: 'no',
+    referrerPolicy: 'unsafe-url',
+    title: '추천 상품 4',
   },
   {
-    id: 'ad-5',
-    title: '광고 및 제휴 배너 5',
-    alt: '광고 및 제휴 배너 5',
-    link: '',
-    enabled: true,
+    id: 'coupang-5',
+    src: 'https://coupa.ng/cq0Okj',
+    width: 120,
+    height: 240,
+    frameBorder: '0',
+    scrolling: 'no',
+    referrerPolicy: 'unsafe-url',
+    title: '추천 상품 5',
+  },
+  {
+    id: 'coupang-6',
+    src: 'https://coupa.ng/cq0PvE',
+    width: 120,
+    height: 240,
+    frameBorder: '0',
+    scrolling: 'no',
+    referrerPolicy: 'unsafe-url',
+    title: '추천 상품 6',
+  },
+  {
+    id: 'coupang-7',
+    src: 'https://coupa.ng/cq0Pxi',
+    width: 120,
+    height: 240,
+    frameBorder: '0',
+    scrolling: 'no',
+    referrerPolicy: 'unsafe-url',
+    title: '추천 상품 7',
   },
 ];
+
+
