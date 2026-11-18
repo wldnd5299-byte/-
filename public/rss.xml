@@ -5,8 +5,32 @@
     <link>https://insurancebridge.co.kr/info/</link>
     <description>보험설계사와 금융소비자를 위한 약관 해설, 질병코드(KCD) 분류표 활용법, 보상 실무 및 관련 도구 가이드</description>
     <language>ko</language>
-    <lastBuildDate>Tue, 15 Sep 2026 15:35:33 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 04:26:43 GMT</lastBuildDate>
     <atom:link href="https://insurancebridge.co.kr/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>DB손해보험 심장질환진단비(I·II·III) 분류표와 질병코드</title>
+      <link>https://insurancebridge.co.kr/info/db-heart-disease-diagnosis-benefit/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/db-heart-disease-diagnosis-benefit/</guid>
+      <description>DB손해보험 심장질환진단비(I·II·III)의 약관상 보장대상 질병과 KCD 질병코드를 비교하고 협심증, 심근경색증, 판막질환, 부정맥 및 심부전 분류를 안내합니다.</description>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <category>vascular</category>
+    </item>
+    <item>
+      <title>I20 협심증 vs I21 급성심근경색증 질병코드 및 보험 담보 분류표 비교 | 보험브릿지</title>
+      <link>https://insurancebridge.co.kr/info/angina-vs-myocardial-infarction/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/angina-vs-myocardial-infarction/</guid>
+      <description>질병코드 I20 협심증과 I21 급성심근경색증이 보험브릿지에 등록된 보험사 약관 담보 분류표에 기재된 현황을 비교하고, 두 코드가 함께 또는 개별 기재된 담보를 확인합니다.</description>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <category>vascular</category>
+    </item>
+    <item>
+      <title>뇌혈관질환 I60~I64 질병코드 및 보험 담보 분류표 비교 | 보험브릿지</title>
+      <link>https://insurancebridge.co.kr/info/cerebrovascular-i60-i64/</link>
+      <guid isPermaLink="true">https://insurancebridge.co.kr/info/cerebrovascular-i60-i64/</guid>
+      <description>질병코드 I60부터 I64까지 보험브릿지에 등록된 보험사 약관 담보 분류표의 질병명과 코드 기재 현황을 비교하고, 세부 분류표의 기재 방식을 확인합니다.</description>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <category>vascular</category>
+    </item>
     <item>
       <title>뇌경색 골든타임 | tPA 혈전용해술·혈전제거술 시간 안내</title>
       <link>https://insurancebridge.co.kr/info/cerebrovascular-golden-time/</link>

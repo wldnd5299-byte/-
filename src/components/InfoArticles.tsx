@@ -215,7 +215,7 @@ export const InfoArticles: React.FC<InfoArticlesProps> = ({ initialSlug, onNavig
           {/* Header */}
           <header className="border-b border-slate-100 pb-5 mb-6">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug mb-3">
-              {currentArticle.title}
+              {currentArticle.h1 || currentArticle.title}
             </h1>
             <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
               <Calendar className="w-3.5 h-3.5" />

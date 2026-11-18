@@ -290,6 +290,17 @@ export const getViewFromLocation = (): ViewState => {
   return 'home';
 };
 
+export const getInfoSlugFromLocation = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  const match = window.location.pathname.match(/^\/info\/([^/]+)\/?$/);
+  if (!match || !match[1]) return null;
+  try {
+    return decodeURIComponent(match[1]);
+  } catch {
+    return match[1];
+  }
+};
+
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>(() => {
     if (typeof window !== 'undefined') {
@@ -916,6 +927,7 @@ export default function App() {
               </div>
             ) : currentView === 'info' ? (
               <InfoArticles
+                initialSlug={getInfoSlugFromLocation()}
                 onNavigate={(view, path) => {
                   handleNavigate(view as ViewState);
                   if (path && typeof window !== 'undefined') {

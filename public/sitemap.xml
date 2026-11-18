@@ -361,6 +361,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://insurancebridge.co.kr/info/db-heart-disease-diagnosis-benefit/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/info/angina-vs-myocardial-infarction/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insurancebridge.co.kr/info/cerebrovascular-i60-i64/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://insurancebridge.co.kr/info/cerebrovascular-golden-time/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
