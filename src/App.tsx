@@ -40,7 +40,6 @@ import PlannerGoods from './components/PlannerGoods';
 import DisputePrecedent from './components/DisputePrecedent';
 import InfoArticles from './components/InfoArticles';
 import AdBannerStrip from './components/AdBannerStrip';
-import CoupangDynamicPopup from './components/CoupangDynamicPopup';
 import PlannerSupplies from './components/PlannerSupplies';
 import DiseaseCodeSearch from './components/DiseaseCodeSearch';
 
@@ -1089,8 +1088,6 @@ export default function App() {
 
         </div>
       </footer>
-
-      <CoupangDynamicPopup />
 
     </div>
   );
