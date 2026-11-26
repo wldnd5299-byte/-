@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   FileText,
@@ -42,7 +42,7 @@ import InfoArticles from './components/InfoArticles';
 import AdBannerStrip from './components/AdBannerStrip';
 import PlannerSupplies from './components/PlannerSupplies';
 import DiseaseCodeSearch from './components/DiseaseCodeSearch';
-import PolicySearch from './components/PolicySearch';
+const PolicySearch = lazy(() => import('./components/PolicySearch'));
 
 import { searchSite, SearchResultItem } from './data/searchIndex';
 
@@ -965,7 +965,15 @@ export default function App() {
             ) : currentView === 'claim' ? (
               <ClaimForms />
             ) : currentView === 'policy-search' ? (
-              <PolicySearch />
+              <Suspense
+                fallback={
+                  <div className="bg-white border border-slate-200/90 rounded-2xl p-8 text-center text-sm font-bold text-slate-600 shadow-sm">
+                    상품약관찾기 목록을 불러오는 중입니다...
+                  </div>
+                }
+              >
+                <PolicySearch />
+              </Suspense>
             ) : currentView === 'terms' ? (
               <TermsMaster />
             ) : currentView === 'surgery' ? (
