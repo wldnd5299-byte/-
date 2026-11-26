@@ -28,10 +28,67 @@ import {
   SAMSUNG_LIFE_RAW_COUNTS,
   getPolicyRecordsByStatus,
   getSamsungLifeDisclosureStats,
+  sanitizePolicySearchQuery,
   searchPolicyProducts,
 } from '../data/policySearchData';
 
 type SearchStatus = 'idle' | 'empty' | 'found' | 'not-found';
+type InsurerCategory = 'life' | 'non-life';
+type PolicyInsurerFilter = 'ALL' | string;
+
+interface RegisteredInsurerOption {
+  name: string;
+  category: InsurerCategory;
+}
+
+interface GroupedPolicyProduct {
+  groupKey: string;
+  insurerName: PolicyProductRecord['insurerName'];
+  productName: string;
+  officialSourceUrl: string;
+  items: PolicyProductRecord[];
+  latestPeriodText: string;
+  onSaleCount: number;
+  discontinuedCount: number;
+  isMixedStatus: boolean;
+}
+
+const MAX_INITIAL_INSURER_CARDS = 6;
+
+function classifyInsurerCategory(insurerName: string): InsurerCategory {
+  if (
+    insurerName.includes('생명') ||
+    insurerName.includes('라이프') ||
+    insurerName.includes('연금')
+  ) {
+    return 'life';
+  }
+  return 'non-life';
+}
+
+function formatDisclosurePeriod(startDate: string | null, endDate: string | null): string {
+  const start = startDate?.trim() || '';
+  const end = endDate?.trim() || '';
+  if (start && end) {
+    return start === end ? start : `${start} ~ ${end}`;
+  }
+  if (start) return `${start} ~ -`;
+  if (end) return `- ~ ${end}`;
+  return '-';
+}
+
+function getLatestStartDateItem(items: PolicyProductRecord[]): PolicyProductRecord {
+  let latest = items[0];
+  for (let i = 1; i < items.length; i++) {
+    const candidate = items[i];
+    const candStart = candidate.salesStartDate || '';
+    const latestStart = latest.salesStartDate || '';
+    if (candStart > latestStart) {
+      latest = candidate;
+    }
+  }
+  return latest;
+}
 
 const PAGE_SIZE = 20;
 
@@ -73,9 +130,51 @@ export default function PolicySearch() {
   const [searchQuery, setSearchQuery] = useState('');
   const [submittedQuery, setSubmittedQuery] = useState('');
   const [searchStatus, setSearchStatus] = useState<SearchStatus>('idle');
+  const [selectedInsurer, setSelectedInsurer] = useState<PolicyInsurerFilter>('ALL');
+  const [showMoreInsurers, setShowMoreInsurers] = useState(false);
   const [statusFilter, setStatusFilter] = useState<PolicyStatusFilter>('ALL');
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  const registeredInsurers: RegisteredInsurerOption[] = useMemo(() => {
+    const seen = new Set<string>();
+    const list: RegisteredInsurerOption[] = [];
+    for (const record of SAMSUNG_LIFE_POLICY_RECORDS) {
+      const name = record.insurerName?.trim();
+      if (!name || seen.has(name)) continue;
+      seen.add(name);
+      list.push({
+        name,
+        category: classifyInsurerCategory(name),
+      });
+    }
+    return list;
+  }, []);
+
+  const hasMoreInsurers = registeredInsurers.length > MAX_INITIAL_INSURER_CARDS;
+
+  const primaryVisibleInsurers = useMemo(() => {
+    if (!hasMoreInsurers) return registeredInsurers;
+    const base = registeredInsurers.slice(0, MAX_INITIAL_INSURER_CARDS);
+    if (selectedInsurer !== 'ALL' && !base.some((item) => item.name === selectedInsurer)) {
+      const selectedItem = registeredInsurers.find((item) => item.name === selectedInsurer);
+      if (selectedItem) {
+        return [...base, selectedItem];
+      }
+    }
+    return base;
+  }, [registeredInsurers, hasMoreInsurers, selectedInsurer]);
+
+  const lifeInsurers = useMemo(
+    () => registeredInsurers.filter((item) => item.category === 'life'),
+    [registeredInsurers]
+  );
+
+  const nonLifeInsurers = useMemo(
+    () => registeredInsurers.filter((item) => item.category === 'non-life'),
+    [registeredInsurers]
+  );
 
   const datasetStats = useMemo(
     () => getSamsungLifeDisclosureStats(SAMSUNG_LIFE_POLICY_RECORDS),
@@ -87,52 +186,111 @@ export default function PolicySearch() {
     return searchPolicyProducts(submittedQuery, 'ALL');
   }, [searchStatus, submittedQuery]);
 
+  const insurerFilteredSearchRows = useMemo(() => {
+    if (searchStatus !== 'found') return [];
+    if (selectedInsurer === 'ALL') return allMatchedInSearch;
+    return allMatchedInSearch.filter((item) => item.insurerName === selectedInsurer);
+  }, [searchStatus, selectedInsurer, allMatchedInSearch]);
+
+  const insurerFilteredAllRecords = useMemo(() => {
+    if (selectedInsurer === 'ALL') return SAMSUNG_LIFE_POLICY_RECORDS;
+    return SAMSUNG_LIFE_POLICY_RECORDS.filter((item) => item.insurerName === selectedInsurer);
+  }, [selectedInsurer]);
+
   const browseRecords = useMemo(() => {
-    return getPolicyRecordsByStatus(statusFilter);
-  }, [statusFilter]);
+    const records = getPolicyRecordsByStatus(statusFilter);
+    if (selectedInsurer === 'ALL') return records;
+    return records.filter((item) => item.insurerName === selectedInsurer);
+  }, [statusFilter, selectedInsurer]);
 
   const activeCounts = useMemo(() => {
-    if (searchStatus === 'found') {
-      let onSale = 0;
-      let discontinued = 0;
-      for (const item of allMatchedInSearch) {
-        if (item.salesStatus === '판매 중') onSale++;
-        else discontinued++;
-      }
-      return {
-        all: allMatchedInSearch.length,
-        onSale,
-        discontinued,
-      };
-    }
+    const sourceRows =
+      searchStatus === 'found' ? insurerFilteredSearchRows : insurerFilteredAllRecords;
 
+    let onSale = 0;
+    let discontinued = 0;
+    for (const item of sourceRows) {
+      if (item.salesStatus === '판매 중') onSale++;
+      else discontinued++;
+    }
     return {
-      all: datasetStats.displayTotalRows,
-      onSale: datasetStats.onSaleCount,
-      discontinued: datasetStats.discontinuedCount,
+      all: sourceRows.length,
+      onSale,
+      discontinued,
     };
-  }, [searchStatus, allMatchedInSearch, datasetStats]);
+  }, [searchStatus, insurerFilteredSearchRows, insurerFilteredAllRecords]);
 
   const filteredDisplayRows: PolicyProductRecord[] = useMemo(() => {
     if (searchStatus === 'found') {
-      if (statusFilter === 'ALL') return allMatchedInSearch;
-      return allMatchedInSearch.filter((item) => item.salesStatus === statusFilter);
+      if (statusFilter === 'ALL') return insurerFilteredSearchRows;
+      return insurerFilteredSearchRows.filter((item) => item.salesStatus === statusFilter);
     }
     if (searchStatus === 'idle') {
       return browseRecords;
     }
     return [];
-  }, [searchStatus, statusFilter, allMatchedInSearch, browseRecords]);
+  }, [searchStatus, statusFilter, insurerFilteredSearchRows, browseRecords]);
 
-  const visibleRows = useMemo(
-    () => filteredDisplayRows.slice(0, visibleCount),
-    [filteredDisplayRows, visibleCount]
+  const groupedProducts: GroupedPolicyProduct[] = useMemo(() => {
+    const groupMap = new Map<string, GroupedPolicyProduct>();
+
+    for (const row of filteredDisplayRows) {
+      const groupKey = `${row.insurerName}::${row.productName}`;
+      const existing = groupMap.get(groupKey);
+      if (!existing) {
+        const isOnSale = row.salesStatus === '판매 중';
+        groupMap.set(groupKey, {
+          groupKey,
+          insurerName: row.insurerName,
+          productName: row.productName,
+          officialSourceUrl: row.officialSourceUrl,
+          items: [row],
+          latestPeriodText: formatDisclosurePeriod(row.salesStartDate, row.salesEndDate),
+          onSaleCount: isOnSale ? 1 : 0,
+          discontinuedCount: isOnSale ? 0 : 1,
+          isMixedStatus: false,
+        });
+      } else {
+        existing.items.push(row);
+        if (row.salesStatus === '판매 중') {
+          existing.onSaleCount += 1;
+        } else {
+          existing.discontinuedCount += 1;
+        }
+        existing.isMixedStatus = existing.onSaleCount > 0 && existing.discontinuedCount > 0;
+      }
+    }
+
+    const groups = Array.from(groupMap.values());
+    for (const group of groups) {
+      if (group.items.length > 1) {
+        const latestItem = getLatestStartDateItem(group.items);
+        group.latestPeriodText = formatDisclosurePeriod(
+          latestItem.salesStartDate,
+          latestItem.salesEndDate
+        );
+      }
+    }
+
+    return groups;
+  }, [filteredDisplayRows]);
+
+  const visibleGroups = useMemo(
+    () => groupedProducts.slice(0, visibleCount),
+    [groupedProducts, visibleCount]
+  );
+
+  const visibleHistoryCount = useMemo(
+    () => visibleGroups.reduce((sum, group) => sum + group.items.length, 0),
+    [visibleGroups]
   );
 
   const executeSearch = (rawInput: string) => {
     const trimmed = rawInput.trim();
+    const sanitized = sanitizePolicySearchQuery(trimmed);
     setVisibleCount(PAGE_SIZE);
-    if (!trimmed) {
+    setExpandedGroups({});
+    if (!sanitized) {
       setSubmittedQuery('');
       setSearchStatus('empty');
       return;
@@ -160,19 +318,37 @@ export default function PolicySearch() {
     setSearchStatus('idle');
     setStatusFilter('ALL');
     setVisibleCount(PAGE_SIZE);
+    setExpandedGroups({});
   };
 
   const handleStatusChange = (nextStatus: PolicyStatusFilter) => {
     setStatusFilter(nextStatus);
     setVisibleCount(PAGE_SIZE);
+    setExpandedGroups({});
   };
 
-  const handleCopyProductName = async (row: PolicyProductRecord) => {
-    const ok = await copyTextToClipboard(row.productName);
+  const handleInsurerChange = (nextInsurer: PolicyInsurerFilter) => {
+    setSelectedInsurer(nextInsurer);
+    setVisibleCount(PAGE_SIZE);
+    setExpandedGroups({});
+    if (searchStatus === 'empty' && !submittedQuery) {
+      setSearchStatus('idle');
+    }
+  };
+
+  const toggleGroup = (groupKey: string) => {
+    setExpandedGroups((prev) => ({
+      ...prev,
+      [groupKey]: !prev[groupKey],
+    }));
+  };
+
+  const handleCopyProductName = async (groupKey: string, productName: string) => {
+    const ok = await copyTextToClipboard(productName);
     if (ok) {
-      setCopiedId(row.id);
+      setCopiedKey(groupKey);
       window.setTimeout(() => {
-        setCopiedId((prev) => (prev === row.id ? null : prev));
+        setCopiedKey((prev) => (prev === groupKey ? null : prev));
       }, 2000);
     }
   };
@@ -260,6 +436,145 @@ export default function PolicySearch() {
           ))}
         </div>
       </div>
+
+      {/* 2-1. 보험사 선택 (등록된 공시 데이터 기준 자동 구성) */}
+      <section
+        aria-label="보험사 선택"
+        className="bg-white px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl border border-slate-200/90 shadow-2xs text-left space-y-2.5"
+      >
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="text-xs font-black text-slate-700 tracking-wider whitespace-nowrap shrink-0">
+            보험사 선택
+          </span>
+
+          <div
+            className="flex flex-wrap items-center gap-2"
+            role="group"
+            aria-label="등록 보험사 필터"
+          >
+            <button
+              type="button"
+              onClick={() => handleInsurerChange('ALL')}
+              aria-pressed={selectedInsurer === 'ALL'}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs sm:text-[13px] transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#123941] focus-visible:ring-offset-2 ${
+                selectedInsurer === 'ALL'
+                  ? 'bg-[#E0F2EF] border-[#8ABDB4] text-[#123941] font-extrabold'
+                  : 'bg-white border-slate-200 text-slate-700 font-bold hover:bg-slate-50 hover:border-slate-300'
+              }`}
+            >
+              {selectedInsurer === 'ALL' && (
+                <Check className="w-3.5 h-3.5 text-[#123941] shrink-0" aria-hidden="true" />
+              )}
+              <span>전체 보험사</span>
+            </button>
+
+            {primaryVisibleInsurers.map((insurer) => {
+              const isSelected = selectedInsurer === insurer.name;
+              return (
+                <button
+                  key={insurer.name}
+                  type="button"
+                  onClick={() => handleInsurerChange(insurer.name)}
+                  aria-pressed={isSelected}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs sm:text-[13px] transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#123941] focus-visible:ring-offset-2 ${
+                    isSelected
+                      ? 'bg-[#E0F2EF] border-[#8ABDB4] text-[#123941] font-extrabold'
+                      : 'bg-white border-slate-200 text-slate-700 font-bold hover:bg-slate-50 hover:border-slate-300'
+                  }`}
+                >
+                  {isSelected && (
+                    <Check className="w-3.5 h-3.5 text-[#123941] shrink-0" aria-hidden="true" />
+                  )}
+                  <span>{insurer.name}</span>
+                </button>
+              );
+            })}
+
+            {hasMoreInsurers && (
+              <button
+                type="button"
+                onClick={() => setShowMoreInsurers((prev) => !prev)}
+                aria-expanded={showMoreInsurers}
+                aria-controls="policy-insurer-more-panel"
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-bold text-[#123941] transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#123941] focus-visible:ring-offset-2"
+              >
+                <span>{showMoreInsurers ? '보험사 접기' : '보험사 더 보기'}</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-150 ${
+                    showMoreInsurers ? 'rotate-180' : ''
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {hasMoreInsurers && showMoreInsurers && (
+          <div
+            id="policy-insurer-more-panel"
+            className="pt-2.5 border-t border-slate-100 space-y-2.5"
+          >
+            {lifeInsurers.length > 0 && (
+              <div className="space-y-1.5">
+                <div className="text-[11px] font-extrabold text-slate-500">생명보험</div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {lifeInsurers.map((insurer) => {
+                    const isSelected = selectedInsurer === insurer.name;
+                    return (
+                      <button
+                        key={insurer.name}
+                        type="button"
+                        onClick={() => handleInsurerChange(insurer.name)}
+                        aria-pressed={isSelected}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#123941] focus-visible:ring-offset-2 ${
+                          isSelected
+                            ? 'bg-[#E0F2EF] border-[#8ABDB4] text-[#123941] font-extrabold'
+                            : 'bg-white border-slate-200 text-slate-700 font-bold hover:bg-slate-50 hover:border-slate-300'
+                        }`}
+                      >
+                        {isSelected && (
+                          <Check className="w-3.5 h-3.5 text-[#123941] shrink-0" aria-hidden="true" />
+                        )}
+                        <span>{insurer.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {nonLifeInsurers.length > 0 && (
+              <div className="space-y-1.5">
+                <div className="text-[11px] font-extrabold text-slate-500">손해보험</div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {nonLifeInsurers.map((insurer) => {
+                    const isSelected = selectedInsurer === insurer.name;
+                    return (
+                      <button
+                        key={insurer.name}
+                        type="button"
+                        onClick={() => handleInsurerChange(insurer.name)}
+                        aria-pressed={isSelected}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs transition-colors cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#123941] focus-visible:ring-offset-2 ${
+                          isSelected
+                            ? 'bg-[#E0F2EF] border-[#8ABDB4] text-[#123941] font-extrabold'
+                            : 'bg-white border-slate-200 text-slate-700 font-bold hover:bg-slate-50 hover:border-slate-300'
+                        }`}
+                      >
+                        {isSelected && (
+                          <Check className="w-3.5 h-3.5 text-[#123941] shrink-0" aria-hidden="true" />
+                        )}
+                        <span>{insurer.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </section>
 
       {/* 3. 삼성생명 공식 상품공시실 연동 현황 요약 */}
       <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs space-y-3">
@@ -359,9 +674,9 @@ export default function PolicySearch() {
         </div>
       )}
 
-      {/* 6. 검색 결과 및 공시 목록 (상태 필터 + 페이지네이션) */}
+      {/* 6. 검색 결과 및 공시 목록 (상품명 그룹 아코디언 + 상태 필터 + 그룹 페이지네이션) */}
       {showRowsSection && (
-        <div className="space-y-4">
+        <div className="space-y-3.5">
           <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2 text-xs">
               {searchStatus === 'found' ? (
@@ -369,7 +684,12 @@ export default function PolicySearch() {
                   <span className="font-black text-[#123941] text-sm sm:text-base">
                     &ldquo;{submittedQuery}&rdquo;
                   </span>
-                  <span className="text-slate-500 font-medium">검색 결과</span>
+                  <span className="text-slate-500 font-medium">
+                    검색 결과{' '}
+                    <strong className="font-black text-[#123941]">
+                      상품명 {groupedProducts.length.toLocaleString()}개 · 공시 이력 {filteredDisplayRows.length.toLocaleString()}건
+                    </strong>
+                  </span>
                   <button
                     type="button"
                     onClick={handleClear}
@@ -379,9 +699,16 @@ export default function PolicySearch() {
                   </button>
                 </>
               ) : (
-                <span className="font-black text-[#123941] text-sm sm:text-base">
-                  삼성생명 공식 상품공시 목록 둘러보기
-                </span>
+                <>
+                  <span className="font-black text-[#123941] text-sm sm:text-base">
+                    삼성생명 공식 상품공시 목록 둘러보기
+                  </span>
+                  <span className="text-slate-500 font-medium">
+                    <strong className="font-black text-[#123941]">
+                      상품명 {groupedProducts.length.toLocaleString()}개 · 공시 이력 {filteredDisplayRows.length.toLocaleString()}건
+                    </strong>
+                  </span>
+                </>
               )}
             </div>
 
@@ -414,166 +741,282 @@ export default function PolicySearch() {
             </div>
           </div>
 
-          {filteredDisplayRows.length === 0 ? (
+          {groupedProducts.length === 0 ? (
             <div className="bg-white border border-slate-200/90 rounded-2xl p-6 text-center space-y-2 shadow-2xs">
               <p className="text-sm font-black text-slate-800">
-                선택한 &lsquo;{statusFilter}&rsquo; 상태에 해당하는 공시 행이 없습니다.
+                {selectedInsurer !== 'ALL' && statusFilter === 'ALL'
+                  ? `선택한 '${selectedInsurer}'에 해당하는 공시 행이 없습니다.`
+                  : `선택한 '${statusFilter}' 상태에 해당하는 공시 행이 없습니다.`}
               </p>
               <p className="text-xs text-slate-500 font-medium">
-                상단 상태 필터에서 &lsquo;전체&rsquo; 또는 다른 판매 상태를 선택해 확인해 주세요.
+                {selectedInsurer !== 'ALL' && statusFilter === 'ALL'
+                  ? "상단 보험사 선택에서 '전체 보험사'를 선택하거나 다른 검색어로 확인해 주세요."
+                  : "상단 상태 필터에서 '전체' 또는 다른 판매 상태를 선택해 확인해 주세요."}
               </p>
             </div>
           ) : (
             <>
-              <div className="space-y-3">
-                {visibleRows.map((item) => {
-                  const isCopied = copiedId === item.id;
-                  const isOnSale = item.salesStatus === '판매 중';
+              {/* 공시실 이용 안내 (목록 상단 1회) */}
+              <div className="bg-slate-50/90 border border-slate-200/80 rounded-xl px-4 py-3 text-xs text-slate-700 leading-relaxed font-medium flex items-start gap-2">
+                <Info className="w-4 h-4 text-[#123941] shrink-0 mt-0.5" aria-hidden="true" />
+                <p>
+                  상품명을 눌러 공시 판매기간과 상품코드를 확인한 뒤, 정식 상품명을 복사해 삼성생명 공식 공시실의 해당 탭(
+                  <strong className="text-[#123941]">「판매상품」</strong> 또는{' '}
+                  <strong className="text-[#123941]">「판매중지상품」</strong>)에서 가입 시기의 약관을 확인해 주세요.
+                </p>
+              </div>
+
+              {/* 상품명 기준 한 줄 목록 (기본 접힘) */}
+              <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm divide-y divide-slate-200/80 overflow-hidden">
+                {visibleGroups.map((group, groupIndex) => {
+                  const isExpanded = Boolean(expandedGroups[group.groupKey]);
+                  const isCopied = copiedKey === group.groupKey;
+                  const panelId = `policy-group-panel-${groupIndex}`;
+                  const extraHistoryCount = group.items.length - 1;
 
                   return (
-                    <div
-                      key={item.id}
-                      className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-sm space-y-3.5 text-left"
-                    >
-                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3.5 border-b border-slate-100">
-                        <div className="space-y-2 min-w-0">
-                          <div className="flex flex-wrap items-center gap-1.5">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[11px] font-black text-[#123941]">
-                              {item.insurerName}
+                    <div key={group.groupKey} className="text-left">
+                      <div className="px-4 py-3 sm:px-5 hover:bg-slate-50/70 transition-colors flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 lg:gap-3">
+                        {/* 1. 보험사 · 상품명 (+ 모바일 우측 펼치기 버튼) */}
+                        <div className="min-w-0 flex-1 flex items-start lg:items-center justify-between gap-2">
+                          <button
+                            type="button"
+                            onClick={() => toggleGroup(group.groupKey)}
+                            aria-expanded={isExpanded}
+                            aria-controls={panelId}
+                            className="min-w-0 flex-1 text-left flex flex-wrap lg:flex-nowrap items-center gap-2 cursor-pointer rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#123941] focus-visible:ring-offset-2"
+                          >
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[11px] font-black text-[#123941] whitespace-nowrap shrink-0">
+                              {group.insurerName}
                             </span>
-                            <span
-                              className={`inline-flex items-center px-2.5 py-0.5 rounded-md border text-[11px] font-black ${
-                                isOnSale
-                                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
-                                  : 'bg-slate-100 border-slate-300 text-slate-700'
+                            <h2 className="min-w-0 text-sm sm:text-[15px] font-black text-slate-900 tracking-tight break-words [overflow-wrap:anywhere] leading-snug">
+                              {group.productName}
+                            </h2>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => toggleGroup(group.groupKey)}
+                            aria-expanded={isExpanded}
+                            aria-controls={panelId}
+                            aria-label={
+                              isExpanded
+                                ? `${group.productName} 공시 이력 접기`
+                                : `${group.productName} 공시 이력 펼치기`
+                            }
+                            tabIndex={-1}
+                            className="lg:hidden inline-flex items-center justify-center p-1 -mr-1 text-slate-500 hover:text-[#123941] rounded-lg cursor-pointer shrink-0"
+                          >
+                            <ChevronDown
+                              className={`w-4 h-4 transition-transform duration-150 ${
+                                isExpanded ? 'rotate-180 text-[#123941]' : ''
                               }`}
-                            >
-                              {item.salesStatus}
+                              aria-hidden="true"
+                            />
+                          </button>
+                        </div>
+
+                        {/* 2. 판매 상태 · 날짜 | 3. 공시실 바로가기 | 4. PC 펼치기 */}
+                        <div className="flex flex-wrap lg:flex-nowrap items-center justify-between lg:justify-end gap-x-3 gap-y-1.5 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => toggleGroup(group.groupKey)}
+                            aria-expanded={isExpanded}
+                            aria-controls={panelId}
+                            tabIndex={-1}
+                            className="flex flex-wrap lg:flex-nowrap items-center gap-1.5 text-left cursor-pointer min-w-0"
+                          >
+                            {group.isMixedStatus ? (
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-[#E0F2EF]/70 border border-[#8ABDB4] text-[11px] font-black text-[#123941] whitespace-nowrap shrink-0">
+                                판매 중·중지 혼재
+                              </span>
+                            ) : group.onSaleCount > 0 ? (
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-[11px] font-black text-emerald-800 whitespace-nowrap shrink-0">
+                                판매 중
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 border border-slate-300 text-[11px] font-black text-slate-700 whitespace-nowrap shrink-0">
+                                판매중지
+                              </span>
+                            )}
+
+                            <span className="inline-flex flex-wrap items-center gap-1 text-xs font-bold text-slate-600">
+                              <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" aria-hidden="true" />
+                              {extraHistoryCount === 0 ? (
+                                <span className="whitespace-nowrap">{group.latestPeriodText}</span>
+                              ) : (
+                                <>
+                                  <span className="text-slate-500 font-semibold whitespace-nowrap">
+                                    최근 공시 기간
+                                  </span>
+                                  <span className="whitespace-nowrap">{group.latestPeriodText}</span>
+                                  <span className="text-[#123941] font-extrabold whitespace-nowrap">
+                                    외 {extraHistoryCount.toLocaleString()}건
+                                  </span>
+                                </>
+                              )}
                             </span>
-                            {item.contractKind && (
-                              <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-[11px] font-black text-amber-800">
-                                {item.contractKind}
-                              </span>
-                            )}
-                            {item.mergedRawRowCount > 1 && (
-                              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[10px] font-bold text-slate-600">
-                                공시 동일행 {item.mergedRawRowCount}건 병합
-                              </span>
-                            )}
-                            {item.classification && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-600">
-                                <Layers className="w-3 h-3 text-slate-400" />
-                                {item.classification}
-                              </span>
-                            )}
-                          </div>
+                          </button>
 
-                          <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight break-keep">
-                            {item.productName}
-                          </h2>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
-                        <div className="bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 flex items-center gap-2">
-                          <Calendar className="w-4 h-4 text-[#123941] shrink-0" />
-                          <div>
-                            <div className="text-[10px] font-bold text-slate-500">공시 판매기간</div>
-                            <div className="font-black text-slate-900">
-                              {item.salesStartDate || '-'} ~ {item.salesEndDate || '-'}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 flex items-center gap-2">
-                          <Hash className="w-4 h-4 text-[#123941] shrink-0" />
-                          <div>
-                            <div className="text-[10px] font-bold text-slate-500">공시 상품코드</div>
-                            <div className="font-black text-slate-900 font-mono">
-                              {item.productCode || '미표기'}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 flex items-center gap-2">
-                          <Building2 className="w-4 h-4 text-[#123941] shrink-0" />
-                          <div>
-                            <div className="text-[10px] font-bold text-slate-500">공식 공시실 탭</div>
-                            <div className="font-black text-[#123941]">{item.officialTab}</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-slate-50/90 border border-slate-200/80 rounded-xl px-4 py-3 text-xs text-slate-700 leading-relaxed font-medium">
-                        삼성생명 공식 공시실에서 <strong className="text-[#123941]">「{item.officialTab}」</strong> 탭을 선택한 뒤,
-                        정식 상품명을 검색하여 판매기간({item.salesStartDate || '-'} ~ {item.salesEndDate || '-'})에 해당하는 약관을 확인해 주세요.
-                      </div>
-
-                      <div className="pt-0.5 flex flex-wrap items-center gap-2.5">
-                        <a
-                          href={item.officialSourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#123941] hover:bg-[#0d2b31] text-white font-black text-xs sm:text-sm transition-colors shadow-xs"
-                        >
-                          <span>삼성생명 공식 공시실에서 검색</span>
-                          <ExternalLink className="w-4 h-4 text-[#cb9f74] shrink-0" />
-                        </a>
-
-                        <button
-                          type="button"
-                          onClick={() => handleCopyProductName(item)}
-                          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border font-black text-xs sm:text-sm transition-colors cursor-pointer ${
-                            isCopied
-                              ? 'bg-emerald-50 border-emerald-300 text-emerald-800'
-                              : 'bg-white hover:bg-slate-50 border-slate-300 text-slate-800'
-                          }`}
-                        >
-                          {isCopied ? (
-                            <>
-                              <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                              <span>복사됨</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy className="w-4 h-4 text-slate-500 shrink-0" />
-                              <span>정식 상품명 복사</span>
-                            </>
-                          )}
-                        </button>
-
-                        {item.verifiedPolicyUrl && (
                           <a
-                            href={item.verifiedPolicyUrl}
+                            href={group.officialSourceUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#cb9f74] hover:bg-[#b88b5f] text-white font-black text-xs sm:text-sm transition-colors shadow-xs"
+                            aria-label={`${group.insurerName} 공식 상품공시실 바로가기`}
+                            className="inline-flex items-center text-xs font-semibold text-[#123941]/85 hover:text-[#123941] hover:underline focus-visible:underline underline-offset-4 rounded-md px-1 py-0.5 lg:border-l lg:border-slate-200 lg:pl-3 lg:rounded-none transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#123941] focus-visible:ring-offset-2"
                           >
-                            <span>공식 약관 열기</span>
-                            <ExternalLink className="w-4 h-4 shrink-0" />
+                            공시실 바로가기 ↗
                           </a>
-                        )}
+
+                          <button
+                            type="button"
+                            onClick={() => toggleGroup(group.groupKey)}
+                            aria-expanded={isExpanded}
+                            aria-controls={panelId}
+                            aria-label={
+                              isExpanded
+                                ? `${group.productName} 공시 이력 접기`
+                                : `${group.productName} 공시 이력 펼치기`
+                            }
+                            tabIndex={-1}
+                            className="hidden lg:inline-flex items-center justify-center p-1.5 -mr-1 text-slate-500 hover:text-[#123941] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer shrink-0"
+                          >
+                            <ChevronDown
+                              className={`w-4 h-4 transition-transform duration-150 ${
+                                isExpanded ? 'rotate-180 text-[#123941]' : ''
+                              }`}
+                              aria-hidden="true"
+                            />
+                          </button>
+                        </div>
                       </div>
+
+                      {isExpanded && (
+                        <div
+                          id={panelId}
+                          className="border-t border-slate-100 bg-slate-50/60 px-4 py-3.5 sm:px-5 space-y-3"
+                        >
+                          <ul className="divide-y divide-slate-200/70 bg-white border border-slate-200/80 rounded-xl overflow-hidden">
+                            {group.items.map((item) => {
+                              const isOnSale = item.salesStatus === '판매 중';
+                              const itemPeriodText = formatDisclosurePeriod(
+                                item.salesStartDate,
+                                item.salesEndDate
+                              );
+
+                              return (
+                                <li
+                                  key={item.id}
+                                  className="px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs"
+                                >
+                                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 min-w-0">
+                                    <span className="inline-flex items-center gap-1.5 font-black text-slate-900 whitespace-nowrap">
+                                      <Calendar className="w-3.5 h-3.5 text-[#123941] shrink-0" aria-hidden="true" />
+                                      <span>{itemPeriodText}</span>
+                                    </span>
+                                    <span className="inline-flex items-center gap-1 text-slate-700 whitespace-nowrap">
+                                      <Hash className="w-3.5 h-3.5 text-slate-400 shrink-0" aria-hidden="true" />
+                                      <span className="text-[11px] font-bold text-slate-500">상품코드</span>
+                                      <span className="font-mono font-bold text-slate-900">
+                                        {item.productCode || '미표기'}
+                                      </span>
+                                    </span>
+                                  </div>
+
+                                  <div className="flex flex-wrap items-center gap-1.5 shrink-0">
+                                    <span
+                                      className={`inline-flex items-center px-2 py-0.5 rounded-md border text-[11px] font-black whitespace-nowrap ${
+                                        isOnSale
+                                          ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                                          : 'bg-slate-100 border-slate-300 text-slate-700'
+                                      }`}
+                                    >
+                                      {item.salesStatus}
+                                    </span>
+                                    <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[11px] font-bold text-[#123941] whitespace-nowrap">
+                                      {item.officialTab}
+                                    </span>
+                                    {item.contractKind && (
+                                      <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-[11px] font-black text-amber-800 whitespace-nowrap">
+                                        {item.contractKind}
+                                      </span>
+                                    )}
+                                    {item.mergedRawRowCount > 1 && (
+                                      <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[10px] font-bold text-slate-600 whitespace-nowrap">
+                                        공시 동일행 {item.mergedRawRowCount}건 병합
+                                      </span>
+                                    )}
+                                    {item.classification && (
+                                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[11px] font-bold text-slate-600 break-words">
+                                        <Layers className="w-3 h-3 text-slate-400 shrink-0" aria-hidden="true" />
+                                        <span>{item.classification}</span>
+                                      </span>
+                                    )}
+                                    {item.verifiedPolicyUrl && (
+                                      <a
+                                        href={item.verifiedPolicyUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-[#cb9f74] hover:bg-[#b88b5f] text-white font-black text-[11px] transition-colors whitespace-nowrap"
+                                      >
+                                        <span>공식 약관 열기</span>
+                                        <ExternalLink className="w-3 h-3 shrink-0" aria-hidden="true" />
+                                      </a>
+                                    )}
+                                  </div>
+                                </li>
+                              );
+                            })}
+                          </ul>
+
+                          {/* 펼친 영역 액션: 정식 상품명 복사만 유지 (공시실 링크 중복 제거) */}
+                          <div className="pt-0.5 flex flex-wrap items-center gap-2.5">
+                            <button
+                              type="button"
+                              onClick={() => handleCopyProductName(group.groupKey, group.productName)}
+                              className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border font-black text-xs sm:text-sm transition-colors cursor-pointer ${
+                                isCopied
+                                  ? 'bg-emerald-50 border-emerald-300 text-emerald-800'
+                                  : 'bg-white hover:bg-slate-50 border-slate-300 text-slate-800'
+                              }`}
+                            >
+                              {isCopied ? (
+                                <>
+                                  <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                                  <span>복사됨</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-4 h-4 text-slate-500 shrink-0" />
+                                  <span>정식 상품명 복사</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   );
                 })}
               </div>
 
-              {/* 페이지네이션 / 더 보기 */}
+              {/* 페이지네이션 / 더 보기 (그룹 단위) */}
               <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-3">
                 <p className="text-xs font-bold text-slate-600">
-                  현재 <span className="text-[#123941] font-black">{visibleRows.length.toLocaleString()}</span>건 /
-                  전체 <span className="text-[#123941] font-black">{filteredDisplayRows.length.toLocaleString()}</span>건 표시 중
+                  현재 상품명 <span className="text-[#123941] font-black">{visibleGroups.length.toLocaleString()}</span>개
+                  (공시 이력 <span className="text-[#123941] font-black">{visibleHistoryCount.toLocaleString()}</span>건) /
+                  전체 상품명 <span className="text-[#123941] font-black">{groupedProducts.length.toLocaleString()}</span>개 · 공시 이력{' '}
+                  <span className="text-[#123941] font-black">{filteredDisplayRows.length.toLocaleString()}</span>건 표시 중
                 </p>
 
-                {visibleRows.length < filteredDisplayRows.length && (
+                {visibleGroups.length < groupedProducts.length && (
                   <button
                     type="button"
                     onClick={handleLoadMore}
                     className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#123941] hover:bg-[#0d2b31] text-white font-black text-xs sm:text-sm transition-colors cursor-pointer"
                   >
                     <span>
-                      더 보기 (+{Math.min(PAGE_SIZE, filteredDisplayRows.length - visibleRows.length).toLocaleString()}건)
+                      더 보기 (+{Math.min(PAGE_SIZE, groupedProducts.length - visibleGroups.length).toLocaleString()}개 상품)
                     </span>
                     <ChevronDown className="w-4 h-4 text-[#cb9f74]" />
                   </button>

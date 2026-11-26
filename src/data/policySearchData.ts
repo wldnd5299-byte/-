@@ -186,8 +186,23 @@ export function getSamsungLifeDisclosureStats(records: PolicyProductRecord[] = S
   };
 }
 
+const TRAILING_SENTENCE_PUNCTUATION_REGEX = /[\s.,!?;:…·。，！？]+$/g;
+
+export function sanitizePolicySearchQuery(rawQuery: string): string {
+  return rawQuery
+    .trim()
+    .replace(TRAILING_SENTENCE_PUNCTUATION_REGEX, '')
+    .trim();
+}
+
+function cleanSearchToken(token: string): string {
+  return token
+    .trim()
+    .replace(/[.,!?;:…·。，！？]+$/g, '');
+}
+
 export function normalizePolicySearchText(text: string): string {
-  return text.trim().replace(/\s+/g, '').toLowerCase();
+  return sanitizePolicySearchQuery(text).replace(/\s+/g, '').toLowerCase();
 }
 
 function normalizeForMatch(text: string): string {
@@ -250,12 +265,22 @@ const OTHER_INSURER_KEYWORDS = [
   'aig손해보험',
 ];
 
-function stripSamsungLifePrefix(rawQuery: string): string {
-  return rawQuery
-    .trim()
-    .replace(/^삼성생명보험\s*/i, '')
-    .replace(/^삼성생명\s*/i, '')
+function stripSamsungLifeQuery(cleanedQuery: string): string {
+  const strippedPrefix = cleanedQuery
+    .replace(/^삼성생명보험[\s,.:;·]*/i, '')
+    .replace(/^삼성생명[\s,.:;·]*/i, '')
     .trim();
+
+  if (strippedPrefix !== cleanedQuery) {
+    return sanitizePolicySearchQuery(strippedPrefix);
+  }
+
+  const strippedSuffix = cleanedQuery
+    .replace(/[\s,.:;·]+삼성생명보험$/i, '')
+    .replace(/[\s,.:;·]+삼성생명$/i, '')
+    .trim();
+
+  return sanitizePolicySearchQuery(strippedSuffix);
 }
 
 function scoreRecord(
@@ -305,10 +330,10 @@ export function searchPolicyProducts(
   query: string,
   statusFilter: PolicyStatusFilter = 'ALL'
 ): PolicyProductRecord[] {
-  const trimmed = query.trim();
-  if (!trimmed) return [];
+  const sanitized = sanitizePolicySearchQuery(query);
+  if (!sanitized) return [];
 
-  const compactFull = normalizeForMatch(trimmed);
+  const compactFull = normalizeForMatch(sanitized);
   const mentionsSamsungLife = compactFull.includes('삼성생명');
   if (!mentionsSamsungLife) {
     const mentionsOtherInsurer = OTHER_INSURER_KEYWORDS.some((kw) =>
@@ -319,14 +344,16 @@ export function searchPolicyProducts(
     }
   }
 
-  const withoutInsurer = stripSamsungLifePrefix(trimmed);
+  const withoutInsurer = stripSamsungLifeQuery(sanitized);
   const isInsurerOnlyQuery = mentionsSamsungLife && withoutInsurer.length === 0;
 
-  const tokens = withoutInsurer
+  const cleanedTokens = withoutInsurer
     .split(/\s+/)
-    .map((t) => normalizeForMatch(t))
+    .map((t) => normalizeForMatch(cleanSearchToken(t)))
     .filter(Boolean);
-  const compactQuery = normalizeForMatch(withoutInsurer);
+  const compactQuery = cleanedTokens.join('');
+
+  if (!isInsurerOnlyQuery && !compactQuery) return [];
 
   const scored: { record: PolicyProductRecord; score: number }[] = [];
 
@@ -346,7 +373,7 @@ export function searchPolicyProducts(
 
     const s = scoreRecord(
       compactQuery,
-      tokens,
+      cleanedTokens,
       rawProductCompact,
       strippedProductCompact,
       codeCompact
