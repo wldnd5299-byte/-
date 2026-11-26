@@ -42,10 +42,11 @@ import InfoArticles from './components/InfoArticles';
 import AdBannerStrip from './components/AdBannerStrip';
 import PlannerSupplies from './components/PlannerSupplies';
 import DiseaseCodeSearch from './components/DiseaseCodeSearch';
+import PolicySearch from './components/PolicySearch';
 
 import { searchSite, SearchResultItem } from './data/searchIndex';
 
-export type ViewState = 'home' | 'claim' | 'terms' | 'surgery' | 'disease-code' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info' | 'planner-supplies';
+export type ViewState = 'home' | 'claim' | 'policy-search' | 'terms' | 'surgery' | 'disease-code' | 'indemnity' | 'age' | 'planner-goods' | 'dispute' | 'info' | 'planner-supplies';
 
 export interface SEOData {
   title: string;
@@ -66,6 +67,12 @@ export const SEO_CONFIG: Record<ViewState, SEOData> = {
     description: '국내 주요 생명보험사와 손해보험사의 고객센터, 보험금 청구, 팩스번호, 공시실 등 보험설계사 실무정보를 확인할 수 있습니다.',
     canonical: 'https://insurancebridge.co.kr/claim/',
     path: '/claim/',
+  },
+  'policy-search': {
+    title: '보험상품 약관 찾기 보험사 공식 공시실 안내 | 보험브릿지',
+    description: '보험회사와 보험상품명을 검색하여 해당 보험회사의 공식 상품공시실에서 가입 당시 약관을 확인할 수 있습니다.',
+    canonical: 'https://insurancebridge.co.kr/policy-search/',
+    path: '/policy-search/',
   },
   terms: {
     title: '보험사별 담보·질병코드 분류표 | 보험브릿지',
@@ -189,6 +196,7 @@ export const updateSEOMeta = (view: ViewState) => {
 export const VIEW_PATH_MAP: Record<ViewState, string> = {
   home: '/',
   claim: '/claim/',
+  'policy-search': '/policy-search/',
   terms: '/terms/',
   surgery: '/surgery/',
   'disease-code': '/disease-code/',
@@ -204,6 +212,8 @@ export const PATH_VIEW_MAP: Record<string, ViewState> = {
   '/': 'home',
   '/claim': 'claim',
   '/claim/': 'claim',
+  '/policy-search': 'policy-search',
+  '/policy-search/': 'policy-search',
   '/terms': 'terms',
   '/terms/': 'terms',
   '/surgery': 'surgery',
@@ -235,6 +245,9 @@ export const getViewFromLocation = (): ViewState => {
   if (rawPath.startsWith('/disease-code')) {
     return 'disease-code';
   }
+  if (rawPath.startsWith('/policy-search')) {
+    return 'policy-search';
+  }
   if (rawPath.startsWith('/terms/')) {
     return 'terms';
   }
@@ -259,6 +272,9 @@ export const getViewFromLocation = (): ViewState => {
   }
   if (cleanPath.startsWith('/disease-code')) {
     return 'disease-code';
+  }
+  if (cleanPath.startsWith('/policy-search')) {
+    return 'policy-search';
   }
   if (cleanPath.startsWith('/terms/')) {
     return 'terms';
@@ -300,6 +316,8 @@ export const getInfoSlugFromLocation = (): string | null => {
   }
 };
 
+const SHOW_PLANNER_SUPPLIES_IN_NAV = false;
+
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>(() => {
     if (typeof window !== 'undefined') {
@@ -309,6 +327,9 @@ export default function App() {
       }
       if (pathname.startsWith('/claim/') || pathname.startsWith('/insurer/')) {
         return 'claim';
+      }
+      if (pathname.startsWith('/policy-search')) {
+        return 'policy-search';
       }
       if (pathname.startsWith('/planner-supplies')) {
         return 'planner-supplies';
@@ -418,6 +439,7 @@ export default function App() {
   const primaryMenus = [
     { id: 'home' as ViewState, label: 'HOME' },
     { id: 'claim' as ViewState, label: '보험사정보' },
+    { id: 'policy-search' as ViewState, label: '상품약관찾기' },
     { id: 'terms' as ViewState, label: '담보별 분류표' },
     { id: 'surgery' as ViewState, label: '수술명검색' },
     { id: 'indemnity' as ViewState, label: '실손의료비계산기' },
@@ -440,7 +462,7 @@ export default function App() {
                   e.preventDefault();
                   handleNavigate(menu.id);
                 }}
-                className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-block ${
+                className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-block ${
                   isActive
                     ? 'bg-[#cb9f74] text-white border-[#cb9f74] shadow-md'
                     : 'bg-transparent text-slate-100 border-transparent hover:text-white hover:bg-white/10'
@@ -461,7 +483,7 @@ export default function App() {
               e.preventDefault();
               handleNavigate('planner-goods');
             }}
-            className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-flex items-center gap-1 ${
+            className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-flex items-center gap-1 ${
               isMaterialsActive
                 ? 'bg-[#cb9f74] text-white border-[#cb9f74] shadow-md'
                 : 'bg-transparent text-slate-100 border-transparent hover:text-white hover:bg-white/10'
@@ -507,29 +529,33 @@ export default function App() {
           </div>
         </div>
 
-        <span className="text-white/10 font-normal mx-0.5 select-none">|</span>
+        {SHOW_PLANNER_SUPPLIES_IN_NAV && (
+          <>
+            <span className="text-white/10 font-normal mx-0.5 select-none">|</span>
 
-        {/* 설계사용품 */}
-        <a
-          href="/planner-supplies/"
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavigate('planner-supplies');
-          }}
-          className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-block ${
-            currentView === 'planner-supplies'
-              ? 'bg-[#cb9f74] text-white border-[#cb9f74] shadow-md'
-              : 'bg-transparent text-slate-100 border-transparent hover:text-white hover:bg-white/10'
-          }`}
-        >
-          설계사용품
-        </a>
+            {/* 설계사용품 */}
+            <a
+              href="/planner-supplies/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigate('planner-supplies');
+              }}
+              className={`whitespace-nowrap px-1 lg:px-1.5 xl:px-2.5 2xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight uppercase transition-all cursor-pointer border rounded-none inline-block ${
+                currentView === 'planner-supplies'
+                  ? 'bg-[#cb9f74] text-white border-[#cb9f74] shadow-md'
+                  : 'bg-transparent text-slate-100 border-transparent hover:text-white hover:bg-white/10'
+              }`}
+            >
+              설계사용품
+            </a>
+          </>
+        )}
 
         <a
           href="https://open.kakao.com/o/sWUpRzLi"
           target="_blank"
           rel="noopener noreferrer"
-          className="whitespace-nowrap ml-1 px-2.5 lg:px-3 xl:px-3.5 py-1 text-xs lg:text-[13px] xl:text-[13.5px] font-bold tracking-tight uppercase transition-all cursor-pointer border rounded-md inline-flex items-center bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white/35 shadow-sm"
+          className="whitespace-nowrap ml-1 px-2.5 lg:px-2.5 xl:px-2.5 2xl:px-3.5 py-1 text-xs lg:text-[13px] xl:text-[13.5px] font-bold tracking-tight uppercase transition-all cursor-pointer border rounded-md inline-flex items-center bg-white/10 text-white border-white/20 hover:bg-white/20 hover:border-white/35 shadow-sm"
         >
           광고·제휴 문의
         </a>
@@ -545,7 +571,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-2 flex items-center justify-between">
           
           {/* Left Side: Logo Brand + Desktop Global Search Bar */}
-          <div className="flex items-center gap-3 lg:gap-4 xl:gap-6">
+          <div className="flex items-center gap-3 lg:gap-3 xl:gap-4">
             <a
               href="/"
               onClick={(e) => {
@@ -781,21 +807,23 @@ export default function App() {
             </div>
 
             {/* 설계사용품 */}
-            <a
-              href="/planner-supplies/"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavigate('planner-supplies');
-                setMobileMenuOpen(false);
-              }}
-              className={`w-full block text-left px-5 py-3 text-base font-medium uppercase transition-colors rounded-none ${
-                currentView === 'planner-supplies'
-                  ? 'bg-[#cb9f74] text-white font-semibold shadow-sm'
-                  : 'text-white hover:bg-white/10'
-              }`}
-            >
-              설계사용품
-            </a>
+            {SHOW_PLANNER_SUPPLIES_IN_NAV && (
+              <a
+                href="/planner-supplies/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate('planner-supplies');
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full block text-left px-5 py-3 text-base font-medium uppercase transition-colors rounded-none ${
+                  currentView === 'planner-supplies'
+                    ? 'bg-[#cb9f74] text-white font-semibold shadow-sm'
+                    : 'text-white hover:bg-white/10'
+                }`}
+              >
+                설계사용품
+              </a>
+            )}
             <div className="pt-2 pb-1 px-4">
               <a
                 href="https://open.kakao.com/o/sWUpRzLi"
@@ -936,6 +964,8 @@ export default function App() {
               />
             ) : currentView === 'claim' ? (
               <ClaimForms />
+            ) : currentView === 'policy-search' ? (
+              <PolicySearch />
             ) : currentView === 'terms' ? (
               <TermsMaster />
             ) : currentView === 'surgery' ? (
